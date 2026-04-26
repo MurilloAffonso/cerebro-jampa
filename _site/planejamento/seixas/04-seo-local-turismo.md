@@ -1,6 +1,6 @@
 ---
 skill: seo-local-turismo
-versao: 1.1
+versao: 1.2
 projeto_id: pagina-seixas-2026-04-26
 etapa: 4 de 6
 status: REVISADO — domínio confirmado (2026-04-26); lacunas restantes documentadas
@@ -184,7 +184,9 @@ Piscinas Naturais do Seixas, João Pessoa — Snorkel em Água Cristalina
 |-------|-----|---------------------|
 | Bloco 3 | "Este passeio acontece na maré baixa — e isso é exatamente o que torna ele especial" | maré baixa, passeio |
 | Bloco 4 | "Por que confiar na Vem Passear em Jampa?" | Vem Passear, confiança |
+| Bloco 4.5 | "O que dizem quem foi" | avaliações, Google, Seixas *(condicional — exibido se `temAvaliacoes = true`)* |
 | Bloco 6 | "O que espera por você em Seixas" | Seixas, experiência |
+| Bloco 6.5 | "Conheça o passeio em 360°" | experiência, Seixas *(condicional — exibido se `tem360 = true`)* |
 | Bloco 7 | "Como é o passeio — passo a passo" | passeio, roteiro |
 | Bloco 8 | "O que está incluso (e o que não está)" | incluso, preço |
 | Bloco 9 | "Perguntas sobre o passeio de Seixas" | seixas, passeio |
@@ -413,6 +415,42 @@ Todos os schemas são gerados via `lib/seo.ts`. Os blocos abaixo são a **especi
 
 ---
 
+### 9.5 Review Schema — Contexto para Bloco 4.5 (Avaliações Google Maps)
+
+**Importante:** avaliações exibidas do Google Maps **não devem** ser embrulhadas em `Review` schema direto na página sem conformidade com as políticas do Google. Usar schema de avaliação individual para reviews de terceiros pode violar as diretrizes de dados estruturados do Google se não originar de experiência de primeira mão.
+
+**Recomendação segura:**
+- **Não usar** `Review` schema individual para transcrições do Google Maps
+- **Usar** `AggregateRating` no `LocalBusiness` schema (seção 9.1) — já contemplado com o campo `ratingValue: 4.9` e `ratingCount: [CONFIRMAR]`
+- **O Bloco 4.5 na UI** tem papel de prova social humana, não de structured data — a atribuição visual ("Google Maps") já garante credibilidade ao usuário
+- **Para featured snippet de reviews:** Google já exibe o AggregateRating do schema 9.1 nos resultados — não duplicar
+
+**Atribuição obrigatória no HTML** (mesmo sem schema):
+- Exibir "· Google Maps" como texto visível ao lado de cada avaliação
+- Link `rel="noopener noreferrer"` para o perfil do Google Maps da empresa
+
+---
+
+### 9.6 VirtualTour Schema — Contexto para Bloco 6.5 (Experiência 360°)
+
+**Schema disponível:** `VirtualLocation` / `VirtualTour` no contexto de `TouristAttraction`
+
+**Adição ao schema 9.2 (TouristAttraction) — quando `tem360 = true`:**
+
+```json
+{
+  "virtualTourUrl": "[CONFIRMAR COM MURILLO: URL da experiência 360° — YouTube, Street View, Matterport]"
+}
+```
+
+**Campo a adicionar** ao objeto `TouristAttraction` existente (seção 9.2) quando Murillo confirmar o link.
+
+**Impacto SEO:** `virtualTourUrl` em TouristAttraction pode habilitar rich result com ícone de tour virtual nos resultados — diferencial de CTR vs. concorrentes sem 360°.
+
+**Nota de implementação:** adicionar o campo `virtualTourUrl` à função `generateTouristAttractionSchema()` em `lib/seo.ts`, com valor `undefined` como padrão (campo omitido quando não disponível).
+
+---
+
 ## 10. LINKS INTERNOS
 
 ### 10.1 Links que esta página RECEBE (link juice de entrada)
@@ -591,6 +629,8 @@ O NAP (Name, Address, Phone) deve ser **idêntico** em 5 lugares:
 | ~~8~~ | ~~Idade mínima para crianças~~ | ~~FAQ #6 + FAQPage schema~~ | ✅ **Confirmado: sem idade mínima, crianças acompanhadas por responsável** |
 | 9 | Data de validade do preço R$ 60 | Schema TouristAttraction > `priceValidUntil` | ⏳ Schema funciona sem esse campo |
 | 10 | Bar a bordo vende alimentos ou só bebidas? | Bloco 7 copy (não SEO diretamente) | ⏳ Não bloqueia SEO |
+| 11 | Link do Google Maps do perfil da empresa (para link "Ver todas as avaliações") | Bloco 4.5 — link externo de atribuição | ⏳ Pendente — não bloqueia schema |
+| 12 | URL da experiência 360° (YouTube/Street View/Matterport) | Schema 9.6 `virtualTourUrl` + Bloco 6.5 | ⏳ Pendente Murillo — opcional para deploy |
 
 **Prioridade de confirmação:**
 1. 🔴 **Crítico antes do deploy:** item 7 (aprovação texto cancelamento) + item 5 (foto hero)
@@ -687,4 +727,4 @@ O NAP (Name, Address, Phone) deve ser **idêntico** em 5 lugares:
 
 ---
 
-*Versão: 1.1 | Data: 2026-04-26 | Skill: seo-local-turismo | Revisão: domínio confirmado | Próxima etapa: 05-briefing-designer.md*
+*Versão: 1.2 | Data: 2026-04-26 | Skill: seo-local-turismo | Adicionado: H2s para blocos 4.5 e 6.5; seções 9.5 (Review) e 9.6 (VirtualTour); lacunas 11 e 12 | Próxima etapa: 05-briefing-designer.md*

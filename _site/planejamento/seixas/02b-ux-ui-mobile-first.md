@@ -1,6 +1,6 @@
 ---
 skill: ux-ui-mobile-first
-versao: 3.1
+versao: 1.4
 projeto_id: pagina-seixas-2026-04-26
 etapa: 2b de 6
 status: REVISADA — decisões de Murillo aplicadas 2026-04-26. Pronta para Etapa 3.
@@ -11,7 +11,7 @@ fontes_consultadas:
   - _conhecimento/benchmark-site-cro.md
   - _conhecimento/publico-alvo.md
   - skills/ux-ui-mobile-first/SKILL.md
-referencia_copy: 02a-copywriter-vendas.md (blocos 1–13)
+referencia_copy: 02a-copywriter-vendas.md (blocos 1–13 + 4.5 + 6.5)
 ---
 
 # Wireframe — Piscinas Naturais do Seixas
@@ -37,10 +37,12 @@ CRÍTICO — Aparecem nos primeiros 30% da tela (acima da dobra)
   C3  Info Card (Preço / Duração / Embarque)
   C4  Aviso de Maré
   C5  Por Que Confiar (Cadastur + rating + Murillo)
+  C5.5 Avaliações Google Maps (opcional via flag `temAvaliacoes`)
 
 IMPORTANTE — Aparecem entre 30-70% (leitura e consideração)
   I1  Lead (texto de abertura)
   I2  O Que Você Vai Fazer (sensorial)
+  I2.5 Experiência 360° (opcional via flag `tem360`)
   I3  Roteiro Narrativo
   I4  Incluso / Não Incluso
   I5  FAQ Accordion
@@ -199,6 +201,44 @@ Mobile (320px) — stack vertical:
 
 ---
 
+### C5.5 — AVALIAÇÕES GOOGLE MAPS *(bloco opcional — `temAvaliacoes`)*
+
+```
+Mobile (320px):
+┌──────────────────────────────────────┐
+│  H2: "O que dizem quem foi"          │
+│  padding: 24px 16px 0                │
+│  fundo: branco                       │
+│                                      │
+│  ┌──────────────────────────────┐    │
+│  │  ⭐⭐⭐⭐⭐                   │    │
+│  │  "[texto da avaliação]"      │    │
+│  │  — Nome, Cidade              │    │
+│  │  Mês/Ano · Google Maps       │    │
+│  └──────────────────────────────┘    │
+│                                      │
+│  [repetir 2-4 cards de avaliação]    │
+│                                      │
+│  [Ver todas as avaliações no Google ↗]│
+│  14px, link com ícone externo        │
+└──────────────────────────────────────┘
+```
+
+**Comportamento:**
+- Condicional: só renderiza se `temAvaliacoes = true` em `data/passeios.ts`
+- Mobile: cards em stack vertical (1 coluna)
+- Desktop: grid 2 colunas ou slider simples
+- Cada card: fundo branco, borda sutil, padding 16px, border-radius 8px
+- Estrelas: ⭐ inline, 16px, cor âmbar
+- Texto: 14px, preto, line-height 1.5
+- Atribuição: "Mês/Ano · Google Maps" — 12px, gray — obrigatório por atribuição
+- Link "Ver todas": `target="_blank"`, `rel="noopener noreferrer"`, ícone ↗
+- Sem avatar de usuário — privacidade por padrão
+
+*Nota de acessibilidade: `role="list"` no container; cada card `role="listitem"`*
+
+---
+
 ### I1 — LEAD
 
 ```
@@ -234,6 +274,51 @@ Mobile (320px):
 │  border-radius: 8px                  │
 └──────────────────────────────────────┘
 ```
+
+---
+
+### I2.5 — EXPERIÊNCIA 360° *(bloco opcional — `tem360`)*
+
+```
+Mobile (320px) — estado ANTES do clique:
+┌──────────────────────────────────────┐
+│  H2: "Conheça o passeio em 360°"     │
+│  padding: 24px 16px 0                │
+│                                      │
+│  ┌──────────────────────────────┐    │
+│  │  [Preview — imagem estática] │    │
+│  │  width: 100%, height: 200px  │    │
+│  │  border-radius: 8px          │    │
+│  │  overlay escuro 30%          │    │
+│  │  ▶ [Abrir experiência 360°]  │    │
+│  │  botão centralizado sobre    │    │
+│  │  a imagem                    │    │
+│  └──────────────────────────────┘    │
+│                                      │
+│  [texto curto — 1 linha abaixo]      │
+└──────────────────────────────────────┘
+
+Mobile (320px) — estado APÓS o clique:
+┌──────────────────────────────────────┐
+│  [iframe/embed 360° — carregado]     │
+│  width: 100%, height: 400px          │
+│  border-radius: 8px                  │
+│  allow: "fullscreen"                 │
+└──────────────────────────────────────┘
+```
+
+**Comportamento:**
+- Condicional: só renderiza se `tem360 = true` em `data/passeios.ts`
+- Estado inicial: apenas preview estática + botão overlay — **sem iframe**
+- Ao clicar no botão: substitui preview pelo iframe/embed 360° (lazy instantiation)
+- O iframe só é injetado no DOM após o clique — nunca pré-carregado
+- Preview: frame estático do vídeo 360° ou foto representativa de Seixas
+- Botão: fundo semitransparente escuro, ícone ▶, texto branco, border-radius
+- Suporta: YouTube 360°, Google Street View, Matterport, iframe genérico
+- Desktop: height do embed aumenta para 500px
+- `loading="lazy"` no iframe após instanciação
+
+*Nota de performance: este é o único componente com lazy instantiation de iframe — padrão para qualquer embed pesado no site.*
 
 ---
 
@@ -543,7 +628,10 @@ Estilo (mobile):
 | Info Card | 3 colunas, 100px height |
 | Aviso Maré | full-width, 16px padding |
 | Por Que Confiar | stack vertical, fundo escuro |
+| Avaliações Google Maps (C5.5) | stack vertical, 1 coluna, condicional |
 | Lead / Descrição | full-width, 16px padding |
+| O Que Você Vai Fazer | full-width, 16px padding |
+| Experiência 360° (I2.5) | preview 200px + botão overlay, condicional |
 | Incluso/Não Incluso | 1 coluna (incluso → não incluso) |
 | FAQ | accordion full-width |
 | Depoimento | full-width, fundo claro |
@@ -570,7 +658,9 @@ Estilo (mobile):
 | Hero | 600px height, H1 48px, H2 sub 20px |
 | Info Card | 3 colunas, padding 32px |
 | Por Que Confiar | 3 colunas, mais espaço |
+| Avaliações Google Maps (C5.5) | grid 2 colunas, condicional |
 | Descrição + Imagem | 60/40 split (texto + imagem lateral) |
+| Experiência 360° (I2.5) | embed 500px height, centralizado, condicional |
 | Incluso/Não Incluso | 2 colunas mesmo nível |
 | FAQ | 2 colunas (desktop pode dividir FAQ em 2 cols) |
 | CTA Final | max-width 600px, centralizado |
@@ -628,6 +718,8 @@ Estilo (mobile):
 | `CTASticky` | Páginas de passeio | ✅ Reuso com lógica JS | P0 |
 | `Breadcrumb` | Passeios + categorias | ✅ Alto reuso | P1 |
 | `Footer` | Todas as páginas | ✅ Alto reuso | P0 |
+| `ReviewsBlock` | Passeios com avaliações | ✅ Reuso condicional (`temAvaliacoes`) | P1 |
+| `Experience360Block` | Passeios com 360° | ✅ Reuso condicional (`tem360`) | P1 |
 
 **P0 = necessário para lançar Seixas | P1 = importante mas pode vir logo após**
 
@@ -657,11 +749,19 @@ Estilo (mobile):
 │  ⭐ 4.9/5 no Google                  │
 │  👤 Murillo — Guia Local             │
 ├──────────────────────────────────────┤
+│  O que dizem quem foi                │  ← Avaliações Google Maps (C5.5 — condicional)
+│  ⭐⭐⭐⭐⭐ "[avaliação real]"      │
+│  — Nome · Mês/Ano · Google Maps      │
+│  [Ver todas no Google ↗]             │
+├──────────────────────────────────────┤
 │  Chegou em JP e quer praia diferente │  ← Lead (I1)
 │  do comum? Seixas é onde o sol...    │
 ├──────────────────────────────────────┤
 │  O que espera por você               │  ← Descrição (I2)
 │  [texto sensorial]                   │
+├──────────────────────────────────────┤
+│  Conheça o passeio em 360°           │  ← Experiência 360° (I2.5 — condicional)
+│  [preview 200px + ▶ botão overlay]  │
 ├──────────────────────────────────────┤
 │  Como é o passeio                    │  ← Roteiro (I3)
 │  🚢 Embarque em Tambaú              │
@@ -735,6 +835,8 @@ Estilo (mobile):
 | ~~7~~ | ~~Endereço exato do ponto de embarque~~ | — | ✅ **Confirmado: Praia de Tambaú, próximo ao Hotel Tambaú (localização exata no voucher)** |
 | 5 | FAQ: accordion abre múltiplos ou um por vez? | Decisão de UX — recomendo 1 por vez | ⏳ Etapa 3 decide |
 | 6 | Sidebar CTA flutuante no desktop? | Diretor Visual (Etapa 3) decide | ⏳ Etapa 3 decide |
+| 8 | Avaliações Google Maps reais (C5.5) | Bloco não renderiza sem conteúdo real | ⏳ Pendente Murillo |
+| 9 | Link ou arquivo 360° (I2.5) | Bloco não renderiza sem `tem360 = true` | ⏳ Pendente Murillo |
 
 ### ✅ CONFLITO DE ORDENAÇÃO RESOLVIDO — 2026-04-26
 
@@ -764,6 +866,8 @@ Componentes que precisam de especificação visual detalhada:
 - InfoCard (ícones, tipografia, separadores)
 - MaréAlert (fundo, ícone, borda)
 - TrustBlock (grid, ícones, tipografia)
+- ReviewsBlock (card layout, estrelas, atribuição, link externo)
+- Experience360Block (preview, botão overlay, estado antes/depois do clique)
 - FAQAccordion (chevron, estados aberto/fechado)
 - CTAFinal (fundo, botão, tipografia)
 ```
@@ -789,9 +893,10 @@ Perguntas para o designer resolver em Figma:
 
 ```
 Componentes criados por este wireframe:
-Header, HeroBlock, InfoCard, MaréAlert, TrustBlock, RoteiroBullets,
-IncluidoBlock, FAQAccordion, DepoimentoBlock, InfoPratica, CTAFinal,
-PasseioCard, CTASticky, Breadcrumb, Footer
+Header, HeroBlock, InfoCard, MaréAlert, TrustBlock, ReviewsBlock,
+RoteiroBullets, Experience360Block, IncluidoBlock, FAQAccordion,
+DepoimentoBlock, InfoPratica, CTAFinal, PasseioCard, CTASticky,
+Breadcrumb, Footer
 
 Todos os componentes devem ser reutilizáveis via props.
 Dados do passeio entram por `data/passeios.ts` — nunca hardcoded.
@@ -799,6 +904,6 @@ Dados do passeio entram por `data/passeios.ts` — nunca hardcoded.
 
 ---
 
-*Wireframe v1.3 | decisões de Murillo aplicadas | Etapa 2b pronta para Etapa 3 | 2026-04-26*
-*Aplicado: Lead em I1 (após Por Que Confiar) aprovado. WhatsApp +55 83 9908-7830 confirmado. Embarque confirmado: Praia de Tambaú, próximo ao Hotel Tambaú.*
-*Aguardando: Etapa 3 (`diretor-visual-turismo`) para validar padrão visual antes de briefar designer.*
+*Wireframe v1.4 | blocos C5.5 e I2.5 adicionados | 2026-04-26*
+*Aplicado: Lead em I1, WhatsApp confirmado, embarque confirmado, ReviewsBlock (C5.5 — condicional), Experience360Block (I2.5 — condicional).*
+*Aguardando: Etapa 3 para especificação visual dos novos blocos. Avaliações e link 360° pendentes com Murillo.*

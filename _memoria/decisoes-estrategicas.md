@@ -208,6 +208,27 @@
 **Por quê:** Murillo enviou documento base de "Paraíba Travel" — requer adaptação para Vem Passear em Jampa (nome, CNPJ 52.077.577/0001-03, dados de contato, canal WhatsApp).
 **Implementação:** Página `/politica-de-privacidade` a criar na Etapa 6. Não publicar até aprovação de Murillo. Alerta jurídico: LGPD exige que política reflita exatamente as práticas reais de coleta de dados.
 
+### 31. Bloco de Avaliações Google Maps — Aprovado por Murillo (2026-04-26)
+**Decisão:** Adicionar bloco opcional **Avaliações Google Maps** (posição 4.5 — após Por Que Confiar, antes do Lead) em páginas de passeio. Controlado por flag `temAvaliacoes` em `data/passeios.ts`.
+**Por quê:** Prova social real imediatamente após a nota "4.9/5 no Google" — maximiza conversão. Posição 4.5 captura o turista enquanto ainda está na fase de validação de confiança.
+**Regras invioláveis:**
+- Apenas avaliações reais transcritas por Murillo do Google Maps — nunca inventar
+- Exibir atribuição "Mês/Ano · Google Maps" visível ao lado de cada avaliação
+- Link para perfil do Google Maps com `target="_blank"`, `rel="noopener noreferrer"`
+- Não usar `Review` schema individual — usar `AggregateRating` no `LocalBusiness` schema
+- Se `temAvaliacoes = false`, bloco não existe (sem espaço vazio)
+**Implementação:** Aplicado em 02a (v3.3), 02b (v1.4), 03 (v2.2), 04 (v1.2), 05 (v3.2), 05b (v1.1). Componente: `ReviewsBlock`. Lacunas 11 (avaliações) e 14 (URL Google Maps) pendentes com Murillo.
+
+### 32. Bloco Experiência 360° — Aprovado por Murillo (2026-04-26)
+**Decisão:** Adicionar bloco opcional **Experiência 360°** (posição 6.5 — após O Que Você Vai Fazer, antes do Roteiro) em páginas de passeio. Controlado por flag `tem360` em `data/passeios.ts`.
+**Por quê:** Imersão pré-decisão — turista "entra" no destino quando o desejo está no pico (após descrição sensorial), antes de enfrentar os detalhes operacionais do roteiro.
+**Regras invioláveis:**
+- O embed/iframe 360° **nunca carrega automaticamente** — apenas preview estática + botão
+- O iframe só instancia no DOM após clique explícito do usuário
+- Suporta: YouTube 360°, Google Street View, Matterport, iframe genérico
+- Se `tem360 = false`, bloco não existe (sem espaço vazio)
+**Implementação:** Aplicado em 02a (v3.3), 02b (v1.4), 03 (v2.2), 04 (v1.2 — seção 9.6 VirtualTour schema), 05 (v3.2), 05b (v1.1). Componente: `Experience360Block`. Lacuna 12 (link 360°) pendente com Murillo. Adicionar `virtualTourUrl` a `generateTouristAttractionSchema()` em `lib/seo.ts` quando link disponível.
+
 ---
 
 **Última atualização:** 2026-04-26 | Próxima revisão: ao fim de cada fase de implementação

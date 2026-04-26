@@ -1,12 +1,12 @@
 ---
 skill: briefing-designer
-versao: 1.0
+versao: 1.1
 projeto_id: pagina-seixas-2026-04-26
 etapa: 5b de 6
 tipo: resumo-operacional-figma
 status: PRONTO — para execução no Figma
 data: 2026-04-26
-fonte: _site/planejamento/seixas/05-briefing-designer.md (v3.1)
+fonte: _site/planejamento/seixas/05-briefing-designer.md (v3.2)
 ---
 
 # Resumo Operacional — Figma · Piscinas Naturais do Seixas
@@ -32,8 +32,10 @@ Mobile, de cima para baixo:
 | 2 | C3 | Info Card | R$ 60 / ~3h30 / Tambaú — 3 colunas |
 | 3 | C4 | Aviso de Maré | Bloco âmbar educativo |
 | 4 | C5 | Por Que Confiar | Cadastur + 4.9/5 + Murillo — fundo escuro |
+| 4.5 | C5.5 | Avaliações Google Maps | Cards com reviews reais + link Google *(condicional — `temAvaliacoes`)* |
 | 5 | I1 | Lead | Gancho textual, sem título visual |
 | 6 | I2 | O Que Você Vai Fazer | Descrição sensorial + imagem opcional |
+| 6.5 | I2.5 | Experiência 360° | Preview + botão overlay — embed lazy-load *(condicional — `tem360`)* |
 | 7 | I3 | Roteiro Narrativo | 5 etapas com ícone emoji |
 | 8 | I4 | Incluso / Não Incluso | Dois checklists |
 | 9 | I5 | FAQ Accordion | 7 perguntas |
@@ -52,7 +54,8 @@ Mobile, de cima para baixo:
 | Prioridade | Blocos |
 |-----------|--------|
 | 🔴 CRÍTICO | Header (C1), Hero (C2), Info Card (C3), Por Que Confiar (C5), CTA Sticky |
-| 🟠 IMPORTANTE | Aviso de Maré (C4), Lead + Descrição (I1+I2), FAQ (I5), CTA Secundário (I5.5) |
+| 🟠 IMPORTANTE | Aviso de Maré (C4), Avaliações (C5.5), Lead + Descrição (I1+I2), FAQ (I5), CTA Secundário (I5.5) |
+| 🟡 SUPORTE (condicional) | Experiência 360° (I2.5 — só se `tem360 = true`) |
 | 🟡 SUPORTE | Roteiro (I3), Incluso/Não Incluso (I4), Depoimento (S1), CTA Final (S3) |
 | 🟢 RETENÇÃO | Passeios Similares (S4), Footer (S5) |
 
@@ -62,7 +65,7 @@ Perfeccionar blocos 🔴 antes de refinar blocos 🟡 e 🟢.
 
 ## 3. Componentes Principais
 
-18 componentes — **usar estes nomes exatos no Figma**. O programador usará os mesmos nomes na implementação.
+20 componentes — **usar estes nomes exatos no Figma**. O programador usará os mesmos nomes na implementação.
 
 | Componente | Prioridade | Reutilizável em |
 |-----------|-----------|----------------|
@@ -71,6 +74,7 @@ Perfeccionar blocos 🔴 antes de refinar blocos 🟡 e 🟢.
 | `Breadcrumb` | P0 | Todas as páginas internas |
 | `InfoCard` | P0 | Páginas de passeio |
 | `TrustBlock` | P0 | Todas as páginas de passeio |
+| `ReviewsBlock` | P1 | Passeios com `temAvaliacoes = true` *(condicional)* |
 | `IncluidoBlock` | P0 | Páginas de passeio |
 | `FAQAccordion` | P0 | Passeios + FAQ centralizada |
 | `CTAFinal` | P0 | Todas as páginas |
@@ -79,6 +83,7 @@ Perfeccionar blocos 🔴 antes de refinar blocos 🟡 e 🟢.
 | `MaréAlert` | P1 | Seixas, Penha, Picãozinho, Areia Vermelha |
 | `LeadText` | P1 | Páginas de passeio |
 | `DescricaoBlock` | P1 | Páginas de passeio |
+| `Experience360Block` | P1 | Passeios com `tem360 = true` *(condicional)* |
 | `RoteiroBullets` | P1 | Páginas de passeio |
 | `CTASecundario` | P1 | Páginas de passeio |
 | `DepoimentoBlock` | P1 | Páginas de passeio |
@@ -223,6 +228,9 @@ Cada componente deve estar em frame separado com props explicitadas.
 | 7 | Anos de experiência de Murillo | TrustBlock (C5) | Usar a partir de: *"Conhece cada maré, cada coral..."* | 🟡 Baixa |
 | 8 | Bar a bordo: alimentos ou só bebidas? | Roteiro (I3) | `[CONFIRMAR]` inline no texto | 🟡 Baixa |
 | 9 | Protetor solar mineral recomendado? | Info Prática (S2) | "biodegradável" genérico | 🟡 Baixa |
+| 10 | Avaliações reais Google Maps (3–5 reviews) | Bloco C5.5 — `ReviewsBlock` | 3 cards com `[Avaliação real — aguardando Murillo]` | 🟠 Média |
+| 11 | URL do perfil Google Maps da empresa | Link "Ver todas as avaliações" em C5.5 | `[URL Google Maps — aguardando]` | 🟡 Baixa |
+| 12 | Link ou arquivo da experiência 360° | Bloco I2.5 — `Experience360Block` | Preview com overlay + `[CONFIRMAR]` | 🟡 Baixa |
 
 ### Já confirmados — usar direto no Figma
 
@@ -283,7 +291,7 @@ Verificar cada item antes de entregar o Figma para aprovação de Murillo.
 
 ### Componentes
 
-- [ ] 18 componentes nomeados exatamente como na seção 3
+- [ ] 20 componentes nomeados exatamente como na seção 3 (incluindo condicionais ReviewsBlock e Experience360Block)
 - [ ] Props de cada componente explicitadas nos frames
 - [ ] Placeholder hero (gradiente azul escuro) aprovado visualmente
 - [ ] Placeholder depoimento presente e identificado
@@ -292,7 +300,7 @@ Verificar cada item antes de entregar o Figma para aprovação de Murillo.
 
 ### Entrega do Figma
 
-- [ ] Telas mobile 375px + desktop 1280px para todos os 18 blocos
+- [ ] Telas mobile 375px + desktop 1280px para todos os blocos (incluindo estados condicionais de C5.5 e I2.5)
 - [ ] Componentes em frames separados com nomenclatura exata
 - [ ] Estados interativos documentados: hover, focus, active, sticky, accordion
 - [ ] Tokens de espaçamento (gaps, paddings) explicitados
@@ -306,5 +314,6 @@ O único bloqueante real para aprovação final é a **foto hero real de Seixas*
 
 ---
 
-*Versão: 1.0 | Data: 2026-04-26 | Fonte: 05-briefing-designer.md v3.1*
+*Versão: 1.1 | Data: 2026-04-26 | Fonte: 05-briefing-designer.md v3.2*
+*Adicionado: blocos C5.5 (ReviewsBlock) e I2.5 (Experience360Block) — condicionais via `temAvaliacoes` e `tem360`*
 *Não alterar arquivos 01 a 05 — este documento é derivado, não fonte de verdade.*

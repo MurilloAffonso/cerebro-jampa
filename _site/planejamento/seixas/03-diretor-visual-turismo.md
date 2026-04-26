@@ -1,6 +1,6 @@
 ---
 skill: diretor-visual-turismo
-versao: 2.1
+versao: 2.2
 projeto_id: pagina-seixas-2026-04-26
 etapa: 3 de 6
 status: CONCLUÍDA — aguardando aprovação de Murillo + Etapa 4 (seo-local-turismo) / Etapa 5 (briefing-designer)
@@ -177,6 +177,23 @@ VERDE (#25D366)  → Todos os botões WhatsApp
 - ⭐ Rating: ícone estrela âmbar, "4.9/5 no Google" + "[X avaliações — CONFIRMAR]"
 - 👤 Murillo: avatar ou iniciais + "Murillo — Guia Local" + frase curta
 
+#### C5.5 — Avaliações Google Maps *(bloco opcional — `temAvaliacoes`)*
+
+- Fundo: branco (mesma seção que C5 continua visualmente)
+- H2: "O que dizem quem foi" — Lora, 1.25rem, `color: #111827`
+- Cada card de avaliação:
+  - `background: #F9FAFB`, `border: 1px solid #E5E7EB`, `border-radius: 8px`, `padding: 16px`
+  - Estrelas ⭐: `color: #F59E0B` (amber-500), inline, `font-size: 1rem`
+  - Texto da avaliação: Inter, `font-size: 0.9375rem`, `color: #374151`, `line-height: 1.5`, italic
+  - Autor: `font-weight: 600`, `font-size: 0.875rem`, `color: #111827`
+  - Atribuição: "Mês/Ano · Google Maps" — `font-size: 0.75rem`, `color: #9CA3AF` — **obrigatório por política de atribuição do Google Maps**
+- Layout: stack 1 coluna mobile → grid 2 colunas desktop
+- Link "Ver todas as avaliações no Google ↗":
+  - `color: text-secondary` (`#004E89`), `font-size: 0.875rem`, ícone externo ↗
+  - `target="_blank"`, `rel="noopener noreferrer"`
+- **Sem foto/avatar de avaliador** — privacidade por padrão; nome público já é suficiente
+- Condicional: bloco inteiro oculto se `temAvaliacoes = false` (sem espaço vazio)
+
 ---
 
 ### Blocos IMPORTANTES (30–70% scroll)
@@ -195,6 +212,29 @@ VERDE (#25D366)  → Todos os botões WhatsApp
 - Texto: Inter, `font-size: 1rem`, `line-height: 1.7`
 - Imagem opcional (se foto disponível): `width: 100%`, `height: 200px`, `object-fit: cover`, `border-radius: 8px`, `margin-top: 16px`
 - `[CONFIRMAR COM MURILLO: foto real de Seixas para usar aqui também — pode ser a mesma do hero ou uma alternativa da galeria subaquática]`
+
+#### I2.5 — Experiência 360° *(bloco opcional — `tem360`)*
+
+- Fundo: branco
+- H2: "Conheça o passeio em 360°" — Lora, 1.25rem, `color: #111827`
+- **Estado antes do clique (preview):**
+  - Container: `position: relative`, `border-radius: 12px`, `overflow: hidden`
+  - Preview image: `width: 100%`, `height: 200px` mobile / `300px` desktop, `object-fit: cover`
+  - Overlay: `background: rgba(0,0,0,0.35)`, cobre a imagem inteira
+  - Botão overlay centralizado:
+    - `position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%)`
+    - `background: rgba(255,255,255,0.15)`, `backdrop-filter: blur(4px)`, `border: 1px solid rgba(255,255,255,0.3)`
+    - `border-radius: 8px`, `padding: 12px 20px`
+    - Ícone ▶ + texto "Abrir experiência 360°", texto branco, `font-weight: 600`, `font-size: 0.9375rem`
+  - Nota abaixo da preview: `font-size: 0.75rem`, `color: #9CA3AF` — "Clique para abrir a experiência interativa"
+- **Estado após o clique (embed ativo):**
+  - Preview substituída por iframe
+  - `width: 100%`, `height: 400px` mobile / `500px` desktop, `border-radius: 12px`
+  - Transição suave: `opacity 0→1`, `300ms ease`
+- Condicional: bloco inteiro oculto se `tem360 = false` (sem espaço vazio)
+- **Nota para designer no Figma:** mockear apenas o estado "antes do clique" — o estado ativo é definido no código
+
+---
 
 #### I3 — Roteiro Narrativo
 - H2: "Como é o passeio — passo a passo"
@@ -446,8 +486,10 @@ O turista que chega pelo celular decide em 5 segundos se fica. Esses 5 elementos
 | C3 Info Card | 3 cols, 100px, padding 16px | 3 cols, padding 32px, ícones 32px |
 | C4 Aviso Maré | Full-width | Max-width 800px, centralizado |
 | C5 TrustBlock | Stack vertical | Grid 3 colunas horizontais |
+| C5.5 Avaliações | Stack 1 col, condicional | Grid 2 colunas, max-width 900px |
 | I1 Lead | Full-width, 1 col | Max-width 720px, centralizado |
 | I2 Descrição | Texto + imagem abaixo | Split 60/40 (texto + imagem lateral) |
+| I2.5 Exp. 360° | Preview 200px, condicional | Preview/embed 300px/500px, max-width 900px |
 | I3 Roteiro | 1 coluna | 1 coluna, max-width 720px |
 | I4 Incluso | Stack 1 col | 2 colunas lado a lado, mesmo height |
 | I5 FAQ | 1 coluna, full-width | 1 coluna, max-width 720px |
@@ -527,12 +569,16 @@ Decisões já tomadas (não reabrir):
 - Aviso de Maré: âmbar #FEF3C7 / #F59E0B
 - CTA Final: fundo #004E89 (azul secundário)
 - FAQ: accordion 1 aberto por vez, chevron laranja
+- ReviewsBlock (C5.5): cards #F9FAFB, estrelas amber, atribuição Google obrigatória
+- Experience360Block (I2.5): preview + botão overlay frosted glass, iframe lazy após clique
 
 Perguntas para o designer resolver em Figma:
 - Tratamento visual da foto de Murillo (avatar 48px no TrustBlock ou linha completa com foto maior?)
 - Grid exato das colunas do TrustBlock em desktop (equal ou 1:2:1?)
 - Espaçamento vertical entre seções (40px ou 56px? — consistência do sistema de espaçamento)
 - Badge de preço nos cards de similares: pill ou retângulo com border-radius 4px?
+- ReviewsBlock: exibir 3 cards em destaque ou carrossel simples para economizar espaço?
+- Experience360Block: preview image — frame do vídeo 360° ou foto de Seixas da galeria?
 ```
 
 ### Para `seo-local-turismo` (Etapa 4 — pode rodar em paralelo com Etapa 5)
@@ -551,13 +597,15 @@ Nota desta etapa:
 ```
 Componentes com especificação visual neste documento:
 - Header (C1), HeroBlock (C2), InfoCard (C3), MaréAlert (C4)
-- TrustBlock (C5), LeadText (I1), DescricaoBlock (I2)
+- TrustBlock (C5), ReviewsBlock (C5.5 — condicional)
+- LeadText (I1), DescricaoBlock (I2), Experience360Block (I2.5 — condicional)
 - RoteiroBullets (I3), IncluidoBlock (I4), FAQAccordion (I5)
 - CTASecundario (I5.5), DepoimentoBlock (S1), InfoPratica (S2)
 - CTAFinal (S3), PasseioCard (S4), CTASticky, Breadcrumb, Footer
 
 Todos reutilizáveis via props. Dados via data/passeios.ts.
 Token amber: adicionar ao tailwind.config.ts antes de implementar MaréAlert.
+ReviewsBlock e Experience360Block: flags `temAvaliacoes` e `tem360` em data/passeios.ts.
 ```
 
 ---
@@ -573,8 +621,12 @@ Token amber: adicionar ao tailwind.config.ts antes de implementar MaréAlert.
 | 5 | Anos de experiência de Murillo | TrustBlock (C5) | Baixa |
 | 6 | Foto/avatar de Murillo para TrustBlock | Depende da decisão do designer (avatar vs. foto) | Média |
 | 7 | Aprovação do token amber no Tailwind | Sem aprovação, usar arbitrary values temporariamente | Baixa |
+| 8 | Avaliações Google Maps reais (3–5) | ReviewsBlock (C5.5) fica oculto sem conteúdo | Média |
+| 9 | Link/arquivo 360° do passeio de Seixas | Experience360Block (I2.5) fica oculto sem `tem360 = true` | Baixa |
+| 10 | Preview image para bloco 360° (frame estático ou foto de galeria) | Designer precisa definir no Figma | Baixa |
 
 ---
 
-*Direção Visual v1.0 | Etapa 3 concluída | 2026-04-26*
+*Direção Visual v2.2 | blocos C5.5 e I2.5 adicionados | 2026-04-26*
+*Aplicado: ReviewsBlock (C5.5) e Experience360Block (I2.5) — specs visuais completas, ambos condicionais.*
 *Aguardando: aprovação de Murillo das lacunas acima + Etapas 4 e 5 (seo-local-turismo + briefing-designer)*

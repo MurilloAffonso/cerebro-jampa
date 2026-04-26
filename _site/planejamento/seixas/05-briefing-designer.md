@@ -1,6 +1,6 @@
 ---
 skill: briefing-designer
-versao: 3.1
+versao: 3.2
 projeto_id: pagina-seixas-2026-04-26
 etapa: 5 de 6
 status: CONCLUÍDA — aguardando execução em Figma por designer + aprovação de Murillo
@@ -9,10 +9,10 @@ ponto_de_pausa: true
 proxima_etapa: programador-de-site (somente após Figma aprovado por Murillo)
 fontes_consultadas:
   - _site/planejamento/seixas/01-estrategia-site.md
-  - _site/planejamento/seixas/02a-copywriter-vendas.md (v3.1)
-  - _site/planejamento/seixas/02b-ux-ui-mobile-first.md (v1.2)
-  - _site/planejamento/seixas/03-diretor-visual-turismo.md (v2.1)
-  - _site/planejamento/seixas/04-seo-local-turismo.md (v1.1)
+  - _site/planejamento/seixas/02a-copywriter-vendas.md (v3.3)
+  - _site/planejamento/seixas/02b-ux-ui-mobile-first.md (v1.4)
+  - _site/planejamento/seixas/03-diretor-visual-turismo.md (v2.2)
+  - _site/planejamento/seixas/04-seo-local-turismo.md (v1.2)
   - skills/briefing-designer/SKILL.md (v3.1)
 tokens_confirmados:
   primary: "#FF6B35"
@@ -168,8 +168,10 @@ Leia os quatro documentos abaixo antes de abrir o Figma. Este briefing é o cons
 | 2 | C3 | Info Card | R$ 60 / ~3h30 / Tambaú — 3 colunas |
 | 3 | C4 | Aviso de Maré | Bloco âmbar educativo |
 | 4 | C5 | Por Que Confiar | Cadastur + 4.9/5 + Murillo — fundo dark |
+| 4.5 | C5.5 | Avaliações Google Maps | Cards com reviews reais + link Google *(opcional — `temAvaliacoes`)* |
 | 5 | I1 | Lead | Gancho textual, 3 parágrafos — sem título visual |
 | 6 | I2 | O Que Você Vai Fazer | Descrição sensorial + imagem opcional |
+| 6.5 | I2.5 | Experiência 360° | Preview estática + botão overlay, embed lazy-load *(opcional — `tem360`)* |
 | 7 | I3 | Roteiro Narrativo | 5 etapas com ícone + label + parágrafo |
 | 8 | I4 | Incluso / Não Incluso | Dois blocos: checklist verde e checklist cinza |
 | 9 | I5 | FAQ Accordion | 7 perguntas (2 com placeholder) |
@@ -195,7 +197,9 @@ Leia os quatro documentos abaixo antes de abrir o Figma. Este briefing é o cons
 | 🔴 CRÍTICO | Por Que Confiar (C5) | Prova de confiança acima da dobra — turista decide aqui |
 | 🔴 CRÍTICO | CTA Sticky | Garante acesso ao WhatsApp durante todo o scroll |
 | 🟠 IMPORTANTE | Aviso de Maré (C4) | Honestidade que gera confiança — posição e cor corretas são essenciais |
+| 🟠 IMPORTANTE | Avaliações Google Maps (C5.5) | Prova social real — condicional, mas de alto impacto se presente |
 | 🟠 IMPORTANTE | Lead + Descrição (I1+I2) | Cria desejo — texto, não decoração |
+| 🟡 SUPORTE | Experiência 360° (I2.5) | Imersão pré-reserva — condicional, nunca auto-play |
 | 🟠 IMPORTANTE | FAQ (I5) | Quebra objeções finais — turista próximo de converter |
 | 🟠 IMPORTANTE | CTA Secundário (I5.5) | Captura quem terminou o FAQ |
 | 🟡 SUPORTE | Roteiro (I3) | Clareza operacional |
@@ -383,6 +387,59 @@ Bloco que decide se o turista continua ou sai. **Deve estar acima da dobra mobil
 
 ---
 
+## 12.5 INSTRUÇÕES — AVALIAÇÕES GOOGLE MAPS (C5.5) *(bloco opcional)*
+
+### Objetivo
+
+Transformar o "4.9/5 no Google" do TrustBlock em evidência concreta — o turista que viu a nota agora lê o que pessoas reais disseram. Posição ideal: imediatamente depois do TrustBlock, antes do Lead.
+
+**Regra inviolável:** exibir apenas avaliações reais transcritas de Murillo. Nunca inventar. Nunca editar o conteúdo das avaliações.
+
+### Condicional de exibição
+
+- `temAvaliacoes = true` em `data/passeios.ts` → bloco renderiza
+- `temAvaliacoes = false` → bloco **não existe** na página (sem espaço vazio, sem elemento oculto)
+- **Estado atual:** `[CONFIRMAR COM MURILLO: avaliações reais pendentes]` → designer usa placeholders
+
+### Especificação
+
+| Elemento | Valor |
+|---------|-------|
+| H2 | `"O que dizem quem foi"` \| Lora SemiBold (600), `1.25rem` mobile / `1.5rem` desktop |
+| Fundo | `#FFFFFF` |
+| Padding da seção | `24px 16px` mobile |
+| Layout de cards | Stack 1 coluna mobile / grid 2 colunas desktop |
+
+### Card de avaliação — especificação
+
+| Elemento | Valor |
+|---------|-------|
+| Container | `background: #F9FAFB`, `border: 1px solid #E5E7EB`, `border-radius: 8px`, `padding: 16px` |
+| Estrelas | ⭐ in-line, `color: #F59E0B` (amber-500), `font-size: 1rem` |
+| Texto da avaliação | Inter Italic, `0.9375rem`, `#374151`, `line-height: 1.5` — texto exato como publicado no Google |
+| Autor | Inter SemiBold (600), `0.875rem`, `#111827` |
+| Atribuição | `"Mês/Ano · Google Maps"` — Inter Regular, `0.75rem`, `#9CA3AF` — **obrigatório, sempre visível** |
+| Gap entre cards | `16px` |
+
+**Sem avatar de avaliador** — privacidade por padrão. Nome público é suficiente.
+
+### Link "Ver todas as avaliações"
+
+- Texto: `"Ver todas as avaliações no Google ↗"`
+- `color: #004E89`, `font-size: 0.875rem`
+- `target="_blank"`, `rel="noopener noreferrer"`, ícone ↗
+- Alinhado abaixo dos cards, padding `8px 0`
+- `[CONFIRMAR COM MURILLO: URL do perfil Google Maps da empresa]`
+
+### Placeholder no Figma
+
+- 3 cards com texto itálico cinza `"[Avaliação real — aguardando Murillo]"`
+- Estrelas: 5 de 5 (padrão)
+- Atribuição: `"[Mês/Ano] · Google Maps"` em `#9CA3AF`
+- Link: `[URL do Google Maps — aguardando]`
+
+---
+
 ## 13. INSTRUÇÕES — LEAD E DESCRIÇÃO (I1 + I2)
 
 ### Lead (I1) — texto puro, gancho emocional
@@ -411,6 +468,51 @@ Bloco que decide se o turista continua ou sai. **Deve estar acima da dobra mobil
 - Desktop: split 60/40 (texto à esquerda, imagem à direita)
 
 **Texto exato (de 02a):** ver bloco 6 de `02a-copywriter-vendas.md`.
+
+---
+
+## 13.5 INSTRUÇÕES — EXPERIÊNCIA 360° (I2.5) *(bloco opcional)*
+
+### Objetivo
+
+Deixar o turista "entrar" no destino antes de reservar — imersão pré-decisão. Posição ideal: após a descrição sensorial (I2), quando o desejo está alto.
+
+**Regra técnica inviolável:** o iframe/embed 360° **nunca carrega automaticamente**. O bloco exibe apenas preview + botão. O embed instancia somente após clique explícito.
+
+### Condicional de exibição
+
+- `tem360 = true` em `data/passeios.ts` → bloco renderiza
+- `tem360 = false` → bloco **não existe** (sem espaço vazio)
+- **Estado atual:** `[CONFIRMAR COM MURILLO: link 360° pendente]` → designer mocka estado "antes do clique"
+
+### Especificação — Estado ANTES do clique (único estado a mockar no Figma)
+
+| Elemento | Valor |
+|---------|-------|
+| H2 | `"Conheça o passeio em 360°"` \| Lora SemiBold (600), `1.25rem` mobile / `1.5rem` desktop |
+| Container da preview | `position: relative`, `border-radius: 12px`, `overflow: hidden` |
+| Preview image | `width: 100%`, `height: 200px` mobile / `300px` desktop, `object-fit: cover` |
+| Overlay sobre preview | `background: rgba(0,0,0,0.35)`, cobre a imagem inteira |
+| Botão centralizado sobre overlay | `position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%)` |
+| Estilo do botão | `background: rgba(255,255,255,0.15)`, `backdrop-filter: blur(4px)`, `border: 1px solid rgba(255,255,255,0.3)`, `border-radius: 8px`, `padding: 12px 20px` |
+| Texto do botão | ▶ `"Abrir experiência 360°"`, `#FFFFFF`, Inter SemiBold, `0.9375rem` |
+| Nota abaixo | `"Clique para abrir a experiência interativa"`, `0.75rem`, `#9CA3AF` |
+| Fundo da seção | `#FFFFFF` |
+| Padding da seção | `24px 16px` |
+
+### Especificação — Estado APÓS o clique (não mockar no Figma — definido em código)
+
+Quando o usuário clica no botão:
+- Preview substituída por iframe ativo
+- `width: 100%`, `height: 400px` mobile / `500px` desktop
+- `border-radius: 12px`
+- Transição: `opacity 0→1, 300ms ease`
+
+### Instrução para o designer
+
+> Mockar **apenas** o estado "antes do clique" no Figma. Mostrar preview com overlay + botão centralizado (frosted glass). O estado ativo (iframe carregado) é visual dinâmico — implementado no código, não precisa de frame no Figma.
+>
+> Preview image: usar um dos placeholders SVG de galeria de Seixas disponíveis em `_site/public/images/passeios/seixas/` como base — manter proporção `16:9`.
 
 ---
 
@@ -695,8 +797,10 @@ Criar cada componente como átomo reutilizável no Figma. Nomes exatos — o pro
 | `InfoCard` | Páginas de passeio (props: 3 itens) | P0 |
 | `MaréAlert` | Seixas, Penha, Picãozinho, Areia Vermelha | P1 |
 | `TrustBlock` | Todas as páginas de passeio | P0 |
+| `ReviewsBlock` | Passeios com `temAvaliacoes = true` (condicional) | P1 |
 | `LeadText` | Páginas de passeio | P1 |
 | `DescricaoBlock` | Páginas de passeio (texto + imagem opcional) | P1 |
+| `Experience360Block` | Passeios com `tem360 = true` (condicional) | P1 |
 | `RoteiroBullets` | Páginas de passeio (array de etapas) | P1 |
 | `IncluidoBlock` | Páginas de passeio (2 arrays) | P0 |
 | `FAQAccordion` | Passeios + FAQ centralizada | P0 |
@@ -709,6 +813,8 @@ Criar cada componente como átomo reutilizável no Figma. Nomes exatos — o pro
 | `Footer` | Todas as páginas | P0 |
 
 **P0 = necessário para lançar Seixas | P1 = importante, pode vir logo após**
+
+**Nota sobre componentes condicionais:** `ReviewsBlock` e `Experience360Block` não são necessários para o lançamento (os blocos ficam ocultos quando as flags são `false`). O designer deve criar os frames condicionais para que o programador possa implementar sem reabrir o Figma.
 
 ---
 
@@ -892,7 +998,7 @@ O designer verifica cada item antes de entregar o Figma para aprovação de Muri
 
 ### Componentes
 
-- [ ] 18 componentes nomeados exatamente como na seção 21
+- [ ] 20 componentes nomeados exatamente como na seção 21 (incluindo condicionais)
 - [ ] Props de cada componente explicitadas nos frames
 - [ ] Placeholder hero (gradiente azul escuro) aprovado visualmente
 - [ ] Placeholder depoimento (texto cinza neutro) presente
@@ -918,6 +1024,10 @@ Dados ausentes que bloqueiam a aprovação final — não bloqueiam o Figma (des
 | 10 | **Protetor solar mineral recomendado?** | Info Prática (S2) | `"biodegradável"` genérico como placeholder | 🟡 Baixa |
 | 11 | **Número de cards em Passeios Similares** | S4 | Designer prepara layout para 2 e para 3 | 🟠 Média |
 | 12 | **Intenção final da cor primária** | Toda a paleta de acentos | Manter `#FF6B35` (token Tailwind atual) — não mudar sem aprovação | 🟠 Média — afeta identidade visual |
+| 13 | **Avaliações reais Google Maps (3–5)** | Bloco C5.5 — `ReviewsBlock` fica oculto sem conteúdo | Cards com texto `[Avaliação real — aguardando Murillo]` | 🟠 Média |
+| 14 | **URL do perfil Google Maps da empresa** | Link "Ver todas as avaliações" em C5.5 | Placeholder `[URL Google Maps]` | 🟡 Baixa |
+| 15 | **Link ou arquivo da experiência 360°** | Bloco I2.5 — `Experience360Block` fica oculto sem link | Preview com overlay + `[CONFIRMAR]` | 🟡 Baixa |
+| 16 | **Preview image para bloco 360°** | `Experience360Block` — imagem de fundo antes do clique | Usar galeria SVG placeholder de Seixas | 🟡 Baixa |
 
 ---
 
@@ -938,9 +1048,9 @@ Dados ausentes que bloqueiam a aprovação final — não bloqueiam o Figma (des
 | Documento | O que o programador usa |
 |-----------|------------------------|
 | `01-estrategia-site.md` | URLs, links internos, anchor texts |
-| `02a-copywriter-vendas.md` (v3.1) | Copy exata por bloco — não alterar |
-| `02b-ux-ui-mobile-first.md` (v1.2) | Dimensões, grids, comportamentos |
-| `04-seo-local-turismo.md` (v1.1) | Title tag, meta description, canonical, schemas JSON-LD |
+| `02a-copywriter-vendas.md` (v3.3) | Copy exata por bloco — não alterar |
+| `02b-ux-ui-mobile-first.md` (v1.4) | Dimensões, grids, comportamentos |
+| `04-seo-local-turismo.md` (v1.2) | Title tag, meta description, canonical, schemas JSON-LD |
 | Este documento (05) | Componentes, estados, alt texts, mobile/desktop |
 
 ### Especificações técnicas para o programador
@@ -958,7 +1068,8 @@ Dados ausentes que bloqueiam a aprovação final — não bloqueiam o Figma (des
 | WhatsApp link | `https://wa.me/558399087830?text=Oi, quero saber sobre o passeio de Seixas` |
 | CTA Sticky JS | IntersectionObserver: aparece quando #hero-cta sai, some quando S3 entra |
 | Token amber | Adicionar `tide-warning-bg: #FEF3C7` e `tide-warning-border: #F59E0B` ao `tailwind.config.ts` (ou usar arbitrary values temporariamente) |
-| Schemas | LocalBusiness + TouristAttraction + FAQPage + BreadcrumbList (specs completas em `04-seo-local-turismo.md`) |
+| Schemas | LocalBusiness + TouristAttraction + FAQPage + BreadcrumbList + VirtualTour (quando `tem360 = true`) — specs em `04-seo-local-turismo.md` |
+| Flags condicionais | Adicionar `temAvaliacoes: boolean` e `tem360: boolean` à interface `Passeio` em `types/index.ts` e a `data/passeios.ts` |
 | LCP hero | `<Image priority />`, WebP + JPG, `object-position: center 30%` |
 
 ---
@@ -995,11 +1106,19 @@ Dados ausentes que bloqueiam a aprovação final — não bloqueiam o Figma (des
 │  ⭐ 4.9/5 no Google                  │
 │  👤 Murillo — Guia Local             │
 ├──────────────────────────────────────┤
+│  O que dizem quem foi                │  ← Avaliações Google Maps (C5.5 — condicional)
+│  ⭐⭐⭐⭐⭐ "[review real]"          │  (só renderiza se temAvaliacoes=true)
+│  — Nome · Mês/Ano · Google Maps      │
+│  [Ver todas no Google ↗]             │
+├──────────────────────────────────────┤
 │  [Lead — 3 parágrafos, Inter 1rem]   │  ← Lead (I1) — sem título
 ├──────────────────────────────────────┤
 │  O que espera por você em Seixas     │  ← Descrição (I2)
 │  [3 parágrafos sensoriais]           │
 │  [imagem 200px — lazy, se disponível]│
+├──────────────────────────────────────┤
+│  Conheça o passeio em 360°           │  ← Experiência 360° (I2.5 — condicional)
+│  [preview 200px + ▶ overlay]         │  (só renderiza se tem360=true)
 ├──────────────────────────────────────┤
 │  Como é o passeio — passo a passo    │  ← Roteiro (I3)
 │  🚢 Embarque em Tambaú              │
@@ -1083,7 +1202,7 @@ Dados ausentes que bloqueiam a aprovação final — não bloqueiam o Figma (des
 | 4. Conceito visual aprovado | ✅ |
 | 5. Atmosfera visual | ✅ |
 | 6. Referências internas | ✅ |
-| 7. Estrutura completa por blocos (16+) | ✅ |
+| 7. Estrutura completa por blocos (16+ incluindo 4.5 e 6.5) | ✅ |
 | 8. Prioridade visual por bloco | ✅ |
 | 9. Instruções Hero (C2) | ✅ |
 | 10. Instruções Info Card (C3) | ✅ |
@@ -1097,23 +1216,25 @@ Dados ausentes que bloqueiam a aprovação final — não bloqueiam o Figma (des
 | 18. Instruções Passeios Similares (S4) | ✅ |
 | 19. Comportamento mobile-first | ✅ |
 | 20. Adaptação desktop | ✅ |
-| 21. Componentes (18 itens, P0/P1) | ✅ |
+| 12.5 Instruções Avaliações Google Maps (C5.5) | ✅ |
+| 13.5 Instruções Experiência 360° (I2.5) | ✅ |
+| 21. Componentes (20 itens incluindo ReviewsBlock e Experience360Block) | ✅ |
 | 22. Imagens necessárias (7 itens + alt texts) | ✅ |
 | 23. Ícones necessários (15 itens) | ✅ |
 | 24. Estados visuais (5 categorias) | ✅ |
 | 25. O que evitar (3 categorias) | ✅ |
 | 26. Checklist de qualidade do design | ✅ |
-| 27. Lacunas [CONFIRMAR] (12 itens) | ✅ |
+| 27. Lacunas [CONFIRMAR] (16 itens incluindo reviews e 360°) | ✅ |
 | 28. Handoff para programador-de-site | ✅ |
 | Diagrama ASCII consolidado | ✅ |
 
 ---
 
 **Fontes de dados confirmados neste documento:**
-- Copy exata: `02a-copywriter-vendas.md` v3.1
-- Wireframe e dimensões: `02b-ux-ui-mobile-first.md` v1.2
-- Paleta, specs e estados: `03-diretor-visual-turismo.md` v2.1
-- URLs, schemas, alt texts, H1/H2/H3: `04-seo-local-turismo.md` v1.1
+- Copy exata: `02a-copywriter-vendas.md` v3.3
+- Wireframe e dimensões: `02b-ux-ui-mobile-first.md` v1.4
+- Paleta, specs e estados: `03-diretor-visual-turismo.md` v2.2
+- URLs, schemas, alt texts, H1/H2/H3: `04-seo-local-turismo.md` v1.2
 - Sequência de blocos aprovada por Murillo: `01-estrategia-site.md`
 - WhatsApp `+55 83 9908-7830`: `_memoria/decisoes-estrategicas.md` (Decisão 22)
 - Domínio `https://vempassearjampa.com.br`: `_memoria/decisoes-estrategicas.md` (Decisão 26)
@@ -1122,5 +1243,6 @@ Dados ausentes que bloqueiam a aprovação final — não bloqueiam o Figma (des
 
 ---
 
-*Versão: 3.1 | Data: 2026-04-26 | Skill: briefing-designer*
+*Versão: 3.2 | Data: 2026-04-26 | Skill: briefing-designer*
+*Adicionado: blocos 4.5 (ReviewsBlock) e 6.5 (Experience360Block) — condicionais via `temAvaliacoes` e `tem360`*
 *Ponto de pausa obrigatório: aguardar Figma executado + aprovação de Murillo antes de acionar Etapa 6 (programador-de-site)*

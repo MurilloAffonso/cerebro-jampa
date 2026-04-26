@@ -1,6 +1,6 @@
 ---
 skill: copywriter-vendas
-versao: 3.1
+versao: 3.3
 projeto_id: pagina-seixas-2026-04-26
 etapa: 2a de 6
 status: REVISADA — decisões de Murillo aplicadas 2026-04-26. Pronta para Etapa 3.
@@ -111,6 +111,43 @@ Conhece cada maré, cada coral e cada canto de Seixas. Atendimento direto no Wha
 
 ---
 
+## BLOCO 4.5 — AVALIAÇÕES GOOGLE MAPS
+
+*Posição: imediatamente após "Por Que Confiar". O turista acaba de ver "4.9/5 no Google" — este bloco entrega a prova que ele vai buscar de qualquer jeito.*
+
+*Tom: depoimentos reais, sem edição, sem seleção enviesada. A regra é: autenticidade primeiro.*
+
+### Título do Bloco
+
+**O que dizem quem foi**
+
+### Formato de cada avaliação
+
+```
+⭐⭐⭐⭐⭐
+"[Texto da avaliação real — exatamente como publicado no Google Maps]"
+— [Nome público do avaliador], [Cidade — se disponível no perfil]
+[Mês/Ano] · Google Maps
+```
+
+### Avaliações
+
+[CONFIRMAR COM MURILLO: selecionar 3 a 5 avaliações reais do Google Maps para transcrever aqui — texto exato, nome público do avaliador, data ou período aproximado]
+
+*Instrução para Murillo: enviar print ou copiar o texto das avaliações para transcrição manual. Não inventar. Não editar o conteúdo das avaliações — apenas formatar.*
+
+### Link
+
+[Ver todas as avaliações no Google ↗]
+
+*Abre o perfil do Google Maps em nova aba — `rel="noopener noreferrer"`, `target="_blank"`*
+
+*Nota de atribuição: avaliações do Google Maps devem ser exibidas com atribuição clara à plataforma de origem. Não usar como prova social sem indicar a fonte.*
+
+*Nota de implementação: se Murillo não enviar avaliações antes do deploy, este bloco pode ser ocultado via flag no `data/passeios.ts` — não deixar placeholder vazio visível para o usuário final.*
+
+---
+
 ## BLOCO 5 — LEAD
 
 *Posição aprovada por Murillo — 2026-04-26: Lead após Por Que Confiar, alinhado com wireframe 02b e estratégia 01.*
@@ -142,6 +179,44 @@ A água é morna — mesmo em inverno — e tão limpa que você enxerga o fundo
 Dá pra flutuar de cara para baixo só olhando o fundo de coral. Dá pra mergulhar (tem snorkel e máscara opcionais). Dá pra nadar, fotografar, ou só ficar parado deixando a maré te embalar.
 
 No catamarã tem toboágua, caiaque e trampolim para quem quiser agitar. Bar a bordo para quando der sede. A gente vai ficando enquanto a maré deixar — é em torno de 3h30 no total, contando embarque e retorno.
+
+---
+
+## BLOCO 6.5 — EXPERIÊNCIA 360°
+
+*Posição: imediatamente após "O Que Você Vai Fazer". O turista acabou de ler a descrição sensorial do passeio — desejo alto, momento ideal para deixar ele "entrar" no destino antes de reservar.*
+
+*Tom: convite leve. Não forçar interação. Se não tiver link, o bloco some.*
+
+*Regra técnica: o embed/iframe 360° NUNCA carrega automaticamente. Só carrega após clique explícito do usuário.*
+
+### Título do Bloco
+
+**Conheça o passeio em 360°**
+
+### Texto antes do botão
+
+Antes de reservar, dá uma espiada. Esta é a vista de dentro das piscinas de Seixas — você no meio, o coral embaixo, o mar em volta.
+
+### Componente
+
+Preview leve (imagem estática ou thumbnail baixa resolução) + botão de ação:
+
+**[▶ Abrir experiência 360°]**
+
+*Ao clicar, o embed 360° carrega (lazy). Antes do clique: apenas a preview + botão visíveis.*
+
+### Link do embed
+
+[CONFIRMAR COM MURILLO: link ou arquivo da experiência 360° do passeio de Seixas — YouTube 360, Google Street View, Matterport ou outro]
+
+### Notas de implementação
+
+- Bloco é **opcional por passeio** — controlado via flag `tem360` no `data/passeios.ts`
+- Se `tem360 = false`, o bloco não renderiza (sem espaço vazio, sem placeholder visível)
+- Se `tem360 = true`, renderiza preview + botão; iframe só instancia após clique
+- Preview pode ser frame estático do vídeo 360° ou foto representativa de Seixas
+- Compatível com YouTube 360°, Google Street View embed, Matterport e iframe genérico
 
 ---
 
@@ -354,6 +429,8 @@ A 1.500 metros de Tambaú. Aquário natural a céu aberto com peixes de todas as
 | 8 | Bar a bordo vende alimentos ou só bebidas? | Bloco 7 | ⏳ Pendente |
 | 9 | Recomendação específica de protetor solar (mineral)? | Bloco 11 | ⏳ Pendente |
 | 10 | Foto real de qualidade de Seixas para hero | Bloco 1 | ⏳ Pendente |
+| 11 | Avaliações reais do Google Maps (3 a 5 — texto, nome, data) | Bloco 4.5 | ⏳ Pendente |
+| 12 | Link ou arquivo da experiência 360° do passeio de Seixas | Bloco 6.5 | ⏳ Pendente |
 
 ---
 
@@ -366,8 +443,10 @@ Esta copy define a ordem e hierarquia dos blocos. Sequência final aprovada por 
 2. Info Card (R$ 60 / ~3h30 / Tambaú)
 3. Aviso de Maré (destaque — alerta com ícone ⚠️)
 4. Por Que Confiar (Cadastur + rating + Murillo)
+4.5. Avaliações Google Maps (prova real — 3 a 5 reviews) *(opcional via flag `temAvaliacoes`)*
 5. Lead (2 parágrafos — após trust signals)
 6. O Que Você Vai Fazer (texto + sensorial)
+6.5. Experiência 360° (preview + botão lazy-load) *(opcional via flag `tem360`)*
 7. Roteiro Narrativo (ícones + bullets)
 8. Incluso / Não Incluso (2 colunas ou stack)
 9. FAQ (accordion)
@@ -395,6 +474,6 @@ Esta copy define a ordem e hierarquia dos blocos. Sequência final aprovada por 
 
 ---
 
-*Copy v3.2 — decisões de Murillo aplicadas | Etapa 2a pronta para Etapa 3 | 2026-04-26*
-*Aplicado: Lead posição 5, WhatsApp +55 83 9908-7830, embarque Praia de Tambaú/Hotel Tambaú, sem idade mínima, política cancelamento base criada.*
-*Aguardando: avaliações Google, anos de experiência Murillo, depoimento real, foto hero, aprovação política cancelamento, bar a bordo (alimentos?), estacionamento Tambaú.*
+*Copy v3.3 — blocos 4.5 e 6.5 adicionados | Etapa 2a pronta para Etapa 3 | 2026-04-26*
+*Aplicado: Lead posição 5, WhatsApp +55 83 9908-7830, embarque Praia de Tambaú/Hotel Tambaú, sem idade mínima, política cancelamento base criada, Bloco 4.5 (Avaliações Google Maps), Bloco 6.5 (Experiência 360°).*
+*Aguardando: avaliações Google Maps reais (Bloco 4.5), link 360° (Bloco 6.5), anos de experiência Murillo, depoimento real, foto hero, aprovação política cancelamento, bar a bordo (alimentos?), estacionamento Tambaú.*
