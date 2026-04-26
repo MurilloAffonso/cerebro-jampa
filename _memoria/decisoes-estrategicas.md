@@ -145,4 +145,37 @@
 
 ---
 
-**Última atualização:** 2026-04-25 | Próxima revisão: ao fim de cada fase de implementação
+---
+
+## Decisões de Projeto — Seixas (2026-04-26)
+
+### 21. Posição do Lead — Página Seixas (Aprovado por Murillo)
+**Decisão:** Lead aparece após o bloco "Por Que Confiar" (posição 5 na sequência de blocos).
+**Por quê:** Trust signals (Cadastur + rating + Murillo) sobem para acima da dobra mobile — turista confia antes de ler a descrição. Recomendação do wireframe 02b aprovada.
+**Implementação:** 02a e 02b alinhados. Bloco Lead na posição 5: Hero → Info Card → Aviso Maré → Por Que Confiar → Lead → Descrição.
+**Arquivos afetados:** `02a-copywriter-vendas.md`, `02b-ux-ui-mobile-first.md`
+
+### 22. WhatsApp Oficial — Confirmado (Murillo)
+**Decisão:** Número oficial: +55 83 9908-7830 | Link: `https://wa.me/558399087830`
+**Por quê:** Número real confirmado pelo operador. Substitui todos os `[CONFIRMAR: número]`.
+**Implementação:** Aplicado em todos os CTAs de 02a e 02b. Usar este número em todos os arquivos do projeto daqui para frente.
+**Texto de pré-preenchimento padrão:** `?text=Oi, quero saber sobre o passeio de Seixas`
+
+### 23. Endereço de Embarque em Tambaú — Pendente
+**Decisão:** Manter `[CONFIRMAR COM MURILLO: endereço exato de embarque em Tambaú]` até confirmação.
+**Por quê:** Dado operacional crítico — não pode ser inventado. Afeta roteiro, FAQ e informações práticas.
+**Implementação:** Blocos 7, 9 e 11 do 02a mantêm o placeholder. Bloco S2 do 02b idem.
+
+### 24. Depoimento Real — Pendente
+**Decisão:** Manter `[CONFIRMAR COM MURILLO: depoimento real de cliente]` até texto e nome autorizados.
+**Por quê:** Depoimentos são prova social crítica — usar sem autorização é antiético e arriscado.
+**Implementação:** Bloco 10 do 02a mantém o placeholder. Bloco S1 do 02b idem.
+
+### 25. Foto Hero de Seixas — Pendente
+**Decisão:** Manter `[CONFIRMAR COM MURILLO: foto real de qualidade de Seixas para hero]` até foto aprovada.
+**Por quê:** Hero sem foto real bloqueia o briefing do designer e o Figma. Placeholder aceito para avançar.
+**Implementação:** Hero usa placeholder até Murillo enviar foto. Programador implementa com WebP + fallback JPG.
+
+---
+
+**Última atualização:** 2026-04-26 | Próxima revisão: ao fim de cada fase de implementação

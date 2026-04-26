@@ -3,7 +3,7 @@ skill: copywriter-vendas
 versao: 3.1
 projeto_id: pagina-seixas-2026-04-26
 etapa: 2a de 6
-status: CONCLUÍDA — aguardando revisão de Murillo + Etapa 3
+status: REVISADA — decisões de Murillo aplicadas 2026-04-26. Pronta para Etapa 3.
 data: 2026-04-26
 fontes_consultadas:
   - _conhecimento/catalogo_vempassear_estruturado.md (linhas 341–364)
@@ -67,19 +67,7 @@ No ponto mais oriental das Américas, a maré baixa revela piscinas naturais de 
 
 ---
 
-## BLOCO 3 — LEAD
-
-### Texto do Lead
-
-Chegou em João Pessoa e quer ver as piscinas naturais de verdade — não em foto?
-
-Seixas fica no ponto mais a leste das Américas. Quando a maré baixa, corais formam piscinas naturais de água morna e cristalina. Você flutua, vê peixes coloridos passando do lado, e fica achando que está num aquário — mas é a natureza mesmo.
-
-A gente parte de Tambaú em catamarã, checa a maré antes, e cuida de tudo. Você só aproveita.
-
----
-
-## BLOCO 4 — AVISO DE MARÉ
+## BLOCO 3 — AVISO DE MARÉ
 
 *Tom: educativo, tranquilizador, nunca alarmista. Mostra que a Vem Passear domina o assunto — é diferencial, não problema.*
 
@@ -97,7 +85,7 @@ Antes de confirmar sua data, a gente consulta a tábua de marés e te avisa o me
 
 ---
 
-## BLOCO 5 — POR QUE CONFIAR / PROVA SOCIAL
+## BLOCO 4 — POR QUE CONFIAR / PROVA SOCIAL
 
 ### Título
 
@@ -120,6 +108,20 @@ Agência registrada no Ministério do Turismo. Operação legal, segura, verific
 👤 **Murillo — Guia Local**
 [CONFIRMAR: anos de experiência em João Pessoa — ex: "15 anos"]
 Conhece cada maré, cada coral e cada canto de Seixas. Atendimento direto no WhatsApp — você fala comigo, não com atendente.
+
+---
+
+## BLOCO 5 — LEAD
+
+*Posição aprovada por Murillo — 2026-04-26: Lead após Por Que Confiar, alinhado com wireframe 02b e estratégia 01.*
+
+### Texto do Lead
+
+Chegou em João Pessoa e quer ver as piscinas naturais de verdade — não em foto?
+
+Seixas fica no ponto mais a leste das Américas. Quando a maré baixa, corais formam piscinas naturais de água morna e cristalina. Você flutua, vê peixes coloridos passando do lado, e fica achando que está num aquário — mas é a natureza mesmo.
+
+A gente parte de Tambaú em catamarã, checa a maré antes, e cuida de tudo. Você só aproveita.
 
 ---
 
@@ -238,7 +240,7 @@ Ficou com alguma dúvida que não está aqui? Fala com a gente — é rápido.
 
 **[Reservar no WhatsApp 🟢]**
 
-*Link: `https://wa.me/[CONFIRMAR número]?text=Oi, quero saber sobre o passeio de Seixas`*
+*Link: `https://wa.me/558399087830?text=Oi, quero saber sobre o passeio de Seixas`*
 
 ---
 
@@ -278,7 +280,7 @@ Varia conforme a tábua de marés. Confirmamos com você no WhatsApp na véspera
 
 ### Contato direto
 
-📲 Fala com Murillo pelo WhatsApp — [CONFIRMAR: número completo com DDI]
+📲 Fala com Murillo pelo WhatsApp — +55 83 9908-7830
 
 ---
 
@@ -293,7 +295,7 @@ Atendimento rápido. Preço justo. Roteiro organizado.
 
 **[Falar com Murillo no WhatsApp 🟢]**
 
-*Link: `https://wa.me/[CONFIRMAR número]?text=Oi, quero saber mais sobre o passeio de Seixas`*
+*Link: `https://wa.me/558399087830?text=Oi, quero saber mais sobre o passeio de Seixas`*
 
 ---
 
@@ -339,17 +341,18 @@ A 1.500 metros de Tambaú. Aquário natural a céu aberto com peixes de todas as
 
 ## LACUNAS [CONFIRMAR COM MURILLO]
 
-| # | Lacuna | Bloco afetado |
-|---|--------|---------------|
-| 1 | Anos de experiência de Murillo em João Pessoa | Bloco 5 (Prova Social) |
-| 2 | Número exato de avaliações Google | Bloco 5 |
-| 3 | Número completo do WhatsApp (+55 83 XXXXX-XXXX) | Blocos 11 e 12 |
-| 4 | Endereço exato do ponto de encontro em Tambaú | Blocos 7 e 9 |
-| 5 | Depoimento real de cliente sobre Seixas | Bloco 10 |
-| 6 | Política de cancelamento (prazo, reembolso, maré) | FAQ #7 |
-| 7 | Idade mínima para crianças em piscinas naturais | FAQ #6 |
-| 8 | Bar a bordo vende alimentos ou só bebidas? | Bloco 7 |
-| 9 | Recomendação específica de protetor solar (mineral)? | Bloco 11 |
+| # | Lacuna | Bloco afetado | Status |
+|---|--------|---------------|--------|
+| 1 | Anos de experiência de Murillo em João Pessoa | Bloco 4 (Prova Social) | ⏳ Pendente |
+| 2 | Número exato de avaliações Google | Bloco 4 | ⏳ Pendente |
+| ~~3~~ | ~~Número do WhatsApp~~ | ~~Blocos 11 e 12~~ | ✅ **Confirmado: +55 83 9908-7830** |
+| 4 | Endereço exato do ponto de encontro em Tambaú | Blocos 7 e 9 | ⏳ Pendente |
+| 5 | Depoimento real de cliente sobre Seixas | Bloco 10 | ⏳ Pendente |
+| 6 | Política de cancelamento (prazo, reembolso, maré) | FAQ #7 | ⏳ Pendente |
+| 7 | Idade mínima para crianças em piscinas naturais | FAQ #6 | ⏳ Pendente |
+| 8 | Bar a bordo vende alimentos ou só bebidas? | Bloco 7 | ⏳ Pendente |
+| 9 | Recomendação específica de protetor solar (mineral)? | Bloco 11 | ⏳ Pendente |
+| 10 | Foto real de qualidade de Seixas para hero | Bloco 1 | ⏳ Pendente |
 
 ---
 
@@ -357,12 +360,12 @@ A 1.500 metros de Tambaú. Aquário natural a céu aberto com peixes de todas as
 
 ### Para `ux-ui-mobile-first` (Etapa 2b — paralelo)
 
-Esta copy define a ordem e hierarquia dos blocos. O wireframe da Etapa 2b deve respeitar esta sequência:
+Esta copy define a ordem e hierarquia dos blocos. Sequência final aprovada por Murillo — 2026-04-26:
 1. Hero (H1 + subtítulo + CTA primário)
 2. Info Card (R$ 60 / ~3h30 / Tambaú)
-3. Lead (2 parágrafos)
-4. Aviso de Maré (destaque — alerta com ícone ⚠️)
-5. Por Que Confiar (Cadastur + rating + Murillo)
+3. Aviso de Maré (destaque — alerta com ícone ⚠️)
+4. Por Que Confiar (Cadastur + rating + Murillo)
+5. Lead (2 parágrafos — após trust signals)
 6. O Que Você Vai Fazer (texto + sensorial)
 7. Roteiro Narrativo (ícones + bullets)
 8. Incluso / Não Incluso (2 colunas ou stack)
@@ -373,11 +376,7 @@ Esta copy define a ordem e hierarquia dos blocos. O wireframe da Etapa 2b deve r
 12. CTA Final (seção escura + botão verde)
 13. Passeios Similares (2 cards)
 
-> ⚠️ **CONFLITO DE ORDENAÇÃO — CONFIRMAR COM MURILLO:**
-> Esta copy (02a) posiciona o bloco "Lead" em posição 3, antes do Aviso de Maré e Por Que Confiar.
-> O wireframe (02b) e a estratégia original (01) posicionam o Lead após Por Que Confiar (posição 6).
-> **Impacto:** Lead antes dos trust signals acolhe o turista mais rápido; Lead depois dos trust signals converte com mais confiança estabelecida.
-> **Decisão pendente de Murillo** antes de avançar para Etapa 3.
+> ✅ **CONFLITO RESOLVIDO — 2026-04-26:** Murillo aprovou Lead na posição 5 (após Por Que Confiar), seguindo recomendação do wireframe 02b. Arquivos 02a e 02b agora estão alinhados.
 
 ### Para `diretor-visual-turismo` (Etapa 3)
 
@@ -395,6 +394,6 @@ Esta copy define a ordem e hierarquia dos blocos. O wireframe da Etapa 2b deve r
 
 ---
 
-*Copy v1.1 — rascunho revisado | Etapa 2a concluída | 2026-04-26*
-*Adicionado: Bloco 9.5 (CTA Secundário após FAQ). Conflito de ordenação do Lead documentado — aguarda decisão de Murillo.*
-*Aguardando: revisão de Murillo para preencher [CONFIRMAR] + posição do Lead + depoimento real + Etapa 3*
+*Copy v1.2 — decisões de Murillo aplicadas | Etapa 2a pronta para Etapa 3 | 2026-04-26*
+*Aplicado: Lead movido para posição 5 (após Por Que Confiar). WhatsApp +55 83 9908-7830 confirmado.*
+*Aguardando: avaliações Google, anos de experiência Murillo, endereço embarque, depoimento real, foto hero, crianças, cancelamento, bar a bordo.*

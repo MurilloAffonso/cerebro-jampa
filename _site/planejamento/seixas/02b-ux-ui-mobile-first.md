@@ -3,7 +3,7 @@ skill: ux-ui-mobile-first
 versao: 3.1
 projeto_id: pagina-seixas-2026-04-26
 etapa: 2b de 6
-status: CONCLUÍDA — aguardando Etapa 3 (diretor-visual-turismo)
+status: REVISADA — decisões de Murillo aplicadas 2026-04-26. Pronta para Etapa 3.
 data: 2026-04-26
 fontes_consultadas:
   - _site/planejamento/seixas/01-estrategia-site.md
@@ -439,7 +439,7 @@ Mobile (320px):
 **Comportamento:**
 - Seção de fundo escuro para contraste máximo
 - Botão WhatsApp: cor #25D366, texto branco
-- `href="https://wa.me/[NÚMERO]?text=Oi, quero saber sobre Seixas"`
+- `href="https://wa.me/558399087830?text=Oi, quero saber sobre Seixas"`
 - `rel="noopener"`, `target="_blank"`
 
 ---
@@ -494,7 +494,7 @@ Mobile (320px):
 │  Home | Piscinas Naturais | Sobre   │
 │  (stack vertical no mobile)          │
 │                                      │
-│  📲 WhatsApp: [número — CONFIRMAR]   │
+│  📲 WhatsApp: +55 83 9908-7830       │
 └──────────────────────────────────────┘
 ```
 
@@ -725,28 +725,22 @@ Estilo (mobile):
 
 ## 9. LACUNAS [CONFIRMAR]
 
-| # | Lacuna | Impacto |
-|---|--------|---------|
-| 1 | Cor exata do Aviso de Maré | Diretor Visual (Etapa 3) valida se âmbar está alinhado com paleta |
-| 2 | Contraste do botão WhatsApp verde #25D366 | Pode precisar de variante #1A8A4A para WCAG AA — verificar |
-| 3 | Foto real de Seixas disponível para hero? | Sem imagem real, programador usa placeholder e Figma fica incompleto |
-| 4 | Número de WhatsApp para link do CTA | [CONFIRMAR COM MURILLO: +55 83 XXXXX-XXXX] |
-| 5 | FAQ: accordion abre múltiplos ou um por vez? | Decisão de UX — recomendo 1 por vez (menos confusão) |
-| 6 | Sidebar CTA flutuante no desktop? | Diretor Visual (Etapa 3) decide se é necessário dado o layout |
+| # | Lacuna | Impacto | Status |
+|---|--------|---------|--------|
+| 1 | Cor exata do Aviso de Maré | Diretor Visual (Etapa 3) valida se âmbar está alinhado com paleta | ⏳ Etapa 3 decide |
+| 2 | Contraste do botão WhatsApp verde #25D366 | Pode precisar de variante #1A8A4A para WCAG AA | ⏳ Etapa 3 decide |
+| 3 | Foto real de Seixas para hero | Sem imagem real, placeholder em uso | ⏳ Pendente Murillo |
+| ~~4~~ | ~~Número de WhatsApp~~ | — | ✅ **Confirmado: +55 83 9908-7830** |
+| 5 | FAQ: accordion abre múltiplos ou um por vez? | Decisão de UX — recomendo 1 por vez | ⏳ Etapa 3 decide |
+| 6 | Sidebar CTA flutuante no desktop? | Diretor Visual (Etapa 3) decide | ⏳ Etapa 3 decide |
 
-### ⚠️ CONFLITO DE ORDENAÇÃO — DECISÃO PENDENTE DE MURILLO
+### ✅ CONFLITO DE ORDENAÇÃO RESOLVIDO — 2026-04-26
 
-| Questão | 02a (copywriter) | 02b (wireframe — este doc) | 01 (estratégia) |
-|---------|-----------------|---------------------------|-----------------|
-| Posição do bloco "Lead" | Posição 3 (após Info Card, antes de Aviso de Maré) | Posição I1 (após Por Que Confiar) | Não explicitado — "Descrição sensorial" em posição 5 |
+| Questão | Decisão de Murillo |
+|---------|-------------------|
+| Posição do bloco "Lead" | **Posição I1 — após Por Que Confiar** (recomendação do wireframe 02b aprovada) |
 
-**Qual posição é melhor?**
-- **Lead em posição 3 (02a):** acolhe o turista com contexto antes de mostrar credenciais. Risco: turista vê texto longo antes de trust signals.
-- **Lead em posição I1 (02b / 01):** trust signals sobem mais cedo (acima da dobra mobile). Turista confia antes de ler a descrição completa.
-
-**Recomendação do wireframe:** manter Lead em I1 (após Por Que Confiar), alinhado com a estratégia (01) e com CRO mobile — trust signals acima da dobra convertem melhor.
-
-**[CONFIRMAR COM MURILLO: Lead antes ou depois de Por Que Confiar?]**
+02a e 02b agora estão alinhados. Lead na posição 5 da sequência de blocos, após trust signals.
 
 ---
 
@@ -803,6 +797,6 @@ Dados do passeio entram por `data/passeios.ts` — nunca hardcoded.
 
 ---
 
-*Wireframe v1.1 | Etapa 2b revisada | 2026-04-26*
-*Adicionado: CTA Secundário (I5.5) entre FAQ e Depoimento. Conflito de ordenação do Lead documentado na Seção 9.*
-*Aguardando: decisão de Murillo sobre posição do Lead + Etapa 3 (`diretor-visual-turismo`) para validar padrão visual*
+*Wireframe v1.2 | decisões de Murillo aplicadas | Etapa 2b pronta para Etapa 3 | 2026-04-26*
+*Aplicado: Lead em I1 (após Por Que Confiar) aprovado. WhatsApp +55 83 9908-7830 confirmado. Conflito resolvido.*
+*Aguardando: Etapa 3 (`diretor-visual-turismo`) para validar padrão visual antes de briefar designer.*
