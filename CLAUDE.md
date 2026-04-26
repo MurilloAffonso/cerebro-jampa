@@ -27,6 +27,13 @@
 
 ---
 
+---
+
+> **Modelo central:** `Objetivo → Orquestrador → Pipeline → Skills → Resultado`
+> Toda entrega segue esse fluxo. O orquestrador define o plano antes de qualquer skill ser acionada.
+
+---
+
 ## 2. Como Operar — Fluxo Padrão
 
 1. **Abrir sessão:** rodar `/abrir-sessao` (lê estado atual e prioridades)

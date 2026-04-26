@@ -1,6 +1,10 @@
 # Skills — Vem Passear em Jampa
 
-Arquitetura de 10 skills especializadas + 1 orquestrador para site, SEO e social media.
+```
+Objetivo → Orquestrador → Pipeline → Skills → Resultado
+```
+
+Toda entrega segue esse fluxo. O orquestrador recebe o objetivo, escolhe o pipeline, sequencia as skills, e devolve plano para aprovação antes de qualquer execução.
 
 ---
 
