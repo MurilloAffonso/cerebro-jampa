@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+
+# Production
+.next/
+out/
+dist/
+
+# Misc
+.DS_Store
+*.pem
+*.log
+*.swp
+*.swo
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# OS
+Thumbs.db
