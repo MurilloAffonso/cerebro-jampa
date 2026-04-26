@@ -20,7 +20,7 @@ O orquestrador recebe o objetivo, seleciona o pipeline correto, define ordem e d
 
 ---
 
-## Inventário de Skills (10 ativas)
+## Inventário de Skills (11 ativas)
 
 ### Skills de Site (7)
 
@@ -41,6 +41,12 @@ O orquestrador recebe o objetivo, seleciona o pipeline correto, define ordem e d
 | 8 | `radar-concorrentes-social` | Inteligência competitiva, trends, gaps | `concorrentes.md`, `instagram-benchmark.md` | Relatório com oportunidades para Vem Passear |
 | 9 | `captura-referencias-visuais` | Captura e organização de referências visuais | Objetivo + fonte | Arquivo de mídia + `.md` de contexto |
 | 10 | `social-media-editorial-turismo` | Calendário editorial, pautas de stories/reels/carrosséis | `tom-de-voz.md`, `passeios.md`, insights de radar | Calendário + pautas estruturadas |
+
+### Skills Operacionais (1)
+
+| # | Skill | Responsabilidade | Entrada chave | Saída |
+|---|-------|-----------------|---------------|-------|
+| 11 | `tabua-mares-turismo` | Interpreta tábua de marés CHM, calcula saídas, classifica status, gera janelas e dados TypeScript | Dados de maré de Murillo (Marinha/CHM — Porto de Cabedelo/PB) | `data/tabua-mares.ts`, calendário de saídas, handoff para programador |
 
 ---
 
@@ -115,6 +121,8 @@ designer social → Murillo publica
 | O que concorrentes fazem no Instagram | `radar-concorrentes-social` |
 | Guardar referência visual | `captura-referencias-visuais` |
 | Criar pauta ou calendário Instagram | `social-media-editorial-turismo` |
+| Tábua de marés, próxima saída, calendário piscinas | `tabua-mares-turismo` |
+| Seixas / Picãozinho / Areia Vermelha — disponibilidade | `tabua-mares-turismo` |
 | Não sei por onde começar | `orquestrador-projeto-turismo` |
 
 ---
@@ -140,4 +148,4 @@ designer social → Murillo publica
 
 ---
 
-*v4.0 | Atualizado 2026-04-25 | 10 skills ativas + 1 orquestrador | Pipelines A–G*
+*v4.1 | Atualizado 2026-04-26 | 11 skills ativas + 1 orquestrador | Pipelines A–G*

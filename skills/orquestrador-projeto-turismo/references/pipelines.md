@@ -4,7 +4,7 @@ Referência operacional dos 7 pipelines canônicos do orquestrador. Consultar ao
 
 ---
 
-## Inventário das 10 Skills Disponíveis
+## Inventário das 11 Skills Disponíveis
 
 **Skills de Site (7):**
 1. `estrategista-de-site` — URLs, jornada, CRO, navegação
@@ -19,6 +19,15 @@ Referência operacional dos 7 pipelines canônicos do orquestrador. Consultar ao
 8. `radar-concorrentes-social` — Pesquisa concorrentes, gaps, trends
 9. `captura-referencias-visuais` — Captura e organiza assets
 10. `social-media-editorial-turismo` — Calendário e pautas
+
+**Skills Operacionais (1):**
+11. `tabua-mares-turismo` — Tábua de marés CHM → saídas calculadas + status + janelas + TypeScript
+
+**Gatilhos de acionamento da skill #11:**
+- Objetivo menciona: tábua de marés, próxima saída, calendário de piscinas
+- Passeios: Seixas, Picãozinho, Areia Vermelha
+- Keywords SEO: maré baixa, disponibilidade, datas disponíveis
+- Murillo fornece dados brutos da CHM e pede para processar
 
 ---
 
@@ -169,6 +178,38 @@ Etapa 2 → captura-referencias-visuais  [opcional]
 ```
 
 **Sem entrega de produto** — só atualiza fontes de verdade para futuros pipelines.
+
+---
+
+## Pipeline H — Disponibilidade de Maré (Recorrente)
+
+**Quando usar:** "gerar calendário de maio", "atualizar próxima saída de Seixas", "dados de maré para [mês]", objetivo envolve tábua de marés ou disponibilidade de piscinas naturais.
+
+**Gatilhos específicos:** tábua de marés, próxima saída, Seixas, Picãozinho, Areia Vermelha, calendário de piscinas, maré baixa, horário de saída.
+
+```
+Etapa 1 → tabua-mares-turismo
+  Entrada: Dados de maré de Murillo (Marinha/CHM — Porto de Cabedelo/PB)
+  Saída: data/tabua-mares.ts + janelas/ciclos + checklist de validação
+
+  PAUSA: Murillo valida o output (confere horários e status)
+
+Etapa 2 → seo-local-turismo  [CONDICIONAL]
+  Acionar SE: objetivo inclui criar/atualizar página de calendário
+  Saída: meta tags, FAQ schema, H2s para /passeios/piscinas-naturais/calendario
+
+Etapa 3 → programador-de-site
+  Saída: data/tabua-mares.ts commitado + componente ProximaSaidaCard + página /calendario (se etapa 2 acionada)
+  Depende de: Etapa 1 (sempre) + Etapa 2 (se acionada)
+```
+
+**Skills geralmente puladas neste pipeline:**
+- `estrategista-de-site` (arquitetura já definida)
+- `copywriter-vendas` (dados operacionais, não copy de venda)
+- `ux-ui-mobile-first` (componentes já especificados em `references/estrutura-dados.md`)
+- `briefing-designer` (sem entregável visual novo)
+- `diretor-visual-turismo` (sem novo componente visual)
+- `radar-concorrentes-social`, `captura-referencias-visuais`, `social-media-editorial-turismo` (fora do escopo)
 
 ---
 
