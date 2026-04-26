@@ -1,6 +1,17 @@
+---
+name: ux-ui-mobile-first
+description: Transforma copy aprovada em especificação visual mobile-first com wireframe textual, 3 breakpoints, tap targets e acessibilidade WCAG AA.
+version: "3.1"
+status: ativa
+modelo_padrao: Sonnet 4.6
+atualizado: "2026-04-26"
+pipelines: [A, B]
+posicao: etapa-2b
+---
+
 # Skill: UX/UI Mobile-First
 
-**Versão:** 3.0
+**Versão:** 3.1
 **Status:** Ativa
 **Especialidade:** Wireframe textual, responsividade, hierarquia visual, acessibilidade
 **Escopo:** Site da Vem Passear em Jampa
@@ -193,6 +204,39 @@ Esta skill alimenta:
 
 ---
 
+## HANDOFF PARA PRÓXIMA SKILL
+
+| Destino | O Que Entrega | Para Quê |
+|---------|--------------|----------|
+| `diretor-visual-turismo` | Wireframe textual com blocos e dimensões | Validar padrão visual antes de briefar designer |
+| `briefing-designer` | Especificação completa de blocos, comportamentos e breakpoints | Designer executa com informação suficiente para não precisar perguntar |
+| `programador-de-site` | Estrutura de componentes e breakpoints por bloco | Implementar mobile-first com dimensões e hierarquia corretas |
+
+---
+
+## CRITÉRIOS DE QUALIDADE
+
+- [ ] Wireframe cobre todos os blocos da copy aprovada (nenhum bloco omitido)?
+- [ ] Hierarquia mobile definida (crítico / importante / suporte)?
+- [ ] Todos os tap targets estão ≥44px?
+- [ ] 3 breakpoints especificados por bloco (mobile / tablet / desktop)?
+- [ ] CTA WhatsApp acessível sem mais de 5-6 scrolls no mobile?
+- [ ] Contraste WCAG AA especificado (≥4.5:1 body, ≥7:1 títulos)?
+- [ ] Imagens têm dimensões-alvo e instrução de lazy-load/eager?
+- [ ] Animações leves especificadas (sem JS pesado, sem Lottie)?
+
+---
+
+## LIMITES DA SKILL
+
+- Não reescreve copy — usa exatamente o que `copywriter-vendas` entregou
+- Não escolhe cores, tipografia ou logo — `diretor-visual-turismo` e designer definem
+- Não define estratégia de conversão — `estrategista-de-site` já definiu, UX executa
+- Não implementa código — entrega wireframe textual em markdown
+- Não começa sem copy aprovada — copy define a hierarquia de blocos
+
+---
+
 ## COMPATIBILIDADE COM ORQUESTRADOR
 
 | Propriedade | Valor |
@@ -206,4 +250,4 @@ Esta skill alimenta:
 
 ---
 
-*Skill v3.0 | Atualizado 2026-04-25 | Adicionado INPUT/OUTPUT/COMPATIBILIDADE padronizados*
+*Skill v3.1 | Atualizado 2026-04-26 | Adicionado HANDOFF, CRITÉRIOS DE QUALIDADE e LIMITES para interoperabilidade com orquestrador*

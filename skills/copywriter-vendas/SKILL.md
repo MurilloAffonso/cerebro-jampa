@@ -1,6 +1,17 @@
+---
+name: copywriter-vendas
+description: Escreve copy de venda com framework AIDA, tom local e prova de confiança. Nunca inventa dados de passeio — bloqueia se passeios.md não tiver o passeio.
+version: "3.1"
+status: ativa
+modelo_padrao: Sonnet 4.6
+atualizado: "2026-04-26"
+pipelines: [A, B, C, G]
+posicao: etapa-2a
+---
+
 # Skill: Copywriter Vendas
 
-**Versão:** 3.0
+**Versão:** 3.1
 **Status:** Ativa
 **Especialidade:** Copy AIDA, conversão, tom de voz local, prova de confiança
 **Escopo:** Páginas de passeio, categorias, home, CTAs, FAQ
@@ -221,6 +232,41 @@ Esta skill alimenta:
 
 ---
 
+## HANDOFF PARA PRÓXIMA SKILL
+
+| Destino | O Que Entrega | Para Quê |
+|---------|--------------|----------|
+| `ux-ui-mobile-first` | Copy aprovada em markdown com blocos definidos | Criar wireframe baseado na hierarquia do texto |
+| `seo-local-turismo` | H1, lead, FAQ e copy completa | Otimizar sem quebrar a conversão |
+| `programador-de-site` | Copy final aprovada | Implementar exatamente como escrita (copy é sagrada) |
+
+---
+
+## CRITÉRIOS DE QUALIDADE
+
+- [ ] Headline é específico (não genérico, não clichê turístico)?
+- [ ] Lead reconhece o problema real do turista (não o sonho genérico)?
+- [ ] Framework AIDA completo (Atenção → Interesse → Desejo → Ação)?
+- [ ] Prova de confiança em toda página (Cadastur, rating, Murillo, depoimento)?
+- [ ] CTA é WhatsApp (nunca email como primário)?
+- [ ] Preço visível se for página de passeio?
+- [ ] Tom acolhedor e local, sem urgência falsa?
+- [ ] Dados de passeio confirmados em `passeios.md` e `catalogo_vempassear_estruturado.md`?
+- [ ] Depoimentos são reais ou marcados `[INSERIR DEPOIMENTO REAL]`?
+- [ ] Nenhum clichê turístico ("paraíso", "irreal", "cartão postal")?
+
+---
+
+## LIMITES DA SKILL
+
+- Não inventa preço, duração, roteiro ou ponto de saída — bloqueia se dado não estiver em `passeios.md`
+- Não define estrutura de site — usa o que `estrategista-de-site` entregou
+- Não otimiza para SEO — `seo-local-turismo` faz isso depois sem quebrar a copy
+- Não altera copy aprovada sem pedido explícito de Murillo — copy aprovada é sagrada para o programador
+- Não começa sem consultar `tom-de-voz.md` — identidade verbal é bloqueante
+
+---
+
 ## COMPATIBILIDADE COM ORQUESTRADOR
 
 | Propriedade | Valor |
@@ -234,4 +280,4 @@ Esta skill alimenta:
 
 ---
 
-*Skill v3.0 | Atualizado 2026-04-25 | Adicionado INPUT/OUTPUT/COMPATIBILIDADE padronizados*
+*Skill v3.1 | Atualizado 2026-04-26 | Adicionado HANDOFF, CRITÉRIOS DE QUALIDADE e LIMITES para interoperabilidade com orquestrador*

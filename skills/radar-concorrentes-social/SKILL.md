@@ -1,6 +1,17 @@
+---
+name: radar-concorrentes-social
+description: Pesquisa inteligência competitiva no Instagram e identifica gaps e oportunidades para a Vem Passear em Jampa. Analisa princípios, nunca copia design.
+version: "2.1"
+status: ativa
+modelo_padrao: Sonnet 4.6 (pesquisa), Opus 4.7 (análise competitiva profunda)
+atualizado: "2026-04-26"
+pipelines: [E, F]
+posicao: etapa-1
+---
+
 # Skill: Radar Concorrentes Social
 
-**Versão:** 2.0
+**Versão:** 2.1
 **Status:** Ativa
 **Especialidade:** Inteligência competitiva, análise de Instagram, monitoramento de trends
 **Escopo:** Instagram, turismo receptivo, João Pessoa e referências gerais
@@ -223,6 +234,39 @@ Esta skill alimenta:
 
 ---
 
+## HANDOFF PARA PRÓXIMA SKILL
+
+| Destino | O Que Entrega | Para Quê |
+|---------|--------------|----------|
+| `social-media-editorial-turismo` | Insights sobre o que funciona, gaps de conteúdo, trends ativos | Criar pauta editorial informada por inteligência competitiva |
+| `captura-referencias-visuais` | Lista do que capturar (conta, tipo de visual, por quê) | Capturar referências específicas com propósito definido |
+| `diretor-visual-turismo` | Padrões visuais observados, o que Vem Passear pode superar | Validar diferencial visual antes de definir campanha |
+
+---
+
+## CRITÉRIOS DE QUALIDADE
+
+- [ ] Vault consultado antes de pesquisar (`instagram-benchmark.md`, `concorrentes.md`)?
+- [ ] Gaps identificados são reais (baseados em observação, não suposição)?
+- [ ] Oportunidades são específicas para Vem Passear (não genéricas)?
+- [ ] Diferencial competitivo validado ("por que Vem Passear é melhor")?
+- [ ] Nenhum dado de engajamento ou métricas de concorrente inventado?
+- [ ] Recomendação imediata clara (1 ação concreta para próxima semana)?
+- [ ] Análise salva em `_social/concorrentes/` ou `_social/referencias/`?
+
+---
+
+## LIMITES DA SKILL
+
+- Não copia design de concorrente — analisa princípios, nunca copia visual diretamente
+- Não gera pauta editorial — entrega insights, `social-media-editorial-turismo` cria a pauta
+- Não captura imagens — indica o que capturar, `captura-referencias-visuais` executa
+- Não inventa dados de engajamento, seguidores ou performance de concorrentes
+- Não analisa plataformas além do Instagram sem solicitação explícita de Murillo
+- Não duplica análise recente — verifica `_social/concorrentes/` antes de pesquisar de novo
+
+---
+
 ## COMPATIBILIDADE COM ORQUESTRADOR
 
 | Propriedade | Valor |
@@ -236,4 +280,4 @@ Esta skill alimenta:
 
 ---
 
-*Skill v2.0 | Atualizado 2026-04-25 | Adicionado INPUT/OUTPUT/COMPATIBILIDADE padronizados*
+*Skill v2.1 | Atualizado 2026-04-26 | Adicionado HANDOFF, CRITÉRIOS DE QUALIDADE e LIMITES para interoperabilidade com orquestrador*

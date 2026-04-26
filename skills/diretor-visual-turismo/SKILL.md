@@ -1,6 +1,17 @@
+---
+name: diretor-visual-turismo
+description: Define padrões visuais, valida wireframes com foco em conversão mobile-first e especifica componentes para o designer executar. Crítica de layout antes de briefar.
+version: "2.1"
+status: ativa
+modelo_padrao: Sonnet 4.6
+atualizado: "2026-04-26"
+pipelines: [A, B, D, E]
+posicao: etapa-3
+---
+
 # Skill: Diretor Visual Turismo
 
-**Versão:** 2.0
+**Versão:** 2.1
 **Status:** Ativa
 **Especialidade:** Direção visual, padrões de componentes, crítica de layout, conversão visual
 **Escopo:** Site e campanhas da Vem Passear em Jampa
@@ -249,6 +260,40 @@ Esta skill alimenta:
 
 ---
 
+## HANDOFF PARA PRÓXIMA SKILL
+
+| Destino | O Que Entrega | Para Quê |
+|---------|--------------|----------|
+| `briefing-designer` | Padrão visual aprovado, componentes especificados, restrições visuais | Designer executa com direção clara, sem ambiguidade de estilo |
+| `ux-ui-mobile-first` | Itens reprovados com correções específicas | Ajustar wireframe antes de briefar designer |
+| `programador-de-site` | Validação de implementação pós-código | Confirmar que visual implementado segue padrão aprovado |
+
+---
+
+## CRITÉRIOS DE QUALIDADE
+
+- [ ] H1 único e claro, responde intent da página?
+- [ ] Prova social (Cadastur/avaliação) visível acima da dobra mobile?
+- [ ] CTA em cor de destaque e thumb-friendly (≥44px)?
+- [ ] Texto legível em mobile sem zoom (base 1rem)?
+- [ ] Espaço branco suficiente — não apertado?
+- [ ] Paleta de 3-4 cores principais respeitada (azul confiança, laranja CTA)?
+- [ ] Animações leves e smooth (<400ms)?
+- [ ] Mobile layout stacks logicamente (ordem visual = ordem de importância)?
+- [ ] Fotos sem distorção e em proporção correta?
+
+---
+
+## LIMITES DA SKILL
+
+- Não executa design em Figma — especifica e valida, designer executa
+- Não escreve copy — a posição do texto é definida aqui, não o texto em si
+- Não faz SEO técnico — `seo-local-turismo` cuida
+- Não define estratégia de conversão — valida se o visual suporta a estratégia de `estrategista-de-site`
+- Não começa sem wireframe ou referência para criticar — direção visual sem insumo é decoração
+
+---
+
 ## COMPATIBILIDADE COM ORQUESTRADOR
 
 | Propriedade | Valor |
@@ -262,4 +307,4 @@ Esta skill alimenta:
 
 ---
 
-*Skill v2.0 | Atualizado 2026-04-25 | Adicionado INPUT/OUTPUT/COMPATIBILIDADE padronizados*
+*Skill v2.1 | Atualizado 2026-04-26 | Adicionado HANDOFF, CRITÉRIOS DE QUALIDADE e LIMITES para interoperabilidade com orquestrador*

@@ -1,6 +1,17 @@
+---
+name: captura-referencias-visuais
+description: Captura, organiza e contextualiza referências visuais com metadados obrigatórios. Nunca inventa handle de origem. Sempre cria arquivo .md junto com a captura.
+version: "3.1"
+status: ativa
+modelo_padrao: Haiku 4.5 (organização), Sonnet 4.6 (contexto e análise)
+atualizado: "2026-04-26"
+pipelines: [D, E, F]
+posicao: etapa-2
+---
+
 # Skill: Captura Referências Visuais
 
-**Versão:** 3.0
+**Versão:** 3.1
 **Status:** Ativa
 **Especialidade:** Captura, organização e armazenamento de referências visuais com contexto
 **Escopo:** Instagram, websites, Pinterest — turismo e design visual
@@ -240,6 +251,39 @@ Esta skill alimenta:
 
 ---
 
+## HANDOFF PARA PRÓXIMA SKILL
+
+| Destino | O Que Entrega | Para Quê |
+|---------|--------------|----------|
+| `diretor-visual-turismo` | Referências organizadas com contexto em `_social/assets/` | Validar padrão visual com base em exemplos reais |
+| `social-media-editorial-turismo` | Assets disponíveis por tipo (hero, story, reel, carrossel) | Inspirar pautas com referências concretas já organizadas |
+| Designer | Biblioteca com metadados para execução em Figma | Executar design com referências contextualizadas |
+
+---
+
+## CRITÉRIOS DE QUALIDADE
+
+- [ ] Todo arquivo de mídia tem arquivo `.md` de contexto correspondente?
+- [ ] Metadados obrigatórios presentes (tipo, origem, data_captura, acesso_tipo)?
+- [ ] Origem confirmada ou marcada `CONFIRMAR_ORIGEM`?
+- [ ] Arquivo organizado na subpasta correta (`_social/assets/[tipo]/`)?
+- [ ] Nomeação segue padrão (`tipo-origem-data.ext`)?
+- [ ] Nenhum handle/@conta inventado?
+- [ ] Utilidade prática descrita em "Como Vem Passear Pode Usar?"?
+
+---
+
+## LIMITES DA SKILL
+
+- Não inventa handle de origem — usa `CONFIRMAR_ORIGEM` se houver qualquer dúvida
+- Não captura conteúdo privado sem permissão explícita
+- Não salva arquivo de mídia sem `.md` de contexto correspondente
+- Não sobrescreve captura antiga — sempre cria nova com data atualizada
+- Não analisa padrões de concorrente em profundidade — isso é `radar-concorrentes-social`
+- Não gera pauta editorial — entrega referências organizadas para outras skills consumirem
+
+---
+
 ## COMPATIBILIDADE COM ORQUESTRADOR
 
 | Propriedade | Valor |
@@ -253,4 +297,4 @@ Esta skill alimenta:
 
 ---
 
-*Skill v3.0 | Atualizado 2026-04-25 | Adicionado INPUT/OUTPUT/COMPATIBILIDADE padronizados*
+*Skill v3.1 | Atualizado 2026-04-26 | Adicionado HANDOFF, CRITÉRIOS DE QUALIDADE e LIMITES para interoperabilidade com orquestrador*

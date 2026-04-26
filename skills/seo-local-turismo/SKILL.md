@@ -1,6 +1,17 @@
+---
+name: seo-local-turismo
+description: Otimiza páginas para busca local em João Pessoa. Gera meta tags, schema JSON-LD e links internos. Nunca quebra copy de venda para forçar keyword.
+version: "3.1"
+status: ativa
+modelo_padrao: Sonnet 4.6
+atualizado: "2026-04-26"
+pipelines: [A, B, C, G]
+posicao: etapa-4
+---
+
 # Skill: SEO Local Turismo
 
-**Versão:** 3.0
+**Versão:** 3.1
 **Status:** Ativa
 **Especialidade:** SEO on-page, meta tags, schema JSON-LD, keywords turismo local
 **Escopo:** Páginas do site vempassearjampa.com — João Pessoa
@@ -245,6 +256,38 @@ Esta skill alimenta:
 
 ---
 
+## HANDOFF PARA PRÓXIMA SKILL
+
+| Destino | O Que Entrega | Para Quê |
+|---------|--------------|----------|
+| `programador-de-site` | Meta tags, schema JSON-LD, alt text de imagens e lista de links internos | Implementar exatamente — SEO técnico não é responsabilidade do programador criar |
+
+---
+
+## CRITÉRIOS DE QUALIDADE
+
+- [ ] H1 inclui keyword primária + "João Pessoa" (ou localidade específica)?
+- [ ] Meta title entre 50-60 caracteres?
+- [ ] Meta description entre 150-160 caracteres com CTA?
+- [ ] Schema JSON-LD correto e válido para o tipo de página (LocalBusiness / TouristAttraction / FAQPage)?
+- [ ] Links internos definidos: categoria pai + 2-3 similares + home?
+- [ ] Alt text descritivo em todas as imagens (não "imagem.jpg")?
+- [ ] Nenhuma keyword forçada que prejudica leitura ou conversão?
+- [ ] Verificado em `clusters-seo.md` e `oportunidades-ranqueamento.md`?
+- [ ] "João Pessoa" aparece no H1 ou lead?
+
+---
+
+## LIMITES DA SKILL
+
+- Não reescreve copy para forçar keyword — conversão > ranking sempre
+- Não faz SEO técnico avançado (canonicals em massa, robots.txt, redirecionamentos) — responsabilidade do programador
+- Não começa sem copy aprovada — SEO otimiza o que existe, não cria do zero
+- Não inventa keywords — usa `clusters-seo.md` e `oportunidades-ranqueamento.md` como fonte
+- Não define estrutura de site — `estrategista-de-site` já fez isso
+
+---
+
 ## COMPATIBILIDADE COM ORQUESTRADOR
 
 | Propriedade | Valor |
@@ -258,4 +301,4 @@ Esta skill alimenta:
 
 ---
 
-*Skill v3.0 | Atualizado 2026-04-25 | Adicionado INPUT/OUTPUT/COMPATIBILIDADE padronizados*
+*Skill v3.1 | Atualizado 2026-04-26 | Adicionado HANDOFF, CRITÉRIOS DE QUALIDADE e LIMITES para interoperabilidade com orquestrador*

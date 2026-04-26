@@ -1,6 +1,17 @@
+---
+name: social-media-editorial-turismo
+description: Gera calendário editorial e pautas estruturadas para Instagram. Entrega é pauta — copy final e publicação são de Murillo. Última etapa do pipeline social.
+version: "2.1"
+status: ativa
+modelo_padrao: Sonnet 4.6
+atualizado: "2026-04-26"
+pipelines: [E]
+posicao: etapa-final
+---
+
 # Skill: Social Media Editorial Turismo
 
-**Versão:** 2.0
+**Versão:** 2.1
 **Status:** Ativa
 **Especialidade:** Calendário editorial, pautas de stories/reels/carrosséis, linha editorial
 **Escopo:** Instagram da Vem Passear em Jampa
@@ -232,6 +243,41 @@ Esta skill alimenta:
 
 ---
 
+## HANDOFF PARA PRÓXIMA SKILL
+
+| Destino | O Que Entrega | Para Quê |
+|---------|--------------|----------|
+| Designer social | Pautas estruturadas com tipo, tema, estrutura de copy e direção visual | Executar artes em ferramentas de design (Canva, Figma) |
+| Murillo | Calendário editorial aprovado com pautas prontas | Revisar, publicar e fazer community management |
+
+> **Última etapa do pipeline social:** Nenhuma skill recebe entrega desta. O ciclo social encerra aqui.
+
+---
+
+## CRITÉRIOS DE QUALIDADE
+
+- [ ] `tom-de-voz.md` consultado antes de escrever qualquer copy?
+- [ ] Dados de passeio vieram de `catalogo_vempassear_estruturado.md` (não inventados)?
+- [ ] Preços ausentes marcados `[CONFIRMAR COM MURILLO: preço do passeio X]`?
+- [ ] Checklist de tom de voz verificado (sem clichê, sem pressão falsa)?
+- [ ] CTA é WhatsApp (não email)?
+- [ ] Hook dos primeiros 2 segundos de reel/story prende atenção?
+- [ ] Calendário organizado por fase do funil (descoberta / consideração / decisão / relacionamento)?
+- [ ] Cadência recomendada respeitada (stories diários, reels 3x/sem, carrosséis 1x/sem)?
+
+---
+
+## LIMITES DA SKILL
+
+- Não captura referências visuais — indica necessidade, `captura-referencias-visuais` executa
+- Não pesquisa concorrentes — usa insights de `radar-concorrentes-social` como input
+- Não executa design final — entrega pauta, designer social e Murillo executam
+- Não publica no Instagram — Murillo publica e gerencia a comunidade
+- Não começa sem consultar `tom-de-voz.md` — identidade verbal é bloqueante
+- Não inventa preço ou dado operacional de passeio
+
+---
+
 ## COMPATIBILIDADE COM ORQUESTRADOR
 
 | Propriedade | Valor |
@@ -245,4 +291,4 @@ Esta skill alimenta:
 
 ---
 
-*Skill v2.0 | Atualizado 2026-04-25 | Adicionado INPUT/OUTPUT/COMPATIBILIDADE padronizados*
+*Skill v2.1 | Atualizado 2026-04-26 | Adicionado HANDOFF, CRITÉRIOS DE QUALIDADE e LIMITES para interoperabilidade com orquestrador*

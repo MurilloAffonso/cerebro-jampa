@@ -1,6 +1,18 @@
+---
+name: briefing-designer
+description: Traduz copy + wireframe + direção visual em briefing acionável para o designer executar em Figma. Ponto de pausa obrigatório antes de programador-de-site.
+version: "3.1"
+status: ativa
+modelo_padrao: Sonnet 4.6
+atualizado: "2026-04-26"
+pipelines: [A, B, D]
+posicao: etapa-5
+ponto_de_pausa: true
+---
+
 # Skill: Briefing Designer
 
-**Versão:** 3.0
+**Versão:** 3.1
 **Status:** Ativa
 **Especialidade:** Briefing visual acionável, especificação de componentes, responsividade
 **Escopo:** Páginas de site e campanha da Vem Passear em Jampa
@@ -226,6 +238,41 @@ Esta skill alimenta:
 
 ---
 
+## HANDOFF PARA PRÓXIMA SKILL
+
+| Destino | O Que Entrega | Para Quê |
+|---------|--------------|----------|
+| Designer (Figma) | Briefing completo com specs de blocos, responsividade, comportamentos e restrições | Designer executa sem precisar perguntar — briefing é acionável |
+| `programador-de-site` (após Figma) | Especificação de componentes e comportamentos validados | Implementar exatamente o que designer executou |
+
+> **Ponto de pausa obrigatório:** Esta skill aguarda execução e aprovação do Figma por Murillo antes de acionar `programador-de-site`.
+
+---
+
+## CRITÉRIOS DE QUALIDADE
+
+- [ ] Executive summary define objetivo específico, persona e ação esperada?
+- [ ] Todos os blocos da página especificados (nenhum omitido)?
+- [ ] Comportamentos interativos descritos (buttons, accordion, hover)?
+- [ ] 3 layouts de responsividade por bloco (mobile / tablet / desktop)?
+- [ ] Requisitos WCAG AA comunicados (contraste, tap targets, focus)?
+- [ ] Referências visuais incluídas ou marcadas `[REFERÊNCIAS VISUAIS PENDENTES]`?
+- [ ] Restrições explícitas documentadas (sem vídeo, sem animações pesadas)?
+- [ ] Designer consegue executar lendo uma vez, sem perguntas?
+
+---
+
+## LIMITES DA SKILL
+
+- Não executa design — define intenção e especificação, designer executa em Figma
+- Não escreve copy — usa exatamente o que `copywriter-vendas` entregou
+- Não define otimizações de SEO — usa o que `seo-local-turismo` entregou
+- Não aciona `programador-de-site` sem Figma aprovado por Murillo
+- Não gera briefing sem copy aprovada + wireframe UX — bloqueia se falta qualquer dos dois
+- Não impõe escolhas visuais finais ao designer — briefing comunica intenção
+
+---
+
 ## COMPATIBILIDADE COM ORQUESTRADOR
 
 | Propriedade | Valor |
@@ -240,4 +287,4 @@ Esta skill alimenta:
 
 ---
 
-*Skill v3.0 | Atualizado 2026-04-25 | Adicionado INPUT/OUTPUT/COMPATIBILIDADE padronizados*
+*Skill v3.1 | Atualizado 2026-04-26 | Adicionado HANDOFF, CRITÉRIOS DE QUALIDADE e LIMITES para interoperabilidade com orquestrador*

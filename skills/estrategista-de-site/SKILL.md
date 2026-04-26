@@ -1,6 +1,17 @@
+---
+name: estrategista-de-site
+description: Define arquitetura do site, hierarquia de URLs, jornadas de conversão e CRO. Ponto de partida obrigatório antes de qualquer skill de conteúdo.
+version: "3.1"
+status: ativa
+modelo_padrao: Sonnet 4.6
+atualizado: "2026-04-26"
+pipelines: [A, B]
+posicao: etapa-1
+---
+
 # Skill: Estrategista de Site
 
-**Versão:** 3.0
+**Versão:** 3.1
 **Status:** Ativa
 **Especialidade:** Arquitetura de site, jornadas de conversão, CRO, navegação
 **Escopo:** Site da Vem Passear em Jampa
@@ -199,6 +210,39 @@ Esta skill alimenta diretamente:
 
 ---
 
+## HANDOFF PARA PRÓXIMA SKILL
+
+| Destino | O Que Entrega | Para Quê |
+|---------|--------------|----------|
+| `copywriter-vendas` | Estrutura de página, persona, jornada de conversão por página | Escrever copy alinhada ao objetivo de cada bloco |
+| `ux-ui-mobile-first` | Hierarquia de blocos, posição de CTAs, requisitos mobile | Criar wireframe a partir da estrutura aprovada |
+| `seo-local-turismo` | URLs aprovadas, arquitetura de links internos | Otimizar headings e navegação SEO sem inventar URLs |
+
+---
+
+## CRITÉRIOS DE QUALIDADE
+
+- [ ] Árvore de URLs inclui home, categorias e todos os passeios de `passeios.md`?
+- [ ] Cada slug é legível, sem acentos ou espaços?
+- [ ] Jornada de conversão mapeada com máximo 3 cliques até WhatsApp?
+- [ ] CRO especifica posição de preço, CTA e prova de confiança em cada página?
+- [ ] Estrutura de navegação mobile definida (menu hambúrguer, breadcrumb, sticky CTA)?
+- [ ] Matriz de links internos especificada (quem aponta para quem)?
+- [ ] Dados vieram de `clusters-seo.md` e `passeios.md` (não inventados)?
+
+---
+
+## LIMITES DA SKILL
+
+- Não escreve copy — define estrutura e posição de blocos, não o texto
+- Não cria wireframe visual — entrega blocos lógicos em markdown
+- Não decide keyword primária — define URLs, `seo-local-turismo` cuida do SEO
+- Não executa código — entrega documento de estratégia
+- Não inventa slugs de URL sem consultar `clusters-seo.md`
+- Não define paleta, tipografia ou visual — escopo é arquitetura e conversão
+
+---
+
 ## COMPATIBILIDADE COM ORQUESTRADOR
 
 | Propriedade | Valor |
@@ -212,4 +256,4 @@ Esta skill alimenta diretamente:
 
 ---
 
-*Skill v3.0 | Atualizado 2026-04-25 | Adicionado INPUT/OUTPUT/COMPATIBILIDADE padronizados*
+*Skill v3.1 | Atualizado 2026-04-26 | Adicionado HANDOFF, CRITÉRIOS DE QUALIDADE e LIMITES para interoperabilidade com orquestrador*

@@ -1,6 +1,18 @@
+---
+name: programador-de-site
+description: Implementa páginas em Next.js (App Router, TypeScript, Tailwind) a partir de copy + wireframe + design + SEO aprovados. Última etapa técnica do pipeline de site.
+version: "2.1"
+status: ativa
+modelo_padrao: Sonnet 4.6
+stack: "Next.js 14 | React | TypeScript | Tailwind CSS"
+atualizado: "2026-04-26"
+pipelines: [A, B, C]
+posicao: etapa-final
+---
+
 # Skill: Programador de Site
 
-**Versão:** 2.0
+**Versão:** 2.1
 **Status:** Ativa
 **Especialidade:** Implementação Next.js, componentes React, SEO técnico, performance
 **Escopo:** Site da Vem Passear em Jampa — stack Next.js (App Router, TypeScript, Tailwind)
@@ -277,6 +289,43 @@ Esta skill alimenta:
 
 ---
 
+## HANDOFF PARA PRÓXIMA SKILL
+
+| Destino | O Que Entrega | Para Quê |
+|---------|--------------|----------|
+| DevOps / Murillo | Código Next.js commitado, testado e sem erros | Deploy em produção (Vercel ou similar) |
+| Analytics | Páginas com schema, meta tags e tracking configurados | Monitorar tráfego, conversão e performance |
+
+> **Última etapa técnica:** Nenhuma skill recebe entrega desta. O ciclo técnico encerra aqui.
+
+---
+
+## CRITÉRIOS DE QUALIDADE
+
+- [ ] Copy implementada exatamente como aprovada (nenhuma palavra alterada)?
+- [ ] Página carrega <3s em mobile (Core Web Vitals: LCP <2.5s, CLS <0.1)?
+- [ ] CTA WhatsApp funciona com link correto?
+- [ ] Schema JSON-LD válido (schema.org validator)?
+- [ ] Alt text em todas as imagens?
+- [ ] Buttons ≥44px em mobile?
+- [ ] Contraste ≥4.5:1 em body, ≥7:1 em H1/H2?
+- [ ] Responsivo a partir de 320px?
+- [ ] Sem erros de console (JS ou TypeScript)?
+- [ ] TypeScript sem erros de tipo?
+
+---
+
+## LIMITES DA SKILL
+
+- Não começa sem os 4 insumos obrigatórios (copy + wireframe + design Figma + SEO checklist)
+- Não reescreve copy — copy aprovada é sagrada, implementa exatamente como entregue
+- Não melhora layout sem aprovação de Murillo — implementa o que foi aprovado
+- Não define estratégia, conteúdo ou SEO — apenas implementa
+- Não publica em produção sem aprovação de Murillo
+- Não usa stack diferente de Next.js — não Wix, WordPress ou Webflow
+
+---
+
 ## COMPATIBILIDADE COM ORQUESTRADOR
 
 | Propriedade | Valor |
@@ -290,4 +339,4 @@ Esta skill alimenta:
 
 ---
 
-*Skill v2.0 | Atualizado 2026-04-25 | Adicionado INPUT/OUTPUT/COMPATIBILIDADE padronizados*
+*Skill v2.1 | Atualizado 2026-04-26 | Adicionado HANDOFF, CRITÉRIOS DE QUALIDADE e LIMITES para interoperabilidade com orquestrador*
