@@ -63,7 +63,7 @@ npm run lint         # ESLint
 
 1. Abrir sessão
 2. Ler `_conhecimento/` para fatos comprovados
-3. Identificar e acionar a skill correta
+3. **Objetivo envolve 2+ skills?** → acionar `orquestrador-projeto-turismo` primeiro; ele gera plano para aprovação antes de qualquer execução. **1 skill apenas?** → ir direto à skill.
 4. Produzir entrega com lacunas `[CONFIRMAR COM MURILLO: ...]`
 5. Citar qual arquivo de `_conhecimento/` foi a fonte
 6. Aguardar revisão de Murillo
@@ -88,22 +88,45 @@ npm run lint         # ESLint
 
 ---
 
-## Vault — Skills Disponíveis
+## Vault — Orquestrador e Skills
+
+### Ponto de Entrada: Orquestrador
+
+| Componente | Papel |
+|-----------|-------|
+| `orquestrador-projeto-turismo` | **Camada de decisão central.** Recebe objetivos, seleciona skills necessárias, define ordem (sequencial/paralelo) e devolve **plano para aprovação antes de executar**. Nunca executa entregas — apenas planeja. |
+
+**Regras do orquestrador:**
+- Acionar sempre que o objetivo envolver 2+ skills ou for vago ("criar página", "campanha X")
+- Ir direto à skill apenas quando o objetivo envolve claramente 1 skill ("gera schema FAQ")
+- Consultar `skills/orquestrador-projeto-turismo/SKILL.md` antes de objetivos amplos
+- O orquestrador gera plano → Murillo aprova → skills executam
+
+### Skills Especializadas (10)
+
+**Pipeline de Site:**
 
 | Skill | Responsabilidade | Saída |
 |-------|-----------------|-------|
-| `estrategista-de-site` | Arquitetura, URLs, CRO, jornadas | Árvore de URLs, fluxos, blocos |
+| `estrategista-de-site` | Arquitetura, URLs, CRO, jornadas | Árvore de URLs, fluxos, blocos CRO |
 | `ux-ui-mobile-first` | Wireframe visual, responsividade | Wireframe textual, componentes, breakpoints |
 | `copywriter-vendas` | Copy AIDA que converte | Blocos de copy, FAQ, provas de confiança |
 | `seo-local-turismo` | Busca local, schemas | Keywords, meta tags, JSON-LD |
 | `briefing-designer` | Comunicar ao designer | Specs visuais, componentes, Figma |
 | `programador-de-site` | Implementar em Next.js | Páginas, componentes, SEO técnico |
 
-**Fluxo recomendado:** Estrategista → (UX/UI + Copywriter em paralelo) → SEO → Briefing → Programador
+**Pipeline Social (Pipeline E):**
 
-Cada skill tem SKILL.md próprio em `skills/[nome]/`. Consulte antes de acionar.
+| Skill | Responsabilidade | Saída |
+|-------|-----------------|-------|
+| `radar-concorrentes-social` | Monitorar e analisar concorrentes | Relatório de gaps e oportunidades |
+| `captura-referencias-visuais` | Capturar e organizar referências | Assets em `_social/assets/` com metadados |
+| `diretor-visual-turismo` | Validar padrão visual | Guia visual, paleta aprovada, direção |
+| `social-media-editorial-turismo` | Calendário e pautas Instagram | Calendário editorial, pautas detalhadas |
 
-**Skills de social media (Pipeline E):** `radar-concorrentes-social`, `captura-referencias-visuais`, `diretor-visual-turismo`, `social-media-editorial-turismo`
+Cada skill tem `SKILL.md` próprio em `skills/[nome]/`. Consultar antes de acionar.
+
+**Fluxo típico de site:** Estrategista → (UX/UI + Copywriter em paralelo) → SEO → Briefing → Programador
 
 ---
 
@@ -163,4 +186,4 @@ Atualizar `_memoria/decisoes-estrategicas.md` se uma decisão de conteúdo mudou
 
 ---
 
-*Versão: 2.0 | Atualizado: 2026-04-26 | Fase: 1 (Site e SEO Local)*
+*Versão: 2.1 | Atualizado: 2026-04-26 | Fase: 1 (Site e SEO Local)*
