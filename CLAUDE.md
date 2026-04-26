@@ -1,300 +1,166 @@
-# CLAUDE.md — Cérebro de IA da Vem Passear em Jampa
+# CLAUDE.md
 
-## 1. Identidade e Missão
-
-**O que é este vault:**
-- Memória persistente e estruturada da Vem Passear em Jampa
-- Ferramenta para Murillo (fundador/operador) estruturar conteúdo de site e SEO local
-- Base de conhecimento para geração de rascunhos de páginas, copy, briefings e estratégia digital
-
-**Para quem:**
-- Murillo: operador/proprietário da agência
-- Claude Code: executor/arquiteto de informação
-
-**Escopo de Fase 1:**
-- Estruturar e produzir conteúdo do site (site.com)
-- Pensar UX mobile-first e arquitetura de informação
-- Otimizar SEO local para turismo em João Pessoa
-- Gerar briefings claros para designer
-- Escrever copy de venda que converte
-
-**O que NÃO é:**
-- Não é agente de atendimento com clientes
-- Não é integração com WhatsApp, Instagram ou n8n
-- Não é publicação automática (tudo passa por Murillo)
-- Não é sistema de gestão de reservas ou pagamentos
-- Não é documentação corporativa genérica
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ---
 
----
+## Identidade
 
-> **Modelo central:** `Objetivo → Orquestrador → Pipeline → Skills → Resultado`
-> Toda entrega segue esse fluxo. O orquestrador define o plano antes de qualquer skill ser acionada.
+**O que é este repositório:** Vault de IA da Vem Passear em Jampa — base de conhecimento estruturada para produzir conteúdo de site, copy de venda, SEO local e briefings para designer. Todo conteúdo passa pela revisão de Murillo (fundador) antes de publicar.
 
----
+**O que NÃO é:** integração com WhatsApp/Instagram/n8n, publicação automática, sistema de reservas, atendimento ao cliente.
 
-## 2. Como Operar — Fluxo Padrão
-
-1. **Abrir sessão:** rodar `/abrir-sessao` (lê estado atual e prioridades)
-2. **Ler conhecimento:** consultar `_conhecimento/` para fatos comprovados
-3. **Escolher skill:** identificar qual especialista (arquiteto, copywriter, SEO, etc.) usar
-4. **Consultar template:** carregar molde apropriado de `templates/`
-5. **Produzir rascunho:** gerar entrega com lacunas explícitas (`[CONFIRMAR COM MURILLO]`)
-6. **Citar fonte:** apontar qual arquivo de `_conhecimento/` foi usado
-7. **Aguardar revisão:** Murillo aprova, revisa ou rejeita
-8. **Fechar sessão:** rodar `/fechar-sessao` (atualiza memória)
+**Modelo central:** `Objetivo → Orquestrador → Pipeline → Skills → Resultado`
 
 ---
 
-## 3. Hierarquia de Fontes de Verdade
+## Site — Comandos de Desenvolvimento
 
-**Nível 1 (fixo):** `_conhecimento/` — dados comprovados sobre a empresa, público, concorrentes
-- Só muda com confirmação explícita de Murillo
-- Fonte de verdade para qualquer rascunho
+Todos os comandos rodam dentro de `_site/`:
 
-**Nível 2 (vivo):** `_memoria/` — estado atual, prioridades, decisões, contexto da sessão
-- Atualizada ao final de cada sessão de trabalho
-- Valida estados e informa próximos passos
-
-**Nível 3 (entrega):** `_site/`, `_pipeline/` — rascunhos em andamento e conteúdo validado
-- Em desenvolvimento contínuo
-- Aguardando aprovação de Murillo
+```bash
+cd _site
+npm run dev          # Dev server em http://localhost:3000
+npm run build        # Build de produção
+npm run type-check   # Validação TypeScript (rodar antes de commitar)
+npm run lint         # ESLint
+```
 
 ---
 
-## 4. O Que Pode Fazer
+## Site — Arquitetura
 
-✅ Gerar rascunho estruturado de página, copy ou briefing  
-✅ Perguntar sobre lacunas de conhecimento  
-✅ Propor estrutura de conteúdo e jornadas de conversão  
-✅ Criar arquivo dentro do vault  
-✅ Atualizar `_memoria/` com estado novo  
-✅ Registrar decisão em `_memoria/decisoes.md`  
-✅ Sugerir prioridades baseadas em SEO local ou conversão  
-✅ Indicar quando faltam dados para continuar  
+**Stack:** Next.js 14 (App Router), React 18, TypeScript, Tailwind CSS
+
+**Rota de passeio:** `app/passeios/[categoria]/[slug]/page.tsx` — template único para todos os passeios. Não criar arquivos por passeio.
+
+**Fluxo de dados:** `_conhecimento/` → `data/passeios.ts` → componentes. Dados de passeio **nunca** são hardcoded em componentes.
+
+**Tipos principais (`types/index.ts`):** `SeoMeta`, `Categoria`, `Depoimento`, `InfoCard`, `BreadcrumbItem`
+
+**Interface `Passeio` (`data/passeios.ts`):** campos incluem `id`, `nome`, `categoria`, `slug`, `preco`, `duracao`, `saida`, `rotario` (array de strings), `incluso`, `faq` (`{pergunta, resposta}[]`), `depoimento` (`{texto, autor, avatar?}`). Atenção: o campo é `rotario` (não `roteiro`) — typo do codebase, não corrigir sem testar.
+
+**Utilitários de SEO (`lib/seo.ts`):** `generateMetadata()`, `generateLocalBusinessSchema()`, `generateFAQSchema()`, `generateTouristAttractionSchema()`, `slugify()`, `gerarUrlPasseio()`. O domínio `SITE_URL` e o telefone estão marcados `[CONFIRMAR COM MURILLO]` — não alterar sem confirmação.
+
+**Design tokens (Tailwind):**
+- Primário: `#FF6B35` → `text-primary` / `bg-primary`
+- Secundário: `#004E89` → `text-secondary` / `bg-secondary`
+- Fontes: Inter (body), Lora (headings) via `next/font/google`
+- Mobile-first: `md:` a 768px, `lg:` a 1024px — sempre partir de 320px
+
+**Componentes existentes:** `HeroBlock`, `InfoCard`, `ButtonPrimary`, `FAQAccordion`. Vários blocos na `page.tsx` de passeio ainda são placeholders comentados — ver arquivo para ver o que falta implementar.
+
+**CTA padrão:** toda página termina com CTA para WhatsApp. Nunca usar email como canal único.
 
 ---
 
-## 5. O Que NÃO Pode Fazer
+## Vault — Fluxo de Trabalho (Sessão)
 
-❌ Inventar fato sobre empresa, passeio, preço, parceria, depoimento ou número de clientes  
-❌ Publicar ou carregar nada para site real  
-❌ Atualizar `_conhecimento/` sem aprovação explícita  
-❌ Escrever copy de landing ou página pensando desktop-first (sempre mobile-first)  
-❌ Usar copy genérica de turismo ("paraíso tropical", "cartão postal") — sempre deve ser contexto Vem Passear em Jampa + João Pessoa  
-❌ Fazer design, escolher cores/fontes/logo (responsabilidade do designer)  
-❌ Integrar com APIs externas, WhatsApp, n8n ou Instagram  
-❌ Gerar ata, briefing ou rascunho sem citar fonte de `_conhecimento/`  
-❌ **Gerar conteúdo sobre passeio sem consultar PRIMEIRO `_conhecimento/passeios.md`**  
+```
+/abrir-sessao    # Lê _memoria/ — rodar sempre primeiro
+/fechar-sessao   # Salva estado em _memoria/ — rodar antes de encerrar
+```
+
+1. Abrir sessão
+2. Ler `_conhecimento/` para fatos comprovados
+3. Identificar e acionar a skill correta
+4. Produzir entrega com lacunas `[CONFIRMAR COM MURILLO: ...]`
+5. Citar qual arquivo de `_conhecimento/` foi a fonte
+6. Aguardar revisão de Murillo
+7. Fechar sessão
 
 ---
 
-## 6. Regras de Redação
+## Vault — Hierarquia de Fontes de Verdade
+
+| Nível | Localização | Regra |
+|-------|-------------|-------|
+| 1 — fixo | `_conhecimento/` | Só muda com confirmação explícita de Murillo |
+| 2 — vivo | `_memoria/` | Atualizar ao fim de cada sessão |
+| 3 — entrega | `_site/planejamento/`, `_pipeline/` | Em desenvolvimento, aguardando aprovação |
+
+**Consulta obrigatória antes de qualquer conteúdo de passeio:**
+1. `_conhecimento/passeios.md` → índice e dados de referência
+2. `_conhecimento/catalogo_vempassear_estruturado.md` → preço, roteiro, duração, saída
+3. `_conhecimento/empresa.md` → CNPJ, Cadastur, fatos institucionais
+
+**Campos que NUNCA se inventa:** preço, roteiro/itinerário, duração, ponto de embarque, depoimentos, parcerias.
+
+---
+
+## Vault — Skills Disponíveis
+
+| Skill | Responsabilidade | Saída |
+|-------|-----------------|-------|
+| `estrategista-de-site` | Arquitetura, URLs, CRO, jornadas | Árvore de URLs, fluxos, blocos |
+| `ux-ui-mobile-first` | Wireframe visual, responsividade | Wireframe textual, componentes, breakpoints |
+| `copywriter-vendas` | Copy AIDA que converte | Blocos de copy, FAQ, provas de confiança |
+| `seo-local-turismo` | Busca local, schemas | Keywords, meta tags, JSON-LD |
+| `briefing-designer` | Comunicar ao designer | Specs visuais, componentes, Figma |
+| `programador-de-site` | Implementar em Next.js | Páginas, componentes, SEO técnico |
+
+**Fluxo recomendado:** Estrategista → (UX/UI + Copywriter em paralelo) → SEO → Briefing → Programador
+
+Cada skill tem SKILL.md próprio em `skills/[nome]/`. Consulte antes de acionar.
+
+**Skills de social media (Pipeline E):** `radar-concorrentes-social`, `captura-referencias-visuais`, `diretor-visual-turismo`, `social-media-editorial-turismo`
+
+---
+
+## Regras de Conteúdo
 
 ### Tom e Voz
-
-- **Acolhedor, local, humano** — não corporativo
-- **Nordestino sem caricatura** — autenticidade, sem clichê
-- **Orientador, não vendedor** — a agência ajuda turista a descobrir João Pessoa
-- **Confiança baseada em expertise local** — "a gente conhece cada canto"
-- **Sem urgência falsa** — sem "APROVEITE AGORA", sem oferta fake
+- Acolhedor, local, humano — não corporativo
+- Nordestino sem caricatura — autenticidade sem clichê
+- Orientador, não vendedor — ajuda o turista a decidir
+- Sem urgência falsa ("ÚLTIMAS VAGAS", "só hoje")
 
 ### O Que Evitar
-
 - Clichê turístico: "paraíso tropical", "magia das areias", "cartão postal"
-- Generalist tone: qualquer cópia que poderia colar em Natal, Recife ou Fortaleza
-- Copy genérica de agência: "explore as belezas naturais" sem dizer quais
-- Jargão corporativo: "maximize sua experiência", "solução integrada"
+- Copy genérica: qualquer frase que funcionaria em Natal, Recife ou Fortaleza
 - Promessa vaga: sempre específico (qual praia, qual atividade, qual horário)
 
-### CTA Padrão
-
-- Sempre termina com CTA para WhatsApp
-- Nunca email como único canal
-- Botão/link claro: "Quero saber mais pelo WhatsApp"
-- Frase anterior credibiliza: "Vamos montar o roteiro que você sonha"
-
-### Estrutura de Página
-
-- **H1:** o que o turista vai descobrir (não "Bem-vindo ao")
-- **H2, H3:** organizar por intent (o que fazer, como chegar, por quanto)
-- **Subtítulo/lead:** 1 frase que responde "Por que visitar isso?"
-- **Blocos visuais textuais:** descrição, duração, o que está incluso, FAQ, depoimento, CTA
+### Regras de SEO Local
+- Incluir "João Pessoa" no H1 ou meta description sempre que não estiver no slug
+- H1 único, H2 para seções, H3 para subseções — estrutura semântica clara
+- Meta description com CTA: "Descubra [X] em João Pessoa. Agende seu passeio →"
+- `alt` descritivo em todas as imagens: o que está na cena + contexto local
+- Schemas: `LocalBusiness` + `TouristAttraction` + `FAQPage` (gerados por `lib/seo.ts`)
 
 ---
 
-## 7. Regras de SEO Local
+## Regra Ouro
 
-### Princípios
-
-- **Sempre incluir "João Pessoa"** no H1 ou meta description se não estiver em nome da página
-- **Pensar em intent de turista chegando:** "O que fazer em João Pessoa?", "Passeios de praia em João Pessoa", "Tour cultura urbana JP"
-- **Estrutura semântica clara:** H1 único, H2 para seções, H3 para subsseções
-- **Meta description com CTA:** "Descubra [X] em João Pessoa. Conheça [Y]. Agende seu passeio →"
-- **Atributo alt em todas imagens:** descrever o que está vendo + contexto local
-- **Schema LocalBusiness + Trip:** estruturar endereço, horários, contato
-- **Links internos:** apontar para páginas relacionadas (ex.: "Litoral Sul" aponta para outras praias)
-- **Conteúdo evergreen + sazonal:** roteiros por estação, festas locais, trilhas por clima
-
-### Palavras-Chave Alvo (placeholder)
-
-[CONFIRMAR COM MURILLO: quais são as principais palavras-chave de busca que o público digitador usa em João Pessoa?]
+> **Nunca invente fato sobre empresa, passeio, preço, prazo, parceria ou depoimento.**
+> Se não está em `_conhecimento/` e Murillo não confirmou, marque `[CONFIRMAR COM MURILLO: ...]` e pare.
 
 ---
 
-## 8. Como Abrir e Fechar Sessão
+## Modelos de IA
 
-### Ao Abrir
+| Tarefa | Modelo |
+|--------|--------|
+| Padrão (99% do trabalho) | Sonnet 4.6 |
+| Decisões estratégicas complexas | Opus 4.7 |
+| Tarefas mecânicas triviais | Haiku 4.5 |
 
-```
-/abrir-sessao
-```
-
-Automaticamente:
-1. Lê `_memoria/estado-atual.md`
-2. Lê `_memoria/prioridades.md`
-3. Devolve resumo: "Você retomou X. Prioridades: 1. [Y], 2. [Z]..."
-4. Pergunta: "Quer mudar algo ou começamos?"
-
-### Ao Fechar
-
-```
-/fechar-sessao
-```
-
-Automaticamente:
-1. Pede resumo: "O que você fez hoje?"
-2. Atualiza `_memoria/estado-atual.md`
-3. Pergunta: "Mudaram as prioridades?"
-4. Cria ata em `_sessoes/[data]-sessao.md`
+Stack do site é Next.js — não Wix, WordPress ou Webflow.
 
 ---
 
-## 9. Skills Disponíveis (Especialistas Temáticos)
+## Aprendizado Contínuo
 
-6 skills especializadas, cada uma com responsabilidade clara:
-
-| Skill | Função | Saída |
-|-------|--------|-------|
-| `estrategista-de-site` | Definir arquitetura, jornadas, CRO | Árvore URLs, jornadas, CRO |
-| `ux-ui-mobile-first` | Transformar em wireframe visual | Wireframe textual, responsividade, componentes |
-| `copywriter-vendas` | Escrever copy que converte | Copy completo (AIDA), prova, FAQ |
-| `seo-local-turismo` | Otimizar para busca local | Keywords, meta tags, schema JSON-LD |
-| `briefing-designer` | Comunicar ao designer | Briefing visual com specs + componentes |
-| `programador-de-site` | Implementar em Next.js | Páginas Next.js, componentes, SEO técnico |
-
-**Fluxo recomendado:** Estrategista → (UX/UI + Copywriter) em paralelo → Briefing → Designer → SEO → Programador
-
-Leia `skills/README.md` para detalhes de quando usar cada skill e fluxo completo.
-
----
-
-## 10. Consulta Obrigatória — Catálogo de Passeios
-
-**Regra crítica para qualquer trabalho com passeios:**
-
-Antes de criar copy, página, briefing ou qualquer conteúdo relacionado a passeio, SEMPRE:
-
-1. Abra `_conhecimento/passeios.md` (índice central)
-2. Localize o passeio pelo nome
-3. Extraia dados: nome, categoria, preço, roteiro, duração, saída
-4. Leia detalhes completos em `catalogo_vempassear_estruturado.md`
-5. Use **exatamente** os dados do catálogo (sem inventar)
-
-**Campos que NUNCA se inventa:**
-- Preço
-- Roteiro/itinerário
-- Duração
-- Ponto de saída/embarque
-- Categorias
-- Observações operacionais (maré, restrições, etc.)
-
-`_conhecimento/passeios.md` é a **fonte de verdade única** para qualquer dado de passeio.
-
----
-
-## 10. Arquitetura de Skills (v2.0 — 2026-04-25)
-
-**Skills Ativas:**
-1. Estrategista de Site — define estrutura, URLs, CRO, navegação
-2. UX/UI Mobile-First — wireframe visual, responsividade, componentes
-3. Copywriter Vendas — copy AIDA, prova de confiança, conversão
-4. SEO Local Turismo — keywords, meta tags, schema, links internos
-5. Briefing Designer — comunica visão ao designer
-6. **Programador de Site** ⭐ NOVO — implementa em Next.js (stack oficial)
-
-**Skills Descontinuadas:**
-- ❌ Arquiteto de Conteúdo (consolidada em Estrategista + plano-seo-prioridades.md)
-
-Cada skill tem responsabilidade clara e não sobreposta. Consulte `skills/README.md` e `_memoria/indice-mestre.md` para fluxo completo.
-
----
-
-## 11. Regra Ouro
-
-> **Nunca invente fato sobre empresa, passeio, preço, prazo, parceria ou depoimento.**  
-> Se não está em `_conhecimento/` ou Murillo não confirmou, marca explicitamente como `[CONFIRMAR COM MURILLO: ...]` e aguarda.
-
----
-
-## 12. Política de Uso de Claude Code (Oficial — 2026-04-25)
-
-**Leia completo:** `_memoria/politica-uso-claude-code.md`
-
-### Resumo Executivo
-
-| Configuração | Decisão |
-|--------------|---------|
-| **Modo padrão** | Claude Code CLI |
-| **Modelo padrão** | Sonnet 4.6 (99% das tarefas) |
-| **Quando usar Opus 4.7** | Decisões estratégicas complexas (~1%) |
-| **Quando usar Haiku 4.5** | Tarefas triviais (~5%) |
-| **Pesquisa aberta** | Vault primeiro, depois web (se necessário) |
-| **Stack oficial** | Next.js (React, TypeScript, Tailwind) |
-| **Não é** | Wix, WordPress, Webflow |
-
-### Regra de Ouro — Hierarquia de Consulta
-
-1. Consulte `_conhecimento/` (fonte de verdade)
-2. Consulte `_memoria/` (contexto atual)
-3. Se falta algo → pesquise web
-4. Registre novo aprendizado para futuro
-
-### Implicações Imediatas
-
-- ✅ Usar Sonnet 4.6 como padrão (não trocar de modelo sem motivo)
-- ✅ Implementar tudo em Next.js (não Wix ou outros builders)
-- ✅ Priorizar dados do vault sobre pesquisa web
-- ✅ Documentar todas decisões em `_memoria/`
-
----
-
----
-
-## 13. Aprendizado Contínuo
-
-Após cada execução (página, copy, briefing, skill):
-
-**Registrar em `_conhecimento/`:**
-- O que funcionou (padrão aprovado por Murillo)
-- O que falhou (abordagem rejeitada ou que exigiu retrabalho)
-- Ajustes de pipeline identificados
-
-**Atualizar se necessário:**
-- `_memoria/decisoes-estrategicas.md` — se uma decisão de conteúdo mudou
-- `_memoria/proximos-passos.md` — se surgiu nova prioridade
-- Skills relevantes (`skills/`) — se o fluxo de uma skill precisa de correção
-
-**Formato de registro em `_conhecimento/`:**
+Após cada execução, registrar em `_conhecimento/`:
 
 ```markdown
 ## Aprendizado — [data] — [tema]
 - **Funcionou:** [o que]
 - **Falhou:** [o que e por quê]
-- **Ajuste:** [mudança aplicada ou proposta]
+- **Ajuste:** [mudança proposta]
 ```
+
+Atualizar `_memoria/decisoes-estrategicas.md` se uma decisão de conteúdo mudou. Atualizar `_memoria/proximos-passos.md` se surgiu nova prioridade.
 
 ---
 
-Versão: 1.2 | Criado: 2026-04-25 | Fase: 1 (Site e SEO Local) | NOVA: Aprendizado Contínuo
+*Versão: 2.0 | Atualizado: 2026-04-26 | Fase: 1 (Site e SEO Local)*
