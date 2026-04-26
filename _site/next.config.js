@@ -4,6 +4,8 @@ const nextConfig = {
   images: {
     unoptimized: false,
     formats: ["image/avif", "image/webp"],
+    dangerouslyAllowSVG: true,
+    contentDispositionType: "inline",
   },
   i18n: {
     locales: ["pt-BR"],

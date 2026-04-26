@@ -4,19 +4,20 @@
  * Regra: Dados NUNCA são inventados aqui.
  * Sempre puxa de _conhecimento/catalogo_vempassear_estruturado.md
  * Ao atualizar, manter sincronizado com vault.
- *
- * Estrutura:
- * - id: slug único para URL
- * - nome: nome exato do passeio
- * - categoria: cluster em que está (litoral-sul, urbano, etc)
- * - preco: preço exato de _conhecimento/passeios.md
- * - duracao: duração exata
- * - saida: ponto de saída/embarque
- * - descricao: descrição breve (expandida em página)
- * - rotario: array de passos (vem do catálogo)
- * - incluso: o que está incluído
- * - observacoes: restrições ou notas operacionais
  */
+
+export interface RoteiroStep {
+  emoji: string;
+  titulo: string;
+  texto: string;
+}
+
+export interface Avaliacao {
+  texto: string;
+  autor: string;
+  cidade?: string;
+  data: string;
+}
 
 export interface Passeio {
   id: string;
@@ -28,19 +29,46 @@ export interface Passeio {
   saida: string;
   descricao: string;
   descricaoLonga?: string;
-  rotario?: string[];
+  // SEO
+  h1?: string;
+  metaDescription?: string;
+  // Hero
+  subtituloHero?: string;
+  // Conteúdo
+  lead?: string;
+  descricaoSensorial?: string;
+  rotario?: string[]; // typo do codebase — não corrigir sem testar
+  roteiroNarrativo?: RoteiroStep[];
   incluso?: string[];
+  naoIncluso?: string[];
   observacoes?: string;
-  // Imagens — padrão: /images/passeios/[slug]/
-  coverImage?: string; // ex: "/images/passeios/seixas/capa.webp"
-  gallery?: string[]; // ex: ["/images/passeios/seixas/galeria-01.webp", ...]
-  imagemAlt?: string; // alt text para cover
+  idealPara?: string[];
+  // Imagens
+  coverImage?: string;
+  gallery?: string[];
+  imagemAlt?: string;
+  // FAQ
   requisitos?: string[];
   faq?: Array<{ pergunta: string; resposta: string }>;
+  // Prova social
   depoimento?: {
     texto: string;
     autor: string;
     avatar?: string;
+  };
+  // Avaliações Google Maps (condicional — `temAvaliacoes`)
+  temAvaliacoes?: boolean;
+  avaliacoes?: Avaliacao[];
+  googleMapsUrl?: string;
+  // Experiência 360° (condicional — `tem360`)
+  tem360?: boolean;
+  url360?: string;
+  // Informações práticas
+  informacoesPraticas?: {
+    oqueLevar?: string[];
+    pontoEncontro?: string;
+    pontoEncontroUrl?: string;
+    horario?: string;
   };
 }
 
@@ -48,10 +76,7 @@ export interface Passeio {
  * Array de passeios — FASE 1: 5 passeios prioritários
  *
  * ✅ DADOS REAIS: Extraído de _conhecimento/catalogo_vempassear_estruturado.md
- * Validado em: 2026-04-25
- *
- * Prioridade 1: Seixas, Areia Vermelha, Litoral Sul Clássico, Picãozinho, Pôr do Sol Jacaré
- * Total: 5 passeios em Fase 1 | 29 passeios no catálogo completo
+ * Validado em: 2026-04-26
  */
 export const passeios: Passeio[] = [
   // =========================================
@@ -63,53 +88,150 @@ export const passeios: Passeio[] = [
     categoria: "piscinas-naturais",
     slug: "seixas",
     preco: "R$ 60",
-    duracao: "3h30",
-    saida: "Conforme maré baixa",
+    duracao: "~3h30",
+    saida: "Conforme tábua de marés",
+    // SEO (04-seo-local-turismo.md)
+    h1: "Piscinas Naturais do Seixas, João Pessoa — Snorkel em Água Cristalina",
+    metaDescription:
+      "Conheça as piscinas naturais de Seixas em João Pessoa. Maré baixa, corais e água cristalina. R$ 60 por pessoa. Cadastur ativo. Reserve pelo WhatsApp!",
+    // Conteúdo hero
+    subtituloHero:
+      "No ponto mais oriental das Américas, a maré baixa revela piscinas naturais de coral com água tão clara que parece aquário. Com a gente, você só aproveita.",
     descricao:
       "No ponto mais oriental das Américas. Piscinas naturais de corais com águas cristalinas e mornas. Perfeito para mergulho e snorkel.",
-    descricaoLonga:
-      "Seixas é onde o sol nasce primeiro no continente. Água morna e cristalina, recifes de coral vivos, peixes coloridos. Equipamentos disponíveis: caiaque, toboágua, trampolim. Bar a bordo.",
-    // Imagens (prontas para receber fotos reais)
-    coverImage: "/images/passeios/seixas/capa.webp",
-    gallery: [
-      "/images/passeios/seixas/galeria-01.webp",
-      "/images/passeios/seixas/galeria-02.webp",
+    // Lead (Bloco 5 — copy 02a)
+    lead: "Chegou em João Pessoa e quer ver as piscinas naturais de verdade — não em foto?\n\nSeixas fica no ponto mais a leste das Américas. Quando a maré baixa, corais formam piscinas naturais de água morna e cristalina. Você flutua, vê peixes coloridos passando do lado, e fica achando que está num aquário — mas é a natureza mesmo.\n\nA gente parte de Tambaú em catamarã, checa a maré antes, e cuida de tudo. Você só aproveita.",
+    // Descrição sensorial (Bloco 6 — copy 02a)
+    descricaoSensorial:
+      "Você embarca em Tambaú e em cerca de 15 minutos de catamarã já está sobre as piscinas.\n\nA água é morna — mesmo em inverno — e tão limpa que você enxerga o fundo com facilidade. Peixes coloridos nadam perto, sem pressa, como se não ligassem pra você estar ali.\n\nDá pra flutuar de cara para baixo só olhando o fundo de coral. Dá pra mergulhar (tem snorkel e máscara opcionais). Dá pra nadar, fotografar, ou só ficar parado deixando a maré te embalar.\n\nNo catamarã tem toboágua, caiaque e trampolim para quem quiser agitar. Bar a bordo para quando der sede. A gente vai ficando enquanto a maré deixar — é em torno de 3h30 no total, contando embarque e retorno.",
+    // Roteiro narrativo (Bloco 7 — copy 02a)
+    roteiroNarrativo: [
+      {
+        emoji: "🚢",
+        titulo: "Embarque em Tambaú",
+        texto:
+          "Ponto de encontro na Praia de Tambaú, próximo ao Hotel Tambaú. A localização exata é enviada no voucher após a confirmação da reserva. Horário conforme tábua de marés do dia — a gente confirma com você no WhatsApp na véspera.",
+      },
+      {
+        emoji: "🌊",
+        titulo: "Travessia de catamarã",
+        texto:
+          "Cerca de 15 minutos de barco. Você já vai vendo o mar de João Pessoa de outro ângulo — e o litoral que, de longe, parece uma linha reta, de perto vira falésia, coral e história.",
+      },
+      {
+        emoji: "🐠",
+        titulo: "Nas piscinas naturais de Seixas",
+        texto:
+          "A maré baixou. As piscinas estão abertas. Você entra na água e o coral está ali — vivo, colorido, repleto de vida marinha. Fique o tempo que quiser, explore, fotografe.",
+      },
+      {
+        emoji: "⚡",
+        titulo: "Catamarã é sua base",
+        texto:
+          "Enquanto estiver nas piscinas, o catamarã está ancorado. Toboágua, trampolim e caiaque disponíveis. Bar a bordo para água e bebidas. Banheiro a bordo.",
+      },
+      {
+        emoji: "🚢",
+        titulo: "Retorno para Tambaú",
+        texto:
+          "Quando a maré começa a encher e as piscinas ficam fundas demais, a gente retorna. Total: ~3h30 desde o embarque.",
+      },
     ],
-    rotario: [
-      "Embarque em Tambaú",
-      "Navegação até o recife (25–30 min)",
-      "Banho e mergulho nas piscinas naturais",
-      "Snorkel e exploração dos corais",
-      "Retorno a Tambaú (~3h30 total)",
-    ],
+    // O que está incluso (Bloco 8 — copy 02a)
     incluso: [
-      "Transfer (Tambaú, Cabo Branco, Manaíra, Bessa)",
-      "Catamarã com estrutura (bar, banheiro, som)",
-      "Acesso às piscinas naturais",
-      "Caiaque e trampolim a bordo",
+      "Passeio compartilhado em catamarã",
+      "Toboágua, caiaque e trampolim (uso livre no catamarã)",
+      "Bar e cozinha a bordo",
+      "Banheiro a bordo",
+      "Som com microfone",
+      "Orientação do guia local (Murillo ou equipe)",
+    ],
+    naoIncluso: [
+      "Alimentação (leve lanche e água ou compre a bordo)",
+      "Snorkel e máscara (opcional — consulte no WhatsApp)",
+      "Fotógrafo subaquático (opcional — consulte no WhatsApp)",
+      "Mergulho com cilindro (opcional — consulte no WhatsApp)",
+      "Transfer até Tambaú (consultar disponibilidade)",
     ],
     observacoes:
       "Sujeito à tábua de marés (maré baixa obrigatória). Confirmar disponibilidade antes de reservar.",
     idealPara: ["Mergulho", "Snorkel", "Fotos", "Aventura marinha"],
-    imagemAlt: "Piscinas naturais do Seixas com águas cristalinas",
+    // Imagens — placeholders SVG (fotos reais substituem conforme 05c-mapa-imagens.md)
+    coverImage: "/images/passeios/seixas/hero-01.svg",
+    gallery: [
+      "/images/passeios/seixas/galeria-01.svg",
+      "/images/passeios/seixas/galeria-02.svg",
+      "/images/passeios/seixas/galeria-03.svg",
+      "/images/passeios/seixas/galeria-04.svg",
+      "/images/passeios/seixas/galeria-05.svg",
+      "/images/passeios/seixas/galeria-06.svg",
+    ],
+    imagemAlt:
+      "Piscinas naturais de Seixas com coral e água cristalina durante maré baixa em João Pessoa",
+    // FAQ — 7 perguntas (Bloco 9 — copy 02a + decisões-estrategicas.md)
     faq: [
       {
-        pergunta: "Como é a maré em Seixas?",
+        pergunta: "Nunca mergulhei na vida. Posso fazer este passeio?",
         resposta:
-          "Seixas depende de maré baixa. Confirme a tábua de marés no dia escolhido.",
+          "Sim. As piscinas naturais de Seixas são rasas — você fica de pé em boa parte delas. Não é necessário saber nadar ou mergulhar. Se quiser usar snorkel e máscara, a gente orienta na hora. É mais fácil do que parece.",
       },
       {
-        pergunta: "Posso levar criança?",
-        resposta: "Sim, com acompanhante. Confirme restrições caso tenha menos de 5 anos.",
+        pergunta:
+          "O passeio realmente depende de maré baixa? E se a maré não estiver boa?",
+        resposta:
+          "Sim — e é exatamente isso que torna o passeio especial. Piscinas naturais só aparecem com maré baixa. Antes de confirmar sua data, a gente consulta a tábua de marés de João Pessoa. Se o dia que você quer não tiver maré favorável, avisamos antes e sugerimos outra data — sem custo.",
       },
       {
-        pergunta: "Está incluída alimentação?",
-        resposta: "Não. Bar a bordo oferece bebidas. Recomendamos almoço antes ou lanches.",
+        pergunta: "O que exatamente está incluso nos R$ 60?",
+        resposta:
+          "O valor cobre o passeio compartilhado em catamarã, com uso de toboágua, caiaque, trampolim, bar e banheiro a bordo. Snorkel, máscara, fotógrafo subaquático e mergulho com cilindro são opcionais pagos à parte. Alimentação não está inclusa.",
+      },
+      {
+        pergunta: "De onde a gente sai? E como chego até lá?",
+        resposta:
+          "O embarque é na Praia de Tambaú, próximo ao Hotel Tambaú, em João Pessoa. A localização exata é enviada no voucher após a confirmação da reserva. Se precisar de transfer de hotel até Tambaú, consulte a gente no WhatsApp — verificamos disponibilidade.",
+      },
+      {
+        pergunta: "Quanto tempo dura o passeio no total?",
+        resposta:
+          "Em torno de 3h30, contando embarque, travessia de ida, tempo nas piscinas e retorno. O horário de saída varia conforme a tábua de marés — a gente confirma com você na véspera.",
+      },
+      {
+        pergunta: "Posso levar crianças?",
+        resposta:
+          "Sim! Não há idade mínima para o passeio. Crianças devem estar acompanhadas por um responsável durante toda a atividade.",
+      },
+      {
+        pergunta: "Qual é a política de cancelamento?",
+        resposta:
+          "Em caso de condições climáticas ou maré desfavorável, remarcamos sem custo. Para cancelamentos pelo cliente, consulte nossa política completa no WhatsApp.",
       },
     ],
+    // Depoimento — aguarda texto real de Murillo (decisoes-estrategicas.md #24)
     depoimento: {
-      texto: "As piscinas do Seixas são de outro mundo! Água cristalina, corais lindos, e o atendimento da Vem Passear foi impecável.",
-      autor: "Lucas & Amanda",
+      texto:
+        "[CONFIRMAR COM MURILLO: depoimento real de cliente sobre o passeio de Seixas]",
+      autor: "[CONFIRMAR: nome e cidade do cliente]",
+    },
+    // Avaliações Google Maps — aguarda Murillo (#31 decisoes-estrategicas.md)
+    temAvaliacoes: false,
+    avaliacoes: [],
+    googleMapsUrl: "https://maps.app.goo.gl/Q1Q8BNC5K1k9tiyX7",
+    // Experiência 360° — aguarda link de Murillo (#32 decisoes-estrategicas.md)
+    tem360: false,
+    url360: undefined,
+    // Informações práticas (Bloco 11 — copy 02a)
+    informacoesPraticas: {
+      oqueLevar: [
+        "Roupa de banho (já venha com ela)",
+        "Protetor solar biodegradável (bom para os corais)",
+        "Toalha",
+        "Água ou compre a bordo",
+      ],
+      pontoEncontro:
+        "Praia de Tambaú, próximo ao Hotel Tambaú — João Pessoa, PB. A localização exata é enviada no voucher após a confirmação da reserva.",
+      horario:
+        "Varia conforme a tábua de marés. Confirmamos com você no WhatsApp na véspera.",
     },
   },
 
@@ -128,7 +250,6 @@ export const passeios: Passeio[] = [
       "Um banco de areia que surge na maré baixa com piscinas naturais de água cristalina. O lugar mais instagramável da Paraíba.",
     descricaoLonga:
       "Areia Vermelha é um fenômeno da natureza: um banco de areia que aparece apenas na maré baixa, revelando piscinas naturais com água verde-esmeralda e corais coloridos. É o local mais fotografado e procurado por turistas.",
-    // Imagens (prontas para receber fotos reais)
     coverImage: "/images/passeios/areia-vermelha/capa.webp",
     gallery: [
       "/images/passeios/areia-vermelha/galeria-01.webp",
@@ -169,7 +290,8 @@ export const passeios: Passeio[] = [
       },
     ],
     depoimento: {
-      texto: "Areia Vermelha é mágico! A água é cristalina, o cenário é irreal. As melhores fotos das férias foram lá.",
+      texto:
+        "Areia Vermelha é mágico! A água é cristalina, o cenário é irreal. As melhores fotos das férias foram lá.",
       autor: "Patricia, turista de SP",
     },
   },
@@ -189,7 +311,6 @@ export const passeios: Passeio[] = [
       "Um dia inteiro pelas praias mais encantadoras do litoral sul paraibano: Gramame, Amor, Tambaba e Coqueirinho.",
     descricaoLonga:
       "O clássico absoluto do litoral sul. Você passa por 4 praias diferentes, cada uma com sua personalidade: Gramame com areia branca e águas calmas, Amor com beleza selvagem, Tambaba a única praia naturista oficial do Nordeste, e Coqueirinho para almoço.",
-    // Imagens (prontas para receber fotos reais)
     coverImage: "/images/passeios/litoral-sul-classico/capa.webp",
     gallery: [
       "/images/passeios/litoral-sul-classico/galeria-01.webp",
@@ -228,7 +349,8 @@ export const passeios: Passeio[] = [
       },
     ],
     depoimento: {
-      texto: "O Litoral Sul é perfeito para quem quer conhecer o melhor de João Pessoa em um dia só. Cada praia é única.",
+      texto:
+        "O Litoral Sul é perfeito para quem quer conhecer o melhor de João Pessoa em um dia só. Cada praia é única.",
       autor: "Roberto, turista de Brasília",
     },
   },
@@ -248,7 +370,6 @@ export const passeios: Passeio[] = [
       "A apenas 1.500 metros de Tambaú. Aquário natural a céu aberto com peixes de todas as cores e formações de recife.",
     descricaoLonga:
       "Picãozinho é um dos recifes mais procurados de João Pessoa. Piscinas rasas, mornas e cristalinas, ideais para snorkel. Peixes coloridos, algas, fauna marinha preservada. É como mergulhar em um aquário natural.",
-    // Imagens (prontas para receber fotos reais)
     coverImage: "/images/passeios/picaozinho/capa.webp",
     gallery: ["/images/passeios/picaozinho/galeria-01.webp"],
     rotario: [
@@ -280,7 +401,8 @@ export const passeios: Passeio[] = [
       },
       {
         pergunta: "Preciso saber nadar?",
-        resposta: "Não obrigatório. Água é rasa (até 2m em alguns pontos). Coletes disponíveis.",
+        resposta:
+          "Não obrigatório. Água é rasa (até 2m em alguns pontos). Coletes disponíveis.",
       },
     ],
   },
@@ -300,7 +422,6 @@ export const passeios: Passeio[] = [
       "Navegação pelo Rio Paraíba com apresentação ao vivo do Bolero de Ravel. Experiência única que existe há mais de 20 anos.",
     descricaoLonga:
       "O pôr do sol do Jacaré é uma parada obrigatória em João Pessoa. Navegação pelo Rio Paraíba ao som de músicas ao vivo (Bolero de Ravel ao sax), dança de forró, violino. Uma experiência única no mundo.",
-    // Imagens (prontas para receber fotos reais)
     coverImage: "/images/passeios/por-do-sol-jacare/capa.webp",
     gallery: ["/images/passeios/por-do-sol-jacare/galeria-01.webp"],
     rotario: [
@@ -338,15 +459,12 @@ export const passeios: Passeio[] = [
       },
     ],
     depoimento: {
-      texto: "O pôr do sol do Jacaré é mágico. A música, o Rio, o atardecer... foi a noite mais especial da nossa viagem!",
+      texto:
+        "O pôr do sol do Jacaré é mágico. A música, o Rio, o atardecer... foi a noite mais especial da nossa viagem!",
       autor: "Marina & João, casal",
     },
   },
 ];
-
-/**
- * Funções auxiliares para buscar dados
- */
 
 export function getPasseioBySlug(slug: string): Passeio | undefined {
   return passeios.find((p) => p.slug === slug);

@@ -148,8 +148,8 @@ export default function SobrePage() {
       <section className="section-padding bg-light">
         <div className="container-safe max-w-2xl text-center">
           <p className="text-lg italic mb-4">
-            "Murillo não foi um guia turístico comum. Ele foi um amigo que nos mostrou
-            João Pessoa com paixão. Voltamos apaixonados pela cidade — e por Murillo!"
+            &ldquo;Murillo não foi um guia turístico comum. Ele foi um amigo que nos mostrou
+            João Pessoa com paixão. Voltamos apaixonados pela cidade — e por Murillo!&rdquo;
           </p>
           <p className="font-semibold">— Carla & Rafael, Brasil</p>
         </div>

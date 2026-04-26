@@ -49,6 +49,7 @@ export function PasseioImage({
           className="w-full bg-light flex items-center justify-center"
           style={{ aspectRatio: `${width} / ${height}` }}
         >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={imageSrc}
             alt={alt}

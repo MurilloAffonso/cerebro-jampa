@@ -151,9 +151,9 @@ export default function Home() {
       <section className="section-padding bg-light">
         <div className="container-safe max-w-2xl text-center">
           <p className="text-lg italic mb-6 text-gray-700">
-            "Não conhecíamos nada de João Pessoa e Murillo nos guiou para os
+            &ldquo;Não conhecíamos nada de João Pessoa e Murillo nos guiou para os
             melhores passeios. Voltamos apaixonados pela cidade! Você ganhou
-            clientes para a vida."
+            clientes para a vida.&rdquo;
           </p>
           <p className="font-semibold text-dark">— Marina & Carlos, Casal (SP)</p>
           <p className="text-sm text-gray-600 mt-2">Após Litoral Sul + Piscinas Naturais</p>

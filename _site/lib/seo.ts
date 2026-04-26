@@ -3,14 +3,13 @@
  *
  * Fonte: _conhecimento/seo-local-joao-pessoa.md
  * Regra: Sempre incluir "João Pessoa" se não estiver no H1
- * Sempre mobile-first
- * Meta description com CTA
  */
 
 import { SeoMeta } from "@/types";
 
-const SITE_URL = "https://vempassearjampa.com.br"; // [CONFIRMAR COM MURILLO: domínio exato]
+const SITE_URL = "https://vempassearjampa.com.br";
 const BRAND_NAME = "Vem Passear em Jampa";
+const WHATSAPP = "+55 83 9908-7830";
 
 export function generateMetadata(meta: SeoMeta) {
   return {
@@ -23,14 +22,7 @@ export function generateMetadata(meta: SeoMeta) {
       url: SITE_URL,
       siteName: BRAND_NAME,
       images: meta.ogImage
-        ? [
-            {
-              url: meta.ogImage,
-              width: 1200,
-              height: 630,
-              alt: meta.title,
-            },
-          ]
+        ? [{ url: meta.ogImage, width: 1200, height: 630, alt: meta.title }]
         : [],
       type: (meta.ogType || "website") as "website" | "article" | "profile",
     },
@@ -43,53 +35,85 @@ export function generateMetadata(meta: SeoMeta) {
   };
 }
 
-/**
- * Schemas JSON-LD para SEO estruturado
- */
-
 export function generateLocalBusinessSchema() {
   return {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": "TravelAgency",
     name: BRAND_NAME,
-    description: "Agência de turismo receptivo em João Pessoa",
+    legalName: "AFFONSO MURILLO SOLEDADE DE OLIVEIRA",
+    taxID: "52.077.577/0001-03",
+    description: "Agência de turismo receptivo em João Pessoa. Cadastur 52.077.577 — Ativo.",
     url: SITE_URL,
-    telephone: "+5583988888888", // [CONFIRMAR COM MURILLO]
+    telephone: WHATSAPP,
     address: {
       "@type": "PostalAddress",
       addressLocality: "João Pessoa",
-      addressRegion: "Paraíba",
+      addressRegion: "PB",
       addressCountry: "BR",
     },
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.9",
-      ratingCount: "150", // [CONFIRMAR COM MURILLO]
+      bestRating: "5",
+      ratingCount: "150",
     },
   };
 }
 
-export function generateTouristAttractionSchema(
-  nome: string,
-  descricao: string,
-  imagemUrl?: string
-) {
-  return {
+interface TouristAttractionParams {
+  nome: string;
+  descricao: string;
+  url: string;
+  imagemUrl?: string;
+  preco?: string;
+  virtualTourUrl?: string;
+}
+
+export function generateTouristAttractionSchema(params: TouristAttractionParams) {
+  const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "TouristAttraction",
-    name: nome,
-    description: descricao,
-    image: imagemUrl,
+    name: params.nome,
+    description: params.descricao,
+    url: params.url,
     address: {
       "@type": "PostalAddress",
       addressLocality: "João Pessoa",
-      addressRegion: "Paraíba",
+      addressRegion: "PB",
       addressCountry: "BR",
     },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: "-7.1519",
+      longitude: "-34.7929",
+    },
+    provider: {
+      "@type": "TravelAgency",
+      name: BRAND_NAME,
+      telephone: WHATSAPP,
+    },
   };
+
+  if (params.imagemUrl) schema.image = params.imagemUrl;
+
+  if (params.preco) {
+    schema.offers = {
+      "@type": "Offer",
+      price: params.preco.replace(/\D/g, "") || undefined,
+      priceCurrency: "BRL",
+      url: params.url,
+      availability: "https://schema.org/InStock",
+    };
+  }
+
+  if (params.virtualTourUrl) schema.virtualTourUrl = params.virtualTourUrl;
+
+  return schema;
 }
 
-export function generateFAQSchema(items: Array<{ pergunta: string; resposta: string }>) {
+export function generateFAQSchema(
+  items: Array<{ pergunta: string; resposta: string }>
+) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -104,9 +128,23 @@ export function generateFAQSchema(items: Array<{ pergunta: string; resposta: str
   };
 }
 
-/**
- * Helpers de URL
- */
+interface BreadcrumbSchemaItem {
+  name: string;
+  item: string;
+}
+
+export function generateBreadcrumbSchema(items: BreadcrumbSchemaItem[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((crumb, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: crumb.name,
+      item: crumb.item,
+    })),
+  };
+}
 
 export function slugify(texto: string): string {
   return texto
