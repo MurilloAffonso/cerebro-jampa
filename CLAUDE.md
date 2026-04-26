@@ -263,4 +263,31 @@ Cada skill tem responsabilidade clara e não sobreposta. Consulte `skills/README
 
 ---
 
-Versão: 1.1 | Criado: 2026-04-25 | Fase: 1 (Site e SEO Local) | NOVA: Política Claude Code
+---
+
+## 13. Aprendizado Contínuo
+
+Após cada execução (página, copy, briefing, skill):
+
+**Registrar em `_conhecimento/`:**
+- O que funcionou (padrão aprovado por Murillo)
+- O que falhou (abordagem rejeitada ou que exigiu retrabalho)
+- Ajustes de pipeline identificados
+
+**Atualizar se necessário:**
+- `_memoria/decisoes-estrategicas.md` — se uma decisão de conteúdo mudou
+- `_memoria/proximos-passos.md` — se surgiu nova prioridade
+- Skills relevantes (`skills/`) — se o fluxo de uma skill precisa de correção
+
+**Formato de registro em `_conhecimento/`:**
+
+```markdown
+## Aprendizado — [data] — [tema]
+- **Funcionou:** [o que]
+- **Falhou:** [o que e por quê]
+- **Ajuste:** [mudança aplicada ou proposta]
+```
+
+---
+
+Versão: 1.2 | Criado: 2026-04-25 | Fase: 1 (Site e SEO Local) | NOVA: Aprendizado Contínuo
