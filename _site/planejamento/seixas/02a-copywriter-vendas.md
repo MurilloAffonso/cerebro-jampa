@@ -156,7 +156,7 @@ No catamarã tem toboágua, caiaque e trampolim para quem quiser agitar. Bar a b
 ### Roteiro
 
 🚢 **Embarque em Tambaú**
-Ponto de encontro na Praia de Tambaú [CONFIRMAR: endereço exato do ponto de encontro]. Horário conforme tábua de marés do dia — a gente confirma com você no WhatsApp na véspera.
+Ponto de encontro na Praia de Tambaú, próximo ao Hotel Tambaú. A localização exata é enviada no voucher após a confirmação da reserva. Horário conforme tábua de marés do dia — a gente confirma com você no WhatsApp na véspera.
 
 🌊 **Travessia de catamarã**
 Cerca de 15 minutos de barco. Você já vai vendo o mar de João Pessoa de outro ângulo — e o litoral que, de longe, parece uma linha reta, de perto vira falésia, coral e história.
@@ -212,17 +212,17 @@ Sim — e é exatamente isso que torna o passeio especial. Piscinas naturais só
 O valor cobre o passeio compartilhado em catamarã, com uso de toboágua, caiaque, trampolim, bar e banheiro a bordo. Snorkel, máscara, fotógrafo subaquático e mergulho com cilindro são opcionais pagos à parte. Alimentação não está inclusa.
 
 **4. De onde a gente sai? E como chego até lá?**
-O embarque é na Praia de Tambaú, em João Pessoa. [CONFIRMAR: endereço exato e ponto de referência do embarque]
-Se precisar de transfer de hotel até Tambaú, consulte a gente no WhatsApp — verificamos disponibilidade.
+O embarque é na Praia de Tambaú, próximo ao Hotel Tambaú, em João Pessoa. A localização exata é enviada no voucher após a confirmação da reserva. Se precisar de transfer de hotel até Tambaú, consulte a gente no WhatsApp — verificamos disponibilidade.
 
 **5. Quanto tempo dura o passeio no total?**
 Em torno de 3h30, contando embarque, travessia de ida, tempo nas piscinas e retorno. O horário de saída varia conforme a tábua de marés — a gente confirma com você na véspera.
 
 **6. Posso levar crianças?**
-[CONFIRMAR COM MURILLO: há idade mínima para piscinas naturais de Seixas? e outras restrições para crianças neste passeio?]
+Sim! Não há idade mínima para o passeio. Crianças devem estar acompanhadas por um responsável durante toda a atividade.
 
 **7. Qual é a política de cancelamento?**
-[CONFIRMAR COM MURILLO: política oficial de cancelamento — prazo, reembolso, renegociação por maré]
+Nossa política de cancelamento está documentada em `_conhecimento/politica-cancelamento-base.md` e será publicada no site. Em caso de condições climáticas ou maré desfavorável, remarcamos sem custo. Para cancelamentos pelo cliente, consulte nossa política completa no WhatsApp.
+[CONFIRMAR COM MURILLO: revisar e aprovar texto final da política antes de publicar]
 
 ---
 
@@ -271,8 +271,9 @@ Ficou com alguma dúvida que não está aqui? Fala com a gente — é rápido.
 
 ### Ponto de Encontro
 
-📍 Praia de Tambaú, João Pessoa — PB
-[CONFIRMAR: referência exata do ponto de encontro e estacionamento próximo]
+📍 Praia de Tambaú, próximo ao Hotel Tambaú — João Pessoa, PB
+A localização exata é enviada no voucher após a confirmação da reserva.
+[CONFIRMAR: estacionamento próximo ao ponto de embarque?]
 
 ### Horário de Saída
 
@@ -346,10 +347,10 @@ A 1.500 metros de Tambaú. Aquário natural a céu aberto com peixes de todas as
 | 1 | Anos de experiência de Murillo em João Pessoa | Bloco 4 (Prova Social) | ⏳ Pendente |
 | 2 | Número exato de avaliações Google | Bloco 4 | ⏳ Pendente |
 | ~~3~~ | ~~Número do WhatsApp~~ | ~~Blocos 11 e 12~~ | ✅ **Confirmado: +55 83 9908-7830** |
-| 4 | Endereço exato do ponto de encontro em Tambaú | Blocos 7 e 9 | ⏳ Pendente |
+| ~~4~~ | ~~Endereço exato do ponto de encontro em Tambaú~~ | ~~Blocos 7 e 9~~ | ✅ **Confirmado: Praia de Tambaú, próximo ao Hotel Tambaú (localização exata no voucher)** |
 | 5 | Depoimento real de cliente sobre Seixas | Bloco 10 | ⏳ Pendente |
-| 6 | Política de cancelamento (prazo, reembolso, maré) | FAQ #7 | ⏳ Pendente |
-| 7 | Idade mínima para crianças em piscinas naturais | FAQ #6 | ⏳ Pendente |
+| 6 | Política de cancelamento (prazo, reembolso, maré) | FAQ #7 | ⏳ Base em `_conhecimento/politica-cancelamento-base.md` — aguarda revisão Murillo |
+| ~~7~~ | ~~Idade mínima para crianças em piscinas naturais~~ | ~~FAQ #6~~ | ✅ **Confirmado: sem idade mínima, crianças acompanhadas por responsável** |
 | 8 | Bar a bordo vende alimentos ou só bebidas? | Bloco 7 | ⏳ Pendente |
 | 9 | Recomendação específica de protetor solar (mineral)? | Bloco 11 | ⏳ Pendente |
 | 10 | Foto real de qualidade de Seixas para hero | Bloco 1 | ⏳ Pendente |
@@ -394,6 +395,6 @@ Esta copy define a ordem e hierarquia dos blocos. Sequência final aprovada por 
 
 ---
 
-*Copy v1.2 — decisões de Murillo aplicadas | Etapa 2a pronta para Etapa 3 | 2026-04-26*
-*Aplicado: Lead movido para posição 5 (após Por Que Confiar). WhatsApp +55 83 9908-7830 confirmado.*
-*Aguardando: avaliações Google, anos de experiência Murillo, endereço embarque, depoimento real, foto hero, crianças, cancelamento, bar a bordo.*
+*Copy v3.2 — decisões de Murillo aplicadas | Etapa 2a pronta para Etapa 3 | 2026-04-26*
+*Aplicado: Lead posição 5, WhatsApp +55 83 9908-7830, embarque Praia de Tambaú/Hotel Tambaú, sem idade mínima, política cancelamento base criada.*
+*Aguardando: avaliações Google, anos de experiência Murillo, depoimento real, foto hero, aprovação política cancelamento, bar a bordo (alimentos?), estacionamento Tambaú.*

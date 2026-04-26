@@ -186,4 +186,28 @@
 
 ---
 
+## Decisões de Dados Operacionais — Seixas (2026-04-26, Sessão 2)
+
+### 27. Ponto de Embarque — Confirmado (Murillo)
+**Decisão:** Passeio Seixas (e demais saídas de Tambaú): embarque na **Praia de Tambaú, próximo ao Hotel Tambaú**. Localização exata enviada no voucher após confirmação da reserva.
+**Por quê:** Dado operacional crítico confirmado por Murillo — substitui todos os `[CONFIRMAR: endereço exato de embarque]`.
+**Implementação:** Aplicado em 02a (FAQ P4, Bloco 7, Bloco 11), 02b (S2), 04 (FAQ schema), 05 (Roteiro I3, Lacunas). Usar este dado para todos os passeios que embarcam em Tambaú (Penha, Picãozinho, Areia Vermelha a confirmar individualmente).
+
+### 28. Idade Mínima — Confirmada (Murillo)
+**Decisão:** **Não há idade mínima** para o passeio de Seixas. Crianças devem estar acompanhadas por um responsável durante toda a atividade.
+**Por quê:** Dado operacional confirmado — substitui `[CONFIRMAR COM MURILLO: há idade mínima?]`.
+**Implementação:** Aplicado em 02a (FAQ P6), 04 (FAQ schema P6 — ✅ pronta), 05 (FAQ P6 — ✅ copy aprovada). Verificar se regra se aplica igualmente a Penha, Picãozinho e Areia Vermelha (confirmar com Murillo para cada passeio).
+
+### 29. Política de Cancelamento — Base Criada (Pendente Aprovação)
+**Decisão:** Política de cancelamento documentada em `_conhecimento/politica-cancelamento-base.md` como base estruturada. **Texto final aguarda revisão e aprovação de Murillo antes de publicar no site.**
+**Por quê:** Murillo enviou documento base; conteúdo precisa ser adaptado para Vem Passear em Jampa e aprovado formalmente antes de exibir ao público.
+**Implementação:** FAQ P7 de Seixas usa placeholder: `"Nossa política de cancelamento está sendo publicada. Fale com a gente no WhatsApp."` — substituir por texto aprovado. Alerta jurídico: política não deve ser publicada sem aprovação explícita de Murillo.
+
+### 30. Política de Privacidade — Base Criada (Pendente Aprovação)
+**Decisão:** Política de privacidade documentada em `_conhecimento/politica-privacidade-base.md` como base estruturada. **Texto final aguarda revisão e aprovação de Murillo antes de publicar no site.**
+**Por quê:** Murillo enviou documento base de "Paraíba Travel" — requer adaptação para Vem Passear em Jampa (nome, CNPJ 52.077.577/0001-03, dados de contato, canal WhatsApp).
+**Implementação:** Página `/politica-de-privacidade` a criar na Etapa 6. Não publicar até aprovação de Murillo. Alerta jurídico: LGPD exige que política reflita exatamente as práticas reais de coleta de dados.
+
+---
+
 **Última atualização:** 2026-04-26 | Próxima revisão: ao fim de cada fase de implementação

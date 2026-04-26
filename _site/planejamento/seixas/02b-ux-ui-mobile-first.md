@@ -401,8 +401,9 @@ Mobile (320px):
 │  • Água ou compre a bordo            │
 │                                      │
 │  📍 Embarque:                        │
-│  Praia de Tambaú, João Pessoa        │
-│  [endereço — CONFIRMAR]              │
+│  Praia de Tambaú, próximo ao         │
+│  Hotel Tambaú — João Pessoa, PB      │
+│  (localização exata no voucher)      │
 │  [Abrir no Maps] (link externo)      │
 │                                      │
 │  ⏱ Horário: conforme maré           │
@@ -731,6 +732,7 @@ Estilo (mobile):
 | 2 | Contraste do botão WhatsApp verde #25D366 | Pode precisar de variante #1A8A4A para WCAG AA | ⏳ Etapa 3 decide |
 | 3 | Foto real de Seixas para hero | Sem imagem real, placeholder em uso | ⏳ Pendente Murillo |
 | ~~4~~ | ~~Número de WhatsApp~~ | — | ✅ **Confirmado: +55 83 9908-7830** |
+| ~~7~~ | ~~Endereço exato do ponto de embarque~~ | — | ✅ **Confirmado: Praia de Tambaú, próximo ao Hotel Tambaú (localização exata no voucher)** |
 | 5 | FAQ: accordion abre múltiplos ou um por vez? | Decisão de UX — recomendo 1 por vez | ⏳ Etapa 3 decide |
 | 6 | Sidebar CTA flutuante no desktop? | Diretor Visual (Etapa 3) decide | ⏳ Etapa 3 decide |
 
@@ -797,6 +799,6 @@ Dados do passeio entram por `data/passeios.ts` — nunca hardcoded.
 
 ---
 
-*Wireframe v1.2 | decisões de Murillo aplicadas | Etapa 2b pronta para Etapa 3 | 2026-04-26*
-*Aplicado: Lead em I1 (após Por Que Confiar) aprovado. WhatsApp +55 83 9908-7830 confirmado. Conflito resolvido.*
+*Wireframe v1.3 | decisões de Murillo aplicadas | Etapa 2b pronta para Etapa 3 | 2026-04-26*
+*Aplicado: Lead em I1 (após Por Que Confiar) aprovado. WhatsApp +55 83 9908-7830 confirmado. Embarque confirmado: Praia de Tambaú, próximo ao Hotel Tambaú.*
 *Aguardando: Etapa 3 (`diretor-visual-turismo`) para validar padrão visual antes de briefar designer.*

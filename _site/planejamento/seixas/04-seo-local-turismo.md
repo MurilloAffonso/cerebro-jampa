@@ -223,10 +223,10 @@ Cada pergunta do accordion pode ser `<h3>` ou elemento semântico equivalente �
 | 1 | Nunca mergulhei na vida. Posso fazer este passeio? | As piscinas naturais de Seixas são rasas — você fica de pé em boa parte delas. Não é necessário saber nadar ou mergulhar. Se quiser usar snorkel e máscara, a gente orienta na hora. É mais fácil do que parece. | ✅ Pronta para schema |
 | 2 | O passeio realmente depende de maré baixa? E se a maré não estiver boa? | Sim — e é exatamente isso que torna o passeio especial. Piscinas naturais só aparecem com maré baixa. Antes de confirmar sua data, a gente consulta a tábua de marés de João Pessoa. Se o dia que você quer não tiver maré favorável, avisamos antes e sugerimos outra data — sem custo. | ✅ Pronta para schema |
 | 3 | O que exatamente está incluso nos R$ 60? | O valor cobre o passeio compartilhado em catamarã, com uso de toboágua, caiaque, trampolim, bar e banheiro a bordo. Snorkel, máscara, fotógrafo subaquático e mergulho com cilindro são opcionais pagos à parte. Alimentação não está inclusa. | ✅ Pronta para schema |
-| 4 | De onde a gente sai? E como chego até lá? | O embarque é na Praia de Tambaú, em João Pessoa. [CONFIRMAR COM MURILLO: endereço exato e ponto de referência do embarque] Se precisar de transfer de hotel até Tambaú, consulte a gente no WhatsApp — verificamos disponibilidade. | ⏳ Schema parcial — "Praia de Tambaú" disponível; endereço exato aguarda confirmação |
+| 4 | De onde a gente sai? E como chego até lá? | O embarque é na Praia de Tambaú, próximo ao Hotel Tambaú, em João Pessoa. A localização exata é enviada no voucher após a confirmação da reserva. Se precisar de transfer de hotel até Tambaú, consulte a gente no WhatsApp — verificamos disponibilidade. | ✅ Pronta para schema |
 | 5 | Quanto tempo dura o passeio no total? | Em torno de 3h30, contando embarque, travessia de ida, tempo nas piscinas e retorno. O horário de saída varia conforme a tábua de marés — a gente confirma com você na véspera. | ✅ Pronta para schema |
-| 6 | Posso levar crianças? | [CONFIRMAR COM MURILLO: há idade mínima? há restrições para crianças neste passeio?] | ⛔ Bloqueia schema desta pergunta |
-| 7 | Qual é a política de cancelamento? | [CONFIRMAR COM MURILLO: política oficial — prazo, reembolso, renegociação por maré] | ⛔ Bloqueia schema desta pergunta |
+| 6 | Posso levar crianças? | Sim! Não há idade mínima para o passeio. Crianças devem estar acompanhadas por um responsável durante toda a atividade. | ✅ Pronta para schema |
+| 7 | Qual é a política de cancelamento? | Nossa política de cancelamento está disponível no site. Em caso de condições climáticas ou maré desfavorável, remarcamos sem custo. Para cancelamentos pelo cliente, consulte nossa política completa no WhatsApp. | ⏳ Base criada em `_conhecimento/politica-cancelamento-base.md` — aguarda revisão e aprovação de Murillo antes do deploy |
 
 **Estratégia de schema:** Implementar FAQPage com perguntas 1, 2, 3, 5 imediatamente (dados confirmados). Adicionar perguntas 4, 6 e 7 assim que Murillo confirmar. Perguntas 6 e 7 têm alto potencial de featured snippet — priorizá-las na confirmação.
 
@@ -347,20 +347,34 @@ Todos os schemas são gerados via `lib/seo.ts`. Os blocos abaixo são a **especi
     },
     {
       "@type": "Question",
+      "name": "De onde sai o passeio de Seixas e como chegar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O embarque é na Praia de Tambaú, próximo ao Hotel Tambaú, em João Pessoa. A localização exata é enviada no voucher após a confirmação da reserva. Se precisar de transfer de hotel até Tambaú, consulte a gente no WhatsApp — verificamos disponibilidade."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "Quanto tempo dura o passeio de Seixas?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Em torno de 3h30, contando embarque, travessia de ida, tempo nas piscinas e retorno. O horário de saída varia conforme a tábua de marés — a gente confirma com você na véspera."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Posso levar crianças no passeio de Seixas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim! Não há idade mínima para o passeio. Crianças devem estar acompanhadas por um responsável durante toda a atividade."
       }
     }
   ]
 }
 ```
 
-**Perguntas a adicionar quando Murillo confirmar:**
-- Pergunta 4 (endereço exato Tambaú)
-- Pergunta 6 (crianças — idade mínima)
-- Pergunta 7 (política de cancelamento)
+**Pergunta a adicionar quando Murillo aprovar:**
+- Pergunta 7 (política de cancelamento — base criada em `_conhecimento/politica-cancelamento-base.md`)
 
 **Nota:** `generateFAQSchema()` em `lib/seo.ts` já existe e aceita array `{pergunta, resposta}[]` — mapear para o formato correto da interface.
 
@@ -570,17 +584,17 @@ O NAP (Name, Address, Phone) deve ser **idêntico** em 5 lugares:
 | ~~1~~ | ~~Domínio do site (`SITE_URL`)~~ | ~~Todos os schemas e canonical tags~~ | ✅ **Resolvido — `https://vempassearjampa.com.br`** |
 | 2 | Número exato de avaliações Google (ex: "147 avaliações") | LocalBusiness schema + copy rating | ⏳ Schema parcial (4.9/5 disponível) |
 | 3 | Anos de operação de Murillo | Copy Bloco 4 (H3 Murillo) | ⏳ Não bloqueia SEO técnico |
-| 4 | Endereço exato ponto de embarque em Tambaú | FAQ #4 + schema LocalBusiness + NAP | ⛔ NAP inconsistente sem isso |
+| ~~4~~ | ~~Endereço exato ponto de embarque em Tambaú~~ | ~~FAQ #4 + schema LocalBusiness + NAP~~ | ✅ **Confirmado: Praia de Tambaú, próximo ao Hotel Tambaú (localização exata no voucher)** |
 | 5 | Foto hero de Seixas (URL após upload) | OG:image, schema TouristAttraction > image | ⛔ Open Graph sem prévia |
 | 6 | Foto de Murillo (URL após upload) | Schema LocalBusiness > image | ⏳ Schema funciona sem imagem |
-| 7 | Política de cancelamento | FAQ #7 + FAQPage schema | ⛔ Bloqueia FAQ schema completa |
-| 8 | Idade mínima para crianças | FAQ #6 + FAQPage schema | ⛔ Bloqueia FAQ schema completa |
+| 7 | Política de cancelamento | FAQ #7 + FAQPage schema | ⏳ Base criada em `_conhecimento/politica-cancelamento-base.md` — texto final aguarda aprovação Murillo |
+| ~~8~~ | ~~Idade mínima para crianças~~ | ~~FAQ #6 + FAQPage schema~~ | ✅ **Confirmado: sem idade mínima, crianças acompanhadas por responsável** |
 | 9 | Data de validade do preço R$ 60 | Schema TouristAttraction > `priceValidUntil` | ⏳ Schema funciona sem esse campo |
 | 10 | Bar a bordo vende alimentos ou só bebidas? | Bloco 7 copy (não SEO diretamente) | ⏳ Não bloqueia SEO |
 
 **Prioridade de confirmação:**
-1. 🔴 **Crítico antes do deploy:** itens 4 (endereço Tambaú), 7 (cancelamento), 8 (crianças)
-2. 🟠 **Importante antes do deploy:** itens 2 (avaliações), 5 (foto hero)
+1. 🔴 **Crítico antes do deploy:** item 7 (aprovação texto cancelamento) + item 5 (foto hero)
+2. 🟠 **Importante antes do deploy:** item 2 (avaliações)
 3. 🟡 **Pode vir depois:** itens 3, 6, 9, 10
 
 ---
