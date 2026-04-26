@@ -1,150 +1,118 @@
 # Skill: SEO Local Turismo
 
-## 1. Função
+**Versão:** 3.0
+**Status:** Ativa
+**Especialidade:** SEO on-page, meta tags, schema JSON-LD, keywords turismo local
+**Escopo:** Páginas do site vempassearjampa.com — João Pessoa
+**Modelo Padrão:** Sonnet 4.6
+**Atualizado:** 2026-04-25
 
-Otimizar **páginas para turista digitando em Google** enquanto chega em João Pessoa. Aplicar estrutura on-page, meta tags, schema markup, links internos, conteúdo evergreen vs. sazonal com foco em **"João Pessoa" + intent turista local** sem quebrar copy de venda ou experiência.
+---
 
-SEO aqui é ferramenta de conversão, não fim em si. Prioridade: Conversão > Ranking.
+## RESPONSABILIDADE
 
-## 2. Quando Usar
+### O Que Faz
+- Pesquisa palavras-chave por intent de turista (descoberta / consideração / decisão)
+- Audita estrutura on-page (H1, H2s, lead, densidade de keywords)
+- Otimiza H1, meta title, meta description com keywords naturais
+- Gera schema JSON-LD (LocalBusiness, TouristAttraction, FAQPage)
+- Define links internos entre páginas (arquitetura SEO)
+- Especifica alt text para todas as imagens
 
-✅ Página foi aprovada (copy + UX) e precisa otimização SEO técnica  
-✅ Quer validar estrutura de headings, keywords, schema  
-✅ Precisa garantir "João Pessoa" contexto está visível  
-✅ Página tem baixa performance em busca local  
-✅ Antes de publicar no site  
+### O Que NÃO Faz
+- ❌ Escrever copy nova → `copywriter-vendas`
+- ❌ Criar wireframe ou layout → `ux-ui-mobile-first`
+- ❌ Definir arquitetura do site → `estrategista-de-site`
+- ❌ SEO técnico agressivo (canonicals, robots.txt, redirecionamentos em massa) → programador
+- ❌ Quebrar copy de venda para forçar keyword
 
-## 3. Quando NÃO Usar
+### Quando Usar
+- Página aprovada (copy + UX) e precisa otimização antes de publicar
+- Auditoria de página existente com baixo ranking
+- Validar estrutura de headings e schema
 
-❌ Para design visual (use `ux-ui-mobile-first`)  
-❌ Para escrever copy (use `copywriter-vendas`)  
-❌ Para arquitetura de site (use `estrategista-de-site`)  
-❌ Para SEO técnico agressivo (redirecionamentos, canonicals, robots.txt)  
+### Quando NÃO Usar
+- Copy ainda não aprovada (SEO otimiza o que já existe)
+- Objetivo é design ou implementação de código
 
-## 4. Entradas Necessárias
+---
 
-Antes de começar, tenha:
+## INPUT
 
-- **Página em markdown** (copy já aprovado)
-- **Palavra-chave alvo:** Qual turista busca para encontrar isto? (ex: "mergulho Seixas João Pessoa", "praias para crianças")
-- **Intent do turista:** O que ele quer descobrir? (informação, praia específica, como chegar?)
-- **Contexto local:** Que referências de JP devem aparecer? (bairros, ruas, marcos locais)
+| Campo | Obrigatório | Fonte | Descrição |
+|-------|-------------|-------|-----------|
+| objetivo | Sim | Murillo/Orquestrador | Ex: "otimizar SEO da página Seixas" |
+| copy aprovada | Sim | `copywriter-vendas` ou Murillo | Texto final da página em markdown |
+| keyword alvo | Não | `_conhecimento/clusters-seo.md` | Ex: "mergulho Seixas João Pessoa" |
+| intent do turista | Não | contexto | Descoberta / Consideração / Decisão |
+| contexto local | Não | `_conhecimento/seo-local-joao-pessoa.md` | Bairros, marcos, referências de JP |
 
-## 5. Processo
+### Dados do `_conhecimento/` (Obrigatórios Antes de Executar)
 
-### Etapa 1: Pesquisar Palavras-Chave (Intent-Driven)
+| Arquivo | Por Que Consultar |
+|---------|------------------|
+| `seo-local-joao-pessoa.md` | Checklist de SEO local + princípios |
+| `oportunidades-ranqueamento.md` | Keywords específicas com oportunidade |
+| `clusters-seo.md` | Arquitetura de keywords por cluster/categoria |
 
-Não invente keywords. Pense como turista:
+### Fallback se Faltar Dado
+- Se copy não está aprovada → não otimizar (SEO não escreve copy nova)
+- Se keyword alvo não está em `clusters-seo.md` → propor keyword e marcar `[CONFIRMAR COM MURILLO]`
+- Se dados de endereço/telefone faltam para schema → marcar `[CONFIRMAR: endereço, WhatsApp]`
 
-**DESCOBERTA (Fase 1):**
-- "O que fazer em João Pessoa?"
-- "Passeios João Pessoa"
-- "Praias em João Pessoa"
-- "Tours João Pessoa"
+---
 
-**CONSIDERAÇÃO (Fase 2):**
-- "Mergulho Seixas"
-- "Snorkel João Pessoa"
-- "Litoral Sul João Pessoa"
-- "Passeios com crianças João Pessoa"
+## PROCESSO
 
-**DECISÃO (Fase 3):**
-- "Agendar passeio Seixas"
-- "Preço snorkel João Pessoa"
-- "Como chegar Seixas"
+### Etapa 1 — Pesquisar Keywords por Intent
 
-Fonte: `_conhecimento/seo-local-joao-pessoa.md`, `_conhecimento/oportunidades-ranqueamento.md`
+Pensar como turista digitando:
 
-### Etapa 2: Auditar Estrutura On-Page
+**DESCOBERTA:** "O que fazer em João Pessoa?", "Passeios João Pessoa", "Tours João Pessoa"
+**CONSIDERAÇÃO:** "Mergulho Seixas", "Snorkel João Pessoa", "Passeios com crianças João Pessoa"
+**DECISÃO:** "Agendar passeio Seixas", "Preço snorkel João Pessoa", "Como chegar Seixas"
 
-**H1 (Único, obrigatório):**
-- Deve existir só 1
-- Deve ser descritivo
-- Deve incluir palavra-chave primária se natural (não keyword-stuffing)
-- Deve responder "O que é isto?" ou "Por que fazer isto?"
+Fonte: `seo-local-joao-pessoa.md` + `oportunidades-ranqueamento.md`
 
-Exemplos:
+### Etapa 2 — Auditar Estrutura On-Page
 
-❌ "Bem-vindo ao Seixas"  
-✅ "Mergulho em Seixas, João Pessoa: Snorkel em Água Cristalina"
+**H1 (único e obrigatório):**
+- ❌ "Bem-vindo ao Seixas" / ❌ "Litoral"
+- ✅ "Mergulho em Seixas, João Pessoa: Snorkel em Água Cristalina"
+- ✅ "Praias do Litoral Sul em João Pessoa: Seixas, Tambaú, Jacaré"
 
-❌ "Litoral"  
-✅ "Praias do Litoral Sul em João Pessoa: Seixas, Tambaú, Praia do Jacaré"
-
-**H2, H3 (Hierarquia lógica):**
+**H2, H3 (hierarquia lógica):**
 - H2 para seções principais (máx 6)
-- H3 para subsseções
+- H3 para subseções
 - Nenhum pulado (H2 → H3 ok, H2 → H4 ❌)
 
-Exemplo válido:
-```
-H1: Seixas em João Pessoa
-  H2: O Que Fazer em Seixas
-    H3: Snorkel
-    H3: Mergulho
-  H2: Como Chegar
-  H2: Melhor Época
-```
+**Lead (primeiro parágrafo):**
+- Primeira frase responde: "Por que ler isto?"
+- Deve incluir contexto local (João Pessoa, bairro)
 
-**Parágrafo de Abertura (Lead):**
-- Primeira frase deve responder: "Por que ler isto?"
-- Deve incluir contexto local (bairro, João Pessoa)
-- Deve dar pista de como siga
-
-### Etapa 3: Incluir Contexto Local
-
-Turista Google "mergulho João Pessoa". Vê 10 sites. Qual escolhe?
-
-**Aquele que:**
-1. Diz "João Pessoa" no H1 ou lead (não só "mergulho")
-2. Menciona bairro/localização real (Seixas é em Altiplano, perto de...)
-3. Referencia local autêntico (maré baixa em JP é X, acesso é Y)
-4. Não é cópia genérica
-
-**Checklist Local:**
+### Etapa 3 — Verificar Contexto Local
 
 - [ ] "João Pessoa" aparece no H1 ou lead?
-- [ ] Bairro/localização específica mencionada? (ex: "Praia do Seixas, no bairro Altiplano")
-- [ ] Endereço/ponto de referência? (ex: "próximo ao farol de Seixas")
-- [ ] Informação específica de JP (ex: "maré de João Pessoa baixa às 14h, então 14h-17h é melhor")
-- [ ] Nenhuma referência genérica poderia valer para Recife/Natal/Fortaleza?
+- [ ] Bairro/localização específica mencionada?
+- [ ] Informação específica de JP (ex: "maré de JP baixa às 14h")?
+- [ ] Nenhuma referência poderia valer para Recife/Natal/Fortaleza?
 
-### Etapa 4: Meta Tags
+### Etapa 4 — Meta Tags
 
-**Title (50-60 caracteres idealmente):**
-
-Formato: `[Palavra-chave] em João Pessoa | Vem Passear`
-
-Exemplos:
-
-❌ "Seixas"  
+**Title (50-60 chars):** `[Keyword] em João Pessoa | Vem Passear em Jampa`
 ✅ "Mergulho Seixas João Pessoa | Vem Passear em Jampa"
 
-❌ "Passeios"  
-✅ "Passeios em João Pessoa: Praias, Trilhas, Tours | Vem Passear"
+**Meta Description (150-160 chars):** `[O que você faz] em João Pessoa. [Diferencial]. [CTA]`
+✅ "Mergulho em Seixas com snorkel e piscinas naturais. Agua cristalina, guia local. Agende no WhatsApp →"
 
-**Meta Description (150-160 caracteres):**
-
-Deve responder: "Por que clicar nisto?"
-
-Formato: `[O que você faz] em João Pessoa. [Diferencial]. [CTA]`
-
-Exemplo:
-
-❌ "Confira nossos passeios em João Pessoa"  
-✅ "Mergulho em Seixas com snorkel e piscinas naturais. Agua cristalina, guia local. Agende seu passeio no WhatsApp →"
-
-**OG Tags (Compartilhamento Social):**
-
+**OG Tags (compartilhamento social):**
 ```html
 <meta property="og:title" content="Mergulho Seixas — João Pessoa">
-<meta property="og:description" content="Snorkel em água cristalina. Agua tranquila, acessível para todos.">
-<meta property="og:image" content="[URL imagem boa do Seixas]">
+<meta property="og:description" content="Snorkel em água cristalina...">
+<meta property="og:image" content="[URL imagem do passeio]">
 ```
 
-### Etapa 5: Schema Markup (JSON-LD)
-
-Estruture dados para Google entender página. Mínimo:
+### Etapa 5 — Schema Markup (JSON-LD)
 
 **LocalBusiness (Home):**
 ```json
@@ -154,18 +122,14 @@ Estruture dados para Google entender página. Mínimo:
   "name": "Vem Passear em Jampa",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "[endereço]",
     "addressLocality": "João Pessoa",
-    "addressRegion": "PB",
-    "postalCode": "[CEP]"
+    "addressRegion": "PB"
   },
   "telephone": "[WhatsApp]",
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "4.9",
-    "bestRating": "5",
-    "worstRating": "1",
-    "ratingCount": "[n de reviews]"
+    "ratingCount": "[CONFIRMAR]"
   }
 }
 ```
@@ -182,11 +146,10 @@ Estruture dados para Google entender página. Mínimo:
     "addressLocality": "João Pessoa",
     "addressRegion": "PB"
   },
-  "image": "[URL imagem]",
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "4.9",
-    "ratingCount": "[n]"
+    "ratingCount": "[CONFIRMAR]"
   }
 }
 ```
@@ -196,200 +159,103 @@ Estruture dados para Google entender página. Mínimo:
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Preciso saber mergulhar?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Não, a gente ensina do zero..."
-      }
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "Preciso saber mergulhar?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Não, a gente ensina do zero..."
     }
-  ]
+  }]
 }
 ```
 
-### Etapa 6: Links Internos (Arquitetura SEO)
+### Etapa 6 — Links Internos
 
-Toda página deve apontar para outras páginas relacionadas. Exemplo:
-
-**Página Seixas aponta para:**
-- Litoral Sul (categoria volta)
-- Outras praias (Tambaú, Jacaré — similares)
-- Home (breadcrumb)
-- Blog de apoio (ex: "Como chegar Seixas")
-
-**Página Litoral Sul aponta para:**
-- Home
-- Seixas, Tambaú, Jacaré (passeios desta categoria)
-- Outras categorias (Urbano, Trilhas)
-
-**Benefício:** Ajuda Google entender estrutura + melhora UX (turista navega melhor).
-
-### Etapa 7: Revisar Links Internos (SEO Local)
-
-Links internos ajudam turista navegar E ajudam Google entender estrutura local:
-
-**De cada página de passeio, apontar para:**
+Cada página deve apontar para:
 - Categoria pai (volta, breadcrumb)
 - 2-3 passeios similares (mesmo bairro/tipo)
 - Home (navegação)
-- Blog de apoio (se existir)
+- Blog de apoio (quando existir)
 
-**De página categoria, apontar para:**
-- Home
-- Todos passeios da categoria
-- Outras categorias (não obrigatório)
+### Etapa 7 — Alt Text
 
-**De home, apontar para:**
-- Todas categorias
-- Sobre Nós
-- Blog (quando existir)
-
-**Regra:** Links devem fazer sentido para TURISTA (não keyword optimization). Se é link natural, Google vê como votação de relevância.
-
-### Etapa 8: Alt Text em Imagens
-
-**Toda imagem precisa de alt text descritivo:**
-
-❌ "imagem.jpg"  
-❌ "Seixas"  
+❌ "imagem.jpg" / ❌ "Seixas"
 ✅ "Praia do Seixas com piscina natural ao entardecer"
+✅ "Cliente mergulhando em água cristalina com peixe colorido próximo"
 
-❌ "foto cliente"  
-✅ "Cliente mergulhando em água cristalina, com peixe colorido próximo"
+### Etapa 8 — Validar Contra Fontes
 
-Benefício: Acessibilidade + SEO (Google entende contexto).
-
-### Etapa 9: Validar Contra Fonte de Verdade
-
-Antes de finalizar:
-
-- [ ] Checou `seo-local-joao-pessoa.md`? (princípios gerais)
-- [ ] Checou `oportunidades-ranqueamento.md`? (keywords específicas)
-- [ ] Checou `clusters-seo.md`? (arquitetura de keywords)
-- [ ] H1 é único e descritivo?
-- [ ] "João Pessoa" aparece naturalmente?
-- [ ] Schema está correto (JSON valid)?
-- [ ] Links internos fazem sentido?
-
-## 6. Regras Específicas
-
-- **Conversão > Ranking:** Nunca quebre copy de venda para forçar keyword. Se "mergulho em Seixas" vende bem, ótimo; se "snorkel" converte mais, use "snorkel"
-- **"João Pessoa" sempre presente:** Turista busca local, mostrar local
-- **Keywords naturais:** Sem keyword-stuffing (repetir palavra chave 10x faz ranquear pior)
-- **Schema é obrigatório:** Google precisa entender: isto é negócio? Atração? Passeio?
-- **Links cruzados ajudam:** Página A aponta B, B aponta A = rede interna = melhor ranking
-- **Alt text descritivo:** Não é SEO hack, é acessibilidade + contexto
-
-## 7. Saída Esperada
-
-Um arquivo markdown com **mínimo** 4 seções:
-
-### Seção 1: Análise de Keywords
-
-```markdown
-## Keywords Alvo
-
-### Primária (Objetivo principal)
-- "Mergulho Seixas João Pessoa"
-- Volume estimado: Alto
-- Intent: Decisão (turista quer agendar)
-- Onde usar: H1, lead, meta title
-
-### Secundárias (Apoio)
-- "Snorkel João Pessoa"
-- "Seixas praia"
-- "Passeios mergulho JP"
-- Onde usar: H2, corpo do texto, alt text
-
-### Long-tail (Específicas)
-- "Como chegar Seixas João Pessoa"
-- "Preço mergulho Seixas"
-- "Mergulho com criança João Pessoa"
-- Onde usar: FAQ, links internos, blog apoio
-```
-
-### Seção 2: Estrutura On-Page Otimizada
-
-```markdown
-## Estrutura Proposta
-
-### H1
-"Mergulho em Seixas, João Pessoa: Snorkel em Água Cristalina"
-
-### Lead
-"Se você chegou em JP e quer snorkel — Seixas é o melhor lugar. Agua cristalina, piscinas naturais, fácil de acessar. Vem Passear cuida de tudo, você só aproveita."
-
-### H2
-"O Que Você Vai Fazer em Seixas"
-
-### H2
-"Como Chegar e Melhor Época"
-
-### H2
-"Dúvidas Frequentes (FAQ)"
-
-### Meta Title
-"Mergulho Seixas João Pessoa | Vem Passear em Jampa"
-
-### Meta Description
-"Snorkel em agua cristalina em Seixas. Piscinas naturais, guia local, fotos incluídas. Agende no WhatsApp →"
-```
-
-### Seção 3: Schema Markup
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "TouristAttraction",
-  "name": "Mergulho Seixas",
-  "description": "[Descrição]",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "João Pessoa"
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "ratingCount": "150"
-  }
-}
-```
-
-### Seção 4: Links Internos + Alt Text
-
-```markdown
-## Links Internos
-
-Esta página aponta para:
-- [Litoral Sul](#) (categoria volta)
-- [Tambaú](#) (praia similar)
-- [Jacaré](#) (praia similar)
-- [Home](#) (breadcrumb)
-- [Blog: Como Chegar Seixas](#) (apoio)
-
-## Alt Text Proposto
-
-- Hero: "Praia do Seixas ao entardecer com piscina natural e farol ao fundo"
-- Imagem 2: "Turista mergulhando com snorkel, vendo peixes coloridos"
-- Depoimento: "Cliente sorrindo em agua com snorkel"
-```
-
-**Tamanho esperado:** 2-3 páginas markdown (análise + estrutura + schema + links).
-
-## 8. Critério de Qualidade
-
-✅ **Bom SEO Local:** H1 específico + João Pessoa presente + schema correto + links internos fazem sentido + keywords naturais + copy não foi quebrada  
-❌ **Ruim:** Keywords stuffed, "João Pessoa" esquecido, schema genérico/errado, links aleatórios, copy lê como robô  
-
-## 9. Próximas Skills na Cadeia
-
-Depois disso:
-
-1. **`programador-de-site`:** Implementa estrutura, schema, meta tags, alt text em Next.js
-2. **Google:** Indexa página, rankeia conforme qualidade + autoridade
+- [ ] `seo-local-joao-pessoa.md` checado?
+- [ ] `oportunidades-ranqueamento.md` checado?
+- [ ] `clusters-seo.md` checado?
+- [ ] Schema é JSON válido?
+- [ ] Links internos fazem sentido para o turista?
 
 ---
 
-*Skill v2.0 | Refinada 2026-04-25 | Fase SEO Local + Turismo*
+## REGRAS
+
+- **Conversão > Ranking:** Nunca quebrar copy para forçar keyword
+- **"João Pessoa" sempre presente:** Turista busca local
+- **Keywords naturais:** Sem keyword-stuffing
+- **Schema obrigatório:** Google precisa entender: negócio, atração ou passeio?
+- **Links cruzados ajudam:** Rede interna = melhor ranking
+- **Alt text = acessibilidade + SEO:** Não é hack, é necessidade
+
+---
+
+## OUTPUT
+
+### Resultado Estruturado
+
+Documento markdown com 4 seções:
+
+**1. Análise de Keywords**
+```
+Primária: "Mergulho Seixas João Pessoa" — Decisão — usar em H1, meta title
+Secundárias: "Snorkel João Pessoa", "Seixas praia" — H2, corpo
+Long-tail: "Como chegar Seixas", "Preço mergulho Seixas" — FAQ, blog
+```
+
+**2. Estrutura On-Page Otimizada**
+```
+H1: "Mergulho em Seixas, João Pessoa: Snorkel em Água Cristalina"
+Meta Title: "Mergulho Seixas João Pessoa | Vem Passear em Jampa"
+Meta Description: "Snorkel em agua cristalina em Seixas. Piscinas naturais, guia local. Agende no WhatsApp →"
+```
+
+**3. Schema Markup (JSON-LD)**
+Schema completo e válido para o tipo de página
+
+**4. Links Internos + Alt Text**
+Lista de links que a página deve ter + alt text para cada imagem
+
+### Arquivos Gerados
+
+| Arquivo | Pasta | Quando |
+|---------|-------|--------|
+| `seo-[pagina]-[data].md` | `_pipeline/` | Entrega desta skill |
+
+### Próximos Passos (Handoff)
+
+Esta skill alimenta:
+- `programador-de-site` com: meta tags, schema JSON-LD, alt text, links internos para implementar
+- Google: indexa e rankeia conforme qualidade + autoridade
+
+---
+
+## COMPATIBILIDADE COM ORQUESTRADOR
+
+| Propriedade | Valor |
+|-------------|-------|
+| Pipelines que usam | Pipeline A, B, C (principal), G (custom) |
+| Depende de (skills) | `copywriter-vendas` (copy aprovada) |
+| Depende de (arquivos) | `seo-local-joao-pessoa.md`, `oportunidades-ranqueamento.md`, `clusters-seo.md` |
+| Alimenta (skills) | `programador-de-site` |
+| Pode rodar em paralelo com | `ux-ui-mobile-first` (após copy aprovada) |
+| Posição típica no pipeline | Etapa 4 do Pipeline A / Etapa 2 do Pipeline C |
+
+---
+
+*Skill v3.0 | Atualizado 2026-04-25 | Adicionado INPUT/OUTPUT/COMPATIBILIDADE padronizados*

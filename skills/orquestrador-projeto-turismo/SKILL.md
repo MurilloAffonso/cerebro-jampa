@@ -1,620 +1,732 @@
 # Skill: Orquestrador de Projeto Turismo
 
-**Versão:** 1.0  
-**Status:** Ativa  
-**Especialidade:** Coordenação de fluxo, decisão estratégica, sequenciamento de skills  
-**Escopo:** Todos os projetos de site, conteúdo e social da Vem Passear em Jampa  
-**Modelo Padrão:** Sonnet 4.6 (decisão e planejamento), Opus 4.7 (objetivos complexos ou inéditos)  
-**Data:** 2026-04-25
+**Versão:** 2.0
+**Status:** Ativa
+**Tipo:** Skill de coordenação (não executa entrega — só planeja e decide)
+**Especialidade:** Sequenciamento de skills, decisão de pipeline, validação de dependências
+**Escopo:** Todos os projetos de site, conteúdo e social da Vem Passear em Jampa
+**Modelo Padrão:** Sonnet 4.6 (planejamento), Opus 4.7 (objetivos inéditos ~1%)
+**Atualizado:** 2026-04-25
 
 ---
 
-## 1. Propósito e Responsabilidade
+## 1. IDENTIDADE
 
-A skill `orquestrador-projeto-turismo` é a **camada de decisão central** do sistema.
+### O Que É
 
-Ela não executa tarefas específicas. Ela decide:
+A skill `orquestrador-projeto-turismo` é a **camada de decisão central** do sistema de skills da Vem Passear em Jampa.
 
-- Qual skill usar para cada objetivo
-- Em que ordem executar
-- Quais etapas pular com justificativa
-- Quando uma etapa está concluída para avançar
-- Como traduzir um objetivo vago em passos acionáveis
+Ela recebe um objetivo do Murillo, traduz em um plano de execução estruturado, e devolve esse plano **para aprovação antes de qualquer execução**.
 
-### O Que Não Faz
+### O Que Faz
 
-❌ **Escrever copy** — responsabilidade de `copywriter-vendas`  
-❌ **Fazer wireframe** — responsabilidade de `ux-ui-mobile-first`  
-❌ **Implementar código** — responsabilidade de `programador-de-site`  
-❌ **Fazer SEO** — responsabilidade de `seo-local-turismo`  
-❌ **Criar pauta social** — responsabilidade de `social-media-editorial-turismo`  
-❌ **Executar qualquer entrega de conteúdo** — isso é trabalho das skills especializadas  
-❌ **Chamar todas as skills automaticamente** — só aciona o que o objetivo exige
+- ✅ Interpreta objetivos vagos e os transforma em pipeline acionável
+- ✅ Seleciona quais skills entram no pipeline (não usa todas)
+- ✅ Define ordem correta (sequencial vs paralelo) baseada em dependências
+- ✅ Identifica skills que devem ser puladas (com justificativa)
+- ✅ Verifica disponibilidade de dados em `_conhecimento/` antes de planejar
+- ✅ Sinaliza lacunas de informação como `[CONFIRMAR COM MURILLO: ...]`
+- ✅ Gera **PLANO DE EXECUÇÃO** padronizado para aprovação
 
----
+### O Que NÃO Faz
 
-## 2. Inventário de Skills Disponíveis
+- ❌ **Não executa entregas** — não escreve copy, wireframe, código, SEO ou pauta social
+- ❌ **Não aciona skills automaticamente** — só descreve o plano e aguarda aprovação
+- ❌ **Não pula validação de dados** — verifica `_conhecimento/` antes de propor pipeline
+- ❌ **Não inventa skills** — só usa as 10 ativas listadas no inventário
+- ❌ **Não decide design, código ou copy** — delega para skills especializadas
+- ❌ **Não duplica trabalho** — se já há plano aprovado em andamento, não é chamado novamente
 
-O orquestrador conhece e coordena **10 skills ativas**:
+### Princípios Invioláveis
 
-### Skills de Site
-
-| #   | Skill                    | Função Central                                              | Quando Usar                                           |
-| --- | ------------------------ | ----------------------------------------------------------- | ----------------------------------------------------- |
-| 1   | `estrategista-de-site`   | Define URLs, jornada, CRO, navegação                        | Quando criar estrutura nova ou rever arquitetura      |
-| 2   | `ux-ui-mobile-first`     | Wireframe textual, responsividade, componentes              | Quando layout da página precisa ser definido          |
-| 3   | `copywriter-vendas`      | Copy AIDA, headline, FAQ, CTA                               | Quando texto de página ou landing precisa ser escrito |
-| 4   | `seo-local-turismo`      | Keywords, meta tags, schema JSON-LD, links internos         | Quando página precisa ranquear no Google              |
-| 5   | `briefing-designer`      | Comunica visão ao designer (wireframe + specs + restrições) | Quando o designer precisa executar o visual           |
-| 6   | `programador-de-site`    | Implementa em Next.js (TypeScript + Tailwind + Schema)      | Quando há copy + UX + design prontos para código      |
-| 7   | `diretor-visual-turismo` | Direção visual, padrões, crítica, checklist de qualidade    | Quando precisa validar ou definir padrão visual       |
-
-### Skills de Social Media
-
-| # | Skill | Função Central | Quando Usar |
-|---|-------|----------------|-------------|
-| 8 | `radar-concorrentes-social` | Pesquisa concorrentes, tendências, gaps no Instagram | Antes de criar qualquer conteúdo novo ou campanha |
-| 9 | `captura-referencias-visuais` | Captura, organiza e contextualiza assets visuais | Quando há referências visuais para guardar ou buscar |
-| 10 | `social-media-editorial-turismo` | Calendário editorial, pautas de stories/reels/carrosséis | Quando precisa de conteúdo para Instagram |
-
-**Documentação completa:** `skills/README.md`
+1. **Plano antes de execução** — sempre devolve plano para aprovação primeiro
+2. **Verificação de dados primeiro** — antes de propor skill de conteúdo, confirma que `_conhecimento/` tem o necessário
+3. **Mínimo viável de skills** — usa apenas o que o objetivo exige
+4. **Justificativa para tudo** — cada inclusão e cada pulo tem motivo explícito
+5. **Lacunas explícitas** — nunca preenche silenciosamente; marca `[CONFIRMAR]`
 
 ---
 
-## 3. Fluxo Completo do Projeto (Pipeline Máximo)
+## 2. INPUT
 
-Este é o pipeline de referência quando o objetivo envolve o projeto inteiro — da pesquisa à publicação.
+### Formato Esperado
 
-```
-┌──────────────────────────────────────────────────────────┐
-│ FASE 0 — INTELIGÊNCIA (Antes de Criar Qualquer Coisa)    │
-│                                                          │
-│  1. radar-concorrentes-social                            │
-│     → Pesquisa o que concorrentes fazem, o que falta     │
-│     → Identifica trends e oportunidades                  │
-│                                                          │
-│  2. captura-referencias-visuais                          │
-│     → Captura e organiza referências visuais             │
-│     → Forma biblioteca para o designer e editorial       │
-└────────────────────────┬─────────────────────────────────┘
-                         │
-┌────────────────────────▼─────────────────────────────────┐
-│ FASE 1 — DIREÇÃO VISUAL (Antes de Briefar ou Codificar)  │
-│                                                          │
-│  3. diretor-visual-turismo                               │
-│     → Define padrões visuais, componentes, paleta        │
-│     → Valida direção visual contra conversão e marca     │
-└────────────────────────┬─────────────────────────────────┘
-                         │
-┌────────────────────────▼─────────────────────────────────┐
-│ FASE 2 — PRODUÇÃO DE CONTEÚDO E ESTRUTURA                │
-│                                                          │
-│  4. briefing-designer                                    │
-│     → Traduz visão em briefing executável para designer  │
-│     → Especifica componentes, responsividade, restrições │
-│                                                          │
-│  5. ux-ui-mobile-first                                   │
-│     → Wireframe textual mobile-first                     │
-│     → Define hierarquia, breakpoints, interações         │
-└────────────────────────┬─────────────────────────────────┘
-                         │
-┌────────────────────────▼─────────────────────────────────┐
-│ FASE 3 — IMPLEMENTAÇÃO TÉCNICA                           │
-│                                                          │
-│  6. programador-de-site                                  │
-│     → Implementa em Next.js (copy + UX + design prontos) │
-│     → Cria componentes reutilizáveis, SEO técnico        │
-│                                                          │
-│  7. seo-local-turismo  (slash: /seo-pagina)              │
-│     → Audita e otimiza: H1, meta, schema, links internos │
-│     → Garante página ranqueia para turista em João Pessoa│
-└────────────────────────┬─────────────────────────────────┘
-                         │
-┌────────────────────────▼─────────────────────────────────┐
-│ FASE 4 — AMPLIFICAÇÃO SOCIAL                             │
-│                                                          │
-│  8. social-media-editorial-turismo                       │
-│     → Cria pauta de conteúdo baseada na nova página      │
-│     → Calendário editorial, stories, reels, carrosséis   │
-└──────────────────────────────────────────────────────────┘
+O orquestrador aceita input em qualquer forma natural (Murillo conversa). Internamente, normaliza para esta estrutura:
+
+```yaml
+INPUT:
+  objetivo: <string>            # OBRIGATÓRIO
+  tipo:    <página | campanha | otimização | briefing | inteligência>
+  escopo:  <string>             # opcional
+  prazo:   <data | "sem prazo"> # opcional
+  restricoes:                   # opcional
+    - <string>
+  contexto_dado:                # opcional
+    - <string>                  # info que Murillo já passou
+  saida_esperada:               # opcional
+    - <string>                  # ex: "página publicada", "só plano"
 ```
 
-**Skills extras que podem entrar no pipeline conforme o objetivo:**
+### Campos Obrigatórios
 
-- `estrategista-de-site` → Antes da fase de produção, quando a estrutura da página ou URL ainda não está definida
-- `copywriter-vendas` → Dentro da Fase 2, quando o texto da página precisa ser escrito antes do wireframe
+| Campo | O que é | Exemplo |
+|-------|---------|---------|
+| `objetivo` | Frase clara do que precisa entregar | "criar página do passeio Seixas" |
+
+### Campos Opcionais (mas ajudam)
+
+| Campo | Quando preencher | Exemplo |
+|-------|------------------|---------|
+| `tipo` | Quando o objetivo encaixa em categoria conhecida | `página` |
+| `escopo` | Limita a abrangência | "só copy, sem código" |
+| `prazo` | Há urgência | "antes de 2026-05-15" |
+| `restricoes` | Restrição de skill ou recurso | "sem designer disponível" |
+| `contexto_dado` | Info que Murillo já confirmou | "URL é /litoral-sul/seixas" |
+| `saida_esperada` | Formato final desejado | "página publicada em Next.js" |
+
+### Como Tratar Input Incompleto
+
+Se Murillo passa só o objetivo sem detalhes:
+
+1. **Não inferir silenciosamente** — não assumir prazo, escopo ou tipo sozinho
+2. **Fazer máximo 3 perguntas de clarificação** antes de gerar o plano
+3. **Se respondidas → gerar plano** com base nas respostas
+4. **Se Murillo disser "decida você"** → usar defaults documentados em REGRAS § 4.6
 
 ---
 
-## 4. Lógica de Decisão — Qual Pipeline Usar
+## 3. PROCESSO (Decisão Interna)
 
-### Objetivo: "Criar página de passeio" (ex: Seixas)
+Sequência fixa de 7 passos que o orquestrador executa **antes** de devolver o plano.
 
-```
-PIPELINE RECOMENDADO
-1. estrategista-de-site     → Define URL, CRO, estrutura da página
-2. copywriter-vendas        → Escreve copy (headline, roteiro, FAQ, CTA)
-3. ux-ui-mobile-first       → Wireframe da página mobile-first
-4. diretor-visual-turismo   → Valida composição visual e padrões
-5. briefing-designer        → Briefing completo para designer
-   ↓ Designer executa Figma
-6. seo-local-turismo        → Keywords, meta description, schema
-7. programador-de-site      → Implementa em Next.js
-8. social-media-editorial   → Cria pauta de posts sobre o passeio
-
-SKILLS QUE PULAM: radar, captura (só se já existirem referências)
-SEQUENCIAL OBRIGATÓRIO: estrategista → copy → UX → visual → briefing → SEO → código
-PODE SER PARALELO: copywriter-vendas + ux-ui-mobile-first (após estrategista)
-```
-
-### Objetivo: "Melhorar homepage"
+### Passo 1 — Interpretar Objetivo
 
 ```
-PIPELINE RECOMENDADO
-1. radar-concorrentes-social    → O que concorrentes fazem na home? Gaps?
-2. estrategista-de-site         → Revisar CRO, jornadas, hierarquia de elementos
-3. copywriter-vendas            → Refinar headline, lead, seção de confiança
-4. diretor-visual-turismo       → Valida layout e padrão visual
-5. ux-ui-mobile-first           → Atualiza wireframe com mudanças
-6. programador-de-site          → Implementa alterações
-7. seo-local-turismo            → Revisa H1, meta, links internos
+ENTRADA → "criar página do passeio Seixas"
 
-SKILLS QUE PULAM: captura (se referências já existem), social (se foco é só homepage), briefing (se designer já entende o padrão)
+PERGUNTAS INTERNAS:
+- É página nova ou atualização?       → nova
+- É passeio único ou categoria?       → passeio único
+- Há copy, design ou código prontos?  → nada pronto
+- Envolve social media?               → não declarado → perguntar ou pular
 ```
 
-### Objetivo: "Criar campanha Instagram"
+### Passo 2 — Classificar em Tipo de Objetivo
 
-```
-PIPELINE RECOMENDADO
-1. radar-concorrentes-social          → Trends, o que funciona, o que concorrência faz
-2. captura-referencias-visuais        → Captura referências visuais para o designer
-3. diretor-visual-turismo             → Direção visual da campanha (padrão, componentes)
-4. social-media-editorial-turismo     → Calendário, pautas de stories/reels/carrosséis
+Mapear o objetivo para um dos **6 tipos canônicos** (cada um tem pipeline associado em § 5):
 
-SKILLS QUE PULAM: estrategista, copywriter, ux-ui, briefing, programador, seo
-NOTA: Esta campanha é 100% social — não envolve site
-```
+| Tipo | Sinal | Pipeline |
+|------|-------|----------|
+| Página de Passeio | "criar página do passeio X" | Pipeline A |
+| Página de Categoria | "página da categoria X" (litoral sul, cultural, etc.) | Pipeline B |
+| Otimização SEO | "otimizar SEO de", "melhorar ranking de" | Pipeline C |
+| Briefing Visual | "briefar designer para", "direção visual de" | Pipeline D |
+| Campanha Social | "campanha Instagram", "calendário editorial" | Pipeline E |
+| Inteligência | "pesquisar concorrentes", "capturar referências" | Pipeline F |
 
-### Objetivo: "Otimizar SEO de página existente"
-
-```
-PIPELINE RECOMENDADO
-1. seo-local-turismo        → Audita on-page (H1, meta, schema, links)
-2. copywriter-vendas        → Refina texto se copy está fraco para SEO
-3. programador-de-site      → Implementa melhorias técnicas
-
-SKILLS QUE PULAM: radar, captura, diretor-visual, briefing, ux-ui, social
-NOTA: Foco total em técnica — não muda visual
-```
-
-### Objetivo: "Criar briefing para designer (visual de campanha)"
-
-```
-PIPELINE RECOMENDADO
-1. captura-referencias-visuais    → Reúne referências visuais para o designer
-2. diretor-visual-turismo         → Define direção visual, padrões, restrições
-3. briefing-designer              → Gera briefing completo para execução
-
-SKILLS QUE PULAM: radar, estrategista, copywriter, ux-ui, programador, seo, social
-```
-
----
-
-## 5. Processo de Orquestração
-
-### Passo 1 — Receber Objetivo
-
-Entender exatamente o que Murillo precisa:
-
-```
-ENTRADA: "criar página do passeio Seixas"
-
-TRADUÇÃO EM PERGUNTAS:
-- Página nova ou atualização de existente?
-- Copy já existe ou precisa ser criada do zero?
-- Tem design aprovado ou ainda não?
-- Há urgência de prazo?
-- Vai criar conteúdo social junto?
-```
-
-### Passo 2 — Identificar o Pipeline
-
-Baseado no objetivo, decidir:
-
-```
-1. Quais skills são necessárias? (não necessariamente todas as 10)
-2. Qual é a ordem correta? (algumas são sequenciais, outras paralelas)
-3. Quais podem ser puladas? (com justificativa)
-4. Qual é o ponto de partida? (qual skill inicia agora?)
-```
+Se o objetivo não encaixa em nenhum → **Pipeline G (Custom)** (ver § 5.7).
 
 ### Passo 3 — Verificar Contexto Disponível
 
-Antes de iniciar, verificar:
+Antes de propor pipeline, validar dados obrigatórios em `_conhecimento/`:
 
 ```
-VERIFICAÇÃO DE CONTEXTO
-- Dados do passeio existem? → `_conhecimento/passeios.md` [OBRIGATÓRIO]
-- Tom de voz definido? → `_conhecimento/tom-de-voz.md` [OBRIGATÓRIO]
-- Decisões estratégicas relevantes? → `_memoria/decisoes-estrategicas.md`
-- Estrutura de site definida? → `_conhecimento/estrutura-site-recomendada.md`
-- Referências visuais disponíveis? → `_social/assets/` (se relevante)
+CHECKLIST DE CONTEXTO
 
-SE FALTAM DADOS: Marcar [CONFIRMAR COM MURILLO] e não avançar
-SE DADOS ESTÃO: Confirmar com Murillo e prosseguir
+Para qualquer página de passeio:
+  □ _conhecimento/passeios.md tem o passeio?      [bloqueante se não]
+  □ _conhecimento/catalogo_vempassear_estruturado.md tem detalhes?
+  □ _conhecimento/tom-de-voz.md está atualizado?  [bloqueante se não]
+
+Para qualquer SEO:
+  □ _conhecimento/clusters-seo.md tem cluster do tema?
+  □ _conhecimento/seo-local-joao-pessoa.md tem checklist?
+
+Para qualquer briefing visual:
+  □ _social/assets/ tem referências?
+  □ _conhecimento/empresa.md tem identidade definida?
+
+Para qualquer campanha social:
+  □ _conhecimento/instagram-benchmark.md atualizado?
+  □ _conhecimento/concorrentes.md atualizado?
 ```
 
-### Passo 4 — Montar Plano de Execução
+**Se algum item bloqueante falta:** pular para FALLBACK (§ 7).
 
-Entregar para Murillo antes de iniciar:
+### Passo 4 — Selecionar Pipeline
 
-```
-PLANO DE EXECUÇÃO — [Objetivo]
-Data: 2026-XX-XX
+Aplicar pipeline correspondente ao tipo (§ 5). Ajustar conforme contexto:
 
-OBJETIVO: [Exatamente o que precisa ser entregue]
+- Skills com dependência satisfeita → incluir
+- Skills sem dependência ou já entregue → pular com justificativa
+- Skills paralelas após gargalo comum → marcar como paralelas
 
-PIPELINE SELECIONADO:
-├─ Etapa 1: [skill] — [motivo] — [entrega esperada]
-├─ Etapa 2: [skill] — [motivo] — [entrega esperada]
-└─ Etapa N: [skill] — [motivo] — [entrega esperada]
+### Passo 5 — Validar Dependências
 
-SKILLS PULADAS (com justificativa):
-- [skill]: [motivo do pulo]
-
-SEQUENCIAL OBRIGATÓRIO: [qual vem antes de qual]
-PODE RODAR EM PARALELO: [quais não dependem uma da outra]
-
-PONTO DE PARTIDA: Etapa 1 — [skill]
-
-LACUNAS IDENTIFICADAS ANTES DE INICIAR:
-- [CONFIRMAR COM MURILLO: ...]
-```
-
-### Passo 5 — Validar Conclusão de Etapa
-
-Antes de passar para próxima skill:
+Para cada etapa, confirmar:
 
 ```
-CHECKLIST DE CONCLUSÃO — [Skill atual]
-- [ ] Entrega está completa? (não cortada pela metade)
-- [ ] Dados de `_conhecimento/` foram usados? (não inventados)
-- [ ] Saída tem formato esperado pela próxima skill?
-- [ ] Há lacunas? → Se sim, marcar [CONFIRMAR] antes de avançar
-- [ ] Murillo aprovou? → Se necessário, aguardar antes de avançar
+DEPENDÊNCIA = [skill anterior] OR [arquivo em _conhecimento/] OR [decisão de Murillo]
+
+REGRA: Skill só entra no plano se TODAS as dependências estão atendidas
+       OU explicitamente marcadas como pendentes em [CONFIRMAR]
 ```
 
----
+### Passo 6 — Gerar Plano
 
-## 6. Saída Esperada
+Montar OUTPUT no formato definido em § 6.
 
-A cada acionamento do orquestrador, a saída deve conter:
-
-### A. Plano de Execução
+### Passo 7 — Aguardar Aprovação
 
 ```
-PLANO DE EXECUÇÃO — [Objetivo Recebido]
+NÃO EXECUTAR. NÃO ACIONAR SKILL. NÃO ESCREVER ARQUIVO.
 
-1. ETAPA 1 — radar-concorrentes-social
-   Motivo: Precisamos saber o que concorrentes fazem antes de criar
-   Entrega: Análise de padrões + gaps + oportunidades
-   Dependência: Nenhuma (pode iniciar agora)
-
-2. ETAPA 2 — copywriter-vendas
-   Motivo: Copy é necessário antes do wireframe
-   Entrega: Headline, lead, roteiro, FAQ, CTA
-   Dependência: Dados de `_conhecimento/passeios.md` devem estar prontos
-
-3. ETAPA 3 — ux-ui-mobile-first
-   Motivo: Layout define hierarquia visual e componentes
-   Entrega: Wireframe textual mobile-first com 3 breakpoints
-   Dependência: Copy aprovada (Etapa 2)
-
-[...]
-```
-
-### B. Decisão de Início
-
-```
-PRÓXIMO PASSO AGORA: Etapa 1 — [skill]
-
-Acionando `[skill]` com objetivo: "[descrição específica da tarefa]"
-
-DADOS NECESSÁRIOS:
-- [dado 1]: disponível em `[arquivo]`
-- [dado 2]: [CONFIRMAR COM MURILLO]
-```
-
-### C. Skills Puladas
-
-```
-SKILLS NÃO USADAS NESTE OBJETIVO:
-- captura-referencias-visuais: referências já existem em `_social/assets/`
-- programador-de-site: etapa de código não faz parte deste sprint
+Devolver plano para Murillo.
+Aguardar:
+  - "aprovado" → confirmar próximo passo (não executar)
+  - "ajustar X" → revisar plano
+  - "não fazer Y" → recalcular pipeline
+  - silêncio → não avançar
 ```
 
 ---
 
-## 7. Exemplos Reais
+## 4. REGRAS DE DECISÃO
 
-### Exemplo 1: "Criar página do passeio Seixas"
+### 4.1 Quando Incluir uma Skill
 
 ```
-OBJETIVO RECEBIDO: "criar página do passeio Seixas"
+INCLUIR skill se:
+  ✓ Entrega da skill é NECESSÁRIA para o objetivo
+  ✓ Dependências da skill ESTÃO ATENDIDAS (ou serão antes da etapa)
+  ✓ Saída da skill SERÁ CONSUMIDA por etapa seguinte ou pelo objetivo final
+```
 
-TRADUÇÃO: Nova página em `/litoral-sul/seixas` com copy, wireframe, briefing,
-          SEO e implementação em Next.js.
+### 4.2 Quando Pular uma Skill
 
-PIPELINE SELECIONADO (7 etapas):
+```
+PULAR skill se:
+  ✗ Entrega já existe em _conhecimento/, _memoria/ ou _social/assets/
+  ✗ Objetivo explicitamente exclui aquele domínio (ex: "só copy, sem código")
+  ✗ Skill pertence a domínio não envolvido (ex: SEO em campanha 100% social)
+  ✗ Murillo confirmou em sessão anterior que não precisa
+```
 
+Cada pulo deve ter justificativa de uma linha no plano.
+
+### 4.3 Sequencial vs Paralelo
+
+```
+SEQUENCIAL (uma após outra):
+  - Skill B consome saída de Skill A
+  - Exemplo: copywriter-vendas → seo-local-turismo (SEO precisa do copy)
+
+PARALELO (ao mesmo tempo):
+  - Skills não compartilham dependência
+  - Saídas convergem em etapa seguinte
+  - Exemplo: copywriter-vendas || ux-ui-mobile-first (após estrategista)
+```
+
+### 4.4 Resolução de Conflitos
+
+```
+Se duas skills produzem saídas conflitantes:
+  - Identificar conflito explicitamente no plano
+  - Propor resolução (qual prevalece)
+  - Pedir confirmação de Murillo
+
+Exemplo: copywriter-vendas propõe H1 "X", seo-local-turismo recomenda H1 "Y"
+Resolução proposta: SEO prevalece (afeta ranking), copy ajusta lead
+```
+
+### 4.5 Quando NÃO Acionar o Orquestrador
+
+```
+NÃO usar orquestrador se:
+  ✗ Objetivo claramente envolve uma única skill
+    Exemplo: "gera schema JSON-LD para essa página" → vai direto a seo-local-turismo
+  ✗ Plano já aprovado em sessão atual e em execução
+  ✗ Murillo pediu execução direta de skill específica
+```
+
+### 4.6 Defaults Quando Murillo Diz "Decida Você"
+
+| Decisão | Default |
+|---------|---------|
+| Mobile-first ou desktop-first | Mobile-first (regra do CLAUDE.md) |
+| Stack | Next.js (Sonnet 4.6 confirmado em política) |
+| Idioma | PT-BR como base, EN/ES marcados como `[FUTURO]` |
+| Modelo de IA | Sonnet 4.6 |
+| Inclusão de social | Pular se objetivo não menciona |
+| Inclusão de design | Incluir briefing-designer se houver visual novo |
+
+### 4.7 Guardrails (Nunca Fazer)
+
+```
+❌ Iniciar execução sem aprovação do plano
+❌ Acionar todas as 10 skills "por garantia"
+❌ Pular verificação de _conhecimento/ para "ganhar tempo"
+❌ Inventar dados para preencher dependências faltantes
+❌ Mudar pipeline no meio sem comunicar Murillo
+❌ Misturar 2+ objetivos diferentes em um único plano
+❌ Omitir justificativa de skills puladas
+❌ Tratar como concluída uma etapa sem entrega validada
+```
+
+---
+
+## 5. PIPELINES
+
+### Inventário das 10 Skills Disponíveis
+
+**Skills de Site (7):**
+1. `estrategista-de-site` — URLs, jornada, CRO, navegação
+2. `ux-ui-mobile-first` — Wireframe textual, responsividade
+3. `copywriter-vendas` — Copy AIDA, headline, FAQ, CTA
+4. `seo-local-turismo` — Keywords, meta tags, schema, links internos
+5. `briefing-designer` — Briefing executável para designer
+6. `programador-de-site` — Implementação Next.js
+7. `diretor-visual-turismo` — Padrões visuais, crítica, checklist
+
+**Skills de Social (3):**
+8. `radar-concorrentes-social` — Pesquisa concorrentes, gaps, trends
+9. `captura-referencias-visuais` — Captura e organiza assets
+10. `social-media-editorial-turismo` — Calendário e pautas
+
+---
+
+### 5.1 Pipeline A — Página de Passeio (NOVA)
+
+**Quando usar:** "criar página do passeio X"
+
+```
 Etapa 1 → estrategista-de-site
-  Motivo: Confirmar URL, CRO e posição na arquitetura antes de criar
-  Entrega: URL=/litoral-sul/seixas, estrutura CRO, jornadas
-  Dependência: Nenhuma
+  Saída: URL, posição na arquitetura, jornada, CRO
+  Depende de: _conhecimento/estrutura-site-recomendada.md, clusters-seo.md
 
-Etapa 2 → copywriter-vendas
-  Motivo: Texto é base para tudo (wireframe, SEO, briefing)
-  Entrega: H1, lead, roteiro, o que está incluso, FAQ, CTA
-  Dependência: Dados de `_conhecimento/passeios.md` (Seixas)
-
-Etapa 3 → ux-ui-mobile-first  [paralelo com etapa 2 após aprovação]
-  Motivo: Layout define componentes para briefing
-  Entrega: Wireframe mobile/tablet/desktop
-  Dependência: Copy aprovada
-
-Etapa 4 → diretor-visual-turismo
-  Motivo: Validar visual antes de briefar o designer
-  Entrega: Aprovação visual + ajustes de padrão
-  Dependência: Wireframe (Etapa 3)
-
-Etapa 5 → briefing-designer
-  Motivo: Designer precisa de especificações claras para executar Figma
-  Entrega: Briefing com wireframe + componentes + especificações + referências
-  Dependência: UX (Etapa 3) + Direção visual (Etapa 4)
-  PAUSA: Aguardar designer executar Figma
-
-Etapa 6 → seo-local-turismo
-  Motivo: Otimizar para "passeio Seixas João Pessoa" antes de publicar
-  Entrega: H1 otimizado, meta description, schema TouristAttraction, links internos
-  Dependência: Copy aprovada
-
-Etapa 7 → programador-de-site
-  Motivo: Implementar em Next.js com todos os insumos prontos
-  Entrega: Página funcional em Next.js, TypeScript, Tailwind, Schema.org
-  Dependência: Copy + UX + Design (Figma) + SEO
-
-SKILLS PULADAS:
-- radar-concorrentes-social: análise de concorrência já feita em `_conhecimento/concorrentes.md`
-- captura-referencias-visuais: referências já em `_social/assets/`
-- social-media-editorial-turismo: pauta social não faz parte deste sprint
-
-PRÓXIMO PASSO AGORA: Etapa 1 — estrategista-de-site
-Acionando: "Definir URL, CRO e estrutura para página de passeio Seixas.
-Consultar `_conhecimento/estrutura-site-recomendada.md` e `clusters-seo.md`."
-```
-
----
-
-### Exemplo 2: "Criar campanha Instagram para Litoral Sul"
-
-```
-OBJETIVO RECEBIDO: "criar campanha Instagram para Litoral Sul"
-
-TRADUÇÃO: Calendário editorial de 2 semanas com reels, carrosséis, stories
-          focados nos passeios do Litoral Sul (Seixas, Praia Bela, Combos).
-
-PIPELINE SELECIONADO (4 etapas):
-
-Etapa 1 → radar-concorrentes-social
-  Motivo: Ver o que Jampa Paradise e outros fazem. Identificar gaps.
-  Entrega: Análise de concorrência + trends + oportunidades para Litoral Sul
-
-Etapa 2 → captura-referencias-visuais
-  Motivo: Reunir referências visuais para inspirar designer e editorial
-  Entrega: 5-10 referências capturadas em `_social/assets/`
-  Dependência: Radar (Etapa 1) indica o que capturar
+Etapa 2a → copywriter-vendas        ┐
+  Saída: H1, lead, roteiro, FAQ, CTA │ PARALELO
+                                      │ após Etapa 1
+Etapa 2b → ux-ui-mobile-first       ┘
+  Saída: Wireframe textual mobile/tablet/desktop
 
 Etapa 3 → diretor-visual-turismo
-  Motivo: Definir padrão visual da campanha antes de criar pauta
-  Entrega: Direção visual (paleta, tipografia, estilo) para a campanha
-  Dependência: Referências capturadas (Etapa 2)
+  Saída: Validação de padrão visual + ajustes
+  Depende de: Etapa 2b
 
-Etapa 4 → social-media-editorial-turismo
-  Motivo: Criar calendário editorial e pautas específicas
-  Entrega: Calendário 2 semanas + 5 pautas detalhadas (stories, reels, carrosséis)
-  Dependência: Radar (Etapa 1) + Direção visual (Etapa 3)
+Etapa 4 → seo-local-turismo
+  Saída: Meta tags, schema TouristAttraction, links internos
+  Depende de: Etapa 2a (copy)
 
-SKILLS PULADAS:
-- estrategista-de-site: campanha é só social, não envolve site
-- copywriter-vendas: copy é criada dentro de social-media-editorial-turismo
-- ux-ui-mobile-first: sem wireframe — é pauta, não página
-- briefing-designer: designer recebe pautas com direção visual, não briefing formal de site
-- programador-de-site: sem código
-- seo-local-turismo: sem página nova
+Etapa 5 → briefing-designer
+  Saída: Briefing completo + componentes + restrições
+  Depende de: Etapas 2b + 3
+  PAUSA: aguardar designer executar Figma
 
-PRÓXIMO PASSO AGORA: Etapa 1 — radar-concorrentes-social
-Acionando: "Pesquisar Jampa Paradise e concorrentes locais no Instagram.
-Identificar gaps de conteúdo sobre Litoral Sul e Seixas.
-Consultar `_conhecimento/instagram-benchmark.md` e `concorrentes.md`."
+Etapa 6 → programador-de-site
+  Saída: Página em Next.js + TypeScript + Tailwind + Schema
+  Depende de: Etapas 2a + 4 + 5 (com Figma)
 ```
+
+**Skills geralmente puladas neste pipeline:**
+- `radar-concorrentes-social` (já consolidado em `_conhecimento/concorrentes.md`)
+- `captura-referencias-visuais` (referências em `_social/assets/`)
+- `social-media-editorial-turismo` (não é parte do escopo de página)
 
 ---
 
-### Exemplo 3: "Otimizar SEO da página Areia Vermelha"
+### 5.2 Pipeline B — Página de Categoria
+
+**Quando usar:** "criar/melhorar página da categoria X" (litoral sul, cultural, gastronômico)
 
 ```
-OBJETIVO RECEBIDO: "otimizar SEO da página Areia Vermelha"
+Etapa 1 → estrategista-de-site
+  Saída: Estrutura da categoria, lista de passeios, jornada
 
-TRADUÇÃO: Página já existe. Precisa de melhoria de ranking para termos
-          como "passeio Areia Vermelha João Pessoa".
+Etapa 2 → seo-local-turismo
+  Saída: Cluster de keywords + arquitetura de links internos
+  Depende de: Etapa 1
 
-PIPELINE SELECIONADO (3 etapas):
+Etapa 3a → copywriter-vendas      ┐
+  Saída: Hero da categoria, intro │ PARALELO
+                                   │ após Etapas 1+2
+Etapa 3b → ux-ui-mobile-first    ┘
+  Saída: Wireframe da listagem (cards, filtros)
 
-Etapa 1 → seo-local-turismo
-  Motivo: Auditar o estado atual da página antes de qualquer mudança
-  Entrega: Lista de problemas de SEO + recomendações específicas
-  Dependência: Página existente
+Etapa 4 → diretor-visual-turismo
+Etapa 5 → briefing-designer
+Etapa 6 → programador-de-site
+```
 
-Etapa 2 → copywriter-vendas  [condicional]
-  Motivo: Só acionar se SEO indicar que copy está fraco para o ranqueamento
-  Entrega: Revisão de H1, meta description, corpo de texto
-  Dependência: Auditoria SEO (Etapa 1) com sinal "copy needs work"
+**Diferença vs Pipeline A:** SEO entra cedo (cluster define copy) e foco em listagem, não em conversão de passeio único.
+
+---
+
+### 5.3 Pipeline C — Otimização SEO (Página Existente)
+
+**Quando usar:** "otimizar SEO de", "melhorar ranking de"
+
+```
+Etapa 1 → seo-local-turismo (auditoria)
+  Saída: Diagnóstico (H1, meta, schema, densidade, links)
+
+Etapa 2 → copywriter-vendas  [CONDICIONAL]
+  Acionar SE: auditoria indicar copy fraca para keyword
+  Saída: Revisão de H1, lead, corpo, FAQ
+  Pular SE: copy já está alinhada a keyword
 
 Etapa 3 → programador-de-site
-  Motivo: Implementar melhorias técnicas (schema, meta tags, estrutura)
-  Entrega: Código atualizado com melhorias de SEO
-  Dependência: Recomendações de SEO (Etapa 1)
+  Saída: Implementação de melhorias técnicas
+  Depende de: Etapa 1 (sempre) + Etapa 2 (se acionada)
+```
 
-SKILLS PULADAS: todas as outras
-NOTA SOBRE ETAPA 2: Só ativada se SEO identificar problema de copy.
-Se copy está boa, pula direto de Etapa 1 para Etapa 3.
+**Skills puladas:** todas as outras (foco técnico).
 
-PRÓXIMO PASSO AGORA: Etapa 1 — seo-local-turismo
-Acionando: "Auditar página Areia Vermelha. Verificar H1, meta description,
-schema, densidade de keywords, links internos. Consultar `clusters-seo.md`
-para keywords corretas e `seo-local-joao-pessoa.md` para checklist completo."
+---
+
+### 5.4 Pipeline D — Briefing Visual de Campanha
+
+**Quando usar:** "briefar designer para X", "direção visual de Y"
+
+```
+Etapa 1 → captura-referencias-visuais
+  Saída: 5-10 referências em _social/assets/
+
+Etapa 2 → diretor-visual-turismo
+  Saída: Direção visual (paleta, tipo, estilo, restrições)
+  Depende de: Etapa 1
+
+Etapa 3 → briefing-designer
+  Saída: Briefing completo para execução
+  Depende de: Etapas 1+2
 ```
 
 ---
 
-## 8. Guardrails — O Que Nunca Fazer
+### 5.5 Pipeline E — Campanha Social
 
-### Nunca Pular Etapas Sem Justificativa
-
-```
-ERRADO: "Vou direto para o programador-de-site"
-CERTO: "Programador-de-site requer copy + UX + design. Falta UX e design — não posso avançar."
-
-REGRA: Cada skill tem dependências. Só avança quando dependências estão prontas.
-```
-
-### Nunca Usar Todas as Skills Automaticamente
+**Quando usar:** "criar campanha Instagram", "calendário editorial"
 
 ```
-ERRADO: "Vou acionar as 10 skills para criar uma pauta de stories"
-CERTO: "Pauta de stories precisa de: radar + captura + diretor-visual + social-media-editorial. 
-        As 6 skills de site não fazem parte disso."
+Etapa 1 → radar-concorrentes-social
+  Saída: Análise de concorrentes + trends + gaps
 
-REGRA: Mais skills = mais tempo = mais custo. Usar só o que o objetivo exige.
+Etapa 2 → captura-referencias-visuais
+  Saída: Referências para o tema da campanha
+  Depende de: Etapa 1
+
+Etapa 3 → diretor-visual-turismo
+  Saída: Direção visual da campanha
+  Depende de: Etapa 2
+
+Etapa 4 → social-media-editorial-turismo
+  Saída: Calendário + pautas (stories, reels, carrosséis)
+  Depende de: Etapas 1+3
 ```
 
-### Nunca Avançar com Dados Inventados
+**Skills puladas:** todas as 6 skills de site.
+
+---
+
+### 5.6 Pipeline F — Inteligência (Pesquisa)
+
+**Quando usar:** "pesquisar concorrentes", "capturar referências", "atualizar benchmark"
 
 ```
-ERRADO: Iniciar copywriter-vendas sem verificar dados em `_conhecimento/passeios.md`
-CERTO: "Preciso de preço, duração e ponto de embarque do Seixas. 
-        Consultando `passeios.md` antes de acionar copywriter."
+Etapa 1 → radar-concorrentes-social
+  Saída: Atualização de _conhecimento/concorrentes.md ou instagram-benchmark.md
 
-REGRA: Orquestrador verifica dados antes de acionar qualquer skill de conteúdo.
+Etapa 2 → captura-referencias-visuais  [opcional]
+  Acionar SE: pesquisa identificar referências valiosas
+  Saída: Assets em _social/assets/
 ```
 
-### Nunca Misturar Skills de Domínios Diferentes Sem Motivo
+**Sem entrega de produto** — só atualiza fontes de verdade para futuros pipelines.
+
+---
+
+### 5.7 Pipeline G — Custom (Objetivo Inédito)
+
+**Quando usar:** objetivo não encaixa em A–F.
+
+Processo:
+1. Decompor objetivo em sub-objetivos
+2. Mapear cada sub-objetivo a uma skill
+3. Aplicar regras de § 4 (sequencial vs paralelo, dependências)
+4. Sinalizar explicitamente que é pipeline custom no OUTPUT
+5. Sugerir, ao final, atualização desta skill para incluir o novo padrão
+
+---
+
+### 5.8 Pipeline Máximo (Referência)
+
+Sequência completa quando o objetivo cobre **todas as fases** (raríssimo — só sprint inicial de marca):
 
 ```
-ERRADO: "Criar página + campanha Instagram ao mesmo tempo numa sessão"
-CERTO: "Objetivo 1: criar página (pipeline site). Objetivo 2: campanha (pipeline social). 
-        Separar em duas sessões ou entregar plano sequencial."
+FASE 0 — INTELIGÊNCIA
+  1. radar-concorrentes-social
+  2. captura-referencias-visuais
 
-REGRA: Clareza de escopo antes de iniciar.
-```
+FASE 1 — DIREÇÃO VISUAL
+  3. diretor-visual-turismo
 
-### Nunca Omitir o Plano Antes de Executar
+FASE 2 — ESTRUTURA E CONTEÚDO
+  4. estrategista-de-site
+  5. copywriter-vendas || ux-ui-mobile-first
+  6. briefing-designer
 
-```
-ERRADO: Iniciar etapas sem mostrar plano para Murillo
-CERTO: Entregar plano completo e aguardar confirmação antes de iniciar
+FASE 3 — IMPLEMENTAÇÃO
+  7. seo-local-turismo
+  8. programador-de-site
 
-REGRA: Murillo aprova o plano antes do orquestrador iniciar as etapas.
+FASE 4 — AMPLIFICAÇÃO
+  9. social-media-editorial-turismo
 ```
 
 ---
 
-## 9. Quando Usar Esta Skill
+## 6. OUTPUT
 
-### ✅ Situações para Acionar o Orquestrador
+### Formato Padrão do Plano
 
-- "Criar [qualquer página nova]"
-- "Melhorar [página ou campanha existente]"
-- "Criar campanha Instagram para [tema]"
-- "Fazer um sprint completo de [objetivo]"
-- "Não sei por onde começar para [objetivo]"
-- "Quais skills preciso para [objetivo]?"
+Todo acionamento do orquestrador devolve um plano nesta estrutura exata:
 
-### ✅ Também Usar Quando
+```markdown
+# PLANO DE EXECUÇÃO — [Objetivo Resumido]
 
-- Objetivo envolve mais de 2 skills
-- Há dúvida sobre a ordem correta de execução
-- Há risco de skills trabalhando em conflito (ex: design sendo feito antes de copy)
-- Murillo quer ver o plano antes de começar
+**Data:** YYYY-MM-DD
+**Status:** AGUARDANDO APROVAÇÃO
+**Orquestrador:** orquestrador-projeto-turismo v2.0
 
-### ❌ Não Usar o Orquestrador Quando
+## Objetivo Interpretado
+[1-2 frases descrevendo o que será entregue]
 
-- Objetivo é simples e envolve claramente só 1 skill ("gerar schema JSON-LD para essa página" → vai direto para `seo-local-turismo`)
-- Já há um plano aprovado em andamento (orquestrador só é chamado uma vez por objetivo)
-- A skill a usar já foi identificada com certeza
+## Tipo de Objetivo
+[Página de Passeio | Página de Categoria | Otimização SEO | Briefing Visual | Campanha Social | Inteligência | Custom]
+
+## Pipeline Selecionado
+Pipeline [A–G]: [Nome]
+
+## Verificação de Contexto
+- [✓ ou ✗] _conhecimento/passeios.md → [estado]
+- [✓ ou ✗] _conhecimento/tom-de-voz.md → [estado]
+- [✓ ou ✗] _conhecimento/clusters-seo.md → [estado]
+- [outros itens relevantes]
+
+## Etapas
+
+### Etapa 1 — [skill]
+- **Saída esperada:** [...]
+- **Dependências:** [arquivos ou etapas anteriores]
+- **Dados necessários:** [...]
+- **Pode rodar em paralelo com:** [etapa N ou nenhuma]
+
+### Etapa 2 — [skill]
+[mesmo formato]
+
+[...]
+
+## Skills Puladas (com Justificativa)
+- `skill-X`: [motivo de uma linha]
+- `skill-Y`: [motivo de uma linha]
+
+## Lacunas Identificadas
+- [CONFIRMAR COM MURILLO: pergunta 1?]
+- [CONFIRMAR COM MURILLO: pergunta 2?]
+(Se nenhuma: "Nenhuma lacuna — pronto para iniciar Etapa 1 após aprovação")
+
+## Próximo Passo
+Aguardando aprovação de Murillo. Após aprovação, iniciar Etapa 1: [skill] com instrução:
+> "[descrição específica que será passada para a skill]"
+
+## Skills Não Acionadas Automaticamente
+NENHUMA — orquestrador só planeja. Toda execução requer aprovação explícita.
+```
+
+### Regras do Output
+
+1. **Sempre devolver o plano completo** — nunca devolver "vou pensar e volto"
+2. **Sempre marcar `Status: AGUARDANDO APROVAÇÃO`** até Murillo confirmar
+3. **Sempre listar skills puladas** com motivo (transparência)
+4. **Sempre listar lacunas** se houver — não preencher silenciosamente
+5. **Nunca incluir entregas reais** no plano (sem copy escrito, sem código, sem schema) — só descrever o que cada etapa produzirá
 
 ---
 
-## 10. Integração com o Sistema
+## 7. FALLBACK
 
-### Com `skills/README.md`
+### 7.1 Quando Falta Dado em `_conhecimento/`
 
-README é a documentação de cada skill. Orquestrador usa como referência para:
-- Verificar entradas necessárias de cada skill
-- Confirmar dependências corretas
-- Identificar saídas esperadas
+```
+SITUAÇÃO: Pipeline exige passeios.md com passeio X, mas X não está catalogado
+
+AÇÃO:
+1. NÃO PROPOR PIPELINE COMPLETO
+2. Devolver plano parcial com:
+   - "BLOQUEADO: faltam dados em _conhecimento/passeios.md"
+   - Lista exata do que falta
+   - Sugestão: pré-etapa para catalogar passeio (manualmente por Murillo)
+3. Aguardar Murillo:
+   a) Confirmar dados → atualizar conhecimento → recalcular plano
+   b) Pedir para usar dados parciais → marcar [CONFIRMAR] em todos os campos vazios
+   c) Adiar objetivo
+```
+
+### 7.2 Quando Objetivo é Ambíguo
+
+```
+SITUAÇÃO: "fazer alguma coisa pra Seixas"
+
+AÇÃO:
+1. NÃO ESCOLHER PIPELINE SOZINHO
+2. Devolver até 3 perguntas de clarificação:
+   - "É página nova ou atualização da existente?"
+   - "Foco em conversão (copy/CTA) ou ranking (SEO)?"
+   - "Inclui campanha social ou só site?"
+3. Após respostas → gerar plano normal
+```
+
+### 7.3 Quando Skill Necessária Não Existe
+
+```
+SITUAÇÃO: Objetivo exige tradução EN/ES, mas não há skill de internacionalização
+
+AÇÃO:
+1. Identificar lacuna no plano:
+   - "GAP: skill de internacionalização não existe no inventário"
+2. Sugerir alternativas:
+   a) Adiar parte EN/ES até skill existir
+   b) Murillo executa manualmente
+   c) Criar skill nova (fora do escopo do orquestrador)
+3. Marcar etapa como [GAP DE SKILL: ...]
+```
+
+### 7.4 Quando Há Conflito Entre Skills
+
+```
+SITUAÇÃO: copywriter-vendas e seo-local-turismo recomendariam H1 diferentes
+
+AÇÃO:
+1. Identificar conflito no plano (não esperar acontecer)
+2. Aplicar regra de prevalência (§ 4.4)
+3. Documentar resolução proposta
+4. Marcar para revisão de Murillo se prevalência não for óbvia
+```
+
+### 7.5 Quando Murillo Pede Execução Direta
+
+```
+SITUAÇÃO: "esquece o plano, só roda o copywriter agora"
+
+AÇÃO:
+1. Reconhecer — orquestrador não é necessário
+2. Devolver: "Entendido — pulando orquestração. Acionar copywriter-vendas com objetivo: [...]"
+3. Não bloquear — Murillo tem autoridade para pular
+4. Sugerir documentar decisão em _memoria/decisoes.md se for padrão recorrente
+```
+
+### 7.6 Quando Pipeline Em Andamento É Interrompido
+
+```
+SITUAÇÃO: Murillo pausa após Etapa 3 e volta dias depois
+
+AÇÃO:
+1. Recuperar estado de _memoria/estado-atual.md
+2. Confirmar entregas já feitas (Etapas 1-3)
+3. Validar se contexto mudou (conhecimento atualizado? prioridade mudou?)
+4. Devolver plano de retomada das Etapas 4+ (não regenerar do zero)
+```
+
+---
+
+## 8. INTEGRAÇÃO COM O SISTEMA
 
 ### Com `_conhecimento/`
-
-Antes de montar qualquer plano, orquestrador verifica:
-- `passeios.md` → dados do passeio em questão
-- `estrutura-site-recomendada.md` → URLs e arquitetura
-- `clusters-seo.md` → qual cluster pertence
-- `tom-de-voz.md` → base obrigatória para copywriter
+Lê antes de planejar:
+- `passeios.md` — dados de passeio
+- `estrutura-site-recomendada.md` — URLs e arquitetura
+- `clusters-seo.md` — cluster de keywords
+- `tom-de-voz.md` — base obrigatória para copy
+- `concorrentes.md` + `instagram-benchmark.md` — para social
 
 ### Com `_memoria/`
+Consulta antes de planejar:
+- `estado-atual.md` — o que está em andamento
+- `prioridades.md` — alinhar com prioridade vigente
+- `decisoes-estrategicas.md` — não recriar decisões já tomadas
+- `proximos-passos.md` — sequenciar coerentemente
 
-- `decisoes-estrategicas.md` → Não refazer decisões já tomadas
-- `proximos-passos.md` → Prioridades atuais do projeto
-- `estado-atual.md` → O que já foi feito, o que está em andamento
+Atualiza após plano aprovado:
+- `_memoria/estado-atual.md` com pipeline em execução
 
-### Com as Skills Especializadas
+### Com `skills/README.md`
+Referência canônica para entradas, saídas e dependências de cada skill.
+
+### Com Outras Skills (Compatibilidade de Handoff)
 
 ```
-Orquestrador → aciona skill com objetivo específico
-             ← recebe entrega da skill
-             → valida entrega
-             → decide próxima skill
+ORQUESTRADOR não chama skill diretamente.
+Ele DESCREVE no plano qual instrução cada skill receberá quando acionada.
+A execução fica a cargo de Murillo (ou dele acionando a skill subsequente).
+
+Formato de handoff entre skills (descrito no plano):
+  Saída de Skill A → Entrada de Skill B
+  Exemplo:
+    copywriter-vendas produz: H1, lead, roteiro, FAQ
+    seo-local-turismo recebe: H1 + lead → otimiza para keyword
 ```
 
 ---
 
-## 11. Política AI e Modo
+## 9. POLÍTICA DE MODELO E MODO
 
-**Modelo:**
-- Sonnet 4.6 (padrão): Planejamento, sequenciamento, decisões de pipeline para objetivos conhecidos
-- Opus 4.7: Objetivos inéditos ou complexos que exigem análise estratégica profunda (~1%)
-- Haiku 4.5: Não usar — orquestração exige raciocínio consistente
+| Situação | Modelo |
+|----------|--------|
+| Objetivo conhecido (Pipelines A–F) | Sonnet 4.6 |
+| Objetivo inédito (Pipeline G) | Opus 4.7 |
+| Pergunta simples sobre qual skill usar | Sonnet 4.6 |
+| Tarefa trivial | Não usar Haiku — orquestração exige consistência |
 
-**Modo:** Claude Code (documentação + estrutura + decisão)
-- Orquestrador não usa ferramentas de design
-- Não executa conteúdo — só planeja e decide
-- Documenta planos em `_memoria/` quando necessário
+**Modo:** Claude Code (planejamento + leitura de vault). Nunca usa ferramentas de execução (sem Edit/Write em entregas, sem Bash de deploy).
 
 ---
 
-## 12. Próxima Revisão
+## 10. QUANDO USAR (RESUMO)
+
+### ✅ Usar o Orquestrador
+
+- Objetivo envolve 2+ skills
+- Há dúvida sobre ordem ou skills necessárias
+- Há risco de skills em conflito
+- Murillo quer ver plano antes de iniciar
+- Objetivo vago como "criar página", "melhorar X", "campanha Y"
+
+### ❌ Não Usar o Orquestrador
+
+- Objetivo claramente envolve 1 skill ("gera schema") → vai direto à skill
+- Plano já aprovado em execução
+- Murillo pede execução direta
+- Tarefa é leitura/consulta de arquivo (sem produção de entrega)
+
+---
+
+## 11. PRÓXIMA REVISÃO
 
 **Revisar quando:**
-- Nova skill for adicionada ao sistema (atualizar inventário)
-- Murillo identificar tipo de objetivo não coberto pelos exemplos
-- Fim de Q2 2026 (avaliar padrões de uso, simplificar)
-- Alguma skill for descontinuada (atualizar pipelines afetados)
+- Nova skill entrar no inventário (atualizar § 5)
+- Objetivo recorrente não couber em Pipelines A–G (criar pipeline novo)
+- Padrão de conflito entre skills aparecer 2+ vezes (formalizar resolução em § 4.4)
+- Fim de Q2 2026 (avaliar uso real e simplificar)
 
 ---
 
-**Status:** ✅ Ativa  
-**Versão:** 1.0  
-**Criada:** 2026-04-25  
-**Papel:** Ponto de entrada principal do sistema de skills  
-**Próximo checkpoint:** 2026-05-25
+**Status:** ✅ Ativa
+**Versão:** 2.0
+**Atualizada:** 2026-04-25
+**Mudanças vs v1.0:**
+- Estrutura padronizada (INPUT, PROCESSO, REGRAS, PIPELINE, OUTPUT, FALLBACK)
+- 7 pipelines canônicos (A–G) substituindo lista informal
+- Formato exato de OUTPUT em § 6
+- Seção FALLBACK formal (§ 7) cobrindo 6 cenários
+- Defaults documentados para "decida você" (§ 4.6)
+- Garantia explícita: "nunca executa sem aprovação"

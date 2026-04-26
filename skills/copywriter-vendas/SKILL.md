@@ -1,219 +1,185 @@
 # Skill: Copywriter Vendas
 
-## 1. Função
+**Versão:** 3.0
+**Status:** Ativa
+**Especialidade:** Copy AIDA, conversão, tom de voz local, prova de confiança
+**Escopo:** Páginas de passeio, categorias, home, CTAs, FAQ
+**Modelo Padrão:** Sonnet 4.6
+**Atualizado:** 2026-04-25
 
-Escrever **copy de venda que converte** (home, passeios, categorias, CTAs, campanhas) seguindo **AIDA** (Atenção → Interesse → Desejo → Ação), aplicando **prova de confiança**, quebrando objeções, sem clichê turístico, sempre autêntico, local, humano.
+---
 
-Você não faz design, não otimiza SEO especificamente, não planeja site — você escreve o **texto que vende**.
+## RESPONSABILIDADE
 
-## 2. Quando Usar
+### O Que Faz
+- Escreve copy de venda (home, passeios, categorias, CTAs, FAQ)
+- Aplica framework AIDA (Atenção → Interesse → Desejo → Ação)
+- Identifica problema real do turista e escreve a partir dele
+- Aplica prova de confiança (Cadastur, rating, Murillo, depoimento)
+- Quebra objeções específicas no FAQ
+- Mantém tom acolhedor, local, sem clichê turístico
 
-✅ Novo passeio precisa de copy que converta  
-✅ Página existente tem baixa conversão e precisa rewrite  
-✅ Landing page de campanha (ex: "últimas 3 vagas esta semana")  
-✅ Copy para home, categoria, passeio, CTA, FAQ  
-✅ Retomando copy inacabado  
+### O Que NÃO Faz
+- ❌ Definir estrutura de site → `estrategista-de-site`
+- ❌ Criar wireframe ou layout → `ux-ui-mobile-first`
+- ❌ Otimizar SEO técnico → `seo-local-turismo`
+- ❌ Redação corporativa ou documentação interna
+- ❌ Inventar preço, itinerário, duração ou ponto de saída de passeio
 
-## 3. Quando NÃO Usar
+### Quando Usar
+- Página nova precisa de copy do zero
+- Página existente tem baixa conversão (rewrite)
+- Landing page de campanha
+- Copy para home, categoria, passeio, CTA, FAQ
 
-❌ Para estrutura de site (use `estrategista-de-site`)  
-❌ Para wireframe/layout visual (use `ux-ui-mobile-first`)  
-❌ Para otimização SEO específica (use `seo-local-turismo`)  
-❌ Para redação corporativa ou documentação  
+### Quando NÃO Usar
+- Dados do passeio não estão confirmados em `passeios.md` (parar e esperar)
+- Objetivo é só wireframe ou SEO técnico
 
-## 4. Entradas Necessárias
+---
 
-Antes de começar, tenha:
+## INPUT
 
-- **Nome/tema do passeio ou página** (ex: "Seixas", "Home", "Litoral Sul")
-- **Público-alvo específico:** Idade, origem, tipo de viagem (ex: "casais 30-45, primeira vez em JP, querem praia mas diferente")
-- **Problema real do turista:** O que ele teme? O que o bloqueia? (ex: "virou em JP à noite, não sabe o que fazer amanhã", "tem criança, quer algo safe")
-- **Solução/diferencial:** O que Vem Passear oferece que concorrentes NÃO (ex: "Seixas é o ponto mais oriental, só agência local sabe acesso seguro")
-- **Prova de confiança:** Cadastur, rating, depoimento real, Murillo expertise (de `_conhecimento/provas-de-confianca.md`)
+| Campo | Obrigatório | Fonte | Descrição |
+|-------|-------------|-------|-----------|
+| objetivo | Sim | Murillo/Orquestrador | Ex: "copy da página Seixas", "home" |
+| nome do passeio ou página | Sim | Murillo | Ex: "Seixas", "Home", "Litoral Sul" |
+| público-alvo | Não | `_conhecimento/publico-alvo.md` | Quem vai ler esta página |
+| estrutura da página | Não | `estrategista-de-site` | Quais blocos existem |
 
-## 5. Processo
+### Dados do `_conhecimento/` (Obrigatórios Antes de Executar)
 
-### Etapa 0: CRÍTICO — Consultar Catálogo
+| Arquivo | Por Que Consultar |
+|---------|------------------|
+| `passeios.md` | **BLOQUEANTE** — índice de passeios (nunca inventa) |
+| `catalogo_vempassear_estruturado.md` | Preço, roteiro, duração, saída, inclusões |
+| `tom-de-voz.md` | **BLOQUEANTE** — identidade verbal da marca |
+| `provas-de-confianca.md` | Cadastur, rating, depoimentos reais disponíveis |
+| `publico-alvo.md` | Personas, medos, motivações |
 
-**Antes de escrever UMA PALAVRA:**
+### Fallback se Faltar Dado
 
+- Se o passeio não está em `passeios.md` → **PARAR**. Marcar `[CONFIRMAR COM MURILLO: dados de [passeio] não encontrados]`
+- Se preço não está confirmado → escrever copy e marcar `[CONFIRMAR: preço]`
+- Se depoimento não existe → marcar `[INSERIR DEPOIMENTO REAL]`
+- **Nunca inventar:** preço, itinerário, duração, ponto de saída, restrições
+
+---
+
+## PROCESSO
+
+### Etapa 0 — CRÍTICO: Consultar Catálogo Primeiro
+
+Antes de escrever UMA PALAVRA:
 1. Abrir `_conhecimento/passeios.md` (índice)
 2. Localizar o passeio EXATO pelo nome
-3. Se não achar, PARAR e confirmar com Murillo
-4. Extrair dados reais: preço, roteiro, duração, saída, ponto de embarque
-5. Ler detalhes completos em `_conhecimento/catalogo_vempassear_estruturado.md`
-6. **NUNCA inventar:** preço, itinerário, duração, ponto de saída, restrições
+3. Se não achar → PARAR e confirmar com Murillo
+4. Extrair: preço, roteiro, duração, saída, ponto de embarque
+5. Ler detalhes em `catalogo_vempassear_estruturado.md`
 
-**Regra de ouro:** Se não está no catálogo, marca `[CONFIRMAR COM MURILLO: ...]`
+### Etapa 1 — Identificar a Persona
 
-### Etapa 1: Entender a Persona
-
-Antes de escrever, defina:
-
-- Quantos anos? (influencia linguagem, referências, valores)
+- Quantos anos? (influencia linguagem)
 - Viaja sozinho, casal, família?
-- Primeira vez em João Pessoa ou conhece?
-- Quanto tempo tem? (1 dia, 1 semana?)
+- Primeira vez em JP ou conhece?
 - O que busca? (relax, adrenalina, cultura, natureza, segurança?)
+- Quanto tempo tem?
 
-Isso guia tom, objetos, frame da mensagem.
+### Etapa 2 — Identificar o Problema Real
 
-### Etapa 2: Identificar o Problema REAL
+❌ Falso: "Viver uma experiência mágica em paraíso tropical"
+✅ Real: "Cheguei em JP à noite, não conheço ninguém, o que faço amanhã?"
 
-Copy começa com **empati ao problema** (não genérico). Exemplos:
+❌ Falso: "Explorar as belezas naturais"
+✅ Real: "Mergulhar em Seixas é assustador se você nunca fez — agora ficou fácil"
 
-❌ **Problema falso:** "Viver uma experiência mágica em paraíso tropical" (genérico, qualquer site fala)  
-✅ **Problema real:** "Cheguei em JP à noite, não conheço ninguém, sou primeira vez — o que faço amanhã?"
-
-❌ **Falso:** "Explorar as belezas naturais" (sem específico)  
-✅ **Real:** "Merguitar em Seixas é assustador se você nunca fez — agora ficou fácil"
-
-❌ **Falso:** "Diversão garantida" (promessa vaga)  
-✅ **Real:** "Tenho criança de 7 anos, quero algo seguro que ela curta — estes 3 passeios são perfeitos"
-
-**Como descobrir?** Pense: "O turista chegando aqui, qual é o medo? A dúvida? A fricção que o bloqueia?"
-
-### Etapa 3: AIDA — Estrutura de Conversão
+### Etapa 3 — AIDA
 
 **A = ATENÇÃO (Headline)**
-
-Objetivo: Fazer turista PARAR e ler.
-
-Gatilhos que funcionam:
 - Pergunta que reconhece o problema: "Virou em JP e não sabe o que fazer?"
 - Promessa específica: "Snorkel em água cristalina (não em piscina artificial)"
-- Negação de clichê: "Sem as praias genéricas, sem turismo de massa"
-- Curiosidade: "Por que o ponto mais oriental de SP?"
-
-**Não:** "Bem-vindo ao passeio X" (genérico)  
-**Sim:** "Seixas: Onde o Sol Nasce na Água" (específico, intriga)
+- Nunca: "Bem-vindo ao passeio X"
 
 **I = INTERESSE (Lead + Primeiros Parágrafos)**
-
-Objetivo: Convencer turista que este passeio é para ELE (não para qualquer um).
-
-Estrutura:
-1. **Reconheça o problema:** "Se você chegou em JP sem plano..."
-2. **Valide o medo:** "...e está preocupado com segurança ou qualidade..."
-3. **Apresente a solução:** "Seixas é o passeio que você procura porque:"
-4. **Diferencie:** "A maioria vai em Tambaú (cheio). Nós vamos em Seixas (especial) porque a gente conhece."
+1. Reconheça o problema
+2. Valide o medo
+3. Apresente a solução
+4. Diferencie ("A maioria vai em Tambaú. Nós vamos em Seixas porque a gente conhece.")
 
 **D = DESEJO (Descrição + Roteiro + Inclusões)**
-
-Objetivo: Fazer turista QUERER fazer.
-
-Técnicas:
-- **Visualização sensorial:** "Você entra na água e vê peixes coloridos passando perto de você"
-- **Timeline do passeio:** Passo a passo do que acontece (remove incerteza)
-- **Prova social:** "Clientes dizem: 'foi o melhor dia em JP'"
-- **Quebra de objeção:** "Nunca mergulhou? A gente ensina, é fácil"
-- **O que está incluso:** "Equipamento, foto, snack, orientador 1:1"
+- Visualização sensorial: "Você entra na água e vê peixes coloridos passando perto"
+- Timeline do passeio (remove incerteza)
+- Prova social: "Clientes dizem: 'foi o melhor dia em JP'"
+- Quebra de objeção: "Nunca mergulhou? A gente ensina"
 
 **A = AÇÃO (CTA)**
+1. Urgência leve: "Vagas limitadas, melhor confirmar logo"
+2. Simplificar: "Clique aqui para agendar no WhatsApp"
+3. Reduzir fricção: "Você fala com Murillo direto, ele responde em 1 hora"
 
-Objetivo: Fechar a venda agora.
+### Etapa 4 — Aplicar Tom de Voz
 
-Estrutura:
-1. **Criar senso de urgência (light):** "Vagas limitadas, melhor confirmar logo" (não fake)
-2. **Simplificar ação:** "Clique aqui para agendar no WhatsApp" (1 clique)
-3. **Remover fricção:** "Você fala com Murillo direto, ele responde em 1 hora"
-4. **Validação final:** Mostrar rating/Cadastur/depoimento aqui também
+Consultar `_conhecimento/tom-de-voz.md`. Vem Passear é:
+- **Acolhedor** — fala como amigo que conhece JP
+- **Nordestino sem caricatura** — autenticidade local, sem clichê
+- **Orientador** — ajuda turista a descobrir, não força venda
+- **Sem urgência falsa** — sem "APROVEITE AGORA"
 
-### Etapa 4: Aplicar Tom de Voz
+❌ "Descubra um paraíso esquecido"
+✅ "Seixas fica a 15 min da praia — quando a maré baixa aparecem piscinas que parecem aquário"
 
-Consulte `_conhecimento/tom-de-voz.md`. Vem Passear é:
+### Etapa 5 — Prova de Confiança
 
-- **Acolhedor:** Não corporativo, fala como amigo que conhece JP
-- **Nordestino:** Autenticidade local, sem caricatura (não "aê, sô!")
-- **Orientador:** Ajuda turista a descobrir, não força venda
-- **Confiança baseada em expertise:** "A gente conhece cada canto, cada maré, cada detalhe"
-- **Sem urgência falsa:** "APROVEITE AGORA" ❌, "vagas confirmadas para amanhã" ✅
+Em CADA página/passeio:
+1. Cadastur — badge/número de licença
+2. Rating — "4.9/5 em TripAdvisor"
+3. Murillo — "Conheço cada canto de JP há X anos"
+4. Depoimento real — frase de cliente real
+5. Resposta rápida — "Respondo em 1 hora no WhatsApp"
 
-**Exemplos:**
+### Etapa 6 — Estrutura por Tipo de Página
 
-❌ "Descubra um paraíso esquecido no coração da Amazônia" (genérico, fake)  
-✅ "Seixas fica a 15 min da praia, quando a maré baixa aparecem piscinas que parecem aquário"
+**HOME:** Hero (pergunta/curiosidade) → Cards de categorias → Prova → CTA
+**PÁGINA DE PASSEIO:** Hero → Lead (persona) → Timeline → Incluso → FAQ → Depoimento → Preço → CTA
+**CATEGORIA:** Intro → Cards de passeios → Mini-guide ("se quer praia tranquila...") → FAQ
 
-❌ "Experiência transformadora que vai mudar sua vida" (corporativo)  
-✅ "Se você quer voltar para casa falando "nossa, isso não esqueço mais"... é aqui"
-
-### Etapa 5: Aplicar Prova de Confiança
-
-Em CADA página/passeio, mostre:
-
-1. **Cadastur:** Badge/número de licença (legal proof)
-2. **Rating:** "4.9/5 em TripAdvisor" (social proof)
-3. **Murillo:** "Conheço cada canto de JP há X anos" (expertise local)
-4. **Depoimento real:** "Cliente: Achei que era genérico, mas a gente foi em lugar incrível" (prova viva)
-5. **Resposta rápida:** "Respondo em 1 hora no WhatsApp" (confiabilidade)
-
-**Posição:** Mínimo na home e em cada página de passeio.
-
-### Etapa 6: Estrutura por Tipo de Página
-
-#### HOME
-- **Hero:** Pergunta ou curiosidade que leva para Litoral/Urbano/Trilhas
-- **Categorias:** 3-4 cards com imagem + pergunta ("Quer praia?", "Quer história?", "Quer adrenalina?")
-- **Proof:** Rating grande, Murillo intro, 1 depoimento
-- **CTA:** Claro — "Vamos montar o passeio que você sonha"
-
-#### PÁGINA DE PASSEIO
-- **Hero:** Headline específico (não "Bem-vindo")
-- **Lead:** Quem é você? (persona)
-- **O que você vai fazer:** Timeline sensorial
-- **O que está incluso:** Equipamento, guia, foto, snack, etc
-- **FAQ:** Quebra objeções comuns
-- **Depoimento:** 1-2 reais
-- **Preço:** Claro, sem esconder
-- **Roteiro:** Hora a hora do dia
-- **CTA Final:** Agendar WhatsApp, reforça Murillo + rating
-
-#### CATEGORIA (Litoral Sul, Urbano, etc)
-- **Intro:** Por que ir nesta categoria?
-- **4-5 Passeios:** Cards com foto, nome, 1 line de diferencial, CTA
-- **Qual escolher:** Mini-guide ("Se quer praia tranquila...", "Se quer adrenalina...")
-- **FAQ Categoria:** Perguntas comuns da categoria
-
-### Etapa 7: Otimizar para Conversão
-
-Checklist final:
+### Etapa 7 — Checklist Final
 
 - [ ] Headline é específico (não genérico)?
 - [ ] Lead reconhece o problema do turista?
-- [ ] AIDA está presente (Atenção → Interesse → Desejo → Ação)?
-- [ ] Prova de confiança visível (Cadastur + rating + Murillo + depoimento)?
-- [ ] CTA é uma ação clara (não "saiba mais")?
-- [ ] Preço está visível (se passeio)?
-- [ ] Sem clichê turístico ("paraíso", "magia", "cartão postal")?
+- [ ] AIDA presente?
+- [ ] Prova de confiança visível?
+- [ ] CTA é ação clara (não "saiba mais")?
+- [ ] Preço visível (se passeio)?
+- [ ] Sem clichê turístico?
 - [ ] Tom é acolhedor, não corporativo?
-- [ ] Dados consultados em `passeios.md` (preço, roteiro, duração corretos)?
+- [ ] Dados de `passeios.md` confirmados?
 
-## 6. Regras Específicas
+---
 
-- **Priorizar conversão antes de SEO:** Venda bem > ranqueia bem (depois `seo-local-turismo` otimiza sem quebrar copy)
-- **Cada página uma jornada:** Tem começo (problema), meio (solução), fim (ação)
+## REGRAS
+
+- **Conversão antes de SEO:** `seo-local-turismo` otimiza depois, sem quebrar copy
 - **Nunca esconder preço:** Transparent pricing = confiança = conversão
 - **Depoimento real sempre:** Uma frase de cliente real > promessa da marca
-- **Senso de urgência leve:** "Vagas limitadas, confirme logo" ✅ vs "APROVEITE AGORA!!!" ❌
-- **WhatsApp é único CTA:** Email "em breve", phone "conforme agenda" — WhatsApp é direto com Murillo
+- **WhatsApp é único CTA:** Não email como primário
+- **Cada página tem uma jornada:** começo (problema), meio (solução), fim (ação)
 
-## 7. Saída Esperada
+---
 
-Um arquivo markdown com:
+## OUTPUT
 
-### Seção 1: Copy Completo
+### Resultado Estruturado
 
-O texto que vai no site, pronto para copy-paste (ou revisor/designer aprova antes).
+Documento markdown com 3 seções:
 
-Formato:
-```markdown
-# Página: Seixas
-
+**1. Copy Completo (pronto para revisar/aprovar)**
+```
 ## Hero Headline
 "Seixas: Onde o Sol Nasce Primeiro em João Pessoa"
 
 ## Lead
-"Se você chegou em JP e quer snorkel, mas nunca mergulhou e tem medo — este passeio é para você."
+"Se você chegou em JP e quer snorkel, mas nunca mergulhou..."
 
 ## O Que Você Vai Fazer
 [Timeline sensorial do dia]
@@ -221,62 +187,51 @@ Formato:
 ## O Que Está Incluso
 - Equipamento completo
 - Fotos do dia
-- Snack na volta
 - Guia certificado
 
 ## FAQ
 [Perguntas + respostas]
 
 ## Depoimento
-[Cliente real]
+[Cliente real ou [INSERIR DEPOIMENTO REAL]]
 
 ## CTA Final
-[Botão + copy de reforço]
+"Vamos montar o roteiro que você sonha. Fala com a gente 👇"
+[Botão WhatsApp]
 ```
 
-### Seção 2: Notas de Implementação
+**2. Notas de Implementação**
+Tom, posição de Cadastur, destaque de preço, formato de CTA
 
-Orientações para designer/implementador:
+**3. Checklist de Qualidade**
+Itens da Etapa 7 preenchidos
 
-```markdown
-## Notas
+### Arquivos Gerados
 
-- **Tone:** Amigável, não corporativo. Fala como amigo que conhece JP.
-- **Prova de Confiança:** Mostrar Cadastur badge no hero, rating no topo, depoimento no meio
-- **Preço:** Destacado em info card, não escondido
-- **CTA:** Botão WhatsApp verde claro, texto "Agendar Passeio"
-```
+| Arquivo | Pasta | Quando |
+|---------|-------|--------|
+| `copy-[pagina]-[data].md` | `_pipeline/` | Entrega desta skill |
 
-### Seção 3: Checklist de Qualidade
+### Próximos Passos (Handoff)
 
-```markdown
-## Validação
-
-- [x] Headline reconhece problema específico (não genérico)
-- [x] Lead valida turista (sabe quem é)
-- [x] AIDA presente (A→I→D→A)
-- [x] Prova de confiança em mínimo 2 lugares
-- [x] Preço claro e destacado
-- [x] CTA é uma ação (não "saiba mais")
-- [x] Zero clichê turístico
-- [x] Tom conversacional (lê como amigo, não corporativo)
-```
-
-**Tamanho esperado:** 1.5-3 páginas markdown (copy + notas + checklist).
-
-## 8. Critério de Qualidade
-
-✅ **Bom copywriter:** Copy vende porque identifica problema real, prova confiança, remove fricção, simples de converter  
-❌ **Ruim:** Copy genérico (poderia ser qualquer agência), clichê turístico, preço escondido, CTA vago, tone corporativo  
-
-## 9. Próximas Skills na Cadeia
-
-Depois disso:
-
-1. **`ux-ui-mobile-first`:** Transforma copy em wireframe + especificação visual
-2. **`seo-local-turismo`:** Otimiza copy para SEO (títulos, headings, keywords) SEM quebrar conversão
-3. **`programador-de-site`:** Implementa copy em Next.js com estrutura semântica correta
+Esta skill alimenta:
+- `ux-ui-mobile-first` com: copy aprovada para definir hierarquia de blocos
+- `seo-local-turismo` com: H1, lead, FAQ para otimizar sem quebrar conversão
+- `programador-de-site` com: copy final para implementar em Next.js
 
 ---
 
-*Skill v2.0 | Refinada 2026-04-25 | Fase Copywriting + Conversão*
+## COMPATIBILIDADE COM ORQUESTRADOR
+
+| Propriedade | Valor |
+|-------------|-------|
+| Pipelines que usam | Pipeline A, B, C (condicional), G (custom) |
+| Depende de (skills) | `estrategista-de-site` (opcional — estrutura da página) |
+| Depende de (arquivos) | `passeios.md` (bloqueante), `catalogo_vempassear_estruturado.md`, `tom-de-voz.md` |
+| Alimenta (skills) | `ux-ui-mobile-first`, `seo-local-turismo`, `programador-de-site` |
+| Pode rodar em paralelo com | `ux-ui-mobile-first` (após `estrategista-de-site`) |
+| Posição típica no pipeline | Etapa 2a dos Pipelines A e B |
+
+---
+
+*Skill v3.0 | Atualizado 2026-04-25 | Adicionado INPUT/OUTPUT/COMPATIBILIDADE padronizados*

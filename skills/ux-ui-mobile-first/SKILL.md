@@ -1,310 +1,209 @@
 # Skill: UX/UI Mobile-First
 
-## 1. Função
+**Versão:** 3.0
+**Status:** Ativa
+**Especialidade:** Wireframe textual, responsividade, hierarquia visual, acessibilidade
+**Escopo:** Site da Vem Passear em Jampa
+**Modelo Padrão:** Sonnet 4.6
+**Atualizado:** 2026-04-25
 
-Transformar estratégia (estrutura, copy, SEO) em **especificação visual clara** para implementação. Priorizar mobile-first, definir layout com hierarquia visual, orientar design de hero/cards/seções/CTAs com foco em **confiança e conversão**, não em decoração.
+---
 
-Você não faz design (cores, fontes, logo), mas especifica **o quê** designer deve fazer. Você guia implementação técnica focando em conversão, acessibilidade, performance e experiência mobile.
+## RESPONSABILIDADE
 
-## 2. Quando Usar
+### O Que Faz
+- Transforma estratégia e copy em especificação visual clara
+- Define hierarquia de blocos por importância (crítico / importante / suporte)
+- Especifica wireframe textual por seção com dimensões e comportamentos
+- Define 3 breakpoints (mobile / tablet / desktop) para cada bloco
+- Especifica tap targets, acessibilidade WCAG AA, performance mobile
 
-✅ Página foi aprovada textualmente (copy + estrutura) e precisa de especificação visual  
-✅ Designer chegou no projeto e precisa entender requisitos UX/UI  
-✅ Quer garantir que layout é mobile-first (não desktop adaptado para mobile)  
-✅ Página tem baixa performance em mobile ou conversão baixa  
-✅ Retomando design inacabado  
+### O Que NÃO Faz
+- ❌ Escrever copy → `copywriter-vendas`
+- ❌ Definir estratégia ou arquitetura → `estrategista-de-site`
+- ❌ Escolher cores, tipografia ou logo → `diretor-visual-turismo` / designer
+- ❌ Otimizar SEO → `seo-local-turismo`
+- ❌ Implementar código → `programador-de-site`
 
-## 3. Quando NÃO Usar
+### Quando Usar
+- Copy e estrutura aprovados → precisa especificação visual
+- Designer precisa entender requisitos UX antes de abrir Figma
+- Página tem baixa conversão mobile
+- Retomando design inacabado
 
-❌ Para definir conteúdo/copy (use `copywriter-vendas`)  
-❌ Para otimização SEO (use `seo-local-turismo`)  
-❌ Para arquitetura de site (use `estrategista-de-site`)  
-❌ Para escolher cores/tipografia/logo (designer lidera, você sugere contexto)  
+### Quando NÃO Usar
+- Copy ainda não aprovada (este passo vem antes)
+- Objetivo é só otimizar SEO ou escrever texto
 
-## 4. Entradas Necessárias
+---
 
-Antes de começar, tenha:
+## INPUT
 
-- **Copy/conteúdo aprovado:** Em markdown ou documento (já foi por Copywriter)
-- **Objetivo da página:** Vender? Educar? Construir confiança? (de `estrategista-de-site`)
-- **Ação esperada do turista:** Clicar CTA? Ler depoimento? Escolher data?
-- **Dados do passeio (se aplicável):** Preço, duração, horário (de `_conhecimento/passeios.md`)
-- **Provas de confiança:** Rating, Cadastur, depoimentos (de `_conhecimento/provas-de-confianca.md`)
+| Campo | Obrigatório | Fonte | Descrição |
+|-------|-------------|-------|-----------|
+| objetivo | Sim | Murillo/Orquestrador | Ex: "wireframe da página Seixas" |
+| copy aprovada | Sim | `copywriter-vendas` | Texto final em markdown |
+| objetivo da página | Sim | `estrategista-de-site` | Vender? Educar? Construir confiança? |
+| ação esperada do turista | Sim | `estrategista-de-site` | Clicar CTA? Ler depoimento? |
+| dados do passeio | Condicional | `_conhecimento/passeios.md` | Se for página de passeio |
+| provas de confiança | Não | `_conhecimento/provas-de-confianca.md` | Onde colocar Cadastur, rating, depoimento |
 
-## 5. Processo
+### Dados do `_conhecimento/` (Obrigatórios Antes de Executar)
 
-### Etapa 1: Hierarquizar Blocos por Importância
+| Arquivo | Por Que Consultar |
+|---------|------------------|
+| `passeios.md` | Preço, duração, saída (se página de passeio) |
+| `provas-de-confianca.md` | Posição e formato de Cadastur, rating, depoimento |
 
-Leia o copy/conteúdo. Identifique:
+### Fallback se Faltar Dado
+- Se copy não foi aprovada → não criar wireframe (copy define hierarquia de blocos)
+- Se estrutura da página não foi definida → consultar `estrategista-de-site` primeiro
+- Se dados do passeio estão ausentes → marcar `[CONFIRMAR: preço, duração, saída]`
 
-**CRÍTICO (primeiro 30% da tela mobile):**
-- Hero + headline (O que o turista vai encontrar)
-- CTA primária (WhatsApp, óbvio, 44px altura mínima)
-- Preço (se é passeio)
-- Rating/Proof (se tem)
+---
 
-**IMPORTANTE (30-70% da tela):**
-- Descrição curta
-- O que está incluso
-- Roteiro/itinerário
-- FAQ (accordion, não expandido)
+## PROCESSO
 
-**SUPORTE (70%+ ou scroll longo):**
-- Depoimentos/reviews
-- Logos/parceiros
-- Links relacionados
-- Footer
+### Etapa 1 — Hierarquizar Blocos
 
-### Etapa 2: Ordem Mobile (Small-First)
+Leia a copy e classifique cada bloco:
 
-Defina o que turista vê **ao cair na página** em mobile:
+**CRÍTICO (primeiros 30% da tela mobile):**
+- Hero + headline, CTA primária (44px mín), Preço, Rating/Proof
 
-1. **Hero:** Imagem grande (full-width ou 100vh se necessário) com overlay, headline, CTA sticky ou acima do fold
-2. **Info Card:** Preço, Duração, Ponto Encontro em cards pequenos (3-col em mobile)
-3. **Lead:** 1 frase que responde "por que fazer isso?"
-4. **Descrição:** 2-3 parágrafos, espaçamento claro
-5. **"Incluso":** Blocos de 4 items em stack vertical (mobile), grid em tablet
-6. **Roteiro:** Timeline vertical (mobile), horizontal (tablet)
-7. **FAQ:** Accordion (clicável, 44px tap target)
-8. **Depoimentos:** Stack vertical (mobile), carousel (tablet+)
-9. **CTA Final:** Botão grande "Agendar no WhatsApp"
-10. **Footer:** Links, contato, redes
+**IMPORTANTE (30-70%):**
+- Descrição curta, O que está incluso, Roteiro, FAQ (accordion fechado)
 
-**Regra:** No mobile, turista NÃO deve scrollar mais de 5-6 seções antes de encontrar CTA.
+**SUPORTE (70%+):**
+- Depoimentos, Logos/parceiros, Links relacionados, Footer
 
-### Etapa 3: Definir Tap Targets (Toque em Mobile)
+### Etapa 2 — Definir Ordem Mobile
 
-Requisitos acessibilidade + UX:
+Sequência padrão para página de passeio:
+1. Hero (imagem + H1 + CTA) — 350px mobile
+2. Info Card (Preço | Duração | Saída) — 3-col grid
+3. Lead (1 frase)
+4. Descrição (2-3 parágrafos)
+5. "Incluso" (4 items, stack vertical)
+6. Roteiro (timeline vertical)
+7. FAQ (accordion, 44px tap target)
+8. Depoimentos (stack vertical)
+9. CTA Final (botão grande WhatsApp)
+10. Footer
 
-- **Buttons:** Mínimo 44px × 44px (Apple HIG, WCAG)
-- **Links clicáveis:** Mínimo 48px × 48px se possível
-- **Espaçamento entre buttons:** Mínimo 8px
-- **Texto clicável:** Mínimo 16px, não depender de hover
+**Regra:** No mobile, turista não deve scrollar mais de 5-6 seções antes de encontrar CTA.
 
-### Etapa 4: Especificar Wireframe Textual
+### Etapa 3 — Tap Targets
 
-Para cada bloco, descreva:
+- Buttons: mínimo 44×44px (Apple HIG, WCAG)
+- Links clicáveis: mínimo 48×48px
+- Espaçamento entre buttons: mínimo 8px
+- Texto clicável: mínimo 16px
 
-**Exemplo Hero:**
+### Etapa 4 — Wireframe Textual por Bloco
+
+Para cada bloco:
 ```
-Hero Block (Mobile: 300px-400px altura)
-- Background: imagem full-width (JPG com Webp fallback)
-- Overlay: gradiente escuro de cima (0.6 opacity)
-- Conteúdo centrado:
-  - H1: "Praia do Seixas — Aurora no Atlântico" (32px, branco, bold)
-  - Subtitle: "Snorkel em água cristalina" (16px, cinza claro)
-  - Button: "Agendar no WhatsApp" (44px altura, laranja/primary, WhatsApp icon 20px)
+Hero Block (Mobile: 350px)
+- Background: imagem full-width (Webp + JPG fallback)
+- Overlay: gradiente escuro 60% opacidade
+- H1: "Praia do Seixas" (32px, branco, bold)
+- Subtitle: "Snorkel em água cristalina" (16px, cinza claro)
+- Button: "Agendar no WhatsApp" (44px, laranja, WhatsApp icon 20px)
 
-Tablet (768px+): Hero altura 500px, H1 40px, subtitle 18px
-
+Tablet (768px+): Hero 500px, H1 40px
 Desktop (1024px+): Hero 600px, H1 48px
 ```
 
-### Etapa 5: Responsividade — 3 Breakpoints
+### Etapa 5 — Responsividade (3 Breakpoints)
 
-Defina como layout adapta:
+**Mobile (320-768px):** 100% - 16px padding, 1-col, H1 32px, body 16px, buttons full-width
+**Tablet (769-1024px):** Max-width 90%, 2-col onde possível, H1 40px
+**Desktop (1025px+):** Max-width 1200px, 3-col onde possível, H1 48px, H2 32px
 
-**Mobile (320px-768px):**
-- Todos blocos full-width (100% - 16px padding)
-- Imagens 100% (lazy-load)
-- Tipografia: H1 32px, H2 24px, H3 18px, body 16px
-- Buttons full-width ou 100% do container
-- Menu hambúrguer (não expandido)
+### Etapa 6 — Acessibilidade (WCAG AA)
 
-**Tablet (769px-1024px):**
-- Max-width 90% centrado
-- Grids 2-col onde possível
-- Tipografia: H1 40px, H2 28px, body 16px
-- Menu parcialmente expandido ou mobile-like
+- Contraste: H1/H2 branco sobre escuro ≥7:1, body ≥4.5:1
+- Alt text descritivo em todas imagens
+- Focus states: buttons com outline 2px quando tabbed
+- Sem cor como único indicador
 
-**Desktop (1025px+):**
-- Max-width 1200px centrado
-- Grids 3-col onde possível
-- Tipografia: H1 48px, H2 32px, body 16px
-- Menu horizontal completo
+### Etapa 7 — Performance (Alvo <3s mobile)
 
-### Etapa 6: Acessibilidade Básica
+- Imagens: Webp + JPG fallback, dimensionadas corretamente
+- Lazy-load: hero = eager, imagens abaixo = lazy
+- Animações: Fade-in CSS, não JS pesado
+- Fontes: máximo 2, system-first se possível
 
-Requisitos WCAG AA (mínimo):
+---
 
-- **Contraste:** H1/H2 branco sobre escuro ≥ 7:1, body ≥ 4.5:1
-- **Alt text:** Descritivo, não "imagem.jpg". Ex: "Praia do Seixas ao entardecer com farol ao fundo"
-- **Focus states:** Buttons com outline 2px quando tabbed
-- **Sem cor como único indicador:** Use cor + ícone ou cor + symbol
-- **Labels em formulários:** Sempre presentes, conectadas via `for` attribute
+## REGRAS
 
-### Etapa 7: Performance
-
-Otimizações para mobile < 3s load:
-
-- **Imagens:** Webp + JPG fallback, dimensionadas corretamente (não 2000px para mobile 320px)
-- **Lazy-load:** Imagens abaixo do fold carreguem sob demanda
-- **Animações:** Fade-in/slide ok, evitar JS pesado (AOS library etc)
-- **CSS:** Critical path inline, resto deferred
-- **Fontes:** Máximo 2 fonts, carrega system-first se possível
-- **Videos:** Evitar auto-play, loop. Se usar, load sob demanda
-
-## 6. Regras Específicas
-
-- **Mobile é versão 1.0:** Desktop é expansão, não o oposto
-- **CTA sempre acessível:** Botão WhatsApp deve estar visível com 1-2 scrolls no mobile
+- **Mobile é versão 1.0:** Desktop é expansão, não o contrário
+- **CTA sempre acessível:** Botão WhatsApp visível com 1-2 scrolls no mobile
 - **Imagens servem copy:** Cada imagem tem propósito, não é decoração
-- **Espaço branco é legibilidade:** Padding entre seções, não aperto de conteúdo
-- **Hierarquia tipográfica:** H1 > H2 > H3 > body, não tudo iguais
-- **Sem hover states críticos:** Mobile não tem hover. Button estados: default, focus (outline), active (pressed)
-- **Contexto > Estética:** Um design feio mas claro > design bonito mas confuso
+- **Hierarquia tipográfica:** H1 > H2 > H3 > body
+- **Sem hover states críticos:** Mobile não tem hover — estados: default, focus, active
 
-## 7. Saída Esperada
+---
 
-Um arquivo markdown com **mínimo** 5 seções:
+## OUTPUT
 
-### Seção 1: Wireframe Textual (por bloco)
+### Resultado Estruturado
 
-Descrição visual de cada seção. Exemplo:
+Documento markdown com 5 seções:
 
-```markdown
-## Wireframe Textual — Página Seixas
+**1. Wireframe Textual (por bloco)**
+Cada seção descrita com dimensões, conteúdo, comportamento
 
-### 1. Hero (Mobile: 350px altura)
-- Background: imagem praia full-width (Webp 1200x350 + JPG fallback)
-- Overlay: gradiente escuro 60% opacidade
-- Conteúdo centrado com padding 16px:
-  - Breadcrumb: "Home > Litoral Sul > Seixas" (12px cinza)
-  - H1: "Praia do Seixas" (32px, branco, 1.2 line-height)
-  - Subtitle: "Snorkel em água cristalina" (16px, cinza 200)
-  - Button: "Agendar no WhatsApp" (44px, primary-orange, WhatsApp icon)
-
-### 2. Info Card (post-hero)
-- Grid 3-col (mobile stack): Preço | Duração | Saída
-- Cada cell: icone (32px) + valor (14px bold) + label (12px)
-- Background: light-gray, padding 16px
-
-### 3. Descrição
-- Lead: 1 frase (16px, bold)
-- Corpo: 2-3 parágrafos (16px, line-height 1.6)
-- Espaçamento entre parágrafos: 16px
-```
-
-### Seção 2: Diagrama ASCII (visual)
-
-Ordem dos blocos em mobile:
-
+**2. Diagrama ASCII**
 ```
 ┌─────────────────────┐
 │   Hero (350px)      │
 │  [Foto + H1 + CTA]  │
 └─────────────────────┘
 ┌─────────────────────┐
-│   Breadcrumb (40px) │
-└─────────────────────┘
-┌─────────────────────┐
 │   Info Card (120px) │
 │ Preço | Dur | Saída │
 └─────────────────────┘
-┌─────────────────────┐
-│ Descrição (200px)   │
-│ Lead + 2-3 parágr.  │
-└─────────────────────┘
-┌─────────────────────┐
-│  Incluso (300px)    │
-│  4 items em stack   │
-└─────────────────────┘
-┌─────────────────────┐
-│ Roteiro (500px)     │
-│  Timeline vertical  │
-└─────────────────────┘
-┌─────────────────────┐
-│  FAQ (400px)        │
-│ 3 perguntas accord  │
-└─────────────────────┘
-┌─────────────────────┐
-│ Depoimento (200px)  │
-│ Citação + foto      │
-└─────────────────────┘
-┌─────────────────────┐
-│ CTA Final (60px)    │
-│ Agendar WhatsApp    │
-└─────────────────────┘
+[...]
 ```
 
-### Seção 3: Responsividade (3 Breakpoints)
+**3. Responsividade (3 breakpoints)**
+Por bloco, como adapta em mobile / tablet / desktop
 
-```markdown
-## Responsividade
+**4. Acessibilidade**
+Contraste, alt text, focus states, touch targets
 
-### Mobile (320px-768px)
-- Todos blocos 100% - 16px padding
-- Info Card: 3-col tight
-- Roteiro: vertical timeline
-- H1: 32px, H2: 24px, body: 16px
+**5. Performance**
+Imagens, lazy-load, animações, fontes
 
-### Tablet (769px-1024px)
-- Max-width 90% centrado
-- Info Card: 4-col (se 4 items)
-- Roteiro: 2-col (dia + atividades lado a lado)
-- H1: 40px, body: 16px
+### Arquivos Gerados
 
-### Desktop (1025px+)
-- Max-width 1200px
-- Info Card: grid full 4-col
-- Roteiro: timeline horizontal com linha conectora
-- H1: 48px, H2: 32px
-```
+| Arquivo | Pasta | Quando |
+|---------|-------|--------|
+| `wireframe-[pagina]-[data].md` | `_pipeline/` | Entrega desta skill |
 
-### Seção 4: Acessibilidade
+### Próximos Passos (Handoff)
 
-```markdown
-## Acessibilidade (WCAG AA)
-
-- **Contraste:**
-  - H1/H2 branco sobre overlay escuro ≥ 7:1
-  - Body text cinza 600+ sobre branco ≥ 4.5:1
-  
-- **Alt text exemplos:**
-  - Hero: "Praia do Seixas ao entardecer com farol ao fundo"
-  - Cards: "Ícone de relógio indicando duração"
-  
-- **Focus states:**
-  - Button: outline 2px solid (cor contrast)
-  - Links: underline + outline
-  
-- **Sem cor única:**
-  - "Incluso" usa ícone + texto, não cor só
-```
-
-### Seção 5: Performance
-
-```markdown
-## Performance (Alvo < 3s mobile)
-
-- **Imagens:**
-  - Hero: Webp 1200x350 (50KB), JPG fallback (80KB)
-  - Cards: Webp 400x300 (20KB), lazy-load
-  
-- **Lazy-load:**
-  - Hero: eager (acima do fold)
-  - Depoimentos abaixo: loading="lazy"
-  
-- **Animações:** Fade-in no scroll (CSS, não JS)
-
-- **Fontes:** 1-2 fonts máximo, system-first se possível
-```
-
-**Tamanho esperado:** 3-5 páginas markdown, wireframe visual claro, especificações concretas.
-
-## 8. Critério de Qualidade
-
-✅ **Bom UX/UI:** Definiu wireframe claro, mobile-first óbvio, CTA acessível, performance considerada, designer tem tudo que precisa  
-❌ **Ruim:** Texto genérico "use boas práticas", não definiu layout específico, designer não sabe por onde começa  
-
-## 9. Próximas Skills na Cadeia
-
-Depois disso:
-
-1. **Designer:** Usa seu wireframe para fazer visual real (cores, tipografia, assets)
-2. **`programador-de-site`:** Usa wireframe + design para implementar em Next.js
-3. **`seo-local-turismo`:** Otimiza SEO técnico (schema, meta tags, estrutura heading)
+Esta skill alimenta:
+- `diretor-visual-turismo` com: wireframe para validação de padrão visual
+- `briefing-designer` com: especificação de blocos, comportamentos, responsividade
+- `programador-de-site` com: estrutura de componentes e breakpoints
 
 ---
 
-*Skill v2.0 | Refinada 2026-04-25 | Fase UX/UI Mobile-First + Conversão*
+## COMPATIBILIDADE COM ORQUESTRADOR
+
+| Propriedade | Valor |
+|-------------|-------|
+| Pipelines que usam | Pipeline A (Página Passeio), Pipeline B (Categoria) |
+| Depende de (skills) | `estrategista-de-site` (estrutura), `copywriter-vendas` (copy) |
+| Depende de (arquivos) | `passeios.md`, `provas-de-confianca.md` |
+| Alimenta (skills) | `diretor-visual-turismo`, `briefing-designer`, `programador-de-site` |
+| Pode rodar em paralelo com | `copywriter-vendas` (após `estrategista-de-site`) |
+| Posição típica no pipeline | Etapa 2b dos Pipelines A e B |
+
+---
+
+*Skill v3.0 | Atualizado 2026-04-25 | Adicionado INPUT/OUTPUT/COMPATIBILIDADE padronizados*
