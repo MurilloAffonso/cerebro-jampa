@@ -187,11 +187,9 @@ export default function PasseioPage({ params }: PasseioPageProps) {
         />
       </section>
 
-      {/* C4 — AVISO DE MARÉ (exibe se há observação de maré) */}
-      {passeio.observacoes && passeio.observacoes.toLowerCase().includes("maré") && (
-        <MareAlert
-          texto="As piscinas naturais só aparecem quando a maré está baixa. Antes de confirmar sua data, a gente consulta a tábua de marés e te avisa o melhor horário. Você não precisa se preocupar com isso. Esse é o nosso trabalho."
-        />
+      {/* C4 — AVISO DE MARÉ (exibe se passeio.alertaMare estiver preenchido) */}
+      {passeio.alertaMare && (
+        <MareAlert texto={passeio.alertaMare} />
       )}
 
       {/* C5 — POR QUE CONFIAR */}
@@ -222,7 +220,7 @@ export default function PasseioPage({ params }: PasseioPageProps) {
       {(passeio.descricaoSensorial || passeio.descricaoLonga) && (
         <section className="section-padding bg-white">
           <div className="container-safe max-w-3xl">
-            <h2>O que espera por você em {passeio.nome}</h2>
+            <h2>O que espera por você em {passeio.nomeCurto || passeio.nome}</h2>
             <div className="space-y-4 mt-4">
               {(passeio.descricaoSensorial || passeio.descricaoLonga || "")
                 .split("\n\n")

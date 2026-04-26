@@ -42,6 +42,8 @@ export interface Passeio {
   incluso?: string[];
   naoIncluso?: string[];
   observacoes?: string;
+  alertaMare?: string;
+  nomeCurto?: string;
   idealPara?: string[];
   // Imagens
   coverImage?: string;
@@ -155,6 +157,9 @@ export const passeios: Passeio[] = [
     ],
     observacoes:
       "Sujeito à tábua de marés (maré baixa obrigatória). Confirmar disponibilidade antes de reservar.",
+    alertaMare:
+      "As piscinas naturais só aparecem quando a maré está baixa. Antes de confirmar sua data, a gente consulta a tábua de marés e te avisa o melhor horário. Você não precisa se preocupar com isso. Esse é o nosso trabalho.",
+    nomeCurto: "Seixas",
     idealPara: ["Mergulho", "Snorkel", "Fotos", "Aventura marinha"],
     // Imagens — placeholders SVG (fotos reais substituem conforme 05c-mapa-imagens.md)
     coverImage: "/images/passeios/seixas/hero-01.svg",
