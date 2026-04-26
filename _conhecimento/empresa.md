@@ -19,6 +19,9 @@ VemPassear Jampa
 **Atividade:**  
 Agência de Turismo (Turismo Receptivo)
 
+**Domínio Oficial:**  
+https://vempassearjampa.com.br *(confirmado por Murillo — 2026-04-26)*
+
 ---
 
 ## Cadastur — Registro Oficial

@@ -1,9 +1,9 @@
 ---
 skill: seo-local-turismo
-versao: 1.0
+versao: 1.1
 projeto_id: pagina-seixas-2026-04-26
 etapa: 4 de 6
-status: ENTREGUE — aguardando revisão de Murillo
+status: REVISADO — domínio confirmado (2026-04-26); lacunas restantes documentadas
 data: 2026-04-26
 fontes_consultadas:
   - _conhecimento/seo-local-joao-pessoa.md
@@ -159,7 +159,7 @@ Conheça as piscinas naturais de Seixas em João Pessoa. Maré baixa, corais e �
 
 **Notas de implementação:**
 - Slug gerado por `slugify()` em `lib/seo.ts`
-- Canonical tag deve apontar para `[SITE_URL]/passeios/piscinas-naturais/seixas`
+- Canonical tag deve apontar para `https://vempassearjampa.com.br/passeios/piscinas-naturais/seixas`
 - `gerarUrlPasseio()` retorna a URL completa a partir do slug
 
 ---
@@ -247,7 +247,7 @@ Todos os schemas são gerados via `lib/seo.ts`. Os blocos abaixo são a **especi
   "name": "Vem Passear em Jampa",
   "legalName": "AFFONSO MURILLO SOLEDADE DE OLIVEIRA",
   "taxID": "52.077.577/0001-03",
-  "url": "[CONFIRMAR COM MURILLO: domínio do site]",
+  "url": "https://vempassearjampa.com.br",
   "telephone": "+55 83 9908-7830",
   "address": {
     "@type": "PostalAddress",
@@ -278,7 +278,7 @@ Todos os schemas são gerados via `lib/seo.ts`. Os blocos abaixo são a **especi
   "@type": "TouristAttraction",
   "name": "Piscinas Naturais do Seixas — Passeio em João Pessoa",
   "description": "Passeio em catamarã até as piscinas naturais de Seixas, no ponto mais oriental das Américas. Maré baixa revela corais coloridos e água cristalina. R$ 60 por pessoa, saída de Tambaú, ~3h30 de duração.",
-  "url": "[SITE_URL]/passeios/piscinas-naturais/seixas",
+  "url": "https://vempassearjampa.com.br/passeios/piscinas-naturais/seixas",
   "image": "[CONFIRMAR COM MURILLO: URL da foto hero do Seixas]",
   "touristType": ["Família", "Casal", "Grupo de amigos"],
   "address": {
@@ -296,7 +296,7 @@ Todos os schemas são gerados via `lib/seo.ts`. Os blocos abaixo são a **especi
     "@type": "Offer",
     "price": "60.00",
     "priceCurrency": "BRL",
-    "url": "[SITE_URL]/passeios/piscinas-naturais/seixas",
+    "url": "https://vempassearjampa.com.br/passeios/piscinas-naturais/seixas",
     "availability": "https://schema.org/InStock",
     "priceValidUntil": "[CONFIRMAR COM MURILLO: data de validade do preço]"
   },
@@ -377,19 +377,19 @@ Todos os schemas são gerados via `lib/seo.ts`. Os blocos abaixo são a **especi
       "@type": "ListItem",
       "position": 1,
       "name": "Início",
-      "item": "[SITE_URL]"
+      "item": "https://vempassearjampa.com.br"
     },
     {
       "@type": "ListItem",
       "position": 2,
       "name": "Piscinas Naturais em João Pessoa",
-      "item": "[SITE_URL]/passeios/piscinas-naturais"
+      "item": "https://vempassearjampa.com.br/passeios/piscinas-naturais"
     },
     {
       "@type": "ListItem",
       "position": 3,
       "name": "Piscinas Naturais do Seixas",
-      "item": "[SITE_URL]/passeios/piscinas-naturais/seixas"
+      "item": "https://vempassearjampa.com.br/passeios/piscinas-naturais/seixas"
     }
   ]
 }
@@ -472,7 +472,7 @@ As fotos da página de Seixas ainda aguardam confirmação de Murillo (foto hero
 | Campo | Valor | Justificativa |
 |-------|-------|---------------|
 | **robots meta** | `index, follow` | Página de conversão — deve ser indexada |
-| **canonical** | `[SITE_URL]/passeios/piscinas-naturais/seixas` | Evita duplicação por parâmetros de URL |
+| **canonical** | `https://vempassearjampa.com.br/passeios/piscinas-naturais/seixas` | Evita duplicação por parâmetros de URL |
 | **sitemap** | ✅ Incluir | Página prioritária (Tier 1 do roadmap) |
 | **sitemap priority** | `0.9` | Alta prioridade (abaixo apenas da home — `1.0`) |
 | **sitemap changefreq** | `monthly` | Dados estáveis (preço, roteiro) — atualizar ao alterar dados |
@@ -485,7 +485,7 @@ As fotos da página de Seixas ainda aguardam confirmação de Murillo (foto hero
 <meta property="og:title" content="Piscinas Naturais do Seixas em João Pessoa | Vem Passear" />
 <meta property="og:description" content="Conheça as piscinas naturais de Seixas. Maré baixa, corais e água cristalina. R$ 60 por pessoa. Reserve pelo WhatsApp!" />
 <meta property="og:image" content="[CONFIRMAR COM MURILLO: URL da foto hero do Seixas]" />
-<meta property="og:url" content="[SITE_URL]/passeios/piscinas-naturais/seixas" />
+<meta property="og:url" content="https://vempassearjampa.com.br/passeios/piscinas-naturais/seixas" />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="pt_BR" />
 ```
@@ -567,7 +567,7 @@ O NAP (Name, Address, Phone) deve ser **idêntico** em 5 lugares:
 
 | # | Campo | Impacto | Bloqueia |
 |---|-------|---------|---------|
-| 1 | Domínio do site (`SITE_URL`) | Todos os schemas e canonical tags | ⛔ Schemas, canonical, OG:url |
+| ~~1~~ | ~~Domínio do site (`SITE_URL`)~~ | ~~Todos os schemas e canonical tags~~ | ✅ **Resolvido — `https://vempassearjampa.com.br`** |
 | 2 | Número exato de avaliações Google (ex: "147 avaliações") | LocalBusiness schema + copy rating | ⏳ Schema parcial (4.9/5 disponível) |
 | 3 | Anos de operação de Murillo | Copy Bloco 4 (H3 Murillo) | ⏳ Não bloqueia SEO técnico |
 | 4 | Endereço exato ponto de embarque em Tambaú | FAQ #4 + schema LocalBusiness + NAP | ⛔ NAP inconsistente sem isso |
@@ -579,7 +579,7 @@ O NAP (Name, Address, Phone) deve ser **idêntico** em 5 lugares:
 | 10 | Bar a bordo vende alimentos ou só bebidas? | Bloco 7 copy (não SEO diretamente) | ⏳ Não bloqueia SEO |
 
 **Prioridade de confirmação:**
-1. 🔴 **Crítico agora:** itens 1 (domínio), 4 (endereço Tambaú), 7 (cancelamento), 8 (crianças)
+1. 🔴 **Crítico antes do deploy:** itens 4 (endereço Tambaú), 7 (cancelamento), 8 (crianças)
 2. 🟠 **Importante antes do deploy:** itens 2 (avaliações), 5 (foto hero)
 3. 🟡 **Pode vir depois:** itens 3, 6, 9, 10
 
@@ -646,10 +646,10 @@ O NAP (Name, Address, Phone) deve ser **idêntico** em 5 lugares:
 | Slug confirmado | ✅ `/passeios/piscinas-naturais/seixas` |
 | H1/H2/H3 mapeados | ✅ 1 H1, 8 H2s, 12 H3s |
 | FAQ para schema (perguntas confirmadas) | ✅ 4 prontas / 3 aguardando [CONFIRMAR] |
-| Schema LocalBusiness especificado | ✅ com [CONFIRMAR] para domínio e ratingCount |
-| Schema TouristAttraction especificado | ✅ com [CONFIRMAR] para imagem e domínio |
+| Schema LocalBusiness especificado | ✅ domínio confirmado; [CONFIRMAR] só ratingCount e foto |
+| Schema TouristAttraction especificado | ✅ domínio confirmado; [CONFIRMAR] só imagem hero |
 | Schema FAQPage especificado | ✅ 4 perguntas confirmadas |
-| Schema BreadcrumbList especificado | ✅ com [CONFIRMAR] para domínio |
+| Schema BreadcrumbList especificado | ✅ domínio confirmado — todas as URLs absolutas preenchidas |
 | Links internos de entrada | ✅ 6 origens mapeadas |
 | Links internos de saída | ✅ 6 destinos mapeados |
 | Diretrizes de alt text | ✅ 6 exemplos específicos de Seixas |
@@ -673,4 +673,4 @@ O NAP (Name, Address, Phone) deve ser **idêntico** em 5 lugares:
 
 ---
 
-*Versão: 1.0 | Data: 2026-04-26 | Skill: seo-local-turismo | Próxima etapa: 05-briefing-designer.md*
+*Versão: 1.1 | Data: 2026-04-26 | Skill: seo-local-turismo | Revisão: domínio confirmado | Próxima etapa: 05-briefing-designer.md*

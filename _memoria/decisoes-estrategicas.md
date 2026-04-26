@@ -178,4 +178,12 @@
 
 ---
 
+### 26. Domínio Oficial — Confirmado (Murillo)
+**Decisão:** Domínio oficial: `https://vempassearjampa.com.br`
+**Por quê:** Dado confirmado pelo operador. Substitui todos os `[SITE_URL]` e `[CONFIRMAR: domínio]` do projeto.
+**Implementação:** Aplicado em 04-seo-local-turismo.md (v1.1) — canonical, schemas (LocalBusiness, TouristAttraction, BreadcrumbList), OG:url. Usar este domínio em todos os arquivos do projeto daqui para frente.
+**`SITE_URL` em `lib/seo.ts`:** Substituir `[CONFIRMAR COM MURILLO]` por `https://vempassearjampa.com.br` na implementação.
+
+---
+
 **Última atualização:** 2026-04-26 | Próxima revisão: ao fim de cada fase de implementação
