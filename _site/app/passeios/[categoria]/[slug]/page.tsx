@@ -107,6 +107,12 @@ export default function PasseioPage({ params }: PasseioPageProps) {
   // Hero H1 — usa h1 customizado ou nome do passeio
   const h1Text = passeio.h1 || `${passeio.nome} em João Pessoa`;
 
+  // Rótulo legível da categoria para breadcrumb e schema
+  const categoriaLabel = params.categoria
+    .split("-")
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
+
   // Schemas JSON-LD
   const touristAttractionSchema = generateTouristAttractionSchema({
     nome: passeio.nome,
@@ -123,17 +129,11 @@ export default function PasseioPage({ params }: PasseioPageProps) {
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Início", item: SITE_URL },
     {
-      name: "Piscinas Naturais em João Pessoa",
+      name: `${categoriaLabel} em João Pessoa`,
       item: `${SITE_URL}/passeios/${params.categoria}`,
     },
     { name: passeio.nome, item: pageUrl },
   ]);
-
-  // Rótulo legível da categoria para breadcrumb
-  const categoriaLabel = params.categoria
-    .split("-")
-    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-    .join(" ");
 
   return (
     <>
@@ -222,7 +222,7 @@ export default function PasseioPage({ params }: PasseioPageProps) {
       {(passeio.descricaoSensorial || passeio.descricaoLonga) && (
         <section className="section-padding bg-white">
           <div className="container-safe max-w-3xl">
-            <h2>O que espera por você em Seixas</h2>
+            <h2>O que espera por você em {passeio.nome}</h2>
             <div className="space-y-4 mt-4">
               {(passeio.descricaoSensorial || passeio.descricaoLonga || "")
                 .split("\n\n")
@@ -238,7 +238,7 @@ export default function PasseioPage({ params }: PasseioPageProps) {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={passeio.gallery[0]}
-                  alt="Turistas flutuando nas piscinas naturais de Seixas durante maré baixa em João Pessoa, Paraíba"
+                  alt={passeio.imagemAlt || `${passeio.nome} em João Pessoa, Paraíba`}
                   className="w-full object-cover rounded-lg"
                   style={{ maxHeight: "400px" }}
                   loading="lazy"
@@ -422,7 +422,7 @@ export default function PasseioPage({ params }: PasseioPageProps) {
       {similares.length > 0 && (
         <section className="section-padding bg-light">
           <div className="container-safe">
-            <h2>Outros passeios em piscinas naturais em João Pessoa</h2>
+            <h2>Outros passeios em {categoriaLabel.toLowerCase()} em João Pessoa</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
               {similares.map((p) => (
                 <PasseioCard key={p.id} passeio={p} />
@@ -433,7 +433,7 @@ export default function PasseioPage({ params }: PasseioPageProps) {
                 href={`/passeios/${params.categoria}`}
                 className="text-primary hover:text-accent font-semibold text-sm transition-colors"
               >
-                Ver todos os passeios em piscinas naturais →
+                Ver todos os passeios em {categoriaLabel.toLowerCase()} →
               </Link>
             </div>
           </div>

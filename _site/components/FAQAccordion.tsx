@@ -13,7 +13,6 @@
 "use client";
 
 import { useState } from "react";
-import { generateFAQSchema } from "@/lib/seo";
 
 interface FAQItem {
   pergunta: string;
@@ -64,13 +63,6 @@ export function FAQAccordion({ items, className }: FAQAccordionProps) {
         ))}
       </div>
 
-      {/* Schema JSON-LD */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateFAQSchema(items)),
-        }}
-      />
     </>
   );
 }
