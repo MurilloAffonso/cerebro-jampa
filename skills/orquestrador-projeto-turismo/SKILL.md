@@ -639,7 +639,69 @@ AÇÃO:
 
 ---
 
-## 8. INTEGRAÇÃO COM O SISTEMA
+## 8. ESTADO DO PROJETO (`_memoria/`)
+
+Antes de gerar qualquer plano, o orquestrador verifica o estado atual.
+
+### Passo 1 — Verificar se Já Existe Plano Ativo
+
+Consultar `_memoria/estado-atual.md`:
+
+```
+VERIFICAÇÃO:
+- Há projeto_id registrado para este objetivo?
+- Há etapas já concluídas?
+- Há entrega em `_pipeline/` relacionada?
+
+SE SIM → continuar de onde parou (ver Passo 2)
+SE NÃO → iniciar novo plano (ver Passo 3)
+```
+
+### Passo 2 — Retomar Plano Existente
+
+```
+AÇÃO:
+1. Identificar última etapa concluída
+2. Listar entregas já existentes em `_pipeline/`
+3. Validar se contexto mudou desde a última sessão
+   (novo dado em _conhecimento/? decisão mudou?)
+4. Devolver plano de RETOMADA — apenas etapas restantes
+   NÃO replanejar tudo do zero
+
+FORMATO:
+RETOMANDO: [projeto_id]
+Última etapa concluída: Etapa X — [skill]
+Próxima etapa: Etapa X+1 — [skill]
+Contexto alterado desde última sessão: [sim/não + o quê]
+```
+
+### Passo 3 — Iniciar Novo Plano
+
+Se não existe plano ativo para o objetivo, gerar novo e registrar identificador:
+
+```
+projeto_id: <slug-do-objetivo>-<data>
+
+Exemplos:
+  pagina-seixas-2026-04-25
+  campanha-litoral-sul-2026-05-10
+  seo-areia-vermelha-2026-04-28
+```
+
+O `projeto_id` é registrado em `_memoria/estado-atual.md` ao iniciar e removido ao concluir.
+
+### Regra Anti-Retrabalho
+
+```
+❌ NUNCA regenerar do zero se plano já existe
+❌ NUNCA re-executar etapa já concluída e entregue
+✅ SEMPRE consultar _memoria/estado-atual.md antes de propor pipeline
+✅ SEMPRE verificar _pipeline/ por entregas anteriores do mesmo objetivo
+```
+
+---
+
+## 9. INTEGRAÇÃO COM O SISTEMA
 
 ### Com `_conhecimento/`
 Lê antes de planejar:
