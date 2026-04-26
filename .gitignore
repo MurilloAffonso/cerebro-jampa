@@ -27,3 +27,7 @@ Thumbs.db
 # Claude Code (configurações locais)
 .claude/settings.local.json
 *.canvas
+
+# Artefatos de build e testes
+_site/tsconfig.tsbuildinfo
+seixas-full.png
