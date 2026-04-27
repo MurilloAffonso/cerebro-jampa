@@ -2,11 +2,13 @@
 
 Referência da skill `tabua-mares-turismo`. Carregar no Passo 1 do processo.
 
-**Versão:** 1.2 | **Atualizada:** 2026-04-26 | **Aprovado por:** Murillo
+**Versão:** 1.3 | **Atualizada:** 2026-04-27 | **Aprovado por:** Murillo
 
 ---
 
-## 1. Fonte Oficial Recomendada
+## 1. Fontes de Dados
+
+### 1.1 Fonte Oficial — Marinha/CHM (produção)
 
 | Campo | Valor |
 |-------|-------|
@@ -15,8 +17,26 @@ Referência da skill `tabua-mares-turismo`. Carregar no Passo 1 do processo.
 | URL de referência | `https://www.marinha.mil.br/chm/dados-do-sgbd-hidro/tabuas-de-mare` |
 | Formato | Tabela mensal/anual com horários de preamar e baixa-mar e respectivas alturas |
 | Fuso | Horário de Brasília (UTC−3) |
+| `fonteTipo` | `"oficial-marinha"` |
+| `confiancaFonte` | `"alta"` |
 
 **Regra:** sempre usar a estação **Porto de Cabedelo**. Não usar tabelas de outras estações (Recife, Fortaleza, Salvador) — diferença de até 30–40 min no timing.
+
+**Atenção:** o site da Marinha usa Cloudflare com proteção ativa contra bots. Download manual no browser é o único método garantido. Não tentar burlar Cloudflare por script — gera arquivo HTML inválido sem aviso.
+
+### 1.2 Fonte Operacional de Referência (validação prática)
+
+| Campo | Valor |
+|-------|-------|
+| Site | `tabuademares.com/br/paraiba/joao-pessoa` |
+| Uso | Validação cruzada e referência operacional prática |
+| Cita Marinha? | Sim — site indica dados baseados na Marinha do Brasil |
+| `fonteTipo` | `"operacional-referencia"` |
+| `confiancaFonte` | `"media"` |
+
+**Quando usar:** validação cruzada após obter dados da CHM; referência rápida para checar horários antes de Murillo confirmar; não usar como fonte primária em produção sem comparação com CHM.
+
+**Divergência esperada vs CHM:** ~0 a 25 minutos (fonte usa dados CHM como base, mas pode ter diferença de arredondamento).
 
 ---
 
@@ -58,32 +78,72 @@ Os outros passeios da Vem Passear em Jampa **não dependem de maré** e não pas
 
 ## 4. Regra de Cálculo da Saída
 
-```
-horarioSaidaBarco = horarioBaixaMareInterno − 60 minutos
-```
-
-**Exemplos:**
-- Baixa-mar 09:40 → Saída 08:40
-- Baixa-mar 07:12 → Saída 06:12
-- Baixa-mar 11:30 → Saída 10:30
-
-### 4.1 Qual baixa-mar usar quando há 2 no dia
+### 4.1 Qual baixa-mar usar como referência operacional
 
 **Regra única:** usar a **baixa-mar da manhã** como referência interna.
 
-- A baixa-mar da manhã (entre ~05:00 e ~12:00) é a usada para calcular a saída
-- A baixa-mar da tarde, se houver, é ignorada (operação atual da Vem Passear não tem saída de tarde)
-- Se o único horário de baixa-mar do dia cair fora da janela operacional (06:00–14:00), tratar como `"consultar"`
+- A baixa-mar operacional é aquela que cai na janela 05:00–14:59 (hora da maré)
+- A baixa-mar da tarde (se houver) é ignorada — operação atual não tem saída de tarde
+- Se o único horário de baixa-mar do dia cair fora dessa janela, tratar como `"sem-passeio"` (sem janela operacional)
 
 **Por que pela manhã:**
-- A operação real acontece pela manhã (turista chega cedo, evita sol forte do meio-dia)
+- A operação real acontece de manhã (turista chega cedo, evita sol forte do meio-dia)
 - Garante uma única saída por dia (§5)
-- Evita ambiguidade quando duas baixas-mares têm alturas semelhantes
+- Evita ambiguidade quando o dia tem duas baixas-mares em janelas diferentes
 
-### 4.2 Guardrails de horário
+### 4.2 Fórmula da Saída Sugerida (grade operacional de 30 minutos)
 
-- Saída antes de 06:00 → marcar `[CONFIRMAR COM MURILLO]`
-- Saída após 14:00 → marcar `statusOperacional: "consultar"` mesmo com altura favorável
+Os barcos operam em uma grade de saída em blocos de 30 minutos. O horário sugerido é calculado assim:
+
+```
+horarioSaidaSugerido = max( floor30(horarioBaixaMareOperacional − 15min), 07:00 )
+```
+
+Onde `floor30(t)` arredonda o horário `t` para baixo ao múltiplo de 30 minutos mais próximo.
+
+**Tabela de referência (validada por Murillo):**
+
+| Baixa-mar | Cálculo | floor30 | Saída sugerida |
+|-----------|---------|---------|----------------|
+| 07:14 | 06:59 | 06:30 | **07:00** ← mínimo aplicado |
+| 07:54 | 07:39 | 07:30 | **07:30** |
+| 08:30 | 08:15 | 08:00 | **08:00** |
+| 09:03 | 08:48 | 08:30 | **08:30** |
+| 09:35 | 09:20 | 09:00 | **09:00** |
+| 10:06 | 09:51 | 09:30 | **09:30** |
+| 11:30 | 11:15 | 11:00 | **11:00** |
+
+**Implementação da função `floor30(t)`:**
+```typescript
+function floor30(totalMinutos: number): number {
+  return Math.floor(totalMinutos / 30) * 30;
+}
+
+function calcularSaidaSugerida(horarioBaixaMare: string): string {
+  const [h, m] = horarioBaixaMare.split(':').map(Number);
+  const totalMin = h * 60 + m - 15;          // baixaMar − 15min
+  const sugerido = floor30(totalMin);          // arredonda para baixo ao múltiplo de 30
+  const efetivo = Math.max(sugerido, 7 * 60); // mínimo 07:00
+  const nh = Math.floor(efetivo / 60);
+  const nm = efetivo % 60;
+  return `${String(nh).padStart(2,'0')}:${String(nm).padStart(2,'0')}`;
+}
+```
+
+### 4.3 Saída Confirmada — Override Manual
+
+Murillo ou o operador pode definir `horarioSaidaConfirmado` para substituir a sugestão automática:
+
+- **Quando usar override:** condições especiais do dia, barco em manutenção, grupo privado com horário diferente, discrepância entre CHM e situação real
+- **`horarioSaidaConfirmado`** sobrescreve `horarioSaidaSugerido` na exibição ao cliente
+- **`horarioSaidaExibido`** = `horarioSaidaConfirmado ?? horarioSaidaSugerido` — sempre público
+
+### 4.4 Guardrails de horário
+
+- Saída sugerida antes de 07:00 → usar 07:00 como mínimo (já embutido na fórmula)
+- Baixa-mar antes de 05:00 → sem janela operacional — `statusOperacional: "sem-passeio"`, `horarioSaidaSugerido: null`
+- Baixa-mar após 14:59 → fora da janela da manhã — tratar como "sem janela operacional"
+- Saída sugerida após 14:00 → marcar `statusOperacional: "consultar"` independentemente da altura
 
 ---
 
@@ -139,13 +199,15 @@ A tábua de marés **NÃO segue agenda fixa semanal**. Cada mês é analisado di
 
 O cliente vê **apenas estes 5 campos** por saída:
 
-| Campo | Exemplo |
-|-------|---------|
-| Dia da semana | Segunda |
-| Data | 27/05 |
-| Horário de saída | 07h30 |
-| Altura da maré | 0.6m |
-| Status operacional | Boa |
+| Campo | Fonte no schema | Exemplo |
+|-------|----------------|---------|
+| Dia da semana | `diaSemana` | Segunda |
+| Data | `data` | 27/05 |
+| Horário de saída | `horarioSaidaExibido` | 07h30 |
+| Altura da maré | `alturaMare` | 0.6m |
+| Status operacional | `statusOperacional` | Boa |
+
+`horarioSaidaExibido` = `horarioSaidaConfirmado` se existir, caso contrário `horarioSaidaSugerido`.
 
 ### Linha padrão exibida ao cliente:
 
@@ -153,10 +215,12 @@ O cliente vê **apenas estes 5 campos** por saída:
 
 ### O Que NUNCA Aparece para o Cliente
 
-- ❌ `horarioBaixaMareInterno` — uso interno, apenas para cálculo
+- ❌ `horarioBaixaMareInterno` — dado interno de cálculo e auditoria
+- ❌ `horarioSaidaSugerido` — dado intermediário de cálculo
+- ❌ `horarioSaidaConfirmado` — dado interno de operação
 - ❌ Termos técnicos: "preamar", "sizígia", "quadratura", "amplitude"
 - ❌ Tabela bruta da CHM
-- ❌ `urlFonte`, `dataImportacao`, `revisadoPorMurillo` — metadados internos
+- ❌ `urlFonte`, `dataImportacao`, `revisadoPorMurillo`, `overrideManual` — metadados internos
 
 ---
 
@@ -208,14 +272,16 @@ Toda saída de dados desta skill — **inclusive dados importados automaticament
 
 1. ❌ **Inventar datas, alturas ou horários** — só usar dados da CHM
 2. ❌ **Mostrar `horarioBaixaMareInterno` ao cliente** — é dado interno
-3. ❌ **Assumir agenda fixa semanal** — janelas variam por ciclo lunar
-4. ❌ **Hardcode de próxima saída** em card — sempre cálculo dinâmico
-5. ❌ **Publicar sem revisão de Murillo** — `revisadoPorMurillo` deve ser `true`
-6. ❌ **Usar tabela de outra estação** — só Porto de Cabedelo/PB
-7. ❌ **Prometer saída** sem confirmação operacional
-8. ❌ **Dar fallback silencioso** com data desatualizada — se expirou, mostrar "Consulte próximas saídas"
-9. ❌ **Cancelar passeio automaticamente** — Murillo decide cancelamentos
-10. ❌ **Fazer importador publicar direto em produção** — sempre via PR com checklist
+3. ❌ **Mostrar `horarioSaidaSugerido` ou `horarioSaidaConfirmado` diretamente** — usar sempre `horarioSaidaExibido`
+4. ❌ **Assumir agenda fixa semanal** — janelas variam por ciclo lunar
+5. ❌ **Hardcode de próxima saída** em card — sempre cálculo dinâmico
+6. ❌ **Publicar sem revisão de Murillo** — `revisadoPorMurillo` deve ser `true`
+7. ❌ **Usar tabela de outra estação** — só Porto de Cabedelo/PB
+8. ❌ **Prometer saída** sem confirmação operacional
+9. ❌ **Dar fallback silencioso** com data desatualizada — se expirou, mostrar "Consulte próximas saídas"
+10. ❌ **Cancelar passeio automaticamente** — Murillo decide cancelamentos
+11. ❌ **Fazer importador publicar direto em produção** — sempre via PR com checklist
+12. ❌ **Tentar burlar Cloudflare da Marinha por script** — download manual no browser é o único método confiável
 
 ---
 
@@ -237,4 +303,4 @@ Toda saída de dados desta skill — **inclusive dados importados automaticament
 
 ---
 
-*Regras v1.2 | Aprovadas por Murillo em 2026-04-26 | Operação: Vem Passear em Jampa*
+*Regras v1.3 | Aprovadas por Murillo em 2026-04-27 | Operação: Vem Passear em Jampa*

@@ -317,4 +317,54 @@ Regra única, sem exceções. Pure function `calcularHorarioSaida(horarioBaixaMa
 
 ---
 
-**Última atualização:** 2026-04-26 | Próxima revisão: ao fim de cada fase de implementação
+---
+
+## Decisões Operacionais — Tábua de Marés v1.3 (2026-04-27)
+
+### 35. Regra de Saída do Barco — Grade Operacional de 30 Minutos (Aprovado por Murillo)
+
+**Decisão:** A regra rígida "saída = baixa-mar − 1h" foi **removida**. A saída do barco segue uma grade operacional em blocos de 30 minutos, observada por Murillo no dia a dia.
+
+**Nova fórmula:**
+```
+horarioSaidaSugerido = max( floor30(horarioBaixaMareOperacional − 15min), 07:00 )
+```
+
+**Tabela de referência validada por Murillo:**
+| Baixa-mar | Saída sugerida |
+|-----------|----------------|
+| 07:14 | 07:00 (mínimo) |
+| 07:54 | 07:30 |
+| 08:30 | 08:00 |
+| 09:03 | 08:30 |
+| 09:35 | 09:00 |
+
+**Por quê:** Os barcos não saem exatamente 1 hora antes — operam em blocos fixos de 30 minutos a partir das 07:00, avançando com o ciclo da maré. A fórmula captura esse comportamento real.
+
+**Campos substituídos:**
+- `horarioSaidaBarco` (removido) → substituído por três campos:
+  - `horarioSaidaSugerido` (interno — calculado automaticamente)
+  - `horarioSaidaConfirmado` (interno — override manual por Murillo/operador, `null` se sem override)
+  - `horarioSaidaExibido` (público — `horarioSaidaConfirmado ?? horarioSaidaSugerido`)
+
+**Override manual:** Murillo ou operador pode definir `horarioSaidaConfirmado` para qualquer dia onde a sugestão automática divergir da operação real. Isso fica registrado com `overrideManual: true`.
+
+**Saída mínima padrão:** 07:00. Se o cálculo resultar em horário anterior, usar 07:00 automaticamente.
+
+**Campos novos no schema:** `fonteTipo`, `confiancaFonte`, `overrideManual` — para rastreabilidade de fonte e de override.
+
+**Implementação:** skill `tabua-mares-turismo` v1.3, `regras-operacionais.md` v1.3, `estrutura-dados.md` v1.3, `automacao-futura.md` v1.3.
+
+---
+
+### 36. Fonte Operacional de Referência — tabuademares.com (Aprovado por Murillo, 2026-04-27)
+
+**Decisão:** `tabuademares.com/br/paraiba/joao-pessoa` é adicionada como fonte operacional de referência prática para João Pessoa, com `fonteTipo: "operacional-referencia"` e `confiancaFonte: "media"`.
+
+**Por quê:** Murillo usa essa fonte no dia a dia para consultar os eventos de maré (seta azul = preamar, seta vermelha = baixa-mar). O site cita dados da Marinha do Brasil como base. Útil para validação cruzada e desenvolvimento antes do PDF oficial estar disponível.
+
+**Regra:** não usar como fonte primária em produção sem comparação com CHM. Para produção, a fonte oficial única continua sendo Marinha/CHM — Porto de Cabedelo/PB.
+
+---
+
+**Última atualização:** 2026-04-27 | Próxima revisão: ao fim de cada fase de implementação

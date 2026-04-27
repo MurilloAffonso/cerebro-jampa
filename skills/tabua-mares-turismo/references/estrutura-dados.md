@@ -2,7 +2,7 @@
 
 Schema definitivo, funções utilitárias e funções de importação automática. Consultar no Passo 5 da skill.
 
-**Versão:** 1.2 | **Atualizada:** 2026-04-26
+**Versão:** 1.3 | **Atualizada:** 2026-04-27
 
 ---
 
@@ -12,21 +12,32 @@ Cada dia processado pela skill (manual ou via importador) gera um registro com o
 
 | Campo | Tipo | Visibilidade | Descrição |
 |-------|------|--------------|-----------|
-| `data` | string (ISO `YYYY-MM-DD`) | pública | Data da saída |
-| `diaSemana` | string | pública | Nome completo do dia (ex: "Segunda-feira") |
-| `horarioBaixaMareInterno` | string (`HH:MM`) | **INTERNA — nunca exibir** | Horário da baixa-mar da manhã — base para cálculo |
-| `horarioSaidaBarco` | string (`HH:MM`) | pública | Calculado: `horarioBaixaMareInterno − 60min` |
-| `alturaMare` | number (metros, 1 casa decimal) | pública | Altura da baixa-mar (ex: 0.6) |
+| `data` | `string` (ISO `YYYY-MM-DD`) | pública | Data da saída |
+| `diaSemana` | `string` | pública | Nome completo do dia (ex: "Segunda-feira") |
+| `horarioBaixaMareInterno` | `string \| null` (`HH:MM`) | **INTERNA — nunca exibir** | Horário da baixa-mar operacional (manhã) — base para cálculo |
+| `horarioSaidaSugerido` | `string \| null` (`HH:MM`) | **INTERNA — nunca exibir direto** | Calculado: `max(floor30(baixaMar − 15min), 07:00)` |
+| `horarioSaidaConfirmado` | `string \| null` (`HH:MM`) | **INTERNA — nunca exibir direto** | Override manual por Murillo/operador; `null` se não houve override |
+| `horarioSaidaExibido` | `string \| null` (`HH:MM`) | **pública** | `horarioSaidaConfirmado ?? horarioSaidaSugerido` — único campo de horário público |
+| `alturaMare` | `number \| null` (metros, 1 decimal) | pública | Altura da baixa-mar operacional (ex: 0.6) |
 | `statusOperacional` | enum | pública | `"excelente"` \| `"boa"` \| `"consultar"` \| `"sem-passeio"` |
-| `temPasseio` | boolean | pública | `true` se status é `"excelente"` ou `"boa"` |
-| `passeiosAfetados` | string[] | interna | Slugs: `["seixas", "picaozinho", "areia-vermelha"]` |
-| `fonte` | string | interna | Ex: `"CHM — Porto de Cabedelo/PB — 2026"` |
-| `urlFonte` | string | interna | URL exata de onde os dados foram importados |
-| `dataImportacao` | string (ISO datetime) | interna | Quando o importador rodou (ex: `"2026-04-26T14:23:00-03:00"`) |
-| `revisadoPorMurillo` | boolean | interna | `false` por padrão; `true` após checklist humano |
-| `observacao` | string \| null | interna | Comentário operacional opcional |
+| `temPasseio` | `boolean` | pública | `true` se status é `"excelente"` ou `"boa"` |
+| `passeiosAfetados` | `string[]` | interna | Slugs: `["seixas", "picaozinho", "areia-vermelha"]` |
+| `fonte` | `string` | interna | Ex: `"CHM — Porto de Cabedelo/PB — 2026"` |
+| `fonteTipo` | enum | interna | `"oficial-marinha"` \| `"operacional-referencia"` \| `"manual"` |
+| `confiancaFonte` | enum | interna | `"alta"` (CHM) \| `"media"` (tabuademares.com) \| `"baixa"` (surfguru/terceiros) |
+| `urlFonte` | `string` | interna | URL exata de onde os dados foram importados |
+| `dataImportacao` | `string` (ISO datetime) | interna | Quando o importador rodou (ex: `"2026-04-27T14:23:00-03:00"`) |
+| `revisadoPorMurillo` | `boolean` | interna | `false` por padrão; `true` após checklist humano |
+| `overrideManual` | `boolean` | interna | `true` se `horarioSaidaConfirmado` foi definido manualmente |
+| `observacao` | `string \| null` | interna | Comentário operacional opcional |
 
-> **Regra absoluta:** `horarioBaixaMareInterno` é dado interno. **NÃO renderizar em nenhum componente exibido ao cliente.** Existe apenas para cálculo, auditoria e validação manual.
+### Regras absolutas de visibilidade
+
+> `horarioBaixaMareInterno`, `horarioSaidaSugerido` e `horarioSaidaConfirmado` são **dados internos**. **NÃO renderizar em nenhum componente exibido ao cliente.**
+>
+> O cliente vê **apenas** `horarioSaidaExibido` — que já aplica o override se existir.
+>
+> `fonteTipo`, `confiancaFonte`, `urlFonte`, `dataImportacao`, `revisadoPorMurillo`, `overrideManual` são **metadados de rastreabilidade** — nunca exibir ao público.
 
 ---
 
@@ -43,23 +54,45 @@ export type StatusOperacional =
 
 export type PasseioMareSlug = "seixas" | "picaozinho" | "areia-vermelha";
 
+export type FonteTipo =
+  | "oficial-marinha"        // CHM — Porto de Cabedelo (alta confiança)
+  | "operacional-referencia" // tabuademares.com — referência prática (confiança média)
+  | "manual";                // Murillo digitou manualmente (confiança alta, mas não automática)
+
+export type ConfiancaFonte = "alta" | "media" | "baixa";
+
 /**
  * Registro de uma saída diária.
- * `horarioBaixaMareInterno` é INTERNO — nunca renderizar ao cliente.
+ *
+ * Campos INTERNOS — nunca renderizar ao cliente:
+ *   horarioBaixaMareInterno, horarioSaidaSugerido, horarioSaidaConfirmado,
+ *   fonteTipo, confiancaFonte, urlFonte, dataImportacao, revisadoPorMurillo, overrideManual
+ *
+ * Campo PÚBLICO de horário: horarioSaidaExibido = horarioSaidaConfirmado ?? horarioSaidaSugerido
  */
 export interface SaidaDia {
-  data: string;                    // "2026-05-27"
-  diaSemana: string;               // "Segunda-feira"
-  horarioBaixaMareInterno: string; // "08:30" — INTERNO
-  horarioSaidaBarco: string;       // "07:30" — público
-  alturaMare: number;              // 0.6
+  // --- campos públicos ---
+  data: string;                        // "2026-05-27"
+  diaSemana: string;                   // "Segunda-feira"
+  horarioSaidaExibido: string | null;  // PÚBLICO: confirmado ?? sugerido
+  alturaMare: number | null;           // 0.6
   statusOperacional: StatusOperacional;
   temPasseio: boolean;
+
+  // --- campos internos de cálculo ---
+  horarioBaixaMareInterno: string | null; // "09:03" — INTERNO
+  horarioSaidaSugerido: string | null;    // "08:30" — calculado, INTERNO
+  horarioSaidaConfirmado: string | null;  // "08:00" — override manual, INTERNO; null se sem override
+
+  // --- metadados ---
   passeiosAfetados: PasseioMareSlug[];
-  fonte: string;                   // "CHM — Porto de Cabedelo/PB — 2026"
-  urlFonte: string;                // URL exata da CHM
-  dataImportacao: string;          // ISO datetime
+  fonte: string;                       // "CHM — Porto de Cabedelo/PB — 2026"
+  fonteTipo: FonteTipo;
+  confiancaFonte: ConfiancaFonte;
+  urlFonte: string;
+  dataImportacao: string;              // ISO datetime
   revisadoPorMurillo: boolean;
+  overrideManual: boolean;             // true se horarioSaidaConfirmado foi definido
   observacao: string | null;
 }
 
@@ -95,17 +128,37 @@ export interface ProximaSaidaCard {
 
 Localização sugerida: `_site/lib/tabua-mares.ts`.
 
-### 3.1 `calcularHorarioSaida(horarioBaixaMareInterno)`
+### 3.1 `calcularSaidaSugerida(horarioBaixaMare)`
 
 ```typescript
 /**
- * Aplica a regra: saída = baixa-mar - 60 minutos.
- * Pure function. Input e output em formato "HH:MM".
+ * Aplica a grade operacional de 30 minutos:
+ *   saídaSugerida = max(floor30(baixaMar − 15min), 07:00)
+ * Pure function. Input e output em formato "HH:MM". Retorna null se input for null.
  */
-function calcularHorarioSaida(horarioBaixaMareInterno: string): string;
+function calcularSaidaSugerida(horarioBaixaMare: string | null): string | null;
 ```
 
-**Exemplos:** `"08:30"` → `"07:30"`, `"07:12"` → `"06:12"`, `"11:30"` → `"10:30"`
+**Exemplos:**
+- `"07:14"` → `"07:00"` (mínimo aplicado)
+- `"07:54"` → `"07:30"`
+- `"08:30"` → `"08:00"`
+- `"09:03"` → `"08:30"`
+- `"09:35"` → `"09:00"`
+- `"11:30"` → `"11:00"`
+
+### 3.1b `resolverHorarioExibido(sugerido, confirmado)`
+
+```typescript
+/**
+ * Retorna o horário a exibir ao cliente.
+ * Pure function: confirmado ?? sugerido.
+ */
+function resolverHorarioExibido(
+  sugerido: string | null,
+  confirmado: string | null
+): string | null;
+```
 
 ### 3.2 `getStatusMare(alturaMare)`
 
@@ -238,7 +291,7 @@ const proximaSaida = passeio.dependeDeMare
   proximaSaida ? (
     <div>
       Próxima saída: {proximaSaida.diaSemana}, {formatarData(proximaSaida.data)}
-      — {proximaSaida.horarioSaidaBarco}
+      — {proximaSaida.horarioSaidaExibido}
     </div>
   ) : (
     <a href={whatsappUrl}>Consulte próximas saídas</a>
@@ -246,7 +299,7 @@ const proximaSaida = passeio.dependeDeMare
 )}
 ```
 
-> **Lembrete:** componente **NUNCA** acessa `proximaSaida.horarioBaixaMareInterno`, `urlFonte`, `dataImportacao` ou `revisadoPorMurillo`. Esses campos existem no objeto, mas é proibido renderizar.
+> **Lembrete:** componente **NUNCA** acessa `horarioBaixaMareInterno`, `horarioSaidaSugerido`, `horarioSaidaConfirmado`, `fonteTipo`, `confiancaFonte`, `urlFonte`, `dataImportacao`, `revisadoPorMurillo` ou `overrideManual`. O único campo de horário público é `horarioSaidaExibido`.
 
 ---
 
@@ -355,4 +408,4 @@ export const calendariosPorPasseio = {
 
 ---
 
-*Estrutura v1.2 | 2026-04-26 | Importador é o caminho principal; manual é fallback*
+*Estrutura v1.3 | 2026-04-27 | Grade operacional de 30min; override manual formalizado; horarioSaidaExibido é o único campo público de horário*

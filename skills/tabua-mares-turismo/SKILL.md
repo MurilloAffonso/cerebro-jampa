@@ -1,21 +1,21 @@
 ---
 name: tabua-mares-turismo
-description: Skill operacional que orienta a importação automática da tábua de marés oficial (Marinha/CHM — Porto de Cabedelo/PB), calcula horários de saída, classifica status, gera janelas/ciclos de saída e alimenta cards de próxima saída automática, calendários internos e SEO de maré baixa. Coleta automatizada é o caminho principal; entrada manual é fallback.
-version: "1.2"
+description: Skill operacional que orienta a importação automática da tábua de marés oficial (Marinha/CHM — Porto de Cabedelo/PB), calcula horários de saída em grade de 30 minutos, classifica status, gera janelas/ciclos de saída e alimenta cards de próxima saída automática, calendários internos e SEO de maré baixa. Suporta saída sugerida automática e override manual por Murillo/operador. Coleta automatizada é o caminho principal; entrada manual é fallback.
+version: "1.3"
 status: ativa
 modelo_padrao: Sonnet 4.6
 passeios_dependentes: [seixas, picaozinho, areia-vermelha]
 estacao_referencia: "Porto de Cabedelo/PB — Marinha do Brasil / CHM"
-atualizado: "2026-04-26"
+atualizado: "2026-04-27"
 pipelines: [A, G]
 posicao: pre-programador
 ---
 
 # Skill: Tábua de Marés Turismo
 
-**Versão:** 1.2
+**Versão:** 1.3
 **Status:** Ativa
-**Especialidade:** Importação automática CHM, agenda operacional dinâmica, janelas de saída, próxima saída automática, SEO de disponibilidade
+**Especialidade:** Importação automática CHM, grade operacional de saídas em 30 minutos, override manual, janelas de saída, próxima saída automática, SEO de disponibilidade
 **Escopo:** Passeios de piscinas naturais — Vem Passear em Jampa
 **Modelo Padrão:** Sonnet 4.6
 **Atualizado:** 2026-04-26
@@ -27,8 +27,10 @@ posicao: pre-programador
 ### O Que Faz
 
 - **Orienta a construção de um importador automático** que baixa/lê a tábua oficial da Marinha/CHM para Porto de Cabedelo/PB
-- Define schema, regras e funções (`importarTabuaMaresCabedelo`, `parseTabuaMaresOficial`, `calcularHorarioSaida`, `getStatusMare`, `getProximaSaida`, `getSaidasDoMes`, `agruparJanelasDeSaida`)
-- Calcula `horárioSaida = baixa-mar − 1h` (usando a baixa-mar da manhã)
+- Define schema, regras e funções (`importarTabuaMaresCabedelo`, `parseTabuaMaresOficial`, `calcularSaidaSugerida`, `getStatusMare`, `getProximaSaida`, `getSaidasDoMes`, `agruparJanelasDeSaida`)
+- Calcula `horarioSaidaSugerido = floor30(baixa-mar − 15min)` com mínimo 07:00 (grade operacional real de barcos)
+- Suporta `horarioSaidaConfirmado` para override manual por Murillo/operador quando necessário
+- `horarioSaidaExibido` = confirmado se existir, caso contrário sugerido — é o único horário público
 - Classifica status operacional por altura de maré (Excelente / Boa / Consultar / Sem passeio)
 - Agrupa dias favoráveis em janelas/ciclos de saída (sem agenda fixa semanal)
 - Determina próxima saída automaticamente (primeiro dia ativo ≥ hoje)
@@ -62,6 +64,7 @@ Esta skill **deve ser acionada** sempre que o objetivo do projeto envolver qualq
 - **Importação automática da Marinha/CHM** — construir, manter ou debugar o importador
 - **Porto de Cabedelo/PB** — estação de referência única
 - **Maré baixa** — copy, FAQ, SEO ou regra que dependa de maré baixa
+- **Baixa-mar operacional** — selecionar qual baixa-mar usar como referência de saída
 - **Piscinas naturais** — quando o objetivo afeta passeios de piscinas naturais
 - **Seixas** — qualquer trabalho na página, card ou conteúdo do passeio
 - **Picãozinho** — idem
@@ -71,6 +74,9 @@ Esta skill **deve ser acionada** sempre que o objetivo do projeto envolver qualq
 - **Dados de maré** — qualquer fluxo de coleta, parse ou validação
 - **SEO de maré baixa** — keywords, FAQ schema, meta tags relacionadas a maré
 - **Automação de dados de maré** — script, GitHub Action, lint customizado
+- **tabuademares.com.br** — fonte operacional de referência para João Pessoa
+- **Saída sugerida em grade de 30 minutos** — qualquer cálculo de horário de saída de barco
+- **Override manual de horário de saída** — quando Murillo ou operador precisa confirmar horário diferente do sugerido
 
 ### Gatilhos Indiretos
 - Atualizar cards de passeios de piscinas naturais (verificar se exibem próxima saída)
@@ -181,14 +187,16 @@ O cliente nunca vê o horário da baixa-mar, apenas o horário de saída calcula
 1. **Coleta automática é o caminho principal** — manual é fallback de emergência.
 2. **Nunca inventa dados** — só processa o que vem da CHM (ou Murillo no fallback).
 3. **Cliente nunca vê baixa-mar** — `horarioBaixaMareInterno` é apenas para cálculo.
-4. **Cliente vê:** dia da semana, data, horário de saída, altura da maré, status.
-5. **Saída = baixa-mar da manhã − 1h** — sem exceções, sem variação.
-6. **Uma saída por dia** — mesmo com 2 baixas-mares favoráveis.
-7. **Sem agenda fixa semanal** — cada mês é recalculado por janelas/ciclos.
-8. **Validação por Murillo é obrigatória** antes de publicar — inclusive em dado importado.
-9. **Cards usam próxima saída automática** — nunca data hardcoded.
-10. **Importador nunca publica direto** — sempre via PR com checklist.
-11. **Status orientativo, decisão final é do Murillo** — em caso de dúvida em "consultar" vs "sem-passeio".
+4. **Cliente vê:** dia da semana, data, horário de saída (`horarioSaidaExibido`), altura da maré, status.
+5. **Saída sugerida = `floor30(baixa-mar − 15min)`, mínimo 07:00** — grade operacional real de barcos.
+6. **Override manual é permitido** — `horarioSaidaConfirmado` sobrescreve a sugestão quando Murillo define diferente.
+7. **`horarioSaidaExibido` = confirmado ?? sugerido** — sempre o que o cliente vê.
+8. **Uma saída por dia** — mesmo com 2 baixas-mares favoráveis.
+9. **Sem agenda fixa semanal** — cada mês é recalculado por janelas/ciclos.
+10. **Validação por Murillo é obrigatória** antes de publicar — inclusive em dado importado.
+11. **Cards usam próxima saída automática** — nunca data hardcoded.
+12. **Importador nunca publica direto** — sempre via PR com checklist.
+13. **Status orientativo, decisão final é do Murillo** — em caso de dúvida em "consultar" vs "sem-passeio".
 
 ---
 
@@ -212,10 +220,10 @@ O orquestrador **deve acionar esta skill** sempre que o objetivo envolver qualqu
 
 | Quando | Consultar | Conteúdo |
 |--------|-----------|----------|
-| Antes de calcular | `references/regras-operacionais.md` | Fonte oficial, coleta automática vs fallback manual, cálculo, classificação, janelas, exibição cliente, validação Murillo |
-| Ao gerar estrutura de dados | `references/estrutura-dados.md` | Schema completo (incl. urlFonte, dataImportacao), funções runtime (5) e funções de importação (2: importarTabuaMaresCabedelo, parseTabuaMaresOficial) |
+| Antes de calcular saída | `references/regras-operacionais.md` | Fonte oficial, coleta automática vs fallback manual, grade operacional de 30min, saída sugerida vs confirmada, override manual, classificação, janelas, exibição cliente, validação Murillo |
+| Ao gerar estrutura de dados | `references/estrutura-dados.md` | Schema completo (incl. horarioSaidaSugerido, horarioSaidaConfirmado, horarioSaidaExibido, fonteTipo, confiancaFonte, overrideManual), funções runtime e funções de importação |
 | Ao gerar SEO | `references/seo-tabua-mares.md` | Keywords (tábua de maré Porto de Cabedelo, melhores dias para Areia Vermelha etc.), FAQ schema, links internos |
-| Planejando automação | `references/automacao-futura.md` | 6 fases: importador → geração automática → validação → cards → calendário → SEO |
+| Planejando automação | `references/automacao-futura.md` | 6 fases: importar eventos → identificar baixas-mares → calcular saída sugerida → validação/override → cards → calendário → SEO |
 
 ---
 
@@ -232,6 +240,16 @@ O orquestrador **deve acionar esta skill** sempre que o objetivo envolver qualqu
 ---
 
 ## CHANGELOG
+
+**v1.3 (2026-04-27):**
+- **Regra de cálculo de saída substituída** — "baixa-mar − 1h" removida; nova regra: `floor30(baixa-mar − 15min)` com mínimo 07:00
+- **Grade operacional de 30 minutos** — reflete comportamento real dos barcos observado por Murillo
+- **Campos novos no schema:** `horarioSaidaSugerido`, `horarioSaidaConfirmado`, `horarioSaidaExibido`, `fonteTipo`, `confiancaFonte`, `overrideManual`
+- **Override manual formalizado** — Murillo/operador pode definir `horarioSaidaConfirmado` que sobrescreve a sugestão automática
+- **`horarioSaidaBarco` removido** — substituído por `horarioSaidaExibido` (confirmado ?? sugerido)
+- **`calcularHorarioSaida()` renomeada** para `calcularSaidaSugerida()` — nova assinatura reflete a grade de 30min
+- **Fonte operacional de referência:** `tabuademares.com/br/paraiba/joao-pessoa` adicionada como referência operacional prática
+- Gatilhos expandidos: "tabuademares.com.br", "saída sugerida em grade de 30 minutos", "override manual de horário"
 
 **v1.2 (2026-04-26):**
 - **Coleta automática promovida a caminho principal** — manual passa a ser fallback de emergência

@@ -2,20 +2,20 @@
 
 Roadmap em 6 fases. **Não implementar agora** — referência para decisão e execução futura.
 
-**Versão:** 1.2 | **Atualizada:** 2026-04-26
+**Versão:** 1.3 | **Atualizada:** 2026-04-27
 
 ---
 
 ## Visão Geral
 
 A solução final **não é manual**. A skill orienta a construção de um pipeline automatizado:
-**CHM → Importador → `data/tabua-mares.ts` → Site**, com validação humana entre o importador e a publicação.
+**CHM → Importador → calcular saída sugerida → validação/override → `data/tabua-mares.ts` → Site**, com validação humana entre o importador e a publicação.
 
 ```
-Fase 1  Importador automático da Marinha/CHM (Porto de Cabedelo/PB)
-Fase 2  Geração automática de _site/data/tabua-mares.ts
-Fase 3  Validação manual — revisadoPorMurillo
-Fase 4  Integração com cards (próxima saída automática)
+Fase 1  Importar eventos de maré (todos os eventos do dia — preamar e baixa-mar)
+Fase 2  Identificar baixa-mar operacional e calcular saída sugerida (grade 30min)
+Fase 3  Validação manual por Murillo — revisadoPorMurillo + override se necessário
+Fase 4  Integração com cards (próxima saída automática via horarioSaidaExibido)
 Fase 5  Integração com calendário mensal nas páginas internas
 Fase 6  Geração de conteúdo SEO indexável
 ```
@@ -24,17 +24,19 @@ Cada fase agrega capacidade. **Fase 3 (validação) é inviolável** — nenhuma
 
 ---
 
-## Fase 1 — Importador Automático CHM (Porto de Cabedelo)
+## Fase 1 — Importar Eventos de Maré
 
-**Objetivo:** baixar e ler automaticamente a tábua oficial da Marinha/CHM para Porto de Cabedelo/PB.
+**Objetivo:** baixar e parsear todos os eventos de maré do dia (preamar e baixa-mar) para Porto de Cabedelo/PB. O parser retorna dados brutos — seleção de qual usar e cálculo de saída acontecem na Fase 2.
 
 ### 1.1 Fonte de dados
 
-| Canal | URL | Formato | Prioridade |
-|-------|-----|---------|------------|
-| SGBD-Hidro (HTML) | `marinha.mil.br/chm/dados-do-sgbd-hidro/tabuas-de-mare` | HTML interativo | Primária |
-| Tabela mensal CHM | Download por estação | HTML tabular | Secundária |
-| Tábua em PDF | Download mensal/anual | PDF tabulado | Fallback |
+| Canal | URL | Formato | Prioridade | `fonteTipo` |
+|-------|-----|---------|------------|-------------|
+| CHM (PDF manual) | `marinha.mil.br/cppb/tabuas_de_mare` — baixar no browser | PDF tabulado | **Primária** | `"oficial-marinha"` |
+| tabuademares.com | `tabuademares.com/br/paraiba/joao-pessoa` | HTML | Referência operacional | `"operacional-referencia"` |
+| SGBD-Hidro (HTML) | `marinha.mil.br/chm/dados-do-sgbd-hidro/tabuas-de-mare` | HTML interativo | Secundária (se acessível) | `"oficial-marinha"` |
+
+**Atenção:** o site da Marinha usa Cloudflare. Download manual no browser é o método garantido. Não tentar burlar por script.
 
 ### 1.2 Spec do script
 
@@ -42,56 +44,62 @@ Cada fase agrega capacidade. **Fase 3 (validação) é inviolável** — nenhuma
 // scripts/import-tabua-mares.ts
 // Uso: npm run import-mares -- --ano=2026
 
-import { importarTabuaMaresCabedelo, parseTabuaMaresOficial } from "./tabua-mares-core";
+import { parseTabuaMaresOficial } from "./tabua-mares-core";
 
 // Fluxo:
-// 1. Fetch da fonte oficial (HTML primário, PDF fallback)
-// 2. parseTabuaMaresOficial() → dados brutos
-// 3. importarTabuaMaresCabedelo() → seleciona baixa-mar da manhã, calcula saída, classifica
-// 4. agruparJanelasDeSaida() → CalendarioMare por passeio
-// 5. Escreve _site/data/tabua-mares.ts
-// 6. Imprime checklist de validação
-// 7. (opcional) abre PR no GitHub
+// 1. Recebe PDF (buffer) ou HTML da fonte
+// 2. parseTabuaMaresOficial() → array de DiaRaw com TODOS os eventos do dia
+//    (preamar e baixa-mar separados — não filtrar aqui)
+// 3. Exporta DiaRaw[] para Fase 2 processar
+// 4. Marca fonte, urlFonte, fonteTipo, confiancaFonte, dataImportacao
 ```
 
-### 1.3 Dependências técnicas
+### 1.3 Saída da Fase 1
 
-```json
-{
-  "devDependencies": {
-    "ts-node": "^10.x",
-    "cheerio": "^1.x",
-    "pdf-parse": "^1.x"
-  },
-  "scripts": {
-    "import-mares": "ts-node scripts/import-tabua-mares.ts"
-  }
+```typescript
+interface EventoMare {
+  tipo: "baixa" | "preamar";
+  hora: string;   // "HH:MM"
+  altura: number; // metros
+}
+
+interface DiaRaw {
+  data: string;           // "2026-05-01"
+  eventos: EventoMare[];  // todos os eventos do dia (tipicamente 4)
 }
 ```
 
 ### 1.4 Critério de saída
 
-- Importador roda com sucesso para 1 ano completo
-- Saída validada manualmente contra a tábua original (amostragem de 10 dias)
-- Erros de parser tratados graciosamente (logs claros, não silenciosos)
+- Parser retorna 365 dias (ou 366) com 4 eventos cada
+- Nenhum evento inventado ou interpolado
+- Erros tratados graciosamente com log claro
 
 ---
 
-## Fase 2 — Geração Automática de `_site/data/tabua-mares.ts`
+## Fase 2 — Identificar Baixa-Mar Operacional e Calcular Saída Sugerida
 
-**Objetivo:** o output do importador alimenta diretamente o site, sem digitação manual intermediária.
+**Objetivo:** processar o `DiaRaw[]` da Fase 1, selecionar a baixa-mar operacional de cada dia, calcular `horarioSaidaSugerido` pela grade de 30 minutos e gerar `SaidaDia[]` pronto para validação.
 
-### 2.1 Implementação
+### 2.1 Algoritmo
 
-- Importador escreve `_site/data/tabua-mares.ts` com calendários dos 3 passeios (Seixas, Picãozinho, Areia Vermelha)
-- Cada `SaidaDia` carrega `fonte`, `urlFonte`, `dataImportacao`, `revisadoPorMurillo: false`
-- Arquivo é **commitado em PR** — nunca em main direto
+```
+Para cada DiaRaw:
+  1. Filtrar eventos de tipo "baixa" na janela 05:00–14:59
+  2. Se múltiplas baixas na janela: selecionar a de menor altura
+     (provavelmente a baixa-mar mais favorável da manhã)
+  3. Se nenhuma baixa na janela: statusOperacional = "sem-passeio", horarioSaidaSugerido = null
+  4. Aplicar calcularSaidaSugerida(hora): max(floor30(hora − 15min), 07:00)
+  5. Aplicar getStatusMare(altura)
+  6. Preencher SaidaDia com horarioSaidaConfirmado = null, overrideManual = false
+  7. horarioSaidaExibido = horarioSaidaConfirmado ?? horarioSaidaSugerido
+```
 
 ### 2.2 Gatilho de execução
 
 | Opção | Prós | Contras |
 |-------|------|---------|
-| Manual (`npm run import-mares`) | Controle total | Ainda requer ação |
+| Manual (`npm run import-mares`) | Controle total | Requer ação manual |
 | **GitHub Action mensal (dia 25)** | Automático | Requer revisão do PR |
 | GitHub Action anual (janeiro) | 1 vez/ano | Janela de divergência grande |
 
@@ -99,33 +107,39 @@ import { importarTabuaMaresCabedelo, parseTabuaMaresOficial } from "./tabua-mare
 
 ### 2.3 Critério de saída
 
-- 2 ou 3 ciclos mensais consecutivos publicados via PR sem retrabalho manual
-- Tempo de Murillo: ≤10 minutos por ciclo (apenas validação)
+- `SaidaDia[]` com 365 registros, `horarioSaidaSugerido` preenchido ou `null` com motivo em `observacao`
+- Todos os `revisadoPorMurillo: false` — validação é Fase 3
+- Arquivo nunca vai direto para main — sempre via PR
 
 ---
 
-## Fase 3 — Validação Manual (`revisadoPorMurillo`)
+## Fase 3 — Validação Manual e Override por Murillo
 
-**Objetivo:** garantir que nenhum dado vai ao site sem Murillo confirmar — em todas as fases. **Transversal e inviolável.**
+**Objetivo:** garantir que nenhum dado vai ao site sem Murillo confirmar. Se `horarioSaidaSugerido` estiver errado para algum dia, Murillo define `horarioSaidaConfirmado`. **Transversal e inviolável.**
 
 ### 3.1 Como funciona
 
 1. PR aberto pelo importador contém:
    - Diff do `_site/data/tabua-mares.ts`
+   - Tabela comparativa: data | baixa-mar | saída sugerida | status
    - Checklist do §10 de `regras-operacionais.md`
    - Link para a fonte original (`urlFonte`)
-2. Murillo abre o PR, verifica diferenças com a tábua original (amostragem)
-3. Marca `revisadoPorMurillo: true` em commit de revisão
-4. Aprova e faz merge
+2. Murillo abre o PR, compara saídas sugeridas com o que os barcos vão fazer de fato
+3. Para dias onde a saída sugerida diverge da operação real:
+   - Define `horarioSaidaConfirmado` no registro específico
+   - Marca `overrideManual: true`
+   - Anota motivo em `observacao`
+4. Marca `revisadoPorMurillo: true` em cada registro validado
+5. Aprova e faz merge
 
-### 3.2 Detecção de divergências
+### 3.2 Detecção de anomalias automáticas
 
 O importador deve sinalizar automaticamente:
 
-- Mudança brusca na altura de maré entre meses (>0.5m de diferença em janela equivalente)
-- Dia sem baixa-mar (anomalia da fonte)
+- `horarioSaidaSugerido` antes de 07:00 (mínimo não aplicado — bug de cálculo)
+- Dia sem baixa-mar na janela operacional (pode ser correto — sempre comentar no PR)
 - Datas faltantes no mês
-- Saída calculada fora da janela operacional (06:00–14:00)
+- Mudança brusca de altura (>0.5m vs semana anterior equivalente do ciclo)
 
 **Cada anomalia vira comentário no PR** para Murillo decidir caso a caso.
 
@@ -156,6 +170,8 @@ import { getProximaSaida } from "@/lib/tabua-mares";
 const proximaSaida = passeio.dependeDeMare
   ? getProximaSaida(passeio.slug)
   : null;
+
+// Exibir: proximaSaida.horarioSaidaExibido (nunca .horarioSaidaSugerido diretamente)
 ```
 
 ### 4.3 Fallback obrigatório
@@ -266,4 +282,4 @@ O importador também gera (ou alimenta):
 
 ---
 
-*Automação v1.2 | 2026-04-26 | Fase 0 atual | Implementação inicia pela Fase 1 (importador)*
+*Automação v1.3 | 2026-04-27 | Fase 0 atual | Pipeline redesenhado: importar eventos → identificar baixa operacional → calcular saída sugerida → validação/override → cards → calendário → SEO*
