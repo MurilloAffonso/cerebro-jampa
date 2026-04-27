@@ -142,43 +142,68 @@
 
 ## PONTO DE RETOMADA — FEATURE TÁBUA DE MARÉS
 
-**Registrado em:** 2026-04-26  
+**Registrado em:** 2026-04-27  
 **Branch:** `main` — limpa, sincronizada com `origin/main`  
-**Último commit:** `0f800a4` — `docs(spike): investiga viabilidade importacao tabua mares CHM Cabedelo 2026`
+**Último commit:** `01519a3` — `docs(inspecao): descobre arquivos PDF falsos (Cloudflare) e mapeia parser surfguru`
 
 ### Estado atual
 
 - ✅ Skill `tabua-mares-turismo` criada e atualizada (v1.2)
 - ✅ Spike técnico de fontes realizado e commitado
-- ✅ PDFs oficiais da Marinha/CHM no repositório:
-  - `_site/planejamento/tabua-mares/2025-PORTO-DE-CABEDELO.pdf`
-  - `_site/planejamento/tabua-mares/2026-PORTO-DE-CABEDELO.pdf`
-- ✅ Dados de maio 2026 extraídos de fonte não-oficial (surfguru) para referência
-- ✅ Schema `SaidaDia`, funções runtime e funções de importação definidas em `references/estrutura-dados.md`
+- ✅ Inspeção técnica realizada e commitada: `03-inspecao-layout-pdf-cabedelo.md`
+- ⚠️ **DESCOBERTA CRÍTICA:** Os arquivos `.pdf` no repositório são páginas Cloudflare, NÃO são PDFs reais:
+  - `_site/planejamento/tabua-mares/2026-PORTO-DE-CABEDELO.pdf` → HTML de desafio Cloudflare
+  - `_site/planejamento/tabua-mares/cabedelo-2025.pdf` → idem
+- ✅ Parser HTML surfguru.com.br **funcional** — 31/31 dias de maio/2026 extraídos
+- ✅ Classe CSS `celula_mare_baixa` confirma semântica explícita de baixa-mar no surfguru
+- ✅ Todos os 31 dias de maio/2026 processados com regras operacionais aplicadas (19 dias com passeio)
+- ✅ Schema `SaidaDia[]`, funções runtime e funções de importação definidas em `references/estrutura-dados.md`
+
+### Bloqueio atual
+
+**Murillo precisa baixar o PDF real no browser** antes de implementar `parseTabuaMaresOficial()`.
+
+Passos para Murillo:
+1. Abrir `https://www.marinha.mil.br/cppb/tabuas_de_mare` no Chrome/Edge
+2. Clicar no link PDF "2026-PORTO-DE-CABEDELO.pdf"
+3. Substituir `_site/planejamento/tabua-mares/2026-PORTO-DE-CABEDELO.pdf` pelo arquivo baixado
+4. Confirmar que o arquivo começa com `%PDF-` (não `<!DOCTYPE`)
+
+### O que está pronto para implementar (não precisa de PDF)
+
+- ✅ **Parser surfguru** (`parseTabuaMaresSurfguru(html)`) — estrutura mapeada, classes confirmadas, lógica definida no relatório de inspeção
+- ✅ Regras operacionais todas validadas pelo parser de prova de conceito
+- ✅ Dados de maio/2026 prontos para `data/tabua-mares.ts` de desenvolvimento
 
 ### Próxima ação exata
 
-**Inspecionar tecnicamente o PDF 2026 da tábua de marés de Porto de Cabedelo.**
+**Duas opções — Murillo decide:**
 
-- **Arquivo alvo:** `_site/planejamento/tabua-mares/2026-PORTO-DE-CABEDELO.pdf`
-- **Relatório a criar:** `_site/planejamento/tabua-mares/03-inspecao-layout-pdf-cabedelo.md`
-- **Objetivo:** Determinar se o PDF é parseável por `pdf-parse` ou `pdfjs-dist` sem OCR; extrair 5 a 10 registros reais de baixa-mar (mês, dia, hora, altura) como prova de conceito.
-- **Ferramenta a tentar:** `mcp__ide__executeCode` com `pdf-parse` ou leitura direta do buffer — registrar resultado no relatório.
+**Opção A (recomendada se Murillo tiver 10 min):**
+1. Murillo baixa o PDF real
+2. Claude inspeciona o layout do PDF real → implementa `parseTabuaMaresOficial(pdfBuffer)`
+3. Claude implementa `importarTabuaMaresCabedelo(ano)` usando PDF como fonte primária
 
-### O que NÃO fazer nesta próxima sessão
+**Opção B (se quiser avançar agora sem PDF):**
+1. Claude implementa `parseTabuaMaresSurfguru(html)` + `importarTabuaMaresSurfguru(mes, ano)` como fonte de desenvolvimento
+2. Gera `_site/data/tabua-mares.ts` com dados de maio/2026 (`revisadoPorMurillo: false`)
+3. Murillo valida manualmente os horários contra a tábua visual
+4. Parser PDF fica pendente para quando o arquivo real estiver disponível
 
-- ❌ Não iniciar o parser final (`parseTabuaMaresOficial`) — só validar layout primeiro
+### O que NÃO fazer na próxima sessão
+
 - ❌ Não alterar a página Seixas (`app/passeios/piscinas-naturais/seixas/`)
-- ❌ Não alterar cards de passeio ainda
-- ❌ Não criar o calendário mensal completo ainda
-- ❌ Não implementar `ProximaSaidaCard` ainda
+- ❌ Não criar `ProximaSaidaCard` ainda (depende do `data/tabua-mares.ts` validado)
+- ❌ Não criar calendário completo ainda
+- ❌ Não publicar dados sem `revisadoPorMurillo: true`
 
 ### Instrução para o próximo Claude
 
 > Abrir sessão com `/abrir-sessao`.  
 > Ler este bloco de retomada.  
-> Objetivo único: inspecionar `_site/planejamento/tabua-mares/2026-PORTO-DE-CABEDELO.pdf` e criar `03-inspecao-layout-pdf-cabedelo.md` com layout confirmado e registros de exemplo reais. Se PDF não for parseável sem OCR, documentar o bloqueio e propor alternativa. Não avançar além disso.
+> Perguntar a Murillo: "Opção A (PDF real) ou Opção B (parser surfguru agora)?".  
+> Executar conforme a escolha. Relatório de inspeção completo em `03-inspecao-layout-pdf-cabedelo.md`.
 
 ---
 
-**Última atualização:** 2026-04-26 | Próxima revisão: início da próxima sessão (feature tábua de marés)
+**Última atualização:** 2026-04-27 | Próxima revisão: início da próxima sessão (feature tábua de marés)
