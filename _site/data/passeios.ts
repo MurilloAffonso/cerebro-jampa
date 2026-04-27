@@ -65,6 +65,8 @@ export interface Passeio {
   // Experiência 360° (condicional — `tem360`)
   tem360?: boolean;
   url360?: string;
+  // Tábua de marés
+  dependeDeMare?: boolean;
   // Informações práticas
   informacoesPraticas?: {
     oqueLevar?: string[];
@@ -89,6 +91,7 @@ export const passeios: Passeio[] = [
     nome: "Piscinas Naturais do Seixas",
     categoria: "piscinas-naturais",
     slug: "seixas",
+    dependeDeMare: true,
     preco: "R$ 60",
     duracao: "~3h30",
     saida: "Conforme tábua de marés",
@@ -248,6 +251,7 @@ export const passeios: Passeio[] = [
     nome: "Areia Vermelha — Passeio de Catamarã",
     categoria: "litoral-norte",
     slug: "areia-vermelha",
+    dependeDeMare: true,
     preco: "R$ 70",
     duracao: "~3h",
     saida: "Conforme tábua de marés",
@@ -368,6 +372,7 @@ export const passeios: Passeio[] = [
     nome: "Piscinas Naturais de Picãozinho",
     categoria: "piscinas-naturais",
     slug: "picaozinho",
+    dependeDeMare: true,
     preco: "R$ 60",
     duracao: "~3h",
     saida: "Conforme maré baixa",

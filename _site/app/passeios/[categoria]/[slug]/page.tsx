@@ -14,6 +14,9 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { passeios, getPasseioBySlug, getPasseiosByCategoria } from "@/data/passeios";
 import { empresa } from "@/data/empresa";
+import { TABUA_MARES_2026 } from "@/data/tabua-mares";
+import { buildProximaSaidaCard } from "@/lib/tabua-mares";
+import type { PasseioMareSlug } from "@/types/tabua-mares";
 import {
   generateFAQSchema,
   generateTouristAttractionSchema,
@@ -24,6 +27,7 @@ import { InfoCard } from "@/components/InfoCard";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { MareAlert } from "@/components/MareAlert";
+import { ProximaSaidaCard } from "@/components/ProximaSaidaCard";
 import { TrustBlock } from "@/components/TrustBlock";
 import { ReviewsBlock } from "@/components/ReviewsBlock";
 import { Experience360Block } from "@/components/Experience360Block";
@@ -98,6 +102,14 @@ export default function PasseioPage({ params }: PasseioPageProps) {
 
   const pageUrl = `${SITE_URL}/passeios/${params.categoria}/${params.slug}`;
   const whatsappUrl = `${WA_BASE}?text=Oi%2C+quero+saber+sobre+o+passeio+de+${encodeURIComponent(passeio.nome)}`;
+
+  // Próxima saída (tábua de marés) — somente para passeios dependentes de maré
+  const MARE_SLUGS: PasseioMareSlug[] = ["seixas", "picaozinho", "areia-vermelha"];
+  const mareSlug = MARE_SLUGS.find((s) => s === passeio.slug) ?? null;
+  const proximaSaidaCard =
+    passeio.dependeDeMare && mareSlug
+      ? buildProximaSaidaCard(mareSlug, TABUA_MARES_2026)
+      : null;
 
   // Passeios similares: mesma categoria, excluindo o atual
   const similares = getPasseiosByCategoria(params.categoria)
@@ -187,8 +199,14 @@ export default function PasseioPage({ params }: PasseioPageProps) {
         />
       </section>
 
-      {/* C4 — AVISO DE MARÉ (exibe se passeio.alertaMare estiver preenchido) */}
-      {passeio.alertaMare && (
+      {/* C4 — AVISO DE MARÉ + PRÓXIMA SAÍDA */}
+      {passeio.dependeDeMare && (
+        <>
+          <MareAlert texto={passeio.alertaMare} />
+          <ProximaSaidaCard card={proximaSaidaCard} whatsappUrl={whatsappUrl} />
+        </>
+      )}
+      {!passeio.dependeDeMare && passeio.alertaMare && (
         <MareAlert texto={passeio.alertaMare} />
       )}
 
