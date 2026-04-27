@@ -1,0 +1,146 @@
+{
+  "name": "Jarvis — Status via Telegram",
+  "nodes": [
+    {
+      "id": "jst-node-01",
+      "name": "Telegram Trigger",
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1,
+      "position": [250, 300],
+      "parameters": {
+        "updates": ["message"],
+        "additionalFields": {}
+      },
+      "credentials": {
+        "telegramApi": {
+          "id": "CONFIGURAR_NO_N8N",
+          "name": "Jarvis Bot — Telegram"
+        }
+      },
+      "notes": "AJUSTE OBRIGATORIO: substituir credencial 'CONFIGURAR_NO_N8N' pelo ID real criado em Credentials no n8n."
+    },
+    {
+      "id": "jst-node-02",
+      "name": "Filtrar Comando",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [500, 300],
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.message.text.toLowerCase().trim() }}",
+              "operation": "regex",
+              "value2": "^(\\/status|status|jarvis,\\s*status)$"
+            }
+          ]
+        }
+      },
+      "notes": "Aceita apenas: /status | status | Jarvis, status (case insensitive). Qualquer outro texto vai para branch 'false' → Responder Nao Autorizado."
+    },
+    {
+      "id": "jst-node-03",
+      "name": "Rodar jarvis-status.bat",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [750, 180],
+      "parameters": {
+        "command": "cmd /c \"C:\\Users\\noteacer\\Documents\\CEREBRO.CLAUDE\\CEREBRO.JAMPA\\_automacao\\scripts\\jarvis-status.bat\""
+      },
+      "notes": "AJUSTE SE NECESSARIO: alterar o caminho se o vault estiver em diretorio diferente."
+    },
+    {
+      "id": "jst-node-04",
+      "name": "Responder — Status",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [1000, 180],
+      "parameters": {
+        "resource": "message",
+        "operation": "sendMessage",
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "={{ $json.stdout }}",
+        "additionalFields": {}
+      },
+      "credentials": {
+        "telegramApi": {
+          "id": "CONFIGURAR_NO_N8N",
+          "name": "Jarvis Bot — Telegram"
+        }
+      },
+      "notes": "Envia stdout do jarvis-status.bat para o chat que enviou /status."
+    },
+    {
+      "id": "jst-node-05",
+      "name": "Responder — Nao Autorizado",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [750, 420],
+      "parameters": {
+        "resource": "message",
+        "operation": "sendMessage",
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "Comando não autorizado. Use /status.",
+        "additionalFields": {}
+      },
+      "credentials": {
+        "telegramApi": {
+          "id": "CONFIGURAR_NO_N8N",
+          "name": "Jarvis Bot — Telegram"
+        }
+      },
+      "notes": "Resposta padrao para qualquer mensagem fora do filtro de comandos."
+    }
+  ],
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "Filtrar Comando",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filtrar Comando": {
+      "main": [
+        [
+          {
+            "node": "Rodar jarvis-status.bat",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Responder — Nao Autorizado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Rodar jarvis-status.bat": {
+      "main": [
+        [
+          {
+            "node": "Responder — Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": false,
+    "instanceId": "CONFIGURAR_APOS_INSTALACAO_N8N"
+  }
+}

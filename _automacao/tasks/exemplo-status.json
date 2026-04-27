@@ -1,0 +1,49 @@
+{
+  "id": "2026-05-01-status-diario",
+  "criado_em": "2026-05-01T08:00:00-03:00",
+  "atualizado_em": null,
+  "origem": "n8n-cron",
+  "objetivo": "Verificar estado atual do projeto: git status, último commit, tarefas pendentes em _automacao/tasks/ e topo de _memoria/proximos-passos.md. Gravar resultado em log.",
+  "tipo": "status-check",
+  "risco": "auto",
+  "status": "pendente",
+  "autonomia": "total",
+  "skill_primaria": "jarvis-status",
+  "skills_recomendadas": [],
+  "skills_obrigatorias": [],
+  "usar_orquestrador": false,
+  "handoff_para": null,
+  "arquivos_permitidos": [
+    "_memoria/proximos-passos.md",
+    "_automacao/tasks/*.json",
+    "_automacao/logs/"
+  ],
+  "arquivos_bloqueados": [
+    "_site/",
+    "_conhecimento/",
+    ".env"
+  ],
+  "comandos_permitidos": [
+    "git status",
+    "git log -1 --oneline"
+  ],
+  "pode_pesquisar": false,
+  "pode_alterar_arquivos": false,
+  "pode_commitar": false,
+  "pode_push": false,
+  "precisa_aprovacao": false,
+  "aprovado_por_murillo": false,
+  "resultado_esperado": "Arquivo de log em _automacao/logs/YYYY-MM-DD-HHh-diario.log com git status, contagem de tarefas pendentes e topo do backlog.",
+  "log_path": null,
+  "prioridade": "normal",
+  "contexto": "Ciclo diário automático. Dispara às 08:00 via n8n cron. Não requer interação de Murillo.",
+  "parametros": {},
+  "fontes": [
+    "_memoria/proximos-passos.md"
+  ],
+  "destino": null,
+  "executado_em": null,
+  "concluido_em": null,
+  "motivo_bloqueio": null,
+  "tags": ["diario", "status", "auto"]
+}

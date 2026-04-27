@@ -1,0 +1,54 @@
+{
+  "id": "2026-05-01-linha-editorial-instagram-maio",
+  "criado_em": "2026-05-01T09:30:00-03:00",
+  "atualizado_em": null,
+  "origem": "telegram",
+  "objetivo": "Criar linha editorial e 8 pautas de Instagram para maio/2026. Cada pauta deve ter: tema, formato (reels/carrossel/foto), legenda sugerida, hashtags e melhor horário de publicação. Focar em passeios de piscinas naturais e litoral sul. Tom: acolhedor, local, orientador — sem clichê turístico.",
+  "tipo": "conteudo-instagram",
+  "risco": "auto",
+  "status": "pendente",
+  "autonomia": "total",
+  "skill_primaria": "social-media-editorial-turismo",
+  "skills_recomendadas": [
+    "copywriter-vendas"
+  ],
+  "skills_obrigatorias": [],
+  "usar_orquestrador": false,
+  "handoff_para": null,
+  "arquivos_permitidos": [
+    "_conhecimento/passeios.md",
+    "_conhecimento/catalogo_vempassear_estruturado.md",
+    "_memoria/decisoes-estrategicas.md",
+    "_automacao/logs/"
+  ],
+  "arquivos_bloqueados": [
+    "_site/",
+    ".env"
+  ],
+  "comandos_permitidos": [],
+  "pode_pesquisar": true,
+  "pode_alterar_arquivos": false,
+  "pode_commitar": false,
+  "pode_push": false,
+  "precisa_aprovacao": false,
+  "aprovado_por_murillo": false,
+  "resultado_esperado": "Arquivo de log com 8 pautas formatadas, cada uma com tema, formato, legenda, hashtags e horário sugerido. Nenhuma publicação feita — apenas rascunho local.",
+  "log_path": null,
+  "prioridade": "normal",
+  "contexto": "Rascunho de conteúdo — NUNCA publicar automaticamente. Murillo revisa e publica manualmente quando quiser. Verificar tom de voz em _memoria/decisoes-estrategicas.md antes de gerar legendas. Não inventar dados de passeio — consultar _conhecimento/.",
+  "parametros": {
+    "mes": "2026-05",
+    "clusters_foco": ["piscinas-naturais", "litoral-sul"],
+    "qtd_pautas": 8,
+    "formatos": ["reels", "carrossel", "foto-unica"]
+  },
+  "fontes": [
+    "_conhecimento/passeios.md",
+    "_memoria/decisoes-estrategicas.md"
+  ],
+  "destino": null,
+  "executado_em": null,
+  "concluido_em": null,
+  "motivo_bloqueio": null,
+  "tags": ["instagram", "conteudo", "maio-2026", "auto"]
+}

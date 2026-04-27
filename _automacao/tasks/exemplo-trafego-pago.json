@@ -1,0 +1,63 @@
+{
+  "id": "2026-05-15-campanha-meta-ads-piscinas",
+  "criado_em": "2026-05-15T10:00:00-03:00",
+  "atualizado_em": null,
+  "origem": "murillo-direto",
+  "objetivo": "Criar rascunho de campanha de tráfego pago no Meta Ads para o cluster Piscinas Naturais: objetivo de conversão (WhatsApp), público-alvo sugerido, orçamento diário sugerido, 3 criativos (copy + orientação visual), segmentação por interesse e localização. Apenas rascunho — não ativar campanha, não gastar verba.",
+  "tipo": "trafego-pago",
+  "risco": "aprovacao",
+  "status": "pendente",
+  "autonomia": "parcial",
+  "skill_primaria": "manual",
+  "skills_recomendadas": [
+    "copywriter-vendas",
+    "diretor-visual-turismo"
+  ],
+  "skills_obrigatorias": [
+    "copywriter-vendas"
+  ],
+  "usar_orquestrador": false,
+  "handoff_para": "briefing-designer",
+  "arquivos_permitidos": [
+    "_conhecimento/passeios.md",
+    "_conhecimento/catalogo_vempassear_estruturado.md",
+    "_memoria/decisoes-estrategicas.md",
+    "skills/copywriter-vendas/",
+    "skills/diretor-visual-turismo/",
+    "_automacao/logs/"
+  ],
+  "arquivos_bloqueados": [
+    "_site/",
+    ".env",
+    "_conhecimento/"
+  ],
+  "comandos_permitidos": [],
+  "pode_pesquisar": true,
+  "pode_alterar_arquivos": false,
+  "pode_commitar": false,
+  "pode_push": false,
+  "precisa_aprovacao": true,
+  "aprovado_por_murillo": false,
+  "resultado_esperado": "Documento em _automacao/logs/ com: estrutura de campanha, público sugerido, orçamento diário recomendado, 3 opções de criativo (título + texto + orientação de imagem). Nenhuma ação no Meta Ads — nenhum centavo gasto.",
+  "log_path": null,
+  "prioridade": "normal",
+  "contexto": "NUNCA acessar o Gerenciador de Anúncios ou qualquer conta do Meta. NUNCA ativar campanha. NUNCA gastar verba. O resultado é apenas um documento de planejamento para Murillo revisar e implementar manualmente. Posicionamento: preço justo, não preço barato — ver decisão 7 em _memoria/decisoes-estrategicas.md.",
+  "parametros": {
+    "plataforma": "meta-ads",
+    "cluster": "piscinas-naturais",
+    "objetivo_campanha": "mensagens-whatsapp",
+    "orcamento_diario_sugerido_max": 30,
+    "qtd_criativos": 3,
+    "cta": "Fale no WhatsApp"
+  },
+  "fontes": [
+    "_conhecimento/passeios.md",
+    "_memoria/decisoes-estrategicas.md",
+    "skills/copywriter-vendas/SKILL.md"
+  ],
+  "destino": null,
+  "executado_em": null,
+  "concluido_em": null,
+  "motivo_bloqueio": null,
+  "tags": ["trafego-pago", "meta-ads", "piscinas-naturais", "rascunho", "aprovacao"]
+}

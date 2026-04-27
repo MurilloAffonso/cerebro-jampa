@@ -1,0 +1,71 @@
+{
+  "id": "2026-05-05-implementar-cluster-piscinas-naturais",
+  "criado_em": "2026-05-05T14:00:00-03:00",
+  "atualizado_em": null,
+  "origem": "murillo-direto",
+  "objetivo": "Implementar em Next.js a página do cluster Piscinas Naturais conforme planejamento aprovado em _automacao/logs/2026-05-02-14h-tarefa.log. Criar componente de listagem de passeios, links internos para Seixas, Areia Vermelha, Picãozinho e Penha, e SEO com schema TouristAttraction. Não publicar — apenas criar os arquivos para revisão.",
+  "tipo": "site-implementacao",
+  "risco": "aprovacao",
+  "status": "pendente",
+  "autonomia": "parcial",
+  "skill_primaria": "programador-de-site",
+  "skills_recomendadas": [
+    "seo-local-turismo"
+  ],
+  "skills_obrigatorias": [
+    "programador-de-site"
+  ],
+  "usar_orquestrador": true,
+  "handoff_para": "briefing-designer",
+  "arquivos_permitidos": [
+    "_site/app/passeios/piscinas-naturais/",
+    "_site/components/",
+    "_site/data/passeios.ts",
+    "_site/lib/seo.ts",
+    "_site/types/",
+    "_conhecimento/passeios.md",
+    "_conhecimento/catalogo_vempassear_estruturado.md",
+    "_memoria/decisoes-estrategicas.md",
+    "skills/programador-de-site/",
+    "skills/seo-local-turismo/",
+    "_automacao/logs/"
+  ],
+  "arquivos_bloqueados": [
+    "_site/app/api/",
+    ".env",
+    "_conhecimento/"
+  ],
+  "comandos_permitidos": [
+    "npm run type-check",
+    "npm run lint",
+    "git status",
+    "git diff"
+  ],
+  "pode_pesquisar": false,
+  "pode_alterar_arquivos": true,
+  "pode_commitar": false,
+  "pode_push": false,
+  "precisa_aprovacao": true,
+  "aprovado_por_murillo": false,
+  "resultado_esperado": "Arquivos criados/alterados em _site/app/passeios/piscinas-naturais/: page.tsx com listagem, metadata, schema JSON-LD. TypeScript limpo (type-check sem erros). Murillo revisa antes de commit.",
+  "log_path": null,
+  "prioridade": "alta",
+  "contexto": "Git deve estar limpo antes de iniciar — verificar com git status. Planejamento de referência: _automacao/logs/2026-05-02-14h-tarefa.log. Não inventar dados de passeio — consultar _conhecimento/passeios.md. Domínio confirmado: https://vempassearjampa.com.br. WhatsApp: +55 83 9908-7830.",
+  "parametros": {
+    "cluster": "piscinas-naturais",
+    "url": "/passeios/piscinas-naturais",
+    "passeios": ["seixas", "areia-vermelha", "picaozinho", "penha"],
+    "schema_tipo": "TouristAttraction"
+  },
+  "fontes": [
+    "_conhecimento/passeios.md",
+    "_conhecimento/catalogo_vempassear_estruturado.md",
+    "_memoria/decisoes-estrategicas.md",
+    "skills/programador-de-site/SKILL.md"
+  ],
+  "destino": "_site/app/passeios/piscinas-naturais/page.tsx",
+  "executado_em": null,
+  "concluido_em": null,
+  "motivo_bloqueio": null,
+  "tags": ["site", "implementacao", "piscinas-naturais", "next.js", "aprovacao"]
+}

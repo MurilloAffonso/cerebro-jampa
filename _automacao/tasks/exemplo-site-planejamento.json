@@ -1,0 +1,61 @@
+{
+  "id": "2026-05-02-planejamento-cluster-piscinas-naturais",
+  "criado_em": "2026-05-02T10:00:00-03:00",
+  "atualizado_em": null,
+  "origem": "murillo-direto",
+  "objetivo": "Planejar a estrutura completa do cluster 'Piscinas Naturais': quais passeios entram, hierarquia de páginas, URLs, links internos e blocos de conteúdo por página. Resultado deve ser um documento de planejamento aprovável — sem escrever código ou alterar _site/.",
+  "tipo": "site-planejamento",
+  "risco": "auto",
+  "status": "pendente",
+  "autonomia": "total",
+  "skill_primaria": "orquestrador-projeto-turismo",
+  "skills_recomendadas": [
+    "estrategista-de-site",
+    "ux-ui-mobile-first"
+  ],
+  "skills_obrigatorias": [
+    "estrategista-de-site"
+  ],
+  "usar_orquestrador": true,
+  "handoff_para": null,
+  "arquivos_permitidos": [
+    "_conhecimento/passeios.md",
+    "_conhecimento/catalogo_vempassear_estruturado.md",
+    "_memoria/decisoes-estrategicas.md",
+    "_memoria/proximos-passos.md",
+    "skills/orquestrador-projeto-turismo/",
+    "skills/estrategista-de-site/",
+    "skills/ux-ui-mobile-first/",
+    "_automacao/logs/"
+  ],
+  "arquivos_bloqueados": [
+    "_site/",
+    ".env"
+  ],
+  "comandos_permitidos": [],
+  "pode_pesquisar": true,
+  "pode_alterar_arquivos": false,
+  "pode_commitar": false,
+  "pode_push": false,
+  "precisa_aprovacao": false,
+  "aprovado_por_murillo": false,
+  "resultado_esperado": "Documento de planejamento em _automacao/logs/ com: lista de passeios do cluster, árvore de URLs, hierarquia de páginas, links internos sugeridos, blocos de conteúdo por página. Nenhum arquivo de _site/ tocado.",
+  "log_path": null,
+  "prioridade": "alta",
+  "contexto": "Planejamento é auto porque não altera nenhum arquivo de código. O documento gerado vai para Murillo revisar — quando aprovado, vira uma tarefa APROVAÇÃO de implementação. Orquestrador deve primeiro apresentar plano (skill escolhida + sequência) antes de executar estrategista-de-site.",
+  "parametros": {
+    "cluster": "piscinas-naturais",
+    "passeios_candidatos": ["seixas", "areia-vermelha", "picaozinho", "penha"],
+    "output_formato": "markdown"
+  },
+  "fontes": [
+    "_conhecimento/passeios.md",
+    "_conhecimento/catalogo_vempassear_estruturado.md",
+    "_memoria/decisoes-estrategicas.md"
+  ],
+  "destino": null,
+  "executado_em": null,
+  "concluido_em": null,
+  "motivo_bloqueio": null,
+  "tags": ["site", "planejamento", "piscinas-naturais", "cluster", "auto"]
+}

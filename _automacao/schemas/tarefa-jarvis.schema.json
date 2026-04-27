@@ -1,0 +1,300 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "tarefa-jarvis",
+  "title": "Tarefa Jarvis",
+  "description": "Schema v0.2 — tarefa do agente de automação Jampa Jarvis com suporte a skills e níveis de autonomia",
+  "type": "object",
+  "required": [
+    "id",
+    "criado_em",
+    "objetivo",
+    "tipo",
+    "risco",
+    "status",
+    "autonomia",
+    "skill_primaria",
+    "precisa_aprovacao",
+    "resultado_esperado"
+  ],
+  "additionalProperties": false,
+  "properties": {
+
+    "id": {
+      "type": "string",
+      "description": "Identificador único. Formato: YYYY-MM-DD-slug-da-tarefa",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}-.+$"
+    },
+
+    "criado_em": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Data e hora de criação (ISO 8601, UTC-3)"
+    },
+
+    "atualizado_em": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Data e hora da última atualização de status"
+    },
+
+    "origem": {
+      "type": "string",
+      "description": "Canal pelo qual a tarefa foi originada",
+      "enum": ["telegram", "n8n-cron", "n8n-manual", "murillo-direto", "claude-code-manual", "jarvis-ciclo-diario"]
+    },
+
+    "objetivo": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 300,
+      "description": "O que deve ser feito e por quê — em linguagem natural, clara o suficiente para o Claude Code entender sem contexto adicional"
+    },
+
+    "tipo": {
+      "type": "string",
+      "description": "Categoria da tarefa — determina mapeamento padrão de skills",
+      "enum": [
+        "status-check",
+        "conteudo-instagram",
+        "conteudo-social",
+        "site-planejamento",
+        "site-implementacao",
+        "tabua-mares",
+        "pagina-passeio",
+        "trafego-pago",
+        "seo",
+        "copy-vendas",
+        "briefing",
+        "pesquisa",
+        "qa-local",
+        "aprendizado-semanal",
+        "credenciais-bloqueado",
+        "outro"
+      ]
+    },
+
+    "risco": {
+      "type": "string",
+      "description": "Classificação de risco. Ver _automacao/riscos.md",
+      "enum": ["auto", "aprovacao", "bloqueado"]
+    },
+
+    "status": {
+      "type": "string",
+      "description": "Estado atual no ciclo de vida da tarefa",
+      "enum": [
+        "pendente",
+        "em-execucao",
+        "aguardando-aprovacao",
+        "aprovada",
+        "concluida",
+        "bloqueada",
+        "cancelada"
+      ]
+    },
+
+    "autonomia": {
+      "type": "string",
+      "description": "Nível de autonomia do Jarvis nesta tarefa. total = executa sem intervenção; parcial = prepara e aguarda; nenhuma = bloqueia imediatamente",
+      "enum": ["total", "parcial", "nenhuma"]
+    },
+
+    "skill_primaria": {
+      "type": "string",
+      "description": "Skill principal que Claude Code deve consultar para executar. Ver skills/ no vault.",
+      "enum": [
+        "jarvis-status",
+        "orquestrador-projeto-turismo",
+        "estrategista-de-site",
+        "ux-ui-mobile-first",
+        "copywriter-vendas",
+        "seo-local-turismo",
+        "briefing-designer",
+        "programador-de-site",
+        "diretor-visual-turismo",
+        "radar-concorrentes-social",
+        "captura-referencias-visuais",
+        "social-media-editorial-turismo",
+        "tabua-mares-turismo",
+        "tabua-mares-importar",
+        "tabua-mares-validar",
+        "aprendizado-semanal",
+        "manual",
+        "bloqueado-sem-skill"
+      ]
+    },
+
+    "skills_recomendadas": {
+      "type": "array",
+      "description": "Skills secundárias sugeridas pelo orquestrador. Podem ser executadas em paralelo ou em sequência.",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+
+    "skills_obrigatorias": {
+      "type": "array",
+      "description": "Skills que devem obrigatoriamente executar — tarefa só é concluída quando todas passam QA.",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+
+    "usar_orquestrador": {
+      "type": "boolean",
+      "description": "Se true, Claude Code deve consultar orquestrador-projeto-turismo antes de qualquer skill. Obrigatório para tarefas com 2+ skills ou objetivo vago.",
+      "default": false
+    },
+
+    "handoff_para": {
+      "type": ["string", "null"],
+      "description": "Skill que recebe o resultado desta tarefa como entrada (cadeia de pipeline). Null se fim de cadeia.",
+      "default": null
+    },
+
+    "arquivos_permitidos": {
+      "type": "array",
+      "description": "Caminhos que Jarvis pode ler E escrever nesta tarefa. Glob aceito.",
+      "items": { "type": "string" }
+    },
+
+    "arquivos_bloqueados": {
+      "type": "array",
+      "description": "Caminhos explicitamente proibidos — nem leitura. Tem precedência sobre arquivos_permitidos.",
+      "items": { "type": "string" }
+    },
+
+    "comandos_permitidos": {
+      "type": "array",
+      "description": "Comandos de terminal que Jarvis pode executar nesta tarefa. Lista explícita — não implícita.",
+      "items": { "type": "string" }
+    },
+
+    "pode_pesquisar": {
+      "type": "boolean",
+      "description": "Se true, Jarvis pode fazer buscas web (WebSearch/WebFetch). Somente para dados externos ao vault.",
+      "default": false
+    },
+
+    "pode_alterar_arquivos": {
+      "type": "boolean",
+      "description": "Se true, Jarvis pode escrever fora de _automacao/logs/. Sempre exige risco = aprovacao ou bloqueado.",
+      "default": false
+    },
+
+    "pode_commitar": {
+      "type": "boolean",
+      "description": "Se true e aprovado por Murillo, Jarvis pode criar commit git. Nunca em risco = auto.",
+      "default": false
+    },
+
+    "pode_push": {
+      "type": "boolean",
+      "description": "Se true e aprovado por Murillo, Jarvis pode fazer git push. Exige pode_commitar: true.",
+      "default": false
+    },
+
+    "precisa_aprovacao": {
+      "type": "boolean",
+      "description": "Se true, Jarvis prepara entrega e aguarda aprovado_por_murillo: true antes de aplicar qualquer resultado externo."
+    },
+
+    "aprovado_por_murillo": {
+      "type": "boolean",
+      "description": "Gate dinâmico de publicação. Jarvis só aplica resultado externo quando true. Sempre iniciar como false.",
+      "default": false
+    },
+
+    "resultado_esperado": {
+      "type": "string",
+      "description": "Descrição objetiva do que deve existir ao fim da tarefa bem-sucedida. Usada no QA."
+    },
+
+    "log_path": {
+      "type": ["string", "null"],
+      "description": "Caminho do arquivo de log gerado por esta execução.",
+      "default": null
+    },
+
+    "prioridade": {
+      "type": "string",
+      "enum": ["critica", "alta", "normal", "baixa"],
+      "default": "normal"
+    },
+
+    "contexto": {
+      "type": "string",
+      "maxLength": 800,
+      "description": "Contexto adicional para Jarvis e Murillo. Por que a tarefa existe, restrições específicas."
+    },
+
+    "parametros": {
+      "type": "object",
+      "description": "Parâmetros específicos para a skill. Estrutura livre, documentada por skill.",
+      "additionalProperties": true
+    },
+
+    "fontes": {
+      "type": "array",
+      "description": "Arquivos do vault consultados por rastreabilidade.",
+      "items": { "type": "string" }
+    },
+
+    "destino": {
+      "type": ["string", "null"],
+      "description": "Caminho onde resultado é aplicado após aprovação.",
+      "default": null
+    },
+
+    "executado_em": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Data e hora de início de execução.",
+      "default": null
+    },
+
+    "concluido_em": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Data e hora de conclusão.",
+      "default": null
+    },
+
+    "motivo_bloqueio": {
+      "type": ["string", "null"],
+      "description": "Motivo exato do bloqueio. Obrigatório quando risco = bloqueado.",
+      "default": null
+    },
+
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    }
+  },
+
+  "allOf": [
+    {
+      "if": { "properties": { "risco": { "const": "bloqueado" } }, "required": ["risco"] },
+      "then": {
+        "properties": { "motivo_bloqueio": { "type": "string", "minLength": 10 } },
+        "required": ["motivo_bloqueio"]
+      }
+    },
+    {
+      "if": { "properties": { "pode_push": { "const": true } }, "required": ["pode_push"] },
+      "then": {
+        "properties": { "pode_commitar": { "const": true } },
+        "required": ["pode_commitar"]
+      }
+    },
+    {
+      "if": { "properties": { "risco": { "const": "auto" } }, "required": ["risco"] },
+      "then": {
+        "properties": {
+          "pode_commitar": { "const": false },
+          "pode_push": { "const": false },
+          "pode_alterar_arquivos": { "const": false }
+        }
+      }
+    }
+  ]
+}

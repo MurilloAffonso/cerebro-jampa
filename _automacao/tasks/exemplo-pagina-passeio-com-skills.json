@@ -1,0 +1,79 @@
+{
+  "id": "2026-05-10-pagina-completa-areia-vermelha",
+  "criado_em": "2026-05-10T09:00:00-03:00",
+  "atualizado_em": null,
+  "origem": "murillo-direto",
+  "objetivo": "Criar página completa do passeio Areia Vermelha seguindo o pipeline completo de site: planejamento → copy → SEO → briefing → implementação. Orquestrador deve apresentar o plano antes de qualquer execução. Resultado final: página Next.js com copy, SEO e componentes prontos para revisão.",
+  "tipo": "pagina-passeio",
+  "risco": "aprovacao",
+  "status": "pendente",
+  "autonomia": "parcial",
+  "skill_primaria": "orquestrador-projeto-turismo",
+  "skills_recomendadas": [
+    "copywriter-vendas",
+    "ux-ui-mobile-first",
+    "seo-local-turismo",
+    "briefing-designer"
+  ],
+  "skills_obrigatorias": [
+    "orquestrador-projeto-turismo",
+    "copywriter-vendas",
+    "seo-local-turismo",
+    "programador-de-site"
+  ],
+  "usar_orquestrador": true,
+  "handoff_para": null,
+  "arquivos_permitidos": [
+    "_conhecimento/passeios.md",
+    "_conhecimento/catalogo_vempassear_estruturado.md",
+    "_memoria/decisoes-estrategicas.md",
+    "skills/orquestrador-projeto-turismo/",
+    "skills/copywriter-vendas/",
+    "skills/ux-ui-mobile-first/",
+    "skills/seo-local-turismo/",
+    "skills/briefing-designer/",
+    "skills/programador-de-site/",
+    "skills/tabua-mares-turismo/",
+    "_site/app/passeios/piscinas-naturais/areia-vermelha/",
+    "_site/data/passeios.ts",
+    "_site/components/",
+    "_automacao/logs/"
+  ],
+  "arquivos_bloqueados": [
+    ".env",
+    "_conhecimento/"
+  ],
+  "comandos_permitidos": [
+    "npm run type-check",
+    "npm run lint",
+    "git status"
+  ],
+  "pode_pesquisar": false,
+  "pode_alterar_arquivos": true,
+  "pode_commitar": false,
+  "pode_push": false,
+  "precisa_aprovacao": true,
+  "aprovado_por_murillo": false,
+  "resultado_esperado": "Pipeline completo executado: (1) plano do orquestrador documentado, (2) copy AIDA aprovável, (3) meta tags e schema JSON-LD, (4) briefing para designer, (5) page.tsx com componentes. TypeScript limpo. Murillo revisa tudo antes do commit.",
+  "log_path": null,
+  "prioridade": "alta",
+  "contexto": "Areia Vermelha é passeio de maré — dependeMare: true. Skill tabua-mares-turismo deve ser consultada para alertaMare e integração com ProximaSaidaCard. Dados de referência: _conhecimento/catalogo_vempassear_estruturado.md. Não inventar preço, duração ou embarque. WhatsApp: +55 83 9908-7830. Domínio: https://vempassearjampa.com.br.",
+  "parametros": {
+    "passeio_slug": "areia-vermelha",
+    "categoria": "piscinas-naturais",
+    "url": "/passeios/piscinas-naturais/areia-vermelha",
+    "depende_mare": true,
+    "pipeline": ["orquestrador", "copywriter-vendas", "ux-ui-mobile-first", "seo-local-turismo", "briefing-designer", "programador-de-site"]
+  },
+  "fontes": [
+    "_conhecimento/passeios.md",
+    "_conhecimento/catalogo_vempassear_estruturado.md",
+    "_memoria/decisoes-estrategicas.md",
+    "skills/orquestrador-projeto-turismo/SKILL.md"
+  ],
+  "destino": "_site/app/passeios/piscinas-naturais/areia-vermelha/page.tsx",
+  "executado_em": null,
+  "concluido_em": null,
+  "motivo_bloqueio": null,
+  "tags": ["pagina-passeio", "areia-vermelha", "pipeline-completo", "aprovacao"]
+}

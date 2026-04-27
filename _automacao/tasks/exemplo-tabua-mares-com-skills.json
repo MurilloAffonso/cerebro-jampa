@@ -1,0 +1,62 @@
+{
+  "id": "2026-06-01-importar-tabua-mares-junho",
+  "criado_em": "2026-06-01T07:00:00-03:00",
+  "atualizado_em": null,
+  "origem": "n8n-cron",
+  "objetivo": "Importar tábua de marés de junho/2026 da Marinha do Brasil (CHM — estação Porto de Cabedelo/PB). Aplicar regras operacionais da skill tabua-mares-turismo: calcular horarioSaidaSugerido com a fórmula de grade de 30min, gerar arquivo de dados no schema correto com revisadoPorMurillo: false em todos os registros. Gravar em staging para revisão.",
+  "tipo": "tabua-mares",
+  "risco": "aprovacao",
+  "status": "pendente",
+  "autonomia": "parcial",
+  "skill_primaria": "tabua-mares-turismo",
+  "skills_recomendadas": [
+    "tabua-mares-importar",
+    "tabua-mares-validar"
+  ],
+  "skills_obrigatorias": [
+    "tabua-mares-turismo"
+  ],
+  "usar_orquestrador": false,
+  "handoff_para": null,
+  "arquivos_permitidos": [
+    "_site/data/tabua-mares.ts",
+    "_automacao/logs/",
+    "skills/tabua-mares-turismo/",
+    "_memoria/decisoes-estrategicas.md"
+  ],
+  "arquivos_bloqueados": [
+    ".env",
+    "_conhecimento/"
+  ],
+  "comandos_permitidos": [
+    "npm run type-check"
+  ],
+  "pode_pesquisar": true,
+  "pode_alterar_arquivos": true,
+  "pode_commitar": false,
+  "pode_push": false,
+  "precisa_aprovacao": true,
+  "aprovado_por_murillo": false,
+  "resultado_esperado": "Arquivo _site/data/tabua-mares.ts com dados de junho/2026, todos os registros com revisadoPorMurillo: false, horarioSaidaSugerido calculado corretamente, TypeScript limpo. Murillo revisa cada dia e seta revisadoPorMurillo: true antes de publicar.",
+  "log_path": null,
+  "prioridade": "alta",
+  "contexto": "Regras operacionais vinculantes: ver skills/tabua-mares-turismo/references/regras-operacionais.md. Fonte oficial: Marinha do Brasil CHM, estação Porto de Cabedelo/PB (nunca Recife ou Fortaleza). Fórmula: horarioSaidaSugerido = max(floor30(baixaMar - 15min), 07:00). Baixa-mar é dado interno — nunca exibir para cliente. BLOQUEADO publicar com revisadoPorMurillo: false.",
+  "parametros": {
+    "mes": "2026-06",
+    "estacao": "Porto de Cabedelo",
+    "fuso": "UTC-3",
+    "saida_minima": "07:00",
+    "grade_minutos": 30
+  },
+  "fontes": [
+    "skills/tabua-mares-turismo/SKILL.md",
+    "skills/tabua-mares-turismo/references/regras-operacionais.md",
+    "skills/tabua-mares-turismo/references/estrutura-dados.md",
+    "_memoria/decisoes-estrategicas.md"
+  ],
+  "destino": "_site/data/tabua-mares.ts",
+  "executado_em": null,
+  "concluido_em": null,
+  "motivo_bloqueio": null,
+  "tags": ["tabua-mares", "junho-2026", "dados-oficiais", "aprovacao"]
+}
