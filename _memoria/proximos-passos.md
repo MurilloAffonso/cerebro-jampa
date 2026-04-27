@@ -140,6 +140,30 @@
 
 ---
 
+## PONTO DE RETOMADA — DIREÇÃO VISUAL (2026-04-27)
+
+### Decisão Tomada
+- Claude Design = ferramenta visual principal
+- Lovable = congelada (preservada)
+- Base Murillo (`referencia-prompt-visual-murillo.md`) = régua de qualidade ativa
+
+### Antes de Qualquer Trabalho Visual
+1. Ler `_conhecimento/branding/referencia-prompt-visual-murillo.md`
+2. Ler `_automacao/workflows/cloud-design-builder.md`
+3. Acionar orquestrador para pipelines com 2+ skills
+
+### Próximo Passo Visual Recomendado
+- **Homepage:** pipeline completo (orquestrador → copywriter + ux-ui + seo → diretor-visual → briefing-designer → prompt Claude Design)
+- **Antes da homepage:** confirmar foto de Murillo para hero e 3 depoimentos reais para o bloco de avaliações
+- **Pendente de Murillo:** esboço de logo ou referências visuais preferidas (ver `referencia-prompt-visual-murillo.md §5.4`)
+
+### O Que NÃO Fazer Agora
+- ❌ Não acionar Lovable sem nova decisão de Murillo
+- ❌ Não alterar `_site/` visualmente sem resultado Claude Design aprovado
+- ❌ Não gerar logo sem tarefa explícita aprovada
+
+---
+
 ## PONTO DE RETOMADA — FEATURE TÁBUA DE MARÉS
 
 **Atualizado em:** 2026-04-26  

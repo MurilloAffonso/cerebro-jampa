@@ -367,4 +367,23 @@ horarioSaidaSugerido = max( floor30(horarioBaixaMareOperacional − 15min), 07:0
 
 ---
 
+## Decisões Visuais e de Ferramentas (2026-04-27)
+
+### 37. Claude Design é a Ferramenta Visual Principal (Ativo)
+**Decisão:** Claude Design substitui Lovable como ferramenta visual principal a partir de 2026-04-27.
+**Por quê:** Controle total sobre identidade, integração direta com CEREBRO.JAMPA via prompt em markdown, iteração mais rápida, custo incluso no plano Claude. Lovable.dev tem potencial mas exige pipeline separado e oferece menos controle de identidade.
+**Implementação:** Fluxo documentado em `_automacao/workflows/cloud-design-builder.md`. Régua de qualidade em `_conhecimento/branding/referencia-prompt-visual-murillo.md`. Nenhum componente novo vai para `programador-de-site` sem passar por Claude Design ou wireframe aprovado.
+
+### 38. Lovable Congelada — Preservada para Reativação Futura
+**Decisão:** Skill `lovable-site-builder` fica congelada. Arquivos preservados. Não acionar no orquestrador enquanto Claude Design for o caminho principal.
+**Por quê:** Mudança de direção visual para Claude Design. Lovable pode ser reativada para prototipagem rápida de features complexas ou exportação de código base quando o volume de páginas novas aumentar.
+**Implementação:** Status `CONGELADA` adicionado ao frontmatter do SKILL.md. Orquestrador atualizado para suspender gatilho. Para reativar: decisão explícita de Murillo → registrar aqui → atualizar orquestrador.
+
+### 39. Prompt Murillo Visu como Régua de Qualidade Interna
+**Decisão:** O "Prompt Murillo Visu .docx" é a referência de profundidade, estrutura e qualidade para briefing visual, branding, logo, site, Claude Design e materiais comerciais.
+**Por quê:** Garante que o sistema de skills não produza design genérico. A régua codifica a identidade visual de Vem Passear em Jampa de forma consultável e evoluível.
+**Implementação:** Transformado em `_conhecimento/branding/referencia-prompt-visual-murillo.md`. Skills `diretor-visual-turismo`, `briefing-designer` e `captura-referencias-visuais` atualizado para consultar este arquivo antes de executar. Avaliação visual é opcional (não automática em toda resposta).
+
+---
+
 **Última atualização:** 2026-04-27 | Próxima revisão: ao fim de cada fase de implementação

@@ -62,6 +62,7 @@ posicao: etapa-3
 
 | Arquivo | Por Que Consultar |
 |---------|------------------|
+| `branding/referencia-prompt-visual-murillo.md` | **Régua de qualidade principal** — padrão de identidade, paleta, tipografia, critérios de avaliação e restrições anti-genérico |
 | `benchmark-site-cro.md` | Padrões de conversão comprovados |
 | `tom-de-voz.md` | Visual deve suportar identidade verbal |
 | `estrutura-site-recomendada.md` | Arquitetura de seções já definida |
@@ -257,6 +258,7 @@ Esta skill alimenta:
 - `briefing-designer` com: padrão visual aprovado, componentes especificados
 - `ux-ui-mobile-first` com: ajustes de wireframe (se reprovado)
 - `programador-de-site` com: validação de implementação (revisão pós-código)
+- **Claude Design** (via `briefing-designer`): validação do resultado gerado contra `referencia-prompt-visual-murillo.md §8`
 
 ---
 
@@ -307,4 +309,4 @@ Esta skill alimenta:
 
 ---
 
-*Skill v2.1 | Atualizado 2026-04-26 | Adicionado HANDOFF, CRITÉRIOS DE QUALIDADE e LIMITES para interoperabilidade com orquestrador*
+*Skill v2.2 | Atualizado 2026-04-27 | Adicionado referencia-prompt-visual-murillo.md como régua obrigatória; handoff para Claude Design via briefing-designer*

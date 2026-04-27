@@ -240,28 +240,40 @@ Acionamento obrigatório quando o objetivo envolver qualquer um destes termos:
 
 ---
 
-### `lovable-site-builder`
+### `lovable-site-builder` — ⚠ CONGELADA (desde 2026-04-27)
 
-Acionamento obrigatório quando o objetivo envolver qualquer um destes termos:
+> **Status:** Skill preservada no inventário mas **não deve ser acionada**. Claude Design é o caminho visual principal. Lovable pode ser reativada no futuro — ver `_automacao/workflows/cloud-design-builder.md §2`.
 
-- **Lovable** / **Lovable.dev** (qualquer menção)
-- **Prompt para Lovable** (gerar, redigir, montar)
-- **Briefing para Lovable** (qualquer formato)
-- **Pacote de dados para Lovable**
-- **Prototipagem visual** com Lovable
-- **Interface visual** via Lovable
-- **Exportar para GitHub** a partir do Lovable
-- **Validar resultado do Lovable** (checklist)
-- **Handoff código Lovable** → Claude Code
+Gatilhos abaixo estão suspensos enquanto a skill estiver congelada. Quando mencionar Lovable, responder com: "Lovable está congelada. O caminho visual atual é Claude Design via `cloud-design-builder.md`. Deseja seguir por esse fluxo?"
 
-**Posição típica:** etapa final do Pipeline H — após `copywriter-vendas`, `ux-ui-mobile-first` e `seo-local-turismo` já terem produzido outputs. Consome os outputs dessas skills para montar o pacote.
+~~Acionamento obrigatório quando o objetivo envolver: Lovable / Lovable.dev / prompt para Lovable / briefing para Lovable / pacote de dados para Lovable / prototipagem visual com Lovable / exportar para GitHub a partir do Lovable~~
 
-**Regras invioláveis ao planejar Pipeline H:**
-1. `lovable-site-builder` nunca é a primeira skill no pipeline — ela consome outputs de outras skills
-2. Se `dependeDeMare: true` no passeio → `tabua-mares-turismo` entra **antes** de `lovable-site-builder`
-3. Se copy não existe → `copywriter-vendas` entra **antes** de `lovable-site-builder`
-4. Se wireframe não existe → `ux-ui-mobile-first` entra **antes** de `lovable-site-builder`
-5. Após exportação do Lovable → `programador-de-site` entra para revisão técnica no Claude Code
+**Para reativar:** decisão explícita de Murillo → Decisão #38 em `decisoes-estrategicas.md` → remover status CONGELADA → restaurar gatilhos acima.
+
+---
+
+### `claude-design` — Fluxo Visual Principal (ativo desde 2026-04-27)
+
+Acionamento quando o objetivo envolver qualquer um destes termos:
+
+- **Mockup** / **layout** / **wireframe visual** (não só ASCII)
+- **Identidade visual** / **logo** / **branding**
+- **Prompt para Claude Design** (gerar, estruturar)
+- **Briefing visual** para execução externa
+- **Homepage visual** / **página visual completa**
+- **Componente visual** (hero, card, CTA, footer — quando vai além de especificação ASCII)
+- **Validação visual** de resultado gerado
+
+**Posição típica:** etapa após `briefing-designer` no Pipeline D (Briefing Visual). Consome o prompt estruturado gerado por `briefing-designer` (baseado em `referencia-prompt-visual-murillo.md §7`).
+
+**Regras invioláveis ao planejar pipeline com Claude Design:**
+1. `briefing-designer` sempre entra **antes** — Claude Design consome o prompt estruturado
+2. `diretor-visual-turismo` valida wireframe **antes** de `briefing-designer`
+3. `captura-referencias-visuais` entra **antes** de `briefing-designer` se houver referências a incluir no prompt
+4. Resultado de Claude Design é aprovado por Murillo **antes** de `programador-de-site`
+5. Consultar `_conhecimento/branding/referencia-prompt-visual-murillo.md` antes de qualquer pipeline visual
+
+**Fluxo típico:** `orquestrador` → `[copywriter + ux-ui + seo em paralelo]` → `[diretor-visual + captura-refs em paralelo]` → `briefing-designer` → Claude Design → validação → `programador-de-site`
 
 ---
 
@@ -304,13 +316,14 @@ Revisar quando:
 ---
 
 **Status:** ✅ Ativa
-**Versão:** 2.3
+**Versão:** 2.4
 **Atualizada:** 2026-04-27
 
-**Mudanças vs v2.2:**
-- Gatilho inviolável adicionado: `lovable-site-builder` (seção 7.2)
-- Pipeline H adicionado ao inventário (Lovable.dev)
-- 12 skills ativas (era 11)
+**Mudanças vs v2.3:**
+- `lovable-site-builder` suspensa (CONGELADA) — gatilho substituído por resposta de redirecionamento
+- `claude-design` adicionado como fluxo visual principal (seção 7)
+- Referência a `_conhecimento/branding/referencia-prompt-visual-murillo.md` como consulta obrigatória em pipelines visuais
+- `cloud-design-builder.md` documentado como referência do fluxo
 
 **Mudanças vs v2.1 (refatoração):**
 - `SKILL.md` reduzido para painel de controle (~270 linhas vs ~1240 antes)

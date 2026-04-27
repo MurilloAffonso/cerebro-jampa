@@ -60,6 +60,7 @@ posicao: etapa-2
 
 | Arquivo | Por Que Consultar |
 |---------|------------------|
+| `branding/referencia-prompt-visual-murillo.md` | §9 lista visuais proibidos — evitar capturar referências que reforçam design genérico |
 | `instagram-benchmark.md` | O que já foi analisado — evitar capturar o mesmo |
 
 ### Fallback se Faltar Dado
@@ -256,8 +257,10 @@ Esta skill alimenta:
 | Destino | O Que Entrega | Para Quê |
 |---------|--------------|----------|
 | `diretor-visual-turismo` | Referências organizadas com contexto em `_social/assets/` | Validar padrão visual com base em exemplos reais |
+| `briefing-designer` | Referências filtradas e contextualizadas | Incluir no prompt para Claude Design (seção "Referências") |
+| **Claude Design** (via briefing-designer) | Assets em `_social/assets/` referenciados no prompt | Orientar geração visual com base em referências reais |
 | `social-media-editorial-turismo` | Assets disponíveis por tipo (hero, story, reel, carrossel) | Inspirar pautas com referências concretas já organizadas |
-| Designer | Biblioteca com metadados para execução em Figma | Executar design com referências contextualizadas |
+| Designer / Figma | Biblioteca com metadados para execução | Executar design com referências contextualizadas |
 
 ---
 
@@ -297,4 +300,4 @@ Esta skill alimenta:
 
 ---
 
-*Skill v3.1 | Atualizado 2026-04-26 | Adicionado HANDOFF, CRITÉRIOS DE QUALIDADE e LIMITES para interoperabilidade com orquestrador*
+*Skill v3.2 | Atualizado 2026-04-27 | Claude Design adicionado como consumidor de referências via briefing-designer; referencia-prompt-visual-murillo.md §9 como filtro anti-genérico*

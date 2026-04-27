@@ -66,6 +66,7 @@ ponto_de_pausa: true
 
 | Arquivo | Por Que Consultar |
 |---------|------------------|
+| `branding/referencia-prompt-visual-murillo.md` | **Régua de qualidade principal** — §4 define estrutura obrigatória de briefing; §7 define template do prompt para Claude Design |
 | `empresa.md` | Identidade da marca, informações institucionais |
 | `provas-de-confianca.md` | Posição visual de Cadastur, rating, depoimento |
 
@@ -233,8 +234,9 @@ O que não fazer + links para referências em `_social/assets/`
 ### Próximos Passos (Handoff)
 
 Esta skill alimenta:
-- **Designer** com: briefing completo para execução em Figma
-- `programador-de-site` com: especificação de componentes e comportamentos após Figma aprovado
+- **Claude Design** com: prompt estruturado (conforme `referencia-prompt-visual-murillo.md §7`) para geração do mockup / componente
+- **Designer / Figma** (quando disponível) com: briefing completo para execução
+- `programador-de-site` com: especificação de componentes e comportamentos após resultado visual aprovado
 
 ---
 
@@ -242,10 +244,11 @@ Esta skill alimenta:
 
 | Destino | O Que Entrega | Para Quê |
 |---------|--------------|----------|
-| Designer (Figma) | Briefing completo com specs de blocos, responsividade, comportamentos e restrições | Designer executa sem precisar perguntar — briefing é acionável |
-| `programador-de-site` (após Figma) | Especificação de componentes e comportamentos validados | Implementar exatamente o que designer executou |
+| **Claude Design** | Prompt estruturado conforme `referencia-prompt-visual-murillo.md §7` | Gerar mockup / componente / layout visual |
+| Designer / Figma | Briefing completo com specs de blocos, responsividade, comportamentos e restrições | Designer executa sem precisar perguntar — briefing é acionável |
+| `programador-de-site` (após resultado visual aprovado) | Especificação de componentes e comportamentos validados | Implementar exatamente o que foi aprovado |
 
-> **Ponto de pausa obrigatório:** Esta skill aguarda execução e aprovação do Figma por Murillo antes de acionar `programador-de-site`.
+> **Ponto de pausa obrigatório:** Esta skill aguarda execução e aprovação do resultado visual (Claude Design ou Figma) por Murillo antes de acionar `programador-de-site`.
 
 ---
 
@@ -287,4 +290,4 @@ Esta skill alimenta:
 
 ---
 
-*Skill v3.1 | Atualizado 2026-04-26 | Adicionado HANDOFF, CRITÉRIOS DE QUALIDADE e LIMITES para interoperabilidade com orquestrador*
+*Skill v3.2 | Atualizado 2026-04-27 | Claude Design adicionado como destino principal de handoff; referencia-prompt-visual-murillo.md como régua obrigatória (§4 e §7)*
