@@ -32,11 +32,16 @@
               "value1": "={{ $json.message.text.toLowerCase().trim() }}",
               "operation": "regex",
               "value2": "^(\\/status|status|jarvis,\\s*status)$"
+            },
+            {
+              "value1": "={{ String($json.message.chat.id) }}",
+              "operation": "equal",
+              "value2": "[SEU_CHAT_ID]"
             }
           ]
         }
       },
-      "notes": "Aceita apenas: /status | status | Jarvis, status (case insensitive). Qualquer outro texto vai para branch 'false' → Responder Nao Autorizado."
+      "notes": "DUAS CONDIÇÕES (AND): 1) Comando = /status|status|Jarvis,status 2) chat.id = [SEU_CHAT_ID]. ANTES DE ATIVAR: substituir [SEU_CHAT_ID] pelo ID numérico real. Ver n8n-local-setup.md §6 para obter o chat_id."
     },
     {
       "id": "jst-node-03",
@@ -45,7 +50,7 @@
       "typeVersion": 1,
       "position": [750, 180],
       "parameters": {
-        "command": "cmd /c \"C:\\Users\\noteacer\\Documents\\CEREBRO.CLAUDE\\CEREBRO.JAMPA\\_automacao\\scripts\\jarvis-status.bat\""
+        "command": "cmd.exe /d /s /c \"cd /d C:\\Users\\noteacer\\Documents\\CEREBRO.CLAUDE\\CEREBRO.JAMPA && call _automacao\\scripts\\jarvis-status.bat\""
       },
       "notes": "AJUSTE SE NECESSARIO: alterar o caminho se o vault estiver em diretorio diferente."
     },

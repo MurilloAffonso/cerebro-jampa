@@ -16,7 +16,7 @@
       "typeVersion": 1,
       "position": [500, 300],
       "parameters": {
-        "command": "cmd /c \"C:\\Users\\noteacer\\Documents\\CEREBRO.CLAUDE\\CEREBRO.JAMPA\\_automacao\\scripts\\jarvis-runner.bat\""
+        "command": "cmd.exe /d /s /c \"cd /d C:\\Users\\noteacer\\Documents\\CEREBRO.CLAUDE\\CEREBRO.JAMPA && call _automacao\\scripts\\jarvis-runner.bat\""
       }
     }
   ],

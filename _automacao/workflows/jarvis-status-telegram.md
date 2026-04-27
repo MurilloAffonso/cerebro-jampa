@@ -163,17 +163,48 @@ Abrir `jarvis-status-telegram.workflow.json` e substituir o placeholder:
 Substituir `"CONFIGURAR_NO_N8N"` por `"123"` (o ID real da credencial).
 Fazer a substituição nos 3 lugares onde aparece.
 
-### B — Verificar caminho do .bat (se necessário)
+### B — Configurar whitelist de chat_id (obrigatório antes de ativar)
 
-O nó **Rodar jarvis-status.bat** usa o caminho padrão:
+O nó **Filtrar Comando** tem duas condições AND:
+
+1. Texto da mensagem bate com `/status`, `status` ou `Jarvis, status`
+2. `chat.id` da conversa é igual a `[SEU_CHAT_ID]`
+
+**Como obter o chat_id:**
+
+1. Abrir o workflow no n8n → clicar em **Execute Workflow** (modo teste)
+2. No Telegram, enviar qualquer mensagem para @Gabriel_VempassearJampa_bot
+3. No n8n, inspecionar o output do nó `Telegram Trigger`
+4. Anotar o campo `message → chat → id` (número inteiro, ex: `123456789`)
+
+**Como substituir o placeholder:**
+
+1. Clicar no nó **Filtrar Comando**
+2. Segunda condição → campo **Value 2**: substituir `[SEU_CHAT_ID]` pelo número real
+3. Salvar
+
+**Expressão equivalente para referência:**
 ```
-C:\Users\noteacer\Documents\CEREBRO.CLAUDE\CEREBRO.JAMPA\_automacao\scripts\jarvis-status.bat
+{{ $json.message.chat.id == SEU_CHAT_ID }}
 ```
 
-Se o vault estiver em outro diretório, ajustar o campo **Command**:
+Enquanto `[SEU_CHAT_ID]` não for substituído, nenhuma mensagem do Telegram passará pelo filtro. Isso é proposital — o workflow fica inativo até a configuração estar completa.
+
+### C — Verificar caminho do .bat (se necessário)
+
+O nó **Rodar jarvis-status.bat** usa o comando:
 ```
-cmd /c "C:\[SEU_CAMINHO]\CEREBRO.JAMPA\_automacao\scripts\jarvis-status.bat"
+cmd.exe /d /s /c "cd /d C:\Users\noteacer\Documents\CEREBRO.CLAUDE\CEREBRO.JAMPA && call _automacao\scripts\jarvis-status.bat"
 ```
+
+Se o vault estiver em outro diretório, ajustar o `cd /d` para o caminho correto.
+
+**Por que `cmd.exe /d /s /c "cd /d ... && call ..."`:**
+- `/d` — desabilita AutoRun do registro (evita execução de comandos indesejados)
+- `/s` — modo compatível com shell scripts
+- `/c` — encerra cmd.exe após o bat terminar
+- `cd /d` — muda drive + diretório (necessário se o vault estiver em drive diferente do n8n)
+- `call` — chama o bat corretamente dentro do cmd já aberto
 
 ---
 
@@ -260,15 +291,19 @@ O `chat_id` pode ser obtido enviando qualquer mensagem ao bot e inspecionando o 
 ## 8. Checklist Antes de Ativar
 
 - [ ] n8n instalado e acessível em `http://localhost:5678`
-- [ ] Bot Telegram criado no BotFather (token em mãos)
-- [ ] Credencial **Telegram API** criada no n8n (token inserido lá, não no JSON)
+- [ ] Bot @Gabriel_VempassearJampa_bot com token em mãos
+- [ ] Credencial **Telegram API** criada no n8n (token inserido lá, **nunca em arquivo do vault**)
 - [ ] Workflow importado com sucesso (5 nós visíveis no editor)
-- [ ] Credencial vinculada nos 3 nós Telegram (sem avisos de credencial pendente)
+- [ ] Credencial vinculada nos 3 nós Telegram (Trigger + 2 Send — sem avisos vermelhos)
+- [ ] `[SEU_CHAT_ID]` substituído pelo chat_id real no nó **Filtrar Comando** (§4.B)
+- [ ] Nó **Rodar jarvis-status.bat** testado em isolamento → `exitCode: 0`
 - [ ] Caminho do `.bat` verificado ou ajustado no nó `Rodar jarvis-status.bat`
 - [ ] Teste de `/status` passou — bot respondeu com saída do bat
 - [ ] Teste de comando não autorizado passou — bot respondeu "Comando não autorizado. Use /status."
 - [ ] Log gerado em `_automacao/logs/` após o teste de `/status`
-- [ ] Toggle **Active** ligado
+- [ ] Toggle **Active** ligado somente após todos os itens acima
+
+**Guia completo de setup:** `_automacao/workflows/n8n-local-setup.md`
 
 ---
 

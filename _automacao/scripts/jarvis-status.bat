@@ -1,4 +1,5 @@
 @echo off
+chcp 65001 >nul 2>&1
 setlocal enabledelayedexpansion
 
 REM ============================================================
@@ -14,13 +15,14 @@ set LOG_DIR=%AUTOMACAO_DIR%\logs
 set TASKS_DIR=%AUTOMACAO_DIR%\tasks
 set PROXIMOS_PASSOS=%VAULT_ROOT%\_memoria\proximos-passos.md
 
-REM --- Timestamp ---
-for /f "tokens=2 delims==" %%I in ('wmic os get localdatetime /value') do set DATETIME=%%I
-set ANO=%DATETIME:~0,4%
-set MES=%DATETIME:~4,2%
-set DIA=%DATETIME:~6,2%
-set HORA=%DATETIME:~8,2%
-set MIN=%DATETIME:~10,2%
+REM --- Timestamp via PowerShell (wmic descontinuado no Windows 11) ---
+for /f "usebackq delims=" %%I in (`powershell.exe -NoProfile -Command "[DateTime]::Now.ToString('yyyyMMddHHmm')"`) do set WMIC_DT=%%I
+if not defined WMIC_DT set WMIC_DT=202601010000
+set ANO=%WMIC_DT:~0,4%
+set MES=%WMIC_DT:~4,2%
+set DIA=%WMIC_DT:~6,2%
+set HORA=%WMIC_DT:~8,2%
+set MIN=%WMIC_DT:~10,2%
 set TIMESTAMP=%ANO%-%MES%-%DIA%T%HORA%:%MIN%:00-03:00
 set DATA_SLUG=%ANO%-%MES%-%DIA%
 set HORA_SLUG=%HORA%h
