@@ -1,7 +1,7 @@
 ---
 name: tabua-mares-turismo
-description: Interpreta a tábua de marés oficial (Marinha/CHM — Porto de Cabedelo/PB), calcula horários de saída, classifica status operacional, gera janelas/ciclos de saída e entrega dados estruturados para o site e SEO.
-version: "1.0"
+description: Skill operacional que orienta a importação automática da tábua de marés oficial (Marinha/CHM — Porto de Cabedelo/PB), calcula horários de saída, classifica status, gera janelas/ciclos de saída e alimenta cards de próxima saída automática, calendários internos e SEO de maré baixa. Coleta automatizada é o caminho principal; entrada manual é fallback.
+version: "1.2"
 status: ativa
 modelo_padrao: Sonnet 4.6
 passeios_dependentes: [seixas, picaozinho, areia-vermelha]
@@ -13,11 +13,11 @@ posicao: pre-programador
 
 # Skill: Tábua de Marés Turismo
 
-**Versão:** 1.0  
-**Status:** Ativa  
-**Especialidade:** Marés, agenda operacional, janelas de saída, SEO de disponibilidade  
-**Escopo:** Passeios de piscinas naturais — Vem Passear em Jampa  
-**Modelo Padrão:** Sonnet 4.6  
+**Versão:** 1.2
+**Status:** Ativa
+**Especialidade:** Importação automática CHM, agenda operacional dinâmica, janelas de saída, próxima saída automática, SEO de disponibilidade
+**Escopo:** Passeios de piscinas naturais — Vem Passear em Jampa
+**Modelo Padrão:** Sonnet 4.6
 **Atualizado:** 2026-04-26
 
 ---
@@ -26,38 +26,63 @@ posicao: pre-programador
 
 ### O Que Faz
 
-- Recebe dados brutos da tábua de marés (tabulados manualmente por Murillo)
-- Calcula horário de saída do barco: `baixa-mar − 1 hora`
-- Classifica status operacional por dia (Excelente / Boa / Consultar / Sem passeio)
-- Agrupa dias favoráveis em janelas/ciclos de saída mensais
-- Determina `proximaSaida` automaticamente (primeiro dia ativo ≥ hoje)
-- Gera estrutura de dados TypeScript pronta para `data/tabua-mares.ts`
-- Gera conteúdo SEO indexável (FAQ de maré, H2s de calendário, meta tags)
-- Entrega handoff para `programador-de-site` com spec de componentes
+- **Orienta a construção de um importador automático** que baixa/lê a tábua oficial da Marinha/CHM para Porto de Cabedelo/PB
+- Define schema, regras e funções (`importarTabuaMaresCabedelo`, `parseTabuaMaresOficial`, `calcularHorarioSaida`, `getStatusMare`, `getProximaSaida`, `getSaidasDoMes`, `agruparJanelasDeSaida`)
+- Calcula `horárioSaida = baixa-mar − 1h` (usando a baixa-mar da manhã)
+- Classifica status operacional por altura de maré (Excelente / Boa / Consultar / Sem passeio)
+- Agrupa dias favoráveis em janelas/ciclos de saída (sem agenda fixa semanal)
+- Determina próxima saída automaticamente (primeiro dia ativo ≥ hoje)
+- Fornece dados para cards mostrarem "Próxima saída: Terça, 28/04 — 07h30" sem hardcode
+- Gera estrutura para calendário mensal nas páginas internas
+- Apoia SEO local (FAQ, H2s, keywords de maré)
+- Entrega handoff para `programador-de-site`
 
 ### O Que NÃO Faz
 
-- ❌ Buscar dados automaticamente da web — dados chegam de Murillo (fase 1)
 - ❌ Publicar calendário sem validação de Murillo
-- ❌ Assumir agenda fixa semanal ou mensal
-- ❌ Mostrar ao cliente o horário da baixa-mar (dado interno operacional)
-- ❌ Inventar datas ou alturas de maré — só processa o que Murillo fornece
+- ❌ Assumir agenda fixa semanal ou mensal — cada mês é recalculado
+- ❌ Mostrar ao cliente o horário da baixa-mar (dado interno)
+- ❌ Inventar datas, alturas ou janelas — só processa dados oficiais
 - ❌ Escrever copy da página — `copywriter-vendas` é responsável
-- ❌ Implementar código — `programador-de-site` executa
+- ❌ Implementar código diretamente no site — `programador-de-site` executa o importador e a integração
 
-### Quando Usar
+### O Que É Caminho Secundário (Fallback)
 
-- Murillo fornece dados de marés do mês e quer gerar o calendário de saídas
-- Atualizar `proximaSaida` nos cards de passeio (Seixas, Picãozinho, Areia Vermelha)
-- Criar ou atualizar página `/passeios/piscinas-naturais/calendario`
-- Gerar conteúdo SEO sobre disponibilidade e maré baixa
-- Preparar handoff de dados para `programador-de-site`
+- Entrada manual de dados pelo Murillo só quando o importador falhar (CHM fora do ar, mudança de layout, correção pontual)
+- Fluxo manual completo está em `references/regras-operacionais.md` §2 e §12
+
+---
+
+## QUANDO USAR (GATILHOS)
+
+Esta skill **deve ser acionada** sempre que o objetivo do projeto envolver qualquer um dos itens abaixo:
+
+### Gatilhos Diretos
+- **Tábua de marés** — qualquer menção a marés operacionais ou tábua oficial
+- **Importação automática da Marinha/CHM** — construir, manter ou debugar o importador
+- **Porto de Cabedelo/PB** — estação de referência única
+- **Maré baixa** — copy, FAQ, SEO ou regra que dependa de maré baixa
+- **Piscinas naturais** — quando o objetivo afeta passeios de piscinas naturais
+- **Seixas** — qualquer trabalho na página, card ou conteúdo do passeio
+- **Picãozinho** — idem
+- **Areia Vermelha** — idem
+- **Próxima saída automática** — card, hero ou bloco que precise mostrar próxima saída disponível
+- **Calendário de saídas** — página ou bloco com calendário mensal de saídas
+- **Dados de maré** — qualquer fluxo de coleta, parse ou validação
+- **SEO de maré baixa** — keywords, FAQ schema, meta tags relacionadas a maré
+- **Automação de dados de maré** — script, GitHub Action, lint customizado
+
+### Gatilhos Indiretos
+- Atualizar cards de passeios de piscinas naturais (verificar se exibem próxima saída)
+- Criar página `/passeios/piscinas-naturais/calendario`
+- Gerar conteúdo educativo sobre operação dependente de maré
+- Briefar designer para componente que dependa de dados de maré
+- Validar consistência de horários de saída em copy ou roteiro
 
 ### Quando NÃO Usar
-
-- Passeios que não dependem de maré (litoral sul clássico, passeios culturais)
-- Sem dados de maré fornecidos por Murillo → não pode calcular nada, solicita dados
-- Objetivo é apenas texto ou design sem dados → outra skill
+- Passeios independentes de maré (litoral sul clássico, city tour, passeios culturais)
+- Sem dados de maré fornecidos por Murillo → solicitar dados antes
+- Objetivo é apenas texto ou design sem componente de disponibilidade
 
 ---
 
@@ -66,14 +91,12 @@ posicao: pre-programador
 | Campo | Obrigatório | Fonte | Descrição |
 |-------|-------------|-------|-----------|
 | `objetivo` | Sim | Murillo | Ex: "gerar calendário de maio 2026 para Seixas e Picãozinho" |
-| `dados_mare` | Sim | Murillo (Marinha/CHM) | Lista de dias com baixa-mar e altura (ver formato abaixo) |
+| `dados_mare` | Sim | Murillo (Marinha/CHM) | Lista de dias com baixa-mar e altura |
 | `passeios_alvo` | Sim | Murillo | Quais passeios incluir: seixas, picaozinho, areia-vermelha |
 | `mes_ano` | Sim | Murillo | Ex: "maio 2026" |
-| `regras_operacionais` | Não | `references/regras-operacionais.md` | Já documentadas — carregar automaticamente |
+| `regras_operacionais` | Não | `references/regras-operacionais.md` | Carregar automaticamente |
 
 ### Formato de Input de Dados de Maré
-
-Murillo fornece assim (pode ser tabela, texto ou foto CHM digitada):
 
 ```
 Data       | Baixa-Mar | Altura (m)
@@ -84,120 +107,88 @@ Data       | Baixa-Mar | Altura (m)
 ...
 ```
 
-Aceita também uma lista de baixas-mares do dia (CHM pode ter 2 por dia — usar a menor).
+Aceita também múltiplas baixas-mares por dia — usar a de menor altura (regra em `references/regras-operacionais.md`).
 
 ---
 
 ## PROCESSO
 
 ### Passo 1 — Validar Input
-
 - [ ] Dados de maré fornecidos para o período completo?
 - [ ] Passeios alvo identificados?
 - [ ] Mês/ano definido?
 - [ ] Se falta dado: marcar `[CONFIRMAR COM MURILLO: ...]` e parar
 
 ### Passo 2 — Calcular Saídas por Dia
-
-Para cada dia com dados:
-
-1. Se o dia tiver 2 baixas-mares: usar a de menor altura (mais favorável)
-2. Calcular `horarioSaida = baixaMar − 60 minutos`
-3. Classificar `status` pelas regras de `references/regras-operacionais.md`:
-   - `0.0m – 0.5m` → `"excelente"`
-   - `0.6m – 0.7m` → `"boa"`
-   - `0.8m` → `"consultar"`
-   - `0.9m+` → `"sem-passeio"`
-4. Definir `ativo: true` para Excelente e Boa; `false` para os demais
+- Selecionar a **baixa-mar da manhã** quando houver 2 no dia (regra única — ver `regras-operacionais.md` §4.1)
+- Aplicar `horarioSaidaBarco = horarioBaixaMareInterno − 60min`
+- Classificar `statusOperacional` pelas regras de altura
+- Definir `temPasseio: true` para Excelente e Boa
 
 ### Passo 3 — Agrupar em Janelas/Ciclos
+- Identificar sequências contínuas de dias com `temPasseio: true`
+- Criar `cicloId` por janela: `"[mes-abbr]-[ano]-ciclo-[n]"`
+- Janelas variam de 1 a ~5 dias consecutivos por ciclo lunar
 
-- Identificar sequências contínuas de dias com `ativo: true`
-- Criar um `cicloId` por janela: `"[mes]-[ano]-ciclo-[n]"` (ex: `"maio-2026-ciclo-1"`)
-- Separar dias com `ativo: false` que interrompem uma janela
-- Uma janela pode ter 1 a ~5 dias consecutivos favoráveis (ciclos lunares ~14 dias de maré baixa)
-
-### Passo 4 — Determinar `proximaSaida`
-
-Por passeio:
-- Varrer `SaidaDia[]` em ordem cronológica
-- Primeiro dia onde `ativo: true` E `data >= dataHoje` é a `proximaSaida`
+### Passo 4 — Determinar Próxima Saída
+- Por passeio: primeiro dia onde `temPasseio: true` E `data >= hoje`
 - Se nenhum encontrado: `proximaSaida: null` → card exibe "Consulte próximas saídas"
 
 ### Passo 5 — Gerar Estrutura de Dados
-
-Produzir o bloco TypeScript completo para `data/tabua-mares.ts` (ver spec em `references/estrutura-dados.md`).
+- Produzir bloco TypeScript pronto para `data/tabua-mares.ts`
+- Aplicar interfaces de `references/estrutura-dados.md`
 
 ### Passo 6 — Gerar Conteúdo SEO (se solicitado)
-
-Consultar `references/seo-tabua-mares.md` e produzir:
-- FAQ de maré (3–5 perguntas) para schema FAQPage
-- H2s para página de calendário
-- Meta description do calendário
+- Consultar `references/seo-tabua-mares.md`
+- Produzir FAQ schema, H2s e meta description
 
 ### Passo 7 — Validação por Murillo
-
-Gerar checklist de validação:
-- [ ] Horários de saída conferem com a tábua original?
-- [ ] Status operacional faz sentido para cada dia?
-- [ ] Janelas/ciclos agrupados corretamente?
-- [ ] `proximaSaida` é o dia correto?
-
-**Regra:** dados só vão ao site após Murillo confirmar.
+- Gerar checklist obrigatório (horários, status, janelas, próxima saída)
+- **Dados só vão ao site após Murillo confirmar**
 
 ### Passo 8 — Handoff para `programador-de-site`
-
-Entregar (ver `references/estrutura-dados.md` § Handoff):
-- Arquivo `data/tabua-mares.ts` gerado
+- Arquivo `data/tabua-mares.ts`
 - Spec do componente `ProximaSaidaCard`
-- Spec do componente `CalendarioMaresPage`
-- Lista de dependências no `Passeio` interface a adicionar
+- Spec do componente/página `CalendarioMaresPage`
+- Lista de campos a adicionar em `Passeio`
 
 ---
 
 ## OUTPUT
 
-### Saída Principal
-
 ```
 tabua-mares/
 ├── dados/[mes]-[ano]/
-│   ├── saidas-calculadas.md       # Tabela legível com todos os dias
-│   └── janelas-ciclos.md          # Agrupamento por janelas de maré
+│   ├── saidas-calculadas.md
+│   └── janelas-ciclos.md
 ├── data-ts/
-│   └── tabua-mares-[mes]-[ano].ts # Bloco TypeScript para data/tabua-mares.ts
+│   └── tabua-mares-[mes]-[ano].ts
 ├── seo/
-│   └── faq-mare-[mes]-[ano].md    # FAQ de maré para schema
-└── handoff-programador.md         # Instrução completa para programador-de-site
+│   └── faq-mare-[mes]-[ano].md
+└── handoff-programador.md
 ```
 
-### Exemplo de Saída (saidas-calculadas.md)
+### Exemplo de linha exibida ao cliente
 
-```markdown
-## Saídas — Maio 2026 — Seixas
+> **Segunda 27/05 — Saída 07h30 — Maré 0.6m — Boa**
 
-| Data       | Dia     | Baixa-Mar | Saída  | Altura | Status          | Ativo |
-|------------|---------|-----------|--------|--------|-----------------|-------|
-| 2026-05-01 | Sexta   | 07:12     | 06:12  | 0.4m   | ✅ Excelente    | sim   |
-| 2026-05-02 | Sábado  | 08:05     | 07:05  | 0.6m   | 🟡 Boa          | sim   |
-| 2026-05-03 | Domingo | 08:58     | 07:58  | 0.3m   | ✅ Excelente    | sim   |
-| 2026-05-04 | Segunda | 09:44     | 08:44  | 0.8m   | 🔴 Consultar    | não   |
-| 2026-05-05 | Terça   | 10:31     | 09:31  | 1.1m   | ❌ Sem passeio  | não   |
-
-**Janela 1:** 01/05 – 03/05 (3 saídas)
-**Próxima saída (a partir de hoje):** [calculado dinamicamente]
-```
+O cliente nunca vê o horário da baixa-mar, apenas o horário de saída calculado.
 
 ---
 
-## REGRAS
+## REGRAS INVIOLÁVEIS
 
-- **Não inventa dados:** só processa o que Murillo fornece. Sem dados = sem output
-- **Cliente não vê baixa-mar:** só vê horário de saída, data, status e altura
-- **Uma saída por dia:** mesmo que haja 2 baixas-mares favoráveis, usar apenas a primeira/menor
-- **Sem agenda fixa:** cada mês é calculado independentemente — ciclos lunares variam
-- **Validação obrigatória:** nenhum dado vai ao site sem checklist confirmado por Murillo
-- **Status é decisão operacional:** em caso de dúvida em "consultar" vs "sem passeio", Murillo decide
+1. **Coleta automática é o caminho principal** — manual é fallback de emergência.
+2. **Nunca inventa dados** — só processa o que vem da CHM (ou Murillo no fallback).
+3. **Cliente nunca vê baixa-mar** — `horarioBaixaMareInterno` é apenas para cálculo.
+4. **Cliente vê:** dia da semana, data, horário de saída, altura da maré, status.
+5. **Saída = baixa-mar da manhã − 1h** — sem exceções, sem variação.
+6. **Uma saída por dia** — mesmo com 2 baixas-mares favoráveis.
+7. **Sem agenda fixa semanal** — cada mês é recalculado por janelas/ciclos.
+8. **Validação por Murillo é obrigatória** antes de publicar — inclusive em dado importado.
+9. **Cards usam próxima saída automática** — nunca data hardcoded.
+10. **Importador nunca publica direto** — sempre via PR com checklist.
+11. **Status orientativo, decisão final é do Murillo** — em caso de dúvida em "consultar" vs "sem-passeio".
 
 ---
 
@@ -206,12 +197,14 @@ tabua-mares/
 | Propriedade | Valor |
 |-------------|-------|
 | Pipelines que usa | Pipeline A (etapa pré-programador), Pipeline G |
-| Gatilhos de acionamento | tábua de marés, próxima saída, calendário piscinas, Seixas/Picãozinho/Areia Vermelha, SEO maré baixa |
+| Gatilhos de acionamento | tábua de marés, importação automática da Marinha/CHM, Porto de Cabedelo/PB, maré baixa, piscinas naturais, Seixas, Picãozinho, Areia Vermelha, próxima saída automática, calendário de saídas, dados de maré, SEO de maré baixa, automação de dados de maré |
 | Depende de (skills) | Nenhuma — entrada direta de Murillo |
 | Depende de (arquivos) | `references/regras-operacionais.md` (automático) |
-| Alimenta (skills) | `programador-de-site` (dados + spec), `seo-local-turismo` (conteúdo SEO de maré) |
+| Alimenta (skills) | `programador-de-site`, `seo-local-turismo`, `copywriter-vendas` (FAQ de maré) |
 | Pode rodar em paralelo com | `copywriter-vendas`, `ux-ui-mobile-first` (após estrategista) |
 | Posição no pipeline | Antes de `programador-de-site` para passeios dependentes de maré |
+
+O orquestrador **deve acionar esta skill** sempre que o objetivo envolver qualquer um dos gatilhos listados em "QUANDO USAR" acima.
 
 ---
 
@@ -219,20 +212,40 @@ tabua-mares/
 
 | Quando | Consultar | Conteúdo |
 |--------|-----------|----------|
-| Antes de calcular | `references/regras-operacionais.md` | Thresholds de altura, regra de 1h, passeios alvo, visão do cliente |
-| Ao gerar estrutura de dados | `references/estrutura-dados.md` | Interfaces TypeScript, data layer, spec de componentes |
-| Ao gerar SEO | `references/seo-tabua-mares.md` | Keywords, FAQ schema, meta tags, H2s do calendário |
-| Planejando fase 2 | `references/automacao-futura.md` | Spec do importador CHM, automação, validação automática |
+| Antes de calcular | `references/regras-operacionais.md` | Fonte oficial, coleta automática vs fallback manual, cálculo, classificação, janelas, exibição cliente, validação Murillo |
+| Ao gerar estrutura de dados | `references/estrutura-dados.md` | Schema completo (incl. urlFonte, dataImportacao), funções runtime (5) e funções de importação (2: importarTabuaMaresCabedelo, parseTabuaMaresOficial) |
+| Ao gerar SEO | `references/seo-tabua-mares.md` | Keywords (tábua de maré Porto de Cabedelo, melhores dias para Areia Vermelha etc.), FAQ schema, links internos |
+| Planejando automação | `references/automacao-futura.md` | 6 fases: importador → geração automática → validação → cards → calendário → SEO |
 
 ---
 
 ## LIMITES
 
-- Fase 1: entrada manual de dados — Murillo digita ou copia da CHM
-- Fase 2 (futura): importador automatizado — ver `references/automacao-futura.md`
-- Não toma decisão sobre cancelamento de passeio — só sinaliza status, Murillo decide
+- **Fase 0 (atual):** definição de schema, regras e roadmap — sem código implementado
+- **Fase 1 (próxima):** importador automático CHM (ver `references/automacao-futura.md`)
+- **Fases 2–6:** geração automática de `data/tabua-mares.ts`, validação, cards, calendário, SEO
+- Não toma decisão sobre cancelamento de passeio — só sinaliza status
 - Não cria página — entrega dados e spec para `programador-de-site`
+- Não promete saída sem confirmação explícita de Murillo
+- Manual continua disponível como fallback, **não como caminho padrão**
 
 ---
 
-*Skill v1.0 | Criada 2026-04-26 | Fase 1: entrada manual de dados | Fase 2 (futura): importador CHM automatizado*
+## CHANGELOG
+
+**v1.2 (2026-04-26):**
+- **Coleta automática promovida a caminho principal** — manual passa a ser fallback de emergência
+- Schema acrescentou `urlFonte` e `dataImportacao` (rastreabilidade do importador)
+- Regra de seleção de baixa-mar definitiva: **baixa-mar da manhã** (não mais "menor altura")
+- Funções de importação `importarTabuaMaresCabedelo(ano)` e `parseTabuaMaresOficial(arquivo)` formalizadas
+- `automacao-futura.md` reestruturada em **6 fases** (importador → geração → validação → cards → calendário → SEO)
+- Gatilhos da skill expandidos com "importação automática", "Porto de Cabedelo", "automação de dados de maré"
+
+**v1.1 (2026-04-26):**
+- Seção "QUANDO USAR" expandida com gatilhos diretos e indiretos
+- Regras invioláveis numeradas e reforçadas
+- Schema de dados alinhado com nomenclatura definitiva (`horarioBaixaMareInterno`, `horarioSaidaBarco`, `temPasseio`, `passeiosAfetados`, `revisadoPorMurillo`)
+- Regra explícita de cards (próxima saída automática, sem hardcode)
+- Exemplo de exibição ao cliente padronizado: "Segunda 27/05 — Saída 07h30 — Maré 0.6m — Boa"
+
+**v1.0 (2026-04-26):** versão inicial da skill, fase 1 manual.

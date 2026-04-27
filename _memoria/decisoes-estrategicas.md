@@ -231,4 +231,90 @@
 
 ---
 
+## Decisões Operacionais — Tábua de Marés (2026-04-26)
+
+### 33. Tábua de Marés — Regras Operacionais Definitivas (Aprovado por Murillo)
+
+**Decisão:** Skill `tabua-mares-turismo` evoluída para v1.1 com regras operacionais definitivas. As regras abaixo são vinculantes em todo o projeto.
+
+**Por quê:** Estabelecer uma única fonte de verdade operacional para Seixas, Picãozinho e Areia Vermelha — passeios que dependem da maré e exigem coerência absoluta entre site, copy, SEO e operação real.
+
+#### 33.1 Baixa-mar é dado interno
+- O horário da baixa-mar (`horarioBaixaMareInterno`) **nunca aparece para o cliente**.
+- Existe apenas para cálculo, auditoria e validação manual de Murillo.
+- Componentes do site não devem renderizar esse campo em hipótese alguma.
+
+#### 33.2 Cliente vê 5 campos
+O cliente vê apenas: **dia da semana, data, horário de saída do barco, altura da maré, status operacional**.
+Linha padrão: `Segunda 27/05 — Saída 07h30 — Maré 0.6m — Boa`.
+
+#### 33.3 Saída do barco = baixa-mar − 1 hora
+Regra única, sem exceções. Pure function `calcularHorarioSaida(horarioBaixaMareInterno)`.
+
+#### 33.4 Cards usam próxima saída automática
+- Cards de Seixas, Picãozinho e Areia Vermelha mostram próxima saída calculada dinamicamente via `getProximaSaida(passeioSlug)`.
+- **Proibido hardcode de data** em card.
+- **Proibido exigir atualização manual semanal** do desenvolvedor.
+- Sem próxima saída cadastrada → fallback "Consulte próximas saídas" com link WhatsApp.
+
+#### 33.5 Tábua forma janelas/ciclos, não agenda fixa semanal
+- Cada mês é analisado dia a dia.
+- Sequências contínuas de dias com `temPasseio: true` formam **janelas** com `cicloId` (ex: `mai-2026-ciclo-1`).
+- Tipicamente 2 janelas por mês com 3–5 dias úteis cada (ciclo lunar).
+- Cards e calendário consomem essas janelas — sem assumir "todo sábado".
+
+#### 33.6 Fonte oficial: Marinha/CHM — Porto de Cabedelo/PB
+- URL: `https://www.marinha.mil.br/chm/dados-do-sgbd-hidro/tabuas-de-mare`
+- Estação única aceita: Porto de Cabedelo. Não usar Recife, Fortaleza, Salvador.
+- Fuso: UTC−3 (Brasília, sem DST).
+
+#### 33.7 Validação obrigatória por Murillo
+- Toda saída de dados passa por checklist humano antes de publicar.
+- Campo `revisadoPorMurillo: boolean` no schema; build do site deve falhar se houver `false` em dado publicado (lint customizado, fase futura).
+
+**Implementação:**
+- Skill `tabua-mares-turismo` v1.1 (atualizada)
+- 4 referências reescritas: `regras-operacionais.md`, `estrutura-dados.md`, `seo-tabua-mares.md`, `automacao-futura.md`
+- Orquestrador atualizado com gatilhos invioláveis para acionar a skill
+- Próximos passos: implementar `_site/types/tabua-mares.ts`, `_site/lib/tabua-mares.ts`, `_site/data/tabua-mares.ts`, componente `ProximaSaidaCard`, página `/passeios/piscinas-naturais/calendario`
+
+**Ainda não implementado (proibições desta fase):** sem código no site, sem scraping, sem alteração na página Seixas em produção, sem alteração em `data/passeios.ts`.
+
+---
+
+### 34. Tábua de Marés — Coleta Automática como Caminho Principal (Aprovado por Murillo, 2026-04-26)
+
+**Decisão:** A coleta de dados de maré **deve ser automatizada**. A entrada manual permanece apenas como fallback de emergência. Skill `tabua-mares-turismo` v1.1 → **v1.2**.
+
+**Por quê:** Garantir escala, consistência e ausência de erro humano em dado operacional crítico. Murillo não deve gastar tempo mensal digitando dados — deve gastar tempo validando.
+
+**Pontos vinculantes:**
+
+- **Coleta automática é o objetivo final.** Importador busca/baixa a tábua oficial da Marinha/CHM (Porto de Cabedelo/PB) e gera `_site/data/tabua-mares.ts` automaticamente.
+- **Fonte oficial única:** Marinha do Brasil — Centro de Hidrografia (CHM) — estação **Porto de Cabedelo/PB**. Não usar Recife, Fortaleza ou Salvador.
+- **Baixa-mar é dado interno:** `horarioBaixaMareInterno` nunca aparece para o cliente. Existe apenas para cálculo, auditoria e validação.
+- **Cliente vê apenas:** dia da semana, data, horário de saída do barco, altura da maré, status operacional. Linha padrão: `Segunda 27/05 — Saída 07h30 — Maré 0.6m — Boa`.
+- **Saída do barco = baixa-mar da manhã − 1h.** Quando há 2 baixas-mares no dia, sempre a da manhã.
+- **Validação manual por Murillo é obrigatória** antes de publicar — inclusive em dado importado automaticamente. Importador abre PR; Murillo aprova com `revisadoPorMurillo: true`. Lint customizado bloqueia build com `false` em data ≥ hoje.
+- **Cards usam próxima saída automática** via `getProximaSaida(passeioSlug)`. Sem hardcode. Fallback "Consulte próximas saídas" quando não houver dado.
+- **Janelas/ciclos, não agenda fixa semanal** — cada mês é analisado dia a dia.
+
+**Roadmap de implementação (6 fases):**
+
+1. Importador automático CHM (`importarTabuaMaresCabedelo`, `parseTabuaMaresOficial`)
+2. Geração automática de `_site/data/tabua-mares.ts` via PR mensal
+3. Validação manual obrigatória (`revisadoPorMurillo`)
+4. Integração com cards (próxima saída automática)
+5. Integração com calendário mensal nas páginas internas
+6. Geração de conteúdo SEO indexável
+
+**Implementação imediata desta decisão:**
+- Skill `tabua-mares-turismo` v1.2
+- 4 referências reescritas/atualizadas: `regras-operacionais.md` (v1.2), `estrutura-dados.md` (v1.2), `seo-tabua-mares.md` (v1.1), `automacao-futura.md` (v1.2)
+- README de skills, orquestrador SKILL.md atualizados
+
+**Proibições desta fase (continuam):** sem código no site, sem scraping real, sem alteração da página Seixas em produção, sem invenção de calendário.
+
+---
+
 **Última atualização:** 2026-04-26 | Próxima revisão: ao fim de cada fase de implementação

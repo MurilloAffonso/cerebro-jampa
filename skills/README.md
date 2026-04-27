@@ -46,7 +46,7 @@ O orquestrador recebe o objetivo, seleciona o pipeline correto, define ordem e d
 
 | # | Skill | Responsabilidade | Entrada chave | Saída |
 |---|-------|-----------------|---------------|-------|
-| 11 | `tabua-mares-turismo` | Interpreta tábua de marés CHM, calcula saídas, classifica status, gera janelas e dados TypeScript | Dados de maré de Murillo (Marinha/CHM — Porto de Cabedelo/PB) | `data/tabua-mares.ts`, calendário de saídas, handoff para programador |
+| 11 | `tabua-mares-turismo` | **Inteligência de maré + importação futura automatizada.** Orienta importador automático CHM (Porto de Cabedelo/PB), calcula saída (`baixa-mar da manhã − 1h`), classifica status, gera janelas/ciclos, alimenta cards com próxima saída automática e apoia SEO de maré baixa. Coleta automática é o caminho principal; manual é fallback. | Tábua oficial CHM (importador) ou dados manuais de Murillo | `data/tabua-mares.ts`, calendário, FAQ schema, spec de importador, handoff para programador |
 
 ---
 
@@ -121,8 +121,10 @@ designer social → Murillo publica
 | O que concorrentes fazem no Instagram | `radar-concorrentes-social` |
 | Guardar referência visual | `captura-referencias-visuais` |
 | Criar pauta ou calendário Instagram | `social-media-editorial-turismo` |
-| Tábua de marés, próxima saída, calendário piscinas | `tabua-mares-turismo` |
-| Seixas / Picãozinho / Areia Vermelha — disponibilidade | `tabua-mares-turismo` |
+| Tábua de marés, maré baixa, calendário de saídas | `tabua-mares-turismo` |
+| Próxima saída automática (Seixas/Picãozinho/Areia Vermelha) | `tabua-mares-turismo` |
+| SEO de maré baixa, "tábua de marés João Pessoa" | `tabua-mares-turismo` |
+| Piscinas naturais — disponibilidade e janelas/ciclos | `tabua-mares-turismo` |
 | Não sei por onde começar | `orquestrador-projeto-turismo` |
 
 ---

@@ -1,159 +1,67 @@
-# Automação Futura — Importador de Tábua de Marés
+# Automação Futura — Tábua de Marés
 
-Roadmap e spec técnica para quando a skill evoluir de entrada manual para importação automatizada. NÃO implementar agora.
+Roadmap em 6 fases. **Não implementar agora** — referência para decisão e execução futura.
 
----
-
-## 1. Estado Atual (Fase 1 — Manual)
-
-| Etapa | Responsável | Meio |
-|-------|-------------|------|
-| Obter dados mensais de maré | Murillo | Acessa site CHM / baixa PDF ou tabela |
-| Digitar/copiar dados | Murillo | Cola no chat com Claude Code |
-| Calcular saídas | `tabua-mares-turismo` | Processa e gera TypeScript |
-| Validar output | Murillo | Confere tabela gerada |
-| Publicar | `programador-de-site` | Atualiza `data/tabua-mares.ts` e deploya |
-
-**Cadência:** mensal, ~30 minutos de trabalho manual.
+**Versão:** 1.2 | **Atualizada:** 2026-04-26
 
 ---
 
-## 2. Fase 2 — Importador Semi-Automatizado
+## Visão Geral
 
-**Objetivo:** Murillo só precisa confirmar o output, não mais digitar os dados.
+A solução final **não é manual**. A skill orienta a construção de um pipeline automatizado:
+**CHM → Importador → `data/tabua-mares.ts` → Site**, com validação humana entre o importador e a publicação.
 
-### 2.1 Fonte de Dados
+```
+Fase 1  Importador automático da Marinha/CHM (Porto de Cabedelo/PB)
+Fase 2  Geração automática de _site/data/tabua-mares.ts
+Fase 3  Validação manual — revisadoPorMurillo
+Fase 4  Integração com cards (próxima saída automática)
+Fase 5  Integração com calendário mensal nas páginas internas
+Fase 6  Geração de conteúdo SEO indexável
+```
 
-O CHM disponibiliza dados por dois canais:
+Cada fase agrega capacidade. **Fase 3 (validação) é inviolável** — nenhuma fase posterior publica direto sem aprovação de Murillo.
 
-| Canal | URL | Formato | Viabilidade |
-|-------|-----|---------|-------------|
-| Site CHM (HTML) | `marinha.mil.br/chm/dados-do-sgbd-hidro/tabuas-de-mare` | HTML com tabela | Scraping possível |
-| SGBD-Hidro (Web App) | Sistema online do CHM | HTML interativo | Requer seleção de estação |
-| Tábua em PDF | Download mensal por estação | PDF tabulado | Requer parser PDF |
+---
 
-**Recomendação:** usar o HTML do SGBD-Hidro ou a tabela mensual do CHM para Porto de Cabedelo.
+## Fase 1 — Importador Automático CHM (Porto de Cabedelo)
 
-### 2.2 Script de Importação (spec)
+**Objetivo:** baixar e ler automaticamente a tábua oficial da Marinha/CHM para Porto de Cabedelo/PB.
+
+### 1.1 Fonte de dados
+
+| Canal | URL | Formato | Prioridade |
+|-------|-----|---------|------------|
+| SGBD-Hidro (HTML) | `marinha.mil.br/chm/dados-do-sgbd-hidro/tabuas-de-mare` | HTML interativo | Primária |
+| Tabela mensal CHM | Download por estação | HTML tabular | Secundária |
+| Tábua em PDF | Download mensal/anual | PDF tabulado | Fallback |
+
+### 1.2 Spec do script
 
 ```typescript
 // scripts/import-tabua-mares.ts
-// Uso: npx ts-node scripts/import-tabua-mares.ts --estacao=cabedelo --mes=05 --ano=2026
+// Uso: npm run import-mares -- --ano=2026
 
-interface ImportOptions {
-  estacao: "cabedelo";   // Único valor válido para Vem Passear
-  mes: number;           // 1-12
-  ano: number;
-  output: string;        // Caminho para arquivo de saída
-}
-
-interface DadoCHM {
-  data: string;          // "2026-05-01"
-  horarios: Array<{
-    tipo: "baixa" | "preamar";
-    hora: string;        // "07:12"
-    altura: number;      // 0.4
-  }>;
-}
-
-// Função principal:
-async function importarTabulaCHM(opts: ImportOptions): Promise<DadoCHM[]>
+import { importarTabuaMaresCabedelo, parseTabuaMaresOficial } from "./tabua-mares-core";
 
 // Fluxo:
-// 1. Fetch da tabela CHM para o mês/estação
-// 2. Parse do HTML → array DadoCHM[]
-// 3. Selecionar baixa-mar mais favorável por dia
-// 4. Aplicar regras operacionais (calcular saída, classificar status)
-// 5. Gerar CalendarioMare[]
-// 6. Escrever em data/tabua-mares.ts
-// 7. Imprimir checklist de validação para Murillo
+// 1. Fetch da fonte oficial (HTML primário, PDF fallback)
+// 2. parseTabuaMaresOficial() → dados brutos
+// 3. importarTabuaMaresCabedelo() → seleciona baixa-mar da manhã, calcula saída, classifica
+// 4. agruparJanelasDeSaida() → CalendarioMare por passeio
+// 5. Escreve _site/data/tabua-mares.ts
+// 6. Imprime checklist de validação
+// 7. (opcional) abre PR no GitHub
 ```
 
-### 2.3 Gatilho de Execução
-
-Opções (decidir com Murillo quando chegar na Fase 2):
-
-| Opção | Prós | Contras |
-|-------|------|---------|
-| Murillo executa manualmente (`npm run import-mares`) | Controle total | Ainda requer ação |
-| GitHub Action mensal (dia 25 de cada mês) | Totalmente automático | Requer revisão do PR gerado |
-| Claude Code hook no início de sessão | Integrado ao workflow | Pode ser invasivo |
-
-**Recomendação Fase 2:** GitHub Action que abre um PR com o novo `tabua-mares.ts` no dia 25 de cada mês. Murillo revisa e aprova o PR.
-
----
-
-## 3. Fase 3 — Atualização Automática em Produção
-
-**Objetivo:** Site sempre mostra dados corretos sem deploy manual.
-
-### 3.1 Arquitetura
-
-```
-CHM (fonte) → API Route Next.js → Cache Redis/Vercel KV → Componentes
-```
-
-```typescript
-// _site/app/api/proxima-saida/route.ts
-// GET /api/proxima-saida?passeio=seixas
-
-export async function GET(request: Request) {
-  const passeio = new URL(request.url).searchParams.get("passeio");
-  
-  // 1. Checar cache (Redis ou Vercel KV, TTL: 6h)
-  // 2. Se miss: buscar dados CHM, calcular, armazenar
-  // 3. Retornar ProximaSaidaCard
-  
-  return Response.json(proximaSaida);
-}
-```
-
-**Trade-offs:**
-- `+` Sempre atualizado, sem deploy
-- `+` Murillo não precisa fazer nada mensalmente
-- `-` Dependência de servidor (não mais SSG puro)
-- `-` Risco de downtime do CHM afetar o site
-- `-` Mais complexidade de infra (cache layer)
-
-**Recomendação Fase 3:** só faz sentido quando o volume de passeios/reservas justificar a complexidade. Para Fase 1 e início de Fase 2, data estática em `tabua-mares.ts` é suficiente.
-
----
-
-## 4. Fallback de Segurança (todas as fases)
-
-Independente da fase, o site deve ter fallback gracioso:
-
-```typescript
-// Fallback: se proximaSaida for null ou stale:
-// → Exibir "Consulte próximas saídas" com link WhatsApp
-// → NUNCA mostrar data desatualizada ou incorreta
-// → NUNCA travar o carregamento da página por dados de maré
-
-// Regra: dados de maré nunca são blocking — são enhancement
-```
-
----
-
-## 5. Critério para Avançar de Fase
-
-| Critério | Fase 1 → 2 | Fase 2 → 3 |
-|----------|-----------|-----------|
-| Murillo gasta >30min/mês com dados de maré | ✅ ir para Fase 2 | — |
-| Erro humano na digitação causou data errada | ✅ ir para Fase 2 | — |
-| Volume de reservas justifica infra de cache | — | ✅ ir para Fase 3 |
-| Orçamento para Redis/Vercel KV disponível | — | ✅ ir para Fase 3 |
-| CHM disponibiliza API pública oficial | ✅ ir para Fase 2 | ✅ ir direto para Fase 3 |
-
----
-
-## 6. Dependências Técnicas (Fase 2)
+### 1.3 Dependências técnicas
 
 ```json
-// package.json additions para Fase 2
 {
   "devDependencies": {
     "ts-node": "^10.x",
-    "cheerio": "^1.x"      // parse HTML das tabelas CHM
+    "cheerio": "^1.x",
+    "pdf-parse": "^1.x"
   },
   "scripts": {
     "import-mares": "ts-node scripts/import-tabua-mares.ts"
@@ -161,19 +69,201 @@ Independente da fase, o site deve ter fallback gracioso:
 }
 ```
 
-**Cheerio** para parse de HTML é leve e sem dependência de browser. Alternativa: `node-html-parser`.
+### 1.4 Critério de saída
+
+- Importador roda com sucesso para 1 ano completo
+- Saída validada manualmente contra a tábua original (amostragem de 10 dias)
+- Erros de parser tratados graciosamente (logs claros, não silenciosos)
 
 ---
 
-## 7. Riscos e Mitigações
+## Fase 2 — Geração Automática de `_site/data/tabua-mares.ts`
 
-| Risco | Probabilidade | Mitigação |
-|-------|--------------|-----------|
-| CHM muda estrutura do HTML | Média | Script com testes de integridade; alerta para Murillo se falhar |
-| Dados CHM com erro (raros) | Baixa | Sempre gerar checklist de validação; Murillo aprova antes de publicar |
-| Fuso horário errado | Média | Sempre trabalhar em horário de Brasília (UTC-3); validar no output |
-| Duas baixas-mares similares | Média | Regra documentada: usar a de menor altura (ver `regras-operacionais.md` § 3) |
+**Objetivo:** o output do importador alimenta diretamente o site, sem digitação manual intermediária.
+
+### 2.1 Implementação
+
+- Importador escreve `_site/data/tabua-mares.ts` com calendários dos 3 passeios (Seixas, Picãozinho, Areia Vermelha)
+- Cada `SaidaDia` carrega `fonte`, `urlFonte`, `dataImportacao`, `revisadoPorMurillo: false`
+- Arquivo é **commitado em PR** — nunca em main direto
+
+### 2.2 Gatilho de execução
+
+| Opção | Prós | Contras |
+|-------|------|---------|
+| Manual (`npm run import-mares`) | Controle total | Ainda requer ação |
+| **GitHub Action mensal (dia 25)** | Automático | Requer revisão do PR |
+| GitHub Action anual (janeiro) | 1 vez/ano | Janela de divergência grande |
+
+**Recomendação:** GitHub Action mensal abre PR no dia 25 → Murillo revisa → merge → deploy.
+
+### 2.3 Critério de saída
+
+- 2 ou 3 ciclos mensais consecutivos publicados via PR sem retrabalho manual
+- Tempo de Murillo: ≤10 minutos por ciclo (apenas validação)
 
 ---
 
-*Automação v1.0 | 2026-04-26 | Fase 1 ativa. Fases 2 e 3 para decisão futura de Murillo.*
+## Fase 3 — Validação Manual (`revisadoPorMurillo`)
+
+**Objetivo:** garantir que nenhum dado vai ao site sem Murillo confirmar — em todas as fases. **Transversal e inviolável.**
+
+### 3.1 Como funciona
+
+1. PR aberto pelo importador contém:
+   - Diff do `_site/data/tabua-mares.ts`
+   - Checklist do §10 de `regras-operacionais.md`
+   - Link para a fonte original (`urlFonte`)
+2. Murillo abre o PR, verifica diferenças com a tábua original (amostragem)
+3. Marca `revisadoPorMurillo: true` em commit de revisão
+4. Aprova e faz merge
+
+### 3.2 Detecção de divergências
+
+O importador deve sinalizar automaticamente:
+
+- Mudança brusca na altura de maré entre meses (>0.5m de diferença em janela equivalente)
+- Dia sem baixa-mar (anomalia da fonte)
+- Datas faltantes no mês
+- Saída calculada fora da janela operacional (06:00–14:00)
+
+**Cada anomalia vira comentário no PR** para Murillo decidir caso a caso.
+
+### 3.3 Lint customizado (regra inviolável)
+
+- Build do site **falha** se algum dado em `data/tabua-mares.ts` estiver com `revisadoPorMurillo: false` E `data >= hoje`
+- Garantia técnica: dado não revisado nunca chega ao público
+
+---
+
+## Fase 4 — Integração com Cards (Próxima Saída Automática)
+
+**Objetivo:** todos os cards de passeios dependentes de maré mostram próxima saída calculada dinamicamente.
+
+### 4.1 Pontos de integração
+
+| Local | Componente | Comportamento |
+|-------|-----------|---------------|
+| Card no grid da home | `PasseioCard` | "Próxima saída: Terça, 28/04 — 07h30" |
+| Card no cluster `/piscinas-naturais/` | `PasseioCard` | Idem |
+| Hero da página de passeio | `ProximaSaidaCard` | Dado destacado abaixo do InfoCard |
+
+### 4.2 Função consumida
+
+```typescript
+import { getProximaSaida } from "@/lib/tabua-mares";
+
+const proximaSaida = passeio.dependeDeMare
+  ? getProximaSaida(passeio.slug)
+  : null;
+```
+
+### 4.3 Fallback obrigatório
+
+- Sem `proximaSaida` → "Consulte próximas saídas" com link WhatsApp
+- Sem `data/tabua-mares.ts` carregado → mesmo fallback (não quebra build)
+
+### 4.4 Critério de saída
+
+- 0 hardcodes de data em cards
+- Murillo não atualiza cards entre publicações de tábua
+
+---
+
+## Fase 5 — Calendário Mensal nas Páginas Internas
+
+**Objetivo:** página `/passeios/piscinas-naturais/calendario` exibe grade completa do mês com janelas/ciclos.
+
+### 5.1 Estrutura
+
+- H1: "Tábua de Marés em João Pessoa — Próximas Saídas"
+- Grade mensal por passeio (ou consolidada com filtro)
+- Legenda visual (✅ Excelente, 🟡 Boa, 🔴 Consultar, ❌ Sem passeio)
+- Janelas/ciclos visualmente agrupadas (cor de fundo ou borda)
+- FAQ schema embutido (ver `seo-tabua-mares.md`)
+- CTA WhatsApp
+
+### 5.2 Função consumida
+
+```typescript
+import { getSaidasDoMes, agruparJanelasDeSaida } from "@/lib/tabua-mares";
+
+const saidas = getSaidasDoMes("seixas", 5, 2026);
+const janelas = agruparJanelasDeSaida(saidas);
+```
+
+### 5.3 URLs adicionais (opcional Fase 3+)
+
+- `/calendario/maio-2026`, `/calendario/junho-2026` — páginas mensais para SEO específico
+- Sitemap inclui URLs mensais
+- `noindex` automático em meses passados
+
+---
+
+## Fase 6 — Conteúdo SEO Indexável
+
+**Objetivo:** páginas de calendário e blocos de maré ranqueiam para keywords primárias.
+
+### 6.1 Geração automática
+
+O importador também gera (ou alimenta):
+
+- **FAQ schema** dinâmico com dados do mês corrente (ex: "Quantas saídas temos em maio de 2026?")
+- **Texto indexável** com janelas do mês (gerado a partir das janelas calculadas)
+- **Schema `Event`** para cada saída confirmada (com `eventStatus` apropriado)
+- **Meta tags dinâmicas** por mês
+
+### 6.2 Keywords-alvo
+
+- "tábua de marés João Pessoa"
+- "tábua de maré Porto de Cabedelo"
+- "maré baixa Seixas"
+- "próxima saída Picãozinho"
+- "calendário piscinas naturais João Pessoa"
+- "melhores dias para Areia Vermelha"
+
+(detalhes em `seo-tabua-mares.md`)
+
+### 6.3 Critério de saída
+
+- Ranqueia em até 60 dias para "tábua de marés João Pessoa"
+- Página `/calendario` recebe tráfego orgânico mensurável
+- FAQ schema aparece em rich results para 2+ perguntas
+
+---
+
+## Riscos e Mitigações
+
+| Risco | Probabilidade | Impacto | Mitigação |
+|-------|--------------|---------|-----------|
+| **PDF/HTML da CHM difícil de parsear** | Média | Médio | Parser primário em HTML; fallback em PDF; último fallback manual |
+| **CHM muda layout da fonte oficial** | Média-Alta | Alto | Testes de integridade; alerta automático para Murillo se parser falhar; fallback manual sempre disponível |
+| **Divergência entre tábua oficial e operação real** | Baixa-Média | Alto | Validação obrigatória por Murillo; campo `observacao` permite override pontual |
+| **Fonte oficial fora do ar** | Baixa | Médio | Cache local da última versão importada; alerta se importador falhar 2x consecutivos |
+| **Promessa de saída sem confirmação** | Alta se automatizado mal | Crítico | `temPasseio: true` é orientativo; Murillo confirma cada saída no WhatsApp |
+| **Fuso horário errado** | Média | Médio | Trabalhar sempre em UTC−3; validar no output |
+| **Dados expirados no site** | Média | Médio | Fallback "Consulte próximas saídas"; lint bloqueia build com dado >30 dias futuro vazio |
+| **Importador publica direto sem revisão** | Crítico se permitido | Crítico | PR sempre obrigatório; lint bloqueia `revisadoPorMurillo: false` em produção |
+
+---
+
+## Critérios para Avançar de Fase
+
+| Critério | F1 → F2 | F2 → F3 | F3 → F4 | F4 → F5 | F5 → F6 |
+|----------|---------|---------|---------|---------|---------|
+| Importador roda sem erro | ✅ | — | — | — | — |
+| 2+ ciclos publicados via PR | — | ✅ | — | — | — |
+| Cards consomem getProximaSaida | — | — | — | ✅ | — |
+| Página /calendario publicada | — | — | — | — | ✅ |
+
+> **Fase 3 (validação) não é etapa sequencial** — é trilho lateral que acompanha todas as outras desde a Fase 2.
+
+---
+
+## Regra Final
+
+> **Coleta automática é o objetivo.** Validação manual é a segurança. **Não prometer saída sem confirmação operacional** em nenhuma das fases.
+
+---
+
+*Automação v1.2 | 2026-04-26 | Fase 0 atual | Implementação inicia pela Fase 1 (importador)*

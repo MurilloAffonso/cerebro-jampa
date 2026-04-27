@@ -214,6 +214,32 @@ Aguardar:
 
 ---
 
+## 7.1 Acionamento Obrigatório de Skills Específicas
+
+Algumas skills têm **gatilhos invioláveis** — sempre que o objetivo envolver os termos abaixo, a skill correspondente **deve entrar no plano**.
+
+### `tabua-mares-turismo`
+
+Acionamento obrigatório quando o objetivo envolver qualquer um destes termos:
+
+- **Tábua de marés** (qualquer menção)
+- **Importação automática da Marinha/CHM** (construir, manter ou debugar o importador)
+- **Porto de Cabedelo/PB** (estação de referência)
+- **Automação de dados de maré** (script, GitHub Action, lint customizado)
+- **Maré baixa** (operacional, FAQ ou SEO)
+- **Piscinas naturais** (passeios afetados)
+- **Seixas, Picãozinho ou Areia Vermelha** (passeios dependentes de maré)
+- **Próxima saída automática** (cards de passeio)
+- **Calendário de saídas / calendário de marés**
+- **Dados de maré** (qualquer fluxo de coleta, parse ou validação)
+- **SEO de maré baixa** (keywords, FAQ, página `/calendario`)
+
+**Posição típica:** etapa pré-`programador-de-site` no Pipeline A. Pode rodar em paralelo com `copywriter-vendas` e `ux-ui-mobile-first` após o estrategista. Alimenta `seo-local-turismo` com FAQ de maré.
+
+**Regra:** se objetivo afeta página de Seixas/Picãozinho/Areia Vermelha e há qualquer dúvida sobre disponibilidade, próxima saída ou calendário — **incluir no plano** e marcar handoff explícito para `programador-de-site`.
+
+---
+
 ## 8. Integração com o Sistema
 
 ### Lê (`_conhecimento/`)
