@@ -2,8 +2,8 @@
 setlocal enabledelayedexpansion
 
 REM ==============================================================
-REM  jarvis-runner.bat — Runner Seguro Jampa Jarvis v0.2
-REM  Risco:  AUTO — leitura de tarefas e relatorio. Zero execucao.
+REM  jarvis-runner.bat v0.3 - Runner Seguro Jampa Jarvis
+REM  Risco:  AUTO - leitura de tarefas e relatorio. Zero execucao.
 REM  Criado: 2026-04-27
 REM ==============================================================
 REM  O que FAZ:
@@ -22,7 +22,7 @@ REM    - Nao chama Claude Code
 REM    - Nao acessa credenciais ou .env
 REM ==============================================================
 
-REM ── Verificar PowerShell ──────────────────────────────────────
+REM --- Verificar PowerShell ---
 where powershell.exe > nul 2>&1
 if %errorlevel% neq 0 (
     echo [ERRO] powershell.exe nao encontrado.
@@ -30,29 +30,30 @@ if %errorlevel% neq 0 (
     exit /b 1
 )
 
-REM ── Caminhos ──────────────────────────────────────────────────
-set SCRIPT_DIR=%~dp0
-set AUTOMACAO_DIR=%SCRIPT_DIR%..
-set VAULT_ROOT=%AUTOMACAO_DIR%\..
-set TASKS_DIR=%AUTOMACAO_DIR%\tasks
-set LOGS_DIR=%AUTOMACAO_DIR%\logs
-set TMP_DIR=%TEMP%\jarvis_runner
+REM --- Caminhos: derivar raiz do vault a partir do script ---
+REM %~dp0 = _automacao\scripts\  (com trailing backslash)
+cd /d "%~dp0..\.."
+set "VAULT_ROOT=%CD%"
+set "AUTOMACAO_DIR=%VAULT_ROOT%\_automacao"
+set "TASKS_DIR=%AUTOMACAO_DIR%\tasks"
+set "LOGS_DIR=%AUTOMACAO_DIR%\logs"
+set "TMP_DIR=%TEMP%\jarvis_runner"
 
 if not exist "%LOGS_DIR%" mkdir "%LOGS_DIR%"
 if not exist "%TMP_DIR%"  mkdir "%TMP_DIR%"
 
-REM ── Timestamp via PowerShell (mais confiavel que wmic) ────────
-for /f "usebackq delims=" %%I in (`powershell.exe -NoProfile -Command "[DateTime]::Now.ToString('yyyyMMddHHmm')"`) do set WMIC_DT=%%I
-if not defined WMIC_DT set WMIC_DT=202601010000
-set ANO=%WMIC_DT:~0,4%
-set MES=%WMIC_DT:~4,2%
-set DIA=%WMIC_DT:~6,2%
-set HORA=%WMIC_DT:~8,2%
-set MIN=%WMIC_DT:~10,2%
-set TS_ISO=%ANO%-%MES%-%DIA%T%HORA%:%MIN%-03:00
-set LOG_FILE=%LOGS_DIR%\%ANO%-%MES%-%DIA%-%HORA%h-runner.log
+REM --- Timestamp via PowerShell ---
+for /f "usebackq delims=" %%I in (`powershell.exe -NoProfile -Command "[DateTime]::Now.ToString('yyyyMMddHHmm')"`) do set DT=%%I
+if not defined DT set DT=202601010000
+set ANO=%DT:~0,4%
+set MES=%DT:~4,2%
+set DIA=%DT:~6,2%
+set HORA=%DT:~8,2%
+set MIN=%DT:~10,2%
+set "DATA_SLUG=%ANO%-%MES%-%DIA%"
+set "LOG_FILE=%LOGS_DIR%\%DATA_SLUG%-%HORA%h-runner.log"
 
-REM ── Contadores (fora do for — sem risco de bloco fechado) ─────
+REM --- Contadores ---
 set CNT_TOTAL=0
 set CNT_PENDENTE=0
 set CNT_AUTO=0
@@ -61,7 +62,7 @@ set CNT_BLOQUEADO=0
 set CNT_INVALIDO=0
 set GIT_DIRTY=0
 
-REM ── Arquivos de lista por risco ───────────────────────────────
+REM --- Arquivos de lista por risco ---
 type nul > "%TMP_DIR%\list_auto.tmp"
 type nul > "%TMP_DIR%\list_aprov.tmp"
 type nul > "%TMP_DIR%\list_bloq.tmp"
@@ -72,17 +73,17 @@ REM ==============================================================
 REM CABECALHO DO LOG
 REM ==============================================================
 echo === JARVIS RUNNER LOG === > "%LOG_FILE%"
-echo Versao: 0.2 >> "%LOG_FILE%"
+echo Versao: 0.3 >> "%LOG_FILE%"
 echo Risco: AUTO - apenas leitura e relatorio >> "%LOG_FILE%"
-echo Timestamp: %TS_ISO% >> "%LOG_FILE%"
+echo Data: %DATA_SLUG% %HORA%:%MIN% >> "%LOG_FILE%"
 echo Vault: %VAULT_ROOT% >> "%LOG_FILE%"
 echo Modo: sem execucao >> "%LOG_FILE%"
 echo. >> "%LOG_FILE%"
 
-REM ── Console ───────────────────────────────────────────────────
+REM --- Console ---
 echo.
 echo  ============================================================
-echo   JARVIS RUNNER v0.2    %ANO%-%MES%-%DIA% %HORA%:%MIN%
+echo   JARVIS RUNNER v0.3    %DATA_SLUG% %HORA%:%MIN%
 echo   Modo: LEITURA - nenhuma tarefa sera executada
 echo  ============================================================
 echo.
@@ -93,14 +94,10 @@ REM ==============================================================
 echo --- 1. GIT STATUS --- >> "%LOG_FILE%"
 echo  [1/3] Verificando Git...
 
-cd /d "%VAULT_ROOT%"
-
 git status --porcelain > "%TMP_DIR%\git_limpo.tmp" 2>&1
 git status            > "%TMP_DIR%\git_full.tmp"   2>&1
-git log -1 --oneline > "%TMP_DIR%\git_log.tmp"     2>&1
+git log -3 --oneline  > "%TMP_DIR%\git_log.tmp"    2>&1
 
-REM Detectar se sujo: qualquer linha em --porcelain = alteracao pendente
-REM NOTA: usar usebackq para ler ARQUIVO (nao literal string)
 for /f "usebackq delims=" %%L in ("%TMP_DIR%\git_limpo.tmp") do set GIT_DIRTY=1
 
 if "!GIT_DIRTY!"=="1" (
@@ -110,12 +107,15 @@ if "!GIT_DIRTY!"=="1" (
     type "%TMP_DIR%\git_full.tmp" >> "%LOG_FILE%"
     echo  [ALERTA] Git sujo
     echo         Tarefas APROVACAO nao podem rodar.
-    echo         Resolva as alteracoes pendentes primeiro.
 ) else (
     set "LAST_COMMIT=sem commits"
-    for /f "usebackq delims=" %%L in ("%TMP_DIR%\git_log.tmp") do set "LAST_COMMIT=%%L"
-    echo [OK] Git limpo - !LAST_COMMIT! >> "%LOG_FILE%"
-    echo  [OK] Git limpo: !LAST_COMMIT!
+    for /f "usebackq delims=" %%L in ("%TMP_DIR%\git_log.tmp") do (
+        if "!LAST_COMMIT!"=="sem commits" set "LAST_COMMIT=%%L"
+    )
+    echo [OK] Git limpo >> "%LOG_FILE%"
+    type "%TMP_DIR%\git_log.tmp" >> "%LOG_FILE%"
+    echo  [OK] Git limpo
+    echo      Ultimo commit: !LAST_COMMIT!
 )
 echo. >> "%LOG_FILE%"
 echo.
@@ -129,8 +129,7 @@ echo. >> "%LOG_FILE%"
 echo  [2/3] Escaneando tarefas...
 echo.
 
-REM Escrever o script PowerShell de extracao em arquivo temp
-REM (evita linha de comando muito longa e problemas de quoting)
+REM --- Gerar script PowerShell de extracao em arquivo temp ---
 echo try { > "%TMP_DIR%\extract.ps1"
 echo   $t = Get-Content -Raw -LiteralPath $args[0] ^| ConvertFrom-Json >> "%TMP_DIR%\extract.ps1"
 echo   $req = @('id','criado_em','objetivo','tipo','risco','status','autonomia','skill_primaria','precisa_aprovacao','resultado_esperado') >> "%TMP_DIR%\extract.ps1"
@@ -160,10 +159,8 @@ for %%F in ("%TASKS_DIR%\*.json") do (
     set /a CNT_TOTAL+=1
     set "JSON_NAME=%%~nxF"
 
-    REM Extrair campos via script PowerShell (uma chamada por arquivo)
     powershell.exe -NoProfile -File "%TMP_DIR%\extract.ps1" "%%F" > "%TMP_DIR%\fields.tmp" 2>&1
 
-    REM Ler campos linha a linha — usebackq obrigatorio para ler arquivo
     set "T_ID=sem-id"
     set "T_RISCO=invalido"
     set "T_STATUS=sem-status"
@@ -184,10 +181,8 @@ for %%F in ("%TASKS_DIR%\*.json") do (
         if !T_LINE!==7 set "T_SKREC=%%L"
     )
 
-    REM Contar pendentes
     if /i "!T_STATUS!"=="pendente" set /a CNT_PENDENTE+=1
 
-    REM Escrever detalhes no log (linha a linha — evita bloco de parenteses com `)`)
     echo Arquivo: !JSON_NAME! >> "%LOG_FILE%"
     echo   id:             !T_ID! >> "%LOG_FILE%"
     echo   status:         !T_STATUS! >> "%LOG_FILE%"
@@ -198,40 +193,37 @@ for %%F in ("%TASKS_DIR%\*.json") do (
     echo   validacao:      !T_VALID! >> "%LOG_FILE%"
     echo. >> "%LOG_FILE%"
 
-    REM Console: linha compacta por tarefa
     echo   [!T_RISCO!] !T_ID!
-    echo      skill: !T_SKILL!
+    echo      skill:  !T_SKILL!
     if not "!T_SKREC!"=="nenhuma" echo      skills+: !T_SKREC!
     echo      status: !T_STATUS! -- validacao: !T_VALID!
     echo.
 
-    REM Agrupar por risco em listas temporarias
     if /i "!T_RISCO!"=="auto" (
         set /a CNT_AUTO+=1
         echo   - !T_ID! >> "%TMP_DIR%\list_auto.tmp"
-        echo     skill:   !T_SKILL! >> "%TMP_DIR%\list_auto.tmp"
-        echo     skills+: !T_SKREC! >> "%TMP_DIR%\list_auto.tmp"
-        echo     status:  !T_STATUS! >> "%TMP_DIR%\list_auto.tmp"
-        echo     valida:  !T_VALID! >> "%TMP_DIR%\list_auto.tmp"
+        echo     skill:  !T_SKILL! >> "%TMP_DIR%\list_auto.tmp"
+        echo     status: !T_STATUS! >> "%TMP_DIR%\list_auto.tmp"
+        echo     valida: !T_VALID! >> "%TMP_DIR%\list_auto.tmp"
         echo. >> "%TMP_DIR%\list_auto.tmp"
     )
     if /i "!T_RISCO!"=="aprovacao" (
         set /a CNT_APROVACAO+=1
         echo   - !T_ID! >> "%TMP_DIR%\list_aprov.tmp"
-        echo     skill:   !T_SKILL! >> "%TMP_DIR%\list_aprov.tmp"
-        echo     skills+: !T_SKREC! >> "%TMP_DIR%\list_aprov.tmp"
-        echo     status:  !T_STATUS! >> "%TMP_DIR%\list_aprov.tmp"
-        echo     valida:  !T_VALID! >> "%TMP_DIR%\list_aprov.tmp"
+        echo     skill:  !T_SKILL! >> "%TMP_DIR%\list_aprov.tmp"
+        echo     status: !T_STATUS! >> "%TMP_DIR%\list_aprov.tmp"
+        echo     valida: !T_VALID! >> "%TMP_DIR%\list_aprov.tmp"
         echo. >> "%TMP_DIR%\list_aprov.tmp"
     )
     if /i "!T_RISCO!"=="bloqueado" (
         set /a CNT_BLOQUEADO+=1
         echo   - !T_ID! >> "%TMP_DIR%\list_bloq.tmp"
-        echo     skill:   !T_SKILL! >> "%TMP_DIR%\list_bloq.tmp"
-        echo     status:  !T_STATUS! >> "%TMP_DIR%\list_bloq.tmp"
-        echo     valida:  !T_VALID! >> "%TMP_DIR%\list_bloq.tmp"
+        echo     skill:  !T_SKILL! >> "%TMP_DIR%\list_bloq.tmp"
+        echo     status: !T_STATUS! >> "%TMP_DIR%\list_bloq.tmp"
+        echo     valida: !T_VALID! >> "%TMP_DIR%\list_bloq.tmp"
         echo. >> "%TMP_DIR%\list_bloq.tmp"
     )
+
     set "T_KNOWN=no"
     if /i "!T_RISCO!"=="auto"      set "T_KNOWN=yes"
     if /i "!T_RISCO!"=="aprovacao" set "T_KNOWN=yes"
@@ -242,7 +234,6 @@ for %%F in ("%TASKS_DIR%\*.json") do (
         echo. >> "%TMP_DIR%\list_inv.tmp"
     )
 
-    REM Registrar skills para relatorio final
     if not "!T_SKILL!"=="sem-skill" echo !T_SKILL! >> "%TMP_DIR%\skills.tmp"
     if not "!T_SKREC!"=="nenhuma"   echo !T_SKREC! >> "%TMP_DIR%\skills.tmp"
 )
@@ -256,69 +247,60 @@ echo.
 echo --- 3. RELATORIO POR RISCO --- >> "%LOG_FILE%"
 echo. >> "%LOG_FILE%"
 echo TOTAIS: >> "%LOG_FILE%"
-echo   Total de tarefas encontradas: %CNT_TOTAL% >> "%LOG_FILE%"
-echo   Pendentes (status=pendente):  %CNT_PENDENTE% >> "%LOG_FILE%"
-echo   AUTO:                         %CNT_AUTO% >> "%LOG_FILE%"
-echo   APROVACAO:                    %CNT_APROVACAO% >> "%LOG_FILE%"
-echo   BLOQUEADO:                    %CNT_BLOQUEADO% >> "%LOG_FILE%"
-echo   Invalidos:                    %CNT_INVALIDO% >> "%LOG_FILE%"
+echo   Total de tarefas:  %CNT_TOTAL% >> "%LOG_FILE%"
+echo   Pendentes:         %CNT_PENDENTE% >> "%LOG_FILE%"
+echo   AUTO:              %CNT_AUTO% >> "%LOG_FILE%"
+echo   APROVACAO:         %CNT_APROVACAO% >> "%LOG_FILE%"
+echo   BLOQUEADO:         %CNT_BLOQUEADO% >> "%LOG_FILE%"
+echo   Invalidos:         %CNT_INVALIDO% >> "%LOG_FILE%"
 echo. >> "%LOG_FILE%"
 
-echo === AUTO [%CNT_AUTO%] - Prontas para rodar quando n8n ativo: >> "%LOG_FILE%"
+echo === AUTO [%CNT_AUTO%] - Prontas para rodar: >> "%LOG_FILE%"
 echo. >> "%LOG_FILE%"
 type "%TMP_DIR%\list_auto.tmp" >> "%LOG_FILE%"
 
-echo === APROVACAO [%CNT_APROVACAO%] - Aguardam aprovado_por_murillo: true: >> "%LOG_FILE%"
+echo === APROVACAO [%CNT_APROVACAO%] - Aguardam aprovado_por_murillo true: >> "%LOG_FILE%"
 echo. >> "%LOG_FILE%"
-if "!GIT_DIRTY!"=="1" echo   [ALERTA] Git sujo - tarefas APROVACAO bloqueadas! >> "%LOG_FILE%"
-if "!GIT_DIRTY!"=="1" echo. >> "%LOG_FILE%"
+if "!GIT_DIRTY!"=="1" echo   [ALERTA] Git sujo - tarefas APROVACAO bloqueadas >> "%LOG_FILE%"
 type "%TMP_DIR%\list_aprov.tmp" >> "%LOG_FILE%"
 
-echo === BLOQUEADO [%CNT_BLOQUEADO%] - Nao executar. Ver motivo_bloqueio no JSON: >> "%LOG_FILE%"
+echo === BLOQUEADO [%CNT_BLOQUEADO%] - Nao executar: >> "%LOG_FILE%"
 echo. >> "%LOG_FILE%"
 type "%TMP_DIR%\list_bloq.tmp" >> "%LOG_FILE%"
 
 if %CNT_INVALIDO% GTR 0 (
-    echo === INVALIDOS [%CNT_INVALIDO%] - Verificar schema: >> "%LOG_FILE%"
+    echo === INVALIDOS [%CNT_INVALIDO%]: >> "%LOG_FILE%"
     echo. >> "%LOG_FILE%"
     type "%TMP_DIR%\list_inv.tmp" >> "%LOG_FILE%"
 )
 
-REM Skills unicas envolvidas (via PowerShell Sort-Object -Unique)
 echo --- SKILLS ENVOLVIDAS --- >> "%LOG_FILE%"
 echo. >> "%LOG_FILE%"
 type "%TMP_DIR%\skills.tmp" | powershell.exe -NoProfile -Command "$input | Sort-Object -Unique" >> "%LOG_FILE%" 2>&1
 echo. >> "%LOG_FILE%"
 
-REM Proxima acao recomendada
-echo --- PROXIMA ACAO RECOMENDADA --- >> "%LOG_FILE%"
+echo --- PROXIMA ACAO --- >> "%LOG_FILE%"
 echo. >> "%LOG_FILE%"
-if "!GIT_DIRTY!"=="1" (
-    echo   [ALERTA] Git sujo - resolver antes de qualquer execucao APROVACAO >> "%LOG_FILE%"
-    echo           git add . e git commit, ou git restore . >> "%LOG_FILE%"
-    echo. >> "%LOG_FILE%"
-)
-if %CNT_AUTO% GTR 0 echo   [DISPONIVEL] %CNT_AUTO% tarefa AUTO - prontas quando n8n estiver ativo >> "%LOG_FILE%"
+if "!GIT_DIRTY!"=="1" echo   [ALERTA] Git sujo - resolver antes de executar tarefas APROVACAO >> "%LOG_FILE%"
+if %CNT_AUTO% GTR 0      echo   [DISPONIVEL] %CNT_AUTO% tarefa AUTO >> "%LOG_FILE%"
 if %CNT_APROVACAO% GTR 0 echo   [AGUARDANDO] %CNT_APROVACAO% tarefa APROVACAO - setar aprovado_por_murillo: true >> "%LOG_FILE%"
 if %CNT_BLOQUEADO% GTR 0 echo   [BLOQUEADO] %CNT_BLOQUEADO% tarefa - ver motivo_bloqueio no JSON >> "%LOG_FILE%"
 echo. >> "%LOG_FILE%"
 echo --- FIM --- >> "%LOG_FILE%"
-echo Status: runner concluido com sucesso >> "%LOG_FILE%"
-echo Log: %LOG_FILE% >> "%LOG_FILE%"
 
 REM ==============================================================
 REM CONSOLE FINAL
 REM ==============================================================
 echo  ============================================================
-echo   RELATORIO JARVIS - %ANO%-%MES%-%DIA% %HORA%:%MIN%
+echo   RELATORIO JARVIS - %DATA_SLUG% %HORA%:%MIN%
 echo  ============================================================
 echo.
-echo   Total de tarefas:   %CNT_TOTAL%
-echo   Pendentes:          %CNT_PENDENTE%
-echo   AUTO:               %CNT_AUTO%
-echo   APROVACAO:          %CNT_APROVACAO%
-echo   BLOQUEADO:          %CNT_BLOQUEADO%
-if %CNT_INVALIDO% GTR 0 echo   Invalidos:          %CNT_INVALIDO%
+echo   Total de tarefas:  %CNT_TOTAL%
+echo   Pendentes:         %CNT_PENDENTE%
+echo   AUTO:              %CNT_AUTO%
+echo   APROVACAO:         %CNT_APROVACAO%
+echo   BLOQUEADO:         %CNT_BLOQUEADO%
+if %CNT_INVALIDO% GTR 0 echo   Invalidos:         %CNT_INVALIDO%
 echo.
 if "!GIT_DIRTY!"=="1" (
     echo   [ALERTA] Git sujo - resolver antes de executar tarefas APROVACAO
@@ -326,13 +308,9 @@ if "!GIT_DIRTY!"=="1" (
 )
 echo   Log: %LOG_FILE%
 echo.
-echo   Para ler o log completo:
-echo     type "%LOG_FILE%"
-echo.
 echo  ============================================================
-echo.
 
-REM ── Limpar temporarios ────────────────────────────────────────
+REM --- Limpar temporarios ---
 del /q "%TMP_DIR%\*.tmp" 2>nul
 del /q "%TMP_DIR%\*.ps1" 2>nul
 

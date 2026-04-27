@@ -1,116 +1,95 @@
 @echo off
-chcp 65001 >nul 2>&1
 setlocal enabledelayedexpansion
 
-REM ============================================================
-REM jarvis-status.bat — Ciclo Diario do Jampa Jarvis
-REM Risco: AUTO — so leitura, sem efeito externo
-REM Nao instala dependencias, nao faz push, nao envia mensagens
-REM ============================================================
+REM ==========================================================
+REM jarvis-status.bat v0.3 - Jampa Jarvis
+REM Risco: AUTO - apenas leitura, sem efeito externo
+REM Nao executa tarefas, nao chama Claude, nao faz commit/push
+REM ==========================================================
 
-REM --- Configuracao ---
-set VAULT_ROOT=%~dp0..\..
-set AUTOMACAO_DIR=%~dp0..
-set LOG_DIR=%AUTOMACAO_DIR%\logs
-set TASKS_DIR=%AUTOMACAO_DIR%\tasks
-set PROXIMOS_PASSOS=%VAULT_ROOT%\_memoria\proximos-passos.md
-
-REM --- Timestamp via PowerShell (wmic descontinuado no Windows 11) ---
-for /f "usebackq delims=" %%I in (`powershell.exe -NoProfile -Command "[DateTime]::Now.ToString('yyyyMMddHHmm')"`) do set WMIC_DT=%%I
-if not defined WMIC_DT set WMIC_DT=202601010000
-set ANO=%WMIC_DT:~0,4%
-set MES=%WMIC_DT:~4,2%
-set DIA=%WMIC_DT:~6,2%
-set HORA=%WMIC_DT:~8,2%
-set MIN=%WMIC_DT:~10,2%
-set TIMESTAMP=%ANO%-%MES%-%DIA%T%HORA%:%MIN%:00-03:00
-set DATA_SLUG=%ANO%-%MES%-%DIA%
-set HORA_SLUG=%HORA%h
-
-REM --- Nome do log ---
-set LOG_FILE=%LOG_DIR%\%DATA_SLUG%-%HORA_SLUG%-diario.log
+REM --- Derivar raiz do vault a partir da localizacao do script ---
+REM %~dp0 = _automacao\scripts\  (com trailing backslash)
+REM cd /d %~dp0..\.. = vault root
+cd /d "%~dp0..\.."
+set "VAULT_ROOT=%CD%"
+set "AUTOMACAO_DIR=%VAULT_ROOT%\_automacao"
+set "LOG_DIR=%AUTOMACAO_DIR%\logs"
+set "TASKS_DIR=%AUTOMACAO_DIR%\tasks"
 
 REM --- Criar diretorio de logs se nao existir ---
 if not exist "%LOG_DIR%" mkdir "%LOG_DIR%"
 
-REM ============================================================
-REM INICIO DO LOG
-REM ============================================================
-echo === JARVIS LOG === > "%LOG_FILE%"
-echo Ciclo: diario >> "%LOG_FILE%"
-echo Timestamp: %TIMESTAMP% >> "%LOG_FILE%"
-echo TarefaId: n/a >> "%LOG_FILE%"
-echo Risco: auto >> "%LOG_FILE%"
-echo Status: iniciado >> "%LOG_FILE%"
+REM --- Timestamp via PowerShell (wmic obsoleto no Windows 11) ---
+for /f "usebackq delims=" %%I in (`powershell.exe -NoProfile -Command "[DateTime]::Now.ToString('yyyyMMddHHmm')"`) do set DT=%%I
+if not defined DT set DT=202601010000
+set ANO=%DT:~0,4%
+set MES=%DT:~4,2%
+set DIA=%DT:~6,2%
+set HORA=%DT:~8,2%
+set MIN=%DT:~10,2%
+set "DATA_SLUG=%ANO%-%MES%-%DIA%"
+set "LOG_FILE=%LOG_DIR%\%DATA_SLUG%-%HORA%h-diario.log"
+
+REM ==========================================================
+REM GERAR LOG
+REM ==========================================================
+echo === JARVIS STATUS LOG === > "%LOG_FILE%"
+echo Data: %DATA_SLUG% %HORA%:%MIN% >> "%LOG_FILE%"
+echo Vault: %VAULT_ROOT% >> "%LOG_FILE%"
 echo. >> "%LOG_FILE%"
+
 echo --- GIT STATUS --- >> "%LOG_FILE%"
-
-REM --- Git status ---
-cd /d "%VAULT_ROOT%"
-git status >> "%LOG_FILE%" 2>&1
+git status --short >> "%LOG_FILE%" 2>&1
 echo. >> "%LOG_FILE%"
 
-REM --- Ultimo commit ---
-echo --- ULTIMO COMMIT --- >> "%LOG_FILE%"
-git log -1 --oneline >> "%LOG_FILE%" 2>&1
+echo --- ULTIMOS 3 COMMITS --- >> "%LOG_FILE%"
+git log -3 --oneline >> "%LOG_FILE%" 2>&1
 echo. >> "%LOG_FILE%"
 
-REM --- Contar tarefas pendentes ---
-echo --- TAREFAS --- >> "%LOG_FILE%"
-set TAREFAS_PENDENTES=0
-if exist "%TASKS_DIR%\*.json" (
-    for %%F in ("%TASKS_DIR%\*.json") do (
-        findstr /i "\"status\": \"pendente\"" "%%F" >nul 2>&1
-        if !errorlevel! == 0 set /a TAREFAS_PENDENTES+=1
-    )
+echo --- ARQUIVOS _automacao --- >> "%LOG_FILE%"
+dir "%AUTOMACAO_DIR%" /b /a-d >> "%LOG_FILE%" 2>&1
+echo. >> "%LOG_FILE%"
+
+echo --- TAREFAS JSON --- >> "%LOG_FILE%"
+set CNT_JSON=0
+set CNT_PENDENTE=0
+for %%F in ("%TASKS_DIR%\*.json") do (
+    set /a CNT_JSON+=1
+    findstr /i "pendente" "%%F" >nul 2>&1
+    if !errorlevel! == 0 set /a CNT_PENDENTE+=1
 )
-echo Pendentes: %TAREFAS_PENDENTES% >> "%LOG_FILE%"
+echo Total JSON:  %CNT_JSON% >> "%LOG_FILE%"
+echo Pendentes:   %CNT_PENDENTE% >> "%LOG_FILE%"
 echo. >> "%LOG_FILE%"
-
-REM --- Proximos passos (primeiras 20 linhas uteis) ---
-echo --- PROXIMOS PASSOS (topo) --- >> "%LOG_FILE%"
-if exist "%PROXIMOS_PASSOS%" (
-    set COUNT=0
-    for /f "usebackq delims=" %%L in ("%PROXIMOS_PASSOS%") do (
-        if !COUNT! lss 20 (
-            echo %%L >> "%LOG_FILE%"
-            set /a COUNT+=1
-        )
-    )
-) else (
-    echo [AVISO] Arquivo nao encontrado: %PROXIMOS_PASSOS% >> "%LOG_FILE%"
-)
-echo. >> "%LOG_FILE%"
-
-REM --- Contar logs existentes ---
-echo --- LOGS EXISTENTES --- >> "%LOG_FILE%"
-set LOG_COUNT=0
-if exist "%LOG_DIR%\*.log" (
-    for %%F in ("%LOG_DIR%\*.log") do set /a LOG_COUNT+=1
-)
-echo Total de logs: %LOG_COUNT% >> "%LOG_FILE%"
-echo. >> "%LOG_FILE%"
-
-REM --- Finalizar log ---
 echo --- FIM --- >> "%LOG_FILE%"
-echo Status: concluido >> "%LOG_FILE%"
-echo ProximoCiclo: Consultar ciclos.md para agenda >> "%LOG_FILE%"
 
-REM ============================================================
-REM OUTPUT NO TERMINAL
-REM ============================================================
+REM ==========================================================
+REM SAIDA NO TERMINAL (stdout enviado ao Telegram pelo n8n)
+REM ==========================================================
 echo.
 echo ================================================
-echo  JARVIS STATUS — %DATA_SLUG% %HORA%:%MIN%
+echo  JARVIS STATUS  %DATA_SLUG%  %HORA%:%MIN%
 echo ================================================
 echo.
-echo  Git: verificado (ver log)
-echo  Tarefas pendentes: %TAREFAS_PENDENTES%
-echo  Log gerado: %LOG_FILE%
+echo  Vault: %VAULT_ROOT%
 echo.
-echo  Para ler o log:
-echo    type "%LOG_FILE%"
+echo  [GIT STATUS]
+git status --short
+if errorlevel 1 echo  (repositorio limpo)
+echo.
+echo  [ULTIMOS 3 COMMITS]
+git log -3 --oneline
+echo.
+echo  [ARQUIVOS _automacao]
+dir "%AUTOMACAO_DIR%" /b /a-d 2>nul
+echo.
+echo  [TAREFAS]
+echo  Total JSON:  %CNT_JSON%
+echo  Pendentes:   %CNT_PENDENTE%
+echo.
+echo  Log: %LOG_FILE%
 echo.
 echo ================================================
 
 endlocal
+exit /b 0
