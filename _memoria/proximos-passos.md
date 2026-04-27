@@ -142,68 +142,50 @@
 
 ## PONTO DE RETOMADA — FEATURE TÁBUA DE MARÉS
 
-**Registrado em:** 2026-04-27  
+**Atualizado em:** 2026-04-26  
 **Branch:** `main` — limpa, sincronizada com `origin/main`  
-**Último commit:** `01519a3` — `docs(inspecao): descobre arquivos PDF falsos (Cloudflare) e mapeia parser surfguru`
+**Último commit:** `7c2d29d` — `feat(tabua-mares): implementa calendário de marés completo — dados, componentes e página`
 
-### Estado atual
+### Estado atual — FASE 4 CONCLUÍDA
 
-- ✅ Skill `tabua-mares-turismo` criada e atualizada (v1.2)
-- ✅ Spike técnico de fontes realizado e commitado
-- ✅ Inspeção técnica realizada e commitada: `03-inspecao-layout-pdf-cabedelo.md`
-- ⚠️ **DESCOBERTA CRÍTICA:** Os arquivos `.pdf` no repositório são páginas Cloudflare, NÃO são PDFs reais:
-  - `_site/planejamento/tabua-mares/2026-PORTO-DE-CABEDELO.pdf` → HTML de desafio Cloudflare
-  - `_site/planejamento/tabua-mares/cabedelo-2025.pdf` → idem
-- ✅ Parser HTML surfguru.com.br **funcional** — 31/31 dias de maio/2026 extraídos
-- ✅ Classe CSS `celula_mare_baixa` confirma semântica explícita de baixa-mar no surfguru
-- ✅ Todos os 31 dias de maio/2026 processados com regras operacionais aplicadas (19 dias com passeio)
-- ✅ Schema `SaidaDia[]`, funções runtime e funções de importação definidas em `references/estrutura-dados.md`
+- ✅ Skill `tabua-mares-turismo` criada e atualizada (v1.3)
+- ✅ `_site/types/tabua-mares.ts` — schema completo (`SaidaDia`, `JanelaSaida`, `ProximaSaidaCard`, etc.)
+- ✅ `_site/lib/tabua-mares.ts` — funções de cálculo, consulta e formatação
+- ✅ `_site/data/tabua-mares.ts` — 31 dias maio/2026 via surfguru (`revisadoPorMurillo: false`)
+- ✅ `_site/data/passeios.ts` — campo `dependeDeMare: true` em seixas, picaozinho, areia-vermelha
+- ✅ `_site/components/ProximaSaidaCard.tsx` — exibe próxima saída ou fallback WhatsApp
+- ✅ `_site/components/PasseioCard.tsx` — linha "Próxima saída" para passeios de maré
+- ✅ `_site/app/passeios/[categoria]/[slug]/page.tsx` — integra MareAlert + ProximaSaidaCard (C4)
+- ✅ `_site/app/passeios/piscinas-naturais/calendario/page.tsx` — calendário mensal com ciclos, legenda, FAQ, CTA
+- ✅ Build: 14/14 páginas estáticas, TypeScript limpo
 
-### Bloqueio atual
+### O que está aguardando Murillo
 
-**Murillo precisa baixar o PDF real no browser** antes de implementar `parseTabuaMaresOficial()`.
+1. **Validação dos dados de maio/2026:** Conferir a tabela em `03-inspecao-layout-pdf-cabedelo.md §3.2`
+   contra a operação real. Para cada dia aprovado, setar `revisadoPorMurillo: true`
+   em `_site/data/tabua-mares.ts`.
+   - Enquanto `revisadoPorMurillo: false`, o card mostra "Consulte próximas saídas" (comportamento correto)
+   - Assim que um registro for marcado `true`, o ProximaSaidaCard exibirá o dado real
 
-Passos para Murillo:
-1. Abrir `https://www.marinha.mil.br/cppb/tabuas_de_mare` no Chrome/Edge
-2. Clicar no link PDF "2026-PORTO-DE-CABEDELO.pdf"
-3. Substituir `_site/planejamento/tabua-mares/2026-PORTO-DE-CABEDELO.pdf` pelo arquivo baixado
-4. Confirmar que o arquivo começa com `%PDF-` (não `<!DOCTYPE`)
+2. **PDF real da CHM/Marinha:** Download manual em `marinha.mil.br/cppb/tabuas_de_mare`
+   → substituir o arquivo falso em `_site/planejamento/tabua-mares/2026-PORTO-DE-CABEDELO.pdf`
+   → Claude implementa `parseTabuaMaresOficial()` para substituir dados surfguru por dados oficiais
 
-### O que está pronto para implementar (não precisa de PDF)
+3. **Conteúdo da página Seixas:** `alertaMare` e outros campos opcionais ainda estão em branco
+   — preencher no passeio de Seixas em `data/passeios.ts` para o MareAlert mostrar texto customizado
 
-- ✅ **Parser surfguru** (`parseTabuaMaresSurfguru(html)`) — estrutura mapeada, classes confirmadas, lógica definida no relatório de inspeção
-- ✅ Regras operacionais todas validadas pelo parser de prova de conceito
-- ✅ Dados de maio/2026 prontos para `data/tabua-mares.ts` de desenvolvimento
+### Próximas fases do roadmap de automação
 
-### Próxima ação exata
+Ver `skills/tabua-mares-turismo/references/automacao-futura.md`:
+- **Fase 5:** `/calendario/junho-2026`, `/calendario/julho-2026` — páginas mensais para SEO
+- **Fase 6:** FAQ schema dinâmico, texto indexável, schema `Event` por saída confirmada
 
-**Duas opções — Murillo decide:**
+### O que NÃO fazer ainda
 
-**Opção A (recomendada se Murillo tiver 10 min):**
-1. Murillo baixa o PDF real
-2. Claude inspeciona o layout do PDF real → implementa `parseTabuaMaresOficial(pdfBuffer)`
-3. Claude implementa `importarTabuaMaresCabedelo(ano)` usando PDF como fonte primária
-
-**Opção B (se quiser avançar agora sem PDF):**
-1. Claude implementa `parseTabuaMaresSurfguru(html)` + `importarTabuaMaresSurfguru(mes, ano)` como fonte de desenvolvimento
-2. Gera `_site/data/tabua-mares.ts` com dados de maio/2026 (`revisadoPorMurillo: false`)
-3. Murillo valida manualmente os horários contra a tábua visual
-4. Parser PDF fica pendente para quando o arquivo real estiver disponível
-
-### O que NÃO fazer na próxima sessão
-
-- ❌ Não alterar a página Seixas (`app/passeios/piscinas-naturais/seixas/`)
-- ❌ Não criar `ProximaSaidaCard` ainda (depende do `data/tabua-mares.ts` validado)
-- ❌ Não criar calendário completo ainda
-- ❌ Não publicar dados sem `revisadoPorMurillo: true`
-
-### Instrução para o próximo Claude
-
-> Abrir sessão com `/abrir-sessao`.  
-> Ler este bloco de retomada.  
-> Perguntar a Murillo: "Opção A (PDF real) ou Opção B (parser surfguru agora)?".  
-> Executar conforme a escolha. Relatório de inspeção completo em `03-inspecao-layout-pdf-cabedelo.md`.
+- ❌ Não publicar `data/tabua-mares.ts` com `revisadoPorMurillo: false` como "dados oficiais"
+- ❌ Não criar parser surfguru automatizado sem revisão do fluxo por Murillo
+- ❌ Não criar `/calendario/junho` sem dados de junho importados e validados
 
 ---
 
-**Última atualização:** 2026-04-27 | Próxima revisão: início da próxima sessão (feature tábua de marés)
+**Última atualização:** 2026-04-26 | Aguardando: validação de Murillo nos dados de maio/2026
