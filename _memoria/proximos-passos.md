@@ -138,4 +138,47 @@
 
 ---
 
-**Última atualização:** 2026-04-25 | Próxima revisão: fim de semana 1
+---
+
+## PONTO DE RETOMADA — FEATURE TÁBUA DE MARÉS
+
+**Registrado em:** 2026-04-26  
+**Branch:** `main` — limpa, sincronizada com `origin/main`  
+**Último commit:** `0f800a4` — `docs(spike): investiga viabilidade importacao tabua mares CHM Cabedelo 2026`
+
+### Estado atual
+
+- ✅ Skill `tabua-mares-turismo` criada e atualizada (v1.2)
+- ✅ Spike técnico de fontes realizado e commitado
+- ✅ PDFs oficiais da Marinha/CHM no repositório:
+  - `_site/planejamento/tabua-mares/2025-PORTO-DE-CABEDELO.pdf`
+  - `_site/planejamento/tabua-mares/2026-PORTO-DE-CABEDELO.pdf`
+- ✅ Dados de maio 2026 extraídos de fonte não-oficial (surfguru) para referência
+- ✅ Schema `SaidaDia`, funções runtime e funções de importação definidas em `references/estrutura-dados.md`
+
+### Próxima ação exata
+
+**Inspecionar tecnicamente o PDF 2026 da tábua de marés de Porto de Cabedelo.**
+
+- **Arquivo alvo:** `_site/planejamento/tabua-mares/2026-PORTO-DE-CABEDELO.pdf`
+- **Relatório a criar:** `_site/planejamento/tabua-mares/03-inspecao-layout-pdf-cabedelo.md`
+- **Objetivo:** Determinar se o PDF é parseável por `pdf-parse` ou `pdfjs-dist` sem OCR; extrair 5 a 10 registros reais de baixa-mar (mês, dia, hora, altura) como prova de conceito.
+- **Ferramenta a tentar:** `mcp__ide__executeCode` com `pdf-parse` ou leitura direta do buffer — registrar resultado no relatório.
+
+### O que NÃO fazer nesta próxima sessão
+
+- ❌ Não iniciar o parser final (`parseTabuaMaresOficial`) — só validar layout primeiro
+- ❌ Não alterar a página Seixas (`app/passeios/piscinas-naturais/seixas/`)
+- ❌ Não alterar cards de passeio ainda
+- ❌ Não criar o calendário mensal completo ainda
+- ❌ Não implementar `ProximaSaidaCard` ainda
+
+### Instrução para o próximo Claude
+
+> Abrir sessão com `/abrir-sessao`.  
+> Ler este bloco de retomada.  
+> Objetivo único: inspecionar `_site/planejamento/tabua-mares/2026-PORTO-DE-CABEDELO.pdf` e criar `03-inspecao-layout-pdf-cabedelo.md` com layout confirmado e registros de exemplo reais. Se PDF não for parseável sem OCR, documentar o bloqueio e propor alternativa. Não avançar além disso.
+
+---
+
+**Última atualização:** 2026-04-26 | Próxima revisão: início da próxima sessão (feature tábua de marés)
