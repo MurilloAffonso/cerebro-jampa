@@ -240,6 +240,31 @@ Acionamento obrigatório quando o objetivo envolver qualquer um destes termos:
 
 ---
 
+### `lovable-site-builder`
+
+Acionamento obrigatório quando o objetivo envolver qualquer um destes termos:
+
+- **Lovable** / **Lovable.dev** (qualquer menção)
+- **Prompt para Lovable** (gerar, redigir, montar)
+- **Briefing para Lovable** (qualquer formato)
+- **Pacote de dados para Lovable**
+- **Prototipagem visual** com Lovable
+- **Interface visual** via Lovable
+- **Exportar para GitHub** a partir do Lovable
+- **Validar resultado do Lovable** (checklist)
+- **Handoff código Lovable** → Claude Code
+
+**Posição típica:** etapa final do Pipeline H — após `copywriter-vendas`, `ux-ui-mobile-first` e `seo-local-turismo` já terem produzido outputs. Consome os outputs dessas skills para montar o pacote.
+
+**Regras invioláveis ao planejar Pipeline H:**
+1. `lovable-site-builder` nunca é a primeira skill no pipeline — ela consome outputs de outras skills
+2. Se `dependeDeMare: true` no passeio → `tabua-mares-turismo` entra **antes** de `lovable-site-builder`
+3. Se copy não existe → `copywriter-vendas` entra **antes** de `lovable-site-builder`
+4. Se wireframe não existe → `ux-ui-mobile-first` entra **antes** de `lovable-site-builder`
+5. Após exportação do Lovable → `programador-de-site` entra para revisão técnica no Claude Code
+
+---
+
 ## 8. Integração com o Sistema
 
 ### Lê (`_conhecimento/`)
@@ -279,8 +304,13 @@ Revisar quando:
 ---
 
 **Status:** ✅ Ativa
-**Versão:** 2.2
-**Atualizada:** 2026-04-26
+**Versão:** 2.3
+**Atualizada:** 2026-04-27
+
+**Mudanças vs v2.2:**
+- Gatilho inviolável adicionado: `lovable-site-builder` (seção 7.2)
+- Pipeline H adicionado ao inventário (Lovable.dev)
+- 12 skills ativas (era 11)
 
 **Mudanças vs v2.1 (refatoração):**
 - `SKILL.md` reduzido para painel de controle (~270 linhas vs ~1240 antes)

@@ -42,11 +42,12 @@ O orquestrador recebe o objetivo, seleciona o pipeline correto, define ordem e d
 | 9 | `captura-referencias-visuais` | Captura e organização de referências visuais | Objetivo + fonte | Arquivo de mídia + `.md` de contexto |
 | 10 | `social-media-editorial-turismo` | Calendário editorial, pautas de stories/reels/carrosséis | `tom-de-voz.md`, `passeios.md`, insights de radar | Calendário + pautas estruturadas |
 
-### Skills Operacionais (1)
+### Skills Operacionais (2)
 
 | # | Skill | Responsabilidade | Entrada chave | Saída |
 |---|-------|-----------------|---------------|-------|
 | 11 | `tabua-mares-turismo` | **Inteligência de maré + importação futura automatizada.** Orienta importador automático CHM (Porto de Cabedelo/PB), calcula saída (`baixa-mar da manhã − 1h`), classifica status, gera janelas/ciclos, alimenta cards com próxima saída automática e apoia SEO de maré baixa. Coleta automática é o caminho principal; manual é fallback. | Tábua oficial CHM (importador) ou dados manuais de Murillo | `data/tabua-mares.ts`, calendário, FAQ schema, spec de importador, handoff para programador |
+| 12 | `lovable-site-builder` | **Fábrica de briefing para Lovable.dev.** Monta Pacote de Dados completo do passeio a partir do vault, consulta skills profissionais, gera Briefing Lovable + Prompt Final + Checklist de Validação + Handoff para Claude Code. Não toca em `_site/`, não configura o Lovable, não faz commit. CEREBRO.JAMPA é a fonte da verdade; Lovable é o pincel. | Vault (`_conhecimento/`, `_memoria/`, `_site/data/`, `_site/planejamento/`) + outputs das skills anteriores | Pacote de Dados, Briefing Lovable, Prompt Final (pronto para colar), Checklist de Validação, Handoff Claude Code |
 
 ---
 
@@ -61,6 +62,7 @@ O orquestrador recebe o objetivo, seleciona o pipeline correto, define ordem e d
 | **E** | Criar campanha Instagram | 8 → 9 → 7 → 10 |
 | **F** | Pesquisa / inteligência | 8 → 9 (opcional) |
 | **G** | Objetivo custom (não cobre A–F) | Orquestrador define |
+| **H** | Gerar briefing + prompt para Lovable.dev | 1 → 2a+3 → 7 → 4 → 5 → **12** → Murillo cola no Lovable → revisão Claude Code com 6 |
 
 ---
 
@@ -125,6 +127,10 @@ designer social → Murillo publica
 | Próxima saída automática (Seixas/Picãozinho/Areia Vermelha) | `tabua-mares-turismo` |
 | SEO de maré baixa, "tábua de marés João Pessoa" | `tabua-mares-turismo` |
 | Piscinas naturais — disponibilidade e janelas/ciclos | `tabua-mares-turismo` |
+| Gerar prompt ou briefing para Lovable.dev | `lovable-site-builder` |
+| Montar pacote de dados de passeio para Lovable | `lovable-site-builder` |
+| Checklist de validação pós-Lovable | `lovable-site-builder` |
+| Handoff código Lovable → GitHub → Claude Code | `lovable-site-builder` |
 | Não sei por onde começar | `orquestrador-projeto-turismo` |
 
 ---
@@ -142,6 +148,14 @@ designer social → Murillo publica
 
 ---
 
+---
+
+## Inventário de Skills (12 ativas)
+
+> *(Tabela de skills atualizada nas seções acima. 12 skills ativas + 1 orquestrador. Pipeline H adicionado para fluxo Lovable.)*
+
+---
+
 ## Skills Descontinuadas
 
 | Skill | Status | Motivo |
@@ -150,4 +164,4 @@ designer social → Murillo publica
 
 ---
 
-*v4.1 | Atualizado 2026-04-26 | 11 skills ativas + 1 orquestrador | Pipelines A–G*
+*v4.2 | Atualizado 2026-04-27 | 12 skills ativas + 1 orquestrador | Pipelines A–H*
