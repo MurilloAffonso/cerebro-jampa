@@ -20,7 +20,7 @@ O orquestrador recebe o objetivo, seleciona o pipeline correto, define ordem e d
 
 ---
 
-## Inventário de Skills (11 ativas)
+## Inventário de Skills (12 ativas)
 
 ### Skills de Site (7)
 
@@ -49,6 +49,29 @@ O orquestrador recebe o objetivo, seleciona o pipeline correto, define ordem e d
 | 11 | `tabua-mares-turismo` | **Inteligência de maré + importação futura automatizada.** Orienta importador automático CHM (Porto de Cabedelo/PB), calcula saída (`baixa-mar da manhã − 1h`), classifica status, gera janelas/ciclos, alimenta cards com próxima saída automática e apoia SEO de maré baixa. Coleta automática é o caminho principal; manual é fallback. | Tábua oficial CHM (importador) ou dados manuais de Murillo | `data/tabua-mares.ts`, calendário, FAQ schema, spec de importador, handoff para programador |
 | 12 | `lovable-site-builder` | **Fábrica de briefing para Lovable.dev.** Monta Pacote de Dados completo do passeio a partir do vault, consulta skills profissionais, gera Briefing Lovable + Prompt Final + Checklist de Validação + Handoff para Claude Code. Não toca em `_site/`, não configura o Lovable, não faz commit. CEREBRO.JAMPA é a fonte da verdade; Lovable é o pincel. | Vault (`_conhecimento/`, `_memoria/`, `_site/data/`, `_site/planejamento/`) + outputs das skills anteriores | Pacote de Dados, Briefing Lovable, Prompt Final (pronto para colar), Checklist de Validação, Handoff Claude Code |
 
+### Squad Comercial — 4 Skills + 3 Agentes + 1 Painel (em construção — FASE 2)
+
+| # | Skill | Responsabilidade | Entrada chave | Saída |
+|---|-------|-----------------|---------------|-------|
+| 13 | `qualificacao-lead` | Captura ficha de lead em 3-5 mensagens | Conversa WhatsApp colada por Murillo | Ficha estruturada + perguntas pendentes para Murillo fazer |
+| 14 | `proposta-passeio` | Gera proposta personalizada com 1-3 opções | Ficha do lead + `passeios.md` + maré | Mensagem WhatsApp pronta para Murillo aprovar e enviar |
+| 15 | `follow-up-comercial` | Sequência de 4 toques em 5 dias (acolhedor, sem pressão) | Ficha do lead + última mensagem | T1-T4 prontos para aprovação — Murillo envia |
+| 16 | `objecoes-turismo-jampa` | Responde objeção recorrente com variação contextual | Texto da objeção + ficha do lead | Resposta personalizada (nunca cópia crua do catálogo) |
+
+**Agentes nomeados:**
+
+| # | Agente | Função | Skills coordenadas |
+|---|--------|--------|-------------------|
+| A1 | `agente-comercial-jampa` | Qualificação → Proposta → Follow-up → Objeção. IA rascunha, Murillo aprova e envia. | 13, 14, 15, 16 |
+| A2 | `agente-atendimento-pre-passeio` | Gera mensagem D-1 com embarque, horário, maré (se aplica), o que levar | — |
+| A3 | `agente-pos-venda` | D+1 agradecimento + próximo passeio sugerido. D+3 pedido de avaliação Google | — |
+
+**Skill de dados:**
+
+| # | Skill | Responsabilidade | Entrada chave | Saída |
+|---|-------|-----------------|---------------|-------|
+| 17 | `painel-kpi-vempassear` | Relatório semanal de 5 KPIs (sexta 17h) | `_crm/leads.csv` + logs Jarvis + stats colados manualmente | `_automacao/relatorios/semanal-YYYY-WW.md` |
+
 ---
 
 ## Pipelines Canônicos
@@ -61,8 +84,13 @@ O orquestrador recebe o objetivo, seleciona o pipeline correto, define ordem e d
 | **D** | Briefar designer para campanha visual | 9 → 7 → 5 |
 | **E** | Criar campanha Instagram | 8 → 9 → 7 → 10 |
 | **F** | Pesquisa / inteligência | 8 → 9 (opcional) |
-| **G** | Objetivo custom (não cobre A–F) | Orquestrador define |
+| **G** | Objetivo custom (não cobre A–H) | Orquestrador define |
 | **H** | Gerar briefing + prompt para Lovable.dev | 1 → 2a+3 → 7 → 4 → 5 → **12** → Murillo cola no Lovable → revisão Claude Code com 6 |
+| **I** | Qualificar lead e preparar proposta | agente-comercial-jampa → 13 → 14 |
+| **J** | Follow-up de lead sem resposta há 24h | agente-comercial-jampa → 15 |
+| **K** | Tratar objeção identificada em conversa | agente-comercial-jampa → 16 |
+| **L** | Confirmação D-1 antes do passeio | agente-atendimento-pre-passeio |
+| **M** | Pós-venda D+1 (agradecimento) e D+3 (avaliação) | agente-pos-venda |
 
 ---
 
@@ -132,6 +160,13 @@ designer social → Murillo publica
 | Checklist de validação pós-Lovable | `lovable-site-builder` |
 | Handoff código Lovable → GitHub → Claude Code | `lovable-site-builder` |
 | Não sei por onde começar | `orquestrador-projeto-turismo` |
+| Lead chegou no WhatsApp, preciso qualificar | `agente-comercial-jampa` |
+| Montar proposta para lead já qualificado | `agente-comercial-jampa` |
+| Lead sem resposta há 24h (follow-up) | `agente-comercial-jampa` |
+| Responder objeção de cliente | `agente-comercial-jampa` |
+| Mensagem de confirmação D-1 | `agente-atendimento-pre-passeio` |
+| Mensagem de agradecimento pós-passeio | `agente-pos-venda` |
+| Relatório semanal de KPIs | `painel-kpi-vempassear` |
 
 ---
 
@@ -150,9 +185,9 @@ designer social → Murillo publica
 
 ---
 
-## Inventário de Skills (12 ativas)
+## Resumo do Inventário
 
-> *(Tabela de skills atualizada nas seções acima. 12 skills ativas + 1 orquestrador. Pipeline H adicionado para fluxo Lovable.)*
+> *(12 skills ativas + Squad Comercial em construção (4 skills + 3 agentes + 1 painel) + 1 orquestrador. Pipelines A–M. Ver tabelas acima.)*
 
 ---
 
@@ -164,4 +199,4 @@ designer social → Murillo publica
 
 ---
 
-*v4.2 | Atualizado 2026-04-27 | 12 skills ativas + 1 orquestrador | Pipelines A–H*
+*v4.3 | Atualizado 2026-04-29 | 12 skills ativas + Squad Comercial (FASE 2) + 1 orquestrador | Pipelines A–M*
