@@ -43,4 +43,19 @@
 
 ---
 
-**Última atualização:** 2026-04-25 | Próxima revisão: quando Murillo responder
+## Perguntas Estratégicas — Calibração Comercial (Análise 2.0 — 2026-04-29)
+
+**Essenciais para dimensionar o Squad Comercial antes de executar:**
+
+- [ ] **Volume de leads:** Quantos leads/semana chegam no WhatsApp em média? (10? 30? 100?) — determina se 4 toques de follow-up são viáveis
+- [ ] **Tempo médio de resposta percebido:** Murillo acha que responde em quanto tempo? — o registro manual mostrará a realidade
+- [ ] **Taxa de fechamento percebida:** Dos leads com proposta enviada, quantos fecham? (50%? 20%? 10%?) — alavanca é conversão ou volume?
+- [ ] **Objeção #1:** Qual frase Murillo mais ouve? ("Está caro"? "E se chover?" "Posso confiar?" "Aceita parcelar?") — primeira entrada de `objecoes.md`
+- [ ] **Fornecedores críticos:** Quantos parceiros fixos (capitães, motoristas, guias)? Algum sem substituto? — risco operacional mapeado
+- [ ] **Por que WhatsApp estava fora do escopo:** Foi por princípio (privacidade, marca artesanal) ou por timing (ainda sem solução)? — define postura da camada comercial
+- [ ] **Orçamento para mídia paga:** Existe R$ 300-500/mês disponível para teste? Ou zero ad spend até gerar caixa orgânico? — Squad de Tráfego: 90 ou 365 dias
+- [ ] **Cenário de ausência:** Se Murillo precisar de 7 dias off hoje, o que quebra primeiro? — termômetro real do quanto automatizar agora
+
+---
+
+**Última atualização:** 2026-04-29 | Próxima revisão: quando Murillo responder
