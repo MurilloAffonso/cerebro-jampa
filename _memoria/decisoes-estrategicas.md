@@ -386,4 +386,39 @@ horarioSaidaSugerido = max( floor30(horarioBaixaMareOperacional − 15min), 07:0
 
 ---
 
-**Última atualização:** 2026-04-27 | Próxima revisão: ao fim de cada fase de implementação
+### 40. Squad Comercial Mínima — Camada Comercial Assistida Instalada (2026-04-29)
+
+**Decisão:** Instalar Squad Comercial mínima no CEREBRO.JAMPA. IA rascunha qualificação, proposta, follow-up e resposta a objeção — Murillo aprova e envia. Nenhum envio autônomo.
+
+**Por quê:** Vault estava 80% marketing/conteúdo + 15% operacional de marés + 5% comercial. A operação de atendimento ficava inteiramente na cabeça de Murillo, sem registro, sem padrão, sem dado. Análise Estratégica 2.0 (Claude Opus 4.7, 2026-04-29) identificou essa lacuna como o principal gargalo de crescimento.
+
+**O que foi implementado:**
+- `CLAUDE.md` atualizado: escopo inclui camada comercial assistida
+- `_crm/leads.csv` + `_crm/README.md`: CRM mínimo com 15 campos, sem ferramenta externa
+- `_conhecimento/objecoes.md`: 17 objeções em 5 categorias com respostas padrão + empáticas
+- `_conhecimento/fornecedores.md`: estrutura de parceiros operacionais (preenchimento pendente com Murillo)
+- `_conhecimento/motivos-de-perda.md`: 12 motivos de perda com ação corretiva
+- `skills/qualificacao-lead/`: qualifica conversa → ficha + linha CSV
+- `skills/proposta-passeio/`: gera proposta personalizada para WhatsApp
+- `skills/follow-up-comercial/`: sequência 4 toques / 5 dias (T1–T4)
+- `skills/objecoes-turismo-jampa/`: identifica e responde objeção via catálogo
+- `skills/agente-comercial-jampa/`: roteador do Squad Comercial (Pipelines I–K)
+- `skills/agente-atendimento-pre-passeio/`: confirmação D-1 para lead fechado
+- `skills/agente-pos-venda/`: D+1 agradecimento + D+3 link avaliação Google
+- `skills/painel-kpi-vempassear/`: 5 KPIs semanais gerados toda sexta 17h
+- `skills/orquestrador-projeto-turismo/SKILL.md`: atualizado com gatilhos de roteamento para Squad Comercial
+- `skills/README.md`, `_memoria/estado-atual.md`, `_memoria/proximos-passos.md`: atualizados
+
+**Pontos vinculantes:**
+- Murillo sempre envia — nunca há saída direta da IA para WhatsApp
+- WhatsApp +55 83 9908-7830 é o canal central de conversão
+- CRM: CSV local no vault como histórico versionado; Google Sheets como dia-a-dia
+- Follow-up: máximo 4 toques (T1–T4 em 5 dias) — além disso é spam
+- Sem mídia paga antes de 250+ avaliações Google consolidadas
+- Evolution API: avaliar após 90 dias de dado real, não antes
+
+**Próximos passos:** preencher `fornecedores.md` em sessão 1h com Murillo; registrar primeiros leads reais no CRM; ativar Ciclo 5 (relatório sexta 17h) após 10+ leads.
+
+---
+
+**Última atualização:** 2026-04-29 | Próxima revisão: ao fim de cada fase de implementação
