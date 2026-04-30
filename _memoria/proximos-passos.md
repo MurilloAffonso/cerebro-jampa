@@ -1,140 +1,79 @@
 # Memória: Próximos Passos (Roadmap Executável)
 
-**Consolidado em:** 2026-04-25  
-**Escopo:** O que fazer agora, sequência real de execução
+**Consolidado em:** 2026-04-29 (Arquitetura 2.0 — Squad Comercial)
+**Escopo:** Roadmap 30/60/90 dias baseado na Análise Estratégica 2.0
 
 ---
 
-## FASE 1 — FUNDAÇÃO (Semana 1-2)
+## PRIORIDADE IMEDIATA — Squad Comercial (Semana 1: até 2026-05-06)
 
-### Semana 1
-
-**Dia 1-2: Validar Dados**
-- [ ] Confirmar preço de cada passeio (entrar em `_conhecimento/passeios.md`)
-- [ ] Confirmar duração de cada passeio
-- [ ] Confirmar embarques (Tambaú, Cabo Branco, etc.)
-- [ ] Confirmar qual passeio depende de maré baixa
-
-**Dia 3-5: Criar Home + Top 3 Passeios**
-- [ ] Home: "Passeios em João Pessoa" (layout básico)
-- [ ] Passeio: Seixas
-- [ ] Passeio: Areia Vermelha
-- [ ] Passeio: Litoral Sul Clássico
-- Estrutura: usar template `pagina-de-passeio.md`
-
-**Paralelo (Dia 1-5): Otimizar GMB**
-- [ ] Descrição otimizada (30 min)
-- [ ] Foto de capa (1 dia)
-- [ ] 5 fotos iniciais (1-2 dias)
-- [ ] Q&A rápida (5 estratégicas, 2 horas)
-- [ ] Pedir reviews (1 dia)
+| Etapa | Ação | Resultado esperado | Prioridade |
+|-------|------|--------------------|-----------|
+| ETAPA 1 | Atualizar CLAUDE.md — expandir escopo para camada comercial assistida | CEREBRO desbloqueado para Squad Comercial | Crítica |
+| ETAPA 2 | Criar `_crm/` + `leads.csv` (15 campos) + `_crm/README.md` | CRM mínimo existindo | Crítica |
+| ETAPA 3 | Criar `_conhecimento/objecoes.md` (mín. 15 objeções) | Base para skill objecoes-turismo-jampa | Crítica |
+| ETAPA 4 | Criar `_conhecimento/fornecedores.md` | Risco operacional documentado | Alta |
+| ETAPA 5 | Criar `_conhecimento/motivos-de-perda.md` | Registro vivo de perdas | Alta |
+| ETAPA 6 | Criar 4 skills comerciais (SKILL.md de cada) | Squad Comercial operacional | Crítica |
+| ETAPA 7 | Criar `agente-comercial-jampa` | Ponto de entrada comercial | Crítica |
+| ETAPA 8 | Criar `agente-atendimento-pre-passeio` | Confirmação D-1 | Alta |
+| ETAPA 9 | Criar `agente-pos-venda` | Avaliações Google | Alta |
+| ETAPA 10 | Criar `painel-kpi-vempassear` | 5 KPIs semanais | Alta |
+| ETAPA 11 | Atualizar `skills/README.md` com Squad Comercial e Pipelines I-M | Inventário atualizado | Alta |
+| ETAPA 12 | Atualizar orquestrador com gatilhos comerciais | Roteamento comercial ativo | Crítica |
+| ETAPA 13 | Registrar Decisão #40 (Squad Comercial) | Histórico documentado | Alta |
+| ETAPA 14 | Atualizar `estado-atual.md` e `proximos-passos.md` | Memória atualizada | Alta |
 
 ---
 
-### Semana 2
+## PRÓXIMOS 30 DIAS (até 2026-05-29)
 
-**Dia 8-12: Criar 2 Clusters + FAQ**
-- [ ] Cluster: Piscinas Naturais (linkando para Seixas, Areia Vermelha, Picãozinho, Penha)
-- [ ] Cluster: Litoral Sul (linkando para Clássico, Praia Bela, Combos)
-- [ ] FAQ Centralizada (15 perguntas, com schema)
-
-**Dia 13-14: Blog Rápido (3 posts)**
-- [ ] "Como Funciona Maré em Piscinas Naturais?"
-- [ ] "Melhor Época para Visitar João Pessoa"
-- [ ] "O Que Levar em Passeio de Praia — Checklist"
-
----
-
-## FASE 2 — CRESCIMENTO (Semana 3-4)
-
-**Semana 3**
-
-**Dia 15-21: Expandir Passeios**
-- [ ] 10-15 passeios adicionais (seguindo template)
-- [ ] Cada linkado para cluster pai
-- [ ] Cada consultando `_conhecimento/passeios.md`
-
-**Dia 15-19: Criar Landing Personas**
-- [ ] "Passeios para Famílias com Crianças"
-- [ ] "Passeios Românticos — Lua de Mel"
+| Semana | Ação | Resultado esperado | Prioridade |
+|--------|------|--------------------|-----------|
+| Sem 2 | Ativar Ciclo 1 (status diário 08:00 via n8n) | Relatório diário no Telegram | Alta |
+| Sem 2-3 | Registro manual de **todos** os leads (Murillo cola conversa → Claude gera ficha) | 30+ leads em `_crm/leads.csv` | Crítica |
+| Sem 3 | Implementar páginas Top 3 passeios (Areia Vermelha, Litoral Sul Clássico) | 3 passeios completos no site (Seixas já completo) | Alta |
+| Sem 3 | Preencher `_conhecimento/fornecedores.md` em sessão de 1h com Murillo | Parceiros documentados | Alta |
+| Sem 4 | Ativar Ciclo 5 (relatório semanal sexta 17:00) | Painel de 5 KPIs toda sexta | Alta |
+| Sem 4 | Otimização GMB completa (descrição + 5 fotos + 5 Q&A + push de avaliação) | +20% visibilidade GMB esperado | Alta |
 
 ---
 
-**Semana 4**
+## PRÓXIMOS 60 DIAS (até 2026-06-29)
 
-**Dia 22-28: Consolidar Clusters**
-- [ ] Completar 7 clusters (se houver mais)
-- [ ] Garantir links internos: cluster ↔ passeios
-- [ ] 5-10 blog posts adicionais
-
-**Dia 22-28: TripAdvisor**
-- [ ] Criar perfil (se não existir)
-- [ ] Listar 29 passeios
-- [ ] Validar informações (NAP)
-
----
-
-## FASE 3 — OTIMIZAÇÃO (Mês 2-3)
-
-**Mês 2**
-
-**Semana 5-8:**
-- [ ] Completar 29 passeios (todos)
-- [ ] 20 blog posts (total)
-- [ ] Landing personas (4 completas)
-- [ ] Viator (se ROI for > 15%)
+| Mês | Ação | Resultado esperado | Prioridade |
+|-----|------|--------------------|-----------|
+| Mês 2 | Ativar mensagem D-1 manual via `agente-atendimento-pre-passeio` | Reduzir no-shows e dúvidas | Alta |
+| Mês 2 | Ativar D+1 e D+3 via `agente-pos-venda` (manual) | +avaliações Google | Alta |
+| Mês 2 | Implementar próximos 5 passeios (total 8 de 29) | Catálogo SEO ganhando massa | Alta |
+| Mês 2 | 1 reel/semana + 1 carrossel/quinzena (skill `social-media-editorial-turismo`) | Calendário editorial vivo | Média |
+| Mês 2 | 3 blog posts publicados (Maré, Época, O Que Levar) | Massa SEO inicial | Média |
+| Mês 2 | Revisar 30 dias de leads — identificar padrão #1 de perda. Atualizar `objecoes.md` | Melhoria contínua real | Crítica |
 
 ---
 
-**Mês 3**
+## PRÓXIMOS 90 DIAS (até 2026-07-29)
 
-**Semana 9-12:**
-- [ ] 30 blog posts (total)
-- [ ] Otimização on-page (titles, metas, links)
-- [ ] Análise de rankings (quais keywords estão ranqueando?)
-- [ ] Campanha de reviews (GMB + TripAdvisor)
-
----
-
-## MARCOS DE SUCESSO
-
-**Fim Semana 2 (Fase 1):**
-- ✅ Home publicada
-- ✅ 3 passeios top ranqueando (ou pré-ranking)
-- ✅ GMB otimizado (+15% tráfego esperado)
-- ✅ 3 blog posts publicados
-- ✅ FAQ com schema live
-
-**Fim Semana 4 (Fase 2):**
-- ✅ 20 passeios live
-- ✅ 2 clusters funcionais
-- ✅ TripAdvisor com presença
-- ✅ 10 blog posts
-- ✅ 2 landing personas
-
-**Fim Mês 3 (Fase 3):**
-- ✅ 29 passeios (100%)
-- ✅ 7 clusters (100%)
-- ✅ 30 blog posts (100%)
-- ✅ 4 landing personas (100%)
-- ✅ Viator (se aplicável)
-- ✅ Rankings consolidados (50+ keywords em top 3)
-- ✅ Tráfego mensal: 2000-5000 (estimado)
+| Mês | Ação | Resultado esperado | Prioridade |
+|-----|------|--------------------|-----------|
+| Mês 3 | Sprint de passeios — implementar os 21 restantes (3-4/semana) | 100% catálogo SEO | Alta |
+| Mês 3 | Ativar painel-kpi semanal completo com histórico de 60 dias | Dado consolidado para decisão | Alta |
+| Mês 3 | Decidir: TripAdvisor sim/não (análise de comissão e tempo de cadastro) | Decisão estratégica registrada | Média |
+| Mês 3 | Avaliar Evolution API com base em 90 dias de dado real | Decisão informada, não impulsiva | Média |
+| Mês 3 | i18n EN para 3 passeios mais procurados (teste — não os 29) | Teste internacional mínimo | Baixa |
+| Mês 3 | Importador automático CHM real (skill `tabua-mares-turismo` v2.0) | Marés saindo do surfguru | Média |
+| Mês 3 | Reunião retrospectiva 90 dias: o que rolou, o que mudaria, próxima fase | Recalibragem | Crítica |
 
 ---
 
-## PRIORIDADES IMEDIATAS
+## O QUE NÃO FAZER (Descartado da Análise 2.0)
 
-**HOJE (2026-04-25):**
-1. Confirmar dados críticos (preço, duração, maré)
-2. Confirmar domínio do site
-3. Começar design/desenvolvimento da home
-
-**ESTA SEMANA:**
-1. Home + Top 3 passeios live
-2. GMB otimizado
-3. 3 blog posts live
-4. FAQ com schema
+- ❌ "58 agentes" inspirado no material de referência — inviável e desnecessário
+- ❌ 7-touch follow-up de 19h — vira spam; usar 4 toques em 5 dias
+- ❌ Kill rule R$140 CPA, auditoria de campanhas — não há mídia paga
+- ❌ Tracking CAPI 96% precisão — overengineering; GA4 + Pixel básico bastam
+- ❌ Envio automático de WhatsApp nos primeiros 90 dias — IA rascunha, Murillo envia
+- ❌ Mídia paga antes de 250+ avaliações Google consolidadas
 
 ---
 
@@ -166,8 +105,8 @@
 
 ## PONTO DE RETOMADA — FEATURE TÁBUA DE MARÉS
 
-**Atualizado em:** 2026-04-26  
-**Branch:** `main` — limpa, sincronizada com `origin/main`  
+**Atualizado em:** 2026-04-26
+**Branch:** `main` — limpa, sincronizada com `origin/main`
 **Último commit:** `7c2d29d` — `feat(tabua-mares): implementa calendário de marés completo — dados, componentes e página`
 
 ### Estado atual — FASE 4 CONCLUÍDA
@@ -212,4 +151,67 @@ Ver `skills/tabua-mares-turismo/references/automacao-futura.md`:
 
 ---
 
-**Última atualização:** 2026-04-26 | Aguardando: validação de Murillo nos dados de maio/2026
+## PONTO DE RETOMADA — CLAUDE DESIGN (2026-04-27)
+
+### Estado atual: PAUSADO
+
+O pacote de contexto da homepage foi criado, validado e commitado.
+A frente visual fica pausada até Murillo decidir retomar.
+
+### O que está pronto (não mexer)
+
+- ✅ `_design/cloud-design/homepage-vem-passear/prompt-final-claude-design.md` — pronto para colar no Claude Design
+- ✅ `_design/cloud-design/homepage-vem-passear/checklist-preenchido.md` — lacunas classificadas, nenhuma bloqueia o rascunho
+- ✅ `_design/cloud-design/homepage-vem-passear/` — 7 arquivos do pacote commitados em `87032dc`
+
+### Lacunas bloqueantes para publicação (aguardam Murillo)
+
+1. **L1** — Foto de Murillo (alta qualidade, uso profissional)
+2. **L3** — Depoimentos reais com texto + nome + cidade + data (mínimo 2) — **principal bloqueante**
+3. **L2** — Foto hero — cena icônica de JP real
+4. **L6** — Fotos reais dos 5 passeios dos cards
+
+### O que NÃO fazer enquanto pausado
+
+- ❌ Não refinar nem alterar `prompt-final-claude-design.md`
+- ❌ Não abrir Claude Design
+- ❌ Não alterar `_site/` por razão visual
+- ❌ Não acionar orquestrador para pipeline de design
+
+### Para retomar
+
+Murillo decide retomar → colar `prompt-final-claude-design.md` no Claude Design → avaliar com `checklist-validacao.md §2` → iterar → aprovar → `programador-de-site`
+
+---
+
+## PONTO DE RETOMADA — AUTOMAÇÃO JAMPA JARVIS (2026-04-27)
+
+### Estado atual: FOCO ATIVO
+
+Scripts locais testados e estabilizados. Próximo passo: importar e testar no n8n.
+
+### O que está pronto
+
+- ✅ `_automacao/scripts/jarvis-runner.bat` v0.3 — testado localmente, exitCode 0, 8 tasks lidas
+- ✅ `_automacao/scripts/jarvis-status.bat` v0.3 — testado localmente, exitCode 0, path resolution corrigido
+- ✅ `_automacao/workflows/jarvis-runner.workflow.json` — workflow de execução manual pronto para importar
+- ✅ `_automacao/workflows/jarvis-status-telegram.workflow.json` — workflow Telegram pronto (Telegram não configurado ainda)
+- ✅ `_automacao/workflows/n8n-local-setup.md` — guia completo de setup
+
+### Próximo passo exato (n8n)
+
+1. Abrir n8n local (`http://localhost:5678`)
+2. Importar `jarvis-runner.workflow.json`
+3. Executar manualmente o nó "Rodar jarvis-runner.bat"
+4. Confirmar `exitCode: 0` e `stdout` com resumo de tasks no n8n
+5. Importar `jarvis-status-telegram.workflow.json` (para teste de estrutura — Telegram ainda desativado)
+
+### O que NÃO fazer ainda
+
+- ❌ Não configurar Telegram ainda (fase Telegram não iniciada)
+- ❌ Não ativar workflows automáticos sem testar manualmente primeiro
+- ❌ Não alterar `_site/`
+
+---
+
+**Última atualização:** 2026-04-29 | Foco: Squad Comercial (FASE 2 — 14 etapas)
