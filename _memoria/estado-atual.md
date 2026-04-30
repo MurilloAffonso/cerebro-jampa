@@ -1,22 +1,21 @@
 # Memória: Estado Atual
 
-**Data Última Atualização:** 2026-04-29 (Implementação Arquitetura 2.0 — Squad Comercial)
+**Data Última Atualização:** 2026-04-30 (FASE 2 concluída — Squad Comercial instalado)
 
 ---
 
 ## Situação Geral
 
 Vault em expansão comercial:
-- ✅ Estrutura base (13 pastas + `_crm/` em construção)
-- ✅ 22 arquivos de conhecimento (`_conhecimento/`)
+- ✅ Estrutura base (14 pastas incluindo `_crm/`)
+- ✅ 25 arquivos de conhecimento (`_conhecimento/`)
 - ✅ 13 arquivos de memória + decisões (`_memoria/`)
 - ✅ 29 passeios catalogados + indexados
-- ✅ 12 skills ativas + 1 orquestrador
+- ✅ 20 skills/agentes ativos + 1 orquestrador
 - ✅ Tábua de marés v1.3 implementada (calendário live em produção)
-- ✅ Análise Estratégica 2.0 aprovada (2026-04-29)
-- 🔧 Squad Comercial em construção (FASE 2 — 14 etapas iniciadas hoje)
+- ✅ Squad Comercial instalado (FASE 2 concluída 2026-04-30 — 14 etapas)
 
-**Fase Atual:** **ARQUITETURA 2.0 — SQUAD COMERCIAL EM CONSTRUÇÃO**
+**Fase Atual:** **ARQUITETURA 2.0 — SQUAD COMERCIAL ATIVO**
 
 ---
 
@@ -24,7 +23,7 @@ Vault em expansão comercial:
 
 ### Estrutura Base
 - ✅ Árvore de pastas (13 categorias)
-- ✅ CLAUDE.md (regra-mãe — atualização de escopo comercial pendente na FASE 2 ETAPA 1)
+- ✅ CLAUDE.md (regra-mãe — escopo comercial assistido incluído)
 - ✅ 9 Slash commands atualizados
 - ✅ 12 Skills de especialistas (com SKILL.md versionado)
 
@@ -58,17 +57,17 @@ Vault em expansão comercial:
 **Skill de Coordenação (1):**
 13. ✅ `orquestrador-projeto-turismo` v2.4 — Ponto de entrada principal. Pipelines A–H.
 
-**Squad Comercial (em construção — FASE 2):**
-- 🔧 `qualificacao-lead` — a criar
-- 🔧 `proposta-passeio` — a criar
-- 🔧 `follow-up-comercial` — a criar
-- 🔧 `objecoes-turismo-jampa` — a criar
-- 🔧 `agente-comercial-jampa` — a criar
-- 🔧 `agente-atendimento-pre-passeio` — a criar
-- 🔧 `agente-pos-venda` — a criar
-- 🔧 `painel-kpi-vempassear` — a criar
+**Squad Comercial (ATIVO ✅ — instalado 2026-04-30):**
+14. ✅ `qualificacao-lead` — qualifica conversa WhatsApp → ficha + linha CSV (Pipeline I)
+15. ✅ `proposta-passeio` — gera proposta personalizada para WhatsApp (Pipeline I)
+16. ✅ `follow-up-comercial` — sequência 4 toques / 5 dias T1–T4 (Pipeline J)
+17. ✅ `objecoes-turismo-jampa` — identifica e responde objeção via catálogo (Pipeline K)
+18. ✅ `agente-comercial-jampa` — roteador do Squad Comercial / ponto de entrada
+19. ✅ `agente-atendimento-pre-passeio` — confirmação D-1 para lead fechado (Pipeline L)
+20. ✅ `agente-pos-venda` — D+1 agradecimento + D+3 link avaliação Google (Pipeline M)
+21. ✅ `painel-kpi-vempassear` — 5 KPIs semanais, toda sexta 17h (Ciclo 5)
 
-**Total:** 12 skills ativas + 1 orquestrador + Squad Comercial em construção (4 skills + 3 agentes + 1 painel)
+**Total:** 20 skills/agentes ativos + 1 orquestrador (Pipelines A–M)
 
 ---
 
@@ -83,9 +82,9 @@ Vault em expansão comercial:
 | **concorrentes.md** | ✅ Base | Jampa Paradise identificado, diferencial claro — análise profunda pendente |
 | **provas-de-confianca.md** | ✅ Completo | Cadastur, avaliações 4.9/5, feedback padrão (atendimento, confiança, organização) |
 | **glossario-turismo-jampa.md** | ✅ Completo | Termos locais, praias, eventos sazonais, maré, vocabulário operacional |
-| **objecoes.md** | 🔧 A criar | Catálogo de objeções recorrentes (FASE 2 ETAPA 3) |
-| **fornecedores.md** | 🔧 A criar | Cadastro de parceiros (FASE 2 ETAPA 4) |
-| **motivos-de-perda.md** | 🔧 A criar | Registro vivo de perdas (FASE 2 ETAPA 5) |
+| **objecoes.md** | ✅ Criado | 17 objeções em 5 categorias — preencher [CONFIRMAR] com Murillo |
+| **fornecedores.md** | ✅ Criado | Estrutura pronta — preenchimento pendente (sessão 1h com Murillo) |
+| **motivos-de-perda.md** | ✅ Criado | 12 motivos com ação corretiva — atualizar com dados reais do CRM |
 
 ### Análise Estratégica
 - ✅ `mercado-e-concorrencia.md`
@@ -99,7 +98,7 @@ Vault em expansão comercial:
 
 ### Memória e Decisões
 - ✅ `estado-atual.md` (este arquivo — ATUALIZADO 2026-04-29)
-- ✅ `decisoes-estrategicas.md` (39 decisões registradas — Decisão #40 a adicionar na FASE 2)
+- ✅ `decisoes-estrategicas.md` (40 decisões registradas — Decisão #40: Squad Comercial)
 - ✅ `perguntas-abertas.md` (perguntas comerciais adicionadas 2026-04-29)
 - ✅ `proximos-passos.md` (roadmap 30/60/90 dias — ATUALIZADO 2026-04-29)
 - ✅ `indice-mestre.md`
@@ -121,21 +120,9 @@ Vault em expansão comercial:
 
 ---
 
-## Arquivos em Trabalho (FASE 2 — em construção)
+## FASE 2 — CONCLUÍDA ✅ (2026-04-30)
 
-- `_crm/leads.csv` — schema de 15 campos (ETAPA 2)
-- `_crm/README.md` — documentação do CRM (ETAPA 2)
-- `_conhecimento/objecoes.md` — catálogo de objeções (ETAPA 3)
-- `_conhecimento/fornecedores.md` — cadastro de parceiros (ETAPA 4)
-- `_conhecimento/motivos-de-perda.md` — registro de perdas (ETAPA 5)
-- `skills/qualificacao-lead/SKILL.md` (ETAPA 6)
-- `skills/proposta-passeio/SKILL.md` (ETAPA 6)
-- `skills/follow-up-comercial/SKILL.md` (ETAPA 6)
-- `skills/objecoes-turismo-jampa/SKILL.md` (ETAPA 6)
-- `skills/agente-comercial-jampa/SKILL.md` (ETAPA 7)
-- `skills/agente-atendimento-pre-passeio/SKILL.md` (ETAPA 8)
-- `skills/agente-pos-venda/SKILL.md` (ETAPA 9)
-- `skills/painel-kpi-vempassear/SKILL.md` (ETAPA 10)
+Todas as 14 etapas do Squad Comercial implementadas. Ver Decisão #40 em `decisoes-estrategicas.md`.
 
 ---
 
@@ -156,19 +143,12 @@ Vault em expansão comercial:
 
 ## Próximo Passo Imediato
 
-**FASE 2 — SQUAD COMERCIAL (Iniciada 2026-04-29)**
+**FASE 2 CONCLUÍDA. Próximas prioridades (ver `proximos-passos.md`):**
 
-### Prioridade 1 — Squad Comercial (Esta semana)
-1. Atualizar CLAUDE.md — expandir escopo para camada comercial assistida (ETAPA 1)
-2. Criar `_crm/` com `leads.csv` (15 campos) e `README.md` (ETAPA 2)
-3. Criar `_conhecimento/objecoes.md` — mín. 15 objeções (ETAPA 3)
-4. Criar `_conhecimento/fornecedores.md` (ETAPA 4)
-5. Criar `_conhecimento/motivos-de-perda.md` (ETAPA 5)
-6. Criar 4 skills comerciais (ETAPA 6)
-7. Criar `agente-comercial-jampa` (ETAPA 7)
-8. Criar `agente-atendimento-pre-passeio` + `agente-pos-venda` (ETAPAS 8-9)
-9. Criar `painel-kpi-vempassear` (ETAPA 10)
-10. Atualizar README + orquestrador + decisoes-estrategicas.md (ETAPAS 11-13)
+### Prioridade 1 — Operacionalizar Squad Comercial (Semana 2)
+1. Sessão 1h com Murillo para preencher `_conhecimento/fornecedores.md`
+2. Registrar primeiros leads reais em `_crm/leads.csv` (meta: 30+ leads)
+3. Ativar Ciclo 1 n8n (status diário 08:00)
 
 ### Prioridade 2 — Site (Semana 2-3)
 1. Top 3 passeios: Areia Vermelha, Litoral Sul Clássico (Seixas já completo)
