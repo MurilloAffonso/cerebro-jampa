@@ -277,6 +277,26 @@ Acionamento quando o objetivo envolver qualquer um destes termos:
 
 ---
 
+### Squad Comercial — Roteamento para `agente-comercial-jampa`
+
+O orquestrador **não gerencia pipelines comerciais** (I–K). Quando o objetivo for comercial, rotear imediatamente para `agente-comercial-jampa` sem gerar plano de site.
+
+Gatilhos de roteamento comercial:
+
+| Murillo menciona... | Rotear para |
+|---------------------|-------------|
+| "lead", "qualifica", "proposta", "WhatsApp de cliente" | `agente-comercial-jampa` → Pipeline I |
+| "não respondeu", "follow-up", "sumiu" | `agente-comercial-jampa` → Pipeline J |
+| "objeção", "achou caro", "quer pensar", "medo de golpe" | `agente-comercial-jampa` → Pipeline K |
+| "fechou", "pagou", "confirmado" | `agente-comercial-jampa` → CRM update + `agente-pos-venda` |
+| "lembrete de amanhã", "D-1", "confirmar passeio" | `agente-atendimento-pre-passeio` → Pipeline L |
+| "pós-venda", "avaliação", "D+1", "D+3" | `agente-pos-venda` → Pipeline M |
+| "KPI", "painel", "relatório semanal", "taxa de fechamento" | `painel-kpi-vempassear` (standalone) |
+
+**Regra:** se o objetivo mistura comercial + site (ex: "criar página e qualificar lead"), separar em dois planos distintos: plano de site (orquestrador) + rotear parte comercial para `agente-comercial-jampa`.
+
+---
+
 ## 8. Integração com o Sistema
 
 ### Lê (`_conhecimento/`)
