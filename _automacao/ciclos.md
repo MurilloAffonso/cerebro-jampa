@@ -18,7 +18,8 @@ Define os cinco ciclos de operação do Jarvis. Cada ciclo tem trigger, duraçã
 2. Lê `_memoria/proximos-passos.md` (prioridades do dia)
 3. Conta tarefas pendentes em `_automacao/tasks/`
 4. Conta tarefas concluídas nas últimas 24h (via logs)
-5. Grava `_automacao/logs/YYYY-MM-DD-08h-diario.log`
+5. Lê `_crm/leads.csv` — conta leads por status se arquivo existir (novo / qualificado / proposta-enviada / fechado / perdido)
+6. Grava `_automacao/logs/YYYY-MM-DD-08h-diario.log`
 
 **Entrega:**
 ```
@@ -27,6 +28,7 @@ Git: main, limpo, 3 commits atrás do remoto
 Próximo passo (vault): Confirmar preços de passeios
 Tarefas pendentes: 2
 Tarefas concluídas (24h): 0
+CRM: 3 novos | 1 qualificado | 2 proposta-enviada | 1 fechado
 Último log: 2026-04-30-22h-tarefa.log
 ```
 
@@ -107,24 +109,27 @@ Ação necessária: [descrição ou "nenhuma"]
 
 ## Ciclo 5 — Aprendizado (Registro de Padrão)
 
-**Frequência:** Semanal (sugestão: sexta, 18:00) ou após falha relevante
+**Frequência:** Semanal (sexta 17:00) ou após falha relevante
 **Classificação de risco:** AUTO
 **Trigger:** Cron semanal ou manual
 
 **O que faz:**
 1. Lê todos os logs da semana em `_automacao/logs/`
-2. Identifica tarefas bloqueadas repetidamente (padrão de problema)
-3. Identifica tarefas com override manual recorrente (regra desatualizada)
-4. Gera relatório de aprendizado para revisão de Murillo
-5. Grava `_automacao/logs/YYYY-WW-aprendizado.log`
+2. Lê `_crm/leads.csv` — extrai 5 KPIs (leads por origem, tempo médio de resposta, taxa de fechamento, motivo de perda #1, avaliações Google novas)
+3. Identifica tarefas bloqueadas repetidamente (padrão de problema)
+4. Identifica tarefas com override manual recorrente (regra desatualizada)
+5. Aciona skill `painel-kpi-vempassear` para formatar relatório semanal
+6. Grava `_automacao/relatorios/semanal-YYYY-WW.md` + `_automacao/logs/YYYY-WW-aprendizado.log`
 
 **Entrega:**
 ```
-=== APRENDIZADO SEMANA 18/2026 ===
-Tarefas executadas: 5
-Bloqueios: 2 (ambos por revisadoPorMurillo: false)
-Overrides manuais: 1 (horário de saída ajustado por Murillo)
-Sugestão: atualizar regras-operacionais.md para refletir override recorrente
+=== PAINEL SEMANA 18/2026 ===
+Leads recebidos: 7 (GMB: 3 | Instagram: 2 | indicação: 2)
+Taxa de fechamento: 43% (3 de 7)
+Motivo de perda #1: preço
+Avaliações Google novas: +2
+Bloqueios Jarvis: 2 (ambos por revisadoPorMurillo: false)
+Sugestão: atualizar objecoes.md com "preço" como objeção #1
 ```
 
 **Responsável:** Jarvis gera, Murillo decide se atualiza regras
@@ -139,4 +144,4 @@ Sugestão: atualizar regras-operacionais.md para refletir override recorrente
 | Sob demanda | Tarefa | Variável | APROVAÇÃO |
 | Após tarefa | QA | Por tarefa | APROVAÇÃO |
 | Sob demanda | Aprovação | Por tarefa | BLOQUEADO→liberado |
-| Sexta 18:00 | Aprendizado | Semanal | AUTO |
+| Sexta 17:00 | Painel KPI + Aprendizado | Semanal | AUTO |
