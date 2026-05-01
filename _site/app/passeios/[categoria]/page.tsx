@@ -133,11 +133,11 @@ export default function CategoriaPage({ params }: CategoriaPageProps) {
                     <div className="space-y-0.5">
                       <p className="text-gray-500">
                         <span className="font-medium text-gray-700">Duração:</span>{" "}
-                        {isCampoIndisponivel(passeio.duracao) ? "[CONSULTAR]" : passeio.duracao}
+                        {isCampoIndisponivel(passeio.duracao) ? "Consultar" : passeio.duracao}
                       </p>
                       <p className="text-gray-500">
                         <span className="font-medium text-gray-700">A partir de:</span>{" "}
-                        {isCampoIndisponivel(passeio.preco) ? "[CONSULTAR]" : passeio.preco}
+                        {isCampoIndisponivel(passeio.preco) ? "Consultar" : passeio.preco}
                       </p>
                     </div>
                     <span className="text-primary font-semibold whitespace-nowrap ml-4">
