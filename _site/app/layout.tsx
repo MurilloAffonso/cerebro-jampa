@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: "Vem Passear em Jampa",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/og-image.svg",
         width: 1200,
         height: 630,
         alt: "Vem Passear em Jampa — Passeios em João Pessoa",
