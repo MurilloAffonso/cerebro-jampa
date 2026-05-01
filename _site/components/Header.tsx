@@ -107,7 +107,7 @@ export function Header() {
               href={WA_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-primary hover:bg-accent text-white font-bold text-sm px-4 py-2 rounded-lg min-h-[40px] flex items-center gap-1.5 transition-colors whitespace-nowrap"
+              className="bg-primary hover:bg-accent text-white font-bold text-sm px-4 py-2 rounded-lg min-h-[44px] flex items-center gap-1.5 transition-colors whitespace-nowrap"
               aria-label="Reservar no WhatsApp"
             >
               💬{" "}
