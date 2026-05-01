@@ -19,6 +19,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { passeios } from "@/data/passeios";
 import { empresa, paginasInfo } from "@/data/empresa";
+import { isCampoIndisponivel } from "@/lib/consultar";
 import { FAQAccordion } from "@/components/FAQAccordion";
 
 export const metadata: Metadata = {
@@ -133,11 +134,19 @@ export default function Home() {
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
                       <span className="text-gray-600">Preço:</span>
-                      <span className="font-bold text-primary">{p.preco}</span>
+                      {isCampoIndisponivel(p.preco) ? (
+                        <span className="font-semibold text-gray-500 text-xs italic">Consultar</span>
+                      ) : (
+                        <span className="font-bold text-primary">{p.preco}</span>
+                      )}
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-600">Duração:</span>
-                      <span className="font-semibold">{p.duracao}</span>
+                      {isCampoIndisponivel(p.duracao) ? (
+                        <span className="text-gray-500 text-xs italic">Consultar</span>
+                      ) : (
+                        <span className="font-semibold">{p.duracao}</span>
+                      )}
                     </div>
                   </div>
                 </div>

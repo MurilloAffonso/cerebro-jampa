@@ -16,6 +16,7 @@
 import type { Metadata } from "next";
 import { getPasseiosByCategoria } from "@/data/passeios";
 import { generateMetadata as generateSeoMetadata } from "@/lib/seo";
+import { isCampoIndisponivel } from "@/lib/consultar";
 
 interface CategoriaPageProps {
   params: {
@@ -87,8 +88,14 @@ export default function CategoriaPage({ params }: CategoriaPageProps) {
 
                   {/* Info */}
                   <div className="flex justify-between items-center">
-                    <span className="text-primary font-bold">{passeio.preco}</span>
-                    <span className="text-sm text-gray-500">{passeio.duracao}</span>
+                    {isCampoIndisponivel(passeio.preco) ? (
+                      <span className="text-sm text-gray-500 italic">Consultar valor</span>
+                    ) : (
+                      <span className="text-primary font-bold">{passeio.preco}</span>
+                    )}
+                    {!isCampoIndisponivel(passeio.duracao) && (
+                      <span className="text-sm text-gray-500">{passeio.duracao}</span>
+                    )}
                   </div>
                 </div>
               </a>

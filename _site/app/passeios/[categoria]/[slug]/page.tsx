@@ -22,6 +22,7 @@ import {
   generateTouristAttractionSchema,
   generateBreadcrumbSchema,
 } from "@/lib/seo";
+import { isCampoIndisponivel } from "@/lib/consultar";
 import { HeroBlock } from "@/components/HeroBlock";
 import { InfoCard } from "@/components/InfoCard";
 import { FAQAccordion } from "@/components/FAQAccordion";
@@ -63,9 +64,11 @@ export async function generateMetadata({
 
   const pageUrl = `${SITE_URL}/passeios/${params.categoria}/${params.slug}`;
   const title = `${passeio.nome} em João Pessoa | Vem Passear`;
+  const precoMeta = isCampoIndisponivel(passeio.preco) ? "valor sob consulta" : `${passeio.preco} por pessoa`;
+  const duracaoMeta = isCampoIndisponivel(passeio.duracao) ? "" : ` Duração: ${passeio.duracao}.`;
   const description =
     passeio.metaDescription ||
-    `Conheça ${passeio.nome} em João Pessoa. ${passeio.preco} por pessoa. Duração: ${passeio.duracao}. Cadastur ativo. Reserve pelo WhatsApp!`;
+    `Conheça ${passeio.nome} em João Pessoa. ${precoMeta}.${duracaoMeta} Cadastur ativo. Reserve pelo WhatsApp!`;
 
   return {
     title,
@@ -196,6 +199,7 @@ export default function PasseioPage({ params }: PasseioPageProps) {
           duracao={passeio.duracao}
           saida="Praia de Tambaú"
           observacao={passeio.observacoes}
+          whatsappUrl={whatsappUrl}
         />
       </section>
 

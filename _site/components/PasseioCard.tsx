@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Passeio } from "@/data/passeios";
+import { isCampoIndisponivel } from "@/lib/consultar";
 import { buildProximaSaidaCard, getStatusLabel } from "@/lib/tabua-mares";
 import { TABUA_MARES_2026 } from "@/data/tabua-mares";
 import type { PasseioMareSlug } from "@/types/tabua-mares";
@@ -81,7 +82,11 @@ export function PasseioCard({ passeio }: PasseioCardProps) {
         )}
 
         <div className="flex items-center justify-between">
-          <span className="text-primary font-bold text-base">{passeio.preco}</span>
+          {isCampoIndisponivel(passeio.preco) ? (
+            <span className="text-sm text-gray-500 italic">Consultar valor</span>
+          ) : (
+            <span className="text-primary font-bold text-base">{passeio.preco}</span>
+          )}
           <Link
             href={href}
             className="text-sm font-semibold text-secondary hover:text-primary transition-colors"
