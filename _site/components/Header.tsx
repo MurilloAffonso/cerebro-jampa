@@ -1,64 +1,203 @@
+"use client";
+
 /**
  * Header / Navigation
  *
- * Responsabilidades:
- * - Logo + Brand
- * - Menu navegação (Home, Passeios, Sobre, Blog quando existir)
- * - CTA WhatsApp (botão destaque em mobile)
- * - Mobile hamburger menu
- * - Sticky em scroll (para acesso rápido ao CTA)
+ * Menu aprovado (CONTEXT.md / ISSUE-06):
+ *   Desktop: Início | Passeios ▾ (6 categorias) | Serviços | [Reservar no WhatsApp]
+ *   Mobile:  hamburger → lista com sub-itens de categoria
  *
- * [PLACEHOLDER: Menu completo será implementado com dados de passeios]
+ * Regras:
+ *   - /sobre NÃO aparece no menu
+ *   - Blog NÃO aparece no menu (Fase 2)
+ *   - CTA WhatsApp sempre visível
+ *   - Dados de contato vindos exclusivamente de data/empresa.ts
  */
 
+import { useState } from "react";
 import Link from "next/link";
-import { paginasInfo } from "@/data/empresa";
+import { empresa } from "@/data/empresa";
+
+const WA_URL = `${empresa.contato.whatsappLink}?text=Oi%2C+quero+informações+sobre+os+passeios`;
+
+const CATEGORIAS = [
+  { nome: "Pacotes",          slug: "pacotes" },
+  { nome: "Litoral Sul",      slug: "litoral-sul" },
+  { nome: "Litoral Norte",    slug: "litoral-norte" },
+  { nome: "Piscinas Naturais", slug: "piscinas-naturais" },
+  { nome: "City Tour",        slug: "city-tour" },
+  { nome: "Interestaduais",   slug: "interestaduais" },
+] as const;
 
 export function Header() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const closeMobile = () => setMobileOpen(false);
+
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
-      <div className="container-safe py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-bold">
+      <div className="container-safe py-3">
+        <div className="flex items-center justify-between gap-4">
+
+          {/* ── Logo ── */}
+          <Link
+            href="/"
+            className="flex items-center gap-2 shrink-0"
+            onClick={closeMobile}
+          >
+            <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-bold text-sm select-none">
               VP
             </div>
-            <span className="font-bold text-dark hidden sm:inline">
-              Vem Passear
-            </span>
+            <span className="font-bold text-dark hidden sm:inline">Vem Passear</span>
           </Link>
 
-          {/* Navigation (desktop) */}
-          <nav className="hidden md:flex items-center gap-8">
-            <Link href="/" className="hover:text-primary transition">
-              Home
+          {/* ── Nav desktop ── */}
+          <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+            <Link href="/" className="text-dark hover:text-primary transition-colors">
+              Início
             </Link>
-            <Link href="/passeios" className="hover:text-primary transition">
-              Passeios
-            </Link>
-            <Link href="/sobre" className="hover:text-primary transition">
-              Sobre
+
+            {/* Passeios + dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setDropdownOpen(true)}
+              onMouseLeave={() => setDropdownOpen(false)}
+            >
+              <Link
+                href="/passeios"
+                className="flex items-center gap-1 text-dark hover:text-primary transition-colors py-2"
+              >
+                Passeios
+                <span className="text-[10px] leading-none" aria-hidden="true">▾</span>
+              </Link>
+
+              {dropdownOpen && (
+                <ul
+                  className="absolute top-full left-0 bg-white shadow-lg rounded-lg py-2 min-w-[190px] border border-gray-100"
+                  role="menu"
+                >
+                  {CATEGORIAS.map((cat) => (
+                    <li key={cat.slug} role="none">
+                      <Link
+                        href={`/passeios/${cat.slug}`}
+                        role="menuitem"
+                        className="block px-4 py-2.5 text-sm text-dark hover:bg-light hover:text-primary transition-colors"
+                        onClick={() => setDropdownOpen(false)}
+                      >
+                        {cat.nome}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+
+            <Link
+              href="/servicos/transfer-24h"
+              className="text-dark hover:text-primary transition-colors"
+            >
+              Serviços
             </Link>
           </nav>
 
-          {/* CTA WhatsApp */}
-          <a
-            href={paginasInfo.whatsappHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary text-sm md:text-base"
-            aria-label="Agendar no WhatsApp"
-          >
-            💬 WhatsApp
-          </a>
+          {/* ── CTA + hamburger ── */}
+          <div className="flex items-center gap-2 shrink-0">
+            <a
+              href={WA_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-primary hover:bg-accent text-white font-bold text-sm px-4 py-2 rounded-lg min-h-[40px] flex items-center gap-1.5 transition-colors whitespace-nowrap"
+              aria-label="Reservar no WhatsApp"
+            >
+              💬{" "}
+              <span className="hidden sm:inline">Reservar no WhatsApp</span>
+              <span className="sm:hidden">WhatsApp</span>
+            </a>
 
-          {/* Mobile Menu Button (placeholder) */}
-          <button className="md:hidden ml-4" aria-label="Menu">
-            ☰
-          </button>
+            {/* Hamburger button */}
+            <button
+              className="md:hidden flex flex-col justify-center items-center gap-1.5 w-10 h-10 rounded-lg hover:bg-light transition-colors"
+              aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
+              aria-expanded={mobileOpen}
+              onClick={() => setMobileOpen((v) => !v)}
+            >
+              <span
+                className={`block w-5 h-0.5 bg-dark transition-transform duration-200 ${
+                  mobileOpen ? "rotate-45 translate-y-2" : ""
+                }`}
+              />
+              <span
+                className={`block w-5 h-0.5 bg-dark transition-opacity duration-200 ${
+                  mobileOpen ? "opacity-0" : ""
+                }`}
+              />
+              <span
+                className={`block w-5 h-0.5 bg-dark transition-transform duration-200 ${
+                  mobileOpen ? "-rotate-45 -translate-y-2" : ""
+                }`}
+              />
+            </button>
+          </div>
         </div>
       </div>
+
+      {/* ── Mobile menu ── */}
+      {mobileOpen && (
+        <div className="md:hidden border-t border-gray-100 bg-white">
+          <nav className="container-safe py-4 flex flex-col gap-1" aria-label="Menu mobile">
+            <Link
+              href="/"
+              className="px-3 py-2.5 text-dark font-medium hover:bg-light hover:text-primary rounded-lg transition-colors"
+              onClick={closeMobile}
+            >
+              Início
+            </Link>
+
+            {/* Passeios (expandido no mobile) */}
+            <div>
+              <Link
+                href="/passeios"
+                className="px-3 py-2.5 text-dark font-medium hover:bg-light hover:text-primary rounded-lg transition-colors block"
+                onClick={closeMobile}
+              >
+                Passeios
+              </Link>
+              <div className="pl-5 mt-1 flex flex-col gap-0.5">
+                {CATEGORIAS.map((cat) => (
+                  <Link
+                    key={cat.slug}
+                    href={`/passeios/${cat.slug}`}
+                    className="px-3 py-2 text-sm text-gray-600 hover:bg-light hover:text-primary rounded-lg transition-colors"
+                    onClick={closeMobile}
+                  >
+                    {cat.nome}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <Link
+              href="/servicos/transfer-24h"
+              className="px-3 py-2.5 text-dark font-medium hover:bg-light hover:text-primary rounded-lg transition-colors"
+              onClick={closeMobile}
+            >
+              Serviços
+            </Link>
+
+            {/* CTA mobile */}
+            <a
+              href={WA_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 bg-primary hover:bg-accent text-white font-bold text-sm px-4 py-3 rounded-lg flex items-center justify-center gap-2 min-h-[48px] transition-colors"
+              onClick={closeMobile}
+            >
+              💬 Reservar no WhatsApp
+            </a>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
