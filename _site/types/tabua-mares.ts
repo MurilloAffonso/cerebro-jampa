@@ -4,7 +4,7 @@ export type StatusOperacional =
   | "consultar"   // 0.8m
   | "sem-passeio"; // 0.9m+
 
-export type PasseioMareSlug = "seixas" | "picaozinho" | "areia-vermelha";
+export type PasseioMareSlug = "seixas" | "picaozinho" | "areia-vermelha-catamara";
 
 export type FonteTipo =
   | "oficial-marinha"        // CHM — Porto de Cabedelo (confiança alta)

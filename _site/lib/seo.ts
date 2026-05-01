@@ -55,7 +55,7 @@ export function generateLocalBusinessSchema() {
       "@type": "AggregateRating",
       ratingValue: "4.9",
       bestRating: "5",
-      ratingCount: "150",
+      ratingCount: "61",
     },
   };
 }

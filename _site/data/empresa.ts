@@ -54,10 +54,10 @@ export const empresa = {
   diferencial:
     'Confiança + Atendimento rápido + Preço justo + Conhecimento local profundo',
 
-  // Avaliação (CONFIRMADO)
+  // Avaliação (CONFIRMADO — 2026-04-30)
   rating: {
     valor: 4.9,
-    totalAvaliacoes: 150,
+    totalAvaliacoes: 61,
     plataforma: 'Google',
   },
 

@@ -4,7 +4,7 @@
 
 import type { SaidaDia, PasseioMareSlug } from "@/types/tabua-mares";
 
-const PASSEIOS_MARE: PasseioMareSlug[] = ["seixas", "picaozinho", "areia-vermelha"];
+const PASSEIOS_MARE: PasseioMareSlug[] = ["seixas", "picaozinho", "areia-vermelha-catamara"];
 const FONTE = "surfguru.com.br — Porto de Cabedelo/PB — NÃO OFICIAL";
 const URL_FONTE_MAI = "https://surfguru.com.br/previsao/mare/30540/m?mes=5&ano=26";
 const IMPORTADO_EM = "2026-04-27T00:00:00-03:00";

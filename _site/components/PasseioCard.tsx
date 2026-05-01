@@ -11,7 +11,7 @@ interface PasseioCardProps {
 const MARE_SLUG_MAP: Record<string, PasseioMareSlug> = {
   seixas: "seixas",
   picaozinho: "picaozinho",
-  "areia-vermelha": "areia-vermelha",
+  "areia-vermelha-catamara": "areia-vermelha-catamara",
 };
 
 const STATUS_DOT: Record<string, string> = {

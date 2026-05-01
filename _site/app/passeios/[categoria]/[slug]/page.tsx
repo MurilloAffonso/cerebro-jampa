@@ -37,8 +37,8 @@ import { CTAFinal } from "@/components/CTAFinal";
 import { CTASticky } from "@/components/CTASticky";
 import { PasseioCard } from "@/components/PasseioCard";
 
-const SITE_URL = "https://vempassearjampa.com.br";
-const WA_BASE = "https://wa.me/558399087830";
+const SITE_URL = `https://${empresa.dominio}`;
+const WA_BASE = empresa.contato.whatsappLink;
 
 interface PasseioPageProps {
   params: {
@@ -58,7 +58,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: PasseioPageProps): Promise<Metadata> {
-  const passeio = getPasseioBySlug(params.slug);
+  const passeio = getPasseioBySlug(params.slug, params.categoria);
   if (!passeio) return {};
 
   const pageUrl = `${SITE_URL}/passeios/${params.categoria}/${params.slug}`;
@@ -97,14 +97,14 @@ export async function generateMetadata({
 }
 
 export default function PasseioPage({ params }: PasseioPageProps) {
-  const passeio = getPasseioBySlug(params.slug);
+  const passeio = getPasseioBySlug(params.slug, params.categoria);
   if (!passeio) notFound();
 
   const pageUrl = `${SITE_URL}/passeios/${params.categoria}/${params.slug}`;
   const whatsappUrl = `${WA_BASE}?text=Oi%2C+quero+saber+sobre+o+passeio+de+${encodeURIComponent(passeio.nome)}`;
 
   // Próxima saída (tábua de marés) — somente para passeios dependentes de maré
-  const MARE_SLUGS: PasseioMareSlug[] = ["seixas", "picaozinho", "areia-vermelha"];
+  const MARE_SLUGS: PasseioMareSlug[] = ["seixas", "picaozinho", "areia-vermelha-catamara"];
   const mareSlug = MARE_SLUGS.find((s) => s === passeio.slug) ?? null;
   const proximaSaidaCard =
     passeio.dependeDeMare && mareSlug
