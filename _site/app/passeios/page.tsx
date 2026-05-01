@@ -8,6 +8,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { passeios } from "@/data/passeios";
 import { empresa } from "@/data/empresa";
+import { isCampoIndisponivel } from "@/lib/consultar";
 
 export const metadata: Metadata = {
   title: "Passeios em João Pessoa — Vem Passear em Jampa",
@@ -100,11 +101,11 @@ export default function PasseiosPage() {
                       <div className="space-y-0.5">
                         <p className="text-gray-500">
                           <span className="font-medium text-gray-700">Duração:</span>{" "}
-                          {p.duracao || "[CONSULTAR]"}
+                          {isCampoIndisponivel(p.duracao) ? "Consultar" : p.duracao}
                         </p>
                         <p className="text-gray-500">
                           <span className="font-medium text-gray-700">A partir de:</span>{" "}
-                          {p.preco || "[CONSULTAR]"}
+                          {isCampoIndisponivel(p.preco) ? "Consultar" : p.preco}
                         </p>
                       </div>
                       <span className="text-primary font-semibold text-sm whitespace-nowrap ml-4">
