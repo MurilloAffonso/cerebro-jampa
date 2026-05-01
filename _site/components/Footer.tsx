@@ -1,13 +1,16 @@
 /**
  * Footer
  *
- * Inclui:
- * - NAP: Nome, Endereço, Telefone (consistente em todos os places)
- * - Links rápidos
- * - Redes sociais
- * - Copyright
+ * Estrutura aprovada (ISSUE-07 / CONTEXT.md):
+ *   Col 1 — Sobre a Vem Passear (bloco texto — sem página /sobre)
+ *   Col 2 — Navegação (Início, Passeios, FAQ, Transfer 24h)
+ *   Col 3 — Contato + redes sociais
+ *   Bottom — CNPJ · Cadastur · copyright
  *
- * Fonte: _memoria/decisoes-estrategicas.md (Regra 6: NAP Consistente)
+ * Regras:
+ *   - /sobre NÃO tem página própria — aparece como bloco de texto aqui
+ *   - Blog NÃO aparece
+ *   - Dados de confiança vindos exclusivamente de data/empresa.ts
  */
 
 import Link from "next/link";
@@ -16,91 +19,128 @@ import { empresa, paginasInfo } from "@/data/empresa";
 export function Footer() {
   return (
     <footer className="bg-dark text-white">
-      {/* Main Footer */}
       <div className="container-safe py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          {/* Brand */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-10">
+
+          {/* ── Col 1: Sobre ── */}
           <div>
-            <h3 className="font-bold text-lg mb-4">{empresa.nome}</h3>
-            <p className="text-gray-300 text-sm">
-              Agência de turismo receptivo em João Pessoa. Confiança, atendimento rápido e
-              orientação local.
+            <h3 className="font-bold text-base mb-3">{empresa.nome}</h3>
+            <p className="text-gray-300 text-sm leading-relaxed mb-5">
+              Agência de turismo receptivo em João Pessoa, Paraíba. Murillo atende direto
+              pelo WhatsApp — sem intermediários, com conhecimento local de quem vive aqui.
             </p>
+
+            {/* Dados de confiança */}
+            <ul className="space-y-1.5 text-sm text-gray-400">
+              <li>
+                ⭐{" "}
+                <span className="text-white font-semibold">
+                  {empresa.rating.valor}/5
+                </span>{" "}
+                no Google ({empresa.rating.totalAvaliacoes} avaliações)
+              </li>
+              <li>
+                Cadastur{" "}
+                <span className="text-white font-semibold">{empresa.cadastur}</span>
+                {" "}— ativo até {empresa.cadasturValido}
+              </li>
+            </ul>
           </div>
 
-          {/* Links */}
+          {/* ── Col 2: Navegação ── */}
           <div>
-            <h4 className="font-semibold mb-4">Navegação</h4>
-            <ul className="space-y-2 text-sm text-gray-300">
+            <h4 className="font-semibold text-sm uppercase tracking-wide text-gray-400 mb-4">
+              Navegação
+            </h4>
+            <ul className="space-y-2.5 text-sm">
               <li>
-                <Link href="/" className="hover:text-primary transition">
-                  Home
+                <Link href="/" className="text-gray-300 hover:text-primary transition-colors">
+                  Início
                 </Link>
               </li>
               <li>
-                <Link href="/passeios" className="hover:text-primary transition">
-                  Passeios
+                <Link href="/passeios" className="text-gray-300 hover:text-primary transition-colors">
+                  Passeios em João Pessoa
                 </Link>
               </li>
               <li>
-                <Link href="/sobre" className="hover:text-primary transition">
-                  Sobre Nós
+                <Link href="/faq" className="text-gray-300 hover:text-primary transition-colors">
+                  Perguntas Frequentes
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="hover:text-primary transition">
-                  Blog
+                <Link
+                  href="/servicos/transfer-24h"
+                  className="text-gray-300 hover:text-primary transition-colors"
+                >
+                  Transfer 24h
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* ── Col 3: Contato ── */}
           <div>
-            <h4 className="font-semibold mb-4">Contato</h4>
-            <p className="text-sm text-gray-300 mb-4">
-              <strong>Murillo</strong>
-              <br />
-              João Pessoa, Paraíba
-              <br />
-              <a
-                href={paginasInfo.whatsappHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-primary transition"
-              >
-                {paginasInfo.whatsappDisplay}
-              </a>
-            </p>
-            <div className="flex gap-4">
-              <a
-                href={paginasInfo.instagramUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="hover:text-primary transition"
-              >
-                Instagram
-              </a>
-              <a
-                href={paginasInfo.googleMapsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Google Maps"
-                className="hover:text-primary transition"
-              >
-                Localização
-              </a>
-            </div>
+            <h4 className="font-semibold text-sm uppercase tracking-wide text-gray-400 mb-4">
+              Contato
+            </h4>
+
+            {/* CTA WhatsApp */}
+            <a
+              href={`${empresa.contato.whatsappLink}?text=Oi%2C+quero+informações+sobre+os+passeios`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-primary hover:bg-accent text-white font-bold text-sm px-4 py-2.5 rounded-lg transition-colors mb-5"
+              aria-label="Falar no WhatsApp"
+            >
+              💬 {paginasInfo.whatsappDisplay}
+            </a>
+
+            {/* Redes sociais — somente as confirmadas em empresa.ts */}
+            <ul className="space-y-2.5 text-sm">
+              {empresa.rede.instagram.url && (
+                <li>
+                  <a
+                    href={empresa.rede.instagram.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-300 hover:text-primary transition-colors"
+                    aria-label="Instagram da Vem Passear"
+                  >
+                    Instagram{" "}
+                    <span className="text-gray-500">{empresa.rede.instagram.handle}</span>
+                  </a>
+                </li>
+              )}
+              {empresa.rede.googleMaps && (
+                <li>
+                  <a
+                    href={empresa.rede.googleMaps}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-300 hover:text-primary transition-colors"
+                    aria-label="Ver no Google Maps"
+                  >
+                    Google Maps
+                  </a>
+                </li>
+              )}
+            </ul>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+        {/* ── Bottom bar ── */}
+        <div className="border-t border-gray-700 pt-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-xs text-gray-500">
+          <p>© 2026 {empresa.nome}. CNPJ {empresa.cnpj}. Todos os direitos reservados.</p>
           <p>
-            © 2026 {empresa.nome}. CNPJ {empresa.cnpj}. Todos os direitos reservados.
+            <Link href="/faq" className="hover:text-gray-300 transition-colors">
+              FAQ
+            </Link>
+            {" · "}
+            <Link href="/servicos/transfer-24h" className="hover:text-gray-300 transition-colors">
+              Transfer 24h
+            </Link>
           </p>
-          <p>Cadastur {empresa.cadastur} — Válido até {empresa.cadasturValido}</p>
         </div>
       </div>
     </footer>
