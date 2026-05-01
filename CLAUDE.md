@@ -186,4 +186,28 @@ Atualizar `_memoria/decisoes-estrategicas.md` se uma decisão de conteúdo mudou
 
 ---
 
-*Versão: 2.1 | Atualizado: 2026-04-26 | Fase: 1 (Site e SEO Local)*
+## Protocolo Econômico de Execução
+
+- Não repetir contexto já documentado no projeto.
+- Antes de responder, consultar arquivos relevantes quando necessário.
+- Executar somente a issue ou tarefa solicitada.
+- Não abrir discussão longa se a decisão já estiver no vault, PRD, ADR ou CONTEXT.
+- Usar comandos compactos:
+  - `git status --short`
+  - `git diff --stat`
+  - `git diff --name-only`
+  - `git log -3 --oneline`
+  - `npm run type-check`
+  - `npm run build`
+- Não mostrar logs longos. Se comando passar, responder só "passou". Se falhar, mostrar apenas o erro relevante.
+- Não ler arquivo inteiro sem necessidade. Usar busca antes de leitura completa.
+- Entregar respostas finais curtas, com: (1) o que foi feito; (2) arquivos alterados; (3) validações; (4) riscos; (5) próxima ação.
+- Sugerir commit, mas não executar commit/push sem pedido explícito.
+- Nunca fazer `git push` automaticamente.
+- Nunca instalar dependências sem autorização.
+- Nunca alterar `.env`.
+- Parar e perguntar se precisar sair do escopo.
+
+---
+
+*Versão: 2.2 | Atualizado: 2026-05-01 | Fase: 1 (Site e SEO Local)*
