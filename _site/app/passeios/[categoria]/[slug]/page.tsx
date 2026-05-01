@@ -197,7 +197,7 @@ export default function PasseioPage({ params }: PasseioPageProps) {
         <InfoCard
           preco={passeio.preco}
           duracao={passeio.duracao}
-          saida="Praia de Tambaú"
+          saida={passeio.saida}
           observacao={passeio.observacoes}
           whatsappUrl={whatsappUrl}
         />
