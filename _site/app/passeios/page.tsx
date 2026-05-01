@@ -1,126 +1,140 @@
 /**
- * Página: Todos os Passeios
- *
- * Rota: /passeios
- * Objetivo: Listar todas as categorias e permitir navegação por tipo de passeio
- *
- * Estrutura:
- * 1. Hero: "Escolha o tipo de passeio"
- * 2. Grid de categorias com quantidade de passeios
- * 3. CTA para cada categoria
+ * Hub de Passeios — /passeios/
+ * Lista os 22 passeios agrupados pelas 6 categorias, cada card linkando para /passeios/[categoria]/[slug].
+ * ISSUE-09
  */
 
 import type { Metadata } from "next";
 import Link from "next/link";
 import { passeios } from "@/data/passeios";
+import { empresa } from "@/data/empresa";
 
 export const metadata: Metadata = {
-  title: "Todos os Passeios em João Pessoa | Vem Passear em Jampa",
+  title: "Passeios em João Pessoa — Vem Passear em Jampa",
   description:
-    "Navegue por todas as categorias de passeios em João Pessoa: piscinas naturais, litoral, city tour e muito mais.",
+    "Explore os 22 passeios em João Pessoa: piscinas naturais, litoral sul e norte, city tour, pacotes e interestaduais. Agende pelo WhatsApp.",
 };
 
-export default function PasseiosPage() {
-  // Agrupar passeios por categoria
-  const categorias = Array.from(new Set(passeios.map((p) => p.categoria)));
+const CATEGORIAS: { slug: string; nome: string; emoji: string }[] = [
+  { slug: "pacotes",           nome: "Pacotes",            emoji: "🎒" },
+  { slug: "litoral-sul",       nome: "Litoral Sul",        emoji: "🏖️" },
+  { slug: "litoral-norte",     nome: "Litoral Norte",      emoji: "⛵" },
+  { slug: "piscinas-naturais", nome: "Piscinas Naturais",  emoji: "🐠" },
+  { slug: "city-tour",         nome: "City Tour",          emoji: "🏙️" },
+  { slug: "interestaduais",    nome: "Interestaduais",     emoji: "🗺️" },
+];
 
-  const categoriasComPasseios = categorias.map((cat) => ({
-    slug: cat,
-    nome: cat
-      .split("-")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" "),
-    passeios: passeios.filter((p) => p.categoria === cat),
+export default function PasseiosPage() {
+  const categorias = CATEGORIAS.map((cat) => ({
+    ...cat,
+    itens: passeios.filter((p) => p.categoria === cat.slug),
   }));
 
-  const emojiPorCategoria: { [key: string]: string } = {
-    "piscinas-naturais": "🐠",
-    "litoral-sul": "🏖️",
-    "litoral-norte": "⛵",
-    "city-tour": "🏙️",
-    urbano: "🏙️",
-  };
+  const total = passeios.length;
 
   return (
     <div>
       {/* Breadcrumb */}
-      <nav className="container-safe py-4 text-sm">
-        <Link href="/" className="hover:text-primary">
-          Home
-        </Link>
+      <nav className="container-safe py-4 text-sm text-gray-500">
+        <Link href="/" className="hover:text-primary">Home</Link>
         {" / "}
-        <span className="text-gray-600">Passeios</span>
+        <span className="text-gray-700 font-medium">Passeios</span>
       </nav>
 
       {/* Hero */}
-      <section className="hero-section bg-gradient-to-b from-blue-50 to-white">
+      <section className="bg-gradient-to-b from-blue-50 to-white py-12">
         <div className="container-safe text-center">
-          <h1>Todos os Passeios</h1>
-          <p className="text-lg text-gray-600 mt-4">
-            Escolha o tipo de passeio e descubra as melhores opções para sua viagem.
+          <h1 className="text-3xl md:text-4xl font-bold text-secondary mb-4">
+            Todos os Passeios em João Pessoa
+          </h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            {total} passeios divididos em {categorias.length} categorias. Escolha o seu e agende pelo WhatsApp.
           </p>
-        </div>
-      </section>
 
-      {/* Grid de Categorias */}
-      <section className="section-padding">
-        <div className="container-safe">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {categoriasComPasseios.map((cat) => (
-              <Link
+          {/* Âncoras de categoria */}
+          <div className="flex flex-wrap justify-center gap-2 mt-8">
+            {categorias.map((cat) => (
+              <a
                 key={cat.slug}
-                href={`/passeios/${cat.slug}`}
-                className="group block bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow"
+                href={`#${cat.slug}`}
+                className="inline-block bg-white border border-gray-200 rounded-full px-4 py-1.5 text-sm font-medium hover:border-primary hover:text-primary transition"
               >
-                <div className="text-4xl mb-4">
-                  {emojiPorCategoria[cat.slug] || "🎯"}
-                </div>
-                <h2 className="text-xl font-bold mb-2 group-hover:text-primary transition">
-                  {cat.nome}
-                </h2>
-                <p className="text-sm text-gray-600 mb-4">
-                  {cat.passeios.length} {cat.passeios.length === 1 ? "passeio" : "passeios"}
-                </p>
-
-                {/* Preview dos passeios */}
-                <ul className="text-sm text-gray-700 space-y-1">
-                  {cat.passeios.slice(0, 3).map((p) => (
-                    <li key={p.id} className="flex items-start">
-                      <span className="mr-2">•</span>
-                      <span>{p.nome}</span>
-                    </li>
-                  ))}
-                  {cat.passeios.length > 3 && (
-                    <li className="text-primary font-semibold">
-                      + {cat.passeios.length - 3} mais
-                    </li>
-                  )}
-                </ul>
-
-                {/* CTA */}
-                <div className="mt-6 pt-4 border-t border-gray-200">
-                  <span className="inline-block text-primary font-semibold text-sm">
-                    Ver todos →
-                  </span>
-                </div>
-              </Link>
+                {cat.emoji} {cat.nome}
+              </a>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Final */}
+      {/* Listagem por categoria */}
+      <section className="section-padding">
+        <div className="container-safe space-y-16">
+          {categorias.map((cat) => (
+            <div key={cat.slug} id={cat.slug}>
+              {/* Cabeçalho da categoria */}
+              <div className="flex items-center gap-3 mb-6 pb-3 border-b border-gray-200">
+                <span className="text-3xl">{cat.emoji}</span>
+                <div>
+                  <h2 className="text-2xl font-bold text-secondary">{cat.nome}</h2>
+                  <p className="text-sm text-gray-500">
+                    {cat.itens.length} {cat.itens.length === 1 ? "passeio" : "passeios"}
+                  </p>
+                </div>
+              </div>
+
+              {/* Grid de passeios */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                {cat.itens.map((p) => (
+                  <Link
+                    key={p.id}
+                    href={`/passeios/${p.categoria}/${p.slug}`}
+                    className="group flex flex-col bg-white border border-gray-200 rounded-lg p-5 hover:shadow-md hover:border-primary transition"
+                  >
+                    <h3 className="font-bold text-lg text-gray-900 group-hover:text-primary transition mb-2">
+                      {p.nome}
+                    </h3>
+                    <p className="text-sm text-gray-600 flex-1 mb-4 leading-relaxed">
+                      {p.descricao}
+                    </p>
+                    <div className="flex items-center justify-between text-sm border-t border-gray-100 pt-3">
+                      <div className="space-y-0.5">
+                        <p className="text-gray-500">
+                          <span className="font-medium text-gray-700">Duração:</span>{" "}
+                          {p.duracao || "[CONSULTAR]"}
+                        </p>
+                        <p className="text-gray-500">
+                          <span className="font-medium text-gray-700">A partir de:</span>{" "}
+                          {p.preco || "[CONSULTAR]"}
+                        </p>
+                      </div>
+                      <span className="text-primary font-semibold text-sm whitespace-nowrap ml-4">
+                        Ver detalhes →
+                      </span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* CTA WhatsApp */}
       <section className="section-padding bg-primary text-white">
         <div className="container-safe text-center">
-          <h2>Não encontrou o que procura?</h2>
-          <p className="text-lg mt-4 mb-8">
-            Mande uma mensagem para Murillo e vamos criar um roteiro personalizado.
+          <h2 className="text-2xl md:text-3xl font-bold mb-4">
+            Ficou com dúvida sobre qual passeio escolher?
+          </h2>
+          <p className="text-lg mb-8 opacity-90">
+            Mande uma mensagem para Murillo — ele indica o roteiro certo para o seu tempo e orçamento.
           </p>
           <a
-            href="https://wa.me/5583988888888"
+            href={empresa.contato.whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-block bg-white text-primary px-8 py-4 rounded-md font-semibold text-lg hover:bg-gray-100 transition-colors"
           >
-            💬 Chamar Murillo
+            💬 Falar com Murillo pelo WhatsApp
           </a>
         </div>
       </section>
