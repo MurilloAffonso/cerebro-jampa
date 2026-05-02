@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Passeio } from "@/data/passeios";
 import { isCampoIndisponivel } from "@/lib/consultar";
-import { buildProximaSaidaCard, getStatusLabel } from "@/lib/tabua-mares";
+import { buildProximaSaidaCard } from "@/lib/tabua-mares";
 import { TABUA_MARES_2026 } from "@/data/tabua-mares";
 import type { PasseioMareSlug } from "@/types/tabua-mares";
 
@@ -15,11 +15,22 @@ const MARE_SLUG_MAP: Record<string, PasseioMareSlug> = {
   "areia-vermelha-catamara": "areia-vermelha-catamara",
 };
 
-const STATUS_DOT: Record<string, string> = {
-  excelente: "bg-green-500",
-  boa: "bg-emerald-500",
-  consultar: "bg-amber-400",
-  "sem-passeio": "bg-red-400",
+const CATEGORIA_BG: Record<string, string> = {
+  "pacotes":           "linear-gradient(160deg, #003d6b, #004E89)",
+  "litoral-sul":       "linear-gradient(160deg, #0d4d2e, #1A6B52)",
+  "litoral-norte":     "linear-gradient(160deg, #4a2c0a, #7B4F12)",
+  "piscinas-naturais": "linear-gradient(160deg, #073d5c, #0E5E8A)",
+  "city-tour":         "linear-gradient(160deg, #2a1e55, #4A3580)",
+  "interestaduais":    "linear-gradient(160deg, #550f23, #8B1A3A)",
+};
+
+const CATEGORIA_NOME: Record<string, string> = {
+  "pacotes": "Pacotes",
+  "litoral-sul": "Litoral Sul",
+  "litoral-norte": "Litoral Norte",
+  "piscinas-naturais": "Piscinas Naturais",
+  "city-tour": "City Tour",
+  "interestaduais": "Interestaduais",
 };
 
 export function PasseioCard({ passeio }: PasseioCardProps) {
@@ -30,72 +41,68 @@ export function PasseioCard({ passeio }: PasseioCardProps) {
       ? buildProximaSaidaCard(MARE_SLUG_MAP[passeio.slug], TABUA_MARES_2026)
       : null;
 
+  const bg = CATEGORIA_BG[passeio.categoria] ?? "linear-gradient(160deg, #1A1A2E, #2d3748)";
+  const categoriaNome = CATEGORIA_NOME[passeio.categoria] ?? passeio.categoria;
+
   return (
-    <article className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
-      <div className="relative bg-light" style={{ aspectRatio: "2/1" }}>
+    <Link
+      href={href}
+      className="group block relative rounded-[20px] overflow-hidden transition-all duration-300 hover:-translate-y-[5px] hover:shadow-2xl"
+      style={{ aspectRatio: "3/4" }}
+      aria-label={`Ver passeio ${passeio.nome}`}
+    >
+      {/* Background */}
+      <div className="absolute inset-0" style={{ background: bg }}>
         {passeio.coverImage && (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={passeio.coverImage}
             alt={passeio.imagemAlt || passeio.nome}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-80"
             loading="lazy"
           />
         )}
       </div>
 
-      <div className="p-4">
-        <h3 className="font-bold text-dark text-base leading-snug mb-1">
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+
+      {/* Mare badge — top left */}
+      {passeio.dependeDeMare && mareCard && (
+        <div className="absolute top-3 left-3 bg-emerald-500/90 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
+          {mareCard.horarioSaida}
+        </div>
+      )}
+
+      {/* Content — anchored to bottom */}
+      <div className="absolute inset-0 flex flex-col justify-end p-5">
+        {/* Category badge */}
+        <span className="text-[10px] font-bold uppercase tracking-widest text-white/60 mb-1.5">
+          {categoriaNome}
+        </span>
+
+        {/* Title */}
+        <h3 className="font-serif font-bold text-lg text-white leading-snug mb-2">
           {passeio.nome}
         </h3>
-        <p className="text-gray-500 text-sm mb-3 line-clamp-2 leading-relaxed">
-          {passeio.descricao}
-        </p>
 
-        {passeio.dependeDeMare && (
-          <div className="mb-3 text-xs text-gray-600 flex items-center gap-1.5">
-            {mareCard ? (
-              <>
-                <span
-                  className={`w-2 h-2 rounded-full flex-shrink-0 ${STATUS_DOT[mareCard.statusOperacional] ?? "bg-gray-300"}`}
-                  aria-hidden="true"
-                />
-                <span>
-                  Próxima saída:{" "}
-                  <span className="font-semibold text-dark">
-                    {mareCard.diaSemana.slice(0, 3)}, {mareCard.dataFormatada} —{" "}
-                    {mareCard.horarioSaida}
-                  </span>
-                  {" · "}
-                  <span className="text-gray-500">
-                    {getStatusLabel(mareCard.statusOperacional)}
-                  </span>
-                </span>
-              </>
-            ) : (
-              <>
-                <span className="w-2 h-2 rounded-full flex-shrink-0 bg-blue-300" aria-hidden="true" />
-                <span>Consulte próximas saídas disponíveis</span>
-              </>
-            )}
-          </div>
-        )}
+        {/* Description — hover reveal */}
+        <div className="overflow-hidden max-h-0 group-hover:max-h-20 transition-all duration-300">
+          <p className="text-white/0 group-hover:text-white/80 text-sm leading-relaxed mb-3 transition-colors duration-300">
+            {passeio.descricao}
+          </p>
+        </div>
 
-        <div className="flex items-center justify-between">
-          {isCampoIndisponivel(passeio.preco) ? (
-            <span className="text-sm text-gray-500 italic">Consultar valor</span>
-          ) : (
-            <span className="text-primary font-bold text-base">{passeio.preco}</span>
-          )}
-          <Link
-            href={href}
-            className="text-sm font-semibold text-secondary hover:text-primary transition-colors"
-            aria-label={`Ver passeio ${passeio.nome}`}
-          >
+        {/* Price + CTA row */}
+        <div className="flex items-center justify-between gap-3">
+          <span className="text-primary font-bold text-sm">
+            {isCampoIndisponivel(passeio.preco) ? "Consultar" : passeio.preco}
+          </span>
+          <span className="bg-primary hover:bg-accent text-white text-xs font-bold px-3 py-1.5 rounded-full transition-colors whitespace-nowrap">
             Ver passeio →
-          </Link>
+          </span>
         </div>
       </div>
-    </article>
+    </Link>
   );
 }

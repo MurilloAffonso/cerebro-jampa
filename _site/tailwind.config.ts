@@ -15,8 +15,8 @@ const config: Config = {
         dark: '#1A1A1A',         // Preto
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        serif: ['Lora', 'Georgia', 'serif'],
+        sans: ['var(--font-dm-sans)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-lora)', 'Georgia', 'serif'],
       },
       spacing: {
         safe: 'max(1rem, env(safe-area-inset-bottom))',

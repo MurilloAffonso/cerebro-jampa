@@ -36,7 +36,7 @@ export function Header() {
   const closeMobile = () => setMobileOpen(false);
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
+    <header className="sticky top-0 z-50 backdrop-blur-md bg-[#FAFAF8]/95 border-b border-black/[0.07]">
       <div className="container-safe py-3">
         <div className="flex items-center justify-between gap-4">
 
@@ -46,10 +46,13 @@ export function Header() {
             className="flex items-center gap-2 shrink-0"
             onClick={closeMobile}
           >
-            <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-bold text-sm select-none">
+            <div className="w-9 h-9 bg-primary rounded-lg flex items-center justify-center text-white font-serif font-bold text-sm select-none">
               VP
             </div>
-            <span className="font-bold text-dark hidden sm:inline">Vem Passear</span>
+            <div className="hidden sm:block leading-tight">
+              <span className="font-bold text-dark text-sm block">Vem Passear</span>
+              <span className="text-gray-500 text-[11px]">em Jampa</span>
+            </div>
           </Link>
 
           {/* ── Nav desktop ── */}
@@ -107,7 +110,7 @@ export function Header() {
               href={WA_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-primary hover:bg-accent text-white font-bold text-sm px-4 py-2 rounded-lg min-h-[44px] flex items-center gap-1.5 transition-colors whitespace-nowrap"
+              className="bg-[#25D366] hover:bg-[#1ea355] text-white font-bold text-sm px-4 py-2.5 rounded-full min-h-[44px] flex items-center gap-1.5 transition-colors whitespace-nowrap shadow-[0_2px_12px_rgba(37,211,102,0.3)]"
               aria-label="Reservar no WhatsApp"
             >
               💬{" "}
@@ -190,7 +193,7 @@ export function Header() {
               href={WA_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-3 bg-primary hover:bg-accent text-white font-bold text-sm px-4 py-3 rounded-lg flex items-center justify-center gap-2 min-h-[48px] transition-colors"
+              className="mt-3 bg-[#25D366] hover:bg-[#1ea355] text-white font-bold text-sm px-4 py-3 rounded-full flex items-center justify-center gap-2 min-h-[48px] transition-colors"
               onClick={closeMobile}
             >
               💬 Reservar no WhatsApp

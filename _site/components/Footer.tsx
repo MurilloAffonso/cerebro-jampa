@@ -18,13 +18,16 @@ import { empresa, paginasInfo } from "@/data/empresa";
 
 export function Footer() {
   return (
-    <footer className="bg-dark text-white">
+    <footer className="text-white" style={{ background: "#1A1A2E" }}>
       <div className="container-safe py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-14 mb-10">
 
           {/* ── Col 1: Sobre ── */}
           <div>
-            <h3 className="font-bold text-base mb-3">{empresa.nome}</h3>
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-serif font-bold text-xs select-none shrink-0">VP</div>
+              <span className="font-bold text-white text-sm">{empresa.nome}</span>
+            </div>
             <p className="text-gray-300 text-sm leading-relaxed mb-5">
               Agência de turismo receptivo em João Pessoa, Paraíba. Murillo atende direto
               pelo WhatsApp — sem intermediários, com conhecimento local de quem vive aqui.
@@ -130,7 +133,7 @@ export function Footer() {
         </div>
 
         {/* ── Bottom bar ── */}
-        <div className="border-t border-gray-700 pt-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-xs text-gray-500">
+        <div className="border-t border-white/[0.08] pt-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-xs text-gray-500">
           <p>© 2026 {empresa.nome}. CNPJ {empresa.cnpj}. Todos os direitos reservados.</p>
           <p>
             <Link href="/faq" className="hover:text-gray-300 transition-colors">

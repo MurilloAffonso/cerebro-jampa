@@ -1,11 +1,19 @@
 import type { Metadata } from "next";
-import { Inter, Lora } from "next/font/google";
+import { DM_Sans, Lora } from "next/font/google";
 import "@/styles/globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
-const lora = Lora({ subsets: ["latin"] });
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-dm-sans",
+  weight: ["400", "500", "600", "700", "800"],
+});
+const lora = Lora({
+  subsets: ["latin"],
+  variable: "--font-lora",
+  weight: ["400", "700"],
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://vempassearjampa.com.br"),
@@ -47,7 +55,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body className={`${inter.className} flex flex-col min-h-screen overflow-x-hidden`}>
+      <body className={`${dmSans.variable} ${lora.variable} font-sans flex flex-col min-h-screen overflow-x-hidden antialiased`}>
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
