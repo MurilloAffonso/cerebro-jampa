@@ -1,8 +1,9 @@
 # Plano de Assets — Fotos do Site
 
-**Status:** estrutura pronta, fotos pendentes  
-**Data:** 2026-05-02  
+**Status:** estrutura pronta, fotos pendentes
+**Data:** 2026-05-02
 **Contexto:** O site funciona inteiramente com placeholders bem acabados. Esta etapa é separada da estrutura.
+**Fonte estratégica de prioridade:** `_site/docs/dossie-externo-seo-concorrencia-conversao.md` §7 — "Plano de fotos para conversão" lista 19 fotos com objetivo, enquadramento, alt e prioridade. Esta seção do dossiê tem prioridade sobre a ordem genérica abaixo.
 
 ---
 

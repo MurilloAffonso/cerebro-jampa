@@ -1,25 +1,33 @@
 /**
  * Sitemap — /sitemap.xml
- * ISSUE-15: 32 URLs da Fase 1
- * Fonte: CONTEXT.md + data/passeios.ts + data/servicos.ts
  *
- * URLs excluídas: /sobre, /blog, /passeios/piscinas-naturais/calendario
+ * Inclui:
+ *   - Páginas comerciais estáticas
+ *   - 6 categorias + 22 passeios
+ *   - Hub /blog/ (mesmo sem posts publicados — endpoint válido)
+ *   - Posts de blog com status === "published"
+ *
+ * Exclui:
+ *   - /sobre (notFound)
+ *   - /passeios/piscinas-naturais/calendario (página interna não SEO)
+ *   - Posts com status === "draft"
  */
 
 import type { MetadataRoute } from "next";
 import { passeios } from "@/data/passeios";
-import { servicos } from "@/data/servicos";
 import { empresa } from "@/data/empresa";
+import { getPublishedPosts } from "@/lib/blog";
 
 const BASE = `https://${empresa.dominio}`;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
-  // Páginas estáticas (4)
+  // Páginas estáticas
   const estaticas: MetadataRoute.Sitemap = [
     { url: `${BASE}/`,                      lastModified: now, changeFrequency: "weekly",  priority: 1.0 },
     { url: `${BASE}/passeios/`,             lastModified: now, changeFrequency: "weekly",  priority: 0.9 },
+    { url: `${BASE}/blog/`,                 lastModified: now, changeFrequency: "weekly",  priority: 0.7 },
     { url: `${BASE}/faq/`,                  lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/servicos/transfer-24h/`,lastModified: now, changeFrequency: "monthly", priority: 0.6 },
   ];
@@ -41,5 +49,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: p.prioritario ? 0.9 : 0.7,
   }));
 
-  return [...estaticas, ...paginasCategorias, ...paginasPasseios];
+  // Posts de blog publicados (drafts ficam fora)
+  const postsBlog: MetadataRoute.Sitemap = getPublishedPosts().map((post) => ({
+    url: `${BASE}/blog/${post.slug}/`,
+    lastModified: new Date(post.updatedAt),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
+  return [...estaticas, ...paginasCategorias, ...paginasPasseios, ...postsBlog];
 }
