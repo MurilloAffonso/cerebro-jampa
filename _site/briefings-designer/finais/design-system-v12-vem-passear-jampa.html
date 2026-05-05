@@ -1,0 +1,1681 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Design System Final — Vem Passear em Jampa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Mono&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --primary: #FF6B35;
+  --secondary: #004E89;
+  --dark: #1A1A2E;
+  --whatsapp: #25D366;
+  --bg-soft: #FAFAF8;
+  --surface: #FFFFFF;
+  --text: #1F2937;
+  --muted: #6B7280;
+  --accent: #F77F00;
+  --border: rgba(31,41,55,0.07);
+  --cat-pacotes: #004E89;
+  --cat-litoral-sul: #1A6B52;
+  --cat-litoral-norte: #7B4F12;
+  --cat-piscinas: #0E5E8A;
+  --cat-city: #4A3580;
+  --cat-inter: #8B1A3A;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body { font-family: 'DM Sans', system-ui, sans-serif; color: var(--text); background: var(--bg-soft); -webkit-font-smoothing: antialiased; line-height: 1.65; }
+
+/* ── NAV LATERAL ── */
+.nav { position: fixed; top: 0; left: 0; width: 252px; height: 100vh; background: var(--dark); overflow-y: auto; z-index: 200; padding: 0 0 24px; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.1) transparent; }
+.nav::-webkit-scrollbar { width: 3px; }
+.nav::-webkit-scrollbar-thumb { background: rgba(255,255,255,.12); border-radius: 2px; }
+.nav-logo { padding: 20px 20px 18px; border-bottom: 1px solid rgba(255,255,255,.07); margin-bottom: 10px; display: flex; align-items: center; gap: 9px; }
+.nav-logo .vp { width: 30px; height: 30px; border-radius: 7px; background: var(--primary); display: flex; align-items: center; justify-content: center; font-family: 'Lora', serif; font-weight: 700; font-size: 13px; color: white; flex-shrink: 0; }
+.nav-logo-text { font-family: 'Lora', serif; font-weight: 700; font-size: 12.5px; color: white; line-height: 1.2; }
+.nav-logo-sub { font-family: 'DM Sans', sans-serif; font-size: 9px; font-weight: 500; color: rgba(255,255,255,.35); letter-spacing: .6px; text-transform: uppercase; }
+
+.nav-section { padding: 8px 20px 4px; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,.25); margin-top: 6px; }
+.nav a { display: flex; align-items: center; gap: 7px; padding: 6px 20px; font-size: 12px; font-weight: 500; color: rgba(255,255,255,.5); text-decoration: none; transition: color .15s, background .15s; line-height: 1.3; }
+.nav a:hover, .nav a.active { color: white; background: rgba(255,255,255,.05); }
+.nav a .n { font-size: 9px; font-weight: 700; color: var(--primary); opacity: .7; min-width: 16px; }
+
+/* ── MAIN ── */
+.main { margin-left: 252px; }
+
+/* ── STATUS BAR ── */
+.status-bar { background: white; border-bottom: 1px solid var(--border); padding: 10px 40px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; }
+.status-pill { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 100px; }
+.status-ok { background: rgba(26,107,82,.1); color: #1A6B52; }
+.status-partial { background: rgba(255,107,53,.1); color: #c25520; }
+.status-new { background: rgba(0,78,137,.1); color: #004E89; }
+.status-dep { background: rgba(107,114,128,.1); color: #374151; }
+
+/* ── CHAPTER ── */
+.ch { max-width: 900px; margin: 0 auto; padding: 72px 40px 64px; border-bottom: 1px solid var(--border); }
+.ch:last-child { border-bottom: none; }
+.ch-num { font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--primary); margin-bottom: 8px; }
+.ch-title { font-family: 'Lora', serif; font-size: clamp(26px, 3.5vw, 40px); font-weight: 700; color: var(--dark); letter-spacing: -1px; line-height: 1.12; margin-bottom: 28px; }
+.ch-sub { font-family: 'Lora', serif; font-size: 19px; font-weight: 700; color: var(--dark); letter-spacing: -.3px; margin: 40px 0 14px; line-height: 1.25; }
+.ch-lead { font-size: 16px; line-height: 1.72; color: var(--text); max-width: 680px; margin-bottom: 24px; text-wrap: pretty; }
+.ch-lead strong { font-weight: 700; color: var(--dark); }
+
+/* ── AUDIT CARDS ── */
+.audit-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; margin: 20px 0 32px; }
+.audit-card { padding: 16px 18px; border-radius: 12px; border: 1px solid var(--border); background: white; }
+.audit-card .label { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px; }
+.audit-card .name { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+.audit-card .desc { font-size: 12.5px; color: var(--muted); line-height: 1.5; }
+
+/* ── TABLES ── */
+.tb { width: 100%; border-collapse: collapse; margin: 20px 0 28px; font-size: 13px; }
+.tb th { text-align: left; font-weight: 700; font-size: 10.5px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); padding: 9px 13px; border-bottom: 2px solid var(--border); background: rgba(0,0,0,.015); }
+.tb td { padding: 9px 13px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.55; }
+.tb tr:last-child td { border-bottom: none; }
+.tb tr:hover td { background: rgba(255,107,53,.025); }
+.tb code { font-family: 'DM Mono', monospace; font-size: 11.5px; background: rgba(0,0,0,.04); padding: 1px 5px; border-radius: 4px; }
+
+/* ── SWATCHES ── */
+.swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin: 20px 0 28px; }
+.swatch { border-radius: 10px; overflow: hidden; border: 1px solid var(--border); background: white; cursor: pointer; transition: transform .15s, box-shadow .15s; }
+.swatch:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.1); }
+.swatch-color { height: 64px; display: flex; align-items: flex-end; padding: 7px 10px; }
+.swatch-color span { font-family: 'DM Mono', monospace; font-size: 9.5px; padding: 2px 5px; border-radius: 3px; background: rgba(0,0,0,.3); color: white; }
+.swatch-info { padding: 9px 10px; }
+.swatch-info .name { font-weight: 700; font-size: 12.5px; color: var(--dark); margin-bottom: 2px; }
+.swatch-info .desc { font-size: 11px; color: var(--muted); line-height: 1.4; }
+
+/* ── SPECIMENS ── */
+.specimen { padding: 20px 24px; border: 1px solid var(--border); border-radius: 12px; margin: 10px 0; background: white; }
+.specimen-label { font-size: 9.5px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+
+/* ── PRINCIPLE CARDS ── */
+.principle { display: flex; gap: 14px; padding: 16px 18px; border-radius: 12px; background: white; border: 1px solid var(--border); margin-bottom: 10px; }
+.principle-num { flex-shrink: 0; width: 28px; height: 28px; border-radius: 7px; background: rgba(255,107,53,.1); display: flex; align-items: center; justify-content: center; font-family: 'Lora', serif; font-weight: 700; font-size: 13px; color: var(--primary); }
+.principle-title { font-weight: 700; font-size: 14px; color: var(--dark); margin-bottom: 3px; }
+.principle-desc { font-size: 13px; color: var(--muted); line-height: 1.55; }
+
+/* ── MOCKUP FRAMES ── */
+.mockup { border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin: 20px 0; background: white; }
+.mockup-label { font-size: 9.5px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); padding: 10px 14px; background: rgba(0,0,0,.02); border-bottom: 1px solid var(--border); }
+
+/* ── COMPONENT CARDS ── */
+.comp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; margin: 16px 0 28px; }
+.comp-card { padding: 14px 16px; border-radius: 10px; background: white; border: 1px solid var(--border); }
+.comp-card .comp-name { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 700; color: var(--dark); margin-bottom: 5px; }
+.comp-card .comp-status { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 100px; margin-bottom: 6px; }
+.comp-card .comp-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+.comp-redesign { background: rgba(255,107,53,.1); color: #c25520; }
+.comp-new { background: rgba(0,78,137,.1); color: #004E89; }
+.comp-partial { background: rgba(107,114,128,.1); color: #374151; }
+.comp-locked { background: rgba(26,107,82,.1); color: #1A6B52; }
+
+/* ── JSON BLOCK ── */
+.json-block { position: relative; background: var(--dark); color: rgba(255,255,255,.85); padding: 22px 24px; border-radius: 12px; font-family: 'DM Mono', monospace; font-size: 12px; line-height: 1.65; overflow-x: auto; margin: 16px 0; white-space: pre; }
+.json-block .k { color: #FF6B35; }
+.json-block .s { color: #7dd3fc; }
+.json-block .n { color: #a5f3fc; }
+.json-copy { position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,.1); color: rgba(255,255,255,.7); border: none; border-radius: 5px; padding: 4px 10px; font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 600; cursor: pointer; transition: background .15s; }
+.json-copy:hover { background: rgba(255,255,255,.18); color: white; }
+
+/* ── CHECKLIST ── */
+.cl-item { display: flex; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; align-items: flex-start; }
+.cl-item:last-child { border-bottom: none; }
+.cl-box { flex-shrink: 0; width: 16px; height: 16px; border: 1.5px solid rgba(0,0,0,.15); border-radius: 4px; margin-top: 2px; }
+.cl-done .cl-box { background: #1A6B52; border-color: #1A6B52; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 12 12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 6l3 3 5-5' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: center; }
+.cl-done .cl-text { color: var(--muted); }
+.cl-text { flex: 1; line-height: 1.5; }
+
+/* ── CONTRAST ── */
+.cr-row { display: flex; align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--border); }
+.cr-swatch { width: 52px; height: 28px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; flex-shrink: 0; }
+.cr-info { flex: 1; font-size: 12.5px; }
+.cr-ratio { font-family: 'DM Mono', monospace; font-size: 11.5px; font-weight: 700; flex-shrink: 0; width: 44px; text-align: right; }
+.cr-badge { font-size: 9.5px; font-weight: 700; padding: 2px 6px; border-radius: 4px; flex-shrink: 0; }
+.b-aaa { background: rgba(26,107,82,.12); color: #1A6B52; }
+.b-aa  { background: rgba(255,107,53,.12); color: #c25520; }
+.b-fail{ background: rgba(139,26,58,.1); color: #8B1A3A; }
+
+/* ── COPY COMPARE ── */
+.cp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 16px 0 24px; }
+.cp-col { padding: 16px 18px; border-radius: 10px; font-size: 13px; }
+.cp-col h4 { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px; }
+.cp-col p { margin-bottom: 7px; line-height: 1.5; }
+.cp-good { background: rgba(26,107,82,.06); border: 1px solid rgba(26,107,82,.15); }
+.cp-good h4 { color: #1A6B52; }
+.cp-bad  { background: rgba(139,26,58,.05); border: 1px solid rgba(139,26,58,.12); }
+.cp-bad h4 { color: #8B1A3A; }
+
+/* ── PILL TAGS ── */
+.tag-grid { display: flex; flex-wrap: wrap; gap: 7px; margin: 12px 0 20px; }
+.tag { font-size: 11.5px; padding: 4px 11px; border-radius: 100px; font-weight: 500; }
+.tag-red { background: rgba(139,26,58,.08); color: #8B1A3A; }
+.tag-green { background: rgba(26,107,82,.08); color: #1A6B52; }
+.tag-orange { background: rgba(255,107,53,.1); color: #c25520; }
+.tag-blue { background: rgba(0,78,137,.09); color: #004E89; }
+
+/* ── CALLOUT ── */
+.callout { padding: 14px 18px; border-radius: 10px; font-size: 13.5px; line-height: 1.6; margin: 16px 0; }
+.callout-warn { background: rgba(255,107,53,.07); border-left: 3px solid var(--primary); }
+.callout-ok { background: rgba(26,107,82,.07); border-left: 3px solid #1A6B52; }
+.callout-info { background: rgba(0,78,137,.07); border-left: 3px solid var(--secondary); }
+.callout strong { font-weight: 700; }
+
+/* ── TIMELINE / STEP ── */
+.step-list { display: flex; flex-direction: column; gap: 0; margin: 16px 0 28px; }
+.step { display: flex; gap: 14px; padding-bottom: 20px; position: relative; }
+.step:last-child { padding-bottom: 0; }
+.step::before { content: ''; position: absolute; left: 15px; top: 32px; bottom: 0; width: 1px; background: var(--border); }
+.step:last-child::before { display: none; }
+.step-num { flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: var(--primary); color: white; font-family: 'Lora', serif; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; z-index: 1; }
+.step-body { flex: 1; padding-top: 5px; }
+.step-title { font-weight: 700; font-size: 14px; color: var(--dark); margin-bottom: 4px; }
+.step-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+/* ── MOTION PREVIEW ── */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+.mo-preview { background: var(--dark); border-radius: 14px; padding: 28px 24px; display: flex; flex-wrap: wrap; gap: 12px; margin: 16px 0 28px; }
+.mo-el { padding: 10px 18px; border-radius: 8px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08); font-size: 13px; color: rgba(255,255,255,.7); cursor: pointer; transition: opacity .15s; }
+.mo-el.running { animation: fadeUp 600ms cubic-bezier(0.22,1,0.36,1) both; }
+
+/* ── SHADOW ROW ── */
+.shadow-row { display: flex; flex-wrap: wrap; gap: 16px; margin: 16px 0 24px; }
+.shadow-box { width: 100px; height: 64px; border-radius: 10px; background: white; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end; padding: 8px; }
+.shadow-box span { font-size: 9.5px; color: var(--muted); font-family: 'DM Mono', monospace; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 860px) {
+  .nav { display: none; }
+  .main { margin-left: 0; }
+  .ch { padding: 48px 20px 40px; }
+  .cp-grid { grid-template-columns: 1fr; }
+  .swatch-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+  .comp-grid { grid-template-columns: 1fr; }
+  .status-bar { padding: 10px 20px; flex-wrap: wrap; }
+}
+
+/* ── TOAST ── */
+.toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--dark); color: white; padding: 9px 18px; border-radius: 100px; font-size: 12.5px; font-weight: 600; z-index: 9999; transition: transform .3s cubic-bezier(.22,1,.36,1); pointer-events: none; }
+.toast.show { transform: translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══════════════════════════════════════════════════════════════════ -->
+<nav class="nav" id="nav">
+  <div class="nav-logo">
+    <div class="vp">VP</div>
+    <div>
+      <div class="nav-logo-text">Vem Passear</div>
+      <div class="nav-logo-sub">Design System · v1.1</div>
+    </div>
+  </div>
+
+  <div class="nav-section">Fundação</div>
+  <a href="#s-audit"><span class="n">00</span> Auditoria</a>
+  <a href="#s-rationale"><span class="n">01</span> Rationale Criativo</a>
+  <a href="#s-principios"><span class="n">02</span> Princípios</a>
+
+  <div class="nav-section">Identidade</div>
+  <a href="#s-paleta"><span class="n">03</span> Paleta</a>
+  <a href="#s-tipo"><span class="n">04</span> Tipografia</a>
+  <a href="#s-escalas"><span class="n">05</span> Escalas</a>
+  <a href="#s-logo"><span class="n">06</span> Logo</a>
+  <a href="#s-copy"><span class="n">07</span> Tom de Copy</a>
+
+  <div class="nav-section">Componentes</div>
+  <a href="#s-componentes"><span class="n">08</span> Inventário</a>
+  <a href="#s-home"><span class="n">09</span> Home</a>
+  <a href="#s-passeio"><span class="n">10</span> Pág. Passeio</a>
+  <a href="#s-outros"><span class="n">11</span> Hub, FAQ, Transfer</a>
+
+  <div class="nav-section">Qualidade</div>
+  <a href="#s-a11y"><span class="n">12</span> Acessibilidade</a>
+
+  <div class="nav-section">Motion</div>
+  <a href="#s-motion-principios"><span class="n">13</span> Princípios Motion</a>
+  <a href="#s-motion-timing"><span class="n">14</span> Timing & Easing</a>
+  <a href="#s-motion-regras"><span class="n">15</span> O Que Animar</a>
+  <a href="#s-motion-demos"><span class="n">16</span> Demos por Seção</a>
+  <a href="#s-imagens"><span class="n">17</span> Imagens</a>
+
+  <div class="nav-section">Páginas</div>
+  <a href="#s-blog"><span class="n">18</span> Blog</a>
+  <a href="#s-rotas"><span class="n">19</span> Mapa de 42 Rotas</a>
+
+  <div class="nav-section">Entrega</div>
+  <a href="#s-tokens"><span class="n">20</span> Tokens JSON</a>
+  <a href="#s-handoff"><span class="n">21</span> Handoff Claude Code</a>
+  <a href="#s-resumo"><span class="n">22</span> Resumo Copiável</a>
+  <a href="#s-checklist"><span class="n">23</span> Checklist</a>
+  <a href="#s-deps"><span class="n">24</span> Dependências Humanas</a>
+</nav>
+
+<!-- ══ STATUS BAR ════════════════════════════════════════════════════════════ -->
+<div class="main">
+<div class="status-bar">
+  <span style="font-size:12px;font-weight:700;color:var(--dark)">Vem Passear em Jampa</span>
+  <span style="font-size:12px;color:var(--muted)">Design System v1.2 · 2026-05-02</span>
+  <span style="flex:1"></span>
+  <span class="status-pill status-ok">✓ Editorial Tropical Refinado</span>
+  <span class="status-pill status-ok">✓ Motion System integrado</span>
+  <span class="status-pill status-ok">✓ 42 rotas mapeadas</span>
+  <span class="status-pill status-partial">⚠ Aguarda: fotos reais</span>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     00 — AUDITORIA
+════════════════════════════════════════════════════════════════════════════ -->
+<section class="ch" id="s-audit">
+<div class="ch-num">Seção 00</div>
+<h1 class="ch-title">Auditoria — O que Existe, o que Falta</h1>
+
+<p class="ch-lead">Revisão completa de todos os arquivos entregues na conta anterior. A matriz abaixo mapeia o estado de cada entregável antes de qualquer trabalho novo.</p>
+
+<h2 class="ch-sub">✅ Completo — Preservar sem alteração</h2>
+<div class="audit-grid">
+  <div class="audit-card"><div class="label" style="color:#1A6B52">Completo</div><div class="name">Design System HTML</div><div class="desc">17 seções — Rationale, paleta, tipo, escalas, logo, copy, a11y, mockups. Sólido e bem executado.</div></div>
+  <div class="audit-card"><div class="label" style="color:#1A6B52">Completo</div><div class="name">Home Mockup</div><div class="desc">HTML interativo com React + Tweaks. Todas as 6 seções + header + footer implementados em JSX.</div></div>
+  <div class="audit-card"><div class="label" style="color:#1A6B52">Completo</div><div class="name">Componentes JSX (6)</div><div class="desc">Header, HeroSection, CategoriasSection, PasseiosSection, MurilloSection, CTAFooter — todos exportam para window.</div></div>
+  <div class="audit-card"><div class="label" style="color:#1A6B52">Completo</div><div class="name">Handoff — Home</div><div class="desc">Specs Tailwind por seção, variações hero A/B, placeholders, o que não alterar. Detalhe excelente.</div></div>
+  <div class="audit-card"><div class="label" style="color:#1A6B52">Completo</div><div class="name">Handoff Claude Code</div><div class="desc">Stack, tokens, componentes afetados, checklist de validação, regras de implementação.</div></div>
+  <div class="audit-card"><div class="label" style="color:#1A6B52">Completo</div><div class="name">Mapa Técnico</div><div class="desc">18 componentes inventariados, matriz de uso por página, o que alterar vs. travar.</div></div>
+  <div class="audit-card"><div class="label" style="color:#1A6B52">Completo</div><div class="name">Briefing Visual</div><div class="desc">Público, objetivo, estrutura de páginas, CTAs, identidade visual, tom, lacunas de imagem.</div></div>
+  <div class="audit-card"><div class="label" style="color:#1A6B52">Completo</div><div class="name">Tokens de Cor (15)</div><div class="desc">9 semânticos + 6 de categoria. Valores exatos, regras de uso, proibições. Tudo definido.</div></div>
+  <div class="audit-card"><div class="label" style="color:#1A6B52">Completo</div><div class="name">Escala Tipográfica</div><div class="desc">H1→body→kicker com valores clamp(), pesos, line-height, letter-spacing para mobile e desktop.</div></div>
+  <div class="audit-card"><div class="label" style="color:#1A6B52">Completo</div><div class="name">Tom de Copy</div><div class="desc">Voz de Murillo documentada, exemplos correto/errado, copy proibida, microcopy dos CTAs.</div></div>
+</div>
+
+<h2 class="ch-sub">⚠ Parcial — Refinado neste documento</h2>
+<div class="audit-grid">
+  <div class="audit-card"><div class="label" style="color:#c25520">Parcial</div><div class="name">Design System navegável</div><div class="desc">O HTML existente tinha seções 1–17. Faltavam: auditoria, motion consolidado, tokens JSON copiável, checklist interativo.</div></div>
+  <div class="audit-card"><div class="label" style="color:#c25520">Parcial</div><div class="name">Seções Hub, FAQ, Transfer</div><div class="desc">Estrutura descrita no briefing mas sem mockup visual. Incluídas aqui com specs.</div></div>
+  <div class="audit-card"><div class="label" style="color:#c25520">Parcial</div><div class="name">Página de Passeio</div><div class="desc">Componentes inventariados mas layout da página completa sem mockup consolidado.</div></div>
+  <div class="audit-card"><div class="label" style="color:#c25520">Parcial</div><div class="name">Resumo copiável</div><div class="desc">Informações distribuídas em 4 arquivos separados. Este documento consolida tudo em um lugar.</div></div>
+</div>
+
+<h2 class="ch-sub">❌ Faltava — Criado neste documento</h2>
+<div class="audit-grid">
+  <div class="audit-card"><div class="label" style="color:#004E89">Novo</div><div class="name">Tokens JSON final (copiável)</div><div class="desc">Bloco JSON único com todas as cores, tipografia, escalas e motion. Pronto para colar no tailwind.config.</div></div>
+  <div class="audit-card"><div class="label" style="color:#004E89">Novo</div><div class="name">Checklist interativo</div><div class="desc">Lista de validação completa com checkboxes visuais e persência por categoria.</div></div>
+  <div class="audit-card"><div class="label" style="color:#004E89">Novo</div><div class="name">Dependências humanas</div><div class="desc">Lista consolidada do que depende de foto real ou decisão de Murillo antes do go-live.</div></div>
+  <div class="audit-card"><div class="label" style="color:#004E89">Novo</div><div class="name">Resumo copiável único</div><div class="desc">Bloco copiável para prompt de implementação — tudo que o dev precisa saber em &lt; 500 palavras.</div></div>
+</div>
+
+<h2 class="ch-sub">🔒 Decisões visuais aprovadas — não alterar</h2>
+<table class="tb">
+<tr><th>Decisão</th><th>Valor</th><th>Motivo</th></tr>
+<tr><td>Direção visual</td><td><strong>Editorial Tropical Refinado</strong></td><td>Aprovada por Murillo. Define tudo abaixo.</td></tr>
+<tr><td>Tipografia display</td><td><strong>Lora</strong> (serif)</td><td>Calor humano + sobriedade editorial. Par perfeito com DM Sans.</td></tr>
+<tr><td>Tipografia funcional</td><td><strong>DM Sans</strong></td><td>Legível em celular com sol na tela. Pesos 400–800 disponíveis.</td></tr>
+<tr><td>Cor de conversão</td><td><strong>#FF6B35</strong></td><td>Pôr do sol paraibano. Energia sem agitação. Uso cirúrgico.</td></tr>
+<tr><td>Cor institucional</td><td><strong>#004E89</strong></td><td>Mar profundo, confiança, Cadastur. Nunca compete com laranja.</td></tr>
+<tr><td>Fundo escuro</td><td><strong>#1A1A2E</strong></td><td>Hero e footer. Noite do litoral — não preto puro, não navy genérico.</td></tr>
+<tr><td>Fundo claro</td><td><strong>#FAFAF8</strong></td><td>Quente sem amarelecer. Melhor que branco puro em telas LED.</td></tr>
+<tr><td>CTA principal</td><td><strong>WhatsApp → wa.me/558399087830</strong></td><td>Único canal de conversão. Nunca email, nunca formulário.</td></tr>
+<tr><td>Hero variação ativa</td><td><strong>Variação A</strong> (sem foto)</td><td>Enquanto foto real de JP não chegar. Gradiente + blobs decorativos.</td></tr>
+<tr><td>CTA final cor</td><td><strong>Variação Azul</strong> (#004E89)</td><td>Aprovada nos tweaks como padrão atual.</td></tr>
+</table>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     01 — RATIONALE
+════════════════════════════════════════════════════════════════════════════ -->
+<section class="ch" id="s-rationale">
+<div class="ch-num">Seção 01</div>
+<h1 class="ch-title">Rationale Criativo</h1>
+
+<p class="ch-lead">A direção <strong>Editorial Tropical Refinado</strong> posiciona a marca entre revista de viagem de qualidade e autenticidade nordestina. Não resort genérico, não panfleto de turismo. Caloroso, confiável, direto.</p>
+
+<p class="ch-lead">A tensão central da marca — <strong>local com competência, quente sem amadorismo</strong> — é resolvida pelo par tipográfico: Lora traz o calor humano com suas serifas suaves; DM Sans traz a objetividade que o turista precisa ao pesquisar no celular, muitas vezes com sol na tela.</p>
+
+<p class="ch-lead">O <strong>laranja #FF6B35</strong> evoca pôr do sol paraibano e é usado com disciplina cirúrgica — apenas em CTAs, destaques de H1 e badges. O <strong>azul #004E89</strong> ancora a marca no institucional sem soar corporativo. A regra de que essas duas cores <em>nunca competem lado a lado em alto contraste</em> é o que separa a marca de um panfleto genérico.</p>
+
+<p class="ch-lead">Cada seção da Home foi desenhada como etapa de um <strong>funil silencioso</strong>: o Hero apresenta o destino, as Categorias organizam o mental model, os Passeios criam desejo visual, o Bloco Murillo personaliza a confiança, e o CTA Final fecha com convite direto. Nenhuma seção grita "RESERVE AGORA" — todas dizem "Murillo te ajuda". Esta é a diferença entre conversão por urgência (rejeitada pelo público 25–55 anos) e conversão por orientação (valorizada pelo mesmo público).</p>
+
+<div class="callout callout-ok">
+  <strong>Resultado esperado:</strong> uma marca que não parece "mais uma agência de passeio". Parece a recomendação de um amigo local que sabe exatamente para onde te levar — com a segurança de Cadastur ativo, 61 avaliações Google e resposta em minutos no WhatsApp.
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     02 — PRINCÍPIOS
+════════════════════════════════════════════════════════════════════════════ -->
+<section class="ch" id="s-principios">
+<div class="ch-num">Seção 02</div>
+<h1 class="ch-title">Princípios de Marca</h1>
+
+<div class="principle"><div class="principle-num">1</div><div><div class="principle-title">Confiança antes de venda</div><div class="principle-desc">Toda seção mostra prova (Cadastur, Google 4.9, Murillo como pessoa real) antes de pedir ação. O turista precisa confiar antes de clicar.</div></div></div>
+<div class="principle"><div class="principle-num">2</div><div><div class="principle-title">WhatsApp como destino, não como pop-up</div><div class="principle-desc">O canal é convidado, não imposto. CTA aparece no momento certo da jornada — nunca como interrupção, nunca como urgência falsa.</div></div></div>
+<div class="principle"><div class="principle-num">3</div><div><div class="principle-title">Editorial sobre panfleto</div><div class="principle-desc">Silêncio visual e hierarquia clara substituem cor barulhenta. Cada elemento justifica sua presença — se não orienta o turista, sai.</div></div></div>
+<div class="principle"><div class="principle-num">4</div><div><div class="principle-title">Mobile é a régua</div><div class="principle-desc">Se não funciona em 375px com sol na tela e polegar impreciso, não funciona. Touch targets, escala tipográfica e hierarquia são pensados mobile-first.</div></div></div>
+<div class="principle"><div class="principle-num">5</div><div><div class="principle-title">Murillo é a pessoa, não a marca</div><div class="principle-desc">A marca apresenta Murillo como pessoa real, não como persona corporativa. O tom é dele — direto, acolhedor, competente, sem jargão de agência.</div></div></div>
+
+<h2 class="ch-sub">Dados fixos — imutáveis</h2>
+<table class="tb">
+<tr><th>Dado</th><th>Valor</th><th>Fonte</th></tr>
+<tr><td>Avaliação Google</td><td><strong>★ 4.9/5 · 61 avaliações</strong></td><td><code>data/empresa.ts</code></td></tr>
+<tr><td>Cadastur</td><td><strong>52.077.577</strong></td><td><code>data/empresa.ts</code></td></tr>
+<tr><td>WhatsApp</td><td><strong>wa.me/558399087830</strong></td><td><code>data/empresa.ts</code></td></tr>
+<tr><td>Fundador</td><td><strong>Affonso Murillo Soledade de Oliveira</strong></td><td>Real — não alterar</td></tr>
+<tr><td>Total de passeios</td><td><strong>22 passeios · 6 categorias</strong></td><td><code>data/passeios.ts</code></td></tr>
+</table>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     03 — PALETA
+════════════════════════════════════════════════════════════════════════════ -->
+<section class="ch" id="s-paleta">
+<div class="ch-num">Seção 03</div>
+<h1 class="ch-title">Sistema de Cores</h1>
+
+<h2 class="ch-sub">9 Tokens Semânticos</h2>
+<div class="swatch-grid">
+  <div class="swatch" onclick="copy('#FF6B35')">
+    <div class="swatch-color" style="background:#FF6B35"><span>#FF6B35</span></div>
+    <div class="swatch-info"><div class="name">primary</div><div class="desc">CTA, acento H1, checkmarks, badges</div></div>
+  </div>
+  <div class="swatch" onclick="copy('#004E89')">
+    <div class="swatch-color" style="background:#004E89"><span>#004E89</span></div>
+    <div class="swatch-info"><div class="name">secondary</div><div class="desc">Links, botão alternativo, CTA azul</div></div>
+  </div>
+  <div class="swatch" onclick="copy('#1A1A2E')">
+    <div class="swatch-color" style="background:#1A1A2E"><span>#1A1A2E</span></div>
+    <div class="swatch-info"><div class="name">dark</div><div class="desc">Hero, footer, texto escuro</div></div>
+  </div>
+  <div class="swatch" onclick="copy('#25D366')">
+    <div class="swatch-color" style="background:#25D366"><span>#25D366</span></div>
+    <div class="swatch-info"><div class="name">whatsapp</div><div class="desc">Exclusivo canal WhatsApp</div></div>
+  </div>
+  <div class="swatch" onclick="copy('#FAFAF8')">
+    <div class="swatch-color" style="background:#FAFAF8;border-bottom:1px solid var(--border)"><span style="background:rgba(0,0,0,.4)">#FAFAF8</span></div>
+    <div class="swatch-info"><div class="name">bg-soft</div><div class="desc">Fundo seções alternadas — quente</div></div>
+  </div>
+  <div class="swatch" onclick="copy('#FFFFFF')">
+    <div class="swatch-color" style="background:#FFFFFF;border-bottom:1px solid var(--border)"><span style="background:rgba(0,0,0,.4)">#FFFFFF</span></div>
+    <div class="swatch-info"><div class="name">surface</div><div class="desc">Cards, blockquotes, badges</div></div>
+  </div>
+  <div class="swatch" onclick="copy('#1F2937')">
+    <div class="swatch-color" style="background:#1F2937"><span>#1F2937</span></div>
+    <div class="swatch-info"><div class="name">text</div><div class="desc">Corpo em fundos claros</div></div>
+  </div>
+  <div class="swatch" onclick="copy('#6B7280')">
+    <div class="swatch-color" style="background:#6B7280"><span>#6B7280</span></div>
+    <div class="swatch-info"><div class="name">muted</div><div class="desc">Subtítulos, labels, secundários</div></div>
+  </div>
+  <div class="swatch" onclick="copy('#F77F00')">
+    <div class="swatch-color" style="background:#F77F00"><span>#F77F00</span></div>
+    <div class="swatch-info"><div class="name">accent</div><div class="desc">Hover state do laranja primary. Nunca usar como cor principal.</div></div>
+  </div>
+  <div class="swatch" onclick="copy('rgba(31,41,55,0.07)')">
+    <div class="swatch-color" style="background:rgba(31,41,55,0.07);border-bottom:1px solid var(--border)"><span style="background:rgba(0,0,0,.4)">border</span></div>
+    <div class="swatch-info"><div class="name">border-subtle</div><div class="desc">Bordas, dividers, separadores</div></div>
+  </div>
+</div>
+
+<h2 class="ch-sub">6 Cores de Categoria</h2>
+<p style="font-size:13px;color:var(--muted);margin-bottom:14px">Via <code>style=</code> inline. Nunca como token Tailwind global — não poluir o config.</p>
+<div class="swatch-grid">
+  <div class="swatch" onclick="copy('#004E89')">
+    <div class="swatch-color" style="background:#004E89"><span>#004E89</span></div>
+    <div class="swatch-info"><div class="name">Pacotes</div><div class="desc">Azul institucional</div></div>
+  </div>
+  <div class="swatch" onclick="copy('#1A6B52')">
+    <div class="swatch-color" style="background:#1A6B52"><span>#1A6B52</span></div>
+    <div class="swatch-info"><div class="name">Litoral Sul</div><div class="desc">Verde-mata litorânea</div></div>
+  </div>
+  <div class="swatch" onclick="copy('#7B4F12')">
+    <div class="swatch-color" style="background:#7B4F12"><span>#7B4F12</span></div>
+    <div class="swatch-info"><div class="name">Litoral Norte</div><div class="desc">Marrom-areia, falésia</div></div>
+  </div>
+  <div class="swatch" onclick="copy('#0E5E8A')">
+    <div class="swatch-color" style="background:#0E5E8A"><span>#0E5E8A</span></div>
+    <div class="swatch-info"><div class="name">Piscinas Naturais</div><div class="desc">Azul-recife, coral</div></div>
+  </div>
+  <div class="swatch" onclick="copy('#4A3580')">
+    <div class="swatch-color" style="background:#4A3580"><span>#4A3580</span></div>
+    <div class="swatch-info"><div class="name">City Tour</div><div class="desc">Roxo-histórico</div></div>
+  </div>
+  <div class="swatch" onclick="copy('#8B1A3A')">
+    <div class="swatch-color" style="background:#8B1A3A"><span>#8B1A3A</span></div>
+    <div class="swatch-info"><div class="name">Interestaduais</div><div class="desc">Vinho-sertão</div></div>
+  </div>
+</div>
+
+<h2 class="ch-sub">Regras de uso</h2>
+<table class="tb">
+<tr><th>Cor</th><th>Permitido</th><th>Proibido</th></tr>
+<tr><td><code>primary</code></td><td>CTA, badge, acento H1, checkmarks, border-left blockquote</td><td>Fundo de seção inteira (exceto CTA Final), ícone decorativo genérico</td></tr>
+<tr><td><code>whatsapp</code></td><td>Botão header, mobile menu, CTA sticky</td><td>Cor de marca, texto, qualquer uso fora do contexto WhatsApp</td></tr>
+<tr><td><code>secondary</code></td><td>Links, botão alternativo, CTA Final azul, card Pacotes</td><td>Ao lado direto de primary em alto contraste</td></tr>
+<tr><td>Gradientes</td><td>Fundo Hero variação A, blob CTA Final</td><td>Qualquer outro lugar — gradiente é exceção</td></tr>
+</table>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     04 — TIPOGRAFIA
+════════════════════════════════════════════════════════════════════════════ -->
+<section class="ch" id="s-tipo">
+<div class="ch-num">Seção 04</div>
+<h1 class="ch-title">Tipografia</h1>
+
+<p class="ch-lead">3 famílias: <strong>Lora</strong> (display/títulos) · <strong>DM Sans</strong> (corpo/CTAs/UI) · <strong>DM Mono</strong> (placeholders apenas — remover em produção).</p>
+
+<div class="callout callout-info">
+  <strong>Import em layout.tsx:</strong><br>
+  <code>Lora: weights 400, 700 · DM Sans: weights 400, 500, 600, 700, 800 · DM Mono: 400</code><br>
+  Via <code>next/font/google</code> com <code>display: 'swap'</code>. <strong>Nunca CDN externo em produção.</strong>
+</div>
+
+<table class="tb">
+<tr><th>Elemento</th><th>Família</th><th>Peso</th><th>Mobile</th><th>Desktop</th><th>LH</th><th>LS</th></tr>
+<tr><td>H1 Hero</td><td>Lora</td><td>700</td><td>44px</td><td><code>clamp(44px,7.5vw,84px)</code></td><td>1.07</td><td>−2px</td></tr>
+<tr><td>H2 seções</td><td>Lora</td><td>700</td><td>28px</td><td><code>clamp(28px,4vw,46px)</code></td><td>1.12</td><td>−1px</td></tr>
+<tr><td>H3 cards</td><td>Lora</td><td>700</td><td>20px</td><td>26px</td><td>1.2</td><td>−0.3px</td></tr>
+<tr><td>Kicker</td><td>DM Sans</td><td>700</td><td>11px</td><td>11px</td><td>1.4</td><td>+2.5px · uppercase</td></tr>
+<tr><td>Body principal</td><td>DM Sans</td><td>400</td><td>16px</td><td>17–18px</td><td>1.65</td><td>0</td></tr>
+<tr><td>Body secundário</td><td>DM Sans</td><td>400</td><td>14px</td><td>14–15px</td><td>1.6</td><td>0</td></tr>
+<tr><td>CTA botão</td><td>DM Sans</td><td>800</td><td>16px</td><td>17–18px</td><td>1.2</td><td>−0.2px</td></tr>
+<tr><td>Nav links</td><td>DM Sans</td><td>500</td><td>14px</td><td>14px</td><td>1.4</td><td>0</td></tr>
+<tr><td>Footer links</td><td>DM Sans</td><td>400</td><td>14px</td><td>14px</td><td>1.5</td><td>0</td></tr>
+</table>
+
+<h2 class="ch-sub">Specimens</h2>
+
+<div class="specimen">
+  <div class="specimen-label">H1 Hero — Lora 700 · clamp(44px,7.5vw,84px) · LH 1.07 · LS −2px</div>
+  <div style="font-family:'Lora',serif;font-size:clamp(44px,5vw,72px);font-weight:700;line-height:1.07;letter-spacing:-2px;color:var(--dark)">
+    O Que Fazer em<br><span style="color:var(--primary)">João Pessoa?</span>
+  </div>
+</div>
+
+<div class="specimen">
+  <div class="specimen-label">H2 Seção — Lora 700 · clamp(28px,4vw,46px) · LH 1.12 · LS −1px</div>
+  <div style="font-family:'Lora',serif;font-size:clamp(28px,3.5vw,44px);font-weight:700;line-height:1.12;letter-spacing:-1px;color:var(--dark)">Os Mais Procurados</div>
+</div>
+
+<div class="specimen">
+  <div class="specimen-label">H3 Card — Lora 700 · 26px · LH 1.2 · LS −0.3px</div>
+  <div style="font-family:'Lora',serif;font-size:26px;font-weight:700;line-height:1.2;letter-spacing:-0.3px;color:var(--dark)">Piscinas de Seixas</div>
+</div>
+
+<div class="specimen">
+  <div class="specimen-label">Kicker — DM Sans 700 · 11px · LS +2.5px · UPPERCASE · cor primary</div>
+  <div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--primary)">Passeios Prioritários</div>
+</div>
+
+<div class="specimen">
+  <div class="specimen-label">Body — DM Sans 400 · 17px · LH 1.65</div>
+  <div style="font-family:'DM Sans',sans-serif;font-size:17px;font-weight:400;line-height:1.65;color:var(--text);max-width:540px;text-wrap:pretty">
+    Murillo te orienta do jeito certo, com atendimento direto pelo WhatsApp. Sem formulário, sem espera. Praias paradisíacas, piscinas de corais e o pôr do sol mais emocionante do Brasil.
+  </div>
+</div>
+
+<div class="specimen">
+  <div class="specimen-label">Blockquote — Lora 400 italic · border-left 3px primary</div>
+  <div style="padding:14px 18px;border-left:3px solid var(--primary);background:var(--bg-soft);border-radius:0 10px 10px 0;max-width:520px">
+    <div style="font-family:'Lora',serif;font-size:16px;font-style:italic;line-height:1.65;color:var(--text)">"Ajudar turistas a descobrir João Pessoa com atendimento rápido, confiança e orientação prática."</div>
+  </div>
+</div>
+
+<div class="specimen">
+  <div class="specimen-label">CTA Botão — DM Sans 800 · 17px · pill · sombra colorida</div>
+  <div style="display:inline-flex;align-items:center;gap:10px;background:var(--primary);color:white;font-family:'DM Sans',sans-serif;font-size:17px;font-weight:800;padding:16px 28px;border-radius:100px;letter-spacing:-0.2px;box-shadow:0 6px 36px rgba(255,107,53,.45)">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.553 4.118 1.522 5.848L.057 23.292a.5.5 0 0 0 .651.651l5.444-1.465A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.693-.535-5.209-1.462l-.374-.224-3.876 1.044 1.044-3.876-.224-.374A9.954 9.954 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+    Montar Meu Roteiro no WhatsApp
+  </div>
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     05 — ESCALAS
+════════════════════════════════════════════════════════════════════════════ -->
+<section class="ch" id="s-escalas">
+<div class="ch-num">Seção 05</div>
+<h1 class="ch-title">Escalas Canônicas</h1>
+
+<h2 class="ch-sub">Espaçamento (base 4px)</h2>
+<table class="tb">
+<tr><th>Token</th><th>Valor</th><th>Tailwind</th><th>Uso típico</th></tr>
+<tr><td><code>space-1</code></td><td>4px</td><td><code>gap-1 / p-1</code></td><td>Entre ícone e label inline</td></tr>
+<tr><td><code>space-2</code></td><td>8px</td><td><code>gap-2 / p-2</code></td><td>Padding interno de badge/pill</td></tr>
+<tr><td><code>space-3</code></td><td>12px</td><td><code>gap-3</code></td><td>Gap entre pills/tags</td></tr>
+<tr><td><code>space-4</code></td><td>16px</td><td><code>gap-4 / p-4</code></td><td>Padding interno card pequeno</td></tr>
+<tr><td><code>space-5</code></td><td>20px</td><td><code>gap-5</code></td><td>Gap entre items de lista</td></tr>
+<tr><td><code>space-6</code></td><td>24px</td><td><code>px-6</code></td><td>Padding lateral seção mobile — mínimo</td></tr>
+<tr><td><code>space-8</code></td><td>32px</td><td><code>p-8</code></td><td>Padding interno card grande</td></tr>
+<tr><td><code>space-10</code></td><td>40px</td><td><code>gap-10</code></td><td>Gap entre blocos relacionados</td></tr>
+<tr><td><code>space-16</code></td><td>64px</td><td><code>py-16</code></td><td>Padding vertical seção mobile</td></tr>
+<tr><td><code>space-20</code></td><td>80px</td><td><code>py-20</code></td><td>Padding vertical seção tablet</td></tr>
+<tr><td><code>space-28</code></td><td>112px</td><td><code>py-28</code></td><td>Padding vertical seção desktop</td></tr>
+</table>
+
+<h2 class="ch-sub">Border Radius</h2>
+<div style="display:flex;flex-wrap:wrap;gap:14px;margin:14px 0 24px">
+  <div style="text-align:center"><div style="width:48px;height:48px;border-radius:6px;background:var(--primary);opacity:.8;margin-bottom:5px"></div><div style="font-size:10.5px;color:var(--muted)"><code>sm</code> 6px<br>badges</div></div>
+  <div style="text-align:center"><div style="width:48px;height:48px;border-radius:10px;background:var(--secondary);opacity:.8;margin-bottom:5px"></div><div style="font-size:10.5px;color:var(--muted)"><code>md</code> 10px<br>header VP</div></div>
+  <div style="text-align:center"><div style="width:48px;height:48px;border-radius:16px;background:var(--cat-litoral-sul);opacity:.8;margin-bottom:5px"></div><div style="font-size:10.5px;color:var(--muted)"><code>lg</code> 16px<br>cat cards</div></div>
+  <div style="text-align:center"><div style="width:48px;height:48px;border-radius:20px;background:var(--cat-litoral-norte);opacity:.8;margin-bottom:5px"></div><div style="font-size:10.5px;color:var(--muted)"><code>xl</code> 20px<br>passeio cards</div></div>
+  <div style="text-align:center"><div style="width:48px;height:48px;border-radius:9999px;background:var(--dark);opacity:.8;margin-bottom:5px"></div><div style="font-size:10.5px;color:var(--muted)"><code>full</code> pill<br>CTAs, badges</div></div>
+</div>
+
+<h2 class="ch-sub">Sombras</h2>
+<div class="shadow-row">
+  <div class="shadow-box" style="box-shadow:0 1px 2px rgba(15,23,42,.06)"><span>sm</span></div>
+  <div class="shadow-box" style="box-shadow:0 4px 14px rgba(15,23,42,.09)"><span>md</span></div>
+  <div class="shadow-box" style="box-shadow:0 12px 32px rgba(15,23,42,.13)"><span>lg</span></div>
+  <div class="shadow-box" style="box-shadow:0 6px 36px rgba(255,107,53,.45)"><span>cta-orange</span></div>
+  <div class="shadow-box" style="box-shadow:0 4px 20px rgba(0,78,137,.3)"><span>cta-blue</span></div>
+  <div class="shadow-box" style="box-shadow:0 2px 12px rgba(37,211,102,.3)"><span>cta-wa</span></div>
+</div>
+
+<h2 class="ch-sub">Max-width padrão</h2>
+<table class="tb">
+<tr><th>Contexto</th><th>Valor</th><th>Tailwind</th></tr>
+<tr><td>Container principal</td><td>1200px</td><td><code>max-w-[1200px] mx-auto px-6</code></td></tr>
+<tr><td>Texto longo (prose)</td><td>700px</td><td><code>max-w-[700px]</code></td></tr>
+<tr><td>CTA central</td><td>680px</td><td><code>max-w-[680px] text-center</code></td></tr>
+<tr><td>Subtítulo hero</td><td>520px</td><td><code>max-w-[520px]</code></td></tr>
+</table>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     06 — LOGO
+════════════════════════════════════════════════════════════════════════════ -->
+<section class="ch" id="s-logo">
+<div class="ch-num">Seção 06</div>
+<h1 class="ch-title">Logo e Assinatura Digital</h1>
+
+<p class="ch-lead">A marca está no <strong>Estágio 1</strong>: monograma VP em CSS puro. Funcional, escalável, implementável sem arquivo externo. Suficiente para Fase 1 do site.</p>
+
+<h2 class="ch-sub">Monograma — 4 tamanhos</h2>
+<div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end;margin:16px 0 28px">
+  <div style="text-align:center">
+    <div style="width:16px;height:16px;border-radius:3px;background:var(--primary);display:flex;align-items:center;justify-content:center;font-family:'Lora',serif;font-weight:700;font-size:7px;color:white;margin:0 auto 6px;letter-spacing:-0.5px">VP</div>
+    <div style="font-size:10px;color:var(--muted)">16×16<br>tab/favicon</div>
+  </div>
+  <div style="text-align:center">
+    <div style="width:32px;height:32px;border-radius:6px;background:var(--primary);display:flex;align-items:center;justify-content:center;font-family:'Lora',serif;font-weight:700;font-size:12px;color:white;margin:0 auto 6px">VP</div>
+    <div style="font-size:10px;color:var(--muted)">32×32<br>sidebar nav</div>
+  </div>
+  <div style="text-align:center">
+    <div style="width:36px;height:36px;border-radius:8px;background:var(--primary);display:flex;align-items:center;justify-content:center;font-family:'Lora',serif;font-weight:700;font-size:15px;color:white;margin:0 auto 6px">VP</div>
+    <div style="font-size:10px;color:var(--muted)">36×36<br>header</div>
+  </div>
+  <div style="text-align:center">
+    <div style="width:48px;height:48px;border-radius:10px;background:var(--primary);display:flex;align-items:center;justify-content:center;font-family:'Lora',serif;font-weight:700;font-size:20px;color:white;margin:0 auto 6px">VP</div>
+    <div style="font-size:10px;color:var(--muted)">48×48<br>cards</div>
+  </div>
+</div>
+
+<h2 class="ch-sub">Aplicação no Header</h2>
+<div class="mockup">
+  <div class="mockup-label">Logo completa — Header desktop</div>
+  <div style="height:64px;padding:0 24px;display:flex;align-items:center;gap:10px;background:rgba(250,250,248,.95)">
+    <div style="width:36px;height:36px;border-radius:8px;background:var(--primary);display:flex;align-items:center;justify-content:center;font-family:'Lora',serif;font-weight:700;font-size:15px;color:white;flex-shrink:0">VP</div>
+    <div style="line-height:1.15">
+      <div style="font-family:'Lora',serif;font-weight:700;font-size:15px;color:var(--dark);letter-spacing:-0.3px">Vem Passear</div>
+      <div style="font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;color:var(--muted);letter-spacing:1px;text-transform:uppercase">em Jampa</div>
+    </div>
+  </div>
+</div>
+
+<h2 class="ch-sub">Roteiro de evolução</h2>
+<table class="tb">
+<tr><th>Estágio</th><th>Entregável</th><th>Gatilho</th></tr>
+<tr><td><strong>1 — Atual</strong></td><td>Monograma VP em CSS</td><td>—</td></tr>
+<tr><td><strong>2 — Wordmark</strong></td><td>Wordmark vetorial com kerning custom. Contratar designer.</td><td>&gt; 50 leads/mês confirmados</td></tr>
+<tr><td><strong>3 — Símbolo</strong></td><td>Símbolo abstrato que funcione isolado em redes sociais.</td><td>Presença em mais de um canal</td></tr>
+</table>
+
+<div class="callout callout-warn">
+  <strong>Proibido no logo futuro:</strong> coqueiro, sol com raios, onda de surf, mapa do Brasil, emoji, fonte script/cursiva, gradiente metálico.
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     07 — COPY
+════════════════════════════════════════════════════════════════════════════ -->
+<section class="ch" id="s-copy">
+<div class="ch-num">Seção 07</div>
+<h1 class="ch-title">Tom de Copy e Voz da Marca</h1>
+
+<p class="ch-lead">A voz é a de Murillo: direta, acolhedora, competente, sem jargão de agência. Todo texto do site deve soar como se ele tivesse escrito.</p>
+
+<h2 class="ch-sub">Murillo fala vs. Agência genérica</h2>
+<div class="cp-grid">
+  <div class="cp-col cp-good">
+    <h4>✓ Murillo fala</h4>
+    <p>"Te oriento do jeito certo, direto pelo WhatsApp."</p>
+    <p>"Resposta em minutos. Sem compromisso."</p>
+    <p>"61 avaliações reais no Google."</p>
+    <p>"Conheço cada maré, cada praia, cada horário."</p>
+    <p>"Montar Meu Roteiro no WhatsApp"</p>
+  </div>
+  <div class="cp-col cp-bad">
+    <h4>✗ Agência genérica fala</h4>
+    <p>"Permita-nos guiá-lo em sua jornada inesquecível."</p>
+    <p>"Tentaremos responder o quanto antes possível."</p>
+    <p>"Somos referência em turismo na Paraíba."</p>
+    <p>"Oferecemos experiências únicas e exclusivas."</p>
+    <p>"Reserve Já Antes que Esgote!"</p>
+  </div>
+</div>
+
+<h2 class="ch-sub">Regras de voz</h2>
+<table class="tb">
+<tr><th>Regra</th><th>Exemplo</th></tr>
+<tr><td>1ª ou 2ª pessoa</td><td>"Murillo te orienta do jeito certo"</td></tr>
+<tr><td>"Jampa" informal, "João Pessoa" institucional</td><td>Hero: "João Pessoa" · Badge: "Jampa"</td></tr>
+<tr><td>Afirmativo, nunca subserviente</td><td>"Resposta em minutos" (não "Tentaremos responder")</td></tr>
+<tr><td>Microcopy curta — 6–12 palavras em CTAs</td><td>"Montar Meu Roteiro no WhatsApp"</td></tr>
+<tr><td>Prova social factual — nunca superlativo vazio</td><td>"61 avaliações no Google" (não "Somos referência")</td></tr>
+</table>
+
+<h2 class="ch-sub">Copy proibida</h2>
+<div class="tag-grid">
+  <span class="tag tag-red">"A melhor agência de João Pessoa"</span>
+  <span class="tag tag-red">"Experiência única e inesquecível"</span>
+  <span class="tag tag-red">"Momentos mágicos"</span>
+  <span class="tag tag-red">"Reserve já!"</span>
+  <span class="tag tag-red">"Atendimento VIP exclusivo"</span>
+  <span class="tag tag-red">"Imperdível"</span>
+  <span class="tag tag-red">"Sob consulta" (sem alternativa WA)</span>
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     08 — INVENTÁRIO DE COMPONENTES
+════════════════════════════════════════════════════════════════════════════ -->
+<section class="ch" id="s-componentes">
+<div class="ch-num">Seção 08</div>
+<h1 class="ch-title">Inventário de Componentes</h1>
+
+<h2 class="ch-sub">Redesign visual aprovado</h2>
+<div class="comp-grid">
+  <div class="comp-card"><div class="comp-name">HeroBlock.tsx</div><div class="comp-status comp-redesign">Redesign completo</div><div class="comp-desc">Layout, tipografia, badge, stats bottom, blobs decorativos, variação A/B (com/sem foto).</div></div>
+  <div class="comp-card"><div class="comp-name">PasseioCard.tsx</div><div class="comp-status comp-redesign">Redesign completo</div><div class="comp-desc">Full-bleed com overlay, aspect-ratio 3/4, badge de categoria, hover state com descrição.</div></div>
+  <div class="comp-card"><div class="comp-name">CTAFinal.tsx</div><div class="comp-status comp-redesign">Redesign visual</div><div class="comp-desc">Tipografia maior, blob decorativo, variante laranja/azul. Props mantidas.</div></div>
+  <div class="comp-card"><div class="comp-name">TrustBlock.tsx</div><div class="comp-status comp-redesign">Integrado no Hero</div><div class="comp-desc">Dados migrados para stats bottom do Hero. Componente mantido para páginas de passeio.</div></div>
+  <div class="comp-card"><div class="comp-name">InfoCard.tsx</div><div class="comp-status comp-redesign">Redesign visual</div><div class="comp-desc">3 blocos com ícones por campo. Lógica isCampoIndisponivel() intocada.</div></div>
+  <div class="comp-card"><div class="comp-name">DepoimentoBlock.tsx</div><div class="comp-status comp-redesign">Redesign visual</div><div class="comp-desc">Aspas tipográficas, foto avatar, layout blockquote. Guarda texto.startsWith("[") mantida.</div></div>
+  <div class="comp-card"><div class="comp-name">ReviewsBlock.tsx</div><div class="comp-status comp-redesign">Redesign visual</div><div class="comp-desc">Cards com estrelas SVG, grid responsivo. Sem alterar dados.</div></div>
+  <div class="comp-card"><div class="comp-name">IncluidoBlock.tsx</div><div class="comp-status comp-redesign">Redesign visual</div><div class="comp-desc">Ícones por item, layout de lista refinado.</div></div>
+  <div class="comp-card"><div class="comp-name">Experience360Block.tsx</div><div class="comp-status comp-redesign">Redesign visual</div><div class="comp-desc">Galeria com lightbox ou swipe mobile.</div></div>
+  <div class="comp-card"><div class="comp-name">ButtonPrimary.tsx</div><div class="comp-status comp-redesign">Ajuste visual</div><div class="comp-desc">rounded-full + sombra colorida rgba(255,107,53,.45). Interface de props mantida.</div></div>
+</div>
+
+<h2 class="ch-sub">Novos componentes</h2>
+<div class="comp-grid">
+  <div class="comp-card"><div class="comp-name">CategoryCard.tsx</div><div class="comp-status comp-new">Novo</div><div class="comp-desc">Cards coloridos por categoria. Ícone SVG + título + descrição + overlay radial. Grid 1→2→3.</div></div>
+  <div class="comp-card"><div class="comp-name">MurilloBlock.tsx</div><div class="comp-status comp-new">Novo (extrair)</div><div class="comp-desc">Extrair de app/page.tsx para componente próprio. Layout 2 colunas desktop.</div></div>
+  <div class="comp-card"><div class="comp-name">WaveDivider.tsx</div><div class="comp-status comp-new">Novo utilitário</div><div class="comp-desc">SVG wave entre seções. Props: fill, bg, flip. preserveAspectRatio="none", height 56px.</div></div>
+</div>
+
+<h2 class="ch-sub">Ajuste parcial</h2>
+<div class="comp-grid">
+  <div class="comp-card"><div class="comp-name">Footer.tsx</div><div class="comp-status comp-partial">Ajuste parcial</div><div class="comp-desc">Logo VP em bloco + subtítulo "em Jampa". Espaçamento gap-[9px]. Sem alterar links.</div></div>
+  <div class="comp-card"><div class="comp-name">Header.tsx</div><div class="comp-status comp-partial">Ajuste de estilo</div><div class="comp-desc">Apenas visual do logo. Navegação e estrutura intocadas.</div></div>
+  <div class="comp-card"><div class="comp-name">FAQAccordion.tsx</div><div class="comp-status comp-partial">Parcial</div><div class="comp-desc">Cores, tipografia, ícone abertura/fechamento. Lógica de state e schema intocados.</div></div>
+</div>
+
+<h2 class="ch-sub">Protegido — não alterar sem coordenação técnica</h2>
+<div class="comp-grid">
+  <div class="comp-card"><div class="comp-name">CTASticky.tsx</div><div class="comp-status comp-locked">Protegido</div><div class="comp-desc">IntersectionObserver depende de IDs hero-section e cta-final. Quebra se IDs mudarem.</div></div>
+  <div class="comp-card"><div class="comp-name">MareAlert.tsx</div><div class="comp-status comp-locked">Protegido</div><div class="comp-desc">Dado de segurança crítico. Não esconder, não tornar opcional visualmente.</div></div>
+  <div class="comp-card"><div class="comp-name">ProximaSaidaCard.tsx</div><div class="comp-status comp-locked">Protegido</div><div class="comp-desc">Lógica de tábua de marés. Não alterar condicionais de exibição.</div></div>
+  <div class="comp-card"><div class="comp-name">Breadcrumb.tsx</div><div class="comp-status comp-locked">Protegido</div><div class="comp-desc">Gera schema BreadcrumbList. Não alterar estrutura semântica.</div></div>
+</div>
+
+<h2 class="ch-sub">Matriz de uso por página</h2>
+<table class="tb">
+<tr><th>Componente</th><th>Home</th><th>Hub</th><th>Categoria</th><th>Passeio</th><th>FAQ</th><th>Transfer</th></tr>
+<tr><td><code>Header</code></td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+<tr><td><code>Footer</code></td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+<tr><td><code>HeroBlock</code></td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td></tr>
+<tr><td><code>PasseioCard</code></td><td>✓</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td></tr>
+<tr><td><code>CTAFinal</code></td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+<tr><td><code>CTASticky</code></td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td></tr>
+<tr><td><code>TrustBlock</code></td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td></tr>
+<tr><td><code>InfoCard</code></td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td></tr>
+<tr><td><code>MareAlert</code></td><td>—</td><td>—</td><td>—</td><td>✓*</td><td>—</td><td>—</td></tr>
+<tr><td><code>FAQAccordion</code></td><td>—</td><td>—</td><td>—</td><td>✓</td><td>✓</td><td>—</td></tr>
+<tr><td><code>ReviewsBlock</code></td><td>—</td><td>—</td><td>—</td><td>✓*</td><td>—</td><td>—</td></tr>
+<tr><td><code>DepoimentoBlock</code></td><td>—</td><td>—</td><td>—</td><td>✓*</td><td>—</td><td>—</td></tr>
+</table>
+<p style="font-size:12px;color:var(--muted)">* Condicional — só renderiza se dados presentes.</p>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     09 — HOME
+════════════════════════════════════════════════════════════════════════════ -->
+<section class="ch" id="s-home">
+<div class="ch-num">Seção 09</div>
+<h1 class="ch-title">Home — Especificações por Seção</h1>
+
+<p class="ch-lead">Funil silencioso de 6 seções. Cada uma tem um único objetivo na jornada: <strong>entender → organizar → desejar → confiar → agir</strong>. Ordem fixa.</p>
+
+<h2 class="ch-sub">Seção 1 — Hero</h2>
+<table class="tb">
+<tr><th>Propriedade</th><th>Valor</th></tr>
+<tr><td>id obrigatório</td><td><code>hero-section</code> — CTASticky depende</td></tr>
+<tr><td>Min-height</td><td><code>min(100svh, 800px)</code></td></tr>
+<tr><td>Var. A (ativa)</td><td>Gradiente <code>linear-gradient(145deg, #003d6b 0%, #1A1A2E 50%, #0a2a45 100%)</code> + 2 blobs + wave SVG</td></tr>
+<tr><td>Var. B (futura)</td><td><code>&lt;Image fill className="object-cover"&gt;</code> + overlay <code>from-[#0a101e]/97 via-[#0a101e]/45</code></td></tr>
+<tr><td>Sequência conteúdo</td><td>Badge → H1 (span laranja) → Subtítulo → CTA → Stats</td></tr>
+<tr><td>Stats</td><td>★ 4.9/5 · 61 avaliações Google · Cadastur 52.077.577 · WhatsApp direto</td></tr>
+<tr><td>Animações</td><td>fadeUp com delays 0.05s → 0.45s escalonados</td></tr>
+</table>
+
+<h2 class="ch-sub">Seção 2 — Categorias</h2>
+<table class="tb">
+<tr><th>Propriedade</th><th>Valor</th></tr>
+<tr><td>Fundo</td><td><code>#FAFAF8</code></td></tr>
+<tr><td>Grid</td><td><code>grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5</code></td></tr>
+<tr><td>Card</td><td>Cor de fundo da categoria, <code>rounded-2xl p-[32px_28px]</code>, overlay radial interno</td></tr>
+<tr><td>Hover</td><td><code>translateY(-3px)</code> + <code>shadow-2xl</code> — 200ms ease-out</td></tr>
+<tr><td>Rodapé</td><td>Link "Ver todos os 22 passeios" em secondary, border-b-2</td></tr>
+</table>
+
+<h2 class="ch-sub">Seção 3 — Passeios Prioritários</h2>
+<table class="tb">
+<tr><th>Propriedade</th><th>Valor</th></tr>
+<tr><td>Fundo</td><td>white — separado por WaveDivider antes e depois</td></tr>
+<tr><td>Grid</td><td><code>grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[18px]</code></td></tr>
+<tr><td>Card</td><td><code>aspect-ratio: 3/4</code> · <code>rounded-[20px]</code> · gradiente de cor do passeio</td></tr>
+<tr><td>Overlay</td><td><code>bg-gradient-to-t from-black/90 via-black/30 to-transparent</code></td></tr>
+<tr><td>Hover</td><td><code>translateY(-6px)</code> + descrição expande via <code>max-height</code> transition</td></tr>
+</table>
+
+<h2 class="ch-sub">Seção 4 — Bloco Murillo</h2>
+<table class="tb">
+<tr><th>Propriedade</th><th>Valor</th></tr>
+<tr><td>Fundo</td><td><code>#FAFAF8</code></td></tr>
+<tr><td>Layout</td><td>Grid 2 colunas desktop. Esquerda: avatar + assinatura. Direita: h2 + diferenciais + CTA.</td></tr>
+<tr><td>Avatar placeholder</td><td>Círculo <code>clamp(150px,20vw,220px)</code> com fundo listrado + círculo laranja "M" + badge Cadastur flutuante</td></tr>
+<tr><td>Avatar quando foto chegar</td><td>Substituir div por <code>&lt;Image fill className="object-cover object-top"&gt;</code> — layout não muda</td></tr>
+<tr><td>Blockquote</td><td>border-left 3px primary, fundo white, border-radius <code>0 12px 12px 0</code></td></tr>
+<tr><td>Diferenciais</td><td>4 itens: ícone <code>w-7 h-7 rounded-lg bg-primary/10</code> + checkmark SVG laranja</td></tr>
+<tr><td>CTA</td><td>Botão secondary azul <code>bg-secondary text-white rounded-full</code></td></tr>
+</table>
+
+<h2 class="ch-sub">Seção 5 — CTA Final</h2>
+<table class="tb">
+<tr><th>Propriedade</th><th>Valor</th></tr>
+<tr><td>id obrigatório</td><td><code>cta-final</code> — CTASticky depende</td></tr>
+<tr><td>Variante ativa</td><td>Azul — <code>background: #004E89</code></td></tr>
+<tr><td>Botão variante azul</td><td><code>bg-primary text-white</code></td></tr>
+<tr><td>Variante laranja</td><td><code>background: #FF6B35</code> · botão <code>bg-white text-primary</code></td></tr>
+<tr><td>Blob decorativo</td><td>radial-gradient absolute top-right, filter blur(50px)</td></tr>
+<tr><td>Texto abaixo do botão</td><td>"Resposta em minutos · Sem compromisso" — 13px muted</td></tr>
+</table>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     10 — PÁGINA DE PASSEIO
+════════════════════════════════════════════════════════════════════════════ -->
+<section class="ch" id="s-passeio">
+<div class="ch-num">Seção 10</div>
+<h1 class="ch-title">Página Individual de Passeio</h1>
+
+<p class="ch-lead">Estrutura C2→C3→C5→I1→I7→CTA. Ordem fixa — não alterar.</p>
+
+<div class="step-list">
+  <div class="step"><div class="step-num">C2</div><div class="step-body"><div class="step-title">HeroBlock — imagem full-width</div><div class="step-desc">H1 + subtítulo + CTA WhatsApp sobre imagem com overlay escuro. Breadcrumb logo abaixo. Fallback: placeholder-passeio.svg.</div></div></div>
+  <div class="step"><div class="step-num">C3</div><div class="step-body"><div class="step-title">InfoCard — 3 colunas</div><div class="step-desc">Preço | Duração | Saída. Campos indisponíveis → "Consultar pelo WhatsApp". Lógica isCampoIndisponivel() protegida.</div></div></div>
+  <div class="step"><div class="step-num">C4</div><div class="step-body"><div class="step-title">MareAlert + ProximaSaidaCard (condicional)</div><div class="step-desc">Só renderiza se dependeDeMare: true. Dado de segurança — não ocultar.</div></div></div>
+  <div class="step"><div class="step-num">C5</div><div class="step-body"><div class="step-title">TrustBlock</div><div class="step-desc">3 pilares: Cadastur · Google 4.9/61 · WhatsApp direto. Dados de empresa.ts.</div></div></div>
+  <div class="step"><div class="step-num">C5.5</div><div class="step-body"><div class="step-title">ReviewsBlock (condicional)</div><div class="step-desc">Grid de avaliações reais. Não renderiza se array vazio.</div></div></div>
+  <div class="step"><div class="step-num">I1–I4</div><div class="step-body"><div class="step-title">Lead · Roteiro · IncluidoBlock · Galeria</div><div class="step-desc">Conteúdo do passeio. Experience360Block para galeria de imagens.</div></div></div>
+  <div class="step"><div class="step-num">I5</div><div class="step-body"><div class="step-title">DepoimentoBlock (condicional)</div><div class="step-desc">Não renderiza se texto começa com "[". Guarda protegida.</div></div></div>
+  <div class="step"><div class="step-num">I6</div><div class="step-body"><div class="step-title">Passeios Relacionados</div><div class="step-desc">PasseioCard — mesma categoria.</div></div></div>
+  <div class="step"><div class="step-num">I7</div><div class="step-body"><div class="step-title">FAQAccordion + CTAFinal</div><div class="step-desc">Schema FAQPage gerado em JSON-LD. CTAFinal com id="cta-final".</div></div></div>
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     11 — HUB, FAQ, TRANSFER
+════════════════════════════════════════════════════════════════════════════ -->
+<section class="ch" id="s-outros">
+<div class="ch-num">Seção 11</div>
+<h1 class="ch-title">Hub de Passeios · FAQ · Transfer</h1>
+
+<h2 class="ch-sub">Hub — /passeios/</h2>
+<table class="tb">
+<tr><th>Elemento</th><th>Especificação</th></tr>
+<tr><td>Hero</td><td>H1 "Todos os Passeios em João Pessoa" + chips de âncora por categoria</td></tr>
+<tr><td>Chips âncora</td><td>DM Sans 13px · fundo category-color · rounded-full · link interno para #slug</td></tr>
+<tr><td>Estrutura por categoria</td><td>Kicker + H2 + contagem + linha divisória + grid de PasseioCards</td></tr>
+<tr><td>Grid</td><td>1 coluna mobile → 2 tablet → 3 desktop · gap-[16px]</td></tr>
+<tr><td>CTA Final</td><td>Variante laranja ao final da página</td></tr>
+</table>
+
+<h2 class="ch-sub">Categorias — /passeios/[categoria]/</h2>
+<table class="tb">
+<tr><th>Elemento</th><th>Especificação</th></tr>
+<tr><td>Hero</td><td>H1 "[Categoria] em João Pessoa" + descrição + contagem de passeios. Fundo: dark.</td></tr>
+<tr><td>Grid de passeios</td><td>Same spec que Hub</td></tr>
+<tr><td>Hover card</td><td>border laranja + shadow-md — 200ms</td></tr>
+</table>
+
+<h2 class="ch-sub">FAQ — /faq/</h2>
+<table class="tb">
+<tr><th>Elemento</th><th>Especificação</th></tr>
+<tr><td>FAQAccordion</td><td>Botão clicável ≥ 48px, resposta expansível. Schema FAQPage injetado via JSON-LD.</td></tr>
+<tr><td>Cores accordion</td><td>Borda left primary no item ativo. Ícone chevron que rotaciona 180° ao abrir.</td></tr>
+</table>
+
+<h2 class="ch-sub">Transfer — /servicos/transfer-24h/</h2>
+<table class="tb">
+<tr><th>Elemento</th><th>Especificação</th></tr>
+<tr><td>Cards destaque</td><td>Grid 2×2: Atendimento 24h · Cobertura JP/PB · Cobrado por trajeto · Valor sob consulta</td></tr>
+<tr><td>Diferenciais</td><td>5 itens com checkmark laranja — mesmo padrão do Bloco Murillo</td></tr>
+<tr><td>Trajetos</td><td>Grid 2 colunas · 4 exemplos · fundo bg-soft · rounded-lg</td></tr>
+<tr><td>Como contratar</td><td>3 passos — círculos numerados laranjos · DM Sans body</td></tr>
+</table>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     12 — ACESSIBILIDADE
+════════════════════════════════════════════════════════════════════════════ -->
+<section class="ch" id="s-a11y">
+<div class="ch-num">Seção 12</div>
+<h1 class="ch-title">Acessibilidade e Contraste</h1>
+
+<h2 class="ch-sub">Tabela de contraste WCAG</h2>
+<div style="margin:16px 0 28px">
+  <div class="cr-row"><div class="cr-swatch" style="background:#1A1A2E;color:white">Aa</div><div class="cr-info">Branco sobre <code>dark</code></div><div class="cr-ratio">15.4:1</div><span class="cr-badge b-aaa">AAA</span></div>
+  <div class="cr-row"><div class="cr-swatch" style="background:#004E89;color:white">Aa</div><div class="cr-info">Branco sobre <code>secondary</code></div><div class="cr-ratio">7.1:1</div><span class="cr-badge b-aaa">AAA</span></div>
+  <div class="cr-row"><div class="cr-swatch" style="background:#FAFAF8;color:#1F2937">Aa</div><div class="cr-info"><code>text</code> sobre <code>bg-soft</code></div><div class="cr-ratio">13.8:1</div><span class="cr-badge b-aaa">AAA</span></div>
+  <div class="cr-row"><div class="cr-swatch" style="background:#FAFAF8;color:#6B7280">Aa</div><div class="cr-info"><code>muted</code> sobre <code>bg-soft</code></div><div class="cr-ratio">5.2:1</div><span class="cr-badge b-aa">AA</span></div>
+  <div class="cr-row"><div class="cr-swatch" style="background:#FF6B35;color:white">Aa</div><div class="cr-info">Branco sobre <code>primary</code> (botão CTA)</div><div class="cr-ratio">3.4:1</div><span class="cr-badge b-aa">AA Lg</span></div>
+  <div class="cr-row"><div class="cr-swatch" style="background:#25D366;color:#1A1A2E">Aa</div><div class="cr-info"><code>dark</code> sobre <code>whatsapp</code> — usar se &gt;18px bold</div><div class="cr-ratio">7.3:1</div><span class="cr-badge b-aaa">AAA</span></div>
+  <div class="cr-row"><div class="cr-swatch" style="background:#25D366;color:white">Aa</div><div class="cr-info">Branco sobre <code>whatsapp</code> — texto pequeno</div><div class="cr-ratio">2.1:1</div><span class="cr-badge b-fail">Fail</span></div>
+</div>
+
+<div class="callout callout-warn">
+  <strong>Nota sobre o botão CTA (primary):</strong> 3.4:1 com texto branco atinge apenas AA Large Text. Como o botão usa 17px 800 (acima de 18.66px bold para large text), o par é válido para WCAG AA. Manter peso 700–800 mínimo no CTA.
+</div>
+
+<h2 class="ch-sub">Regras inegociáveis</h2>
+<table class="tb">
+<tr><th>Regra</th><th>Implementação</th></tr>
+<tr><td>Tap target ≥ 44px</td><td>Todos os botões e links mobile — WCAG 2.5.5</td></tr>
+<tr><td>Focus-visible</td><td>Outline 2px solid primary/secondary, offset 2px. Nunca remover.</td></tr>
+<tr><td>Hierarquia heading</td><td>1 H1 por página. H2 por seção. H3 em cards. Nunca pular nível.</td></tr>
+<tr><td>prefers-reduced-motion</td><td>Animações motion-base e slow viram instant ou são canceladas.</td></tr>
+<tr><td>Alt text</td><td>Decorativas: alt="". Conteúdo: descritivo. Nunca omitir.</td></tr>
+<tr><td>Semântica</td><td>&lt;button&gt; para ação, &lt;a&gt; para navegação. Nunca trocar.</td></tr>
+</table>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     17 — IMAGENS E PLACEHOLDERS
+════════════════════════════════════════════════════════════════════════════ -->
+<section class="ch" id="s-imagens">
+<div class="ch-num">Seção 17</div>
+<h1 class="ch-title">Imagens e Placeholders</h1>
+
+<table class="tb">
+<tr><th>Elemento</th><th>Placeholder atual</th><th>Substituto esperado</th><th>Prioridade</th></tr>
+<tr><td>Hero Home</td><td>Gradiente CSS (Variação A)</td><td>Foto real de João Pessoa — praia, pôr do sol</td><td>🔴 Alta</td></tr>
+<tr><td>Foto de Murillo</td><td>Avatar "M" circular laranja</td><td>Foto profissional circular — crop object-top</td><td>🔴 Alta</td></tr>
+<tr><td>Hero de cada passeio</td><td>placeholder-passeio.svg</td><td>Foto do passeio específico (22 ao total)</td><td>🟡 Média</td></tr>
+<tr><td>Galeria por passeio</td><td>galeria-0N.svg</td><td>3+ fotos reais por passeio prioritário</td><td>🟡 Média</td></tr>
+<tr><td>OG Image</td><td>og-image.svg</td><td>JPG 1200×630 com foto real</td><td>🟡 Média</td></tr>
+<tr><td>PasseioCard thumbnail</td><td>Gradiente por passeio</td><td>Imagem real via <code>&lt;Image fill&gt;</code> com overlay</td><td>🟡 Média</td></tr>
+<tr><td>Hero categorias</td><td>Gradiente dark</td><td>Foto representativa da categoria</td><td>🟢 Baixa</td></tr>
+</table>
+
+<h2 class="ch-sub">Passeios com subdiretório criado (aguardando foto)</h2>
+<div class="tag-grid">
+  <span class="tag tag-orange">seixas/</span>
+  <span class="tag tag-orange">picaozinho/</span>
+  <span class="tag tag-orange">areia-vermelha/</span>
+  <span class="tag tag-orange">litoral-sul-classico/</span>
+  <span class="tag tag-orange">por-do-sol-jacare/</span>
+</div>
+
+<h2 class="ch-sub">Instruções para substituição</h2>
+<div class="callout callout-info">
+  <strong>Foto de Murillo:</strong> Quando foto chegar, substituir o div circular placeholder por <code>&lt;div className="relative w-[clamp(150px,20vw,220px)] aspect-square rounded-full overflow-hidden border-4 border-white shadow-xl"&gt;&lt;Image src="/images/murillo.jpg" alt="Affonso Murillo" fill className="object-cover object-top" /&gt;&lt;/div&gt;</code>. O badge Cadastur e o layout não mudam.
+</div>
+<div class="callout callout-info">
+  <strong>Hero com foto:</strong> Ativar Variação B no <code>heroVariant</code> tweak. Adicionar <code>&lt;Image src={imageSrc} alt={imageAlt} fill className="object-cover" priority /&gt;</code> + overlay gradiente. Layout intocado.
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     13 — MOTION: PRINCÍPIOS
+════════════════════════════════════════════════════════════════════════════ -->
+<section class="ch" id="s-motion-principios">
+<div class="ch-num">Seção 13</div>
+<h1 class="ch-title">Sistema de Motion — Princípios</h1>
+
+<p class="ch-lead">O motion do site não existe para impressionar. Existe para reduzir atrito, guiar o olhar e aumentar confiança — tudo a serviço de um único objetivo: Murillo no WhatsApp.</p>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0 32px">
+  <div class="principle"><div class="principle-num">1</div><div><div class="principle-title">Movimento com Propósito</div><div class="principle-desc">Cada animação resolve um problema: hierarquia, feedback, orientação. Nada anima por estética isolada.</div></div></div>
+  <div class="principle"><div class="principle-num">2</div><div><div class="principle-title">Leveza Tropical</div><div class="principle-desc">Movimentos suaves e quentes. Curvas de easing que lembram ondas, não mecânica industrial.</div></div></div>
+  <div class="principle"><div class="principle-num">3</div><div><div class="principle-title">Mobile é a Régua</div><div class="principle-desc">Se a animação travar em Android mid-range no 4G, ela não existe. Performance first, sempre.</div></div></div>
+  <div class="principle"><div class="principle-num">4</div><div><div class="principle-title">Conversão Não Interrompe</div><div class="principle-desc">CTAs têm feedback imediato e claro. Nunca animar algo que distraia de "Falar com Murillo".</div></div></div>
+  <div class="principle"><div class="principle-num">5</div><div><div class="principle-title">CSS antes de JS</div><div class="principle-desc"><code>transform</code> e <code>opacity</code> via CSS são seguros e leves. JS apenas quando CSS não resolve.</div></div></div>
+  <div class="principle"><div class="principle-num">6</div><div><div class="principle-title">Acessibilidade Inegociável</div><div class="principle-desc"><code>prefers-reduced-motion</code> desativa tudo. O site funciona 100% sem nenhuma animação.</div></div></div>
+</div>
+
+<h2 class="ch-sub">Hierarquia de Impacto</h2>
+<table class="tb">
+<tr><th>Nível</th><th>Tipo</th><th>Exemplos</th><th>Impacto</th></tr>
+<tr><td><span style="background:rgba(255,107,53,.1);color:#c25520;padding:2px 8px;border-radius:100px;font-size:11px;font-weight:700">Alta</span></td><td>Entrada de seção</td><td>Hero fade-up, CTA Final reveal</td><td>Hierarquia, atenção</td></tr>
+<tr><td><span style="background:rgba(255,107,53,.1);color:#c25520;padding:2px 8px;border-radius:100px;font-size:11px;font-weight:700">Alta</span></td><td>Feedback de CTA</td><td>Botão hover/active, CTASticky slide-up</td><td>Confirmação de ação</td></tr>
+<tr><td><span style="background:rgba(0,78,137,.1);color:#004E89;padding:2px 8px;border-radius:100px;font-size:11px;font-weight:700">Média</span></td><td>Hover em card</td><td>CategoryCard, PasseioCard</td><td>Descoberta, incentivo</td></tr>
+<tr><td><span style="background:rgba(0,78,137,.1);color:#004E89;padding:2px 8px;border-radius:100px;font-size:11px;font-weight:700">Média</span></td><td>Expansão/colapso</td><td>FAQ accordion, menu mobile</td><td>Clareza de estado</td></tr>
+<tr><td><span style="background:rgba(107,114,128,.1);color:#374151;padding:2px 8px;border-radius:100px;font-size:11px;font-weight:700">Baixa</span></td><td>Decorativa</td><td>Blobs hero (estáticos), header blur</td><td>Atmosfera</td></tr>
+</table>
+
+<div class="callout callout-warn">
+  <strong>Sem dependências externas:</strong> Framer Motion e GSAP não estão aprovados. Todo o sistema usa CSS <code>@keyframes</code>, <code>transition</code> e <code>IntersectionObserver</code> nativo. Zero runtime JS de terceiros para motion.
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     14 — MOTION: TIMING & EASING
+════════════════════════════════════════════════════════════════════════════ -->
+<section class="ch" id="s-motion-timing">
+<div class="ch-num">Seção 14</div>
+<h1 class="ch-title">Timing & Easing</h1>
+
+<p class="ch-lead">Quatro curvas, quatro contextos. Derivadas da mesma família de easing suave que evoca o ritmo do mar nordestino — não a rigidez de um dashboard corporativo.</p>
+
+<table class="tb">
+<tr><th>Token CSS</th><th>Duração</th><th>Easing</th><th>Propriedades seguras</th><th>Uso</th></tr>
+<tr><td><code>--motion-instant</code></td><td>100ms</td><td>ease-out</td><td>color, opacity</td><td>Hover de link, nav item, cor</td></tr>
+<tr><td><code>--motion-fast</code></td><td>200ms</td><td>ease-out</td><td>transform, opacity, background</td><td>Botão hover, badge, ícone</td></tr>
+<tr><td><code>--motion-base</code></td><td>320ms</td><td>cubic-bezier(0.22,1,0.36,1)</td><td>transform, opacity</td><td>Card hover, drawer, expand</td></tr>
+<tr><td><code>--motion-slow</code></td><td>600ms</td><td>cubic-bezier(0.22,1,0.36,1)</td><td>transform, opacity</td><td>Fade-up de entrada, CTA final</td></tr>
+</table>
+
+<h2 class="ch-sub">Delays Escalonados (Stagger)</h2>
+<p class="ch-lead" style="margin-bottom:16px">Para sequências de elementos (hero, CTA final), usar delay escalonado de <strong>100ms por elemento</strong>, iniciando em 50ms:</p>
+<table class="tb">
+<tr><th>Elemento</th><th>Delay</th><th>Duração</th><th>Animação</th></tr>
+<tr><td>Badge / Kicker</td><td>50ms</td><td>600ms</td><td>fadeUp</td></tr>
+<tr><td>H1 / Título principal</td><td>150ms</td><td>600ms</td><td>fadeUp</td></tr>
+<tr><td>Subtítulo / Body</td><td>250ms</td><td>600ms</td><td>fadeUp</td></tr>
+<tr><td>CTA Button</td><td>350ms</td><td>600ms</td><td>fadeUp</td></tr>
+<tr><td>Stats / Microcopy</td><td>450ms</td><td>600ms</td><td>fadeUp</td></tr>
+</table>
+
+<h2 class="ch-sub">Propriedades Seguras (GPU compositor)</h2>
+<p style="font-size:13px;color:var(--muted);margin-bottom:12px">Apenas estas propriedades são aprovadas — processadas pelo compositor da GPU, sem layout recalc:</p>
+<div class="tag-grid">
+  <span class="tag tag-orange">transform: translateY()</span>
+  <span class="tag tag-orange">transform: scale()</span>
+  <span class="tag tag-orange">transform: rotate()</span>
+  <span class="tag tag-orange">opacity</span>
+  <span class="tag tag-blue">max-height (só accordion — cuidado com valor final)</span>
+  <span class="tag">color</span>
+  <span class="tag">background-color</span>
+  <span class="tag">box-shadow (hover apenas)</span>
+</div>
+
+<div class="callout callout-warn" style="margin-top:16px">
+  <strong>Nunca animar:</strong> <code>width</code>, <code>height</code>, <code>top</code>, <code>left</code>, <code>right</code>, <code>bottom</code>, <code>margin</code>, <code>padding</code>, <code>font-size</code>, <code>border-radius</code>. Causam layout recalc e CLS.
+</div>
+
+<h2 class="ch-sub">CSS base — globals.css</h2>
+<pre style="background:var(--dark);color:rgba(255,255,255,.82);padding:18px 20px;border-radius:10px;font-family:'DM Mono',monospace;font-size:12px;line-height:1.65;overflow-x:auto;margin:12px 0 24px">:root {
+  --motion-instant: 100ms ease-out;
+  --motion-fast:    200ms ease-out;
+  --motion-base:    320ms cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-slow:    600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Acessibilidade obrigatória */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}</pre>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     15 — MOTION: O QUE ANIMAR
+════════════════════════════════════════════════════════════════════════════ -->
+<section class="ch" id="s-motion-regras">
+<div class="ch-num">Seção 15</div>
+<h1 class="ch-title">O Que Animar — Regras Editoriais</h1>
+
+<p class="ch-lead">Cada decisão abaixo foi tomada com base em impacto na conversão, performance e acessibilidade.</p>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:20px 0 32px">
+<div>
+  <h2 class="ch-sub" style="margin-top:0">✓ Animar</h2>
+  <div class="callout callout-ok" style="margin-bottom:10px"><strong>Entrada de seção</strong> — fadeUp com stagger ao entrar no viewport. Hierarquia e ritmo editorial.</div>
+  <div class="callout callout-ok" style="margin-bottom:10px"><strong>Hover em cards</strong> — translateY(-3 a -5px) + shadow. Incentiva clique sem distrair.</div>
+  <div class="callout callout-ok" style="margin-bottom:10px"><strong>CTA button hover</strong> — scale(1.02) + translateY(-2px) + shadow upgrade. Feedback claro e imediato.</div>
+  <div class="callout callout-ok" style="margin-bottom:10px"><strong>Menu mobile</strong> — max-height + opacity com stagger dos links. Sensação de resposta fluida.</div>
+  <div class="callout callout-ok" style="margin-bottom:10px"><strong>FAQ accordion</strong> — max-height expand + ícone rotate(45deg). Estado claro, sem surpresa.</div>
+  <div class="callout callout-ok"><strong>CTASticky slide-up</strong> — translateY(56px→0) quando hero sai do viewport. Aparece naturalmente.</div>
+</div>
+<div>
+  <h2 class="ch-sub" style="margin-top:0">✕ Não Animar</h2>
+  <div class="callout callout-warn" style="margin-bottom:10px"><strong>Parallax em scroll</strong> — CLS, ruim em mobile, pode causar motion sickness. Proibido no site inteiro.</div>
+  <div class="callout callout-warn" style="margin-bottom:10px"><strong>Loops infinitos</strong> — Blobs do hero ficam estáticos. Sem pulsação constante ou partículas animadas.</div>
+  <div class="callout callout-warn" style="margin-bottom:10px"><strong>Texto letra por letra</strong> — Typewriter, split text, scramble. Ruído visual, atrasa leitura, não converte.</div>
+  <div class="callout callout-warn" style="margin-bottom:10px"><strong>Loading skeleton</strong> — Site é SSR/SSG. Sem dado assíncrono que justifique.</div>
+  <div class="callout callout-warn" style="margin-bottom:10px"><strong>Page transitions complexas</strong> — Fade simples entre páginas (opacity). Sem slide, flip ou morfing.</div>
+  <div class="callout callout-warn"><strong>Animar width/height</strong> — Layout recalc e CLS. Usar apenas max-height com overflow:hidden.</div>
+</div>
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     16 — MOTION: DEMOS POR SEÇÃO
+════════════════════════════════════════════════════════════════════════════ -->
+<section class="ch" id="s-motion-demos">
+<div class="ch-num">Seção 16</div>
+<h1 class="ch-title">Especificações de Motion por Componente</h1>
+
+<p class="ch-lead">Tabela de referência completa. Para demos interativas, consultar o arquivo <code>motion_system_vem_passear_jampa.html</code> em separado.</p>
+
+<h2 class="ch-sub">Hero</h2>
+<table class="tb">
+<tr><th>Elemento</th><th>Animação</th><th>Delay</th><th>Duração</th><th>Trigger</th></tr>
+<tr><td>Badge "João Pessoa"</td><td>fadeUp (translateY 16px→0)</td><td>50ms</td><td>600ms</td><td>Page load</td></tr>
+<tr><td>H1</td><td>fadeUp</td><td>150ms</td><td>600ms</td><td>Page load</td></tr>
+<tr><td>Subtítulo</td><td>fadeUp</td><td>250ms</td><td>600ms</td><td>Page load</td></tr>
+<tr><td>CTA Button</td><td>fadeUp</td><td>350ms</td><td>600ms</td><td>Page load</td></tr>
+<tr><td>Stats bottom</td><td>fadeUp</td><td>450ms</td><td>600ms</td><td>Page load</td></tr>
+<tr><td>Blobs decorativos</td><td>Estáticos — sem animação</td><td>—</td><td>—</td><td>—</td></tr>
+</table>
+
+<h2 class="ch-sub">Header</h2>
+<table class="tb">
+<tr><th>Estado</th><th>Background</th><th>Sombra</th><th>Transição</th></tr>
+<tr><td>No topo (y=0)</td><td>transparent</td><td>Nenhuma</td><td>—</td></tr>
+<tr><td>Em scroll (y&gt;60px)</td><td>rgba(#FAFAF8, 0.95) + backdrop-blur(12px)</td><td>border-bottom 1px rgba(31,41,55,.07)</td><td>300ms ease-out</td></tr>
+</table>
+<p style="font-size:13px;color:var(--muted);margin-bottom:20px">Nav links: <code>color</code> transition 100ms (muted→primary). CTA WhatsApp: <code>translateY(-1px) + shadow</code> em 200ms.</p>
+
+<h2 class="ch-sub">Menu Mobile</h2>
+<table class="tb">
+<tr><th>Elemento</th><th>Animação</th><th>Duração</th><th>Detalhe</th></tr>
+<tr><td>Hamburger → X</td><td>Rotate das barras via transform</td><td>320ms · motion-base</td><td>L1: rotate(45deg) · L2: scaleX(0)+opacity(0) · L3: rotate(-45deg)</td></tr>
+<tr><td>Drawer (container)</td><td>max-height: 0 → 400px</td><td>400ms · spring</td><td>Não animar height diretamente</td></tr>
+<tr><td>Links (stagger)</td><td>opacity + translateY(8px→0)</td><td>300ms por item</td><td>Delays: 50ms, 100ms, 150ms, 200ms, 250ms</td></tr>
+<tr><td>CTA WhatsApp</td><td>opacity + translateY(8px→0)</td><td>300ms</td><td>Delay: 300ms — último</td></tr>
+</table>
+
+<h2 class="ch-sub">Cards de Categoria</h2>
+<table class="tb">
+<tr><th>Estado</th><th>Propriedade</th><th>Valor</th><th>Transição</th></tr>
+<tr><td>Base</td><td>transform</td><td>translateY(0)</td><td>—</td></tr>
+<tr><td>Hover</td><td>transform</td><td>translateY(-4px)</td><td>320ms · motion-base</td></tr>
+<tr><td>Hover</td><td>box-shadow</td><td>0 16px 40px rgba(0,0,0,.2)</td><td>320ms · motion-base</td></tr>
+<tr><td>Hover</td><td>Seta interna</td><td>translate(2px,-2px) + bg brighter</td><td>200ms · ease-out</td></tr>
+<tr><td>Entrada (viewport)</td><td>opacity + translateY</td><td>0,16px → 1,0</td><td>600ms · motion-slow · stagger 80ms</td></tr>
+<tr><td>Mobile (tap)</td><td>transform</td><td>scale(0.98)</td><td>100ms · ease-out</td></tr>
+</table>
+
+<h2 class="ch-sub">Cards de Passeio</h2>
+<table class="tb">
+<tr><th>Estado</th><th>Elemento</th><th>Animação</th><th>Duração</th></tr>
+<tr><td>Hover (desktop)</td><td>Card inteiro</td><td>translateY(-5px) + shadow-xl</td><td>320ms · motion-base</td></tr>
+<tr><td>Hover (desktop)</td><td>Descrição</td><td>opacity(0→1) + translateY(6px→0) + max-height expand</td><td>300ms · ease-out</td></tr>
+<tr><td>Hover (desktop)</td><td>Botão "Ver detalhes"</td><td>scale(1.04)</td><td>150ms · ease-out</td></tr>
+<tr><td>Mobile</td><td>Descrição</td><td>Sempre visível — sem animação</td><td>—</td></tr>
+<tr><td>Entrada</td><td>Card inteiro</td><td>fadeUp com stagger 100ms</td><td>600ms · motion-slow</td></tr>
+</table>
+
+<h2 class="ch-sub">CTASticky</h2>
+<table class="tb">
+<tr><th>Evento</th><th>Animação</th><th>Duração</th><th>Trigger</th></tr>
+<tr><td>Aparecer</td><td>translateY(56px → 0)</td><td>400ms · spring</td><td>hero-section sai do viewport (IntersectionObserver)</td></tr>
+<tr><td>Desaparecer</td><td>translateY(0 → 56px)</td><td>300ms · ease-out</td><td>cta-final entra no viewport</td></tr>
+</table>
+
+<h2 class="ch-sub">FAQ Accordion</h2>
+<table class="tb">
+<tr><th>Elemento</th><th>Estado fechado</th><th>Estado aberto</th><th>Transição</th></tr>
+<tr><td>Ícone (+)</td><td>rotate(0deg)</td><td>rotate(45deg)</td><td>320ms · motion-base</td></tr>
+<tr><td>Ícone fundo</td><td>rgba(primary, .1)</td><td>var(--primary)</td><td>200ms · ease-out</td></tr>
+<tr><td>Resposta</td><td>max-height: 0, opacity: 0</td><td>max-height: 120px, opacity: 1</td><td>400ms · spring</td></tr>
+</table>
+
+<h2 class="ch-sub">CTA Final</h2>
+<table class="tb">
+<tr><th>Elemento</th><th>Estado inicial</th><th>Animação</th><th>Delay</th></tr>
+<tr><td>Kicker</td><td>opacity 0, translateY 8px</td><td>fadeUp</td><td>0ms</td></tr>
+<tr><td>H2</td><td>opacity 0, translateY 8px</td><td>fadeUp</td><td>100ms</td></tr>
+<tr><td>Parágrafo</td><td>opacity 0, translateY 8px</td><td>fadeUp</td><td>200ms</td></tr>
+<tr><td>Botão CTA</td><td>opacity 0, translateY 8px, scale 0.96</td><td>fadeUp + scaleIn</td><td>300ms</td></tr>
+<tr><td>Microcopy</td><td>opacity 0</td><td>fadeIn</td><td>400ms</td></tr>
+</table>
+
+<div class="callout callout-info">
+  <strong>Trigger de entrada:</strong> Todos os elementos acima usam <code>IntersectionObserver</code> com <code>threshold: 0.2</code>. Ao entrar no viewport, adicionar classe <code>.animate-in</code> que dispara as transições CSS. A classe não é removida — a animação roda uma vez.
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     17 — BLOG
+════════════════════════════════════════════════════════════════════════════ -->
+<section class="ch" id="s-blog">
+<div class="ch-num">Seção 18</div>
+<h1 class="ch-title">Blog — Layout Editorial</h1>
+
+<p class="ch-lead">O blog tem função de SEO de longo prazo e autoridade editorial. Hoje: hub mostra "Guias em preparação" + 10 slugs em <code>draft</code>. Artigos só renderizam se <code>status === "published"</code>.</p>
+
+<div class="callout callout-warn">
+  <strong>Regra de publicação:</strong> Nenhum post sobe sem aprovação de Murillo. O campo <code>status: "draft"</code> em <code>data/blog.ts</code> impede renderização automática. O sitemap só inclui posts <code>published</code>.
+</div>
+
+<h2 class="ch-sub">Hub do Blog — /blog/</h2>
+<table class="tb">
+<tr><th>Elemento</th><th>Especificação</th></tr>
+<tr><td>Hero</td><td>H1 + subtítulo editorial · fundo <code>dark</code> (#1A1A2E) · kicker "Guias de Viagem"</td></tr>
+<tr><td>Estado atual (draft)</td><td>Seção "Guias em preparação" com grid de clusters · sem links ativos</td></tr>
+<tr><td>Estado futuro (published)</td><td>Grid de cards de artigo · thumbnail + título + categoria + data de leitura</td></tr>
+<tr><td>Card de artigo</td><td>Thumbnail 16:9 · H3 Lora · categoria pill · "X min de leitura" · hover translateY(-3px)</td></tr>
+<tr><td>Cluster (agrupamento)</td><td>Cards por cluster (ex: "Praias de JP", "Como chegar") · cor de acento por cluster</td></tr>
+</table>
+
+<h2 class="ch-sub">Artigo Individual — /blog/[slug]/</h2>
+<table class="tb">
+<tr><th>Elemento</th><th>Especificação</th></tr>
+<tr><td>Hero</td><td>Thumbnail full-width 16:9 · overlay escuro · H1 + data + tempo de leitura</td></tr>
+<tr><td>Corpo do artigo</td><td>max-width 680px centralizado · Lora 400 para corpo longo · DM Sans para subtítulos intermediários</td></tr>
+<tr><td>Tipografia longa</td><td>font-size 18px desktop / 16px mobile · line-height 1.75 · text-wrap: pretty</td></tr>
+<tr><td>Schema</td><td><code>Article</code> com author, datePublished, image — gerado via <code>lib/seo.ts</code>. Não tocar.</td></tr>
+<tr><td>CTA inline</td><td>Callout laranja no meio do artigo → WhatsApp. Máx 1 por artigo.</td></tr>
+<tr><td>CTA Final</td><td>CTAFinal padrão ao final de cada artigo</td></tr>
+<tr><td>FAQ (se houver)</td><td>FAQAccordion com schema FAQPage injetado</td></tr>
+</table>
+
+<h2 class="ch-sub">Tipografia para leitura longa</h2>
+<table class="tb">
+<tr><th>Elemento</th><th>Família</th><th>Tamanho</th><th>Line-height</th><th>Peso</th></tr>
+<tr><td>Título do artigo (H1)</td><td>Lora</td><td>clamp(32px,5vw,52px)</td><td>1.1</td><td>700</td></tr>
+<tr><td>Subtítulo (H2 no artigo)</td><td>Lora</td><td>26px</td><td>1.2</td><td>700</td></tr>
+<tr><td>Subtítulo (H3 no artigo)</td><td>DM Sans</td><td>18px</td><td>1.3</td><td>700</td></tr>
+<tr><td>Corpo do artigo</td><td>Lora</td><td>18px desktop / 16px mobile</td><td>1.75</td><td>400</td></tr>
+<tr><td>Caption / legenda</td><td>DM Sans</td><td>13px</td><td>1.5</td><td>400</td></tr>
+<tr><td>Metadata (data, leitura)</td><td>DM Sans</td><td>13px</td><td>1.4</td><td>500</td></tr>
+</table>
+
+<div class="callout callout-info">
+  <strong>Decisão tipográfica:</strong> Corpo de artigo longo usa Lora 400 (não DM Sans). Em textos de leitura acima de 300 palavras, serifas aumentam legibilidade e velocidade de leitura. DM Sans fica para UI (labels, CTAs, metadados).
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     18 — MAPA DE 42 ROTAS
+════════════════════════════════════════════════════════════════════════════ -->
+<section class="ch" id="s-rotas">
+<div class="ch-num">Seção 19</div>
+<h1 class="ch-title">Mapa Completo de Rotas — 42 Páginas</h1>
+
+<p class="ch-lead">O site cresceu de ~32 para 42 páginas com a adição do blog. Este é o mapa completo de status e objetivo de cada rota.</p>
+
+<h2 class="ch-sub">Rotas principais</h2>
+<table class="tb">
+<tr><th>Rota</th><th>Tipo</th><th>Status</th><th>Objetivo</th></tr>
+<tr><td><code>/</code></td><td>estática</td><td><span style="color:#1A6B52;font-weight:700">✅ ativa</span></td><td>Home — converter visitante em WhatsApp em ≤30s</td></tr>
+<tr><td><code>/passeios/</code></td><td>estática</td><td><span style="color:#1A6B52;font-weight:700">✅ ativa</span></td><td>Hub — 6 categorias + 22 passeios</td></tr>
+<tr><td><code>/passeios/[categoria]/</code></td><td>SSG ×6</td><td><span style="color:#1A6B52;font-weight:700">✅ ativa</span></td><td>Listagem por categoria com identidade própria</td></tr>
+<tr><td><code>/passeios/[categoria]/[slug]/</code></td><td>SSG ×22</td><td><span style="color:#1A6B52;font-weight:700">✅ ativa</span></td><td>Página individual de venda do passeio</td></tr>
+<tr><td><code>/faq/</code></td><td>estática</td><td><span style="color:#1A6B52;font-weight:700">✅ ativa</span></td><td>Perguntas frequentes — schema FAQPage</td></tr>
+<tr><td><code>/servicos/transfer-24h/</code></td><td>estática</td><td><span style="color:#1A6B52;font-weight:700">✅ ativa</span></td><td>Serviço de transfer — conversão secundária</td></tr>
+<tr><td><code>/blog/</code></td><td>estática</td><td><span style="color:#1A6B52;font-weight:700">✅ ativa</span></td><td>Hub editorial — "Guias em preparação" hoje</td></tr>
+<tr><td><code>/blog/[slug]/</code></td><td>SSG ×10</td><td><span style="color:#d97706;font-weight:700">🟡 draft</span></td><td>Artigos individuais — só renderiza se published</td></tr>
+<tr><td><code>/passeios/piscinas-naturais/calendario/</code></td><td>estática</td><td><span style="color:#d97706;font-weight:700">⚠ interna</span></td><td>Tábua de marés — disallow no robots.txt</td></tr>
+<tr><td><code>/sobre</code></td><td>estática</td><td><span style="color:#dc2626;font-weight:700">❌ 404</span></td><td>Não tem página — só bloco no Footer</td></tr>
+<tr><td><code>/sitemap.xml</code></td><td>gerada</td><td><span style="color:#1A6B52;font-weight:700">✅ ativa</span></td><td>Inclui blog published. Exclui drafts.</td></tr>
+<tr><td><code>/robots.txt</code></td><td>gerada</td><td><span style="color:#1A6B52;font-weight:700">✅ ativa</span></td><td>Bloqueia /sobre/ e /calendario/</td></tr>
+</table>
+
+<h2 class="ch-sub">Liberdade de redesign por rota</h2>
+<table class="tb">
+<tr><th>Rota</th><th>Liberdade visual</th><th>O que não pode mudar</th></tr>
+<tr><td>Home <code>/</code></td><td>Alta — redesign completo aprovado</td><td>Hierarquia das 6 seções, dados de empresa.ts</td></tr>
+<tr><td>Passeio individual</td><td>Alta — composição visual livre</td><td>Nenhum componente removido sem aprovação de Murillo</td></tr>
+<tr><td>Categorias</td><td>Alta — hero próprio, cor da categoria</td><td>Links e slugs</td></tr>
+<tr><td>Blog hub</td><td>Alta — definir layout editorial</td><td>Não publicar posts sem aprovação</td></tr>
+<tr><td>Blog artigo</td><td>Alta — tipografia longa, cards</td><td>Schema Article intocado</td></tr>
+<tr><td>FAQ / Transfer</td><td>Redesign completo permitido</td><td>Semântica do accordion, dados de empresa.ts</td></tr>
+<tr><td>Header / Footer</td><td>Visual sim, estrutura de nav não</td><td>Links aprovados, /sobre fora, dados de empresa.ts</td></tr>
+</table>
+
+<h2 class="ch-sub">SEO já implementado — não tocar</h2>
+<div class="tag-grid">
+  <span class="tag tag-green">generateMetadata em todas as páginas</span>
+  <span class="tag tag-green">Schema LocalBusiness/TravelAgency</span>
+  <span class="tag tag-green">Schema TouristAttraction por passeio</span>
+  <span class="tag tag-green">Schema FAQPage</span>
+  <span class="tag tag-green">Schema BreadcrumbList</span>
+  <span class="tag tag-green">Schema Article (blog published)</span>
+  <span class="tag tag-green">Canonical URLs</span>
+  <span class="tag tag-green">Sitemap dinâmico</span>
+  <span class="tag tag-green">robots.txt configurado</span>
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     15 — TOKENS JSON
+════════════════════════════════════════════════════════════════════════════ -->
+<section class="ch" id="s-tokens">
+<div class="ch-num">Seção 20</div>
+<h1 class="ch-title">Tokens Visuais Finais — JSON</h1>
+
+<p class="ch-lead">Bloco único copiável. Cole no <code>tailwind.config.ts</code> dentro de <code>theme.extend</code>. Cores de categoria aplicar via <code>style=</code> inline — não adicionar ao config.</p>
+
+<div class="json-block" id="json-tokens"><button class="json-copy" onclick="copyJSON()">Copiar</button><span class="k">"colors"</span>: {
+  <span class="k">"primary"</span>:    <span class="s">"#FF6B35"</span>,
+  <span class="k">"accent"</span>:     <span class="s">"#F77F00"</span>,
+  <span class="k">"secondary"</span>:   <span class="s">"#004E89"</span>,
+  <span class="k">"dark"</span>:        <span class="s">"#1A1A2E"</span>,
+  <span class="k">"whatsapp"</span>:    <span class="s">"#25D366"</span>,
+  <span class="k">"bg-soft"</span>:     <span class="s">"#FAFAF8"</span>,
+  <span class="k">"surface"</span>:     <span class="s">"#FFFFFF"</span>,
+  <span class="k">"text"</span>:        <span class="s">"#1F2937"</span>,
+  <span class="k">"muted"</span>:       <span class="s">"#6B7280"</span>
+},
+<span class="k">"fontFamily"</span>: {
+  <span class="k">"serif"</span>:  <span class="s">["var(--font-lora)", "Georgia", "serif"]</span>,
+  <span class="k">"sans"</span>:   <span class="s">["var(--font-dm-sans)", "system-ui", "sans-serif"]</span>,
+  <span class="k">"mono"</span>:   <span class="s">["var(--font-dm-mono)", "monospace"]</span>
+},
+<span class="k">"fontSize"</span>: {
+  <span class="k">"hero"</span>:   <span class="s">["clamp(44px,7.5vw,84px)", { "lineHeight": "1.07", "letterSpacing": "-2px" }]</span>,
+  <span class="k">"h2"</span>:     <span class="s">["clamp(28px,4vw,46px)",   { "lineHeight": "1.12", "letterSpacing": "-1px" }]</span>,
+  <span class="k">"h3"</span>:     <span class="s">["26px",                   { "lineHeight": "1.2",  "letterSpacing": "-0.3px" }]</span>,
+  <span class="k">"kicker"</span>: <span class="s">["11px",                   { "lineHeight": "1.4",  "letterSpacing": "2.5px" }]</span>,
+  <span class="k">"body"</span>:   <span class="s">["17px",                   { "lineHeight": "1.65" }]</span>,
+  <span class="k">"sm"</span>:     <span class="s">["14px",                   { "lineHeight": "1.6" }]</span>
+},
+<span class="k">"boxShadow"</span>: {
+  <span class="k">"cta-orange"</span>: <span class="s">"0 6px 36px rgba(255,107,53,0.45)"</span>,
+  <span class="k">"cta-blue"</span>:   <span class="s">"0 4px 20px rgba(0,78,137,0.3)"</span>,
+  <span class="k">"cta-wa"</span>:     <span class="s">"0 2px 12px rgba(37,211,102,0.3)"</span>,
+  <span class="k">"card"</span>:       <span class="s">"0 4px 24px rgba(0,0,0,0.12)"</span>,
+  <span class="k">"card-hover"</span>: <span class="s">"0 16px 48px rgba(0,0,0,0.22)"</span>
+},
+<span class="k">"maxWidth"</span>: {
+  <span class="k">"container"</span>: <span class="s">"1200px"</span>,
+  <span class="k">"prose"</span>:     <span class="s">"700px"</span>,
+  <span class="k">"cta"</span>:       <span class="s">"680px"</span>
+},
+<span class="k">"transitionTimingFunction"</span>: {
+  <span class="k">"spring"</span>: <span class="s">"cubic-bezier(0.22, 1, 0.36, 1)"</span>
+},
+<span class="k">"transitionDuration"</span>: {
+  <span class="k">"instant"</span>: <span class="s">"100ms"</span>,
+  <span class="k">"fast"</span>:   <span class="s">"200ms"</span>,
+  <span class="k">"base"</span>:   <span class="s">"320ms"</span>,
+  <span class="k">"slow"</span>:   <span class="s">"600ms"</span>
+}
+
+<span style="color:rgba(255,255,255,.25);font-size:11px">/* Cores de categoria — NÃO adicionar ao tailwind.config
+   Aplicar apenas via style= inline nos componentes */
+// cat-pacotes:     #004E89
+// cat-litoral-sul: #1A6B52
+// cat-litoral-norte: #7B4F12
+// cat-piscinas:    #0E5E8A
+// cat-city:        #4A3580
+// cat-inter:       #8B1A3A</span></div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     16 — HANDOFF CLAUDE CODE
+════════════════════════════════════════════════════════════════════════════ -->
+<section class="ch" id="s-handoff">
+<div class="ch-num">Seção 21</div>
+<h1 class="ch-title">Handoff Consolidado — Claude Code</h1>
+
+<div class="callout callout-ok">
+  <strong>Status:</strong> Este handoff é a síntese de todos os documentos anteriores. Para implementação, este é o documento de referência único. Os arquivos <code>Handoff - Home.md</code> e <code>Handoff Claude Code - Home.md</code> permanecem válidos como referência complementar.
+</div>
+
+<h2 class="ch-sub">Stack confirmada</h2>
+<table class="tb">
+<tr><td><strong>Framework</strong></td><td>Next.js 14 · App Router · TypeScript</td></tr>
+<tr><td><strong>Estilos</strong></td><td>Tailwind CSS · sem CSS Modules · sem styled-components</td></tr>
+<tr><td><strong>Fontes</strong></td><td><code>next/font/google</code> — nunca CDN externo</td></tr>
+<tr><td><strong>Imagens</strong></td><td><code>next/image</code> — sempre, sem exceção</td></tr>
+<tr><td><strong>Animações</strong></td><td>CSS @keyframes ou Framer Motion — a escolha é do dev</td></tr>
+</table>
+
+<h2 class="ch-sub">O que implementar</h2>
+<div class="step-list">
+  <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">Fontes via next/font/google</div><div class="step-desc">Lora (400, 700) + DM Sans (400, 500, 600, 700, 800) com display: 'swap'. DM Mono apenas em dev.</div></div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">Tokens no tailwind.config.ts</div><div class="step-desc">Colar o JSON da Seção 15 dentro de theme.extend. Não renomear tokens existentes.</div></div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-title">Criar CategoryCard.tsx</div><div class="step-desc">Grid 1→2→3, fundo por categoria, ícone SVG, hover translateY(-3px). Props: slug, nome, descricao, bg, href.</div></div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><div class="step-title">Criar MurilloBlock.tsx</div><div class="step-desc">Extrair de app/page.tsx. Grid 2 colunas. Avatar placeholder substituível por Image sem alterar layout.</div></div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body"><div class="step-title">Criar WaveDivider.tsx</div><div class="step-desc">SVG wave, height 56px, preserveAspectRatio="none". Props: fill, bg, flip.</div></div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body"><div class="step-title">Redesenhar HeroBlock.tsx</div><div class="step-desc">Variação A ativa. id="hero-section" obrigatório. Badge → H1 → subtítulo → CTA → stats. fadeUp delays.</div></div></div>
+  <div class="step"><div class="step-num">7</div><div class="step-body"><div class="step-title">Redesenhar PasseioCard.tsx</div><div class="step-desc">aspect-ratio 3/4, overlay gradiente, badge categoria, hover descrição expandida. Manter props existentes.</div></div></div>
+  <div class="step"><div class="step-num">8</div><div class="step-body"><div class="step-title">Redesenhar CTAFinal.tsx</div><div class="step-desc">id="cta-final" obrigatório. Variante azul padrão. Blob decorativo. Props mantidas.</div></div></div>
+  <div class="step"><div class="step-num">9</div><div class="step-body"><div class="step-title">Ajustar Footer.tsx + Header.tsx</div><div class="step-desc">Logo VP + subtítulo "em Jampa". Espaçamentos. Sem alterar links ou navegação.</div></div></div>
+</div>
+
+<h2 class="ch-sub">O que NÃO alterar — tabela de proteção</h2>
+<table class="tb">
+<tr><th>Item protegido</th><th>Motivo</th></tr>
+<tr><td>URLs e slugs</td><td>Alterar quebra SEO e sitemap (32 URLs)</td></tr>
+<tr><td>Schema JSON-LD</td><td>TouristAttraction, FAQPage, BreadcrumbList — não tocar</td></tr>
+<tr><td>tailwind.config.ts tokens</td><td>Não renomear — usados em todo o site</td></tr>
+<tr><td>WhatsApp link</td><td>Sempre via <code>empresa.contato.whatsappLink</code> de data/empresa.ts</td></tr>
+<tr><td>Cadastur / Google / WA data</td><td>Não hardcodar em componentes — vir de empresa.ts</td></tr>
+<tr><td>IDs hero-section e cta-final</td><td>CTASticky IntersectionObserver depende</td></tr>
+<tr><td>Lógica isCampoIndisponivel()</td><td>Manter no InfoCard — fallback WhatsApp crítico</td></tr>
+<tr><td>Guarda texto.startsWith("[")</td><td>Manter no DepoimentoBlock — bloqueia placeholder</td></tr>
+<tr><td>Prop isH1 do HeroBlock</td><td>Afeta H1 semântico — SEO</td></tr>
+<tr><td>MareAlert (visibilidade)</td><td>Dado de segurança — nunca ocultar</td></tr>
+<tr><td>Header (links de navegação)</td><td>Aprovados — /sobre e /blog fora do menu</td></tr>
+<tr><td>Props de dados de qualquer componente</td><td>Interface de dados não muda — só o visual</td></tr>
+</table>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     17 — RESUMO COPIÁVEL
+════════════════════════════════════════════════════════════════════════════ -->
+<section class="ch" id="s-resumo">
+<div class="ch-num">Seção 22</div>
+<h1 class="ch-title">Resumo Copiável para Implementação</h1>
+
+<p class="ch-lead">Copie o bloco abaixo e cole no início de qualquer conversa com Claude Code para dar contexto imediato ao desenvolvedor.</p>
+
+<div class="json-block" id="resumo-text" style="white-space:pre-wrap;font-size:11.5px;line-height:1.6"><button class="json-copy" onclick="copyResumo()">Copiar tudo</button><span style="color:rgba(255,255,255,.5)">## CONTEXTO DO PROJETO</span>
+
+Projeto: Vem Passear em Jampa (vempassearjampa.com.br)
+Stack: Next.js 14 · Tailwind CSS · TypeScript · App Router
+Objetivo: Redesign visual completo. 42 páginas. Converter turistas → WhatsApp Murillo.
+Direção visual aprovada: Editorial Tropical Refinado.
+Design System: v1.2 (2026-05-02)
+
+<span style="color:rgba(255,255,255,.5)">## TOKENS PRINCIPAIS</span>
+
+primary:   #FF6B35  → CTAs, badges, acento H1, checkmarks
+accent:    #F77F00  → hover state do primary (nunca como cor principal)
+secondary: #004E89  → links, botão alternativo
+dark:      #1A1A2E  → hero, footer
+whatsapp:  #25D366  → exclusivo canal WhatsApp
+bg-soft:   #FAFAF8  → fundo seções alternadas
+text:      #1F2937  · muted: #6B7280
+
+Fontes: Lora (serif, títulos) + DM Sans (sans, corpo/CTAs) — via next/font/google
+
+<span style="color:rgba(255,255,255,.5)">## DADOS FIXOS (imutáveis)</span>
+
+Avaliação:  ★ 4.9/5 · 61 avaliações Google
+Cadastur:   52.077.577 — ativo
+WhatsApp:   wa.me/558399087830 (via empresa.contato.whatsappLink)
+Fundador:   Affonso Murillo Soledade de Oliveira
+
+<span style="color:rgba(255,255,255,.5)">## COMPONENTES A CRIAR (novos)</span>
+
+CategoryCard.tsx — cards coloridos por categoria (grid 1→2→3)
+MurilloBlock.tsx — extrair de app/page.tsx, grid 2 colunas
+WaveDivider.tsx  — SVG wave entre seções (fill, bg, flip props)
+
+<span style="color:rgba(255,255,255,.5)">## COMPONENTES A REDESENHAR</span>
+
+HeroBlock.tsx   — id="hero-section" obrigatório · badge→H1→subtítulo→CTA→stats
+PasseioCard.tsx — aspect-ratio 3/4 · overlay gradiente · hover descrição
+CTAFinal.tsx    — id="cta-final" obrigatório · variante azul padrão · blob deco
+MurilloBlock.tsx — avatar placeholder substituível por Image sem mudar layout
+Footer/Header   — apenas visual do logo VP + "em Jampa"
+
+<span style="color:rgba(255,255,255,.5)">## NÃO ALTERAR (crítico)</span>
+
+- URLs e slugs (quebra SEO)
+- Schema JSON-LD (TouristAttraction, FAQPage, BreadcrumbList)
+- IDs hero-section e cta-final (CTASticky IntersectionObserver)
+- Props de dados de todos os componentes
+- Lógica isCampoIndisponivel() no InfoCard
+- Guarda texto.startsWith("[") no DepoimentoBlock
+- Links da navegação do Header (sem /sobre, sem /blog)
+- Dados de empresa.ts (não hardcodar)
+
+<span style="color:rgba(255,255,255,.5)">## SISTEMA DE MOTION</span>
+
+Sem Framer Motion, sem GSAP. Apenas CSS + IntersectionObserver.
+Tokens: --motion-instant(100ms) · --motion-fast(200ms) · --motion-base(320ms) · --motion-slow(600ms)
+Easing: cubic-bezier(0.22,1,0.36,1) para base e slow ("onda nordestina")
+Hero: fade-up escalonado 5 elementos, delays 50ms→450ms
+Cards: translateY(-4px) hover · descrição max-height expand no hover
+prefers-reduced-motion: desativa tudo — obrigatório em globals.css
+
+<span style="color:rgba(255,255,255,.5)">## BLOG (/blog/)</span>
+
+Hub ativo, 10 slugs em draft — só sobem com status: "published" + aprovação Murillo.
+Schema Article gerado via lib/seo.ts — não tocar.
+Tipografia longa: Lora 400 18px, line-height 1.75 para corpo de artigo.
+
+<span style="color:rgba(255,255,255,.5)">## PLACEHOLDERS PENDENTES (não bloqueia desenvolvimento)</span>
+
+- Foto real de João Pessoa → Hero variação B
+- Foto profissional de Murillo → substituir avatar "M" circular
+- Fotos por passeio → substituir gradientes nos PasseioCards
+- Conteúdo dos 10 posts do blog → aguarda Murillo escrever
+Todos os layouts funcionam agora com placeholders CSS.</div>
+
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     18 — CHECKLIST
+════════════════════════════════════════════════════════════════════════════ -->
+<section class="ch" id="s-checklist">
+<div class="ch-num">Seção 23</div>
+<h1 class="ch-title">Checklist Final de Validação</h1>
+
+<p class="ch-lead">Marque cada item após validar em produção. Use axe DevTools para os itens de acessibilidade.</p>
+
+<h2 class="ch-sub">Visual</h2>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">H1 do Hero quebra corretamente — 44px mobile, 84px desktop</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text"><code>&lt;span className="text-primary"&gt;João Pessoa?&lt;/span&gt;</code> em laranja no H1</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Badge "João Pessoa, Paraíba" com ponto laranja visível</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Stats bottom do Hero separados por border-t white/10</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">6 cards de categoria com cor distinta cada (não repetida)</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Cards de passeio com aspect-ratio 3/4 em todos os breakpoints</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Descrição do card de passeio <strong>oculta</strong> no estado normal — aparece só no hover</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Avatar de Murillo com badge Cadastur flutuando bottom-right</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Blockquote com border-left: 3px solid #FF6B35</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">CTA Final com blob decorativo visível (não puro)</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">WaveDivider presente antes e depois da seção de passeios</div></div>
+
+<h2 class="ch-sub">Funcional</h2>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text"><code>id="hero-section"</code> presente no HeroBlock (obrigatório para CTASticky)</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text"><code>id="cta-final"</code> presente no CTAFinal</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">CTASticky aparece após hero sair do viewport e some ao ver CTAFinal</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Todos os links WhatsApp abrem <code>wa.me/558399087830</code></div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Nenhum link para /sobre no menu nem no footer</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Menu mobile abre/fecha corretamente com tap target ≥ 44px</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Hover nos cards funciona em desktop; sem hover state quebrado em mobile</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">DepoimentoBlock não renderiza quando texto começa com "["</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">InfoCard: campos indisponíveis exibem link "Consultar pelo WhatsApp"</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">MareAlert presente e visível em passeios com dependeDeMare: true</div></div>
+
+<h2 class="ch-sub">Mobile-first</h2>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Padding horizontal mínimo px-6 (24px) em todas as seções</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Grid de categorias: 1 coluna 375px, 2 colunas 768px, 3 colunas 1024px</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Botão CTA Hero: full-width em mobile ou flex-wrap no container</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Tap targets: todos os botões e links com altura mínima 44px</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Fontes legíveis sem zoom em 375px (mínimo 14px para body)</div></div>
+
+<h2 class="ch-sub">SEO / Dados</h2>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">H1 único por página — apenas no Hero</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Dados de empresa.ts não hardcoded nos componentes</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Schema JSON-LD intacto — validar com Google Rich Results Test</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text"><code>next/image</code> com <code>priority</code> no HeroBlock</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Alt text em todas as imagens (descritivo para conteúdo, "" para decorativas)</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Sitemap contém 32 URLs. Nenhuma URL foi alterada.</div></div>
+
+<h2 class="ch-sub">Motion</h2>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text"><code>prefers-reduced-motion</code> desativa todas as animações em <code>globals.css</code></div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Hero fade-up: 5 elementos com delays 50ms → 450ms escalonados</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Cards de categoria: <code>translateY(-4px)</code> + shadow no hover desktop</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Cards de passeio: descrição <strong>oculta</strong> no base, expande max-height no hover</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Menu mobile: hamburger→X com rotate CSS, links com stagger, drawer max-height</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">FAQ accordion: ícone rotate(45deg) + max-height expand na resposta</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">CTASticky: <code>translateY(56px→0)</code> ao hero sair + some ao CTA Final entrar</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Blobs do hero: estáticos — sem <code>@keyframes</code></div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Nenhum parallax, width/height animado, loop infinito ou typewriter</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Token <code>accent: #F77F00</code> aplicado apenas em hover states do primary</div></div>
+
+<h2 class="ch-sub">Blog</h2>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Hub <code>/blog/</code> ativo com estado "Guias em preparação" — sem posts visíveis</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Posts só renderizam se <code>status === "published"</code> em <code>data/blog.ts</code></div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Sitemap inclui apenas posts published — não expõe drafts</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Schema <code>Article</code> via <code>lib/seo.ts</code> intocado</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Corpo de artigo usa Lora 400 18px / line-height 1.75 (não DM Sans)</div></div>
+
+<h2 class="ch-sub">Código</h2>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Nenhum console.log ou TODO no código entregue</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Props existentes de todos os componentes mantidas</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">"use client" mantido nos componentes que já tinham (Header, CTASticky, FAQAccordion)</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Lora e DM Sans carregadas via next/font/google — não CDN</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">DM Mono <strong>removida</strong> em produção (era apenas para placeholders de dev)</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">prefers-reduced-motion implementado em todas as animações CSS</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Lighthouse Performance ≥ 90 mobile</div></div>
+<div class="cl-item"><div class="cl-box"></div><div class="cl-text">Lighthouse Accessibility ≥ 95</div></div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     19 — DEPENDÊNCIAS HUMANAS
+════════════════════════════════════════════════════════════════════════════ -->
+<section class="ch" id="s-deps">
+<div class="ch-num">Seção 24</div>
+<h1 class="ch-title">O que Depende de Foto Real ou Decisão Humana</h1>
+
+<p class="ch-lead">Tudo nesta seção <strong>não bloqueia o desenvolvimento</strong>. O site vai ao ar com placeholders e é atualizado quando os ativos chegarem.</p>
+
+<h2 class="ch-sub">🔴 Alta prioridade — impacto na conversão</h2>
+<table class="tb">
+<tr><th>Item</th><th>Bloco</th><th>Ação necessária</th><th>Responsável</th></tr>
+<tr><td><strong>Foto hero da Home</strong></td><td>HeroSection</td><td>Foto horizontal de João Pessoa — praia, mar turquesa, ou pôr do sol em Jacaré. Mínimo 2400×1600px. Ativar variação B no componente.</td><td>Murillo fornecer</td></tr>
+<tr><td><strong>Foto de Murillo</strong></td><td>MurilloSection</td><td>Foto profissional circular. Crop vertical, rosto no terço superior. Substituir div "M" por &lt;Image&gt;.</td><td>Murillo fotografar</td></tr>
+</table>
+
+<h2 class="ch-sub">🟡 Média prioridade — melhora a experiência</h2>
+<table class="tb">
+<tr><th>Item</th><th>Quantidade</th><th>Especificação técnica</th><th>Responsável</th></tr>
+<tr><td>Fotos dos passeios prioritários</td><td>3 passeios × 1 foto hero</td><td>seixas, areia-vermelha, litoral-sul-classico. 1200×900px mínimo.</td><td>Murillo fornecer ou contratar fotógrafo</td></tr>
+<tr><td>OG Image social</td><td>1 imagem</td><td>JPG 1200×630. Foto atraente de JP + logo VP + nome. Substituir og-image.svg.</td><td>Design executar após foto hero</td></tr>
+<tr><td>Galeria por passeio</td><td>5 passeios prioritários × 3 fotos</td><td>Subdiretórios criados: seixas/, picaozinho/, areia-vermelha/, litoral-sul-classico/, por-do-sol-jacare/</td><td>Murillo fornecer</td></tr>
+</table>
+
+<h2 class="ch-sub">🟢 Baixa prioridade — pode aguardar</h2>
+<table class="tb">
+<tr><th>Item</th><th>Decisão necessária</th></tr>
+<tr><td>Wordmark / logo vetorial</td><td>Contratar designer quando funil WhatsApp confirmar &gt;50 leads/mês</td></tr>
+<tr><td>Fotos para categorias (hero)</td><td>Foto representativa por categoria (6 fotos). Gradiente atual funciona bem.</td></tr>
+<tr><td>Fotos dos demais 17 passeios</td><td>Depois de validar os 5 prioritários</td></tr>
+<tr><td>Dark mode</td><td>Tokens previstos na Seção 03 — implementar apenas na Fase 2</td></tr>
+<tr><td>Avaliações Google novas</td><td>Número de avaliações aumenta organicamente. Atualizar empresa.ts conforme.</td></tr>
+<tr><td><strong>Conteúdo do blog (10 posts)</strong></td><td>Murillo precisa escrever ou aprovar cada artigo. Hub já está no ar. Posts só sobem com <code>status: "published"</code>.</td></tr>
+<tr><td><strong>Thumbnails do blog</strong></td><td>1 foto por artigo (16:9). Podem ser as mesmas fotos dos passeios — reutilizar quando disponível.</td></tr>
+</table>
+
+<h2 class="ch-sub">⚠ Decisões de conteúdo (Murillo)</h2>
+<div class="callout callout-warn">
+  <strong>Só Murillo pode decidir:</strong>
+  <ul style="margin-top:8px;padding-left:18px;display:flex;flex-direction:column;gap:5px;font-size:13.5px">
+    <li>Novos passeios a incluir no <code>data/passeios.ts</code></li>
+    <li>Preços e durações — não alterar sem confirmação</li>
+    <li>Depoimentos reais de clientes para <code>DepoimentoBlock</code></li>
+    <li>Avaliações Google a exibir em <code>ReviewsBlock</code></li>
+    <li>Foto pessoal autorizada para o site</li>
+    <li>Copy nova para qualquer seção</li>
+  </ul>
+</div>
+
+<div style="margin-top:40px;padding:24px;background:var(--dark);border-radius:14px;text-align:center">
+  <div style="font-family:'Lora',serif;font-size:22px;font-weight:700;color:white;margin-bottom:8px">Design System v1.1 — Finalizado</div>
+  <div style="font-family:'DM Sans',sans-serif;font-size:14px;color:rgba(255,255,255,.5);margin-bottom:20px">Vem Passear em Jampa · vempassearjampa.com.br · v1.2 · 2026-05-02</div>
+  <div style="display:inline-flex;align-items:center;gap:10px;background:var(--primary);color:white;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;padding:14px 24px;border-radius:100px;box-shadow:0 6px 36px rgba(255,107,53,.45)">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.553 4.118 1.522 5.848L.057 23.292a.5.5 0 0 0 .651.651l5.444-1.465A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.693-.535-5.209-1.462l-.374-.224-3.876 1.044 1.044-3.876-.224-.374A9.954 9.954 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+    Pronto para implementação
+  </div>
+</div>
+</section>
+
+</div><!-- .main -->
+
+<!-- ══ TOAST ══ -->
+<div class="toast" id="toast"></div>
+
+<script>
+// Active nav
+const sections = document.querySelectorAll('.ch');
+const navLinks  = document.querySelectorAll('.nav a');
+const observer  = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.nav a[href="#${e.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { threshold: 0.2, rootMargin: '-60px 0px -40% 0px' });
+sections.forEach(s => observer.observe(s));
+
+// Toast
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+// Copy color
+function copy(val) {
+  navigator.clipboard.writeText(val).then(() => showToast('Copiado: ' + val));
+}
+
+// Copy JSON tokens
+function copyJSON() {
+  const block = document.getElementById('json-tokens');
+  const text = block.innerText.replace('Copiar','').trim();
+  navigator.clipboard.writeText(text).then(() => showToast('Tokens JSON copiados!'));
+}
+
+// Copy resumo
+function copyResumo() {
+  const block = document.getElementById('resumo-text');
+  const text = block.innerText.replace('Copiar tudo','').trim();
+  navigator.clipboard.writeText(text).then(() => showToast('Resumo copiado!'));
+}
+
+// Motion preview
+function playMo(id) {
+  const el = document.getElementById(id);
+  el.classList.remove('running');
+  void el.offsetWidth; // reflow
+  el.classList.add('running');
+}
+</script>
+
+</body>
+</html>
