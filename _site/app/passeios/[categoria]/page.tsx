@@ -22,7 +22,7 @@ const CATEGORIAS_META: Record<string, { nome: string; emoji: string; descricao: 
     nome: "Pacotes",
     emoji: "🎒",
     descricao:
-      "Combine os melhores passeios de João Pessoa em um só roteiro. Praias, piscinas naturais e cultura — tudo com transfer e guia credenciado.",
+      "Combine os melhores passeios de João Pessoa em um só roteiro. Praias, piscinas naturais e cultura — tudo com transfer e condutores credenciados.",
   },
   "litoral-sul": {
     nome: "Litoral Sul",

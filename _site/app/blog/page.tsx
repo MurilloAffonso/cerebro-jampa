@@ -18,7 +18,7 @@ const WA_URL = `${empresa.contato.whatsappLink}?text=Oi%2C+quero+informações+s
 export const metadata: Metadata = {
   title: "Blog — Guias de João Pessoa | Vem Passear em Jampa",
   description:
-    "Guias práticos sobre João Pessoa: piscinas naturais, roteiros, marés e dicas locais escritas por Murillo, guia local.",
+    "Guias práticos sobre João Pessoa: piscinas naturais, roteiros, marés e dicas locais com orientação direta de Murillo.",
   alternates: { canonical: "/blog" },
   openGraph: {
     title: "Blog — Guias de João Pessoa",
@@ -47,7 +47,7 @@ export default function BlogIndexPage() {
             Guias de João Pessoa por quem vive aqui
           </h1>
           <p className="text-gray-600 text-lg leading-relaxed max-w-2xl">
-            Conteúdo escrito por Murillo, guia local e fundador da Vem Passear em Jampa.
+            Conteúdo criado por Murillo, fundador da Vem Passear em Jampa — atendimento direto, orientação local e curadoria dos passeios.
             Sem clichê turístico. Só o que funciona de verdade.
           </p>
         </div>

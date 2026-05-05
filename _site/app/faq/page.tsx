@@ -53,7 +53,7 @@ const FAQ_ITEMS = [
   {
     pergunta: "Os passeios são seguros? Tem colete salva-vidas?",
     resposta:
-      "Sim. Colete salva-vidas disponível a bordo durante todo o passeio — recomendado para não-nadadores e crianças. Murillo é guia credenciado com Cadastur ativo (número 52.077.577). A operação segue normas de segurança marítima e os passeios são conduzidos por profissionais capacitados.",
+      "Sim. Colete salva-vidas disponível a bordo durante todo o passeio — recomendado para não-nadadores e crianças. A Vem Passear em Jampa tem Cadastur ativo (número 52.077.577). A operação segue normas de segurança marítima e os passeios são conduzidos por profissionais regularizados e capacitados.",
   },
   {
     pergunta: "É possível fazer um passeio privativo (só para o meu grupo)?",

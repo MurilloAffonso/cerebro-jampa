@@ -102,7 +102,7 @@ export const passeios: Passeio[] = [
       "3 dias completos: praias do sul com quadriciclo, história e pôr do sol no norte, mergulho nas piscinas do Seixas.",
     incluso: [
       "Transfer (Tambaú, Cabo Branco, Manaíra, Bessa)",
-      "Guia credenciado em todos os dias",
+      "Condutores credenciados em todos os dias",
       "Quadriciclo (1 máquina)",
       "Catamarã Pôr do Sol do Jacaré",
     ],
@@ -120,7 +120,7 @@ export const passeios: Passeio[] = [
       {
         pergunta: "O que está incluso no Pacote 3 Dias Completo?",
         resposta:
-          "Transfer, guia credenciado nos 3 dias, quadriciclo (1 máquina) no Litoral Sul e catamarã no Pôr do Sol do Jacaré. Alimentação não está inclusa.",
+          "Transfer, acompanhamento com condutores credenciados nos 3 dias, quadriciclo (1 máquina) no Litoral Sul e catamarã no Pôr do Sol do Jacaré. Alimentação não está inclusa.",
       },
       {
         pergunta: "Criança paga?",
@@ -147,7 +147,7 @@ export const passeios: Passeio[] = [
       "O melhor de João Pessoa em 3 dias com o melhor custo-benefício da cidade.",
     incluso: [
       "Transfer (Tambaú, Cabo Branco, Manaíra, Bessa)",
-      "Guia credenciado nos 3 dias",
+      "Condutores credenciados nos 3 dias",
     ],
     naoIncluso: [
       "Alimentação",
@@ -246,7 +246,7 @@ export const passeios: Passeio[] = [
     ],
     incluso: [
       "Transfer (Tambaú, Cabo Branco, Manaíra, Bessa)",
-      "Guia credenciado em todas as praias",
+      "Condutores credenciados em todas as praias",
     ],
     naoIncluso: ["Alimentação"],
     observacoes:
@@ -737,7 +737,7 @@ export const passeios: Passeio[] = [
       "Bar e cozinha a bordo",
       "Banheiro a bordo",
       "Som com microfone",
-      "Orientação do guia local (Murillo ou equipe)",
+      "Orientação e atendimento (Murillo ou equipe)",
     ],
     naoIncluso: [
       "Alimentação (leve lanche e água ou compre a bordo)",
@@ -957,7 +957,7 @@ export const passeios: Passeio[] = [
       "Conhecer a 3ª cidade mais antiga do Brasil: Niemeyer, ponto mais oriental, patrimônio colonial e praças históricas.",
     incluso: [
       "Transfer (Tambaú, Cabo Branco, Manaíra, Bessa)",
-      "Guia credenciado",
+      "Condutores credenciados",
     ],
     naoIncluso: [
       "Entrada Centro Cultural São Francisco",

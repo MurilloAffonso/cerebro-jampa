@@ -40,7 +40,7 @@ export function TrustBlock() {
             <span className="text-2xl flex-shrink-0" aria-hidden="true">👤</span>
             <div>
               <h3 className="text-white font-bold text-base md:text-lg">
-                Murillo — Guia Local
+                Murillo — Atendimento e Curadoria
               </h3>
               <p className="text-gray-300 text-sm mt-1 leading-relaxed">
                 Conhece cada maré, cada coral e cada canto de João Pessoa. Atendimento direto no WhatsApp — você fala comigo, não com atendente.
