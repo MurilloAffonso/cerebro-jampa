@@ -1,7 +1,9 @@
 # Jampa Jarvis — Conexão com Skills do Vault
 
-**Versão:** 0.1
+**Versão:** 0.2
 **Criado:** 2026-04-27
+**Atualizado:** 2026-05-04 — sincronizado com `skills/manifest.json` (21 skills)
+**Fonte de verdade do inventário:** `skills/manifest.json`
 
 Define como o Jarvis seleciona, conecta e executa as skills profissionais do vault (`skills/`).
 
@@ -80,6 +82,25 @@ O orquestrador (`skills/orquestrador-projeto-turismo/`) é o **ponto de entrada 
 | Validar padrão visual | diretor-visual-turismo | Não |
 | Campanha completa (pauta + visual + copy) | orquestrador → social-media-editorial-turismo + diretor-visual-turismo + copywriter-vendas | Sim |
 
+### Squad Comercial
+
+| Objetivo | Skill | Orquestrador |
+|----------|-------|--------------|
+| Roteamento de objetivo comercial vago | agente-comercial-jampa | Não (é o próprio router) |
+| Qualificar lead novo do WhatsApp | agente-comercial-jampa → qualificacao-lead | Não |
+| Montar proposta para lead qualificado | agente-comercial-jampa → proposta-passeio | Não |
+| Responder objeção identificada | agente-comercial-jampa → objecoes-turismo-jampa | Não |
+| Lead sem resposta há 24h+ (sequência T1-T4) | agente-comercial-jampa → follow-up-comercial | Não |
+| Confirmação D-1 antes do passeio | agente-atendimento-pre-passeio | Não |
+| Pós-venda D+1 (agradecimento) e D+3 (avaliação) | agente-pos-venda | Não |
+
+### Dados / Operacional
+
+| Objetivo | Skill | Orquestrador |
+|----------|-------|--------------|
+| Relatório semanal de KPIs (sexta 17h) | painel-kpi-vempassear | Não |
+| Briefing + prompt para Lovable.dev (experimental) | lovable-site-builder | Não |
+
 ---
 
 ## Como Claude Code Executa uma Tarefa com Skills
@@ -100,26 +121,36 @@ O orquestrador (`skills/orquestrador-projeto-turismo/`) é o **ponto de entrada 
 
 ## Regras de Uso de Skills por Risco
 
-### Tarefas AUTO
+> **Nota:** lista derivada de `skills/manifest.json` — campo `risco` por skill. Doctor (`node _automacao/scripts/jampa-doctor.mjs`) detecta divergência.
 
-Skills que podem ser executadas sem aprovação:
-- `jarvis-status` — apenas leitura e log
-- `social-media-editorial-turismo` — gera rascunhos locais
+### Tarefas AUTO (executam sem aprovação)
+
+Apenas leitura, planejamento ou rascunho local — não tocam em produção:
+- `orquestrador-projeto-turismo` — só planeja, nunca executa
 - `radar-concorrentes-social` — pesquisa pública + relatório local
 - `captura-referencias-visuais` — leitura + relatório local
-- `orquestrador-projeto-turismo` — apenas planejamento, sem executar outras skills
-- `aprendizado-semanal` — lê logs, gera relatório
+- `social-media-editorial-turismo` — gera pautas locais
+- `agente-comercial-jampa` — apenas roteia (router)
+- `qualificacao-lead` — gera ficha local em rascunho
+- `painel-kpi-vempassear` — relatório a partir do CSV
+- `lovable-site-builder` — gera briefing/prompt em arquivos locais
 
-### Tarefas APROVAÇÃO
+### Tarefas APROVAÇÃO (preparam staging, Murillo aprova antes de aplicar)
 
-Skills que sempre exigem aprovação antes de aplicar resultado externo:
+Tocam em produção, no site ou em mensagem que vai para cliente:
+- `estrategista-de-site` — define arquitetura que vira código
+- `ux-ui-mobile-first` — wireframe que vira código
+- `copywriter-vendas` — copy em produção
+- `seo-local-turismo` — meta tags, schemas
+- `diretor-visual-turismo` — validação de padrão visual
+- `briefing-designer` — entrega para terceiro
 - `programador-de-site` — altera `_site/`
-- `tabua-mares-importar` — altera `_site/data/tabua-mares.ts`
-- `seo-local-turismo` — pode alterar schemas e metatags
-- `copywriter-vendas` — pode alterar copy em produção
-- `briefing-designer` — produz entrega para terceiro
-- `diretor-visual-turismo` — valida e aprova padrão visual
-- `ux-ui-mobile-first` — pode gerar wireframe que vira código
+- `tabua-mares-turismo` — altera `_site/data/tabua-mares.ts`
+- `proposta-passeio` — mensagem para cliente
+- `objecoes-turismo-jampa` — mensagem para cliente
+- `follow-up-comercial` — mensagem para cliente
+- `agente-atendimento-pre-passeio` — mensagem para cliente
+- `agente-pos-venda` — mensagem para cliente
 
 ### Skills NUNCA executam em tarefas BLOQUEADO
 
@@ -162,19 +193,30 @@ O Jarvis cria automaticamente uma nova tarefa-filho com:
 
 ---
 
-## Referência de Skills Disponíveis
+## Referência de Skills Disponíveis (21)
 
-| Skill | Pasta | SKILL.md |
-|-------|-------|----------|
-| orquestrador-projeto-turismo | `skills/orquestrador-projeto-turismo/` | Leia antes de objetivos com 2+ skills |
-| estrategista-de-site | `skills/estrategista-de-site/` | Arquitetura, URLs, CRO |
-| ux-ui-mobile-first | `skills/ux-ui-mobile-first/` | Wireframe visual, mobile-first |
-| copywriter-vendas | `skills/copywriter-vendas/` | Copy AIDA, FAQ, provas sociais |
-| seo-local-turismo | `skills/seo-local-turismo/` | Keywords, schemas, meta tags |
-| briefing-designer | `skills/briefing-designer/` | Specs para designer/Figma |
-| programador-de-site | `skills/programador-de-site/` | Código Next.js, componentes |
-| diretor-visual-turismo | `skills/diretor-visual-turismo/` | Padrão visual, paleta |
-| radar-concorrentes-social | `skills/radar-concorrentes-social/` | Análise de concorrentes |
-| captura-referencias-visuais | `skills/captura-referencias-visuais/` | Assets de referência |
-| social-media-editorial-turismo | `skills/social-media-editorial-turismo/` | Calendário, pautas Instagram |
-| tabua-mares-turismo | `skills/tabua-mares-turismo/` | Regras operacionais de maré |
+> Tabela derivada de `skills/manifest.json`. Para detalhe completo (gatilhos, arquivos relacionados, pipeline), ler o manifest. Visão humana com pipelines em `skills/README.md`.
+
+| Skill | Categoria | Risco | SKILL.md |
+|-------|-----------|-------|----------|
+| orquestrador-projeto-turismo | orquestracao | auto | `skills/orquestrador-projeto-turismo/SKILL.md` |
+| estrategista-de-site | site | aprovacao | `skills/estrategista-de-site/SKILL.md` |
+| ux-ui-mobile-first | site | aprovacao | `skills/ux-ui-mobile-first/SKILL.md` |
+| copywriter-vendas | site | aprovacao | `skills/copywriter-vendas/SKILL.md` |
+| seo-local-turismo | site | aprovacao | `skills/seo-local-turismo/SKILL.md` |
+| diretor-visual-turismo | visual | aprovacao | `skills/diretor-visual-turismo/SKILL.md` |
+| briefing-designer | site | aprovacao | `skills/briefing-designer/SKILL.md` |
+| programador-de-site | site | aprovacao | `skills/programador-de-site/SKILL.md` |
+| captura-referencias-visuais | visual | auto | `skills/captura-referencias-visuais/SKILL.md` |
+| radar-concorrentes-social | social | auto | `skills/radar-concorrentes-social/SKILL.md` |
+| social-media-editorial-turismo | social | auto | `skills/social-media-editorial-turismo/SKILL.md` |
+| tabua-mares-turismo | operacional | aprovacao | `skills/tabua-mares-turismo/SKILL.md` |
+| lovable-site-builder | site (experimental) | auto | `skills/lovable-site-builder/SKILL.md` |
+| agente-comercial-jampa | comercial (router) | auto | `skills/agente-comercial-jampa/SKILL.md` |
+| qualificacao-lead | comercial | auto | `skills/qualificacao-lead/SKILL.md` |
+| proposta-passeio | comercial | aprovacao | `skills/proposta-passeio/SKILL.md` |
+| objecoes-turismo-jampa | comercial | aprovacao | `skills/objecoes-turismo-jampa/SKILL.md` |
+| follow-up-comercial | comercial | aprovacao | `skills/follow-up-comercial/SKILL.md` |
+| agente-atendimento-pre-passeio | comercial | aprovacao | `skills/agente-atendimento-pre-passeio/SKILL.md` |
+| agente-pos-venda | comercial | aprovacao | `skills/agente-pos-venda/SKILL.md` |
+| painel-kpi-vempassear | dados | auto | `skills/painel-kpi-vempassear/SKILL.md` |

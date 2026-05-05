@@ -273,23 +273,31 @@ O que falta confirmar com Murillo:
 
 ### `skills/` — ESPECIALISTAS TEMÁTICOS + ORQUESTRADOR
 
-**Contém:** 10 skills especializadas + 1 orquestrador central  
+**Contém:** 21 skills (1 orquestrador + 7 site + 3 social + 7 squad comercial + 2 operacional/dados + 1 experimental)
+**Fonte de verdade:** `skills/manifest.json` (registro canônico — id, categoria, papel, status, risco, gatilhos, arquivos relacionados, pipeline)
+**Visão humana:** `skills/README.md` (tabelas + pipelines A–M)
 **Ponto de entrada:** `orquestrador-projeto-turismo/SKILL.md` (consultar primeiro para objetivos multi-skill)
 
 **Regra:** Para qualquer objetivo complexo, acionar orquestrador primeiro. Para objetivos simples (1 skill óbvia), ir direto.
 
-**Inventário:**
-- `orquestrador-projeto-turismo` → Coordena o uso de todas as outras skills
-- `estrategista-de-site` → Estrutura, URLs, CRO
-- `ux-ui-mobile-first` → Wireframe, responsividade
-- `copywriter-vendas` → Copy AIDA, conversão
-- `seo-local-turismo` → Keywords, schema, on-page
-- `briefing-designer` → Comunicar ao designer
-- `programador-de-site` → Implementar em Next.js
-- `diretor-visual-turismo` → Direção e padrões visuais
-- `social-media-editorial-turismo` → Calendário e pautas Instagram
-- `radar-concorrentes-social` → Inteligência competitiva
-- `captura-referencias-visuais` → Biblioteca de referências visuais
+**Inventário (21 ativas):**
+
+*Orquestração (1):* `orquestrador-projeto-turismo`
+
+*Site (7):* `estrategista-de-site`, `ux-ui-mobile-first`, `copywriter-vendas`, `seo-local-turismo`, `diretor-visual-turismo`, `briefing-designer`, `programador-de-site`
+
+*Social (3):* `radar-concorrentes-social`, `captura-referencias-visuais`, `social-media-editorial-turismo`
+
+*Squad Comercial (7):* `agente-comercial-jampa` (router), `qualificacao-lead`, `proposta-passeio`, `objecoes-turismo-jampa`, `follow-up-comercial`, `agente-atendimento-pre-passeio`, `agente-pos-venda`
+
+*Operacional / Dados (2):* `tabua-mares-turismo`, `painel-kpi-vempassear`
+
+*Experimental (1):* `lovable-site-builder`
+
+**Skills externas (fora do diretório padrão):**
+- `.claude/skills/executar-issue/` — skill local de execução de issue. Decisão pendente: mover para `skills/` ou manter como skill local do Claude Code. Doctor (`node _automacao/scripts/jampa-doctor.mjs`) emite aviso enquanto não decidir.
+
+**Validação:** rodar `node _automacao/scripts/jampa-doctor.mjs` para conferir sincronia entre pastas, manifest, schema Jarvis e CLAUDE.md.
 
 ---
 

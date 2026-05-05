@@ -102,31 +102,54 @@ npm run lint         # ESLint
 - Consultar `skills/orquestrador-projeto-turismo/SKILL.md` antes de objetivos amplos
 - O orquestrador gera plano → Murillo aprova → skills executam
 
-### Skills Especializadas (10)
+### Skills Especializadas (21)
 
-**Pipeline de Site:**
+**Fonte de verdade:** `skills/manifest.json` — registro canônico (id, categoria, papel, status, risco, gatilhos, arquivos relacionados, pipeline). Cada skill tem `SKILL.md` próprio em `skills/[nome]/`. Visão humana em `skills/README.md`.
 
-| Skill | Responsabilidade | Saída |
-|-------|-----------------|-------|
-| `estrategista-de-site` | Arquitetura, URLs, CRO, jornadas | Árvore de URLs, fluxos, blocos CRO |
-| `ux-ui-mobile-first` | Wireframe visual, responsividade | Wireframe textual, componentes, breakpoints |
-| `copywriter-vendas` | Copy AIDA que converte | Blocos de copy, FAQ, provas de confiança |
-| `seo-local-turismo` | Busca local, schemas | Keywords, meta tags, JSON-LD |
-| `briefing-designer` | Comunicar ao designer | Specs visuais, componentes, Figma |
-| `programador-de-site` | Implementar em Next.js | Páginas, componentes, SEO técnico |
+**Pipeline de Site (7):**
 
-**Pipeline Social (Pipeline E):**
+| Skill | Responsabilidade |
+|-------|-----------------|
+| `estrategista-de-site` | Arquitetura, URLs, CRO, jornadas |
+| `ux-ui-mobile-first` | Wireframe visual, responsividade, WCAG AA |
+| `copywriter-vendas` | Copy AIDA, FAQ, provas de confiança |
+| `seo-local-turismo` | Keywords, meta tags, JSON-LD |
+| `diretor-visual-turismo` | Padrão visual, crítica de layout |
+| `briefing-designer` | Specs para designer executar em Figma |
+| `programador-de-site` | Implementação Next.js (App Router, TS, Tailwind) |
 
-| Skill | Responsabilidade | Saída |
-|-------|-----------------|-------|
-| `radar-concorrentes-social` | Monitorar e analisar concorrentes | Relatório de gaps e oportunidades |
-| `captura-referencias-visuais` | Capturar e organizar referências | Assets em `_social/assets/` com metadados |
-| `diretor-visual-turismo` | Validar padrão visual | Guia visual, paleta aprovada, direção |
-| `social-media-editorial-turismo` | Calendário e pautas Instagram | Calendário editorial, pautas detalhadas |
+**Pipeline Social (3):**
 
-Cada skill tem `SKILL.md` próprio em `skills/[nome]/`. Consultar antes de acionar.
+| Skill | Responsabilidade |
+|-------|-----------------|
+| `radar-concorrentes-social` | Inteligência competitiva, gaps |
+| `captura-referencias-visuais` | Biblioteca de referências com metadados |
+| `social-media-editorial-turismo` | Calendário e pautas Instagram |
 
-**Fluxo típico de site:** Estrategista → (UX/UI + Copywriter em paralelo) → SEO → Briefing → Programador
+**Squad Comercial (7):**
+
+| Skill | Responsabilidade |
+|-------|-----------------|
+| `agente-comercial-jampa` | Router do squad — recebe objetivo e direciona |
+| `qualificacao-lead` | Ficha estruturada do lead em 7 campos |
+| `proposta-passeio` | Proposta WhatsApp personalizada |
+| `objecoes-turismo-jampa` | Resposta empática a objeção recorrente |
+| `follow-up-comercial` | T1-T4 em 5 dias para lead sem resposta |
+| `agente-atendimento-pre-passeio` | Mensagem D-1 (embarque, horário, o que levar) |
+| `agente-pos-venda` | D+1 agradecimento + D+3 pedido de avaliação |
+
+**Operacional / Dados (2) + Experimental (1) + Orquestrador (1):**
+
+| Skill | Responsabilidade |
+|-------|-----------------|
+| `tabua-mares-turismo` | Inteligência de maré, importação CHM, próxima saída |
+| `painel-kpi-vempassear` | Relatório semanal de 5 KPIs (sexta 17h) |
+| `lovable-site-builder` | Briefing + prompt para Lovable.dev (experimental) |
+| `orquestrador-projeto-turismo` | Camada de decisão central, gera plano para aprovação |
+
+**Fluxo típico de site:** Estrategista → (UX/UI + Copywriter em paralelo) → Diretor Visual → SEO + Briefing → Programador
+
+**Validação:** rodar `node _automacao/scripts/jampa-doctor.mjs` antes de commit que toque em `skills/` ou `_automacao/schemas/`. Doc: `_automacao/scripts/jampa-doctor.md`.
 
 ---
 
@@ -186,6 +209,17 @@ Atualizar `_memoria/decisoes-estrategicas.md` se uma decisão de conteúdo mudou
 
 ---
 
+## Protocolo de Execução Disciplinada
+
+Aplica-se a toda skill que altera arquivo (especialmente `programador-de-site`, `orquestrador-projeto-turismo`, automação Jarvis).
+
+1. **Pensar antes de alterar.** Surface premissas, declare o que assume. Se confuso, perguntar — não adivinhar. Skills de site lêem `_conhecimento/` antes de escrever.
+2. **Simplicidade primeiro.** Mínimo de código, sem abstração especulativa. Três linhas parecidas é melhor que abstração prematura. Sem feature flag para cenário hipotético.
+3. **Mudanças cirúrgicas.** Tocar apenas o pedido. Match do estilo existente. Limpar só o próprio resto. Não refatorar de carona.
+4. **Validar contra objetivo.** Definir critério de sucesso verificável antes de começar (type-check, doctor, linha de copy específica). Comparar entrega com critério antes de declarar concluído.
+
+---
+
 ## Protocolo Econômico de Execução
 
 - Não repetir contexto já documentado no projeto.
@@ -210,4 +244,4 @@ Atualizar `_memoria/decisoes-estrategicas.md` se uma decisão de conteúdo mudou
 
 ---
 
-*Versão: 2.2 | Atualizado: 2026-05-01 | Fase: 1 (Site e SEO Local)*
+*Versão: 2.3 | Atualizado: 2026-05-04 | Fase: 1 (Site e SEO Local) | Skills: 21 (manifest em `skills/manifest.json`)*

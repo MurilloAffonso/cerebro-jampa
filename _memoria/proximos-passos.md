@@ -2,6 +2,17 @@
 
 **Consolidado em:** 2026-04-29 (Arquitetura 2.0 — Squad Comercial)
 **Escopo:** Roadmap 30/60/90 dias baseado na Análise Estratégica 2.0
+**Última edição:** 2026-05-04 — adicionadas pendências CEREBRO-SYNC-SKILLS-02 (abaixo)
+
+---
+
+## Pendências CEREBRO-SYNC-SKILLS-02 (registradas em 2026-05-04)
+
+| # | Pendência | Decisão necessária |
+|---|-----------|---------------------|
+| P1 | Skill `executar-issue` está em `.claude/skills/executar-issue/`, fora do diretório padrão `skills/`. | Mover para `skills/executar-issue/` (e registrar no manifest) **ou** manter como skill local do Claude Code (e documentar exceção em `skills/manifest.json`). Doctor mantém aviso `skills-externas` enquanto não decidir. |
+| P2 | Doctor apontou 1 linha em `_crm/leads.csv` com nº de colunas diferente do header. Pode ser falso positivo (vírgula dentro de campo sem aspas — parser ingênuo do doctor não respeita aspas). | Auditar manualmente `_crm/leads.csv`: se for vírgula legítima dentro de campo de texto, envolver em aspas duplas; se for linha corrompida, corrigir. Não alterado nesta rodada (escopo bloqueado). |
+| P3 | Schema Jarvis tinha 4 entradas órfãs (`jarvis-status`, `tabua-mares-importar`, `tabua-mares-validar`, `aprendizado-semanal`) — todas removidas em 2026-05-04. Se algum workflow n8n referencia esses ids, atualizar para usar `tabua-mares-turismo` ou `manual`. | Verificar `_automacao/workflows/*.json` antes de rodar Jarvis em produção. |
 
 ---
 

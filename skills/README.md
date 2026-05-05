@@ -199,4 +199,31 @@ designer social → Murillo publica
 
 ---
 
-*v4.3 | Atualizado 2026-04-29 | 12 skills ativas + Squad Comercial (FASE 2) + 1 orquestrador | Pipelines A–M*
+## Padrão de SKILL.md (obrigatório)
+
+Cada `skills/<id>/SKILL.md` começa com YAML frontmatter:
+
+```yaml
+---
+name: id-da-skill
+description: Uma frase do que a skill faz e quando usar. Sem inventar dados — bloqueia se fonte ausente.
+---
+```
+
+Após o frontmatter, markdown livre (propósito, protocolo, exemplos, gatilhos, saída esperada).
+
+## Como adicionar uma skill nova
+
+1. Criar pasta `skills/<id>/` com `SKILL.md` (frontmatter + corpo).
+2. Adicionar entrada em `skills/manifest.json` (id, categoria, papel, status, risco, descrição, gatilhos, arquivos relacionados, pipeline).
+3. Se for executável pelo Jarvis, adicionar id ao enum `skill_primaria` em `_automacao/schemas/tarefa-jarvis.schema.json`.
+4. Atualizar este README e `_automacao/skills-conexao.md` com a regra por risco.
+5. Rodar `node _automacao/scripts/jampa-doctor.mjs` — deve dar 0 erros.
+
+## Regra de fonte de verdade
+
+`skills/manifest.json` é a **fonte canônica** do inventário. Qualquer divergência entre manifest, pasta, schema ou CLAUDE.md é **erro/aviso** detectado pelo doctor. Quando em dúvida, confiar no manifest e atualizar o resto.
+
+---
+
+*v4.4 | Atualizado 2026-05-04 | 21 skills (1 orquestrador + 7 site + 3 social + 7 squad comercial + 2 operacional/dados + 1 experimental) | Pipelines A–M | Manifest: `skills/manifest.json` | Doctor: `node _automacao/scripts/jampa-doctor.mjs`*
