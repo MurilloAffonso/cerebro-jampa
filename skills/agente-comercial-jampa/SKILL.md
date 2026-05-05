@@ -111,6 +111,8 @@ Murillo confirma → executar a skill selecionada → devolver o rascunho para a
 | `_crm/leads.csv` | Verificar status atual do lead (se ID conhecido) |
 | `_conhecimento/passeios.md` | Confirmar passeio de interesse existe |
 | `_conhecimento/objecoes.md` | Se objeção foi mencionada — identificar categoria |
+| `_conhecimento/base-operacional-comercial.md` | Regras de preço, criança, pagamento e [CONSULTAR] |
+| `_conhecimento/scripts-atendimento-whatsapp.md` | Scripts prontos por etapa do funil |
 
 ---
 

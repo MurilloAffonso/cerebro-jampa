@@ -1,6 +1,6 @@
 # Conhecimento: Catálogo de Objeções
 
-**Status:** v1.0 — base inicial (2026-04-29)
+**Status:** v1.1 — confirmado por Murillo (2026-04-30) — zero [CONFIRMAR] pendentes
 **Fonte:** Inferido de `publico-alvo.md`, `tom-de-voz.md`, `concorrentes.md` + Análise 2.0
 **Regra:** Toda objeção nova ouvida por Murillo que não consta aqui → adicionar imediatamente
 **Skill que usa:** `objecoes-turismo-jampa`
@@ -35,7 +35,7 @@ Ao identificar uma objeção em conversa de WhatsApp:
 **Variação empática:**
 "Faz sentido questionar. Vou te explicar o que está incluído e aí você decide se faz sentido pra você — sem pressão nenhuma."
 
-**Observação:** [CONFIRMAR COM MURILLO: qual é a margem para negociação, se houver? Há desconto para grupos acima de X pessoas?]
+**Observação:** Há margem de negociação para grupos acima de 4 pessoas — condição especial avaliada caso a caso. Não há tabela fixa de desconto.
 
 ---
 
@@ -63,7 +63,7 @@ Ao identificar uma objeção em conversa de WhatsApp:
 "Desconto em cima do valor fixo não costumo fazer — o preço já é o justo. Mas se você vier com grupo de [X] pessoas, posso olhar uma condição especial. Quantas pessoas são?"
 
 **Resposta padrão (parcelamento):**
-[CONFIRMAR COM MURILLO: aceita parcelamento? No cartão? Em quantas vezes? Via qual plataforma?]
+"Sim, aceitamos cartão. O parcelamento é possível, mas a taxa fica por conta do cliente. O número de parcelas e a plataforma dependem do que está disponível no momento — me fala como você prefere pagar e eu confirmo a opção."
 
 **Variação empática:**
 "Deixa eu entender melhor o que você precisa — às vezes tem uma opção que cabe melhor no orçamento de outro jeito."
@@ -95,12 +95,12 @@ Ao identificar uma objeção em conversa de WhatsApp:
 **Frequência estimada:** Média
 
 **Resposta padrão:**
-"Normal — a gente não investe em propaganda, investe em atendimento e no passeio em si. Quem nos encontra costuma ser pelo Google ou por indicação de quem já veio. Posso te mandar o link das avaliações no Google — são mais de [X] avaliações reais de pessoas que fizeram o passeio."
+"Normal — a gente não investe em propaganda, investe em atendimento e no passeio em si. Quem nos encontra costuma ser pelo Google ou por indicação de quem já veio. Posso te mandar o link das avaliações no Google — são 61 avaliações reais com nota 4.9/5 de pessoas que fizeram o passeio."
 
 **Variação empática:**
 "Entendo. É difícil confiar em quem você não conhece. Que tal eu te mando as avaliações de clientes reais e você lê na sua hora?"
 
-**Observação:** [CONFIRMAR COM MURILLO: número exato de avaliações Google para usar nessa resposta]
+**Observação:** 61 avaliações no Google, nota 4.9. Usar esses números nas respostas. Atualizar quando mudar.
 
 ---
 
@@ -132,7 +132,7 @@ Ao identificar uma objeção em conversa de WhatsApp:
 **Variação empática:**
 "Faz sentido se preocupar com isso. A regra aqui é simples: se não tiver condição segura de sair, não saímos e remarcamos. Nunca vamos te deixar numa situação ruim só pra não perder a reserva."
 
-**Observação:** [CONFIRMAR COM MURILLO: qual é a política exata de cancelamento por chuva/mau tempo? Reembolso ou remarcação?]
+**Observação:** Política confirmada — chuva forte com aviso de 2h de antecedência: remarcação sem custo. Se não for possível remarcar: devolução de 100% do valor pago.
 
 ---
 
@@ -177,7 +177,7 @@ Ao identificar uma objeção em conversa de WhatsApp:
 **Variação empática:**
 "É uma preocupação muito comum e válida. Deixa eu te explicar como funciona o passeio específico que você quer — aí você decide com mais informação."
 
-**Observação:** [CONFIRMAR COM MURILLO: qual é o protocolo exato de segurança para não-nadadores em cada passeio? Colete é obrigatório ou opcional?]
+**Observação:** Colete salva-vidas disponível na embarcação. Para não-nadadores, uso recomendado — não obrigatório, mas disponível durante todo o passeio.
 
 ---
 
@@ -192,7 +192,7 @@ Ao identificar uma objeção em conversa de WhatsApp:
 **Variação empática:**
 "Faz todo sentido perguntar isso. A segurança das crianças é o que a gente prioriza. Me conta a situação e eu te orienta sem enrolação."
 
-**Observação:** Decisão #28 confirmou: Seixas não tem idade mínima, crianças devem estar acompanhadas. [CONFIRMAR COM MURILLO: restrições para cada passeio individualmente]
+**Observação:** Não há restrição de idade para nenhum passeio. Avaliação caso a caso conforme o passeio específico. Crianças sempre acompanhadas por responsável.
 
 ---
 
@@ -207,7 +207,7 @@ Ao identificar uma objeção em conversa de WhatsApp:
 **Variação empática:**
 "Fico feliz que você tenha me avisado — é exatamente o tipo de detalhe que faz diferença. Não vou te indicar algo que não vai funcionar."
 
-**Observação:** [CONFIRMAR COM MURILLO: quais passeios são mais acessíveis para mobilidade reduzida? Há algum totalmente acessível?]
+**Observação:** Mais acessíveis: passeios do Litoral Sul (Coqueirinho), litorais em geral e Seixas. Quando necessário, há assistência para viabilizar o passeio — avaliar caso a caso.
 
 ---
 
@@ -217,12 +217,12 @@ Ao identificar uma objeção em conversa de WhatsApp:
 **Frequência estimada:** Média (casais e grupos exclusivos)
 
 **Resposta padrão:**
-"Temos as duas opções. O passeio compartilhado sai por R$ [X] por pessoa — você vai junto com outros turistas. O privativo é para o seu grupo só, com preço diferente. Me conta quantas pessoas são e o que você prefere que eu monto a opção certa."
+"Temos as duas opções. O passeio compartilhado sai por um valor fixo por pessoa — você vai junto com outros turistas. O privativo é para o seu grupo só; o valor depende do passeio, da data e da quantidade de pessoas. Me conta quantas pessoas são e o que você prefere que eu consulto e mando a opção certa."
 
 **Variação empática:**
 "Faz sentido querer privacidade — especialmente para lua de mel ou data especial. Me conta o que você está comemorando e eu monto algo especial."
 
-**Observação:** [CONFIRMAR COM MURILLO: quais passeios têm opção privativa? Qual é o preço privativo de cada um?]
+**Observação:** Todos os passeios têm opção privativa. Valor consultado caso a caso conforme passeio, data, qtd de pessoas e disponibilidade. Nunca dar preço fixo de privativo sem consultar primeiro.
 
 ---
 
@@ -286,7 +286,7 @@ Ao identificar uma objeção em conversa de WhatsApp:
 **Variação empática:**
 "Obrigado por trazer isso. Transparência é importante. Me manda a avaliação que você viu e eu te explico o que aconteceu naquele caso."
 
-**Observação:** [CONFIRMAR COM MURILLO: há alguma reclamação real conhecida? Como foi resolvida? Ter resposta pronta para esse caso]
+**Observação:** Não há reclamações reais conhecidas sobre o serviço. Ponto de atenção recorrente: tábua de maré nos passeios de piscinas naturais — cliente pode interpretar variação de maré como falha. Resposta: a tábua é sempre consultada antes de confirmar qualquer reserva.
 
 ---
 

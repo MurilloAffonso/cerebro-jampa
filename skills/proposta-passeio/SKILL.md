@@ -61,14 +61,38 @@ posicao: etapa-2
 |---------|------------------|
 | `passeios.md` | **BLOQUEANTE** — preço, slug, existência do passeio |
 | `catalogo_vempassear_estruturado.md` | Roteiro detalhado, duração, ponto de saída, inclusões |
+| `base-operacional-comercial.md` | **BLOQUEANTE** — preço criança, regras de pagamento, itens [CONSULTAR], política de cancelamento |
 | `tom-de-voz.md` | Tom da mensagem — acolhedor, não corporativo |
 | `empresa.md` | WhatsApp, Cadastur — para o CTA final |
+
+### Regras de Preço Criança (extrair de `base-operacional-comercial.md`)
+
+| Faixa | Regra |
+|-------|-------|
+| Abaixo de 5 anos | Não paga |
+| 5–11 anos | 20% abaixo do valor adulto |
+| 12+ anos | Valor adulto |
+
+Confirmar SEMPRE a idade no momento da proposta. Calcular o valor antes de incluir na mensagem.
+
+### Itens que Exigem [CONSULTAR] Antes de Enviar a Proposta
+
+Os itens abaixo **nunca entram na proposta como confirmados** — usar "consulto e confirmo":
+- Disponibilidade na data
+- Horário exato de saída (passeios de maré)
+- Capacidade da embarcação
+- Mínimo de pessoas para saída
+- Valor de passeio privativo
+- Transporte interestadual
+- Valores dos opcionais (snorkel, fotógrafo, mergulho)
+- Transfer para Camboinha / Jacaré
 
 ### Fallback se Faltar Dado
 
 - Preço não confirmado → `[CONFIRMAR COM MURILLO: preço de [passeio]]` e pausar
 - Passeio não no catálogo → PARAR e avisar Murillo
 - Data de viagem sem maré verificada → marcar `[VERIFICAR MARÉ para [data]]`
+- Item da lista [CONSULTAR] → não incluir na proposta; sinalizar nas Notas para Murillo
 
 ---
 
@@ -88,12 +112,18 @@ posicao: etapa-2
 ### Etapa 2 — Calcular Valor Total
 
 ```
-valor_por_pessoa = [preço do catálogo]
-qtd_pessoas = [da ficha do lead]
-valor_total = valor_por_pessoa × qtd_pessoas
+valor_adulto = [preço do catálogo]
+valor_criança = valor_adulto × 0.80  (5–11 anos)
+bebê (< 5 anos) = R$ 0
+
+qtd_adultos = [da ficha do lead]
+qtd_crianças_5_11 = [da ficha, se informado]
+
+valor_total = (qtd_adultos × valor_adulto) + (qtd_crianças_5_11 × valor_criança)
 ```
 
-Se compartilhado vs. privativo: apresentar as duas opções se aplicável.
+Se privativo: não calcular — incluir "consulto o valor para passeio exclusivo" nas Notas.
+Se opcional (quad, mergulho, fotógrafo): não incluir na proposta principal — sinalizar como item separado a confirmar.
 
 ### Etapa 3 — Verificar Maré (se dependeDeMare = true)
 
@@ -183,7 +213,7 @@ NOTAS ANTES DE ENVIAR:
 |-------------|-------|
 | Pipelines que usam | Pipeline I |
 | Depende de (skills) | `qualificacao-lead` (ficha do lead) |
-| Depende de (arquivos) | `passeios.md` (bloqueante), `catalogo_vempassear_estruturado.md`, `tom-de-voz.md` |
+| Depende de (arquivos) | `passeios.md` (bloqueante), `catalogo_vempassear_estruturado.md`, `base-operacional-comercial.md` (bloqueante), `tom-de-voz.md` |
 | Alimenta (skills) | `follow-up-comercial` (se não responder após proposta) |
 | Pode rodar em paralelo com | Não — precisa da ficha qualificada |
 | Posição típica no pipeline | Etapa 2 do Pipeline I |

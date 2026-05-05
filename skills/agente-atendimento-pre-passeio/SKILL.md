@@ -73,7 +73,14 @@ Garante que o cliente chegue preparado, no horário certo e no local certo. Redu
 |---------|------------------|
 | `catalogo_vempassear_estruturado.md` | **BLOQUEANTE** — horário, ponto de saída, o que levar, restrições |
 | `passeios.md` | Confirmar slug e dependência de maré |
+| `base-operacional-comercial.md` | Política de cancelamento e remarcação confirmada |
 | `empresa.md` | WhatsApp de Murillo para o CTA de emergência |
+
+### Política de Cancelamento (extrair de `base-operacional-comercial.md`)
+
+- Chuva forte com aviso ≥ 2h → remarcação gratuita
+- Impossível remarcar → 100% de reembolso do valor pago
+- No-show (cliente não apareceu) → voucher perdido, sem reembolso
 
 ---
 
