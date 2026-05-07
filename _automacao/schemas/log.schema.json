@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "log",
+  "title": "Log de Execução",
+  "description": "Schema v1.0 — entrada de log de execução do CEREBRO.JAMPA",
+  "type": "object",
+  "required": ["id", "timestamp", "nivel", "origem", "mensagem"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identificador único do evento",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T.+$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Data e hora do evento (ISO 8601)"
+    },
+    "nivel": {
+      "type": "string",
+      "enum": ["ok", "info", "warn", "error", "critico"],
+      "description": "Nível de severidade do log"
+    },
+    "origem": {
+      "type": "string",
+      "enum": [
+        "jampa-doctor",
+        "foundation-check",
+        "jarvis-runner",
+        "jarvis-diario",
+        "claude-code",
+        "murillo-manual",
+        "n8n",
+        "site-build",
+        "site-typecheck"
+      ],
+      "description": "Processo ou ferramenta que gerou este log"
+    },
+    "mensagem": {
+      "type": "string",
+      "minLength": 5,
+      "description": "Descrição objetiva do evento"
+    },
+    "check": {
+      "type": ["string", "null"],
+      "description": "Nome do check específico que gerou o log (para logs de doctor)",
+      "default": null
+    },
+    "hint": {
+      "type": ["string", "null"],
+      "description": "Sugestão de correção para warns e errors",
+      "default": null
+    },
+    "contexto": {
+      "type": "object",
+      "description": "Dados adicionais do evento",
+      "additionalProperties": true
+    },
+    "tarefa_id": {
+      "type": ["string", "null"],
+      "description": "ID da tarefa Jarvis associada, se houver",
+      "default": null
+    },
+    "arquivo": {
+      "type": ["string", "null"],
+      "description": "Arquivo ou caminho relevante para o evento",
+      "default": null
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "decision",
+  "title": "Decisão",
+  "description": "Schema v1.0 — decisão registrada no projeto CEREBRO.JAMPA",
+  "type": "object",
+  "required": ["id", "data", "titulo", "decisao", "razao", "status", "aprovado_por"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identificador único. Formato: YYYY-MM-DD-slug",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}-.+$"
+    },
+    "data": {
+      "type": "string",
+      "format": "date",
+      "description": "Data da decisão (YYYY-MM-DD)"
+    },
+    "titulo": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 150,
+      "description": "Título curto da decisão"
+    },
+    "decisao": {
+      "type": "string",
+      "minLength": 10,
+      "description": "O que foi decidido — em linguagem direta"
+    },
+    "razao": {
+      "type": "string",
+      "minLength": 10,
+      "description": "Por que esta decisão foi tomada — contexto e motivação"
+    },
+    "impacto": {
+      "type": "string",
+      "description": "Impacto esperado nos arquivos, processos ou produto"
+    },
+    "alternativas_consideradas": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Alternativas que foram consideradas e descartadas"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["implementada", "pendente", "revisada", "cancelada"],
+      "description": "Estado atual da decisão"
+    },
+    "aprovado_por": {
+      "type": "string",
+      "description": "Quem aprovou esta decisão"
+    },
+    "arquivos_afetados": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Caminhos dos arquivos diretamente afetados"
+    },
+    "referencia": {
+      "type": ["string", "null"],
+      "description": "Link ou caminho para documento de referência",
+      "default": null
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true,
+      "description": "Tags para agrupamento (ex: site, seo, comercial, infra)"
+    }
+  }
+}

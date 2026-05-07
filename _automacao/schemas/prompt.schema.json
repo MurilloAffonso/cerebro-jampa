@@ -1,0 +1,87 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "prompt",
+  "title": "Prompt / Skill",
+  "description": "Schema v1.0 — metadados de prompt ou skill do CEREBRO.JAMPA",
+  "type": "object",
+  "required": ["id", "nome", "categoria", "papel", "status", "descricao", "resultado_esperado"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identificador único — mesmo que o nome da pasta em skills/",
+      "pattern": "^[a-z][a-z0-9-]+$"
+    },
+    "nome": {
+      "type": "string",
+      "minLength": 3,
+      "description": "Nome legível da skill"
+    },
+    "categoria": {
+      "type": "string",
+      "enum": ["orquestracao", "site", "visual", "social", "comercial", "operacional", "dados"],
+      "description": "Pipeline ao qual esta skill pertence"
+    },
+    "papel": {
+      "type": "string",
+      "enum": ["orquestrador", "router", "produtor", "validador", "gerador-dados"],
+      "description": "Papel funcional da skill no pipeline"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["ativo", "rascunho", "pausado", "arquivado"],
+      "description": "Estado atual da skill"
+    },
+    "risco": {
+      "type": "string",
+      "enum": ["auto", "aprovacao", "bloqueado"],
+      "description": "Nível de risco para execução autônoma"
+    },
+    "descricao": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 500,
+      "description": "O que esta skill faz — em uma frase clara"
+    },
+    "resultado_esperado": {
+      "type": "string",
+      "minLength": 10,
+      "description": "Entrega concreta produzida por esta skill"
+    },
+    "gatilhos": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Frases ou condições que ativam esta skill"
+    },
+    "skill_md": {
+      "type": "string",
+      "description": "Caminho para o SKILL.md desta skill",
+      "pattern": "^skills/.+/SKILL\\.md$"
+    },
+    "arquivos_relacionados": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Arquivos do vault que esta skill lê ou escreve"
+    },
+    "pipeline": {
+      "type": ["string", "null"],
+      "description": "Pipeline de que esta skill faz parte (ex: site, social, comercial)",
+      "default": null
+    },
+    "executa_entregas": {
+      "type": "boolean",
+      "description": "Se true, esta skill produz entrega direta (não apenas plano)",
+      "default": true
+    },
+    "versao": {
+      "type": "string",
+      "description": "Versão do prompt (semver simplificado)",
+      "pattern": "^\\d+\\.\\d+(\\.\\d+)?$"
+    },
+    "atualizado_em": {
+      "type": "string",
+      "format": "date",
+      "description": "Data da última atualização do SKILL.md"
+    }
+  }
+}

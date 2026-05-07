@@ -1,0 +1,93 @@
+{
+  "$schema": "./_automacao/schemas/manifest-projeto.schema.json",
+  "version": "1.0.0",
+  "projeto": "CEREBRO.JAMPA",
+  "empresa": "Vem Passear em Jampa",
+  "fase_atual": "1",
+  "descricao_fase": "Site e SEO Local",
+  "atualizado_em": "2026-05-05",
+  "estrutura": {
+    "_conhecimento": {
+      "proposito": "Base de conhecimento imutável — fonte de verdade da empresa e dos passeios",
+      "tipo": "conhecimento",
+      "inclui": ["conhecimento bruto", "conhecimento processado"],
+      "mutabilidade": "somente com confirmação explícita de Murillo",
+      "critico": true
+    },
+    "_memoria": {
+      "proposito": "Estado operacional vivo — prioridades, decisões, contexto de sessão",
+      "tipo": "memoria",
+      "mutabilidade": "atualizado ao abrir e fechar cada sessão"
+    },
+    "skills": {
+      "proposito": "Agentes especializados — 21 skills com SKILL.md e manifest.json",
+      "tipo": "agentes",
+      "manifest": "skills/manifest.json",
+      "mutabilidade": "com aprovação + jampa-doctor validado",
+      "critico": true
+    },
+    "_automacao/workflows": {
+      "proposito": "Workflows n8n e automações de agentes",
+      "tipo": "workflows",
+      "mutabilidade": "com aprovação de Murillo"
+    },
+    "_automacao/logs": {
+      "proposito": "Logs de execução, auditorias e saídas do doctor",
+      "tipo": "logs",
+      "mutabilidade": "append-only — nunca editar entradas existentes"
+    },
+    "configs": {
+      "proposito": "Configurações de projeto e ambiente — sem credenciais",
+      "tipo": "configs",
+      "mutabilidade": "com aprovação"
+    },
+    "_crm": {
+      "proposito": "Dados operacionais de leads, atendimento e comercial",
+      "tipo": "dados-operacionais",
+      "mutabilidade": "com aprovação — nunca compartilhar dados de clientes"
+    },
+    "_seguro": {
+      "proposito": "Dados sensíveis locais — credenciais, tokens, chaves",
+      "tipo": "dados-sensiveis",
+      "mutabilidade": "somente Murillo — nunca commitar, nunca compartilhar",
+      "gitignored": true,
+      "critico": true
+    },
+    "_site": {
+      "proposito": "Site Next.js 14 — produto digital principal da Vem Passear",
+      "tipo": "produto",
+      "mutabilidade": "com aprovação + type-check + build limpo"
+    },
+    "docs": {
+      "proposito": "Documentação operacional do projeto — contexto, políticas, decisões",
+      "tipo": "documentacao",
+      "mutabilidade": "com aprovação"
+    },
+    "_automacao/schemas": {
+      "proposito": "Schemas JSON para validação de tarefas, decisões, logs e prompts",
+      "tipo": "schemas",
+      "mutabilidade": "com aprovação + jampa-doctor"
+    }
+  },
+  "validacao": {
+    "doctor_principal": "_automacao/scripts/jampa-doctor.mjs",
+    "foundation_check": "_automacao/scripts/foundation-check.mjs",
+    "comando_foundation": "node _automacao/scripts/foundation-check.mjs",
+    "comando_doctor": "node _automacao/scripts/jampa-doctor.mjs"
+  },
+  "politicas": {
+    "aprovacao": "docs/approval-policy.md",
+    "risco": "_automacao/riscos.md",
+    "conteudo": "CLAUDE.md",
+    "operacao": "CLAUDE.md#protocolo-de-execucao-disciplinada"
+  },
+  "modelo_ia": {
+    "padrao": "claude-sonnet-4-6",
+    "estrategico": "claude-opus-4-7",
+    "mecanico": "claude-haiku-4-5"
+  },
+  "contato_responsavel": {
+    "nome": "Murillo Affonso",
+    "canal_central": "WhatsApp +55 83 9908-7830"
+  }
+}

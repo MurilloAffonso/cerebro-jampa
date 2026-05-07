@@ -1,0 +1,86 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "workflow",
+  "title": "Workflow",
+  "description": "Schema v1.0 — metadados de workflow do CEREBRO.JAMPA (n8n ou agente)",
+  "type": "object",
+  "required": ["id", "nome", "tipo", "status", "descricao", "gatilho", "risco"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identificador único do workflow",
+      "pattern": "^[a-z][a-z0-9-]+$"
+    },
+    "nome": {
+      "type": "string",
+      "minLength": 3,
+      "description": "Nome legível do workflow"
+    },
+    "tipo": {
+      "type": "string",
+      "enum": ["n8n", "agente-claude", "script-node", "cron-local", "manual"],
+      "description": "Tipo de executor do workflow"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["ativo", "pausado", "rascunho", "arquivado"],
+      "description": "Estado atual do workflow"
+    },
+    "descricao": {
+      "type": "string",
+      "minLength": 10,
+      "description": "O que este workflow faz"
+    },
+    "gatilho": {
+      "type": "string",
+      "enum": ["cron", "webhook", "manual", "evento-interno", "fim-de-tarefa"],
+      "description": "Como este workflow é disparado"
+    },
+    "cron": {
+      "type": ["string", "null"],
+      "description": "Expressão cron se gatilho = cron",
+      "default": null
+    },
+    "risco": {
+      "type": "string",
+      "enum": ["auto", "aprovacao", "bloqueado"],
+      "description": "Nível de risco — herdado de _automacao/riscos.md"
+    },
+    "skills_usadas": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Skills executadas por este workflow"
+    },
+    "arquivos_lidos": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Caminhos lidos durante a execução"
+    },
+    "arquivos_escritos": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Caminhos escritos durante a execução"
+    },
+    "arquivo_workflow": {
+      "type": ["string", "null"],
+      "description": "Caminho do arquivo .json ou .workflow.json deste workflow",
+      "default": null
+    },
+    "precisa_aprovacao": {
+      "type": "boolean",
+      "description": "Se true, Murillo deve aprovar antes de qualquer efeito externo",
+      "default": true
+    },
+    "atualizado_em": {
+      "type": "string",
+      "format": "date",
+      "description": "Data da última atualização"
+    },
+    "notas": {
+      "type": ["string", "null"],
+      "description": "Observações operacionais importantes",
+      "default": null
+    }
+  }
+}
