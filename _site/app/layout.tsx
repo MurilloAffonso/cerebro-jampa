@@ -3,6 +3,7 @@ import { DM_Sans, Lora } from "next/font/google";
 import "@/styles/globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { generateLocalBusinessSchema } from "@/lib/seo";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -53,9 +54,15 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const localBusinessSchema = generateLocalBusinessSchema();
+
   return (
     <html lang="pt-BR">
       <body className={`${dmSans.variable} ${lora.variable} font-sans flex flex-col min-h-screen overflow-x-hidden antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
