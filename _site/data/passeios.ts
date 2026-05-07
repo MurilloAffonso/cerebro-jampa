@@ -794,8 +794,8 @@ export const passeios: Passeio[] = [
     ],
     depoimento: {
       texto:
-        "O pôr do sol do Jacaré é mágico. A música, o Rio, o atardecer... foi a noite mais especial da nossa viagem!",
-      autor: "Marina & João, casal",
+        "[CONFIRMAR COM MURILLO: depoimento real de cliente sobre o Pôr do Sol do Jacaré]",
+      autor: "[CONFIRMAR: nome e cidade do cliente]",
     },
   },
 
