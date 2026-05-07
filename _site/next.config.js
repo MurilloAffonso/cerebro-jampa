@@ -7,11 +7,6 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
     contentDispositionType: "inline",
   },
-  i18n: {
-    locales: ["pt-BR"],
-    defaultLocale: "pt-BR",
-  },
-  swcMinify: true,
 };
 
 module.exports = nextConfig;

@@ -1,98 +1,114 @@
-# Estrutura de Imagens — Vem Passear em Jampa
+# Guia de Imagens — Vem Passear em Jampa
 
-## Organização de Pastas
+## Estrutura de Pastas
 
 ```
 public/images/
-├── passeios/
-│   ├── seixas/
-│   │   ├── capa.webp (imagem principal)
-│   │   ├── galeria-01.webp
-│   │   ├── galeria-02.webp
-│   │   └── galeria-03.webp
-│   │
-│   ├── areia-vermelha/
-│   │   ├── capa.webp
-│   │   ├── galeria-01.webp
-│   │   └── galeria-02.webp
-│   │
-│   ├── litoral-sul-classico/
-│   │   ├── capa.webp
-│   │   ├── galeria-01.webp
-│   │   └── galeria-02.webp
-│   │
-│   ├── picaozinho/
-│   │   ├── capa.webp
-│   │   └── galeria-01.webp
-│   │
-│   ├── por-do-sol-jacare/
-│   │   ├── capa.webp
-│   │   └── galeria-01.webp
-│   │
-│   └── [passeios-futuros]/
-│       └── capa.webp (imagem principal)
-│
-└── placeholders/
-    └── placeholder-passeio.svg (fallback neutro)
+├── brand/
+│   ├── logo/          # Logos da marca (PNG/SVG, fundo transparente e branco)
+│   ├── og/            # Imagens Open Graph (1200×630 JPG)
+│   └── murillo/       # Foto do Murillo para seção "Quem somos"
+├── parceiros/         # Logos e fotos de parceiros
+├── placeholders/      # Placeholders usados enquanto foto real não chega
+└── passeios/
+    ├── pacotes/
+    ├── litoral-sul/
+    ├── litoral-norte/
+    ├── piscinas-naturais/
+    ├── city-tour/
+    └── interestaduais/
 ```
 
-## Convenção de Nomes
+Dentro de cada pasta de passeio (ex: `passeios/litoral-sul/roteiro-classico/`):
 
-### Imagem Principal
-- `capa.webp` — Imagem de capa, usada em cards, home, etc.
-- Tamanho mínimo: 800x600px
-- Formato: WebP (otimizado)
-- Proporção: 4:3 recomendado
-
-### Galeria
-- `galeria-01.webp`, `galeria-02.webp`, etc.
-- Tamanho mínimo: 1200x800px
-- Formato: WebP (otimizado)
-- Ordem: sequência lógica da experiência (início, meio, fim)
-
-## Regra de Fallback
-
-**Fluxo de carregamento:**
-```typescript
-// Se capa.webp existe:
-<img src="/images/passeios/seixas/capa.webp" alt="..." />
-
-// Se não existe:
-<img src="/images/placeholders/placeholder-passeio.svg" alt="..." />
+```
+hero.jpg
+card.jpg
+gallery-01.jpg
+gallery-02.jpg
+gallery-03.jpg
 ```
 
-**Nunca fazer:**
-- ❌ Carregar imagem aleatória da internet
-- ❌ Usar placeholder genérico/stock photo
-- ❌ Deixar vazio (quebra layout)
-- ❌ Carregar imagem de outra pasta sem confirmação
+---
 
-## Como Adicionar Imagens
+## Padrão de Nomes
 
-1. Crie a pasta: `public/images/passeios/[passeio-slug]/`
-2. Coloque `capa.webp` (obrigatório)
-3. Coloque opcionais: `galeria-01.webp`, `galeria-02.webp`, etc.
-4. Atualize `_site/data/passeios.ts` com os caminhos
-5. Componente passa a usar imagem real automaticamente
+- Letras minúsculas, sem espaços, sem acentos
+- Separador: hífen (`-`)
+- Exemplos corretos: `hero.jpg`, `gallery-01.jpg`, `logo-vem-passear.svg`
+- Exemplos errados: `Hero Final.jpg`, `Foto Murillo (2).jpg`
 
-## Formatos Aceitos
+---
 
-- ✅ WebP (recomendado, melhor compressão)
-- ✅ JPEG (fallback, se WebP não disponível)
-- ✅ PNG (se necessário transparência)
-- ❌ SVG (só para placeholders)
+## Onde Colocar Cada Tipo de Foto
 
-## Performance
+| Tipo | Pasta |
+|------|-------|
+| Logo principal | `brand/logo/` |
+| Imagem Open Graph do site | `brand/og/` |
+| Foto de Murillo | `brand/murillo/` |
+| Logos / fotos de parceiros | `parceiros/` |
+| Fotos de cada passeio | `passeios/[categoria]/[slug]/` |
 
-- Todas imagens devem passar por compressão
-- WebP target: < 200KB por imagem
-- JPEG target: < 300KB por imagem
-- Use `next/image` para lazy-loading automático
+---
 
-## Próximos Passos
+## Tamanhos Recomendados
 
-- [ ] Tirar fotos reais dos passeios
-- [ ] Converter para WebP
-- [ ] Colocar em respectivas pastas
-- [ ] Validar alt-text (acessibilidade)
-- [ ] Testar em mobile (loading performance)
+| Uso | Dimensão | Formato |
+|-----|----------|---------|
+| Hero da página de passeio | 1600×900 px (mínimo) | JPG |
+| Card na listagem | 900×1200 px | JPG |
+| Galeria (gallery-01/02/03) | 1200×900 px | JPG |
+| Open Graph (og-image) | 1200×630 px | JPG |
+| Logo | livre | SVG ou PNG (fundo transparente) |
+| Foto Murillo | 800×800 px (mínimo) | JPG |
+
+---
+
+## Regras de SEO
+
+1. **Foto real:** nenhuma imagem de banco genérico. Toda foto deve mostrar o passeio real ou local real.
+2. **Nome descritivo:** o nome do arquivo deve refletir o conteúdo (não `IMG_0042.jpg`).
+3. **Alt text obrigatório:** no código, cada `<img>` deve ter `alt` descritivo — ex: `"Piscina natural de Seixas com turistas, João Pessoa PB"`.
+4. **Peso:** comprimir antes de subir. Máximo recomendado: 300 KB por imagem. Use Squoosh (squoosh.app) ou similar.
+5. **Sem duplicata:** não subir a mesma foto em pastas diferentes sem necessidade.
+
+---
+
+## Passeios Cadastrados
+
+Cada pasta abaixo espera: `hero.jpg`, `card.jpg`, `gallery-01/02/03.jpg`
+
+**Pacotes:**
+- `passeios/pacotes/3-dias-completo/`
+- `passeios/pacotes/3-dias-basico/`
+- `passeios/pacotes/super-economico/`
+
+**Litoral Sul:**
+- `passeios/litoral-sul/roteiro-classico/`
+- `passeios/litoral-sul/praia-bela/`
+- `passeios/litoral-sul/combo-jampa-quadriciclo/`
+- `passeios/litoral-sul/combo-praia-bela-quadriciclo/`
+- `passeios/litoral-sul/quadriciclo-coqueirinho/`
+- `passeios/litoral-sul/quadriciclo-praia-bela/`
+
+**Litoral Norte:**
+- `passeios/litoral-norte/roteiro-classico/`
+- `passeios/litoral-norte/combo-areia-vermelha/`
+- `passeios/litoral-norte/areia-vermelha-catamara/`
+- `passeios/litoral-norte/por-do-sol-jacare/`
+- `passeios/litoral-norte/lancha-privativa/`
+
+**Piscinas Naturais:**
+- `passeios/piscinas-naturais/seixas/`
+- `passeios/piscinas-naturais/penha/`
+- `passeios/piscinas-naturais/picaozinho/`
+- `passeios/piscinas-naturais/mergulho/`
+
+**City Tour:**
+- `passeios/city-tour/jampa-historica/`
+
+**Interestaduais:**
+- `passeios/interestaduais/porto-de-galinhas/`
+- `passeios/interestaduais/praia-de-pipa/`
+- `passeios/interestaduais/natal/`

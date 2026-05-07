@@ -231,7 +231,7 @@ export const passeios: Passeio[] = [
       "Um dia inteiro pelas praias mais encantadoras do litoral sul paraibano: Gramame, Amor, Tambaba e Coqueirinho.",
     descricaoLonga:
       "O clássico absoluto do litoral sul. Você passa por 4 praias diferentes, cada uma com sua personalidade: Gramame com areia branca e águas calmas, Amor com beleza selvagem, Tambaba a única praia naturista oficial do Nordeste, e Coqueirinho para almoço.",
-    coverImage: "/images/passeios/litoral-sul-classico/capa.webp",
+    coverImage: "/images/passeios/litoral-sul/roteiro-classico/capa.webp",
     gallery: [
       "/images/passeios/litoral-sul-classico/galeria-01.webp",
       "/images/passeios/litoral-sul-classico/galeria-02.webp",

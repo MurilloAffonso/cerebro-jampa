@@ -28,6 +28,9 @@ Thumbs.db
 .claude/settings.local.json
 *.canvas
 
+# Dados sensíveis — nunca commitar
+_seguro/
+
 # Artefatos de build e testes
 _site/tsconfig.tsbuildinfo
 seixas-full.png
