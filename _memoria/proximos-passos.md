@@ -12,9 +12,9 @@
 |---|------|--------------------|--------|
 | 1 | Limpeza de git (~30 arquivos pendentes) | Working tree limpa, 1-2 commits temáticos | ✅ feito 2026-05-06 (`e350a31`, `7cf8e37`) |
 | 2 | Arquivar `prioridades.md` + reescrever `proximos-passos.md` | Memória reflete sprint única | 🔄 em execução |
-| 3 | Página **Areia Vermelha** | Live, type-check ✅, schema FAQ + TouristAttraction | ⏳ |
-| 4 | Página **Litoral Sul Clássico** | Live, type-check ✅, reusa decisões da #3 | ⏳ |
-| 5 | **GMB otimização completa** | Descrição + 5 fotos + 5 Q&A + push de avaliação. GMB Insights mostrando aumento de impressões em 7 dias | ⏳ |
+| 3 | Página **Areia Vermelha** | Live, type-check ✅, schema FAQ + TouristAttraction | ✅ feito 2026-05-06 |
+| 4 | Página **Litoral Sul Clássico** | Live, type-check ✅, reusa decisões da #3 | ✅ feito 2026-05-06 |
+| 5 | **GMB otimização completa** | Descrição + 5 fotos + 5 Q&A + push de avaliação. GMB Insights mostrando aumento de impressões em 7 dias | 🔄 conteúdo pronto em `_memoria/gmb-otimizacao-2026-05.md` — execução manual no painel GMB com Murillo |
 | 6 | **Registro manual de leads no CSV** | 15+ leads em `_crm/leads.csv` ao final da sprint, gerados via skill `qualificacao-lead` | ⏳ |
 | 7 | **Retrospectiva da sprint** | 30 min lendo o CSV. Atualizar `_conhecimento/objecoes.md` e `_conhecimento/motivos-de-perda.md` com padrão #1 real de cada | ⏳ |
 
@@ -37,7 +37,8 @@
 
 ## Próximo Passo Imediato
 
-**#3 — Página Areia Vermelha.** Acionar orquestrador → estrategista → copywriter → SEO → programador.
+**#5 — GMB.** Murillo executa o checklist em `_memoria/gmb-otimizacao-2026-05.md` no painel Google Business Profile.
+Em paralelo, segue para **#6 — Registro manual de leads no CSV** (não precisa esperar GMB ficar pronto).
 
 ---
 
