@@ -102,6 +102,13 @@ export function Header() {
             >
               Serviços
             </Link>
+
+            <Link
+              href="/faq"
+              className="text-dark hover:text-primary transition-colors"
+            >
+              FAQ
+            </Link>
           </nav>
 
           {/* ── CTA + hamburger ── */}
@@ -186,6 +193,14 @@ export function Header() {
               onClick={closeMobile}
             >
               Serviços
+            </Link>
+
+            <Link
+              href="/faq"
+              className="px-3 py-2.5 text-dark font-medium hover:bg-light hover:text-primary rounded-lg transition-colors"
+              onClick={closeMobile}
+            >
+              FAQ
             </Link>
 
             {/* CTA mobile */}
