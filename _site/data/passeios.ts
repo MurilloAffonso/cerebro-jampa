@@ -526,15 +526,58 @@ export const passeios: Passeio[] = [
     preco: "R$ 70",
     duracao: "~3h",
     saida: "Conforme tábua de marés",
+    h1: "Areia Vermelha em João Pessoa — Catamarã até o Banco de Areia em Cabedelo",
+    metaDescription:
+      "Conheça Areia Vermelha em Cabedelo, a 20 min de João Pessoa. Banco de areia com piscinas naturais verde-cristalinas. R$ 70 por pessoa. Cadastur ativo. Reserve pelo WhatsApp!",
+    subtituloHero:
+      "Em Cabedelo, a maré baixa revela um banco de areia cercado por piscinas naturais verde-esmeralda. A gente leva você no horário certo, em catamarã com estrutura completa.",
     descricao:
       "Um banco de areia que surge na maré baixa com piscinas naturais de água cristalina. O lugar mais instagramável da Paraíba.",
     descricaoLonga:
       "Areia Vermelha é um fenômeno da natureza: um banco de areia que aparece apenas na maré baixa, revelando piscinas naturais com água verde-esmeralda e corais coloridos. É o local mais fotografado e procurado por turistas.",
+    lead:
+      "Você já viu fotos daquele banco de areia que aparece no meio do mar com piscinas verde-esmeralda em volta?\n\nÉ Areia Vermelha. Fica em Cabedelo, a 20 minutos de João Pessoa, e só aparece quando a maré baixa.\n\nA gente parte em catamarã do Restaurante Lovina, em Ponta de Campina, checa a maré antes, e leva você até o ponto certo na hora certa. Você só desce, fotografa, mergulha — e volta com as melhores fotos da viagem.",
+    descricaoSensorial:
+      "O catamarã sai do Restaurante Lovina, em Ponta de Campina (Cabedelo), e em poucos minutos já está sobre o banco de areia.\n\nA maré recuou. O que antes era mar agora é uma faixa de areia clara cercada por piscinas naturais. A água é morna, transparente, com tons que vão do verde-cristal ao azul. Corais coloridos, peixes circulando — dá pra mergulhar, flutuar com snorkel, ou só ficar de pé na água até a cintura.\n\nNo catamarã tem toboágua, bar a bordo e churrasqueira. Banheiros, som, equipamento de salvatagem. A estrutura está pronta — você só aproveita.\n\nA gente fica enquanto a maré deixar. Em torno de 3h no total, contando travessia e retorno.",
+    roteiroNarrativo: [
+      {
+        emoji: "🚢",
+        titulo: "Embarque em Ponta de Campina",
+        texto:
+          "Ponto de encontro no Restaurante Lovina, em Ponta de Campina (Cabedelo). A localização exata é enviada no voucher após a confirmação da reserva. Horário conforme tábua de marés do dia — a gente confirma com você no WhatsApp na véspera.",
+      },
+      {
+        emoji: "🌊",
+        titulo: "Travessia até o banco de areia",
+        texto:
+          "Saída em catamarã rumo a Areia Vermelha, em frente à Praia de Camboinha. Travessia curta — você já vai sentindo o vento e vendo o litoral norte de outro ângulo.",
+      },
+      {
+        emoji: "🏝️",
+        titulo: "Areia Vermelha aparece com a maré baixa",
+        texto:
+          "A maré baixou e o banco de areia surge no meio do mar. Faixa clara cercada por piscinas naturais de água verde-esmeralda, corais coloridos e peixes. Você desce, mergulha, fotografa, ou só fica parado deixando o cenário fazer o trabalho.",
+      },
+      {
+        emoji: "⚡",
+        titulo: "Catamarã é sua base",
+        texto:
+          "O catamarã ancora ao lado. Toboágua para quem quiser agitar. Bar a bordo para água e bebidas. Churrasqueira disponível. Banheiros, som e equipamento de salvatagem.",
+      },
+      {
+        emoji: "🚢",
+        titulo: "Retorno para Ponta de Campina",
+        texto:
+          "Quando a maré começa a encher, o banco de areia some de volta para o mar — sinal de que é hora de voltar. Total: ~3h desde o embarque.",
+      },
+    ],
     coverImage: "/images/passeios/areia-vermelha/capa.webp",
     gallery: [
       "/images/passeios/areia-vermelha/galeria-01.webp",
       "/images/passeios/areia-vermelha/galeria-02.webp",
     ],
+    imagemAlt:
+      "Banco de areia de Areia Vermelha com piscinas naturais verde-esmeralda durante maré baixa em Cabedelo, João Pessoa",
     rotario: [
       "Embarque no Restaurante Lovina, Ponta de Campina — Cabedelo",
       "Navegação até Areia Vermelha (conforme maré)",
@@ -543,42 +586,79 @@ export const passeios: Passeio[] = [
       "Retorno (~3h total)",
     ],
     incluso: [
-      "Catamarã com toboágua, bar a bordo, churrasqueira",
-      "Acesso às piscinas naturais",
-      "Estrutura de segurança e salvatagem",
-      "Banheiros e som a bordo",
+      "Passeio compartilhado em catamarã",
+      "Toboágua, bar a bordo e churrasqueira",
+      "Banheiros, som com microfone, kit de primeiros socorros",
+      "Equipamento de salvatagem e estrutura de segurança",
+      "Orientação e atendimento (Murillo ou equipe)",
     ],
-    naoIncluso: ["Alimentação"],
+    naoIncluso: [
+      "Alimentação (consumo no bar a bordo à parte)",
+      "Transfer até Ponta de Campina (consultar disponibilidade)",
+    ],
     observacoes:
-      "Saída conforme tábua de marés. Lugar muito procurado — reserve com antecedência. Transfer até Cabedelo: [CONSULTAR]. Valor privativo: [CONSULTAR].",
+      "Sujeito à tábua de marés (maré baixa obrigatória). Lugar muito procurado — reserve com antecedência. Transfer até Cabedelo: consultar.",
+    alertaMare:
+      "Areia Vermelha só aparece quando a maré está baixa. Antes de confirmar sua data, a gente consulta a tábua de marés e te avisa o melhor horário. Você não precisa se preocupar com isso — é nosso trabalho.",
+    nomeCurto: "Areia Vermelha",
     idealPara: ["Fotos Instagram", "Piscinas naturais", "Mergulho leve", "Famílias"],
-    imagemAlt: "Banco de areia vermelha com piscinas naturais em João Pessoa",
     faq: [
       {
         pergunta: "Areia Vermelha só existe em maré baixa?",
         resposta:
-          "Sim. O banco de areia surge apenas na maré baixa. Confirmamos o horário com você na véspera.",
+          "Sim. O banco de areia surge apenas quando a maré está baixa. Antes de confirmar sua data, a gente consulta a tábua de marés de João Pessoa. Se o dia que você quer não tiver maré favorável, avisamos antes e sugerimos outra data — sem custo.",
       },
       {
         pergunta: "De onde sai o barco?",
         resposta:
-          "Restaurante Lovina, Ponta de Campina — Cabedelo (não sai de Tambaú). Consulte transfer até o local.",
+          "O embarque é no Restaurante Lovina, em Ponta de Campina (Cabedelo) — não sai de Tambaú. A localização exata é enviada no voucher após a confirmação. Se precisar de transfer até o local, consulte a gente no WhatsApp.",
       },
       {
-        pergunta: "É perigoso o toboágua?",
+        pergunta: "O que exatamente está incluso nos R$ 70?",
         resposta:
-          "Não. É seguro e supervisionado. Equipamento de salvatagem disponível.",
+          "O valor cobre o passeio compartilhado em catamarã com toboágua, bar a bordo, churrasqueira, banheiros, som, kit de primeiros socorros e equipamento de salvatagem. Alimentação e bebidas são pagas à parte no bar do catamarã.",
+      },
+      {
+        pergunta: "Quanto tempo dura o passeio?",
+        resposta:
+          "Em torno de 3h, contando embarque, travessia, tempo no banco de areia e retorno. O horário de saída varia conforme a tábua de marés — a gente confirma com você na véspera.",
+      },
+      {
+        pergunta: "É seguro? Posso ir mesmo sem saber nadar?",
+        resposta:
+          "Sim. As piscinas naturais ao redor do banco de areia são rasas — você fica de pé em boa parte delas. O catamarã tem equipamento de salvatagem e o toboágua é supervisionado. Não é necessário saber nadar.",
       },
       {
         pergunta: "Criança pode ir?",
         resposta:
-          "Sim. Abaixo de 5 anos não paga. De 5 a 11 anos: R$ 56. A partir de 12 anos: valor adulto.",
+          "Sim. Abaixo de 5 anos não paga. De 5 a 11 anos: R$ 56. A partir de 12 anos: valor adulto. Crianças devem estar acompanhadas por um responsável durante toda a atividade.",
+      },
+      {
+        pergunta: "Qual é a política de cancelamento?",
+        resposta:
+          "Em caso de condições climáticas ou maré desfavorável, remarcamos sem custo. Para cancelamentos pelo cliente, consulte nossa política completa no WhatsApp.",
       },
     ],
     depoimento: {
       texto:
-        "Areia Vermelha é mágico! A água é cristalina, o cenário é irreal. As melhores fotos das férias foram lá.",
-      autor: "Patricia, turista de SP",
+        "[CONFIRMAR COM MURILLO: depoimento real de cliente sobre o passeio de Areia Vermelha]",
+      autor: "[CONFIRMAR: nome e cidade do cliente]",
+    },
+    temAvaliacoes: false,
+    avaliacoes: [],
+    tem360: false,
+    url360: undefined,
+    informacoesPraticas: {
+      oqueLevar: [
+        "Roupa de banho (já venha com ela)",
+        "Protetor solar biodegradável (bom para os corais)",
+        "Toalha",
+        "Dinheiro ou cartão para o bar a bordo",
+      ],
+      pontoEncontro:
+        "Restaurante Lovina — Ponta de Campina, Cabedelo, PB. A localização exata é enviada no voucher após a confirmação da reserva.",
+      horario:
+        "Varia conforme a tábua de marés. Confirmamos com você no WhatsApp na véspera.",
     },
   },
 
