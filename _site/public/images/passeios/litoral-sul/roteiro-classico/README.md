@@ -1,16 +1,20 @@
-# Imagens deste passeio
+# Imagens — Litoral Sul (Roteiro Clássico)
 
-Arquivos esperados:
+**Status:** [CONFIRMAR COM MURILLO] — assets ainda não enviados.
 
-| Arquivo | Dimensão recomendada | Uso |
-|---------|---------------------|-----|
-| `hero.jpg` | 1600×900 ou maior | Banner principal da página |
-| `card.jpg` | 900×1200 | Card na listagem de passeios |
-| `gallery-01.jpg` | 1200×900 | Galeria de fotos |
-| `gallery-02.jpg` | 1200×900 | Galeria de fotos |
-| `gallery-03.jpg` | 1200×900 | Galeria de fotos |
+## Necessário
 
-**Regra:** use foto real do passeio. Sem banco de imagens genérico.
-**Nome do arquivo:** descritivo, sem espaços, sem acentos.
-**Alt text:** descrever o que aparece na cena + contexto local (ex: "Piscina natural de Seixas com turistas ao fundo, João Pessoa PB").
+| Arquivo | Descrição | Tamanho mínimo |
+|---------|-----------|----------------|
+| `capa.webp` | Hero — falésias coloridas e coqueiros em Coqueirinho | 1600×900 |
+| `galeria-01.webp` | Praia de Gramame com águas calmas | 1200×800 |
+| `galeria-02.webp` | Praia do Amor com falésias selvagens | 1200×800 |
 
+## Fallback atual
+
+Enquanto não há fotos reais, o template usa `/images/placeholders/placeholder-passeio.svg`.
+
+## Origem preferida
+
+Fotos reais de saída da Vem Passear, com tag/data e autorização de uso.
+Sem banco de imagens genérico.

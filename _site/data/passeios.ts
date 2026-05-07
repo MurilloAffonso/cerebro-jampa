@@ -227,15 +227,64 @@ export const passeios: Passeio[] = [
     preco: "R$ 80",
     duracao: "~8h",
     saida: "8h–9h",
+    h1: "Litoral Sul de João Pessoa — Roteiro Clássico por 4 Praias em 1 Dia",
+    metaDescription:
+      "Roteiro clássico do litoral sul de João Pessoa: Gramame, Amor, Tambaba e Coqueirinho em 1 dia. R$ 80 com transfer. Cadastur ativo. Reserve pelo WhatsApp!",
+    subtituloHero:
+      "4 praias em 1 dia, com transfer saindo de Tambaú, Cabo Branco, Manaíra ou Bessa. A gente cuida do trajeto e do tempo em cada praia. Você só aproveita.",
     descricao:
       "Um dia inteiro pelas praias mais encantadoras do litoral sul paraibano: Gramame, Amor, Tambaba e Coqueirinho.",
     descricaoLonga:
       "O clássico absoluto do litoral sul. Você passa por 4 praias diferentes, cada uma com sua personalidade: Gramame com areia branca e águas calmas, Amor com beleza selvagem, Tambaba a única praia naturista oficial do Nordeste, e Coqueirinho para almoço.",
+    lead:
+      "Quer conhecer o melhor do litoral sul paraibano em um único dia — sem dirigir, sem estacionar, sem se preocupar com trajeto?\n\nO Roteiro Clássico passa por 4 praias com personalidades muito diferentes: Gramame para começar com calma, Amor para o visual selvagem, Tambaba (a única praia naturista oficial do Nordeste, opcional) e Coqueirinho para almoço.\n\nA gente busca você no hotel pela manhã, leva, conta o que tem em cada praia, e traz de volta no fim da tarde. Saída entre 8h e 9h, retorno por volta das 16h30.",
+    descricaoSensorial:
+      "O motorista te busca em Tambaú, Cabo Branco, Manaíra ou Bessa entre 8h e 9h. A primeira parada é Gramame: areia branca, águas calmas, ótima para começar o dia tranquilo.\n\nDali, segue para a Praia do Amor — beleza selvagem, falésias coloridas e o visual mais marcante do dia. Quem gosta de fotografar vai querer parar mais.\n\nNa sequência, Tambaba: a única praia naturista oficial do Nordeste. A visita é opcional — você decide se desce ou prefere seguir direto. Avisamos antes para quem preferir não ir.\n\nA última parada é Coqueirinho — parada longa, hora do almoço (não incluso, várias opções no local). Tempo para descanso, banho de mar e aquela paisagem de coqueiro com falésia laranja que aparece em toda foto da Paraíba.\n\nRetorno por volta das 16h30, deixando você de volta no hotel.",
+    roteiroNarrativo: [
+      {
+        emoji: "🚐",
+        titulo: "Embarque (transfer) — 8h às 9h",
+        texto:
+          "Buscamos você no hotel ou airbnb em Tambaú, Cabo Branco, Manaíra ou Bessa. Horário exato confirmado no voucher após a reserva. Sem cobrança extra de transfer dentro dessas regiões.",
+      },
+      {
+        emoji: "🏖️",
+        titulo: "Praia de Gramame",
+        texto:
+          "Primeira parada. Areia branca, águas calmas, ótima para começar o dia em ritmo tranquilo. Tempo para banho, foto e respirar antes da sequência mais agitada.",
+      },
+      {
+        emoji: "🌊",
+        titulo: "Praia do Amor",
+        texto:
+          "Beleza selvagem, falésias coloridas e o visual mais marcante do dia. Quem gosta de fotografar costuma pedir para ficar mais um pouco — e a gente flexibiliza dentro do tempo do roteiro.",
+      },
+      {
+        emoji: "🌅",
+        titulo: "Praia de Tambaba (opcional)",
+        texto:
+          "A única praia naturista oficial do Nordeste. A visita é opcional — você decide se desce ou prefere seguir direto. Avisamos antes para quem preferir não ir. Quem desce, pode permanecer vestido em parte da praia.",
+      },
+      {
+        emoji: "🌴",
+        titulo: "Praia de Coqueirinho — parada longa",
+        texto:
+          "Última parada e a mais demorada. Hora do almoço (não incluso — vários restaurantes no local). Tempo para banho de mar, descanso e a paisagem de falésia laranja com coqueiros que está em toda foto da Paraíba.",
+      },
+      {
+        emoji: "🚐",
+        titulo: "Retorno por volta das 16h30",
+        texto:
+          "Deixamos você de volta no hotel. Total: ~8h desde a saída.",
+      },
+    ],
     coverImage: "/images/passeios/litoral-sul/roteiro-classico/capa.webp",
     gallery: [
-      "/images/passeios/litoral-sul-classico/galeria-01.webp",
-      "/images/passeios/litoral-sul-classico/galeria-02.webp",
+      "/images/passeios/litoral-sul/roteiro-classico/galeria-01.webp",
+      "/images/passeios/litoral-sul/roteiro-classico/galeria-02.webp",
     ],
+    imagemAlt:
+      "Falésias coloridas e coqueiros na Praia de Coqueirinho, litoral sul de João Pessoa",
     rotario: [
       "Saída 8h–9h (Tambaú, Cabo Branco, Manaíra, Bessa)",
       "Praia de Gramame (areia branca, águas calmas)",
@@ -245,34 +294,49 @@ export const passeios: Passeio[] = [
       "Retorno ~16h30",
     ],
     incluso: [
-      "Transfer (Tambaú, Cabo Branco, Manaíra, Bessa)",
+      "Transfer ida e volta (Tambaú, Cabo Branco, Manaíra, Bessa)",
       "Condutores credenciados em todas as praias",
+      "Orientação e atendimento (Murillo ou equipe)",
     ],
-    naoIncluso: ["Alimentação"],
+    naoIncluso: [
+      "Alimentação (almoço em Coqueirinho à parte — várias opções no local)",
+      "Bebidas",
+      "Entrada/passagem em Tambaba (se aplicável)",
+    ],
     observacoes:
-      "Tambaba é praia naturista — avisar clientes com antecedência. Valor privativo: [CONSULTAR].",
+      "Tambaba é praia naturista — visita opcional, avisamos antes. Valor privativo: consultar.",
+    nomeCurto: "Litoral Sul",
     idealPara: ["Praia", "Dia completo", "Paisagem", "Famílias e casais"],
-    imagemAlt: "Praia de Gramame no litoral sul de João Pessoa",
     faq: [
       {
         pergunta: "Qual praia é melhor para banho?",
         resposta:
-          "Gramame e Coqueirinho têm águas mais calmas. Amor é mais selvagem. Tudo depende do seu gosto.",
+          "Gramame e Coqueirinho têm águas mais calmas, ideais para banho longo. Amor é mais selvagem, com pedras e ondas — bom para foto e vista, menos para banho prolongado. Tudo depende do seu gosto.",
       },
       {
         pergunta: "Preciso levar roupa de banho extra?",
         resposta:
-          "Sim. São 4 praias. Toalha também é recomendada.",
+          "Recomendamos sim. São 4 praias e o ideal é trocar de roupa molhada antes do almoço em Coqueirinho. Toalha também é importante.",
       },
       {
         pergunta: "Tambaba é praia naturista — sou obrigado a tirar a roupa?",
         resposta:
-          "Não. A visita é opcional e você pode ficar vestido. Avisamos antes para quem preferir não ir.",
+          "Não. A visita a Tambaba é opcional. Quem decide ir pode permanecer vestido em parte da praia. Quem prefere não ir, fica no veículo ou seguimos direto. Avisamos antes para quem prefere pular essa parada.",
+      },
+      {
+        pergunta: "O que está incluso nos R$ 80?",
+        resposta:
+          "Transfer ida e volta a partir de Tambaú, Cabo Branco, Manaíra ou Bessa, condutores credenciados em todas as praias e orientação durante o passeio. Alimentação e bebidas são pagas à parte (almoço em Coqueirinho, várias opções no local).",
+      },
+      {
+        pergunta: "Quanto tempo dura o passeio?",
+        resposta:
+          "Em torno de 8h, contando saída entre 8h e 9h e retorno por volta das 16h30. O tempo em cada praia é flexível dentro do roteiro do dia.",
       },
       {
         pergunta: "Criança pode ir?",
         resposta:
-          "Sim. Abaixo de 5 anos não paga. De 5 a 11 anos: R$ 64. A partir de 12 anos: valor adulto.",
+          "Sim. Abaixo de 5 anos não paga. De 5 a 11 anos: R$ 64. A partir de 12 anos: valor adulto. Crianças devem estar acompanhadas por um responsável durante todo o passeio.",
       },
       {
         pergunta: "Qual é a política de cancelamento por chuva?",
@@ -282,8 +346,25 @@ export const passeios: Passeio[] = [
     ],
     depoimento: {
       texto:
-        "O Litoral Sul é perfeito para quem quer conhecer o melhor de João Pessoa em um dia só. Cada praia é única.",
-      autor: "Roberto, turista de Brasília",
+        "[CONFIRMAR COM MURILLO: depoimento real de cliente sobre o Roteiro Clássico do Litoral Sul]",
+      autor: "[CONFIRMAR: nome e cidade do cliente]",
+    },
+    temAvaliacoes: false,
+    avaliacoes: [],
+    tem360: false,
+    url360: undefined,
+    informacoesPraticas: {
+      oqueLevar: [
+        "Roupa de banho (e uma extra para trocar antes do almoço)",
+        "Toalha",
+        "Protetor solar",
+        "Chinelo confortável",
+        "Dinheiro ou cartão para almoço em Coqueirinho",
+      ],
+      pontoEncontro:
+        "Buscamos você no hotel ou airbnb em Tambaú, Cabo Branco, Manaíra ou Bessa — João Pessoa, PB. A localização exata é confirmada no voucher após a reserva.",
+      horario:
+        "Saída entre 8h e 9h. Retorno por volta das 16h30.",
     },
   },
 
