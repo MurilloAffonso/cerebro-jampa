@@ -17,6 +17,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: [
         "/sobre/",
+        "/blog/",
         "/passeios/piscinas-naturais/calendario/",
       ],
     },
