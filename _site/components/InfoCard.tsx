@@ -56,7 +56,7 @@ export function InfoCard({ preco, duracao, saida, observacao, whatsappUrl, class
         </div>
 
         {/* Duração */}
-        <div className="flex items-start gap-4 p-6 md:p-8 border-t md:border-t-0 md:border-l border-black/[0.06]">
+        <div className="flex items-start gap-4 p-6 md:p-8 border-t md:border-t-0 md:border-l border-[#C5B7A3]/50">
           <div className="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center shrink-0 mt-0.5">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#004E89" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
               <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
@@ -75,7 +75,7 @@ export function InfoCard({ preco, duracao, saida, observacao, whatsappUrl, class
         </div>
 
         {/* Saída */}
-        <div className="flex items-start gap-4 p-6 md:p-8 border-t md:border-t-0 md:border-l border-black/[0.06]">
+        <div className="flex items-start gap-4 p-6 md:p-8 border-t md:border-t-0 md:border-l border-[#C5B7A3]/50">
           <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" />
