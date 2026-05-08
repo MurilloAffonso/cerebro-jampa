@@ -169,6 +169,23 @@ export default function TransferPage() {
         </div>
       </section>
 
+      {/* Cross-link Excursões e Grupos */}
+      <section className="container-safe py-10">
+        <div className="rounded-2xl border border-[#C5B7A3]/50 bg-[#F7F8F7] p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center gap-4 justify-between">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[2.5px] text-[#107997] mb-1">Vai trazer um grupo?</p>
+            <h3 className="font-serif font-bold text-secondary text-lg md:text-xl mb-1">Excursões e grupos têm operação dedicada</h3>
+            <p className="text-sm text-gray-700 max-w-xl">Roteiro, transporte local, van/ônibus e apoio em campo para igreja, escola, família grande ou agência parceira.</p>
+          </div>
+          <Link
+            href="/servicos/excursoes-e-grupos"
+            className="inline-flex items-center gap-2 bg-secondary hover:bg-secondary/90 text-white font-bold px-5 py-3 rounded-full text-sm transition-colors whitespace-nowrap"
+          >
+            Ver Excursões e Grupos →
+          </Link>
+        </div>
+      </section>
+
       {/* Link de volta */}
       <div className="container-safe py-6 text-center">
         <Link href="/passeios" className="text-sm text-primary hover:text-accent font-medium transition-colors">

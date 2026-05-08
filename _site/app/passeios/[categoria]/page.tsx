@@ -80,6 +80,8 @@ export default function CategoriaPage({ params }: CategoriaPageProps) {
   const nome = meta?.nome ?? params.categoria.replace(/-/g, " ");
   const emoji = meta?.emoji ?? "🎯";
   const descricao = meta?.descricao ?? null;
+  const mostraExcursoesCallout =
+    params.categoria === "pacotes" || params.categoria === "interestaduais";
 
   return (
     <div>
@@ -150,6 +152,27 @@ export default function CategoriaPage({ params }: CategoriaPageProps) {
           )}
         </div>
       </section>
+
+      {/* Cross-link Excursões e Grupos (só pacotes e interestaduais) */}
+      {mostraExcursoesCallout && (
+        <section className="container-safe py-8">
+          <div className="rounded-2xl border border-[#C5B7A3]/50 bg-[#F7F8F7] p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center gap-4 justify-between">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[2.5px] text-[#107997] mb-1">Vai trazer um grupo?</p>
+              <h3 className="font-serif font-bold text-secondary text-lg md:text-xl mb-1">Excursões e grupos têm operação dedicada</h3>
+              <p className="text-sm text-gray-700 max-w-xl">
+                Roteiro, transporte local, van/ônibus e apoio em campo para igreja, escola, família grande ou agência parceira.
+              </p>
+            </div>
+            <Link
+              href="/servicos/excursoes-e-grupos"
+              className="inline-flex items-center gap-2 bg-secondary hover:bg-secondary/90 text-white font-bold px-5 py-3 rounded-full text-sm transition-colors whitespace-nowrap"
+            >
+              Ver Excursões e Grupos →
+            </Link>
+          </div>
+        </section>
+      )}
 
       {/* CTA WhatsApp */}
       <section className="section-padding bg-primary text-white">
