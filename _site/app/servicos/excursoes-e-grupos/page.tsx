@@ -4,7 +4,9 @@
  * Conversão: WhatsApp com briefing pré-formatado. Sem preço público.
  *
  * Fonte da copy: _pipeline/copy-excursoes-e-grupos-2026-05-08.md
- * Lacunas marcadas [CONFIRMAR COM MURILLO] permanecem visíveis até confirmação real.
+ * Versão enxuta: seções dependentes de dado não confirmado (frota, política
+ * de pagamento, tamanho de grupo, histórico) foram removidas em vez de exibir
+ * placeholder visível. Reativar quando Murillo confirmar.
  */
 
 import type { Metadata } from "next";
@@ -97,7 +99,7 @@ const PROCESSO = [
   {
     n: "4",
     titulo: "Confirmação e operação no destino",
-    desc: "Sinal para reservar transporte e operadores, restante combinado conforme o grupo. No dia, a gente está em campo.",
+    desc: "Forma de pagamento e prazos são combinados por escrito antes de qualquer cobrança. No dia, a gente está em campo com você.",
   },
 ];
 
@@ -121,29 +123,6 @@ const ROTEIROS = [
     nome: "Excursão de fim de semana com hospedagem",
     desc:
       "Chegada com transfer do aeroporto ou rodoviária + 1 passeio âncora no sábado + retorno organizado domingo. Para igreja, escola e empresa que vem de cidade próxima.",
-  },
-];
-
-const FROTA = [
-  {
-    transporte: "Transfer privativo (carro/SUV)",
-    capacidade: "até 7 passageiros",
-    uso: "grupo familiar, executivo, casal com bagagem",
-  },
-  {
-    transporte: "Van",
-    capacidade: "[CONFIRMAR COM MURILLO]",
-    uso: "grupo médio, dia de passeio",
-  },
-  {
-    transporte: "Micro-ônibus",
-    capacidade: "[CONFIRMAR COM MURILLO]",
-    uso: "excursão escolar, igreja, equipe",
-  },
-  {
-    transporte: "Ônibus rodoviário",
-    capacidade: "[CONFIRMAR COM MURILLO]",
-    uso: "caravana interestadual, formatura",
   },
 ];
 
@@ -192,17 +171,7 @@ const FAQ_ITEMS = [
   {
     pergunta: "Vocês fornecem o ônibus ou trabalham com o transporte que o grupo já tem?",
     resposta:
-      "As duas opções. Se você já vem com ônibus da cidade de origem, a gente opera só o roteiro e o apoio em campo. Se precisa de van, micro-ônibus ou ônibus rodoviário em João Pessoa, a gente fecha com parceiros operacionais credenciados. [CONFIRMAR COM MURILLO: lista definitiva de parceiros de transporte]",
-  },
-  {
-    pergunta: "Qual o tamanho mínimo e máximo de grupo que vocês atendem?",
-    resposta:
-      "[CONFIRMAR COM MURILLO: número mínimo e máximo de pessoas por tipo de operação — van, micro, ônibus]. Para grupos acima de 4 pessoas já existe condição comercial diferente do passeio individual.",
-  },
-  {
-    pergunta: "Como funciona o pagamento de proposta para grupo?",
-    resposta:
-      "[CONFIRMAR COM MURILLO: política definitiva — sinal de quanto, prazo, formas aceitas, restante quando]. Aceitamos cartão e PIX. Parcelamento possível, com taxa por conta do cliente. Tudo combinado por escrito antes de qualquer cobrança.",
+      "As duas opções. Se você já vem com ônibus da cidade de origem, a gente opera só o roteiro e o apoio em campo. Se precisa de transporte em João Pessoa, a gente fecha com parceiros operacionais credenciados — capacidade e formato são confirmados na proposta, conforme o tamanho do grupo.",
   },
   {
     pergunta: "Tem desconto para grupo grande?",
@@ -451,10 +420,6 @@ export default function ExcursoesGruposPage() {
               </li>
             ))}
           </ol>
-
-          <p className="text-xs text-gray-500 mt-6">
-            Política definitiva de pagamento de grupo: <span className="italic">[CONFIRMAR COM MURILLO — sinal, prazos, parcelamento]</span>
-          </p>
         </div>
       </section>
 
@@ -487,44 +452,6 @@ export default function ExcursoesGruposPage() {
         </div>
       </section>
 
-      {/* Frota e capacidade */}
-      <section className="section-padding">
-        <div className="container-safe max-w-4xl">
-          <p className="text-xs font-bold uppercase tracking-[2.5px] text-[#107997] mb-3">
-            Transporte
-          </p>
-          <h2 className="font-serif font-bold text-secondary mb-6" style={{ fontSize: "clamp(24px, 3.5vw, 36px)", letterSpacing: "-0.5px" }}>
-            Capacidade que conseguimos atender
-          </h2>
-
-          <div className="overflow-x-auto rounded-2xl border border-[#C5B7A3]/50">
-            <table className="w-full text-sm">
-              <thead className="bg-[#F7F8F7] text-secondary">
-                <tr>
-                  <th className="text-left px-4 py-3 font-bold">Transporte</th>
-                  <th className="text-left px-4 py-3 font-bold">Capacidade</th>
-                  <th className="text-left px-4 py-3 font-bold">Uso típico</th>
-                </tr>
-              </thead>
-              <tbody>
-                {FROTA.map((f, i) => (
-                  <tr key={i} className={i < FROTA.length - 1 ? "border-b border-[#C5B7A3]/30" : ""}>
-                    <td className="px-4 py-3 font-semibold text-dark">{f.transporte}</td>
-                    <td className="px-4 py-3 text-gray-700">{f.capacidade}</td>
-                    <td className="px-4 py-3 text-gray-600">{f.uso}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <p className="text-sm text-gray-600 mt-5 leading-relaxed">
-            Se você já tem o transporte fechado pela cidade de origem, a gente opera só o
-            roteiro e o suporte em João Pessoa. Não é obrigatório fechar transporte com a Vem Passear.
-          </p>
-        </div>
-      </section>
-
       {/* Diferenciais */}
       <section className="section-padding" style={{ background: "#F7F8F7" }}>
         <div className="container-safe max-w-4xl">
@@ -532,7 +459,7 @@ export default function ExcursoesGruposPage() {
             Por que confiar
           </p>
           <h2 className="font-serif font-bold text-secondary mb-8" style={{ fontSize: "clamp(24px, 3.5vw, 36px)", letterSpacing: "-0.5px" }}>
-            Cinco coisas que diferenciam a operação
+            O que diferencia a operação
           </h2>
 
           <ul className="space-y-4">
@@ -556,23 +483,6 @@ export default function ExcursoesGruposPage() {
                 </div>
               </li>
             ))}
-            <li className="flex items-start gap-4 bg-white rounded-xl p-5 border border-[#C5B7A3]/40">
-              <span
-                className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 mt-0.5"
-                style={{ background: "rgba(16,121,151,0.12)" }}
-                aria-hidden="true"
-              >
-                <svg width="14" height="14" viewBox="0 0 12 12" fill="none">
-                  <path d="M2 6l3 3 5-5" stroke="#107997" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </span>
-              <div>
-                <h3 className="font-bold text-dark mb-1">Histórico de grupos atendidos</h3>
-                <p className="text-gray-700 text-sm leading-relaxed italic">
-                  [CONFIRMAR COM MURILLO: número aproximado de grupos atendidos por ano + 1 caso de referência para citar nominalmente]
-                </p>
-              </div>
-            </li>
           </ul>
         </div>
       </section>
