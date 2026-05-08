@@ -172,8 +172,4 @@ const PasseiosSection = () => (
         </div>
       </div>
     </section>
-    <WaveDivider flipped fill="white" bg="#FAFAF8" />
-  </>
-);
-
-Object.assign(window, { PasseiosSection, WaveDivider });
+    <WaveDivider flipped fill="white" bg="#FAFAF8" /

@@ -18,11 +18,17 @@
   }
 
   h2 {
-    @apply text-3xl md:text-4xl font-bold text-dark;
+    @apply font-serif font-bold text-dark;
+    font-size: clamp(26px, 4vw, 44px);
+    line-height: 1.12;
+    letter-spacing: -0.8px;
   }
 
   h3 {
-    @apply text-2xl md:text-3xl font-bold text-dark;
+    @apply font-serif font-bold text-dark;
+    font-size: clamp(18px, 2.5vw, 26px);
+    line-height: 1.2;
+    letter-spacing: -0.3px;
   }
 
   p {
