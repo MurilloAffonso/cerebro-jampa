@@ -63,7 +63,7 @@ export function HeroBlock({ imageSrc, imageAlt, title, subtitle, cta, isH1 = tru
             target={isExternal ? "_blank" : undefined}
             rel={isExternal ? "noopener noreferrer" : undefined}
             className="inline-flex items-center gap-2.5 bg-primary hover:bg-accent text-white font-extrabold px-7 py-[17px] rounded-full min-h-[56px] transition-all hover:scale-[1.02] hover:-translate-y-[2px] self-start"
-            style={{ fontSize: 'clamp(15px, 1.5vw, 17px)', boxShadow: '0 4px 32px rgba(255,107,53,0.45)', letterSpacing: '-0.2px' }}
+            style={{ fontSize: 'clamp(15px, 1.5vw, 17px)', boxShadow: '0 4px 32px rgba(16,121,151,0.45)', letterSpacing: '-0.2px' }}
             aria-label={cta.text}
           >
             {cta.text}

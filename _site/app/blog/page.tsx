@@ -143,7 +143,7 @@ export default function BlogIndexPage() {
       <section
         id="cta-final"
         className="py-14 md:py-20"
-        style={{ background: "#004E89" }}
+        style={{ background: "#092238" }}
       >
         <div className="container-safe text-center max-w-2xl">
           <h2 className="font-serif font-bold text-white text-2xl md:text-3xl mb-3 leading-tight">

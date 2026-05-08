@@ -111,7 +111,7 @@ export default function FaqPage() {
       >
         <div
           className="absolute pointer-events-none"
-          style={{ top: "-20%", right: "-5%", width: "40%", paddingBottom: "40%", background: "radial-gradient(circle, rgba(255,107,53,0.3) 0%, transparent 70%)", borderRadius: "50%", filter: "blur(50px)" }}
+          style={{ top: "-20%", right: "-5%", width: "40%", paddingBottom: "40%", background: "radial-gradient(circle, rgba(197,183,163,0.30) 0%, transparent 70%)", borderRadius: "50%", filter: "blur(50px)" }}
           aria-hidden="true"
         />
         <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.45) 100%)" }} aria-hidden="true" />

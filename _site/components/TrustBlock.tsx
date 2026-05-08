@@ -7,7 +7,7 @@ const ITEMS = [
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
       </svg>
     ),
-    color: "#004E89",
+    color: "#107997",
     titulo: (e: typeof empresa) => `Cadastur ${e.cadastur} — Ativo`,
     desc: () => "Agência registrada no Ministério do Turismo. Operação legal, segura, verificada.",
   },
@@ -17,7 +17,7 @@ const ITEMS = [
         <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
       </svg>
     ),
-    color: "#FF6B35",
+    color: "#C5B7A3",
     titulo: (e: typeof empresa) => `${e.rating.valor}/5 no Google`,
     desc: (e: typeof empresa) => `${e.rating.totalAvaliacoes} avaliações. Atendimento rápido, organização e confiança — o que os turistas sempre comentam.`,
   },
@@ -27,7 +27,7 @@ const ITEMS = [
         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
       </svg>
     ),
-    color: "#1A6B52",
+    color: "#163149",
     titulo: () => "Murillo — Atendimento direto",
     desc: () => "Você fala com Murillo, não com atendente. Conhece cada maré, cada praia, cada horário certo.",
   },

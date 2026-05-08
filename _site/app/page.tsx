@@ -32,7 +32,7 @@ const CATEGORIAS = [
     slug: "pacotes",
     emoji: "🎒",
     descricao: "Roteiros de 2 e 3 dias com transfer, guia e tudo incluso.",
-    cor: "#004E89",
+    cor: "#107997",
   },
   {
     nome: "Litoral Sul",

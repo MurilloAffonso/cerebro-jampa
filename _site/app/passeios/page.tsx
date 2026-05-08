@@ -23,7 +23,7 @@ const CATEGORIAS: {
   cor: string;
   bgGradient: string;
 }[] = [
-  { slug: "pacotes",           nome: "Pacotes",           cor: "#004E89", bgGradient: "linear-gradient(160deg, #003d6b, #004E89)" },
+  { slug: "pacotes",           nome: "Pacotes",           cor: "#107997", bgGradient: "linear-gradient(160deg, #092238, #163149)" },
   { slug: "litoral-sul",       nome: "Litoral Sul",       cor: "#1A6B52", bgGradient: "linear-gradient(160deg, #0d4d2e, #1A6B52)" },
   { slug: "litoral-norte",     nome: "Litoral Norte",     cor: "#7B4F12", bgGradient: "linear-gradient(160deg, #4a2c0a, #7B4F12)" },
   { slug: "piscinas-naturais", nome: "Piscinas Naturais", cor: "#0E5E8A", bgGradient: "linear-gradient(160deg, #073d5c, #0E5E8A)" },
@@ -66,7 +66,7 @@ export default function PasseiosPage() {
         {/* Blobs */}
         <div
           className="absolute pointer-events-none"
-          style={{ top: "-10%", right: "-5%", width: "45%", paddingBottom: "45%", background: "radial-gradient(circle, rgba(255,107,53,0.3) 0%, transparent 70%)", borderRadius: "50%", filter: "blur(55px)" }}
+          style={{ top: "-10%", right: "-5%", width: "45%", paddingBottom: "45%", background: "radial-gradient(circle, rgba(197,183,163,0.30) 0%, transparent 70%)", borderRadius: "50%", filter: "blur(55px)" }}
           aria-hidden="true"
         />
         <div
@@ -82,7 +82,7 @@ export default function PasseiosPage() {
         >
           <div
             className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider mb-4 self-start"
-            style={{ background: "rgba(255,107,53,0.2)", border: "1px solid rgba(255,107,53,0.4)", color: "#FF6B35" }}
+            style={{ background: "rgba(16,121,151,0.2)", border: "1px solid rgba(16,121,151,0.4)", color: "#107997" }}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-primary inline-block" aria-hidden="true" />
             João Pessoa, Paraíba

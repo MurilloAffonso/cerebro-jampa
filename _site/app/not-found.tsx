@@ -39,8 +39,8 @@ export default function NotFound() {
         href={WA_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-6 inline-flex items-center gap-2 bg-primary hover:bg-accent text-white font-bold px-8 py-3 rounded-full transition-colors"
-        style={{ boxShadow: "0 4px 20px rgba(255,107,53,0.3)" }}
+        className="mt-6 inline-flex items-center gap-2 bg-whatsapp hover:bg-[#1ea355] text-white font-bold px-8 py-3 rounded-full transition-colors"
+        style={{ boxShadow: "0 4px 20px rgba(37,211,102,0.3)" }}
       >
         💬 Falar com Murillo no WhatsApp
       </a>

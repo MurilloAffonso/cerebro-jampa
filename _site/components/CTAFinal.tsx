@@ -21,13 +21,13 @@ export function CTAFinal({
     <section
       id="cta-final"
       className="relative overflow-hidden"
-      style={{ background: isLaranja ? "#FF6B35" : "#092238" }}
+      style={{ background: isLaranja ? "#107997" : "#092238" }}
     >
       {/* Blob decorativo */}
       <div
         className="absolute top-[-30%] right-[-10%] w-96 h-96 rounded-full pointer-events-none"
         style={{
-          background: isLaranja ? "rgba(255,255,255,0.12)" : "rgba(255,107,53,0.15)",
+          background: isLaranja ? "rgba(255,255,255,0.15)" : "rgba(197,183,163,0.18)",
           filter: "blur(50px)",
         }}
         aria-hidden="true"
@@ -54,7 +54,7 @@ export function CTAFinal({
           rel="noopener noreferrer"
           className={`inline-flex items-center justify-center gap-2 font-extrabold text-lg px-9 py-[18px] rounded-full min-h-[56px] transition-all hover:scale-[1.02] hover:-translate-y-[3px] shadow-lg ${
             isLaranja
-              ? "bg-white text-primary hover:bg-orange-50"
+              ? "bg-white text-primary hover:bg-[#F7F8F7]"
               : "bg-primary hover:bg-accent text-white shadow-primary/30"
           }`}
           aria-label={textoBotao}

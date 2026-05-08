@@ -28,7 +28,7 @@ const CATEGORIAS_META: Record<string, {
     nome: "Pacotes",
     descricao: "Combine os melhores passeios de João Pessoa em um só roteiro. Praias, piscinas naturais e cultura — tudo com transfer e condutores credenciados.",
     bgGradient: "linear-gradient(135deg, #092238 0%, #163149 55%, #092238 100%)",
-    cor: "#004E89",
+    cor: "#107997",
     icon: (
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
         <rect x="8" y="16" width="32" height="24" rx="3" stroke="white" strokeWidth="2.5" strokeOpacity="0.7" />
@@ -129,7 +129,7 @@ export default function CategoriaPage({ params }: CategoriaPageProps) {
   const nome = meta?.nome ?? params.categoria.replace(/-/g, " ");
   const descricao = meta?.descricao ?? null;
   const bgGradient = meta?.bgGradient ?? "linear-gradient(135deg, #092238 0%, #163149 55%, #092238 100%)";
-  const cor = meta?.cor ?? "#004E89";
+  const cor = meta?.cor ?? "#107997";
   const icon = meta?.icon ?? null;
 
   const waUrl = `${empresa.contato.whatsappLink}?text=Oi%2C+quero+saber+sobre+os+passeios+de+${encodeURIComponent(nome)}+em+Jo%C3%A3o+Pessoa`;
@@ -170,7 +170,7 @@ export default function CategoriaPage({ params }: CategoriaPageProps) {
           style={{
             bottom: "0%", left: "-5%",
             width: "35%", paddingBottom: "35%",
-            background: "radial-gradient(circle, rgba(255,107,53,0.2) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(197,183,163,0.25) 0%, transparent 70%)",
             borderRadius: "50%",
             filter: "blur(45px)",
           }}

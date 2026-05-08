@@ -358,7 +358,7 @@ export default function PasseioPage({ params }: PasseioPageProps) {
       {/* I5.5 — CTA SECUNDÁRIO */}
       <section className="bg-white pb-10">
         <div className="container-safe max-w-3xl">
-          <div className="rounded-2xl p-6 md:p-8 text-center" style={{ background: "rgba(255,107,53,0.06)", border: "1px solid rgba(255,107,53,0.15)" }}>
+          <div className="rounded-2xl p-6 md:p-8 text-center" style={{ background: "rgba(16,121,151,0.06)", border: "1px solid rgba(16,121,151,0.15)" }}>
             <p className="text-dark text-sm mb-4 font-medium">
               Ficou com alguma dúvida? Fala com Murillo direto no WhatsApp — é rápido.
             </p>
@@ -367,7 +367,7 @@ export default function PasseioPage({ params }: PasseioPageProps) {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-primary hover:bg-accent text-white font-extrabold text-sm px-6 py-3.5 rounded-full min-h-[48px] transition-all hover:scale-[1.02]"
-              style={{ boxShadow: '0 4px 20px rgba(255,107,53,0.35)' }}
+              style={{ boxShadow: '0 4px 20px rgba(16,121,151,0.35)' }}
               aria-label="Reservar no WhatsApp"
             >
               💬 Reservar no WhatsApp
@@ -399,7 +399,7 @@ export default function PasseioPage({ params }: PasseioPageProps) {
                 <div className="bg-white rounded-2xl border border-black/[0.07] p-5" style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}>
                   <h3 className="font-bold text-dark flex items-center gap-2 mb-4" style={{ fontSize: '14px', letterSpacing: 0 }}>
                     <span className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#107997" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
                         <path d="M21 10H3M16 2v4M8 2v4M3 6h18v16H3z"/>
                       </svg>
                     </span>
@@ -420,7 +420,7 @@ export default function PasseioPage({ params }: PasseioPageProps) {
                 <div className="bg-white rounded-2xl border border-black/[0.07] p-5" style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}>
                   <h3 className="font-bold text-dark flex items-center gap-2 mb-3" style={{ fontSize: '14px', letterSpacing: 0 }}>
                     <span className="w-7 h-7 rounded-lg bg-secondary/10 flex items-center justify-center shrink-0">
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#004E89" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#107997" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
                         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
                       </svg>
                     </span>
@@ -439,7 +439,7 @@ export default function PasseioPage({ params }: PasseioPageProps) {
                 <div className="bg-white rounded-2xl border border-black/[0.07] p-5" style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}>
                   <h3 className="font-bold text-dark flex items-center gap-2 mb-3" style={{ fontSize: '14px', letterSpacing: 0 }}>
                     <span className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#107997" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
                         <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
                       </svg>
                     </span>

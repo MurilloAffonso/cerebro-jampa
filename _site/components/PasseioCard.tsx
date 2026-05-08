@@ -15,7 +15,7 @@ const MARE_SLUG_MAP: Record<string, PasseioMareSlug> = {
 };
 
 const CATEGORIA_BG: Record<string, string> = {
-  "pacotes":           "linear-gradient(160deg, #003d6b, #004E89)",
+  "pacotes":           "linear-gradient(160deg, #092238, #163149)",
   "litoral-sul":       "linear-gradient(160deg, #0d4d2e, #1A6B52)",
   "litoral-norte":     "linear-gradient(160deg, #4a2c0a, #7B4F12)",
   "piscinas-naturais": "linear-gradient(160deg, #073d5c, #0E5E8A)",
@@ -33,7 +33,7 @@ const CATEGORIA_NOME: Record<string, string> = {
 };
 
 const CATEGORIA_BADGE_COLOR: Record<string, string> = {
-  "pacotes":           "#004E89",
+  "pacotes":           "#107997",
   "litoral-sul":       "#1A6B52",
   "litoral-norte":     "#7B4F12",
   "piscinas-naturais": "#0E5E8A",

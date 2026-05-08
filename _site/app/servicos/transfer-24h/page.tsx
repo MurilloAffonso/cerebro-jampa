@@ -37,7 +37,7 @@ const INFO_CARDS = [
     label: "Atendimento",
     value: "24 horas",
     detalhe: "Todos os dias, qualquer horário",
-    cor: "#004E89",
+    cor: "#107997",
   },
   {
     icon: (
@@ -74,7 +74,7 @@ const INFO_CARDS = [
     label: "Valor",
     value: "Sob consulta",
     detalhe: "Solicite cotação pelo WhatsApp",
-    cor: "#FF6B35",
+    cor: "#C5B7A3",
   },
 ];
 
@@ -140,7 +140,7 @@ export default function TransferPage() {
         />
         <div
           className="absolute pointer-events-none"
-          style={{ bottom: "0%", left: "-5%", width: "35%", paddingBottom: "35%", background: "radial-gradient(circle, rgba(255,107,53,0.2) 0%, transparent 70%)", borderRadius: "50%", filter: "blur(45px)" }}
+          style={{ bottom: "0%", left: "-5%", width: "35%", paddingBottom: "35%", background: "radial-gradient(circle, rgba(197,183,163,0.25) 0%, transparent 70%)", borderRadius: "50%", filter: "blur(45px)" }}
           aria-hidden="true"
         />
         <div
@@ -166,7 +166,7 @@ export default function TransferPage() {
           {/* Badge */}
           <div
             className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider mb-4 self-start"
-            style={{ background: "rgba(0,78,137,0.44)", border: "1px solid rgba(0,78,137,0.66)", color: "rgba(255,255,255,0.85)" }}
+            style={{ background: "rgba(16,121,151,0.35)", border: "1px solid rgba(16,121,151,0.55)", color: "rgba(255,255,255,0.85)" }}
           >
             Serviço privativo · 24h
           </div>
@@ -267,7 +267,7 @@ export default function TransferPage() {
               >
                 <p className="text-muted text-xs font-medium">{t.de}</p>
                 <div className="flex items-center gap-2">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" strokeWidth="2.5" strokeLinecap="round">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#107997" strokeWidth="2.5" strokeLinecap="round">
                     <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
                   <p className="text-dark text-sm font-semibold">{t.para}</p>
@@ -305,7 +305,7 @@ export default function TransferPage() {
                 {/* Círculo numerado */}
                 <div
                   className="w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm shrink-0 z-10"
-                  style={{ background: "#FF6B35", color: "white", boxShadow: "0 2px 12px rgba(255,107,53,0.3)" }}
+                  style={{ background: "#107997", color: "white", boxShadow: "0 2px 12px rgba(16,121,151,0.3)" }}
                   aria-hidden="true"
                 >
                   {step.n}

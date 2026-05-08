@@ -101,14 +101,21 @@
 ### Paleta de Cores
 
 ```
-Primary (laranja):   #FF6B35
-Secondary (azul):    #004E89
-Accent:              #F77F00
-Light (cinza):       #ECEFF1
-Dark:                #1A1A1A
+Primary  (ocean):    #107997   ← era laranja
+Secondary (navy):    #092238   ← era azul
+Accent  (ocean -10%): #0E6B85   ← hover
+Dark    (navy):      #092238   ← era #1A1A2E
+Navy:                #092238
+Deep:                #163149
+Ocean:               #107997
+Sand:                #C5B7A3
+Bone:                #F7F8F7
+WhatsApp (verde):    #25D366   ← exclusivo botões/ações WhatsApp
+Light (cinza neutro): #ECEFF1   ← apenas hover do menu
 ```
 
-Use via Tailwind: `text-primary`, `bg-secondary`, etc
+Use via Tailwind: `text-primary`, `bg-secondary`, `bg-navy`, `text-ocean`, etc.
+Tokens legados `#FF6B35` / `#004E89` / `#1A1A2E` removidos da identidade — só sobrevivem em assets de placeholder/galeria.
 
 ### Fonts
 
