@@ -66,7 +66,7 @@ export function MurilloBlock({ whatsappUrl }: MurilloBlockProps) {
                 Fundador · Curadoria e Atendimento · João Pessoa
               </p>
               <blockquote
-                className="m-0 pl-5 border-l-[3px] border-primary bg-white rounded-r-xl py-4 pr-5"
+                className="m-0 pl-5 border-l-[3px] border-[#C5B7A3] bg-white rounded-r-xl py-4 pr-5"
                 style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}
               >
                 <p className="font-serif italic text-base text-dark leading-relaxed m-0">

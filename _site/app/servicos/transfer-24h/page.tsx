@@ -228,7 +228,7 @@ export default function TransferPage() {
 
           <div
             className="rounded-2xl p-6 md:p-8"
-            style={{ background: "white", border: "1px solid rgba(0,0,0,0.06)", boxShadow: "0 2px 16px rgba(0,0,0,0.04)" }}
+            style={{ background: "white", border: "1px solid #C5B7A3", boxShadow: "0 2px 16px rgba(0,0,0,0.04)" }}
           >
             <ul className="space-y-4">
               {DIFERENCIAIS.map((item, i) => (
@@ -297,7 +297,7 @@ export default function TransferPage() {
                 {i < STEPS.length - 1 && (
                   <div
                     className="absolute left-[18px] top-[44px] w-[2px]"
-                    style={{ height: "calc(100% - 12px)", background: "rgba(255,107,53,0.15)" }}
+                    style={{ height: "calc(100% - 12px)", background: "#C5B7A3" }}
                     aria-hidden="true"
                   />
                 )}

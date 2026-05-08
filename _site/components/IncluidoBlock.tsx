@@ -39,7 +39,7 @@ export function IncluidoBlock({ incluso, naoIncluso }: IncluidoBlockProps) {
           )}
 
           {naoIncluso && naoIncluso.length > 0 && (
-            <div className="bg-white rounded-2xl p-6 border-l-[3px] border-l-black/10" style={{ boxShadow: '0 2px 16px rgba(0,0,0,0.06)' }}>
+            <div className="bg-white rounded-2xl p-6 border-l-[3px] border-l-[#C5B7A3]" style={{ boxShadow: '0 2px 16px rgba(0,0,0,0.06)' }}>
               <h3 className="font-bold text-dark mb-4 flex items-center gap-2.5" style={{ fontSize: '15px' }}>
                 <span className="w-6 h-6 rounded-lg bg-black/5 flex items-center justify-center shrink-0">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#6B7280" strokeWidth="2.5" strokeLinecap="round" aria-hidden="true">

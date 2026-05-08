@@ -21,7 +21,7 @@ export function CTAFinal({
     <section
       id="cta-final"
       className="relative overflow-hidden"
-      style={{ background: isLaranja ? "#FF6B35" : "#004E89" }}
+      style={{ background: isLaranja ? "#FF6B35" : "#092238" }}
     >
       {/* Blob decorativo */}
       <div

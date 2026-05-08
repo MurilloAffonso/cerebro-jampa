@@ -21,7 +21,7 @@ export function DepoimentoBlock({ texto, autor, avatar }: DepoimentoBlockProps) 
           </div>
 
           <blockquote
-            className="border-l-[3px] border-primary pl-6"
+            className="border-l-[3px] border-[#C5B7A3] pl-6"
           >
             <p className="font-serif italic text-dark leading-relaxed mb-0" style={{ fontSize: 'clamp(17px, 2vw, 21px)', lineHeight: 1.6 }}>
               &ldquo;{texto}&rdquo;

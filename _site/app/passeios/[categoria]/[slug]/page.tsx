@@ -298,7 +298,7 @@ export default function PasseioPage({ params }: PasseioPageProps) {
                 >
                   {/* Linha vertical conectora */}
                   {index < passeio.roteiroNarrativo!.length - 1 && (
-                    <div className="absolute left-5 top-10 bottom-0 w-px bg-black/[0.08]" aria-hidden="true" />
+                    <div className="absolute left-5 top-10 bottom-0 w-px bg-[#C5B7A3]" aria-hidden="true" />
                   )}
                   {/* Número */}
                   <div className="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 font-serif font-bold text-primary text-sm z-10">
