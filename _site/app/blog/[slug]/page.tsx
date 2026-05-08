@@ -116,7 +116,7 @@ export default function BlogArticlePage({ params }: BlogArticleProps) {
             <span className="text-gray-700">{cluster.nome}</span>
           </nav>
 
-          <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
+          <p className="text-xs font-bold uppercase tracking-[2.5px] text-[#107997] mb-3">
             {post.category}
           </p>
           <h1 className="font-serif font-bold text-3xl md:text-5xl text-dark leading-tight mb-5">

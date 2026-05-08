@@ -9,7 +9,7 @@ export function IncluidoBlock({ incluso, naoIncluso }: IncluidoBlockProps) {
   return (
     <section className="section-padding" style={{ background: "#F7F8F7" }}>
       <div className="container-safe max-w-3xl">
-        <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
+        <p className="text-xs font-bold uppercase tracking-[2.5px] text-[#107997] mb-3">
           O que inclui
         </p>
         <h2 className="mb-8">O que está incluso (e o que não está)</h2>

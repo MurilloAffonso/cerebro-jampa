@@ -37,7 +37,7 @@ export function TrustBlock() {
   return (
     <section className="bg-dark text-white" aria-label="Por que confiar na Vem Passear">
       <div className="container-safe py-10 md:py-14">
-        <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
+        <p className="text-xs font-bold uppercase tracking-[2.5px] text-[#C5B7A3] mb-3">
           Por que confiar
         </p>
         <h2 className="text-white mb-8 md:mb-10" style={{ fontSize: 'clamp(22px, 3vw, 34px)', letterSpacing: '-0.5px' }}>

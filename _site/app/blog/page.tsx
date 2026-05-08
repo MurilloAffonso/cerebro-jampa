@@ -40,7 +40,7 @@ export default function BlogIndexPage() {
       {/* Header */}
       <section className="bg-[#F7F8F7] py-16 md:py-20">
         <div className="container-safe max-w-4xl">
-          <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
+          <p className="text-xs font-bold uppercase tracking-[2.5px] text-[#107997] mb-3">
             Blog Vem Passear
           </p>
           <h1 className="font-serif font-bold text-4xl md:text-5xl text-dark leading-tight mb-5">
@@ -58,7 +58,7 @@ export default function BlogIndexPage() {
         <div className="container-safe max-w-5xl">
           {emPreparacao ? (
             <div className="bg-[#F7F8F7] border border-gray-200 rounded-2xl p-8 md:p-12 mb-10">
-              <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
+              <p className="text-xs font-bold uppercase tracking-[2.5px] text-[#107997] mb-3">
                 Em preparação
               </p>
               <h2 className="font-serif font-bold text-2xl md:text-3xl text-dark mb-4 leading-tight">

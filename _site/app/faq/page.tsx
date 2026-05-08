@@ -117,7 +117,7 @@ export default function FaqPage() {
         <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.45) 100%)" }} aria-hidden="true" />
 
         <div className="relative container-safe flex flex-col justify-end text-white pb-10 pt-14 flex-1" style={{ minHeight: "min(40vh, 320px)" }}>
-          <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
+          <p className="text-xs font-bold uppercase tracking-[2.5px] text-[#C5B7A3] mb-3">
             Antes de reservar
           </p>
           <h1
@@ -135,7 +135,7 @@ export default function FaqPage() {
       {/* FAQ */}
       <section className="section-padding bg-white">
         <div className="container-safe max-w-3xl">
-          <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
+          <p className="text-xs font-bold uppercase tracking-[2.5px] text-[#107997] mb-3">
             {FAQ_ITEMS.length} perguntas respondidas
           </p>
           <h2 className="mb-8">Tudo que você precisa saber</h2>

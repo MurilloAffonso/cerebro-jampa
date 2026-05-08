@@ -27,7 +27,7 @@ const CATEGORIAS_META: Record<string, {
   pacotes: {
     nome: "Pacotes",
     descricao: "Combine os melhores passeios de João Pessoa em um só roteiro. Praias, piscinas naturais e cultura — tudo com transfer e condutores credenciados.",
-    bgGradient: "linear-gradient(135deg, #001a3d 0%, #163149 55%, #003d6b 100%)",
+    bgGradient: "linear-gradient(135deg, #092238 0%, #163149 55%, #092238 100%)",
     cor: "#004E89",
     icon: (
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
@@ -40,7 +40,7 @@ const CATEGORIAS_META: Record<string, {
   "litoral-sul": {
     nome: "Litoral Sul",
     descricao: "Praias desertas, falésias coloridas e quadriciclo nas dunas. O Litoral Sul de João Pessoa é a saída favorita de quem quer aventura.",
-    bgGradient: "linear-gradient(135deg, #041f13 0%, #163149 55%, #0d4d2e 100%)",
+    bgGradient: "linear-gradient(135deg, #092238 0%, #163149 55%, #092238 100%)",
     cor: "#1A6B52",
     icon: (
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
@@ -53,7 +53,7 @@ const CATEGORIAS_META: Record<string, {
   "litoral-norte": {
     nome: "Litoral Norte",
     descricao: "Pôr do sol no Jacaré, Areia Vermelha e catamarã no Atlântico. O Litoral Norte combina natureza e uma das paisagens mais fotografadas da Paraíba.",
-    bgGradient: "linear-gradient(135deg, #1e1007 0%, #163149 55%, #4a2c0a 100%)",
+    bgGradient: "linear-gradient(135deg, #092238 0%, #163149 55%, #092238 100%)",
     cor: "#7B4F12",
     icon: (
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
@@ -66,7 +66,7 @@ const CATEGORIAS_META: Record<string, {
   "piscinas-naturais": {
     nome: "Piscinas Naturais",
     descricao: "Recifes de coral a poucos minutos de João Pessoa. Água morna, transparente e fauna marinha — experiência única no litoral nordestino.",
-    bgGradient: "linear-gradient(135deg, #021826 0%, #163149 55%, #073d5c 100%)",
+    bgGradient: "linear-gradient(135deg, #092238 0%, #163149 55%, #092238 100%)",
     cor: "#0E5E8A",
     icon: (
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
@@ -79,7 +79,7 @@ const CATEGORIAS_META: Record<string, {
   "city-tour": {
     nome: "City Tour",
     descricao: "Conheça a história e a arquitetura de João Pessoa — a segunda cidade mais antiga do Brasil — com guia especializado.",
-    bgGradient: "linear-gradient(135deg, #0f0b22 0%, #163149 55%, #2a1e55 100%)",
+    bgGradient: "linear-gradient(135deg, #092238 0%, #163149 55%, #092238 100%)",
     cor: "#4A3580",
     icon: (
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
@@ -94,7 +94,7 @@ const CATEGORIAS_META: Record<string, {
   interestaduais: {
     nome: "Interestaduais",
     descricao: "Porto de Galinhas, Praia de Pipa e Natal a partir de João Pessoa. Destinos imperdíveis do Nordeste em excursões com saída garantida.",
-    bgGradient: "linear-gradient(135deg, #200511 0%, #163149 55%, #550f23 100%)",
+    bgGradient: "linear-gradient(135deg, #092238 0%, #163149 55%, #092238 100%)",
     cor: "#8B1A3A",
     icon: (
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
@@ -159,7 +159,7 @@ export default function CategoriaPage({ params }: CategoriaPageProps) {
           style={{
             top: "-15%", right: "-8%",
             width: "50%", paddingBottom: "50%",
-            background: `radial-gradient(circle, ${cor}55 0%, transparent 70%)`,
+            background: `radial-gradient(circle, ${cor}22 0%, transparent 70%)`,
             borderRadius: "50%",
             filter: "blur(55px)",
           }}

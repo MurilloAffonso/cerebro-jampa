@@ -97,7 +97,7 @@ export default function Home() {
       {/* ── 2. CATEGORIAS ── */}
       <section className="py-14 md:py-20" style={{ background: "#F7F8F7" }}>
         <div className="container-safe">
-          <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary text-center mb-3">
+          <p className="text-xs font-bold uppercase tracking-[2.5px] text-[#107997] text-center mb-3">
             Explore por categoria
           </p>
           <h2 className="font-serif font-bold text-3xl md:text-4xl text-dark text-center mb-3 leading-tight">
@@ -138,7 +138,7 @@ export default function Home() {
       {prioritarios.length > 0 && (
         <section className="py-14 md:py-20 bg-white">
           <div className="container-safe">
-            <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary text-center mb-3">
+            <p className="text-xs font-bold uppercase tracking-[2.5px] text-[#107997] text-center mb-3">
               Mais procurados
             </p>
             <h2 className="font-serif font-bold text-3xl md:text-4xl text-dark text-center mb-3 leading-tight">

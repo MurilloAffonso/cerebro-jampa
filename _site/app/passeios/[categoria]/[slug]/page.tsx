@@ -242,7 +242,7 @@ export default function PasseioPage({ params }: PasseioPageProps) {
       {(passeio.descricaoSensorial || passeio.descricaoLonga) && (
         <section className="section-padding bg-white">
           <div className="container-safe max-w-3xl">
-            <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
+            <p className="text-xs font-bold uppercase tracking-[2.5px] text-[#107997] mb-3">
               A experiência
             </p>
             <h2 className="mb-6">O que espera por você em {passeio.nomeCurto || passeio.nome}</h2>
@@ -286,7 +286,7 @@ export default function PasseioPage({ params }: PasseioPageProps) {
       {passeio.roteiroNarrativo && passeio.roteiroNarrativo.length > 0 && (
         <section className="section-padding" style={{ background: "#F7F8F7" }}>
           <div className="container-safe max-w-3xl">
-            <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
+            <p className="text-xs font-bold uppercase tracking-[2.5px] text-[#107997] mb-3">
               O roteiro
             </p>
             <h2 className="mb-8">Como é o passeio — passo a passo</h2>
@@ -321,7 +321,7 @@ export default function PasseioPage({ params }: PasseioPageProps) {
       {!passeio.roteiroNarrativo && passeio.rotario && passeio.rotario.length > 0 && (
         <section className="section-padding" style={{ background: "#F7F8F7" }}>
           <div className="container-safe max-w-3xl">
-            <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
+            <p className="text-xs font-bold uppercase tracking-[2.5px] text-[#107997] mb-3">
               O roteiro
             </p>
             <h2 className="mb-8">Roteiro</h2>
@@ -346,7 +346,7 @@ export default function PasseioPage({ params }: PasseioPageProps) {
       {faqItems.length > 0 && (
         <section className="section-padding bg-white">
           <div className="container-safe max-w-3xl">
-            <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
+            <p className="text-xs font-bold uppercase tracking-[2.5px] text-[#107997] mb-3">
               Dúvidas frequentes
             </p>
             <h2 className="mb-8">Perguntas sobre {passeio.nomeCurto || passeio.nome.split(" ").pop()}</h2>
@@ -389,7 +389,7 @@ export default function PasseioPage({ params }: PasseioPageProps) {
       {passeio.informacoesPraticas && (
         <section className="section-padding bg-white">
           <div className="container-safe max-w-3xl">
-            <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
+            <p className="text-xs font-bold uppercase tracking-[2.5px] text-[#107997] mb-3">
               Antes de ir
             </p>
             <h2 className="mb-8">Informações práticas para o dia do passeio</h2>
@@ -477,7 +477,7 @@ export default function PasseioPage({ params }: PasseioPageProps) {
       {similares.length > 0 && (
         <section className="section-padding" style={{ background: "#F7F8F7" }}>
           <div className="container-safe">
-            <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
+            <p className="text-xs font-bold uppercase tracking-[2.5px] text-[#107997] mb-3">
               Continue explorando
             </p>
             <h2 className="mb-8">Outros passeios em {categoriaLabel.toLowerCase()} em João Pessoa</h2>

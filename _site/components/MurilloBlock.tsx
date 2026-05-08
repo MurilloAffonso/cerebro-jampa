@@ -78,7 +78,7 @@ export function MurilloBlock({ whatsappUrl }: MurilloBlockProps) {
 
           {/* Lado direito — diferenciais + CTA */}
           <div>
-            <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
+            <p className="text-xs font-bold uppercase tracking-[2.5px] text-[#107997] mb-3">
               Por que a Vem Passear em Jampa?
             </p>
 

@@ -189,7 +189,7 @@ export default function TransferPage() {
       {/* Info cards */}
       <section className="section-padding bg-white">
         <div className="container-safe max-w-3xl">
-          <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
+          <p className="text-xs font-bold uppercase tracking-[2.5px] text-[#107997] mb-3">
             Informações do serviço
           </p>
           <h2 className="mb-8">O que você precisa saber</h2>
@@ -221,7 +221,7 @@ export default function TransferPage() {
       {/* Por que contratar */}
       <section className="section-padding" style={{ background: "#F7F8F7" }}>
         <div className="container-safe max-w-3xl">
-          <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
+          <p className="text-xs font-bold uppercase tracking-[2.5px] text-[#107997] mb-3">
             Vantagens
           </p>
           <h2 className="mb-8">Por que contratar com a Vem Passear?</h2>
@@ -253,7 +253,7 @@ export default function TransferPage() {
       {/* Trajetos comuns */}
       <section className="section-padding bg-white">
         <div className="container-safe max-w-3xl">
-          <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
+          <p className="text-xs font-bold uppercase tracking-[2.5px] text-[#107997] mb-3">
             Rotas
           </p>
           <h2 className="mb-8">Trajetos mais solicitados</h2>
@@ -285,7 +285,7 @@ export default function TransferPage() {
       {/* Como contratar */}
       <section className="section-padding" style={{ background: "#F7F8F7" }}>
         <div className="container-safe max-w-3xl">
-          <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
+          <p className="text-xs font-bold uppercase tracking-[2.5px] text-[#107997] mb-3">
             Passo a passo
           </p>
           <h2 className="mb-8">Como contratar</h2>
