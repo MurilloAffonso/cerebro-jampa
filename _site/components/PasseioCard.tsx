@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Passeio } from "@/data/passeios";
-import { isCampoIndisponivel } from "@/lib/consultar";
 import { buildProximaSaidaCard } from "@/lib/tabua-mares";
 import { TABUA_MARES_2026 } from "@/data/tabua-mares";
 import type { PasseioMareSlug } from "@/types/tabua-mares";
@@ -33,6 +32,15 @@ const CATEGORIA_NOME: Record<string, string> = {
   "interestaduais": "Interestaduais",
 };
 
+const CATEGORIA_BADGE_COLOR: Record<string, string> = {
+  "pacotes":           "#004E89",
+  "litoral-sul":       "#1A6B52",
+  "litoral-norte":     "#7B4F12",
+  "piscinas-naturais": "#0E5E8A",
+  "city-tour":         "#4A3580",
+  "interestaduais":    "#8B1A3A",
+};
+
 export function PasseioCard({ passeio }: PasseioCardProps) {
   const href = `/passeios/${passeio.categoria}/${passeio.slug}`;
 
@@ -41,8 +49,9 @@ export function PasseioCard({ passeio }: PasseioCardProps) {
       ? buildProximaSaidaCard(MARE_SLUG_MAP[passeio.slug], TABUA_MARES_2026)
       : null;
 
-  const bg = CATEGORIA_BG[passeio.categoria] ?? "linear-gradient(160deg, #1A1A2E, #2d3748)";
+  const bg = CATEGORIA_BG[passeio.categoria] ?? "linear-gradient(160deg, #092238, #163149)";
   const categoriaNome = CATEGORIA_NOME[passeio.categoria] ?? passeio.categoria;
+  const badgeColor = CATEGORIA_BADGE_COLOR[passeio.categoria] ?? "#092238";
 
   return (
     <Link
@@ -75,31 +84,37 @@ export function PasseioCard({ passeio }: PasseioCardProps) {
       )}
 
       {/* Content — anchored to bottom */}
-      <div className="absolute inset-0 flex flex-col justify-end p-5">
-        {/* Category badge */}
-        <span className="text-[10px] font-bold uppercase tracking-widest text-white/60 mb-1.5">
+      <div className="absolute inset-0 flex flex-col justify-end p-5 pb-6">
+        {/* Category badge — colored pill */}
+        <span
+          className="self-start text-[11px] font-bold uppercase tracking-wider text-white px-3 py-1 rounded-full mb-2.5"
+          style={{ background: badgeColor }}
+        >
           {categoriaNome}
         </span>
 
         {/* Title */}
-        <h3 className="font-serif font-bold text-lg text-white leading-snug mb-2">
+        <h3 className="font-serif font-bold text-lg text-white leading-snug mb-1.5">
           {passeio.nome}
         </h3>
 
         {/* Description — hover reveal */}
-        <div className="overflow-hidden max-h-0 group-hover:max-h-20 transition-all duration-300">
-          <p className="text-white/0 group-hover:text-white/80 text-sm leading-relaxed mb-3 transition-colors duration-300">
+        <div className="overflow-hidden max-h-0 group-hover:max-h-24 transition-all duration-300">
+          <p className="text-white/0 group-hover:text-white/75 text-sm leading-relaxed mb-3 transition-colors duration-300">
             {passeio.descricao}
           </p>
         </div>
 
-        {/* Price + CTA row */}
+        {/* Duration + CTA row */}
         <div className="flex items-center justify-between gap-3">
-          <span className="text-primary font-bold text-sm">
-            {isCampoIndisponivel(passeio.preco) ? "Consultar" : passeio.preco}
+          <span className="inline-flex items-center gap-1 text-white/55 text-xs">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" />
+            </svg>
+            {passeio.duracao}
           </span>
-          <span className="bg-primary hover:bg-accent text-white text-xs font-bold px-3 py-1.5 rounded-full transition-colors whitespace-nowrap">
-            Ver passeio →
+          <span className="bg-primary text-white text-xs font-bold px-3 py-1.5 rounded-full whitespace-nowrap">
+            Ver detalhes →
           </span>
         </div>
       </div>

@@ -421,4 +421,23 @@ horarioSaidaSugerido = max( floor30(horarioBaixaMareOperacional − 15min), 07:0
 
 ---
 
-**Última atualização:** 2026-04-29 | Próxima revisão: ao fim de cada fase de implementação
+### 41. Adoção da Nova Paleta Oficial — Migração Controlada (2026-05-08)
+
+**Decisão:** Adotar a paleta oficial v2 da Vem Passear Jampa (`navy #092238`, `deep #163149`, `ocean #107997`, `sand #C5B7A3`, `bone #F7F8F7`) por substituição progressiva e em branch separada (`feature/migracao-paleta-oficial`), preservando os tokens legados em `tailwind.config.ts` durante a transição.
+
+**Por quê:** A paleta legada (`dark #1A1A2E` + `bg-warm #FAFAF8`) não comunica o tom litorâneo nordestino que a régua visual de Murillo (§5.2) exige — é genérica e pode rodar para qualquer agência de turismo. A nova paleta enraíza a marca em João Pessoa (turquesa de piscinas naturais, areia clara, azul profundo do Atlântico) sem quebrar a hierarquia de CTAs já validada.
+
+**Escopo da migração:**
+- **Semana 0 (executada hoje):** tokens novos adicionados em `tailwind.config.ts` em paralelo aos antigos; régua visual atualizada; decisão registrada; branch criada.
+- **Semana 1 (em execução):** substituir `#1A1A2E` por `navy` em fundos escuros seguros (hero, footer, gradientes), `#FAFAF8` por `bone` em fundos warm, gradientes hero migrados para `navy + deep`, blobs radiais azuis migrados para `ocean` (turquesa).
+- **Fora desta fase:** CTA verde do WhatsApp (`#25D366`) — intocável; CTA laranja final (`primary #FF6B35`) — preservado nesta semana, avaliação posterior.
+
+**Rollback:** branch isolada permite descarte limpo via `git switch main && git branch -D feature/migracao-paleta-oficial`. Tokens legados permanecem em `tailwind.config.ts` até validação visual completa.
+
+**Validação:** `npm run type-check` + `npm run build` antes de qualquer merge; revisão visual em mobile (320px) e desktop nas rotas principais (`/`, `/passeios`, `/passeios/[categoria]`, `/passeios/[categoria]/[slug]`, `/faq`, `/servicos/transfer-24h`).
+
+**Próximos passos:** revisão visual com Murillo nas rotas-chave; decidir migração do CTA laranja final (Semana 2+); remover tokens legados após confirmação completa.
+
+---
+
+**Última atualização:** 2026-05-08 | Próxima revisão: ao fim de cada fase de implementação

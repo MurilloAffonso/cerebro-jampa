@@ -1,13 +1,15 @@
 /**
  * Página: FAQ — /faq/
  * ISSUE-14
- * Fonte: _conhecimento/objecoes.md + base-operacional-comercial.md
- * Regra: nenhuma resposta inventada — dados do vault apenas.
  */
 
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FAQAccordion } from "@/components/FAQAccordion";
+import { CTAFinal } from "@/components/CTAFinal";
+import { CTASticky } from "@/components/CTASticky";
+import { Breadcrumb } from "@/components/Breadcrumb";
+import { TrustBlock } from "@/components/TrustBlock";
 import { generateFAQSchema } from "@/lib/seo";
 import { empresa } from "@/data/empresa";
 
@@ -87,62 +89,79 @@ const faqSchema = generateFAQSchema(FAQ_ITEMS);
 export default function FaqPage() {
   return (
     <>
-      {/* Schema FAQPage */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      {/* Breadcrumb */}
-      <nav className="container-safe py-4 text-sm text-gray-500">
-        <Link href="/" className="hover:text-primary">Home</Link>
-        {" / "}
-        <span className="text-gray-700 font-medium">Perguntas Frequentes</span>
-      </nav>
+      <CTASticky whatsappUrl={WA_URL} label="Reservar no WhatsApp" />
+
+      <Breadcrumb
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Perguntas Frequentes" },
+        ]}
+      />
 
       {/* Hero */}
-      <section className="bg-gradient-to-b from-blue-50 to-white py-12">
-        <div className="container-safe text-center">
-          <h1 className="text-3xl md:text-4xl font-bold text-secondary mb-4">
+      <section
+        id="hero-section"
+        className="relative overflow-hidden flex flex-col"
+        style={{ minHeight: "min(40vh, 320px)", background: "linear-gradient(135deg, #092238 0%, #163149 55%, #092238 100%)" }}
+      >
+        <div
+          className="absolute pointer-events-none"
+          style={{ top: "-20%", right: "-5%", width: "40%", paddingBottom: "40%", background: "radial-gradient(circle, rgba(255,107,53,0.3) 0%, transparent 70%)", borderRadius: "50%", filter: "blur(50px)" }}
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.45) 100%)" }} aria-hidden="true" />
+
+        <div className="relative container-safe flex flex-col justify-end text-white pb-10 pt-14 flex-1" style={{ minHeight: "min(40vh, 320px)" }}>
+          <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
+            Antes de reservar
+          </p>
+          <h1
+            className="font-serif font-bold text-white max-w-xl mb-3"
+            style={{ fontSize: "clamp(28px, 4.5vw, 54px)", lineHeight: 1.08, letterSpacing: "-1px" }}
+          >
             Perguntas Frequentes
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Dúvidas sobre reserva, pagamento, segurança e mais — respondidas com dados reais.
-            Não encontrou o que procura? Fale direto com Murillo.
+          <p className="text-white/70 max-w-lg" style={{ fontSize: "clamp(14px, 1.5vw, 16px)" }}>
+            Respostas sobre reserva, pagamento, segurança e mais — dados reais, sem enrolação.
           </p>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="section-padding">
+      <section className="section-padding bg-white">
         <div className="container-safe max-w-3xl">
+          <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
+            {FAQ_ITEMS.length} perguntas respondidas
+          </p>
+          <h2 className="mb-8">Tudo que você precisa saber</h2>
           <FAQAccordion items={FAQ_ITEMS} />
         </div>
       </section>
 
-      {/* CTA WhatsApp */}
-      <section className="section-padding bg-primary text-white">
-        <div className="container-safe text-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">
-            Ainda tem dúvida?
-          </h2>
-          <p className="text-lg mb-8 opacity-90">
-            Mande uma mensagem para Murillo — ele responde rápido e sem enrolação.
-          </p>
-          <a
-            href={WA_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-white text-primary px-8 py-4 rounded-md font-semibold text-lg hover:bg-gray-100 transition-colors"
-          >
-            💬 Perguntar no WhatsApp
-          </a>
-        </div>
-      </section>
+      {/* Trust */}
+      <TrustBlock />
+
+      {/* CTA */}
+      <CTAFinal
+        whatsappUrl={WA_URL}
+        variante="laranja"
+        titulo="Ainda tem dúvida?"
+        subtitulo="Mande uma mensagem para Murillo — ele responde rápido e sem enrolação."
+        textoBotao="Perguntar no WhatsApp"
+        label="Atendimento direto"
+      />
 
       {/* Link de volta */}
-      <div className="container-safe py-6 text-center">
-        <Link href="/passeios" className="text-sm text-primary hover:text-accent font-medium transition-colors">
+      <div className="bg-white container-safe py-6 text-center">
+        <Link
+          href="/passeios"
+          className="text-sm font-semibold text-secondary hover:text-primary transition-colors border-b border-secondary/30 hover:border-primary pb-0.5"
+        >
           ← Ver todos os passeios em João Pessoa
         </Link>
       </div>

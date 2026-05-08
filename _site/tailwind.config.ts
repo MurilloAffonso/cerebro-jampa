@@ -22,6 +22,12 @@ const config: Config = {
         'bg-warm': '#FAFAF8',    // alias de bg-soft
         body: '#1F2937',         // alias de text
         light: '#ECEFF1',        // legado
+        // Paleta oficial v2 (migração controlada — coexiste com tokens legados)
+        navy: '#092238',         // Substitui dark em fundos escuros e gradientes hero
+        deep: '#163149',         // Meio dos gradientes hero (mistura com navy)
+        ocean: '#107997',        // Turquesa — blobs radiais e acentos frios
+        sand: '#C5B7A3',         // Areia — acentos quentes neutros
+        bone: '#F7F8F7',         // Substitui bg-soft/bg-warm em fundos warm
       },
       fontFamily: {
         sans: ['var(--font-dm-sans)', 'system-ui', 'sans-serif'],

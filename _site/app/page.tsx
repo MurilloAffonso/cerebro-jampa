@@ -92,10 +92,10 @@ export default function Home() {
       <HomeVideoHero whatsappUrl={WA_URL} />
 
       {/* Wave hero → categorias */}
-      <WaveDivider fill="#FAFAF8" className="-mt-1" />
+      <WaveDivider fill="#F7F8F7" className="-mt-1" />
 
       {/* ── 2. CATEGORIAS ── */}
-      <section className="py-14 md:py-20" style={{ background: "#FAFAF8" }}>
+      <section className="py-14 md:py-20" style={{ background: "#F7F8F7" }}>
         <div className="container-safe">
           <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary text-center mb-3">
             Explore por categoria

@@ -106,7 +106,7 @@ export default function BlogArticlePage({ params }: BlogArticleProps) {
       )}
 
       {/* Cabeçalho */}
-      <section className="bg-[#FAFAF8] py-14 md:py-20">
+      <section className="bg-[#F7F8F7] py-14 md:py-20">
         <div className="container-safe max-w-3xl">
           <nav className="text-xs text-gray-500 mb-5" aria-label="Breadcrumb">
             <Link href="/" className="hover:text-primary">Início</Link>

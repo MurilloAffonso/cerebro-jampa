@@ -38,7 +38,7 @@ export default function BlogIndexPage() {
   return (
     <div className="bg-white">
       {/* Header */}
-      <section className="bg-[#FAFAF8] py-16 md:py-20">
+      <section className="bg-[#F7F8F7] py-16 md:py-20">
         <div className="container-safe max-w-4xl">
           <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
             Blog Vem Passear
@@ -57,7 +57,7 @@ export default function BlogIndexPage() {
       <section className="py-14 md:py-20">
         <div className="container-safe max-w-5xl">
           {emPreparacao ? (
-            <div className="bg-[#FAFAF8] border border-gray-200 rounded-2xl p-8 md:p-12 mb-10">
+            <div className="bg-[#F7F8F7] border border-gray-200 rounded-2xl p-8 md:p-12 mb-10">
               <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
                 Em preparação
               </p>

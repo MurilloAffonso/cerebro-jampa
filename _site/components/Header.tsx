@@ -36,27 +36,27 @@ export function Header() {
   const closeMobile = () => setMobileOpen(false);
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-md bg-[#FAFAF8]/95 border-b border-black/[0.07]">
+    <header className="sticky top-0 z-50 backdrop-blur-md bg-[#F7F8F7]/95 border-b border-black/[0.07]">
       <div className="container-safe py-3">
         <div className="flex items-center justify-between gap-4">
 
           {/* ── Logo ── */}
           <Link
             href="/"
-            className="flex items-center gap-2 shrink-0"
+            className="flex items-center gap-2.5 shrink-0"
             onClick={closeMobile}
           >
-            <div className="w-9 h-9 bg-primary rounded-lg flex items-center justify-center text-white font-serif font-bold text-sm select-none">
+            <div className="w-9 h-9 bg-primary rounded-lg flex items-center justify-center text-white font-serif font-bold text-[15px] select-none" style={{ letterSpacing: "-0.5px" }}>
               VP
             </div>
             <div className="hidden sm:block leading-tight">
-              <span className="font-bold text-dark text-sm block">Vem Passear</span>
-              <span className="text-gray-500 text-[11px]">em Jampa</span>
+              <span className="font-serif font-bold text-dark text-[15px] block" style={{ letterSpacing: "-0.3px" }}>Vem Passear</span>
+              <span className="text-muted text-[11px] uppercase tracking-wider" style={{ fontWeight: 400 }}>em Jampa</span>
             </div>
           </Link>
 
           {/* ── Nav desktop ── */}
-          <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+          <nav className="hidden md:flex items-center gap-7 text-sm font-medium">
             <Link href="/" className="text-dark hover:text-primary transition-colors">
               Início
             </Link>

@@ -18,7 +18,7 @@ import { empresa, paginasInfo } from "@/data/empresa";
 
 export function Footer() {
   return (
-    <footer className="text-white" style={{ background: "#1A1A2E" }}>
+    <footer className="text-white" style={{ background: "#092238" }}>
       <div className="container-safe py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-14 mb-10">
 
@@ -50,35 +50,29 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* ── Col 2: Navegação ── */}
+          {/* ── Col 2: Passeios ── */}
           <div>
-            <h4 className="font-semibold text-sm uppercase tracking-wide text-gray-400 mb-4">
-              Navegação
+            <h4 className="font-semibold text-xs uppercase tracking-widest text-primary mb-4">
+              Passeios
             </h4>
             <ul className="space-y-2.5 text-sm">
-              <li>
-                <Link href="/" className="text-gray-300 hover:text-primary transition-colors">
-                  Início
-                </Link>
-              </li>
-              <li>
-                <Link href="/passeios" className="text-gray-300 hover:text-primary transition-colors">
-                  Passeios em João Pessoa
-                </Link>
-              </li>
-              <li>
-                <Link href="/faq" className="text-gray-300 hover:text-primary transition-colors">
-                  Perguntas Frequentes
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/servicos/transfer-24h"
-                  className="text-gray-300 hover:text-primary transition-colors"
-                >
-                  Transfer 24h
-                </Link>
-              </li>
+              {[
+                { label: "Todos os Passeios", href: "/passeios" },
+                { label: "Litoral Sul", href: "/passeios/litoral-sul" },
+                { label: "Litoral Norte", href: "/passeios/litoral-norte" },
+                { label: "Piscinas Naturais", href: "/passeios/piscinas-naturais" },
+                { label: "Pacotes", href: "/passeios/pacotes" },
+                { label: "City Tour", href: "/passeios/city-tour" },
+                { label: "Interestaduais", href: "/passeios/interestaduais" },
+                { label: "Transfer 24h", href: "/servicos/transfer-24h" },
+                { label: "FAQ", href: "/faq" },
+              ].map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="text-gray-300 hover:text-primary transition-colors">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 

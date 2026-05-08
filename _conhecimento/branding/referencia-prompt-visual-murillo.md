@@ -123,15 +123,28 @@ Todo briefing gerado pela skill `briefing-designer` deve ter esta profundidade m
 
 ### 5.2 Paleta Principal
 
-| Nome | Hex | Uso |
-|------|-----|-----|
-| Primário (azul) | `#004E89` | Fundo de seção, H1, nav, confiança |
-| Destaque (laranja) | `#FF6B35` | CTA principal, badges, hover state |
-| Branco | `#FFFFFF` | Fundo padrão, texto sobre escuro |
-| Cinza claro | `#F5F5F5` | Seções alternadas, cards |
-| Texto | `#1A1A1A` | Body, H2, H3 |
+**Paleta oficial v2 — adotada em 2026-05-08 (Decisão #41).** Migração controlada: tokens novos coexistem com legados em `tailwind.config.ts` enquanto a substituição é feita por superfície.
 
-**Paleta não é negociável** — qualquer adição de cor requer aprovação de Murillo antes de implementar.
+| Token | Hex | Uso |
+|-------|-----|-----|
+| `navy` | `#092238` | Fundos escuros (hero, footer), base de gradientes |
+| `deep` | `#163149` | Meio dos gradientes hero (par com `navy`) |
+| `ocean` | `#107997` | Turquesa — blobs radiais, acentos frios, ondulação |
+| `sand` | `#C5B7A3` | Areia — acentos quentes neutros, divisores suaves |
+| `bone` | `#F7F8F7` | Fundos warm (seções alternadas, cards) |
+| `primary` | `#FF6B35` | CTA principal (laranja) — **inalterado** |
+| `secondary` | `#004E89` | Links e botão alternativo — **inalterado nesta fase** |
+| `whatsapp` | `#25D366` | Canal WhatsApp — **inalterado e intocável** |
+| Texto | `#1F2937` | Body em fundos claros |
+
+**Tokens legados ainda em uso (em substituição progressiva):**
+
+| Legado | Substituto | Status |
+|--------|-----------|--------|
+| `dark` `#1A1A2E` | `navy` `#092238` | Migrando — Semana 1 |
+| `bg-soft` / `bg-warm` `#FAFAF8` | `bone` `#F7F8F7` | Migrando — Semana 1 |
+
+**Regra:** paleta não é negociável — qualquer adição de cor requer aprovação de Murillo antes de implementar. CTA verde do WhatsApp e CTA laranja final permanecem fora desta migração.
 
 ### 5.3 Tipografia
 
