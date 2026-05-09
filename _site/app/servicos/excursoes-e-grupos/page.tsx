@@ -16,6 +16,7 @@ import { generateMetadata as generateSeoMetadata, generateFAQSchema } from "@/li
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { CTAFinal } from "@/components/CTAFinal";
 import { CTASticky } from "@/components/CTASticky";
+import { Breadcrumb } from "@/components/Breadcrumb";
 
 const BRIEFING_TEMPLATE = `Oi Murillo, quero proposta para um grupo em João Pessoa.
 
@@ -236,14 +237,15 @@ export default function ExcursoesGruposPage() {
 
       <CTASticky whatsappUrl={WA_URL} label="Proposta para grupo" />
 
-      {/* Breadcrumb */}
-      <nav className="container-safe py-4 text-sm text-gray-500" aria-label="Breadcrumb">
-        <Link href="/" className="hover:text-primary">Home</Link>
-        {" / "}
-        <span>Serviços</span>
-        {" / "}
-        <span className="text-gray-700 font-medium">Excursões e Grupos</span>
-      </nav>
+      {/* Breadcrumb (emite schema BreadcrumbList automaticamente) */}
+      <Breadcrumb
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Serviços" },
+          { label: "Excursões e Grupos" },
+        ]}
+        currentUrl={`https://${empresa.dominio}/servicos/excursoes-e-grupos/`}
+      />
 
       {/* Hero */}
       <section

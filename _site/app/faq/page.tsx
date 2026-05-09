@@ -8,6 +8,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FAQAccordion } from "@/components/FAQAccordion";
+import { Breadcrumb } from "@/components/Breadcrumb";
 import { generateFAQSchema } from "@/lib/seo";
 import { empresa } from "@/data/empresa";
 
@@ -93,12 +94,14 @@ export default function FaqPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      {/* Breadcrumb */}
-      <nav className="container-safe py-4 text-sm text-gray-500">
-        <Link href="/" className="hover:text-primary">Home</Link>
-        {" / "}
-        <span className="text-gray-700 font-medium">Perguntas Frequentes</span>
-      </nav>
+      {/* Breadcrumb (emite schema BreadcrumbList automaticamente) */}
+      <Breadcrumb
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Perguntas Frequentes" },
+        ]}
+        currentUrl={`https://${empresa.dominio}/faq/`}
+      />
 
       {/* Hero */}
       <section className="bg-gradient-to-b from-blue-50 to-white py-12">

@@ -10,6 +10,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getServico } from "@/data/servicos";
 import { empresa } from "@/data/empresa";
+import { Breadcrumb } from "@/components/Breadcrumb";
 
 const servico = getServico("transfer-24h");
 
@@ -27,12 +28,15 @@ export default function TransferPage() {
 
   return (
     <div>
-      {/* Breadcrumb */}
-      <nav className="container-safe py-4 text-sm text-gray-500">
-        <Link href="/" className="hover:text-primary">Home</Link>
-        {" / "}
-        <span className="text-gray-700 font-medium">Transfer 24h</span>
-      </nav>
+      {/* Breadcrumb (emite schema BreadcrumbList automaticamente) */}
+      <Breadcrumb
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Serviços" },
+          { label: "Transfer 24h" },
+        ]}
+        currentUrl={`https://${empresa.dominio}/servicos/transfer-24h/`}
+      />
 
       {/* Hero */}
       <section className="bg-gradient-to-b from-blue-50 to-white py-12">

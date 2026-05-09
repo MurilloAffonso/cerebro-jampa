@@ -1,4 +1,13 @@
+/**
+ * Breadcrumb — emite UI + schema BreadcrumbList automaticamente.
+ *
+ * - Item sem `href` é a página atual (último elo) e marca `aria-current="page"`.
+ * - Para o schema, o último item é resolvido contra o domínio oficial caso
+ *   a página atual não passe `currentUrl` — útil para SEO consistente.
+ */
+
 import Link from "next/link";
+import { empresa } from "@/data/empresa";
 
 interface BreadcrumbItem {
   label: string;
@@ -7,27 +16,71 @@ interface BreadcrumbItem {
 
 interface BreadcrumbProps {
   items: BreadcrumbItem[];
+  /** URL canônica da página atual; opcional. Se omitido, schema usa `href` se houver. */
+  currentUrl?: string;
 }
 
-export function Breadcrumb({ items }: BreadcrumbProps) {
+const SITE_URL = `https://${empresa.dominio}`;
+
+function toAbsolute(path?: string): string | undefined {
+  if (!path) return undefined;
+  if (path.startsWith("http://") || path.startsWith("https://")) return path;
+  return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
+}
+
+export function Breadcrumb({ items, currentUrl }: BreadcrumbProps) {
+  // Schema BreadcrumbList — só emite se houver pelo menos 2 itens
+  const schemaItems = items
+    .map((item, index) => {
+      const isLast = index === items.length - 1;
+      const url = isLast
+        ? toAbsolute(currentUrl) || toAbsolute(item.href)
+        : toAbsolute(item.href);
+      if (!url) return null;
+      return {
+        "@type": "ListItem",
+        position: index + 1,
+        name: item.label,
+        item: url,
+      };
+    })
+    .filter(Boolean);
+
+  const schema =
+    schemaItems.length >= 2
+      ? {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: schemaItems,
+        }
+      : null;
+
   return (
-    <nav aria-label="Breadcrumb" className="container-safe py-3">
-      <ol className="flex flex-wrap items-center gap-1 text-sm text-gray-500">
-        {items.map((item, index) => (
-          <li key={index} className="flex items-center gap-1">
-            {index > 0 && <span aria-hidden="true">/</span>}
-            {item.href ? (
-              <Link href={item.href} className="hover:text-primary transition-colors">
-                {item.label}
-              </Link>
-            ) : (
-              <span className="text-gray-700" aria-current="page">
-                {item.label}
-              </span>
-            )}
-          </li>
-        ))}
-      </ol>
-    </nav>
+    <>
+      {schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      )}
+      <nav aria-label="Breadcrumb" className="container-safe py-3">
+        <ol className="flex flex-wrap items-center gap-1 text-sm text-gray-500">
+          {items.map((item, index) => (
+            <li key={index} className="flex items-center gap-1">
+              {index > 0 && <span aria-hidden="true">/</span>}
+              {item.href ? (
+                <Link href={item.href} className="hover:text-primary transition-colors">
+                  {item.label}
+                </Link>
+              ) : (
+                <span className="text-gray-700" aria-current="page">
+                  {item.label}
+                </span>
+              )}
+            </li>
+          ))}
+        </ol>
+      </nav>
+    </>
   );
 }

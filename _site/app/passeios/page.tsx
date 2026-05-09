@@ -9,6 +9,7 @@ import Link from "next/link";
 import { passeios } from "@/data/passeios";
 import { empresa } from "@/data/empresa";
 import { isCampoIndisponivel } from "@/lib/consultar";
+import { Breadcrumb } from "@/components/Breadcrumb";
 
 export const metadata: Metadata = {
   title: "Passeios em João Pessoa — Vem Passear em Jampa",
@@ -35,12 +36,14 @@ export default function PasseiosPage() {
 
   return (
     <div>
-      {/* Breadcrumb */}
-      <nav className="container-safe py-4 text-sm text-gray-500">
-        <Link href="/" className="hover:text-primary">Home</Link>
-        {" / "}
-        <span className="text-gray-700 font-medium">Passeios</span>
-      </nav>
+      {/* Breadcrumb (emite schema BreadcrumbList automaticamente) */}
+      <Breadcrumb
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Passeios" },
+        ]}
+        currentUrl={`https://${empresa.dominio}/passeios/`}
+      />
 
       {/* Hero */}
       <section className="bg-gradient-to-b from-blue-50 to-white py-12">

@@ -20,7 +20,6 @@ import type { PasseioMareSlug } from "@/types/tabua-mares";
 import {
   generateFAQSchema,
   generateTouristAttractionSchema,
-  generateBreadcrumbSchema,
 } from "@/lib/seo";
 import { isCampoIndisponivel } from "@/lib/consultar";
 import { HeroBlock } from "@/components/HeroBlock";
@@ -141,25 +140,12 @@ export default function PasseioPage({ params }: PasseioPageProps) {
   const faqItems = passeio.faq || [];
   const faqSchema = faqItems.length > 0 ? generateFAQSchema(faqItems) : null;
 
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Início", item: SITE_URL },
-    {
-      name: `${categoriaLabel} em João Pessoa`,
-      item: `${SITE_URL}/passeios/${params.categoria}`,
-    },
-    { name: passeio.nome, item: pageUrl },
-  ]);
-
   return (
     <>
-      {/* Schemas JSON-LD */}
+      {/* Schemas JSON-LD — Breadcrumb sai automaticamente do <Breadcrumb> */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(touristAttractionSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       {faqSchema && (
         <script
@@ -183,13 +169,14 @@ export default function PasseioPage({ params }: PasseioPageProps) {
         />
       </div>
 
-      {/* Breadcrumb */}
+      {/* Breadcrumb (emite schema BreadcrumbList automaticamente) */}
       <Breadcrumb
         items={[
           { label: "Home", href: "/" },
           { label: categoriaLabel, href: `/passeios/${params.categoria}` },
           { label: passeio.nome },
         ]}
+        currentUrl={pageUrl}
       />
 
       {/* C3 — INFO CARD */}

@@ -10,6 +10,7 @@ import { passeios, getPasseiosByCategoria } from "@/data/passeios";
 import { generateMetadata as generateSeoMetadata } from "@/lib/seo";
 import { isCampoIndisponivel } from "@/lib/consultar";
 import { empresa } from "@/data/empresa";
+import { Breadcrumb } from "@/components/Breadcrumb";
 
 interface CategoriaPageProps {
   params: {
@@ -85,14 +86,15 @@ export default function CategoriaPage({ params }: CategoriaPageProps) {
 
   return (
     <div>
-      {/* Breadcrumb */}
-      <nav className="container-safe py-4 text-sm text-gray-500">
-        <Link href="/" className="hover:text-primary">Home</Link>
-        {" / "}
-        <Link href="/passeios" className="hover:text-primary">Passeios</Link>
-        {" / "}
-        <span className="text-gray-700 font-medium">{nome}</span>
-      </nav>
+      {/* Breadcrumb (emite schema BreadcrumbList automaticamente) */}
+      <Breadcrumb
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Passeios", href: "/passeios" },
+          { label: nome },
+        ]}
+        currentUrl={`https://${empresa.dominio}/passeios/${params.categoria}/`}
+      />
 
       {/* Hero */}
       <section className="bg-gradient-to-b from-blue-50 to-white py-12">
