@@ -11,6 +11,7 @@ import { empresa } from "@/data/empresa";
 import { isCampoIndisponivel } from "@/lib/consultar";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTASticky } from "@/components/CTASticky";
+import { CategoryIcon } from "@/components/CategoryIcon";
 
 export const metadata: Metadata = {
   title: "Passeios em João Pessoa — Vem Passear em Jampa",
@@ -66,9 +67,10 @@ export default function PasseiosPage() {
               <a
                 key={cat.slug}
                 href={`#${cat.slug}`}
-                className="inline-block bg-white border border-gray-200 rounded-full px-4 py-1.5 text-sm font-medium hover:border-primary hover:text-primary transition"
+                className="inline-flex items-center gap-2 bg-white border border-gray-200 rounded-full px-4 py-1.5 text-sm font-medium text-secondary hover:border-primary hover:text-primary transition"
               >
-                {cat.emoji} {cat.nome}
+                <CategoryIcon slug={cat.slug} size={18} strokeWidth={2} />
+                {cat.nome}
               </a>
             ))}
           </div>
@@ -81,8 +83,10 @@ export default function PasseiosPage() {
           {categorias.map((cat) => (
             <div key={cat.slug} id={cat.slug}>
               {/* Cabeçalho da categoria */}
-              <div className="flex items-center gap-3 mb-6 pb-3 border-b border-gray-200">
-                <span className="text-3xl">{cat.emoji}</span>
+              <div className="flex items-center gap-4 mb-6 pb-3 border-b border-gray-200">
+                <div className="text-secondary shrink-0">
+                  <CategoryIcon slug={cat.slug} size={36} strokeWidth={2} />
+                </div>
                 <div>
                   <h2 className="text-2xl font-bold text-secondary">{cat.nome}</h2>
                   <p className="text-sm text-gray-500">
@@ -129,22 +133,25 @@ export default function PasseiosPage() {
       </section>
 
       {/* CTA WhatsApp */}
-      <section className="section-padding bg-primary text-white">
+      <section id="cta-final" className="section-padding bg-primary text-white">
         <div className="container-safe text-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
             Ficou com dúvida sobre qual passeio escolher?
           </h2>
           <p className="text-lg mb-8 opacity-90">
-            Mande uma mensagem para Murillo — ele indica o roteiro certo para o seu tempo e orçamento.
+            Mande uma mensagem para Murillo — ele orienta sobre roteiro, datas e o que combina com o seu tempo e orçamento.
           </p>
           <a
-            href={empresa.contato.whatsappLink}
+            href={WA_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-white text-primary px-8 py-4 rounded-md font-semibold text-lg hover:bg-gray-100 transition-colors"
           >
-            💬 Falar com Murillo pelo WhatsApp
+            💬 Falar com Murillo no WhatsApp
           </a>
+          <p className="text-sm opacity-80 mt-4">
+            Atendimento direto pelo WhatsApp, em horário comercial.
+          </p>
         </div>
       </section>
     </div>

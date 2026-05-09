@@ -31,42 +31,36 @@ const CATEGORIAS = [
   {
     nome: "Pacotes",
     slug: "pacotes",
-    emoji: "🎒",
     descricao: "Roteiros de 2 e 3 dias com transfer, guia e tudo incluso.",
     cor: "#004E89",
   },
   {
     nome: "Litoral Sul",
     slug: "litoral-sul",
-    emoji: "🏖️",
     descricao: "Gramame, Amor, Tambaba e Coqueirinho — praias e trilhas de quadriciclo.",
     cor: "#1A6B52",
   },
   {
     nome: "Litoral Norte",
     slug: "litoral-norte",
-    emoji: "⛵",
     descricao: "História colonial, Areia Vermelha e o pôr do sol mais famoso do Brasil.",
     cor: "#7B4F12",
   },
   {
     nome: "Piscinas Naturais",
     slug: "piscinas-naturais",
-    emoji: "🤿",
     descricao: "Recifes de corais e águas mornas no ponto mais oriental das Américas.",
     cor: "#0E5E8A",
   },
   {
     nome: "City Tour",
     slug: "city-tour",
-    emoji: "🏛️",
     descricao: "A 3ª cidade mais antiga do Brasil: Niemeyer, patrimônio e praças históricas.",
     cor: "#4A3580",
   },
   {
     nome: "Interestaduais",
     slug: "interestaduais",
-    emoji: "🗺️",
     descricao: "Porto de Galinhas, Pipa e Natal a partir de João Pessoa.",
     cor: "#8B1A3A",
   },
@@ -116,7 +110,6 @@ export default function Home() {
                 key={cat.slug}
                 nome={cat.nome}
                 slug={cat.slug}
-                emoji={cat.emoji}
                 descricao={cat.descricao}
                 cor={cat.cor}
               />

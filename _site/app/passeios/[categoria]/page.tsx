@@ -12,6 +12,7 @@ import { isCampoIndisponivel } from "@/lib/consultar";
 import { empresa } from "@/data/empresa";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTASticky } from "@/components/CTASticky";
+import { CategoryIcon } from "@/components/CategoryIcon";
 
 interface CategoriaPageProps {
   params: {
@@ -80,7 +81,6 @@ export default function CategoriaPage({ params }: CategoriaPageProps) {
   const itens = getPasseiosByCategoria(params.categoria);
   const meta = CATEGORIAS_META[params.categoria];
   const nome = meta?.nome ?? params.categoria.replace(/-/g, " ");
-  const emoji = meta?.emoji ?? "🎯";
   const descricao = meta?.descricao ?? null;
   const mostraExcursoesCallout =
     params.categoria === "pacotes" || params.categoria === "interestaduais";
@@ -102,9 +102,11 @@ export default function CategoriaPage({ params }: CategoriaPageProps) {
       />
 
       {/* Hero */}
-      <section id="hero-section" className="bg-gradient-to-b from-blue-50 to-white py-12">
+      <section id="hero-section" className="bg-gradient-to-b from-blue-50 to-white py-12 md:py-16">
         <div className="container-safe text-center">
-          <div className="text-5xl mb-4">{emoji}</div>
+          <div className="inline-flex justify-center text-secondary mb-5">
+            <CategoryIcon slug={params.categoria} size={48} strokeWidth={2} />
+          </div>
           <h1 className="text-3xl md:text-4xl font-bold text-secondary mb-4">
             {nome} em João Pessoa
           </h1>
@@ -182,22 +184,25 @@ export default function CategoriaPage({ params }: CategoriaPageProps) {
       )}
 
       {/* CTA WhatsApp */}
-      <section className="section-padding bg-primary text-white">
+      <section id="cta-final" className="section-padding bg-primary text-white">
         <div className="container-safe text-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
             Ficou com dúvida sobre algum passeio?
           </h2>
           <p className="text-lg mb-8 opacity-90">
-            Mande uma mensagem para Murillo — ele responde rápido e ajuda a montar o roteiro ideal.
+            Murillo orienta direto pelo WhatsApp — ele ajuda você a montar o roteiro certo, com preço justo.
           </p>
           <a
-            href={empresa.contato.whatsappLink}
+            href={waUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-white text-primary px-8 py-4 rounded-md font-semibold text-lg hover:bg-gray-100 transition-colors"
           >
-            💬 Falar com Murillo pelo WhatsApp
+            💬 Falar com Murillo no WhatsApp
           </a>
+          <p className="text-sm opacity-80 mt-4">
+            Atendimento direto pelo WhatsApp, em horário comercial.
+          </p>
         </div>
       </section>
     </div>

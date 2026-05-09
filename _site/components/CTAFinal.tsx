@@ -10,7 +10,7 @@ interface CTAFinalProps {
 export function CTAFinal({
   whatsappUrl,
   titulo = "Vamos te ajudar a escolher a melhor data para o seu passeio.",
-  subtitulo = "Atendimento rápido. Preço justo. Roteiro organizado.",
+  subtitulo = "Atendimento direto, preço justo e roteiro organizado.",
   textoBotao = "Falar com Murillo no WhatsApp",
   variante = "azul",
   label,
@@ -62,8 +62,8 @@ export function CTAFinal({
           💬 {textoBotao}
         </a>
 
-        <p className="text-white/50 text-xs mt-4">
-          Resposta em minutos · Sem compromisso
+        <p className="text-white/60 text-xs mt-4">
+          Atendimento direto pelo WhatsApp, em horário comercial · Sem compromisso
         </p>
       </div>
     </section>

@@ -1,14 +1,16 @@
 import Link from "next/link";
+import { CategoryIcon } from "@/components/CategoryIcon";
 
 interface CategoryCardProps {
   nome: string;
   slug: string;
-  emoji: string;
   descricao: string;
   cor: string;
+  /** @deprecated mantido por compat — não é mais renderizado */
+  emoji?: string;
 }
 
-export function CategoryCard({ nome, slug, emoji, descricao, cor }: CategoryCardProps) {
+export function CategoryCard({ nome, slug, descricao, cor }: CategoryCardProps) {
   return (
     <Link
       href={`/passeios/${slug}`}
@@ -21,10 +23,13 @@ export function CategoryCard({ nome, slug, emoji, descricao, cor }: CategoryCard
         style={{ background: "radial-gradient(circle at 30% 30%, rgba(255,255,255,0.09), transparent 60%)" }}
       />
 
-      <div className="relative p-7 flex flex-col flex-1">
-        <div className="text-3xl mb-4 select-none" aria-hidden="true">{emoji}</div>
+      <div className="relative p-7 flex flex-col flex-1 text-white">
+        {/* Ícone SVG line — herda currentColor do parent (branco) */}
+        <div className="mb-4">
+          <CategoryIcon slug={slug} size={36} strokeWidth={2} />
+        </div>
 
-        <h3 className="font-serif font-bold text-[21px] text-white leading-snug mb-2">
+        <h3 className="font-serif font-bold text-[21px] leading-snug mb-2">
           {nome}
         </h3>
         <p className="text-white/70 text-sm leading-relaxed flex-1">{descricao}</p>

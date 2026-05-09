@@ -127,13 +127,13 @@ export default function FaqPage() {
       </section>
 
       {/* CTA WhatsApp */}
-      <section className="section-padding bg-primary text-white">
+      <section id="cta-final" className="section-padding bg-primary text-white">
         <div className="container-safe text-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
             Ainda tem dúvida?
           </h2>
           <p className="text-lg mb-8 opacity-90">
-            Mande uma mensagem para Murillo — ele responde rápido e sem enrolação.
+            Murillo atende direto pelo WhatsApp — pergunta o que precisar, ele responde com clareza.
           </p>
           <a
             href={WA_URL}
@@ -143,6 +143,9 @@ export default function FaqPage() {
           >
             💬 Perguntar no WhatsApp
           </a>
+          <p className="text-sm opacity-80 mt-4">
+            Atendimento direto pelo WhatsApp, em horário comercial.
+          </p>
         </div>
       </section>
 
