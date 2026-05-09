@@ -34,6 +34,7 @@ import { Experience360Block } from "@/components/Experience360Block";
 import { IncluidoBlock } from "@/components/IncluidoBlock";
 import { DepoimentoBlock } from "@/components/DepoimentoBlock";
 import { CTAFinal } from "@/components/CTAFinal";
+import { PoliticaCancelamento } from "@/components/PoliticaCancelamento";
 import { CTASticky } from "@/components/CTASticky";
 import { PasseioCard } from "@/components/PasseioCard";
 
@@ -421,6 +422,9 @@ export default function PasseioPage({ params }: PasseioPageProps) {
           </div>
         </section>
       )}
+
+      {/* Política de cancelamento — transparência antes do CTA final */}
+      <PoliticaCancelamento whatsappUrl={whatsappUrl} />
 
       {/* S3 — CTA FINAL */}
       <CTAFinal whatsappUrl={whatsappUrl} />
