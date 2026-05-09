@@ -9,6 +9,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { CTASticky } from "@/components/CTASticky";
 import { generateFAQSchema } from "@/lib/seo";
 import { empresa } from "@/data/empresa";
 
@@ -103,8 +104,10 @@ export default function FaqPage() {
         currentUrl={`https://${empresa.dominio}/faq/`}
       />
 
+      <CTASticky whatsappUrl={WA_URL} label="Tirar dúvida no WhatsApp" />
+
       {/* Hero */}
-      <section className="bg-gradient-to-b from-blue-50 to-white py-12">
+      <section id="hero-section" className="bg-gradient-to-b from-blue-50 to-white py-12">
         <div className="container-safe text-center">
           <h1 className="text-3xl md:text-4xl font-bold text-secondary mb-4">
             Perguntas Frequentes

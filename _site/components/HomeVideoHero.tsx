@@ -113,20 +113,32 @@ export function HomeVideoHero({ whatsappUrl }: HomeVideoHeroProps) {
           </a>
         </div>
 
-        {/* Prova social */}
+        {/* Prova social — clicáveis para verificação real */}
         <div className="mt-14 pt-7 border-t border-white/10 w-full max-w-2xl grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
-          <div>
-            <p className="font-bold text-primary text-xl mb-0.5">
+          <a
+            href={empresa.rede.googleMaps}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group"
+            aria-label={`Ver as ${empresa.rating.totalAvaliacoes} avaliações reais no Google`}
+          >
+            <p className="font-bold text-primary text-xl mb-0.5 group-hover:underline underline-offset-4">
               ★ {empresa.rating.valor}/5
             </p>
             <p className="text-white/55 text-xs">
               {empresa.rating.totalAvaliacoes} avaliações Google
             </p>
-          </div>
-          <div>
-            <p className="font-bold text-white text-xl mb-0.5">Cadastur</p>
+          </a>
+          <a
+            href="https://cadastur.turismo.gov.br/hotsite/#!/public/inicio"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group"
+            aria-label="Verificar registro Cadastur no portal do Ministério do Turismo"
+          >
+            <p className="font-bold text-white text-xl mb-0.5 group-hover:underline underline-offset-4">Cadastur</p>
             <p className="text-white/55 text-xs">{empresa.cadastur} · Ativo</p>
-          </div>
+          </a>
           <div>
             <p className="font-bold text-white text-xl mb-0.5">WhatsApp</p>
             <p className="text-white/55 text-xs">Atendimento direto</p>

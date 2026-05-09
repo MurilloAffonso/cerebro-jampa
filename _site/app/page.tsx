@@ -22,6 +22,7 @@ import { CategoryCard } from "@/components/CategoryCard";
 import { MurilloBlock } from "@/components/MurilloBlock";
 import { WaveDivider } from "@/components/WaveDivider";
 import { CTAFinal } from "@/components/CTAFinal";
+import { CTASticky } from "@/components/CTASticky";
 import { HomeVideoHero } from "@/components/HomeVideoHero";
 
 const WA_URL = `${empresa.contato.whatsappLink}?text=Oi%2C+quero+informações+sobre+os+passeios+em+João+Pessoa`;
@@ -87,6 +88,8 @@ export default function Home() {
 
   return (
     <div>
+
+      <CTASticky whatsappUrl={WA_URL} label="Falar com Murillo no WhatsApp" />
 
       {/* ── 1. HERO ── */}
       <HomeVideoHero whatsappUrl={WA_URL} />

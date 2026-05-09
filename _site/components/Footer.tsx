@@ -16,9 +16,11 @@
 import Link from "next/link";
 import { empresa, paginasInfo } from "@/data/empresa";
 
+const CADASTUR_URL = "https://cadastur.turismo.gov.br/hotsite/#!/public/inicio";
+
 export function Footer() {
   return (
-    <footer className="text-white" style={{ background: "#1A1A2E" }}>
+    <footer className="text-white" style={{ background: "#092238" }}>
       <div className="container-safe py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-14 mb-10">
 
@@ -33,19 +35,35 @@ export function Footer() {
               pelo WhatsApp — sem intermediários, com conhecimento local de quem vive aqui.
             </p>
 
-            {/* Dados de confiança */}
+            {/* Dados de confiança — links clicáveis */}
             <ul className="space-y-1.5 text-sm text-gray-400">
               <li>
-                ⭐{" "}
-                <span className="text-white font-semibold">
-                  {empresa.rating.valor}/5
-                </span>{" "}
-                no Google ({empresa.rating.totalAvaliacoes} avaliações)
+                <a
+                  href={empresa.rede.googleMaps}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors"
+                  aria-label={`Ver ${empresa.rating.totalAvaliacoes} avaliações reais no Google`}
+                >
+                  ⭐{" "}
+                  <span className="text-white font-semibold">
+                    {empresa.rating.valor}/5
+                  </span>{" "}
+                  no Google ({empresa.rating.totalAvaliacoes} avaliações)
+                </a>
               </li>
               <li>
-                Cadastur{" "}
-                <span className="text-white font-semibold">{empresa.cadastur}</span>
-                {" "}— ativo até {empresa.cadasturValido}
+                <a
+                  href={CADASTUR_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors"
+                  aria-label="Verificar registro Cadastur no portal do Ministério do Turismo"
+                >
+                  Cadastur{" "}
+                  <span className="text-white font-semibold">{empresa.cadastur}</span>
+                  {" "}— ativo até {empresa.cadasturValido}
+                </a>
               </li>
             </ul>
           </div>
@@ -77,6 +95,14 @@ export function Footer() {
                   className="text-gray-300 hover:text-primary transition-colors"
                 >
                   Transfer 24h
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/servicos/excursoes-e-grupos"
+                  className="text-gray-300 hover:text-primary transition-colors"
+                >
+                  Excursões e Grupos
                 </Link>
               </li>
             </ul>

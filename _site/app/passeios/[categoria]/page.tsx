@@ -11,6 +11,7 @@ import { generateMetadata as generateSeoMetadata } from "@/lib/seo";
 import { isCampoIndisponivel } from "@/lib/consultar";
 import { empresa } from "@/data/empresa";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { CTASticky } from "@/components/CTASticky";
 
 interface CategoriaPageProps {
   params: {
@@ -84,8 +85,12 @@ export default function CategoriaPage({ params }: CategoriaPageProps) {
   const mostraExcursoesCallout =
     params.categoria === "pacotes" || params.categoria === "interestaduais";
 
+  const waUrl = `${empresa.contato.whatsappLink}?text=Oi%2C+quero+saber+sobre+os+passeios+de+${encodeURIComponent(nome)}+em+Jo%C3%A3o+Pessoa`;
+
   return (
     <div>
+      <CTASticky whatsappUrl={waUrl} label={`${nome} no WhatsApp`} />
+
       {/* Breadcrumb (emite schema BreadcrumbList automaticamente) */}
       <Breadcrumb
         items={[
@@ -97,7 +102,7 @@ export default function CategoriaPage({ params }: CategoriaPageProps) {
       />
 
       {/* Hero */}
-      <section className="bg-gradient-to-b from-blue-50 to-white py-12">
+      <section id="hero-section" className="bg-gradient-to-b from-blue-50 to-white py-12">
         <div className="container-safe text-center">
           <div className="text-5xl mb-4">{emoji}</div>
           <h1 className="text-3xl md:text-4xl font-bold text-secondary mb-4">

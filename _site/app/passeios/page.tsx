@@ -10,6 +10,7 @@ import { passeios } from "@/data/passeios";
 import { empresa } from "@/data/empresa";
 import { isCampoIndisponivel } from "@/lib/consultar";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { CTASticky } from "@/components/CTASticky";
 
 export const metadata: Metadata = {
   title: "Passeios em João Pessoa — Vem Passear em Jampa",
@@ -34,8 +35,12 @@ export default function PasseiosPage() {
 
   const total = passeios.length;
 
+  const WA_URL = `${empresa.contato.whatsappLink}?text=Oi%2C+quero+escolher+um+passeio+em+Jo%C3%A3o+Pessoa`;
+
   return (
     <div>
+      <CTASticky whatsappUrl={WA_URL} label="Escolher passeio no WhatsApp" />
+
       {/* Breadcrumb (emite schema BreadcrumbList automaticamente) */}
       <Breadcrumb
         items={[
@@ -46,7 +51,7 @@ export default function PasseiosPage() {
       />
 
       {/* Hero */}
-      <section className="bg-gradient-to-b from-blue-50 to-white py-12">
+      <section id="hero-section" className="bg-gradient-to-b from-blue-50 to-white py-12">
         <div className="container-safe text-center">
           <h1 className="text-3xl md:text-4xl font-bold text-secondary mb-4">
             Todos os Passeios em João Pessoa

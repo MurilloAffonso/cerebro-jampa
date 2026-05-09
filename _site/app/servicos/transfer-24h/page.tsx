@@ -11,6 +11,7 @@ import Link from "next/link";
 import { getServico } from "@/data/servicos";
 import { empresa } from "@/data/empresa";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { CTASticky } from "@/components/CTASticky";
 
 const servico = getServico("transfer-24h");
 
@@ -28,6 +29,8 @@ export default function TransferPage() {
 
   return (
     <div>
+      <CTASticky whatsappUrl={WA_URL} label="Solicitar cotação no WhatsApp" />
+
       {/* Breadcrumb (emite schema BreadcrumbList automaticamente) */}
       <Breadcrumb
         items={[
@@ -39,7 +42,7 @@ export default function TransferPage() {
       />
 
       {/* Hero */}
-      <section className="bg-gradient-to-b from-blue-50 to-white py-12">
+      <section id="hero-section" className="bg-gradient-to-b from-blue-50 to-white py-12">
         <div className="container-safe text-center">
           <div className="text-5xl mb-4" aria-hidden="true">🚗</div>
           <h1 className="text-3xl md:text-4xl font-bold text-secondary mb-4">

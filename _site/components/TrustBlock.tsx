@@ -1,4 +1,6 @@
-import { empresa, provasSociais } from "@/data/empresa";
+import { empresa } from "@/data/empresa";
+
+const CADASTUR_URL = "https://cadastur.turismo.gov.br/hotsite/#!/public/inicio";
 
 export function TrustBlock() {
   return (
@@ -9,31 +11,43 @@ export function TrustBlock() {
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          {/* Cadastur */}
-          <div className="flex gap-4">
+          {/* Cadastur — clicável para verificação no portal oficial */}
+          <a
+            href={CADASTUR_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex gap-4 group"
+            aria-label="Verificar registro Cadastur no portal do Ministério do Turismo"
+          >
             <span className="text-2xl flex-shrink-0" aria-hidden="true">✅</span>
             <div>
-              <h3 className="text-white font-bold text-base md:text-lg">
+              <h3 className="text-white font-bold text-base md:text-lg group-hover:text-primary transition-colors">
                 Cadastur {empresa.cadastur} — Ativo
               </h3>
               <p className="text-gray-300 text-sm mt-1 leading-relaxed">
-                Agência registrada no Ministério do Turismo. Operação legal, segura, verificada.
+                Agência registrada no Ministério do Turismo. Verifique o registro no portal oficial.
               </p>
             </div>
-          </div>
+          </a>
 
-          {/* Rating */}
-          <div className="flex gap-4">
+          {/* Rating — clicável para o perfil real do Google */}
+          <a
+            href={empresa.rede.googleMaps}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex gap-4 group"
+            aria-label={`Ver as ${empresa.rating.totalAvaliacoes} avaliações reais no Google`}
+          >
             <span className="text-2xl flex-shrink-0" aria-hidden="true">⭐</span>
             <div>
-              <h3 className="text-white font-bold text-base md:text-lg">
+              <h3 className="text-white font-bold text-base md:text-lg group-hover:text-primary transition-colors">
                 {empresa.rating.valor}/5 no Google
               </h3>
               <p className="text-gray-300 text-sm mt-1 leading-relaxed">
-                {empresa.rating.totalAvaliacoes} avaliações. O que os clientes sempre dizem: atendimento rápido, organização impecável, confiança.
+                {empresa.rating.totalAvaliacoes} avaliações reais. Atendimento rápido, organização e confiança são os pontos mais citados.
               </p>
             </div>
-          </div>
+          </a>
 
           {/* Murillo */}
           <div className="flex gap-4">
