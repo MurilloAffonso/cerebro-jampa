@@ -137,6 +137,33 @@ export default function Home() {
       {/* Wave categorias → prioritários */}
       <WaveDivider fill="#ffffff" />
 
+      {/* ── 2.5. PROVA SOCIAL HONESTA (Google reviews) ── */}
+      <section className="bg-white py-12 md:py-16" aria-label="Avaliações reais no Google">
+        <div className="container-safe max-w-3xl text-center">
+          <a
+            href={empresa.rede.googleMaps}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block group"
+            aria-label={`Ler as ${empresa.rating.totalAvaliacoes} avaliações reais no Google`}
+          >
+            <p className="font-serif font-bold text-dark mb-2" style={{ fontSize: "clamp(40px, 6vw, 64px)", lineHeight: 1 }}>
+              <span className="text-primary">★</span> {empresa.rating.valor}
+              <span className="text-2xl text-gray-400 font-sans font-normal align-super ml-1">/5</span>
+            </p>
+            <p className="text-base md:text-lg text-gray-600 mb-3">
+              <strong className="text-dark">{empresa.rating.totalAvaliacoes} avaliações reais</strong> no Google
+            </p>
+            <p className="text-sm text-gray-500 max-w-md mx-auto leading-relaxed mb-5">
+              Pessoas que viajaram com a Vem Passear em João Pessoa e voltaram para contar.
+            </p>
+            <span className="text-sm font-semibold text-secondary group-hover:text-primary border-b-2 border-secondary/30 group-hover:border-primary transition-colors pb-0.5">
+              Ler todas no Google →
+            </span>
+          </a>
+        </div>
+      </section>
+
       {/* ── 3. PASSEIOS PRIORITÁRIOS ── */}
       {prioritarios.length > 0 && (
         <section className="py-14 md:py-20 bg-white">

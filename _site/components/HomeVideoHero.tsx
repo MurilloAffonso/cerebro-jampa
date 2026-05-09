@@ -108,10 +108,16 @@ export function HomeVideoHero({ whatsappUrl }: HomeVideoHeroProps) {
             href="/passeios"
             className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold px-7 py-[18px] rounded-full min-h-[56px] transition-all"
             style={{ fontSize: 'clamp(14px, 1.4vw, 16px)' }}
+            aria-label="Ver os passeios mais vendidos em João Pessoa"
           >
             Ver passeios mais vendidos →
           </a>
         </div>
+
+        {/* Microcopy — direto, sem inventar SLA específico */}
+        <p className="text-white/70 text-xs mt-4 max-w-md leading-relaxed">
+          Atendimento direto com Murillo · Sem central, sem script · Resposta em horário comercial
+        </p>
 
         {/* Prova social — clicáveis para verificação real */}
         <div className="mt-14 pt-7 border-t border-white/10 w-full max-w-2xl grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">

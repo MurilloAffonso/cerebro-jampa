@@ -155,7 +155,7 @@ export default function PasseioPage({ params }: PasseioPageProps) {
       )}
 
       {/* CTA Sticky — fixed bottom, mobile only, aparece após hero sair do viewport */}
-      <CTASticky whatsappUrl={whatsappUrl} label="Reservar no WhatsApp" />
+      <CTASticky whatsappUrl={whatsappUrl} label="Reservar com Murillo no WhatsApp" />
 
       {/* C2 — HERO */}
       <div id="hero-section">
@@ -164,7 +164,7 @@ export default function PasseioPage({ params }: PasseioPageProps) {
           imageAlt={passeio.imagemAlt || passeio.nome}
           title={h1Text}
           subtitle={passeio.subtituloHero}
-          cta={{ text: "💬 Reservar no WhatsApp", href: whatsappUrl }}
+          cta={{ text: "💬 Reservar com Murillo no WhatsApp", href: whatsappUrl }}
           isH1
         />
       </div>
