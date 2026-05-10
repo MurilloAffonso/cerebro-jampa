@@ -1,5 +1,7 @@
 import { empresa } from "@/data/empresa";
 
+const CADASTUR_URL = "https://cadastur.turismo.gov.br/hotsite/#!/public/inicio";
+
 interface MurilloBlockProps {
   whatsappUrl: string;
 }
@@ -8,7 +10,7 @@ export function MurilloBlock({ whatsappUrl }: MurilloBlockProps) {
   const diferenciais = empresa.diferencial.split(" + ");
 
   return (
-    <section className="section-padding" style={{ background: "#FAFAF8" }}>
+    <section className="section-padding" style={{ background: "#F7F8F7" }}>
       <div className="container-safe">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-20 items-center max-w-5xl mx-auto">
 
@@ -28,10 +30,16 @@ export function MurilloBlock({ whatsappUrl }: MurilloBlockProps) {
                 </div>
               </div>
 
-              {/* Cadastur badge */}
-              <div className="absolute bottom-2.5 -right-3.5 bg-white border border-gray-200 rounded-full px-3 py-1 shadow-md text-xs font-bold text-secondary whitespace-nowrap">
+              {/* Cadastur badge — clicável para verificação no portal oficial */}
+              <a
+                href={CADASTUR_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute bottom-2.5 -right-3.5 bg-white border border-gray-200 hover:border-primary rounded-full px-3 py-1 shadow-md text-xs font-bold text-secondary hover:text-primary whitespace-nowrap transition-colors"
+                aria-label="Verificar registro Cadastur no portal do Ministério do Turismo"
+              >
                 Cadastur ✓
-              </div>
+              </a>
             </div>
           </div>
 
@@ -56,7 +64,7 @@ export function MurilloBlock({ whatsappUrl }: MurilloBlockProps) {
                 <li key={item} className="flex items-start gap-3">
                   <span className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                      <path d="M2 7l3.5 3.5L12 3.5" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M2 7l3.5 3.5L12 3.5" stroke="#107997" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </span>
                   <span className="text-gray-700 text-sm leading-relaxed">{item}</span>

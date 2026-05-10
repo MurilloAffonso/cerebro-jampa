@@ -21,13 +21,13 @@ export function CTAFinal({
     <section
       id="cta-final"
       className="relative overflow-hidden"
-      style={{ background: isLaranja ? "#FF6B35" : "#004E89" }}
+      style={{ background: isLaranja ? "#107997" : "#092238" }}
     >
       {/* Blob decorativo */}
       <div
         className="absolute top-[-30%] right-[-10%] w-96 h-96 rounded-full pointer-events-none"
         style={{
-          background: isLaranja ? "rgba(255,255,255,0.12)" : "rgba(255,107,53,0.15)",
+          background: isLaranja ? "rgba(255,255,255,0.15)" : "rgba(197,183,163,0.18)",
           filter: "blur(50px)",
         }}
         aria-hidden="true"

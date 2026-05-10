@@ -106,7 +106,7 @@ export default function BlogArticlePage({ params }: BlogArticleProps) {
       )}
 
       {/* Cabeçalho */}
-      <section className="bg-[#FAFAF8] py-14 md:py-20">
+      <section id="hero-section" className="bg-[#F7F8F7] py-14 md:py-20">
         <div className="container-safe max-w-3xl">
           <nav className="text-xs text-gray-500 mb-5" aria-label="Breadcrumb">
             <Link href="/" className="hover:text-primary">Início</Link>
@@ -199,7 +199,7 @@ export default function BlogArticlePage({ params }: BlogArticleProps) {
       <section
         id="cta-final"
         className="py-14 md:py-20"
-        style={{ background: "#FF6B35" }}
+        style={{ background: "#107997" }}
       >
         <div className="container-safe text-center max-w-2xl">
           <h2 className="font-serif font-bold text-white text-2xl md:text-3xl mb-3 leading-tight">

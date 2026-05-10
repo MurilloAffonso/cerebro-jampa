@@ -42,7 +42,7 @@ export function Header() {
   const closeMobile = () => setMobileOpen(false);
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-md bg-[#FAFAF8]/95 border-b border-black/[0.07]">
+    <header className="sticky top-0 z-50 backdrop-blur-md bg-[#F7F8F7]/95 border-b border-black/[0.07]">
       <div className="container-safe py-3">
         <div className="flex items-center justify-between gap-4">
 

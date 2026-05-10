@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s | Vem Passear em Jampa",
   },
   description:
-    "Agência de turismo em João Pessoa. Passeios para praias, piscinas naturais, city tour e muito mais. Atendimento rápido, confiança e orientação local.",
+    "Agência de turismo em João Pessoa com Cadastur ativo. Passeios para praias, piscinas naturais, city tour e pacotes. Atendimento direto pelo WhatsApp com orientação local.",
   keywords: [
     "passeios João Pessoa",
     "turismo em JP",
@@ -32,6 +32,8 @@ export const metadata: Metadata = {
     "seixas",
     "litoral sul",
     "agência turismo",
+    "Cadastur",
+    "Paraíba",
   ],
   openGraph: {
     type: "website",
@@ -46,6 +48,23 @@ export const metadata: Metadata = {
         alt: "Vem Passear em Jampa — Passeios em João Pessoa",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Passeios em João Pessoa | Vem Passear em Jampa",
+    description:
+      "Passeios em João Pessoa com Cadastur ativo. Atendimento direto pelo WhatsApp com Murillo.",
+    images: ["/og-image.svg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 

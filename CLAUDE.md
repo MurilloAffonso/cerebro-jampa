@@ -43,9 +43,11 @@ npm run lint         # ESLint
 **Utilitários de SEO (`lib/seo.ts`):** `generateMetadata()`, `generateLocalBusinessSchema()`, `generateFAQSchema()`, `generateTouristAttractionSchema()`, `slugify()`, `gerarUrlPasseio()`. O domínio `SITE_URL` e o telefone estão marcados `[CONFIRMAR COM MURILLO]` — não alterar sem confirmação.
 
 **Design tokens (Tailwind):**
-- Primário: `#FF6B35` → `text-primary` / `bg-primary`
-- Secundário: `#004E89` → `text-secondary` / `bg-secondary`
-- Fontes: Inter (body), Lora (headings) via `next/font/google`
+- Primário: `#107997` (teal) → `text-primary` / `bg-primary` — paleta v2 aprovada 2026-05-09 (ver decisão 41 em `_memoria/decisoes-estrategicas.md`)
+- Secundário: `#092238` (navy profundo) → `text-secondary` / `bg-secondary`
+- Accent (hover do primary): `#0E8FA8` → `text-accent` / `bg-accent`
+- Fundo alternado: `#F7F8F7` → `bg-soft` / `bg-warm`
+- Fontes: DM Sans (body), Lora (headings) via `next/font/google`
 - Mobile-first: `md:` a 768px, `lg:` a 1024px — sempre partir de 320px
 
 **Componentes existentes:** `HeroBlock`, `InfoCard`, `ButtonPrimary`, `FAQAccordion`. Vários blocos na `page.tsx` de passeio ainda são placeholders comentados — ver arquivo para ver o que falta implementar.

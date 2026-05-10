@@ -12,6 +12,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { empresa } from "@/data/empresa";
 import { getPublishedPosts, listClusters } from "@/lib/blog";
+import { Breadcrumb } from "@/components/Breadcrumb";
+import { CTASticky } from "@/components/CTASticky";
 
 const WA_URL = `${empresa.contato.whatsappLink}?text=Oi%2C+quero+informações+sobre+os+passeios+em+João+Pessoa`;
 
@@ -37,8 +39,19 @@ export default function BlogIndexPage() {
 
   return (
     <div className="bg-white">
+      <CTASticky whatsappUrl={WA_URL} label="Falar com Murillo no WhatsApp" />
+
+      {/* Breadcrumb (emite schema BreadcrumbList automaticamente) */}
+      <Breadcrumb
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Blog" },
+        ]}
+        currentUrl={`https://${empresa.dominio}/blog/`}
+      />
+
       {/* Header */}
-      <section className="bg-[#FAFAF8] py-16 md:py-20">
+      <section id="hero-section" className="bg-[#F7F8F7] py-16 md:py-20">
         <div className="container-safe max-w-4xl">
           <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
             Blog Vem Passear
@@ -57,7 +70,7 @@ export default function BlogIndexPage() {
       <section className="py-14 md:py-20">
         <div className="container-safe max-w-5xl">
           {emPreparacao ? (
-            <div className="bg-[#FAFAF8] border border-gray-200 rounded-2xl p-8 md:p-12 mb-10">
+            <div className="bg-[#F7F8F7] border border-gray-200 rounded-2xl p-8 md:p-12 mb-10">
               <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
                 Em preparação
               </p>
@@ -143,7 +156,7 @@ export default function BlogIndexPage() {
       <section
         id="cta-final"
         className="py-14 md:py-20"
-        style={{ background: "#004E89" }}
+        style={{ background: "#092238" }}
       >
         <div className="container-safe text-center max-w-2xl">
           <h2 className="font-serif font-bold text-white text-2xl md:text-3xl mb-3 leading-tight">

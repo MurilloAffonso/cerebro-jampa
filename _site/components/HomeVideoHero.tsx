@@ -97,7 +97,7 @@ export function HomeVideoHero({ whatsappUrl }: HomeVideoHeroProps) {
             className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-accent text-white font-extrabold px-8 py-[18px] rounded-full min-h-[56px] transition-all hover:scale-[1.02] hover:-translate-y-[3px]"
             style={{
               fontSize: 'clamp(15px, 1.5vw, 17px)',
-              boxShadow: '0 8px 32px rgba(255,107,53,0.35)',
+              boxShadow: '0 8px 32px rgba(16,121,151,0.35)',
             }}
             aria-label="Montar meu roteiro no WhatsApp"
           >

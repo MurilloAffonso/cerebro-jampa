@@ -6,9 +6,11 @@ node_modules/
 # Testing
 coverage/
 
-# Production
+# Production / build artifacts (gerados — não versionar)
 .next/
 out/
+out.zip
+*.zip
 dist/
 
 # Misc

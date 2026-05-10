@@ -19,16 +19,73 @@ export const metadata: Metadata = servico
   ? {
       title: `${servico.h1} | Vem Passear em Jampa`,
       description: servico.metaDescription,
+      alternates: { canonical: "https://vempassearjampa.com.br/servicos/transfer-24h/" },
+      openGraph: {
+        title: servico.h1,
+        description: servico.metaDescription,
+        url: "https://vempassearjampa.com.br/servicos/transfer-24h/",
+        images: [
+          { url: "/og-image.svg", width: 1200, height: 630, alt: servico.h1 },
+        ],
+      },
     }
   : {};
 
 const WA_URL = `${empresa.contato.whatsappLink}?text=Oi%2C+quero+solicitar+cota%C3%A7%C3%A3o+de+transfer`;
+
+const SERVICE_SCHEMA = servico
+  ? {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      serviceType: "Transfer privativo",
+      name: servico.h1,
+      description: servico.descricao,
+      areaServed: {
+        "@type": "City",
+        name: "João Pessoa",
+        addressRegion: "PB",
+        addressCountry: "BR",
+      },
+      provider: {
+        "@type": "TravelAgency",
+        name: "Vem Passear em Jampa",
+        telephone: "+55 83 9908-7830",
+        url: "https://vempassearjampa.com.br",
+      },
+      url: "https://vempassearjampa.com.br/servicos/transfer-24h",
+      hoursAvailable: {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday",
+        ],
+        opens: "00:00",
+        closes: "23:59",
+      },
+      audience: {
+        "@type": "Audience",
+        audienceType: "Turistas em João Pessoa, transfer de aeroporto, transfer entre hotéis",
+      },
+    }
+  : null;
 
 export default function TransferPage() {
   if (!servico) notFound();
 
   return (
     <div>
+      {SERVICE_SCHEMA && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICE_SCHEMA) }}
+        />
+      )}
+
       <CTASticky whatsappUrl={WA_URL} label="Solicitar cotação no WhatsApp" />
 
       {/* Breadcrumb (emite schema BreadcrumbList automaticamente) */}
@@ -42,7 +99,7 @@ export default function TransferPage() {
       />
 
       {/* Hero */}
-      <section id="hero-section" className="bg-gradient-to-b from-blue-50 to-white py-12">
+      <section id="hero-section" className="bg-gradient-to-b from-blue-50 to-white py-12 md:py-16">
         <div className="container-safe text-center">
           <div className="text-5xl mb-4" aria-hidden="true">🚗</div>
           <h1 className="text-3xl md:text-4xl font-bold text-secondary mb-4">
@@ -156,8 +213,8 @@ export default function TransferPage() {
         </div>
       </section>
 
-      {/* CTA Final */}
-      <section className="section-padding bg-primary text-white">
+      {/* CTA Final — id permite ao CTASticky recolher na area final */}
+      <section id="cta-final" className="section-padding bg-primary text-white">
         <div className="container-safe text-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
             Precisa de transfer em João Pessoa?

@@ -14,7 +14,9 @@ import { generateFAQSchema, generateBreadcrumbSchema } from "@/lib/seo";
 import { ProximaSaidaCard } from "@/components/ProximaSaidaCard";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTAFinal } from "@/components/CTAFinal";
+import { CTASticky } from "@/components/CTASticky";
 import { FAQAccordion } from "@/components/FAQAccordion";
+import { PoliticaCancelamento } from "@/components/PoliticaCancelamento";
 
 const SITE_URL = "https://vempassearjampa.com.br";
 const WA_BASE = "https://wa.me/558399087830";
@@ -131,8 +133,10 @@ export default function CalendarioPage() {
         ]}
       />
 
+      <CTASticky whatsappUrl={WA_URL} label="Falar com Murillo no WhatsApp" />
+
       {/* HERO */}
-      <section className="bg-secondary text-white">
+      <section id="hero-section" className="bg-secondary text-white">
         <div className="container-safe py-10 md:py-14">
           <h1 className="text-2xl md:text-4xl font-bold text-white leading-tight max-w-2xl">
             Tábua de Marés em João Pessoa — Piscinas Naturais
@@ -315,11 +319,14 @@ export default function CalendarioPage() {
         </div>
       </section>
 
+      {/* Política de cancelamento — relevante para passeios dependentes de maré */}
+      <PoliticaCancelamento whatsappUrl={WA_URL} />
+
       {/* CTA FINAL */}
       <CTAFinal
         whatsappUrl={WA_URL}
         titulo="Escolheu a data? Fala com Murillo para confirmar a reserva."
-        subtitulo="Atendimento rápido. Preço justo. Você só precisa aparecer."
+        subtitulo="Atendimento direto, preço justo e roteiro organizado."
       />
     </>
   );

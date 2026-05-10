@@ -421,4 +421,41 @@ horarioSaidaSugerido = max( floor30(horarioBaixaMareOperacional − 15min), 07:0
 
 ---
 
-**Última atualização:** 2026-04-29 | Próxima revisão: ao fim de cada fase de implementação
+## Decisão 41 — Nova Paleta Visual: Teal + Navy + Bone (Brand Refresh)
+
+**Data:** 2026-05-09
+**Decisão:** Substituir paleta visual aprovada (laranja `#FF6B35` + azul `#004E89` + bone quente `#FAFAF8`) pela paleta:
+
+| Token | Antes | Agora | Uso |
+|-------|-------|-------|-----|
+| `primary` | `#FF6B35` (laranja) | `#107997` (teal) | CTAs, badges, links de destaque, `text-primary` |
+| `secondary` | `#004E89` (azul médio) | `#092238` (navy profundo) | Headings, CTA escuro, footer |
+| `accent` (hover do primary) | `#F77F00` (laranja claro) | `#0E8FA8` (teal mais luminoso) | Hover de CTA — nunca cor principal |
+| `bg-soft` / `bg-warm` | `#FAFAF8` (bone quente) | `#F7F8F7` (cinza neutro frio) | Fundos alternados |
+
+Glows alinhados: `cta-orange` shadow agora usa `rgba(16,121,151,0.45)`; `cta-blue` usa `rgba(9,34,56,0.3)` (nomes de token preservados para retrocompatibilidade — apenas valores trocados).
+
+**Por quê:** aumentar percepção de confiança, limpeza visual, consistência e maturidade da marca. O laranja saturado puxava a marca para tom de "ofertão"; teal+navy comunicam profissionalismo turístico sem cair em "boutique premium".
+
+**Escopo desta decisão:**
+- Apenas paleta visual e variações coerentes (favicon, OG image, ícones SVG, placeholders).
+
+**O que NÃO muda (explicitamente preservado):**
+- Posicionamento: **"preço justo + confiança + atendimento humano/local"** continua intacto.
+- Tipografia: Lora (serif) + DM Sans (sans) preservadas.
+- Vídeo da home: preservado.
+- WhatsApp como canal principal: preservado.
+- Tom de voz: acolhedor, local, sem urgência falsa.
+- Estratégia comercial: nenhuma promessa nova, nenhum SLA inventado.
+
+**Implementação:**
+- `tailwind.config.ts` — tokens `primary`, `secondary`, `accent`, `bg-soft`, `bg-warm` + box-shadows `cta-orange`/`cta-blue`.
+- 11 componentes/páginas com hex inline migrados.
+- `app/icon.svg`, `public/og-image.svg`, `public/images/placeholders/placeholder-passeio.svg`, `public/images/passeios/seixas/*.svg` migrados.
+- `CLAUDE.md` (raiz e projeto) atualizados com novos hex de referência.
+
+**Validação:** `npm run type-check` ✅ + `npm run build` ✅ (42 páginas).
+
+---
+
+**Última atualização:** 2026-05-09 | Próxima revisão: ao fim de cada fase de implementação

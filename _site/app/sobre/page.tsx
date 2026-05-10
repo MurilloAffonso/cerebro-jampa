@@ -1,5 +1,261 @@
-import { notFound } from "next/navigation";
+/**
+ * Página: Sobre — /sobre/
+ *
+ * Regra crítica:
+ *   Esta página usa SOMENTE dados confirmados em data/empresa.ts.
+ *   Anos de operação, formação e história pessoal NÃO existem aqui
+ *   porque o vault marca esses campos como pendentes [CONFIRMAR COM MURILLO].
+ *
+ * Conteúdo:
+ *   - Identidade (Cadastur, CNPJ, rating Google) — verificável
+ *   - Missão e diferencial — texto já aprovado em data/empresa.ts
+ *   - Como funciona o atendimento — descreve o canal real (WhatsApp direto)
+ *   - CTA final WhatsApp
+ */
+
+import type { Metadata } from "next";
+import Link from "next/link";
+import { empresa } from "@/data/empresa";
+import { Breadcrumb } from "@/components/Breadcrumb";
+import { CTASticky } from "@/components/CTASticky";
+import { CTAFinal } from "@/components/CTAFinal";
+
+const SITE_URL = "https://vempassearjampa.com.br";
+const PAGE_URL = `${SITE_URL}/sobre/`;
+const CADASTUR_URL = "https://cadastur.turismo.gov.br/hotsite/#!/public/inicio";
+
+const WA_URL = `${empresa.contato.whatsappLink}?text=Oi+Murillo%2C+quero+saber+mais+sobre+a+Vem+Passear+em+Jampa`;
+
+export const metadata: Metadata = {
+  title: "Sobre a Vem Passear em Jampa | Quem está por trás dos passeios em João Pessoa",
+  description:
+    "Vem Passear em Jampa é uma agência de turismo receptivo em João Pessoa com Cadastur ativo. Atendimento direto com Murillo pelo WhatsApp, sem central impessoal.",
+  alternates: { canonical: PAGE_URL },
+  openGraph: {
+    title: "Sobre a Vem Passear em Jampa",
+    description:
+      "Agência receptiva em João Pessoa com Cadastur ativo. Atendimento direto com Murillo pelo WhatsApp.",
+    url: PAGE_URL,
+    images: [
+      { url: "/og-image.svg", width: 1200, height: 630, alt: "Sobre a Vem Passear em Jampa" },
+    ],
+  },
+};
 
 export default function SobrePage() {
-  notFound();
+  const diferenciais = empresa.diferencial.split(" + ");
+
+  return (
+    <div className="bg-white">
+      <CTASticky whatsappUrl={WA_URL} label="Falar com Murillo no WhatsApp" />
+
+      <Breadcrumb
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Sobre" },
+        ]}
+        currentUrl={PAGE_URL}
+      />
+
+      {/* HERO */}
+      <section id="hero-section" className="bg-gradient-to-b from-blue-50 to-white py-12 md:py-16">
+        <div className="container-safe text-center max-w-3xl">
+          <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
+            Quem somos
+          </p>
+          <h1 className="text-3xl md:text-4xl font-bold text-secondary mb-4 leading-tight">
+            Vem Passear em Jampa — agência receptiva em João Pessoa
+          </h1>
+          <p className="text-lg text-gray-600 leading-relaxed">
+            Operação local, atendimento direto pelo WhatsApp e roteiro organizado
+            sem intermediário. {empresa.proprietario.split(" ")[1]} responde pessoalmente
+            quem procura informação sobre passeios em João Pessoa.
+          </p>
+        </div>
+      </section>
+
+      {/* IDENTIDADE VERIFICÁVEL */}
+      <section className="section-padding">
+        <div className="container-safe max-w-4xl">
+          <h2 className="font-serif font-bold text-2xl md:text-3xl text-dark mb-6 text-center">
+            Identidade verificável
+          </h2>
+          <p className="text-center text-gray-600 mb-10 max-w-xl mx-auto">
+            Tudo que aparece aqui é checável em fonte oficial. Clique nas referências
+            abaixo para confirmar antes de fechar qualquer passeio.
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {/* Cadastur */}
+            <a
+              href={CADASTUR_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block bg-white border border-gray-200 hover:border-primary rounded-xl p-5 transition-colors"
+              aria-label="Verificar registro Cadastur no portal do Ministério do Turismo"
+            >
+              <p className="text-xs font-bold uppercase tracking-[2px] text-primary mb-2">Cadastur</p>
+              <p className="text-2xl font-bold text-secondary mb-1">{empresa.cadastur}</p>
+              <p className="text-sm text-gray-600">Ativo até {empresa.cadasturValido}</p>
+              <p className="text-xs text-gray-500 mt-3 group-hover:text-primary transition-colors">
+                Verificar no portal do Ministério do Turismo →
+              </p>
+            </a>
+
+            {/* CNPJ */}
+            <div className="bg-white border border-gray-200 rounded-xl p-5">
+              <p className="text-xs font-bold uppercase tracking-[2px] text-primary mb-2">CNPJ</p>
+              <p className="text-2xl font-bold text-secondary mb-1">{empresa.cnpj}</p>
+              <p className="text-sm text-gray-600">Pessoa jurídica regular — emite nota</p>
+            </div>
+
+            {/* Avaliação Google */}
+            <a
+              href={empresa.rede.googleMaps}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block bg-white border border-gray-200 hover:border-primary rounded-xl p-5 transition-colors"
+              aria-label="Ver avaliações no Google Maps"
+            >
+              <p className="text-xs font-bold uppercase tracking-[2px] text-primary mb-2">Avaliações Google</p>
+              <p className="text-2xl font-bold text-secondary mb-1">
+                {empresa.rating.valor}/5 ★ <span className="text-base font-normal text-gray-500">({empresa.rating.totalAvaliacoes})</span>
+              </p>
+              <p className="text-sm text-gray-600">Avaliações reais de turistas</p>
+              <p className="text-xs text-gray-500 mt-3 group-hover:text-primary transition-colors">
+                Ler todas no Google →
+              </p>
+            </a>
+
+            {/* Localização */}
+            <div className="bg-white border border-gray-200 rounded-xl p-5">
+              <p className="text-xs font-bold uppercase tracking-[2px] text-primary mb-2">Localização</p>
+              <p className="text-2xl font-bold text-secondary mb-1">{empresa.localizacao.cidade}</p>
+              <p className="text-sm text-gray-600">{empresa.localizacao.estado}, {empresa.localizacao.pais}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* MISSÃO E DIFERENCIAL */}
+      <section className="section-padding bg-bg-soft">
+        <div className="container-safe max-w-3xl">
+          <h2 className="font-serif font-bold text-2xl md:text-3xl text-dark mb-6 text-center">
+            Por que existimos
+          </h2>
+
+          <blockquote className="border-l-[3px] border-primary pl-5 mb-8">
+            <p className="text-gray-700 text-lg leading-relaxed italic">
+              {empresa.missao}
+            </p>
+            <p className="text-sm text-gray-500 mt-3">— {empresa.proprietario}, fundador</p>
+          </blockquote>
+
+          <h3 className="font-bold text-secondary text-lg mb-4">Como traduzimos isso na prática</h3>
+          <ul className="space-y-3">
+            {diferenciais.map((item) => (
+              <li key={item} className="flex items-start gap-3">
+                <span className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <path d="M2 7l3.5 3.5L12 3.5" stroke="#107997" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </span>
+                <span className="text-gray-700 leading-relaxed">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* COMO FUNCIONA O ATENDIMENTO */}
+      <section className="section-padding">
+        <div className="container-safe max-w-3xl">
+          <h2 className="font-serif font-bold text-2xl md:text-3xl text-dark mb-6 text-center">
+            Como funciona o atendimento
+          </h2>
+          <p className="text-center text-gray-600 mb-10 max-w-xl mx-auto">
+            Sem central impessoal, sem script padronizado. Quem responde no WhatsApp é
+            quem organiza os passeios.
+          </p>
+
+          <ol className="space-y-5">
+            {[
+              {
+                n: "1",
+                t: "Você manda mensagem pelo WhatsApp",
+                d: "Conte qual passeio te interessa, número de pessoas e a data prevista. Pode mandar dúvida solta também — ajuda a entender o que combina com o seu roteiro.",
+              },
+              {
+                n: "2",
+                t: "Murillo responde com orientação local",
+                d: "Recebe sugestão de roteiro, esclarecimento sobre maré (quando o passeio depende disso), preço e disponibilidade.",
+              },
+              {
+                n: "3",
+                t: "Confirmação e instruções de embarque",
+                d: "Após confirmar, você recebe instruções claras: ponto de encontro, horário, o que levar e contato do operador no dia.",
+              },
+            ].map((step) => (
+              <li key={step.n} className="flex gap-4">
+                <span className="w-9 h-9 bg-primary text-white rounded-full flex items-center justify-center font-bold shrink-0 mt-0.5">
+                  {step.n}
+                </span>
+                <div>
+                  <p className="font-bold text-dark mb-1">{step.t}</p>
+                  <p className="text-sm text-gray-600 leading-relaxed">{step.d}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* LINKS REDES */}
+      <section className="section-padding bg-bg-soft">
+        <div className="container-safe max-w-2xl text-center">
+          <h2 className="font-serif font-bold text-xl md:text-2xl text-dark mb-4">
+            Acompanhe o dia a dia da operação
+          </h2>
+          <p className="text-gray-600 mb-6">
+            Stories e conteúdo dos passeios em tempo real no Instagram.
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            <a
+              href={empresa.rede.instagram.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-white border border-gray-200 hover:border-primary text-secondary hover:text-primary font-semibold px-5 py-3 rounded-full text-sm transition-colors"
+              aria-label="Abrir Instagram da Vem Passear em Jampa"
+            >
+              📷 Instagram {empresa.rede.instagram.handle}
+            </a>
+            <a
+              href={empresa.rede.googleMaps}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-white border border-gray-200 hover:border-primary text-secondary hover:text-primary font-semibold px-5 py-3 rounded-full text-sm transition-colors"
+              aria-label="Abrir perfil da empresa no Google Maps"
+            >
+              📍 Perfil no Google
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA FINAL */}
+      <CTAFinal
+        whatsappUrl={WA_URL}
+        label="Quer conhecer a operação?"
+        titulo="Fale direto com Murillo"
+        subtitulo="Tire dúvidas sobre roteiros, datas e preços — atendimento direto, sem central impessoal."
+        textoBotao="Falar com Murillo no WhatsApp"
+      />
+
+      <div className="container-safe py-6 text-center">
+        <Link href="/passeios" className="text-sm text-primary hover:text-accent font-medium transition-colors">
+          ← Ver todos os passeios em João Pessoa
+        </Link>
+      </div>
+    </div>
+  );
 }

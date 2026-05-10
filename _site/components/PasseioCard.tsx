@@ -16,7 +16,7 @@ const MARE_SLUG_MAP: Record<string, PasseioMareSlug> = {
 };
 
 const CATEGORIA_BG: Record<string, string> = {
-  "pacotes":           "linear-gradient(160deg, #003d6b, #004E89)",
+  "pacotes":           "linear-gradient(160deg, #092238, #163149)",
   "litoral-sul":       "linear-gradient(160deg, #0d4d2e, #1A6B52)",
   "litoral-norte":     "linear-gradient(160deg, #4a2c0a, #7B4F12)",
   "piscinas-naturais": "linear-gradient(160deg, #073d5c, #0E5E8A)",
@@ -41,7 +41,7 @@ export function PasseioCard({ passeio }: PasseioCardProps) {
       ? buildProximaSaidaCard(MARE_SLUG_MAP[passeio.slug], TABUA_MARES_2026)
       : null;
 
-  const bg = CATEGORIA_BG[passeio.categoria] ?? "linear-gradient(160deg, #1A1A2E, #2d3748)";
+  const bg = CATEGORIA_BG[passeio.categoria] ?? "linear-gradient(160deg, #092238, #163149)";
   const categoriaNome = CATEGORIA_NOME[passeio.categoria] ?? passeio.categoria;
 
   return (

@@ -8,18 +8,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: '#FF6B35',      // CTAs, badges, acento H1, checkmarks
-        secondary: '#004E89',    // Links, botão alternativo, CTA azul
-        accent: '#F77F00',       // Hover do primary — nunca cor principal
-        dark: '#1A1A2E',         // Hero, footer, texto escuro
+        primary: '#107997',      // Teal — CTAs, badges, acento H1, checkmarks (paleta aprovada 2026-05-09)
+        secondary: '#092238',    // Navy profundo — links, botão alternativo, CTA escuro
+        accent: '#0E8FA8',       // Hover do primary — teal mais luminoso, nunca cor principal
+        dark: '#1A1A2E',         // Hero, footer, texto escuro (mantido)
         surface: '#FFFFFF',      // Cards, blockquotes, badges
-        whatsapp: '#25D366',     // Exclusivo canal WhatsApp
+        whatsapp: '#25D366',     // Exclusivo canal WhatsApp (preservado)
         muted: '#6B7280',        // Subtítulos, labels, secundários
         // Tokens DS v1.2 (canônicos)
-        'bg-soft': '#FAFAF8',    // Fundo seções alternadas — quente
+        'bg-soft': '#F7F8F7',    // Fundo seções alternadas — bone/cinza neutro
         text: '#1F2937',         // Corpo em fundos claros
         // Aliases legados — preservar compatibilidade com classes existentes
-        'bg-warm': '#FAFAF8',    // alias de bg-soft
+        'bg-warm': '#F7F8F7',    // alias de bg-soft
         body: '#1F2937',         // alias de text
         light: '#ECEFF1',        // legado
       },
@@ -38,8 +38,9 @@ const config: Config = {
         sm:     ['14px',                     { lineHeight: '1.6' }],
       },
       boxShadow: {
-        'cta-orange': '0 6px 36px rgba(255,107,53,0.45)',
-        'cta-blue':   '0 4px 20px rgba(0,78,137,0.3)',
+        // Glows alinhados à paleta atual — nomes legados preservados para retrocompatibilidade
+        'cta-orange': '0 6px 36px rgba(16,121,151,0.45)',
+        'cta-blue':   '0 4px 20px rgba(9,34,56,0.3)',
         'cta-wa':     '0 2px 12px rgba(37,211,102,0.3)',
         card:         '0 4px 24px rgba(0,0,0,0.12)',
         'card-hover': '0 16px 48px rgba(0,0,0,0.22)',

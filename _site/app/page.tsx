@@ -32,7 +32,7 @@ const CATEGORIAS = [
     nome: "Pacotes",
     slug: "pacotes",
     descricao: "Roteiros de 2 e 3 dias com transfer, guia e tudo incluso.",
-    cor: "#004E89",
+    cor: "#107997",
   },
   {
     nome: "Litoral Sul",
@@ -69,11 +69,16 @@ const CATEGORIAS = [
 export const metadata: Metadata = {
   title: "Passeios em João Pessoa | Vem Passear em Jampa",
   description:
-    "Descubra os melhores passeios em João Pessoa: piscinas naturais, litoral sul, catamarã e city tour. Atendimento rápido pelo WhatsApp. Cadastur ativo.",
+    "Passeios em João Pessoa com orientação local: piscinas naturais, litoral sul e norte, catamarã, city tour e pacotes. Cadastur ativo, 4,9★ no Google. Atendimento direto com Murillo pelo WhatsApp.",
+  alternates: { canonical: "https://vempassearjampa.com.br/" },
   openGraph: {
     title: "Passeios em João Pessoa — Vem Passear em Jampa",
     description:
-      "Piscinas naturais, litoral sul e norte, catamarã e city tour com orientação local. Reserve pelo WhatsApp.",
+      "Piscinas naturais, litoral sul e norte, catamarã e city tour com orientação local. Atendimento direto pelo WhatsApp.",
+    url: "https://vempassearjampa.com.br/",
+    images: [
+      { url: "/og-image.svg", width: 1200, height: 630, alt: "Vem Passear em Jampa — Passeios em João Pessoa" },
+    ],
   },
 };
 
@@ -89,10 +94,10 @@ export default function Home() {
       <HomeVideoHero whatsappUrl={WA_URL} />
 
       {/* Wave hero → categorias */}
-      <WaveDivider fill="#FAFAF8" className="-mt-1" />
+      <WaveDivider fill="#F7F8F7" className="-mt-1" />
 
       {/* ── 2. CATEGORIAS ── */}
-      <section className="py-14 md:py-20" style={{ background: "#FAFAF8" }}>
+      <section className="py-14 md:py-20" style={{ background: "#F7F8F7" }}>
         <div className="container-safe">
           <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary text-center mb-3">
             Explore por categoria
@@ -150,6 +155,20 @@ export default function Home() {
             <p className="text-sm text-gray-500 max-w-md mx-auto leading-relaxed mb-5">
               Pessoas que viajaram com a Vem Passear em João Pessoa e voltaram para contar.
             </p>
+
+            {/* Chips do que aparece com mais frequência nas avaliações reais (fonte: _conhecimento/empresa.md) */}
+            <ul className="flex flex-wrap justify-center gap-2 mb-6 max-w-xl mx-auto">
+              {["Atendimento atencioso", "Organização", "Suporte rápido"].map((chip) => (
+                <li
+                  key={chip}
+                  className="inline-flex items-center gap-1.5 bg-[#F7F8F7] border border-[#C5B7A3]/50 text-secondary text-xs font-medium rounded-full px-3 py-1.5"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#107997]" aria-hidden="true" />
+                  {chip}
+                </li>
+              ))}
+            </ul>
+
             <span className="text-sm font-semibold text-secondary group-hover:text-primary border-b-2 border-secondary/30 group-hover:border-primary transition-colors pb-0.5">
               Ler todas no Google →
             </span>
@@ -186,10 +205,10 @@ export default function Home() {
       <CTAFinal
         whatsappUrl={WA_URL}
         variante="laranja"
-        label="Fale agora"
-        titulo="Vamos Montar o Roteiro que Você Sonha"
-        subtitulo="Mande mensagem para Murillo e receba orientação local, preço justo e atendimento rápido — sem enrolação."
-        textoBotao="Chamar Murillo no WhatsApp"
+        label="Vamos conversar"
+        titulo="Vamos montar o seu roteiro em João Pessoa"
+        subtitulo="Mande mensagem para Murillo e receba orientação local, preço justo e atendimento direto — sem central impessoal."
+        textoBotao="Falar com Murillo no WhatsApp"
       />
 
     </div>

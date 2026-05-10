@@ -10,13 +10,24 @@ import Link from "next/link";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTASticky } from "@/components/CTASticky";
+import { CTAFinal } from "@/components/CTAFinal";
 import { generateFAQSchema } from "@/lib/seo";
 import { empresa } from "@/data/empresa";
 
 export const metadata: Metadata = {
   title: "Perguntas Frequentes sobre Passeios em João Pessoa | Vem Passear em Jampa",
   description:
-    "Dúvidas sobre passeios em João Pessoa? Veja respostas sobre reservas, pagamento, política de criança, cancelamento, tábua de marés e segurança.",
+    "Reservas, pagamento, política de cancelamento, tábua de marés, segurança e crianças nos passeios em João Pessoa. Atendimento direto com Murillo no WhatsApp.",
+  alternates: { canonical: "https://vempassearjampa.com.br/faq/" },
+  openGraph: {
+    title: "Perguntas Frequentes — Passeios em João Pessoa",
+    description:
+      "Tudo que você precisa saber antes de reservar passeio em João Pessoa: pagamento, cancelamento, marés, segurança e mais.",
+    url: "https://vempassearjampa.com.br/faq/",
+    images: [
+      { url: "/og-image.svg", width: 1200, height: 630, alt: "Vem Passear em Jampa — FAQ" },
+    ],
+  },
 };
 
 const WA_URL = `${empresa.contato.whatsappLink}?text=Oi%2C+tenho+uma+d%C3%BAvida+sobre+os+passeios`;
@@ -104,10 +115,10 @@ export default function FaqPage() {
         currentUrl={`https://${empresa.dominio}/faq/`}
       />
 
-      <CTASticky whatsappUrl={WA_URL} label="Tirar dúvida no WhatsApp" />
+      <CTASticky whatsappUrl={WA_URL} label="Falar com Murillo no WhatsApp" />
 
       {/* Hero */}
-      <section id="hero-section" className="bg-gradient-to-b from-blue-50 to-white py-12">
+      <section id="hero-section" className="bg-gradient-to-b from-blue-50 to-white py-12 md:py-16">
         <div className="container-safe text-center">
           <h1 className="text-3xl md:text-4xl font-bold text-secondary mb-4">
             Perguntas Frequentes
@@ -126,28 +137,15 @@ export default function FaqPage() {
         </div>
       </section>
 
-      {/* CTA WhatsApp */}
-      <section id="cta-final" className="section-padding bg-primary text-white">
-        <div className="container-safe text-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">
-            Ainda tem dúvida?
-          </h2>
-          <p className="text-lg mb-8 opacity-90">
-            Murillo atende direto pelo WhatsApp — pergunta o que precisar, ele responde com clareza.
-          </p>
-          <a
-            href={WA_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-white text-primary px-8 py-4 rounded-md font-semibold text-lg hover:bg-gray-100 transition-colors"
-          >
-            💬 Perguntar no WhatsApp
-          </a>
-          <p className="text-sm opacity-80 mt-4">
-            Atendimento direto pelo WhatsApp, em horário comercial.
-          </p>
-        </div>
-      </section>
+      {/* CTA Final — componente reutilizável (id="cta-final" embutido) */}
+      <CTAFinal
+        whatsappUrl={WA_URL}
+        variante="laranja"
+        label="Ainda tem dúvida?"
+        titulo="Pergunta direto pelo WhatsApp"
+        subtitulo="Murillo atende, esclarece e ajuda você a decidir com calma — sem pressão."
+        textoBotao="Perguntar no WhatsApp"
+      />
 
       {/* Link de volta */}
       <div className="container-safe py-6 text-center">

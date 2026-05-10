@@ -71,7 +71,7 @@ export const empresa = {
 export const provasSociais = {
   cadastur: `${empresa.cadastur} — Ativo até ${empresa.cadasturValido}`,
   rating: `${empresa.rating.valor}/5 ⭐ (${empresa.rating.totalAvaliacoes} avaliações)`,
-  murillo: 'Especialista local com expertise em cada praia de JP',
+  murillo: 'Atendimento direto com Murillo no WhatsApp — quem mora e organiza os passeios em João Pessoa',
 };
 
 /**

@@ -47,6 +47,8 @@ export const metadata: Metadata = generateSeoMetadata({
     "excursão escolar João Pessoa",
     "receptivo João Pessoa",
   ],
+  ogImage: "/og-image.svg",
+  canonical: "/servicos/excursoes-e-grupos/",
 });
 
 const PERFIS = [
@@ -324,7 +326,7 @@ export default function ExcursoesGruposPage() {
             <li>✓ Cadastur ativo · {empresa.cadastur}</li>
             <li>✓ {empresa.rating.valor}/5 no Google ({empresa.rating.totalAvaliacoes} avaliações)</li>
             <li>✓ Atendimento direto com Murillo</li>
-            <li>✓ Resposta em horas, não em dias</li>
+            <li>✓ Sem central impessoal — quem responde é quem opera</li>
           </ul>
         </div>
       </section>
@@ -523,7 +525,7 @@ export default function ExcursoesGruposPage() {
             💬 Mandar briefing para Murillo no WhatsApp
           </a>
           <p className="text-xs text-gray-500 mt-3">
-            Resposta em horas no horário comercial. Para datas com menos de 7 dias, prioridade de atendimento.
+            Murillo lê e responde pessoalmente — quanto antes você mandar, mais tempo temos para organizar a operação.
           </p>
         </div>
       </section>

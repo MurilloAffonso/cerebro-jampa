@@ -12,19 +12,28 @@ const BRAND_NAME = "Vem Passear em Jampa";
 const WHATSAPP = "+55 83 9908-7830";
 
 export function generateMetadata(meta: SeoMeta) {
+  // Canonical: usa explícito quando fornecido; senão fica omitido (Next infere com metadataBase + path)
+  const canonicalUrl = meta.canonical
+    ? meta.canonical.startsWith("http")
+      ? meta.canonical
+      : `${SITE_URL}${meta.canonical}`
+    : undefined;
+
   return {
     title: `${meta.title} | ${BRAND_NAME}`,
     description: meta.description,
     keywords: meta.keywords?.join(", "),
+    ...(canonicalUrl ? { alternates: { canonical: canonicalUrl } } : {}),
     openGraph: {
       title: meta.title,
       description: meta.description,
-      url: SITE_URL,
+      url: canonicalUrl ?? SITE_URL,
       siteName: BRAND_NAME,
       images: meta.ogImage
         ? [{ url: meta.ogImage, width: 1200, height: 630, alt: meta.title }]
         : [],
       type: (meta.ogType || "website") as "website" | "article" | "profile",
+      locale: "pt_BR",
     },
     twitter: {
       card: "summary_large_image",
@@ -126,6 +135,63 @@ export function generateFAQSchema(
       },
     })),
   };
+}
+
+interface ArticleSchemaParams {
+  title: string;
+  description: string;
+  url: string;
+  imagemUrl?: string;
+  authorName?: string;
+  publishedAt?: string;
+  updatedAt?: string;
+}
+
+/**
+ * Generator de schema Article — preparado para quando o blog publicar
+ * o primeiro post real. Hoje fica dormente porque /blog/_slug-disabled
+ * não renderiza. Reativar quando reabrir [slug].
+ */
+export function generateArticleSchema(params: ArticleSchemaParams) {
+  const schema: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: params.title,
+    description: params.description,
+    url: params.url,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": params.url,
+    },
+    author: {
+      "@type": "Person",
+      name: params.authorName || "Murillo Affonso",
+      worksFor: {
+        "@type": "TravelAgency",
+        name: BRAND_NAME,
+        url: SITE_URL,
+      },
+    },
+    publisher: {
+      "@type": "TravelAgency",
+      name: BRAND_NAME,
+      url: SITE_URL,
+    },
+  };
+
+  if (params.imagemUrl) {
+    schema.image = {
+      "@type": "ImageObject",
+      url: params.imagemUrl.startsWith("http")
+        ? params.imagemUrl
+        : `${SITE_URL}${params.imagemUrl}`,
+    };
+  }
+
+  if (params.publishedAt) schema.datePublished = params.publishedAt;
+  if (params.updatedAt) schema.dateModified = params.updatedAt;
+
+  return schema;
 }
 
 interface BreadcrumbSchemaItem {

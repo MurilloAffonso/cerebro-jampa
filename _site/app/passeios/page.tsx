@@ -12,20 +12,32 @@ import { isCampoIndisponivel } from "@/lib/consultar";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTASticky } from "@/components/CTASticky";
 import { CategoryIcon } from "@/components/CategoryIcon";
+import { generateMetadata as generateSeoMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generateSeoMetadata({
   title: "Passeios em João Pessoa — Vem Passear em Jampa",
   description:
-    "Explore os 22 passeios em João Pessoa: piscinas naturais, litoral sul e norte, city tour, pacotes e interestaduais. Agende pelo WhatsApp.",
-};
+    "22 passeios em João Pessoa com guia local: piscinas naturais, litoral sul e norte, city tour e pacotes. Cadastur ativo, 4,9★. Agende pelo WhatsApp.",
+  keywords: [
+    "passeios João Pessoa",
+    "piscinas naturais",
+    "litoral sul",
+    "litoral norte",
+    "city tour",
+    "Paraíba",
+    "Cadastur",
+  ],
+  ogImage: "/og-image.svg",
+  canonical: "/passeios/",
+});
 
-const CATEGORIAS: { slug: string; nome: string; emoji: string }[] = [
-  { slug: "pacotes",           nome: "Pacotes",            emoji: "🎒" },
-  { slug: "litoral-sul",       nome: "Litoral Sul",        emoji: "🏖️" },
-  { slug: "litoral-norte",     nome: "Litoral Norte",      emoji: "⛵" },
-  { slug: "piscinas-naturais", nome: "Piscinas Naturais",  emoji: "🐠" },
-  { slug: "city-tour",         nome: "City Tour",          emoji: "🏙️" },
-  { slug: "interestaduais",    nome: "Interestaduais",     emoji: "🗺️" },
+const CATEGORIAS: { slug: string; nome: string }[] = [
+  { slug: "pacotes",           nome: "Pacotes" },
+  { slug: "litoral-sul",       nome: "Litoral Sul" },
+  { slug: "litoral-norte",     nome: "Litoral Norte" },
+  { slug: "piscinas-naturais", nome: "Piscinas Naturais" },
+  { slug: "city-tour",         nome: "City Tour" },
+  { slug: "interestaduais",    nome: "Interestaduais" },
 ];
 
 export default function PasseiosPage() {
@@ -40,7 +52,7 @@ export default function PasseiosPage() {
 
   return (
     <div>
-      <CTASticky whatsappUrl={WA_URL} label="Escolher passeio no WhatsApp" />
+      <CTASticky whatsappUrl={WA_URL} label="Falar com Murillo no WhatsApp" />
 
       {/* Breadcrumb (emite schema BreadcrumbList automaticamente) */}
       <Breadcrumb
@@ -52,7 +64,7 @@ export default function PasseiosPage() {
       />
 
       {/* Hero */}
-      <section id="hero-section" className="bg-gradient-to-b from-blue-50 to-white py-12">
+      <section id="hero-section" className="bg-gradient-to-b from-blue-50 to-white py-12 md:py-16">
         <div className="container-safe text-center">
           <h1 className="text-3xl md:text-4xl font-bold text-secondary mb-4">
             Todos os Passeios em João Pessoa

@@ -2,14 +2,14 @@
  * Footer
  *
  * Estrutura aprovada (ISSUE-07 / CONTEXT.md):
- *   Col 1 — Sobre a Vem Passear (bloco texto — sem página /sobre)
- *   Col 2 — Navegação (Início, Passeios, FAQ, Transfer 24h)
+ *   Col 1 — Bloco institucional + dados de confiança
+ *   Col 2 — Navegação (Início, Passeios, FAQ, Transfer, Excursões, Sobre)
  *   Col 3 — Contato + redes sociais
  *   Bottom — CNPJ · Cadastur · copyright
  *
  * Regras:
- *   - /sobre NÃO tem página própria — aparece como bloco de texto aqui
- *   - Blog NÃO aparece
+ *   - /sobre é página real (criada 2026-05-09) usando apenas dados confirmados
+ *   - Blog aparece apenas no índice — slug individual ainda em preparação
  *   - Dados de confiança vindos exclusivamente de data/empresa.ts
  */
 
@@ -103,6 +103,11 @@ export function Footer() {
                   className="text-gray-300 hover:text-primary transition-colors"
                 >
                   Excursões e Grupos
+                </Link>
+              </li>
+              <li>
+                <Link href="/sobre" className="text-gray-300 hover:text-primary transition-colors">
+                  Sobre a Vem Passear
                 </Link>
               </li>
             </ul>

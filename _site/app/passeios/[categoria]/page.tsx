@@ -74,6 +74,8 @@ export async function generateMetadata({ params }: CategoriaPageProps): Promise<
       meta?.descricao ??
       `Descubra os passeios de ${nome.toLowerCase()} em João Pessoa. Agende pelo WhatsApp.`,
     keywords: [nome, "João Pessoa", "passeios", "turismo", "Paraíba"],
+    ogImage: "/og-image.svg",
+    canonical: `/passeios/${params.categoria}/`,
   });
 }
 
@@ -89,7 +91,7 @@ export default function CategoriaPage({ params }: CategoriaPageProps) {
 
   return (
     <div>
-      <CTASticky whatsappUrl={waUrl} label={`${nome} no WhatsApp`} />
+      <CTASticky whatsappUrl={waUrl} label="Falar com Murillo no WhatsApp" />
 
       {/* Breadcrumb (emite schema BreadcrumbList automaticamente) */}
       <Breadcrumb
