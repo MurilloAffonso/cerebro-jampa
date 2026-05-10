@@ -58,15 +58,46 @@ export default function SobrePage() {
       />
 
       {/* HERO */}
-      <section id="hero-section" className="bg-gradient-to-b from-blue-50 to-white py-12 md:py-16">
-        <div className="container-safe text-center max-w-3xl">
-          <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
+      <section
+        id="hero-section"
+        style={{ background: 'var(--cor-primaria)', padding: '64px 24px 80px', textAlign: 'center' }}
+      >
+        <div className="container-safe" style={{ maxWidth: '660px' }}>
+          <span
+            style={{
+              display: 'block',
+              fontFamily: 'var(--font-inter)',
+              fontSize: '13px',
+              fontWeight: 600,
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              color: 'var(--cor-acento)',
+              marginBottom: '16px',
+            }}
+          >
             Quem somos
-          </p>
-          <h1 className="text-3xl md:text-4xl font-bold text-secondary mb-4 leading-tight">
+          </span>
+          <h1
+            className="font-serif"
+            style={{
+              fontSize: 'clamp(28px, 4.5vw, 48px)',
+              fontWeight: 600,
+              lineHeight: 1.1,
+              color: '#fff',
+              marginBottom: '16px',
+              letterSpacing: '-0.02em',
+            }}
+          >
             Vem Passear em Jampa — agência receptiva em João Pessoa
           </h1>
-          <p className="text-lg text-gray-600 leading-relaxed">
+          <p
+            style={{
+              fontFamily: 'var(--font-inter)',
+              fontSize: '17px',
+              color: 'var(--cor-areia)',
+              lineHeight: 1.65,
+            }}
+          >
             Operação local, atendimento direto pelo WhatsApp e roteiro organizado
             sem intermediário. {empresa.proprietario.split(" ")[1]} responde pessoalmente
             quem procura informação sobre passeios em João Pessoa.
@@ -138,7 +169,7 @@ export default function SobrePage() {
       </section>
 
       {/* MISSÃO E DIFERENCIAL */}
-      <section className="section-padding bg-bg-soft">
+      <section className="section-padding" style={{ background: 'var(--cor-areia)' }}>
         <div className="container-safe max-w-3xl">
           <h2 className="font-serif font-bold text-2xl md:text-3xl text-dark mb-6 text-center">
             Por que existimos

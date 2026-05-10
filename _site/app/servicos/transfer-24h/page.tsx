@@ -99,20 +99,67 @@ export default function TransferPage() {
       />
 
       {/* Hero */}
-      <section id="hero-section" className="bg-gradient-to-b from-blue-50 to-white py-12 md:py-16">
-        <div className="container-safe text-center">
-          <div className="text-5xl mb-4" aria-hidden="true">🚗</div>
-          <h1 className="text-3xl md:text-4xl font-bold text-secondary mb-4">
+      <section
+        id="hero-section"
+        style={{ background: 'var(--cor-primaria)', padding: '64px 24px 80px', textAlign: 'center' }}
+      >
+        <div className="container-safe" style={{ maxWidth: '620px' }}>
+          <span
+            style={{
+              display: 'block',
+              fontFamily: 'var(--font-inter)',
+              fontSize: '13px',
+              fontWeight: 600,
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              color: 'var(--cor-acento)',
+              marginBottom: '16px',
+            }}
+          >
+            Serviço
+          </span>
+          <h1
+            className="font-serif"
+            style={{
+              fontSize: 'clamp(28px, 4.5vw, 48px)',
+              fontWeight: 600,
+              lineHeight: 1.1,
+              color: '#fff',
+              marginBottom: '16px',
+              letterSpacing: '-0.02em',
+            }}
+          >
             {servico.h1}
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
+          <p
+            style={{
+              fontFamily: 'var(--font-inter)',
+              fontSize: '17px',
+              color: 'var(--cor-areia)',
+              lineHeight: 1.65,
+              marginBottom: '32px',
+            }}
+          >
             {servico.descricao}
           </p>
           <a
             href={WA_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-primary hover:bg-accent text-white font-bold px-8 py-4 rounded-lg text-lg transition-colors"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              background: 'var(--cor-acento)',
+              color: '#fff',
+              fontFamily: 'var(--font-inter)',
+              fontWeight: 600,
+              fontSize: '17px',
+              padding: '18px 32px',
+              borderRadius: '8px',
+              textDecoration: 'none',
+              boxShadow: 'var(--sombra-cta)',
+            }}
           >
             💬 Solicitar cotação pelo WhatsApp
           </a>
@@ -237,7 +284,7 @@ export default function TransferPage() {
       <section className="container-safe py-10">
         <div className="rounded-2xl border border-[#C5B7A3]/50 bg-[#F7F8F7] p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center gap-4 justify-between">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[2.5px] text-[#107997] mb-1">Vai trazer um grupo?</p>
+            <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-1">Vai trazer um grupo?</p>
             <h3 className="font-serif font-bold text-secondary text-lg md:text-xl mb-1">Excursões e grupos têm operação dedicada</h3>
             <p className="text-sm text-gray-700 max-w-xl">Roteiro, transporte local, van/ônibus e apoio em campo para igreja, escola, família grande ou agência parceira.</p>
           </div>

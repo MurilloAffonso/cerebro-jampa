@@ -1,17 +1,14 @@
 /**
  * Home Page — /
  *
- * Estrutura redesenhada (REDESIGN-HOME-01 / retorno-cloud-designer-home.md):
- *   1. Hero: dark + blobs + stats bottom (integra prova social)
- *   2. Categorias: cards coloridos por categoria
- *   3. Passeios Prioritários: poster 3/4 com overlay
- *   4. Bloco Murillo: grid 2 colunas, avatar placeholder
- *   5. CTA Final WhatsApp
- *
- * Regras:
- *   - Dados de confiança exclusivamente de data/empresa.ts
- *   - Sem Blog, sem link /sobre como página
- *   - Sem dados inventados
+ * Estrutura v4 (refinamento visual + emocional 2026-05-10):
+ *   1. Hero emocional com quote poética
+ *   2. Categorias com respiração generosa
+ *   3. Prova social Google
+ *   4. Passeios prioritários
+ *   5. Quote poética Murillo (pausa emocional)
+ *   6. Bloco Murillo redesenhado
+ *   7. CTA final emocional
  */
 
 import type { Metadata } from "next";
@@ -86,7 +83,7 @@ export default function Home() {
   const prioritarios = getPasseiosPrioritarios();
 
   return (
-    <div>
+    <div style={{ background: 'var(--cor-fundo)' }}>
 
       <CTASticky whatsappUrl={WA_URL} label="Falar com Murillo no WhatsApp" />
 
@@ -94,22 +91,26 @@ export default function Home() {
       <HomeVideoHero whatsappUrl={WA_URL} />
 
       {/* Wave hero → categorias */}
-      <WaveDivider fill="#F7F8F7" className="-mt-1" />
+      <WaveDivider fill="var(--cor-fundo)" className="-mt-1" />
 
       {/* ── 2. CATEGORIAS ── */}
-      <section className="py-14 md:py-20" style={{ background: "#F7F8F7" }}>
+      <section className="section-padding" style={{ background: 'var(--cor-fundo)' }}>
         <div className="container-safe">
-          <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary text-center mb-3">
-            Explore por categoria
-          </p>
-          <h2 className="font-serif font-bold text-3xl md:text-4xl text-dark text-center mb-3 leading-tight">
+          <span className="section-kicker text-center block">Explore por categoria</span>
+          <h2
+            className="font-serif text-center mb-4"
+            style={{ color: 'var(--cor-primaria)', marginBottom: '12px' }}
+          >
             Passeios em João Pessoa
           </h2>
-          <p className="text-center text-gray-500 mb-10 max-w-xl mx-auto text-sm leading-relaxed">
-            Escolha a categoria que combina com você ou deixa a gente montar o roteiro certo.
+          <p
+            className="text-center mx-auto mb-12"
+            style={{ color: 'var(--cor-texto-claro)', fontSize: '16px', maxWidth: '520px' }}
+          >
+            Escolha a categoria que combina com você ou deixe a gente montar o roteiro certo.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {CATEGORIAS.map((cat) => (
               <CategoryCard
                 key={cat.slug}
@@ -121,10 +122,19 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="text-center mt-8">
+          <div className="text-center mt-10">
             <a
               href="/passeios"
-              className="text-sm font-semibold text-secondary hover:text-primary transition-colors border-b-2 border-secondary/30 hover:border-primary pb-0.5"
+              style={{
+                fontFamily: 'var(--font-inter)',
+                fontSize: '15px',
+                fontWeight: 600,
+                color: 'var(--cor-primaria)',
+                borderBottom: '2px solid rgba(16,121,151,0.25)',
+                paddingBottom: '2px',
+                textDecoration: 'none',
+                transition: 'border-color 200ms',
+              }}
             >
               Ver todos os 22 passeios →
             </a>
@@ -132,83 +142,212 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Wave categorias → prioritários */}
-      <WaveDivider fill="#ffffff" />
+      {/* Wave categorias → prova social */}
+      <WaveDivider fill="var(--cor-fundo-puro)" />
 
-      {/* ── 2.5. PROVA SOCIAL HONESTA (Google reviews) ── */}
-      <section className="bg-white py-12 md:py-16" aria-label="Avaliações reais no Google">
-        <div className="container-safe max-w-3xl text-center">
+      {/* ── 3. PROVA SOCIAL GOOGLE ── */}
+      <section
+        className="section-padding"
+        style={{ background: 'var(--cor-fundo-puro)' }}
+        aria-label="Avaliações reais no Google"
+      >
+        <div className="container-safe" style={{ maxWidth: '680px' }}>
           <a
             href={empresa.rede.googleMaps}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block group"
+            className="block text-center group"
             aria-label={`Ler as ${empresa.rating.totalAvaliacoes} avaliações reais no Google`}
+            style={{ textDecoration: 'none' }}
           >
-            <p className="font-serif font-bold text-dark mb-2" style={{ fontSize: "clamp(40px, 6vw, 64px)", lineHeight: 1 }}>
-              <span className="text-primary">★</span> {empresa.rating.valor}
-              <span className="text-2xl text-gray-400 font-sans font-normal align-super ml-1">/5</span>
+            <p
+              className="font-serif"
+              style={{
+                fontSize: 'clamp(48px, 7vw, 72px)',
+                lineHeight: 1,
+                color: 'var(--cor-primaria)',
+                marginBottom: '8px',
+              }}
+            >
+              <span style={{ color: 'var(--cor-acento-suave)' }}>★</span>{' '}
+              {empresa.rating.valor}
+              <span
+                style={{
+                  fontSize: '28px',
+                  color: 'var(--cor-texto-claro)',
+                  fontFamily: 'var(--font-inter)',
+                  fontWeight: 400,
+                  verticalAlign: 'super',
+                  marginLeft: '4px',
+                }}
+              >
+                /5
+              </span>
             </p>
-            <p className="text-base md:text-lg text-gray-600 mb-3">
-              <strong className="text-dark">{empresa.rating.totalAvaliacoes} avaliações reais</strong> no Google
+            <p
+              style={{
+                fontFamily: 'var(--font-inter)',
+                fontSize: '18px',
+                color: 'var(--cor-texto-medio)',
+                marginBottom: '12px',
+              }}
+            >
+              <strong style={{ color: 'var(--cor-texto-escuro)' }}>
+                {empresa.rating.totalAvaliacoes} avaliações reais
+              </strong>{' '}
+              no Google
             </p>
-            <p className="text-sm text-gray-500 max-w-md mx-auto leading-relaxed mb-5">
+            <p
+              style={{
+                fontFamily: 'var(--font-inter)',
+                fontSize: '15px',
+                color: 'var(--cor-texto-claro)',
+                maxWidth: '420px',
+                margin: '0 auto 20px',
+                lineHeight: 1.6,
+              }}
+            >
               Pessoas que viajaram com a Vem Passear em João Pessoa e voltaram para contar.
             </p>
 
-            {/* Chips do que aparece com mais frequência nas avaliações reais (fonte: _conhecimento/empresa.md) */}
-            <ul className="flex flex-wrap justify-center gap-2 mb-6 max-w-xl mx-auto">
+            <ul className="flex flex-wrap justify-center gap-2 mb-6">
               {["Atendimento atencioso", "Organização", "Suporte rápido"].map((chip) => (
                 <li
                   key={chip}
-                  className="inline-flex items-center gap-1.5 bg-[#F7F8F7] border border-[#C5B7A3]/50 text-secondary text-xs font-medium rounded-full px-3 py-1.5"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    background: 'var(--cor-fundo)',
+                    border: '1px solid var(--cor-borda)',
+                    color: 'var(--cor-primaria)',
+                    fontFamily: 'var(--font-inter)',
+                    fontSize: '13px',
+                    fontWeight: 500,
+                    borderRadius: '999px',
+                    padding: '6px 14px',
+                  }}
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#107997]" aria-hidden="true" />
+                  <span
+                    style={{
+                      width: '6px',
+                      height: '6px',
+                      borderRadius: '50%',
+                      background: 'var(--cor-acento)',
+                      flexShrink: 0,
+                    }}
+                    aria-hidden="true"
+                  />
                   {chip}
                 </li>
               ))}
             </ul>
 
-            <span className="text-sm font-semibold text-secondary group-hover:text-primary border-b-2 border-secondary/30 group-hover:border-primary transition-colors pb-0.5">
+            <span
+              style={{
+                fontFamily: 'var(--font-inter)',
+                fontSize: '14px',
+                fontWeight: 600,
+                color: 'var(--cor-primaria)',
+                borderBottom: '2px solid rgba(16,121,151,0.25)',
+                paddingBottom: '2px',
+                textDecoration: 'none',
+              }}
+            >
               Ler todas no Google →
             </span>
           </a>
         </div>
       </section>
 
-      {/* ── 3. PASSEIOS PRIORITÁRIOS ── */}
+      {/* ── 4. PASSEIOS PRIORITÁRIOS ── */}
       {prioritarios.length > 0 && (
-        <section className="py-14 md:py-20 bg-white">
+        <section
+          className="section-padding"
+          style={{ background: 'var(--cor-fundo-puro)' }}
+        >
           <div className="container-safe">
-            <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary text-center mb-3">
-              Mais procurados
-            </p>
-            <h2 className="font-serif font-bold text-3xl md:text-4xl text-dark text-center mb-3 leading-tight">
+            <span className="section-kicker text-center block">Mais procurados</span>
+            <h2
+              className="font-serif text-center mb-4"
+              style={{ color: 'var(--cor-primaria)', marginBottom: '12px' }}
+            >
               Os Favoritos dos Turistas
             </h2>
-            <p className="text-center text-gray-500 mb-10 max-w-xl mx-auto text-sm leading-relaxed">
+            <p
+              className="text-center mx-auto mb-12"
+              style={{ color: 'var(--cor-texto-claro)', fontSize: '16px', maxWidth: '520px' }}
+            >
               Os passeios que mais encantam quem visita João Pessoa.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {prioritarios.map((p) => (
                 <PasseioCard key={p.id} passeio={p} />
               ))}
+            </div>
+
+            <div className="text-center mt-10">
+              <a
+                href="/passeios"
+                style={{
+                  fontFamily: 'var(--font-inter)',
+                  fontSize: '15px',
+                  fontWeight: 600,
+                  color: 'var(--cor-primaria)',
+                  borderBottom: '2px solid rgba(16,121,151,0.25)',
+                  paddingBottom: '2px',
+                  textDecoration: 'none',
+                }}
+              >
+                Ver os 22 passeios →{' '}
+                <span style={{ display: 'inline-block', transition: 'transform 200ms' }}>→</span>
+              </a>
             </div>
           </div>
         </section>
       )}
 
-      {/* ── 4. BLOCO MURILLO ── */}
+      {/* ── 5. QUOTE POÉTICA (pausa emocional) ── */}
+      <section
+        style={{
+          background: 'var(--cor-areia)',
+          padding: '80px 24px',
+          textAlign: 'center',
+        }}
+        aria-label="Frase do Murillo"
+      >
+        <div className="container-safe" style={{ maxWidth: '700px' }}>
+          <p className="quote-poetica">
+            A Praia do Amor não tem nome à toa.
+            É onde a gente leva quem ama.
+          </p>
+          <p
+            style={{
+              fontFamily: 'var(--font-inter)',
+              fontSize: '14px',
+              fontWeight: 600,
+              color: 'var(--cor-acento)',
+              marginTop: '20px',
+            }}
+          >
+            — Murillo
+          </p>
+        </div>
+      </section>
+
+      {/* ── 6. BLOCO MURILLO ── */}
       <MurilloBlock whatsappUrl={WA_URL} />
 
-      {/* ── 5. CTA FINAL ── */}
+      {/* ── 7. CTA FINAL ── */}
       <CTAFinal
         whatsappUrl={WA_URL}
         variante="laranja"
         label="Vamos conversar"
-        titulo="Vamos montar o seu roteiro em João Pessoa"
-        subtitulo="Mande mensagem para Murillo e receba orientação local, preço justo e atendimento direto — sem central impessoal."
-        textoBotao="Falar com Murillo no WhatsApp"
+        titulo="O melhor de João Pessoa começa numa conversa."
+        subtitulo="Manda mensagem. O Murillo responde rápido, sem script, sem enrolação. Se não for com a gente, ele indica quem confiar."
+        textoBotao="Conversar com o Murillo agora"
+        microcopy="Atende de 7h às 22h, todos os dias · Resposta em até 5 minutos"
       />
 
     </div>

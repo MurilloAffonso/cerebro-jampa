@@ -1,19 +1,30 @@
 import type { Metadata } from "next";
-import { DM_Sans, Lora } from "next/font/google";
+import { Inter, Fraunces, Caveat } from "next/font/google";
 import "@/styles/globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { generateLocalBusinessSchema } from "@/lib/seo";
 
-const dmSans = DM_Sans({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-dm-sans",
-  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
-const lora = Lora({
+
+const fraunces = Fraunces({
   subsets: ["latin"],
-  variable: "--font-lora",
-  weight: ["400", "700"],
+  variable: "--font-fraunces",
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
+const caveat = Caveat({
+  subsets: ["latin"],
+  variable: "--font-caveat",
+  weight: ["400", "600"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -77,7 +88,7 @@ export default function RootLayout({
 
   return (
     <html lang="pt-BR">
-      <body className={`${dmSans.variable} ${lora.variable} font-sans flex flex-col min-h-screen overflow-x-hidden antialiased`}>
+      <body className={`${inter.variable} ${fraunces.variable} ${caveat.variable} font-sans flex flex-col min-h-screen overflow-x-hidden antialiased`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}

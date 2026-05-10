@@ -199,7 +199,7 @@ export default function BlogArticlePage({ params }: BlogArticleProps) {
       <section
         id="cta-final"
         className="py-14 md:py-20"
-        style={{ background: "#107997" }}
+        style={{ background: "var(--cor-primaria)" }}
       >
         <div className="container-safe text-center max-w-2xl">
           <h2 className="font-serif font-bold text-white text-2xl md:text-3xl mb-3 leading-tight">

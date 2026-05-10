@@ -114,7 +114,7 @@ export const passeios: Passeio[] = [
       "Quem quer o máximo da experiência",
       "Famílias e casais",
     ],
-    coverImage: "/images/passeios/3-dias-completo/hero.webp",
+    coverImage: "/images/passeios/litoral-norte/areia-vermelha/hero-01.jpg",
     imagemAlt: "Colagem dos melhores passeios em João Pessoa em 3 dias",
     faq: [
       {
@@ -160,7 +160,7 @@ export const passeios: Passeio[] = [
       "Grupos",
       "Primeiro contato com João Pessoa",
     ],
-    coverImage: "/images/passeios/3-dias-basico/hero.webp",
+    coverImage: "/images/passeios/litoral-sul/coqueirinho/hero-01.jpg",
     imagemAlt: "Passeios em João Pessoa — Pacote 3 Dias com custo-benefício",
     faq: [
       {
@@ -197,7 +197,7 @@ export const passeios: Passeio[] = [
       "Grupos econômicos",
       "Primeiro contato com João Pessoa",
     ],
-    coverImage: "/images/passeios/super-economico/hero.webp",
+    coverImage: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
     imagemAlt: "Passeio econômico em João Pessoa — 2 dias de experiência",
     faq: [
       {
@@ -278,7 +278,7 @@ export const passeios: Passeio[] = [
           "Deixamos você de volta no hotel. Total: ~8h desde a saída.",
       },
     ],
-    coverImage: "/images/passeios/litoral-sul/roteiro-classico/capa.webp",
+    coverImage: "/images/passeios/litoral-sul/hero-01.jpg",
     gallery: [
       "/images/passeios/litoral-sul/roteiro-classico/galeria-01.webp",
       "/images/passeios/litoral-sul/roteiro-classico/galeria-02.webp",
@@ -386,7 +386,7 @@ export const passeios: Passeio[] = [
     observacoes:
       "Ideal para quem já conhece o Roteiro Clássico. Valor privativo: [CONSULTAR].",
     idealPara: ["Famílias", "Casais", "Segunda visita ao litoral sul"],
-    coverImage: "/images/passeios/praia-bela/hero.webp",
+    coverImage: "/images/passeios/litoral-sul/praia-bela/hero-01.jpg",
     imagemAlt: "Praia Bela no litoral sul da Paraíba com encontro do Rio Mucatu",
     faq: [
       {
@@ -421,7 +421,7 @@ export const passeios: Passeio[] = [
     observacoes:
       "Quadriciclo: mínimo 7 anos, máximo 2 pessoas por máquina. Valor privativo: [CONSULTAR].",
     idealPara: ["Aventureiros", "Casais", "Famílias com crianças ≥ 7 anos"],
-    coverImage: "/images/passeios/combo-jampa-quadriciclo/hero.webp",
+    coverImage: "/images/passeios/litoral-sul/coqueirinho/hero-01.jpg",
     imagemAlt: "Trilha de quadriciclo nos mirantes de Coqueirinho, Litoral Sul da Paraíba",
     faq: [
       {
@@ -456,7 +456,7 @@ export const passeios: Passeio[] = [
     observacoes:
       "Quadriciclo: mínimo 7 anos. Valor privativo: [CONSULTAR].",
     idealPara: ["Aventureiros", "Casais", "Famílias com crianças ≥ 7 anos"],
-    coverImage: "/images/passeios/combo-praia-bela-quadriciclo/hero.webp",
+    coverImage: "/images/passeios/litoral-sul/tambaba/hero-01.jpg",
     imagemAlt: "Quadriciclo nas falésias da Praia Bela, litoral sul da Paraíba",
     faq: [
       {
@@ -480,7 +480,7 @@ export const passeios: Passeio[] = [
     observacoes:
       "Mínimo 7 anos. Transporte e disponibilidade: [CONSULTAR]. Formato: privativo.",
     idealPara: ["Aventureiros", "Grupos", "Quem já conhece as praias"],
-    coverImage: "/images/passeios/quadriciclo-coqueirinho/hero.webp",
+    coverImage: "/images/passeios/litoral-sul/coqueirinho/hero-01.jpg",
     imagemAlt: "Quadriciclo nos mirantes de Coqueirinho, Paraíba",
     faq: [
       {
@@ -504,7 +504,7 @@ export const passeios: Passeio[] = [
     observacoes:
       "Mínimo 7 anos. Transporte e disponibilidade: [CONSULTAR]. Formato: privativo.",
     idealPara: ["Aventureiros", "Grupos"],
-    coverImage: "/images/passeios/quadriciclo-praia-bela/hero.webp",
+    coverImage: "/images/passeios/litoral-sul/praia-bela/hero-01.jpg",
     imagemAlt: "Quadriciclo nas falésias de Praia Bela, Paraíba",
     faq: [
       {
@@ -544,7 +544,7 @@ export const passeios: Passeio[] = [
       "Quem aprecia história e cultura",
       "Casais",
     ],
-    coverImage: "/images/passeios/litoral-norte-classico/hero.webp",
+    coverImage: "/images/passeios/litoral-norte/areia-vermelha/hero-01.jpg",
     imagemAlt: "Litoral norte de João Pessoa com história colonial e natureza",
     faq: [
       {
@@ -580,7 +580,7 @@ export const passeios: Passeio[] = [
     observacoes:
       "Areia Vermelha: sujeito à maré baixa. Horário de saída confirmar antes.",
     idealPara: ["Quem quer litoral norte + piscinas naturais em um dia"],
-    coverImage: "/images/passeios/combo-areia-vermelha/hero.webp",
+    coverImage: "/images/passeios/litoral-norte/areia-vermelha/hero-01.jpg",
     imagemAlt: "Combo Litoral Norte com Areia Vermelha — João Pessoa",
     faq: [
       {
@@ -652,7 +652,7 @@ export const passeios: Passeio[] = [
           "Quando a maré começa a encher, o banco de areia some de volta para o mar — sinal de que é hora de voltar. Total: ~3h desde o embarque.",
       },
     ],
-    coverImage: "/images/passeios/areia-vermelha/capa.webp",
+    coverImage: "/images/passeios/litoral-norte/areia-vermelha/hero-01.jpg",
     gallery: [
       "/images/passeios/areia-vermelha/galeria-01.webp",
       "/images/passeios/areia-vermelha/galeria-02.webp",
@@ -755,7 +755,7 @@ export const passeios: Passeio[] = [
       "Navegação pelo Rio Paraíba com apresentação ao vivo do Bolero de Ravel. Experiência única que existe há mais de 20 anos.",
     descricaoLonga:
       "O pôr do sol do Jacaré é uma parada obrigatória em João Pessoa. Navegação pelo Rio Paraíba ao som de músicas ao vivo (Bolero de Ravel ao sax), dança de forró, violino. Uma experiência única no mundo.",
-    coverImage: "/images/passeios/por-do-sol-jacare/capa.webp",
+    coverImage: "/images/passeios/litoral-norte/jacare/hero-01.jpg",
     gallery: ["/images/passeios/por-do-sol-jacare/galeria-01.webp"],
     rotario: [
       "Embarque na Praia do Jacaré, Cabedelo",
@@ -818,7 +818,7 @@ export const passeios: Passeio[] = [
     observacoes:
       "100% privativo — não monta grupos com desconhecidos. Capacidade: [CONSULTAR]. Crianças acima de 5 anos entram na composição do grupo.",
     idealPara: ["Grupos", "Casais", "Famílias que querem experiência premium"],
-    coverImage: "/images/passeios/lancha-privativa/hero.webp",
+    coverImage: "/images/passeios/litoral-norte/areia-vermelha/hero-01.jpg",
     imagemAlt: "Lancha privativa no litoral norte de João Pessoa ao pôr do sol",
     faq: [
       {
@@ -913,7 +913,7 @@ export const passeios: Passeio[] = [
       "As piscinas naturais só aparecem quando a maré está baixa. Antes de confirmar sua data, a gente consulta a tábua de marés e te avisa o melhor horário. Você não precisa se preocupar com isso. Esse é o nosso trabalho.",
     nomeCurto: "Seixas",
     idealPara: ["Mergulho", "Snorkel", "Fotos", "Aventura marinha"],
-    coverImage: "/images/passeios/seixas/hero-01.svg",
+    coverImage: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
     gallery: [
       "/images/passeios/seixas/galeria-01.svg",
       "/images/passeios/seixas/galeria-02.svg",
@@ -1002,7 +1002,7 @@ export const passeios: Passeio[] = [
     observacoes:
       "Sujeito à maré baixa. Ponto de saída: Praia da Penha. Transfer até a Penha: [CONSULTAR].",
     idealPara: ["Quem busca tranquilidade", "Natureza", "Família"],
-    coverImage: "/images/passeios/penha/hero.webp",
+    coverImage: "/images/passeios/piscinas-naturais/penha/hero-01.jpg",
     imagemAlt: "Piscinas naturais da Penha em João Pessoa — ambiente exclusivo e tranquilo",
     faq: [
       {
@@ -1031,7 +1031,7 @@ export const passeios: Passeio[] = [
       "A apenas 1.500 metros de Tambaú. Aquário natural a céu aberto com peixes de todas as cores e formações de recife.",
     descricaoLonga:
       "Picãozinho é um dos recifes mais procurados de João Pessoa. Piscinas rasas, mornas e cristalinas, ideais para snorkel. Peixes coloridos, algas, fauna marinha preservada. É como mergulhar em um aquário natural.",
-    coverImage: "/images/passeios/picaozinho/capa.webp",
+    coverImage: "/images/passeios/picaozinho/hero-01.jpg",
     gallery: ["/images/passeios/picaozinho/galeria-01.webp"],
     rotario: [
       "Embarque em Tambaú",
@@ -1086,7 +1086,7 @@ export const passeios: Passeio[] = [
     observacoes:
       "Sujeito a condições de maré e visibilidade. Valor e disponibilidade: [CONSULTAR].",
     idealPara: ["Quem quer mergulho completo", "Experiência avançada"],
-    coverImage: "/images/passeios/mergulho/hero.webp",
+    coverImage: "/images/passeios/piscinas-naturais/mergulho/hero-01.jpg",
     imagemAlt: "Mergulho com cilindro nas piscinas naturais de João Pessoa",
     faq: [
       {
@@ -1130,7 +1130,7 @@ export const passeios: Passeio[] = [
       "Quem aprecia história e arquitetura",
       "Turistas culturais",
     ],
-    coverImage: "/images/passeios/city-tour-jampa/hero.webp",
+    coverImage: "/images/passeios/city-tour/hero-01.jpg",
     imagemAlt: "Centro histórico de João Pessoa — 3ª cidade mais antiga do Brasil",
     faq: [
       {
@@ -1170,7 +1170,7 @@ export const passeios: Passeio[] = [
     observacoes:
       "Documento com foto obrigatório (viagem interestadual PB → PE). Disponibilidade: [CONSULTAR]. Retorno à noite.",
     idealPara: ["Quem quer conhecer Porto de Galinhas a partir de João Pessoa"],
-    coverImage: "/images/passeios/porto-de-galinhas/hero.webp",
+    coverImage: "/images/passeios/interestaduais/porto-de-galinhas/hero-01.jpg",
     imagemAlt: "Piscinas naturais de Porto de Galinhas em Pernambuco",
     faq: [
       {
@@ -1206,7 +1206,7 @@ export const passeios: Passeio[] = [
     observacoes:
       "Documento com foto obrigatório (viagem interestadual). Disponibilidade: [CONSULTAR].",
     idealPara: ["Quem busca praias bonitas e vila animada"],
-    coverImage: "/images/passeios/praia-de-pipa/hero.webp",
+    coverImage: "/images/passeios/interestaduais/praia-de-pipa/hero-01.jpg",
     imagemAlt: "Praia de Pipa no Rio Grande do Norte — falésias e águas cristalinas",
     faq: [
       {
@@ -1237,7 +1237,6 @@ export const passeios: Passeio[] = [
     observacoes:
       "Documento com foto obrigatório. Disponibilidade: [CONSULTAR].",
     idealPara: ["Quem quer conhecer Natal a partir de João Pessoa"],
-    coverImage: "/images/passeios/natal/hero.webp",
     imagemAlt: "Ponta Negra em Natal, Rio Grande do Norte",
     faq: [
       {

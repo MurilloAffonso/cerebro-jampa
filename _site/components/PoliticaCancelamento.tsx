@@ -18,7 +18,7 @@ export function PoliticaCancelamento({ whatsappUrl }: PoliticaCancelamentoProps)
       <div
         className="rounded-2xl border border-[#C5B7A3]/50 bg-[#F7F8F7] p-6 md:p-7"
       >
-        <p className="text-xs font-bold uppercase tracking-[2.5px] text-[#107997] mb-3">
+        <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
           Cancelamento e remarcação
         </p>
         <h2 className="font-serif font-bold text-secondary text-lg md:text-xl mb-4">

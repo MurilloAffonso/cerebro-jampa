@@ -459,3 +459,105 @@ Glows alinhados: `cta-orange` shadow agora usa `rgba(16,121,151,0.45)`; `cta-blu
 ---
 
 **Última atualização:** 2026-05-09 | Próxima revisão: ao fim de cada fase de implementação
+
+---
+
+## Decisão 42 — Paleta Oficial Consolidada + Design Fino 7 Etapas
+
+**Data:** 2026-05-10
+**Decisão:** Confirmar e consolidar a paleta oficial com os tokens abaixo, e executar refinamento visual completo em 7 etapas (tipografia, heroes, cards, foto-slots, motion, consistência).
+
+| Token CSS | Hex | Uso |
+|-----------|-----|-----|
+| `--cor-primaria` / `primary` | `#107997` | ocean — links, CTAs de confiança, headings em fundo claro |
+| `--cor-navy` / `secondary` | `#092238` | navy profundo — footer, header, texto escuro sobre fundo claro |
+| `--cor-profunda` / `deep` | `#163149` | navy médio — textos em destaque |
+| `--cor-areia` / `areia` | `#C5B7A3` | sand — bordas, fundos suaves, separadores |
+| `--cor-fundo` / `fundo` | `#F7F8F7` | bone — fundo de página |
+| `--cor-acento` / `acento` | `#D97706` | laranja — CTAs de conversão (WhatsApp, ação imediata) |
+
+**Tipografia aprovada:** Inter (body) · Fraunces (headings, quotes) · Caveat (assinaturas, máx. 5 ocorrências no site)
+
+**Sombras (RGB de ocean = 16,121,151):**
+- `--sombra-card`: `0 2px 16px rgba(16,121,151,0.07)`
+- `--sombra-hover`: `0 8px 32px rgba(16,121,151,0.16)`
+- `--sombra-cta`: `0 4px 20px rgba(217,119,6,0.40)`
+
+**HeroBlock redesenhado:** overlay `linear-gradient(to top, rgba(9,34,56,0.82) → navy/ocean)`, conteúdo bottom-aligned, kicker, animação cascata, botão CTA opcional com variante.
+
+**Photo slots:** `data-foto-id="CARD-{SLUG}-01"` em todos os placeholders de card. Placeholder mostra "foto em breve" visível.
+
+**Validação:** `type-check` ✅ + `build` ✅ (22 rotas)
+
+**Implementação:**
+- `tailwind.config.ts`, `styles/globals.css` — paleta + tipografia completa
+- `components/HeroBlock.tsx` — redesign premium
+- `components/PasseioCard.tsx` — palette + photo-slot data-id
+- `components/HomeVideoHero.tsx` — overlay navy→ocean
+- `components/MurilloBlock.tsx`, `CTAFinal.tsx`, `Footer.tsx` — areia rgba atualizada
+- `app/page.tsx`, `sobre/page.tsx`, `transfer-24h/page.tsx`, `excursoes-e-grupos/page.tsx`, `PoliticaCancelamento.tsx` — hex inline migrados
+
+**Última atualização:** 2026-05-10
+
+
+---
+
+### 42. Refinamento Visual Fase 2 — Nova Paleta + Tipografia + Hero + Cards (2026-05-10)
+
+**Decisão:** Substituição completa de paleta, tipografia, hero e cards da home — evolução de funcional para emocional/premium.
+
+**Paleta v3 aprovada:**
+- Primary: `#0A4D5C` (azul-petróleo profundo — era `#107997`)
+- Primary-light: `#1B6B7C` (hover/gradiente)
+- Areia: `#E8DCC4` (fundo de seções, subheadline hero)
+- Acento: `#D97706` (laranja-falésia — CTAs, badges, destaques ≤10%)
+- Acento-suave: `#FBBF24` (estrelas, ícones, kicker label)
+- CSS variables no `:root` — todas as cores como `--cor-*`
+
+**Tipografia v3:**
+- Títulos: **Fraunces** 400/500/600/700 + itálico (era Lora)
+- Corpo: **Inter** 400/500/600/700 (era DM Sans)
+- Variáveis CSS: `--font-fraunces`, `--font-inter`
+
+**Hero emocional:**
+- Headline opção A: *"O mar daqui tem hora certa. / A gente conhece ela."*
+- Label geográfico amarelo-sol: "JOÃO PESSOA · PARAÍBA · DESDE 2022"
+- Subheadline em areia: anti-van, boutique, até 8 pessoas
+- Trust badges: Cadastur ativo + Google rating + atendimento direto
+- CTA primário laranja (`#D97706`) + CTA secundário transparente/borda branca
+- Bloco Murillo humanizador: avatar circular + frase em itálico Fraunces
+- Scroll hint animado
+
+**PasseioCard v2:**
+- Aspect ratio 16:10 (era 3:4 poster escuro)
+- Fundo branco, borda transparente → primária no hover
+- Badge colorido por tipo (mais-vendido, indicado, novo, privativo, em-alta)
+- Meta-info com ícones SVG line (relógio, pin)
+- Preço em Fraunces 28px
+- Hover: -6px translate + sombra + borda primária
+
+**Bloco Murillo:**
+- Fundo: primária `#0A4D5C`
+- Badge Cadastur clicável com ícone de check verde
+- Assinatura manuscrita "— Murillo" em fonte Caveat/laranja
+- Diferenciais honestos (grupos ≤8, maré, atendimento direto, Cadastur)
+
+**CTA Final:**
+- Headline: *"O melhor de João Pessoa começa numa conversa."*
+- CTA laranja grande com ícone WhatsApp
+- Microcopy: "Atende de 7h às 22h"
+
+**Quote poética (nova seção):**
+- Fundo areia `#E8DCC4`
+- Classe `.quote-poetica` com aspas curvas em laranja via CSS ::before/::after
+- *"A Praia do Amor não tem nome à toa. É onde a gente leva quem ama."*
+
+**Sistema de fotos:** criado `_conhecimento/sistema-fotos.md` — 60+ IDs com código `[PAGINA]-[POSICAO]-[NUMERO]`, dimensões, status e prioridade de captação.
+
+**Arquivos alterados:**
+- `tailwind.config.ts`, `styles/globals.css`, `app/layout.tsx`
+- `components/HomeVideoHero.tsx`, `components/PasseioCard.tsx`
+- `components/MurilloBlock.tsx`, `components/CTAFinal.tsx`
+- `app/page.tsx`, `_conhecimento/sistema-fotos.md` (novo)
+
+**Validação:** `type-check` ✅ + `lint` ✅ + `build` ✅ (22 passeios gerados)

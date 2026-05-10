@@ -118,12 +118,46 @@ export default function FaqPage() {
       <CTASticky whatsappUrl={WA_URL} label="Falar com Murillo no WhatsApp" />
 
       {/* Hero */}
-      <section id="hero-section" className="bg-gradient-to-b from-blue-50 to-white py-12 md:py-16">
-        <div className="container-safe text-center">
-          <h1 className="text-3xl md:text-4xl font-bold text-secondary mb-4">
+      <section
+        id="hero-section"
+        style={{ background: 'var(--cor-primaria)', padding: '64px 24px 80px', textAlign: 'center' }}
+      >
+        <div className="container-safe" style={{ maxWidth: '620px' }}>
+          <span
+            style={{
+              display: 'block',
+              fontFamily: 'var(--font-inter)',
+              fontSize: '13px',
+              fontWeight: 600,
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              color: 'var(--cor-acento)',
+              marginBottom: '16px',
+            }}
+          >
+            Sem segredo
+          </span>
+          <h1
+            className="font-serif"
+            style={{
+              fontSize: 'clamp(28px, 4.5vw, 48px)',
+              fontWeight: 600,
+              lineHeight: 1.1,
+              color: '#fff',
+              marginBottom: '16px',
+              letterSpacing: '-0.02em',
+            }}
+          >
             Perguntas Frequentes
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p
+            style={{
+              fontFamily: 'var(--font-inter)',
+              fontSize: '17px',
+              color: 'var(--cor-areia)',
+              lineHeight: 1.65,
+            }}
+          >
             Dúvidas sobre reserva, pagamento, segurança e mais — respondidas com dados reais.
             Não encontrou o que procura? Fale direto com Murillo.
           </p>

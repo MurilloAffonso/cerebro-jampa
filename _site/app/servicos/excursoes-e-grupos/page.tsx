@@ -255,7 +255,7 @@ export default function ExcursoesGruposPage() {
         className="relative overflow-hidden text-white"
         style={{
           background:
-            "linear-gradient(135deg, #092238 0%, #163149 55%, #092238 100%)",
+            "linear-gradient(135deg, var(--cor-primaria) 0%, #0d5f71 55%, var(--cor-primaria) 100%)",
         }}
       >
         <div
@@ -265,7 +265,7 @@ export default function ExcursoesGruposPage() {
             right: "-8%",
             width: "45%",
             paddingBottom: "45%",
-            background: "radial-gradient(circle, rgba(16,121,151,0.4) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(27,107,124,0.4) 0%, transparent 70%)",
             borderRadius: "50%",
             filter: "blur(55px)",
           }}
@@ -334,7 +334,7 @@ export default function ExcursoesGruposPage() {
       {/* Para quem é */}
       <section className="section-padding">
         <div className="container-safe max-w-4xl">
-          <p className="text-xs font-bold uppercase tracking-[2.5px] text-[#107997] mb-3">
+          <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
             Para quem é
           </p>
           <h2 className="font-serif font-bold text-secondary mb-5" style={{ fontSize: "clamp(24px, 3.5vw, 36px)", letterSpacing: "-0.5px" }}>
@@ -363,7 +363,7 @@ export default function ExcursoesGruposPage() {
       {/* Pilares */}
       <section className="section-padding" style={{ background: "#F7F8F7" }}>
         <div className="container-safe max-w-5xl">
-          <p className="text-xs font-bold uppercase tracking-[2.5px] text-[#107997] mb-3">
+          <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
             O que entra na operação
           </p>
           <h2 className="font-serif font-bold text-secondary mb-8" style={{ fontSize: "clamp(24px, 3.5vw, 36px)", letterSpacing: "-0.5px" }}>
@@ -393,7 +393,7 @@ export default function ExcursoesGruposPage() {
       {/* Como funciona */}
       <section id="como-funciona" className="section-padding">
         <div className="container-safe max-w-3xl">
-          <p className="text-xs font-bold uppercase tracking-[2.5px] text-[#107997] mb-3">
+          <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
             Passo a passo
           </p>
           <h2 className="font-serif font-bold text-secondary mb-8" style={{ fontSize: "clamp(24px, 3.5vw, 36px)", letterSpacing: "-0.5px" }}>
@@ -412,7 +412,7 @@ export default function ExcursoesGruposPage() {
                 )}
                 <div
                   className="w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm shrink-0 z-10"
-                  style={{ background: "#107997", color: "white", boxShadow: "0 2px 12px rgba(16,121,151,0.3)" }}
+                  style={{ background: "#107997", color: "white", boxShadow: "0 2px 12px rgba(16,121,151,0.30)" }}
                   aria-hidden="true"
                 >
                   {step.n}
@@ -430,7 +430,7 @@ export default function ExcursoesGruposPage() {
       {/* Roteiros mais pedidos */}
       <section className="section-padding" style={{ background: "#F7F8F7" }}>
         <div className="container-safe max-w-5xl">
-          <p className="text-xs font-bold uppercase tracking-[2.5px] text-[#107997] mb-3">
+          <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
             Templates de roteiro
           </p>
           <h2 className="font-serif font-bold text-secondary mb-3" style={{ fontSize: "clamp(24px, 3.5vw, 36px)", letterSpacing: "-0.5px" }}>
@@ -459,7 +459,7 @@ export default function ExcursoesGruposPage() {
       {/* Diferenciais */}
       <section className="section-padding" style={{ background: "#F7F8F7" }}>
         <div className="container-safe max-w-4xl">
-          <p className="text-xs font-bold uppercase tracking-[2.5px] text-[#107997] mb-3">
+          <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
             Por que confiar
           </p>
           <h2 className="font-serif font-bold text-secondary mb-8" style={{ fontSize: "clamp(24px, 3.5vw, 36px)", letterSpacing: "-0.5px" }}>
@@ -494,7 +494,7 @@ export default function ExcursoesGruposPage() {
       {/* Briefing-checklist */}
       <section className="section-padding">
         <div className="container-safe max-w-3xl">
-          <p className="text-xs font-bold uppercase tracking-[2.5px] text-[#107997] mb-3">
+          <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
             Antes de mandar mensagem
           </p>
           <h2 className="font-serif font-bold text-secondary mb-3" style={{ fontSize: "clamp(24px, 3.5vw, 36px)", letterSpacing: "-0.5px" }}>
@@ -508,7 +508,7 @@ export default function ExcursoesGruposPage() {
           <ul className="bg-white border border-[#C5B7A3]/50 rounded-2xl p-6 mb-8 space-y-2.5" style={{ boxShadow: "0 2px 16px rgba(0,0,0,0.04)" }}>
             {BRIEFING_CAMPOS.map((c, i) => (
               <li key={i} className="flex items-start gap-3 text-sm text-dark">
-                <span className="text-[#107997] mt-0.5 shrink-0" aria-hidden="true">•</span>
+                <span className="text-primary mt-0.5 shrink-0" aria-hidden="true">•</span>
                 <span className="leading-relaxed">{c}</span>
               </li>
             ))}
@@ -533,7 +533,7 @@ export default function ExcursoesGruposPage() {
       {/* FAQ */}
       <section className="section-padding" style={{ background: "#F7F8F7" }}>
         <div className="container-safe max-w-3xl">
-          <p className="text-xs font-bold uppercase tracking-[2.5px] text-[#107997] mb-3">
+          <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
             Perguntas frequentes
           </p>
           <h2 className="font-serif font-bold text-secondary mb-8" style={{ fontSize: "clamp(24px, 3.5vw, 36px)", letterSpacing: "-0.5px" }}>

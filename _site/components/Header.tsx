@@ -1,73 +1,69 @@
 "use client";
 
-/**
- * Header / Navigation
- *
- * Menu aprovado (CONTEXT.md / ISSUE-06):
- *   Desktop: Início | Passeios ▾ (6 categorias) | Serviços | [Reservar no WhatsApp]
- *   Mobile:  hamburger → lista com sub-itens de categoria
- *
- * Regras:
- *   - /sobre NÃO aparece no menu
- *   - Blog NÃO aparece no menu (Fase 2)
- *   - CTA WhatsApp sempre visível
- *   - Dados de contato vindos exclusivamente de data/empresa.ts
- */
-
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { empresa } from "@/data/empresa";
 
 const WA_URL = `${empresa.contato.whatsappLink}?text=Oi%2C+quero+informações+sobre+os+passeios`;
 
 const CATEGORIAS = [
-  { nome: "Pacotes",          slug: "pacotes" },
-  { nome: "Litoral Sul",      slug: "litoral-sul" },
-  { nome: "Litoral Norte",    slug: "litoral-norte" },
+  { nome: "Pacotes",           slug: "pacotes" },
+  { nome: "Litoral Sul",       slug: "litoral-sul" },
+  { nome: "Litoral Norte",     slug: "litoral-norte" },
   { nome: "Piscinas Naturais", slug: "piscinas-naturais" },
-  { nome: "City Tour",        slug: "city-tour" },
-  { nome: "Interestaduais",   slug: "interestaduais" },
+  { nome: "City Tour",         slug: "city-tour" },
+  { nome: "Interestaduais",    slug: "interestaduais" },
 ] as const;
 
 const SERVICOS = [
-  { nome: "Transfer 24h",          slug: "transfer-24h" },
-  { nome: "Excursões e Grupos",    slug: "excursoes-e-grupos" },
+  { nome: "Transfer 24h",       slug: "transfer-24h" },
+  { nome: "Excursões e Grupos", slug: "excursoes-e-grupos" },
 ] as const;
 
 export function Header() {
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileOpen, setMobileOpen]   = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [servicosOpen, setServicosOpen] = useState(false);
 
   const closeMobile = () => setMobileOpen(false);
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-md bg-[#F7F8F7]/95 border-b border-black/[0.07]">
+    <header
+      className="sticky top-0 z-50"
+      style={{
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
+        background: 'rgba(250, 250, 247, 0.95)',
+        borderBottom: '1px solid var(--cor-borda)',
+      }}
+    >
       <div className="container-safe py-3">
         <div className="flex items-center justify-between gap-4">
 
           {/* ── Logo ── */}
           <Link
             href="/"
-            className="flex items-center gap-2 shrink-0"
+            className="shrink-0"
             onClick={closeMobile}
+            aria-label="Vem Passear em Jampa — Página inicial"
           >
-            <div className="w-9 h-9 bg-primary rounded-lg flex items-center justify-center text-white font-serif font-bold text-sm select-none">
-              VP
-            </div>
-            <div className="hidden sm:block leading-tight">
-              <span className="font-bold text-dark text-sm block">Vem Passear</span>
-              <span className="text-gray-500 text-[11px]">em Jampa</span>
-            </div>
+            <Image
+              src="/images/logo/logo.jpg"
+              alt="Vem Passear em Jampa"
+              width={148}
+              height={50}
+              style={{ height: '42px', width: 'auto', objectFit: 'contain' }}
+              priority
+            />
           </Link>
 
           {/* ── Nav desktop ── */}
-          <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-            <Link href="/" className="text-dark hover:text-primary transition-colors">
-              Início
-            </Link>
+          <nav className="hidden md:flex items-center gap-6" aria-label="Navegação principal">
 
-            {/* Passeios + dropdown */}
+            <NavLink href="/">Início</NavLink>
+
+            {/* Passeios dropdown */}
             <div
               className="relative"
               onMouseEnter={() => setDropdownOpen(true)}
@@ -75,24 +71,57 @@ export function Header() {
             >
               <Link
                 href="/passeios"
-                className="flex items-center gap-1 text-dark hover:text-primary transition-colors py-2"
+                className="flex items-center gap-1 py-2 transition-colors"
+                style={{
+                  fontFamily: 'var(--font-inter)',
+                  fontWeight: 500,
+                  fontSize: '14px',
+                  color: 'var(--cor-texto-escuro)',
+                  textDecoration: 'none',
+                }}
+                onMouseEnter={e => (e.currentTarget.style.color = 'var(--cor-primaria)')}
+                onMouseLeave={e => (e.currentTarget.style.color = 'var(--cor-texto-escuro)')}
               >
                 Passeios
-                <span className="text-[10px] leading-none" aria-hidden="true">▾</span>
+                <span style={{ fontSize: '10px', opacity: 0.5 }} aria-hidden="true">▾</span>
               </Link>
 
               {dropdownOpen && (
                 <ul
-                  className="absolute top-full left-0 bg-white shadow-lg rounded-lg py-2 min-w-[190px] border border-gray-100"
+                  className="absolute top-full left-0 py-2"
                   role="menu"
+                  style={{
+                    background: 'var(--cor-fundo-puro)',
+                    border: '1px solid var(--cor-borda)',
+                    borderRadius: '12px',
+                    minWidth: '200px',
+                    boxShadow: 'var(--sombra-hover)',
+                  }}
                 >
                   {CATEGORIAS.map((cat) => (
                     <li key={cat.slug} role="none">
                       <Link
                         href={`/passeios/${cat.slug}`}
                         role="menuitem"
-                        className="block px-4 py-2.5 text-sm text-dark hover:bg-light hover:text-primary transition-colors"
                         onClick={() => setDropdownOpen(false)}
+                        style={{
+                          display: 'block',
+                          padding: '10px 16px',
+                          fontFamily: 'var(--font-inter)',
+                          fontSize: '14px',
+                          fontWeight: 500,
+                          color: 'var(--cor-texto-medio)',
+                          textDecoration: 'none',
+                          transition: 'color 150ms, background 150ms',
+                        }}
+                        onMouseEnter={e => {
+                          e.currentTarget.style.color = 'var(--cor-primaria)'
+                          e.currentTarget.style.background = 'var(--cor-fundo)'
+                        }}
+                        onMouseLeave={e => {
+                          e.currentTarget.style.color = 'var(--cor-texto-medio)'
+                          e.currentTarget.style.background = 'transparent'
+                        }}
                       >
                         {cat.nome}
                       </Link>
@@ -102,7 +131,7 @@ export function Header() {
               )}
             </div>
 
-            {/* Serviços + dropdown */}
+            {/* Serviços dropdown */}
             <div
               className="relative"
               onMouseEnter={() => setServicosOpen(true)}
@@ -110,26 +139,60 @@ export function Header() {
             >
               <button
                 type="button"
-                className="flex items-center gap-1 text-dark hover:text-primary transition-colors py-2"
                 aria-expanded={servicosOpen}
                 aria-haspopup="menu"
+                className="flex items-center gap-1 py-2 transition-colors"
+                style={{
+                  fontFamily: 'var(--font-inter)',
+                  fontWeight: 500,
+                  fontSize: '14px',
+                  color: 'var(--cor-texto-escuro)',
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  padding: '8px 0',
+                }}
               >
                 Serviços
-                <span className="text-[10px] leading-none" aria-hidden="true">▾</span>
+                <span style={{ fontSize: '10px', opacity: 0.5 }} aria-hidden="true">▾</span>
               </button>
 
               {servicosOpen && (
                 <ul
-                  className="absolute top-full left-0 bg-white shadow-lg rounded-lg py-2 min-w-[210px] border border-gray-100"
+                  className="absolute top-full left-0 py-2"
                   role="menu"
+                  style={{
+                    background: 'var(--cor-fundo-puro)',
+                    border: '1px solid var(--cor-borda)',
+                    borderRadius: '12px',
+                    minWidth: '210px',
+                    boxShadow: 'var(--sombra-hover)',
+                  }}
                 >
                   {SERVICOS.map((srv) => (
                     <li key={srv.slug} role="none">
                       <Link
                         href={`/servicos/${srv.slug}`}
                         role="menuitem"
-                        className="block px-4 py-2.5 text-sm text-dark hover:bg-light hover:text-primary transition-colors"
                         onClick={() => setServicosOpen(false)}
+                        style={{
+                          display: 'block',
+                          padding: '10px 16px',
+                          fontFamily: 'var(--font-inter)',
+                          fontSize: '14px',
+                          fontWeight: 500,
+                          color: 'var(--cor-texto-medio)',
+                          textDecoration: 'none',
+                          transition: 'color 150ms, background 150ms',
+                        }}
+                        onMouseEnter={e => {
+                          e.currentTarget.style.color = 'var(--cor-primaria)'
+                          e.currentTarget.style.background = 'var(--cor-fundo)'
+                        }}
+                        onMouseLeave={e => {
+                          e.currentTarget.style.color = 'var(--cor-texto-medio)'
+                          e.currentTarget.style.background = 'transparent'
+                        }}
                       >
                         {srv.nome}
                       </Link>
@@ -139,12 +202,7 @@ export function Header() {
               )}
             </div>
 
-            <Link
-              href="/faq"
-              className="text-dark hover:text-primary transition-colors"
-            >
-              FAQ
-            </Link>
+            <NavLink href="/faq">FAQ</NavLink>
           </nav>
 
           {/* ── CTA + hamburger ── */}
@@ -153,35 +211,72 @@ export function Header() {
               href={WA_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#25D366] hover:bg-[#1ea355] text-white font-bold text-sm px-4 py-2.5 rounded-full min-h-[44px] flex items-center gap-1.5 transition-colors whitespace-nowrap shadow-[0_2px_12px_rgba(37,211,102,0.3)]"
               aria-label="Reservar no WhatsApp"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                background: 'var(--cor-whatsapp)',
+                color: '#fff',
+                fontFamily: 'var(--font-inter)',
+                fontWeight: 600,
+                fontSize: '13px',
+                padding: '10px 16px',
+                borderRadius: '999px',
+                minHeight: '40px',
+                textDecoration: 'none',
+                boxShadow: '0 2px 12px rgba(37,211,102,0.3)',
+                transition: 'background 200ms',
+                whiteSpace: 'nowrap',
+              }}
+              onMouseEnter={e => (e.currentTarget.style.background = '#1ea355')}
+              onMouseLeave={e => (e.currentTarget.style.background = 'var(--cor-whatsapp)')}
             >
-              💬{" "}
+              <IconWhatsApp />
               <span className="hidden sm:inline">Reservar no WhatsApp</span>
               <span className="sm:hidden">WhatsApp</span>
             </a>
 
-            {/* Hamburger button */}
+            {/* Hamburger */}
             <button
-              className="md:hidden flex flex-col justify-center items-center gap-1.5 w-10 h-10 rounded-lg hover:bg-light transition-colors"
+              className="md:hidden flex flex-col justify-center items-center gap-1.5 w-10 h-10 rounded-lg transition-colors"
               aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
               aria-expanded={mobileOpen}
               onClick={() => setMobileOpen((v) => !v)}
+              style={{ background: 'transparent', border: 'none', cursor: 'pointer' }}
             >
               <span
-                className={`block w-5 h-0.5 bg-dark transition-transform duration-200 ${
-                  mobileOpen ? "rotate-45 translate-y-2" : ""
-                }`}
+                style={{
+                  display: 'block',
+                  width: '20px',
+                  height: '2px',
+                  background: 'var(--cor-primaria)',
+                  borderRadius: '2px',
+                  transition: 'transform 200ms',
+                  transform: mobileOpen ? 'rotate(45deg) translate(3px, 5px)' : 'none',
+                }}
               />
               <span
-                className={`block w-5 h-0.5 bg-dark transition-opacity duration-200 ${
-                  mobileOpen ? "opacity-0" : ""
-                }`}
+                style={{
+                  display: 'block',
+                  width: '20px',
+                  height: '2px',
+                  background: 'var(--cor-primaria)',
+                  borderRadius: '2px',
+                  transition: 'opacity 200ms',
+                  opacity: mobileOpen ? 0 : 1,
+                }}
               />
               <span
-                className={`block w-5 h-0.5 bg-dark transition-transform duration-200 ${
-                  mobileOpen ? "-rotate-45 -translate-y-2" : ""
-                }`}
+                style={{
+                  display: 'block',
+                  width: '20px',
+                  height: '2px',
+                  background: 'var(--cor-primaria)',
+                  borderRadius: '2px',
+                  transition: 'transform 200ms',
+                  transform: mobileOpen ? 'rotate(-45deg) translate(3px, -5px)' : 'none',
+                }}
               />
             </button>
           </div>
@@ -190,32 +285,33 @@ export function Header() {
 
       {/* ── Mobile menu ── */}
       {mobileOpen && (
-        <div className="md:hidden border-t border-gray-100 bg-white">
+        <div
+          className="md:hidden"
+          style={{
+            borderTop: '1px solid var(--cor-borda)',
+            background: 'var(--cor-fundo-puro)',
+          }}
+        >
           <nav className="container-safe py-4 flex flex-col gap-1" aria-label="Menu mobile">
-            <Link
-              href="/"
-              className="px-3 py-2.5 text-dark font-medium hover:bg-light hover:text-primary rounded-lg transition-colors"
-              onClick={closeMobile}
-            >
-              Início
-            </Link>
+            <MobileLink href="/" onClick={closeMobile}>Início</MobileLink>
 
-            {/* Passeios (expandido no mobile) */}
             <div>
-              <Link
-                href="/passeios"
-                className="px-3 py-2.5 text-dark font-medium hover:bg-light hover:text-primary rounded-lg transition-colors block"
-                onClick={closeMobile}
-              >
-                Passeios
-              </Link>
+              <MobileLink href="/passeios" onClick={closeMobile}>Passeios</MobileLink>
               <div className="pl-5 mt-1 flex flex-col gap-0.5">
                 {CATEGORIAS.map((cat) => (
                   <Link
                     key={cat.slug}
                     href={`/passeios/${cat.slug}`}
-                    className="px-3 py-2 text-sm text-gray-600 hover:bg-light hover:text-primary rounded-lg transition-colors"
                     onClick={closeMobile}
+                    style={{
+                      display: 'block',
+                      padding: '8px 12px',
+                      fontFamily: 'var(--font-inter)',
+                      fontSize: '14px',
+                      color: 'var(--cor-texto-medio)',
+                      textDecoration: 'none',
+                      borderRadius: '8px',
+                    }}
                   >
                     {cat.nome}
                   </Link>
@@ -223,16 +319,33 @@ export function Header() {
               </div>
             </div>
 
-            {/* Serviços (expandido no mobile) */}
             <div>
-              <p className="px-3 py-2.5 text-dark font-medium">Serviços</p>
+              <p
+                style={{
+                  padding: '10px 12px',
+                  fontFamily: 'var(--font-inter)',
+                  fontWeight: 500,
+                  fontSize: '15px',
+                  color: 'var(--cor-texto-escuro)',
+                }}
+              >
+                Serviços
+              </p>
               <div className="pl-5 mt-1 flex flex-col gap-0.5">
                 {SERVICOS.map((srv) => (
                   <Link
                     key={srv.slug}
                     href={`/servicos/${srv.slug}`}
-                    className="px-3 py-2 text-sm text-gray-600 hover:bg-light hover:text-primary rounded-lg transition-colors"
                     onClick={closeMobile}
+                    style={{
+                      display: 'block',
+                      padding: '8px 12px',
+                      fontFamily: 'var(--font-inter)',
+                      fontSize: '14px',
+                      color: 'var(--cor-texto-medio)',
+                      textDecoration: 'none',
+                      borderRadius: '8px',
+                    }}
                   >
                     {srv.nome}
                   </Link>
@@ -240,27 +353,86 @@ export function Header() {
               </div>
             </div>
 
-            <Link
-              href="/faq"
-              className="px-3 py-2.5 text-dark font-medium hover:bg-light hover:text-primary rounded-lg transition-colors"
-              onClick={closeMobile}
-            >
-              FAQ
-            </Link>
+            <MobileLink href="/faq" onClick={closeMobile}>FAQ</MobileLink>
 
-            {/* CTA mobile */}
             <a
               href={WA_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-3 bg-[#25D366] hover:bg-[#1ea355] text-white font-bold text-sm px-4 py-3 rounded-full flex items-center justify-center gap-2 min-h-[48px] transition-colors"
               onClick={closeMobile}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px',
+                marginTop: '12px',
+                background: 'var(--cor-whatsapp)',
+                color: '#fff',
+                fontFamily: 'var(--font-inter)',
+                fontWeight: 600,
+                fontSize: '15px',
+                padding: '14px 20px',
+                borderRadius: '999px',
+                minHeight: '48px',
+                textDecoration: 'none',
+              }}
             >
-              💬 Reservar no WhatsApp
+              <IconWhatsApp />
+              Reservar no WhatsApp
             </a>
           </nav>
         </div>
       )}
     </header>
+  );
+}
+
+/* ── Helpers ────────────────────────────────────────────── */
+function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <Link
+      href={href}
+      style={{
+        fontFamily: 'var(--font-inter)',
+        fontWeight: 500,
+        fontSize: '14px',
+        color: 'var(--cor-texto-escuro)',
+        textDecoration: 'none',
+        transition: 'color 150ms',
+      }}
+      onMouseEnter={e => (e.currentTarget.style.color = 'var(--cor-primaria)')}
+      onMouseLeave={e => (e.currentTarget.style.color = 'var(--cor-texto-escuro)')}
+    >
+      {children}
+    </Link>
+  );
+}
+
+function MobileLink({ href, onClick, children }: { href: string; onClick: () => void; children: React.ReactNode }) {
+  return (
+    <Link
+      href={href}
+      onClick={onClick}
+      style={{
+        display: 'block',
+        padding: '10px 12px',
+        fontFamily: 'var(--font-inter)',
+        fontWeight: 500,
+        fontSize: '15px',
+        color: 'var(--cor-texto-escuro)',
+        textDecoration: 'none',
+        borderRadius: '8px',
+      }}
+    >
+      {children}
+    </Link>
+  );
+}
+
+function IconWhatsApp() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg>
   );
 }
