@@ -37,9 +37,29 @@
 
 ## Próximo Passo Imediato
 
-**#5 — GMB.** Murillo executa o checklist em `_memoria/gmb-otimizacao-2026-05.md` no painel Google Business Profile.
-Em paralelo, segue para **#6 — Registro manual de leads no CSV** (não precisa esperar GMB ficar pronto).
+**Frente nova — Fotos reais nas galerias** (consequência direta da Decisão 44 em `decisoes-estrategicas.md`).
+
+**Contexto:** Decisão 44 publicada em `origin/main` no commit `77603b9` (2026-05-12). A galeria v3 já garante ≥ 4 fotos por passeio via fallback ilustrativo (helper `getPasseioGalleryImages` em `_site/lib/gallery.ts`). O fallback usa hero JPGs cruzados entre passeios com caption "Foto ilustrativa · Vem Passear em Jampa" — funciona, mas o ideal é cada passeio mostrar fotos da própria experiência.
+
+**Critério de pronto:** pelo menos os 3 passeios prioritários da Fase 1 com `galleryImages` populado por ≥ 4 fotos reais específicas. Quando há ≥ 4 fotos reais, o helper para de injetar fallback automaticamente.
+
+**Passeios prioritários (ordem):**
+1. **Seixas** (piscinas-naturais/seixas) — hoje só tem hero SVG placeholder. Maior ganho visual.
+2. **Areia Vermelha** (litoral-norte/areia-vermelha-catamara) — hoje tem hero JPG real + 3 fallback. Trocar 3 fallback por fotos do banco de areia.
+3. **Picãozinho** (piscinas-naturais/picaozinho) — hoje tem hero JPG real + 3 fallback. Igual ao Areia Vermelha.
+
+**Como executar (passo a passo já documentado):**
+1. Subir JPG/WebP em `_site/public/images/passeios/[slug]/` seguindo o padrão de nomes do README (`[slug]-gallery-NN-descricao.jpg`).
+2. Popular `galleryImages: [{ src, alt, caption? }, ...]` no `_site/data/passeios.ts` do passeio correspondente.
+3. `npm run type-check` + `npm run build`.
+4. Validar visualmente: `npm run dev` → abrir a página → conferir que a caption "Foto ilustrativa" sumiu e a galeria mostra só fotos do passeio.
+
+**Bloqueio único:** dependemos de Murillo aprovar/enviar as fotos. Sem fotos reais aprovadas, não avança.
+
+**Outras frentes anteriores ainda abertas (não bloqueiam):**
+- **#5 GMB** — checklist em `_memoria/gmb-otimizacao-2026-05.md`, execução manual no painel.
+- **#6 Registro de leads no CSV** — em paralelo.
 
 ---
 
-*Atualizado: 2026-05-06 | Sprint única até 2026-05-20*
+*Atualizado: 2026-05-12 | Sprint única até 2026-05-20 | Decisão 44 em `origin/main` (`77603b9`)*
