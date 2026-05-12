@@ -104,12 +104,13 @@ export function Footer() {
             </h4>
             <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
               {[
-                { label: 'Início',                  href: '/' },
-                { label: 'Passeios em João Pessoa', href: '/passeios' },
-                { label: 'Perguntas Frequentes',    href: '/faq' },
-                { label: 'Transfer 24h',            href: '/servicos/transfer-24h' },
-                { label: 'Excursões e Grupos',      href: '/servicos/excursoes-e-grupos' },
-                { label: 'Sobre a Vem Passear',     href: '/sobre' },
+                { label: 'Início',                       href: '/' },
+                { label: 'Passeios em João Pessoa',      href: '/passeios' },
+                { label: 'Tábua de Maré em João Pessoa', href: '/tabua-de-mares-joao-pessoa' },
+                { label: 'Perguntas Frequentes',         href: '/faq' },
+                { label: 'Transfer 24h',                 href: '/servicos/transfer-24h' },
+                { label: 'Excursões e Grupos',           href: '/servicos/excursoes-e-grupos' },
+                { label: 'Sobre a Vem Passear',          href: '/sobre' },
               ].map(({ label, href }) => (
                 <li key={href}>
                   <Link

@@ -98,7 +98,7 @@ export function Header() {
                     background: 'var(--cor-fundo-puro)',
                     border: '1px solid var(--cor-borda)',
                     borderRadius: '12px',
-                    minWidth: '200px',
+                    minWidth: '220px',
                     boxShadow: 'var(--sombra-hover)',
                   }}
                 >
@@ -131,6 +131,42 @@ export function Header() {
                       </Link>
                     </li>
                   ))}
+
+                  {/* Separador + Tábua de Maré */}
+                  <li role="separator" aria-hidden="true">
+                    <hr
+                      style={{
+                        border: 'none',
+                        borderTop: '1px solid var(--cor-borda)',
+                        margin: '6px 12px',
+                      }}
+                    />
+                  </li>
+                  <li role="none">
+                    <Link
+                      href="/tabua-de-mares-joao-pessoa"
+                      role="menuitem"
+                      onClick={() => setDropdownOpen(false)}
+                      style={{
+                        display: 'block',
+                        padding: '10px 16px',
+                        fontFamily: 'var(--font-inter)',
+                        fontSize: '14px',
+                        fontWeight: 600,
+                        color: 'var(--cor-primaria)',
+                        textDecoration: 'none',
+                        transition: 'color 150ms, background 150ms',
+                      }}
+                      onMouseEnter={e => {
+                        e.currentTarget.style.background = 'var(--cor-fundo)'
+                      }}
+                      onMouseLeave={e => {
+                        e.currentTarget.style.background = 'transparent'
+                      }}
+                    >
+                      Tábua de Maré
+                    </Link>
+                  </li>
                 </ul>
               )}
             </div>
@@ -321,6 +357,25 @@ export function Header() {
                     {cat.nome}
                   </Link>
                 ))}
+                <Link
+                  href="/tabua-de-mares-joao-pessoa"
+                  onClick={closeMobile}
+                  style={{
+                    display: 'block',
+                    padding: '8px 12px',
+                    marginTop: '4px',
+                    fontFamily: 'var(--font-inter)',
+                    fontSize: '14px',
+                    fontWeight: 600,
+                    color: 'var(--cor-primaria)',
+                    textDecoration: 'none',
+                    borderRadius: '8px',
+                    borderTop: '1px solid var(--cor-borda)',
+                    paddingTop: '12px',
+                  }}
+                >
+                  Tábua de Maré
+                </Link>
               </div>
             </div>
 

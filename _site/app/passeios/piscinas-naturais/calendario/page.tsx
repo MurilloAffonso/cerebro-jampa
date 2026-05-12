@@ -20,20 +20,21 @@ import { PoliticaCancelamento } from "@/components/PoliticaCancelamento";
 
 const SITE_URL = "https://vempassearjampa.com.br";
 const WA_BASE = "https://wa.me/558399087830";
-const PAGE_URL = `${SITE_URL}/passeios/piscinas-naturais/calendario`;
+const TABUA_URL = `${SITE_URL}/tabua-de-mares-joao-pessoa`;
 
 const WA_URL = `${WA_BASE}?text=Oi%2C+quero+saber+sobre+as+datas+dispon%C3%ADveis+para+as+piscinas+naturais`;
 
 export const metadata: Metadata = {
-  title: "Calendário de Marés — Piscinas Naturais de João Pessoa | Vem Passear",
+  title: "Calendário operacional — Piscinas Naturais (Maio/2026) | Vem Passear",
   description:
-    "Veja as datas de saída para Seixas, Picãozinho e Areia Vermelha em João Pessoa. Horários baseados na tábua de marés. Agende pelo WhatsApp.",
-  alternates: { canonical: PAGE_URL },
+    "Datas de saída para Seixas, Picãozinho e Areia Vermelha em maio/2026. Para a tábua completa, consulte a Tábua de Maré em João Pessoa.",
+  alternates: { canonical: TABUA_URL },
+  robots: { index: false, follow: true },
   openGraph: {
-    title: "Calendário de Marés — Piscinas Naturais de João Pessoa",
+    title: "Calendário operacional — Piscinas Naturais (Maio/2026)",
     description:
-      "Veja as datas de saída para Seixas, Picãozinho e Areia Vermelha em João Pessoa. Horários baseados na tábua de marés.",
-    url: PAGE_URL,
+      "Datas de saída para Seixas, Picãozinho e Areia Vermelha em maio/2026.",
+    url: TABUA_URL,
     type: "website",
     locale: "pt_BR",
   },
@@ -107,7 +108,7 @@ export default function CalendarioPage() {
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Início", item: SITE_URL },
     { name: "Piscinas Naturais", item: `${SITE_URL}/passeios/piscinas-naturais` },
-    { name: "Calendário de Marés", item: PAGE_URL },
+    { name: "Calendário operacional", item: TABUA_URL },
   ]);
 
   // Summary counts for the month
@@ -129,9 +130,59 @@ export default function CalendarioPage() {
         items={[
           { label: "Home", href: "/" },
           { label: "Piscinas Naturais", href: "/passeios/piscinas-naturais" },
-          { label: "Calendário de Marés" },
+          { label: "Calendário operacional" },
         ]}
       />
+
+      {/* Banner — redireciona o usuário para a tábua canônica */}
+      <div
+        className="container-safe"
+        style={{ paddingTop: "12px", paddingBottom: "0" }}
+      >
+        <div
+          style={{
+            background: "var(--cor-fundo)",
+            border: "1px solid var(--cor-borda)",
+            borderRadius: "12px",
+            padding: "14px 16px",
+            display: "flex",
+            flexWrap: "wrap",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: "12px",
+          }}
+        >
+          <p
+            style={{
+              fontFamily: "var(--font-inter)",
+              fontSize: "14px",
+              color: "var(--cor-texto-medio)",
+              margin: 0,
+              lineHeight: 1.5,
+            }}
+          >
+            Para a tábua completa de maio a dezembro de 2026, veja a{" "}
+            <strong>Tábua de Maré em João Pessoa</strong>.
+          </p>
+          <Link
+            href="/tabua-de-mares-joao-pessoa"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              fontFamily: "var(--font-inter)",
+              fontWeight: 600,
+              fontSize: "14px",
+              color: "var(--cor-primaria)",
+              textDecoration: "none",
+              padding: "8px 14px",
+              borderRadius: "999px",
+              border: "1px solid var(--cor-primaria)",
+            }}
+          >
+            Ver tábua completa →
+          </Link>
+        </div>
+      </div>
 
       <CTASticky whatsappUrl={WA_URL} label="Falar com Murillo no WhatsApp" />
 
@@ -139,11 +190,11 @@ export default function CalendarioPage() {
       <section id="hero-section" className="bg-secondary text-white">
         <div className="container-safe py-10 md:py-14">
           <h1 className="text-2xl md:text-4xl font-bold text-white leading-tight max-w-2xl">
-            Tábua de Marés em João Pessoa — Piscinas Naturais
+            Calendário operacional — Piscinas Naturais (Maio/2026)
           </h1>
           <p className="text-white/80 text-base md:text-lg mt-3 max-w-xl">
-            Calendário atualizado com os melhores dias para visitar Seixas, Picãozinho
-            e Areia Vermelha. Saídas baseadas na maré baixa do Porto de Cabedelo.
+            Datas de saída para Seixas, Picãozinho e Areia Vermelha neste mês.
+            Para o calendário completo do ano, consulte a tábua de maré.
           </p>
           <div className="flex flex-wrap gap-4 mt-6">
             <div className="bg-white/10 rounded-lg px-4 py-3 text-center">
