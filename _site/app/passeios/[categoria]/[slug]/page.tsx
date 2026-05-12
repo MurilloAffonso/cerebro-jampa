@@ -37,6 +37,7 @@ import { CTAFinal } from "@/components/CTAFinal";
 import { PoliticaCancelamento } from "@/components/PoliticaCancelamento";
 import { CTASticky } from "@/components/CTASticky";
 import { PasseioCard } from "@/components/PasseioCard";
+import { ReservationIntentForm } from "@/components/ReservationIntentForm";
 
 const SITE_URL = `https://${empresa.dominio}`;
 const WA_BASE = empresa.contato.whatsappLink;
@@ -312,6 +313,9 @@ export default function PasseioPage({ params }: PasseioPageProps) {
 
       {/* I4 — INCLUSO / NÃO INCLUSO */}
       <IncluidoBlock incluso={passeio.incluso} naoIncluso={passeio.naoIncluso} />
+
+      {/* I4.5 — PRÉ-RESERVA WHATSAPP (todos os passeios) */}
+      <ReservationIntentForm passeioNome={passeio.nome} />
 
       {/* I5 — FAQ ACCORDION */}
       {faqItems.length > 0 && (
