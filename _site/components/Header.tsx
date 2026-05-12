@@ -49,11 +49,15 @@ export function Header() {
             aria-label="Vem Passear em Jampa — Página inicial"
           >
             <Image
-              src="/images/logo/logo.jpg"
+              src="/images/logo/logo-azul-transparente.png"
               alt="Vem Passear em Jampa"
-              width={148}
-              height={50}
-              style={{ height: '42px', width: 'auto', objectFit: 'contain' }}
+              width={500}
+              height={167}
+              style={{
+                height: '150px',
+                width: 'auto',
+                objectFit: 'contain',
+              }}
               priority
             />
           </Link>
@@ -202,6 +206,7 @@ export function Header() {
               )}
             </div>
 
+            <NavLink href="/sobre">Sobre</NavLink>
             <NavLink href="/faq">FAQ</NavLink>
           </nav>
 
@@ -353,6 +358,7 @@ export function Header() {
               </div>
             </div>
 
+            <MobileLink href="/sobre" onClick={closeMobile}>Sobre</MobileLink>
             <MobileLink href="/faq" onClick={closeMobile}>FAQ</MobileLink>
 
             <a

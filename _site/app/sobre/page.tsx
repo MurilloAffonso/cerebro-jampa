@@ -22,19 +22,19 @@ import { CTAFinal } from "@/components/CTAFinal";
 
 const SITE_URL = "https://vempassearjampa.com.br";
 const PAGE_URL = `${SITE_URL}/sobre/`;
-const CADASTUR_URL = "https://cadastur.turismo.gov.br/hotsite/#!/public/inicio";
+const CADASTUR_URL = "https://cadastur.turismo.gov.br/cadastur/#!/public/qrcode/52077577000103";
 
-const WA_URL = `${empresa.contato.whatsappLink}?text=Oi+Murillo%2C+quero+saber+mais+sobre+a+Vem+Passear+em+Jampa`;
+const WA_URL = `${empresa.contato.whatsappLink}?text=Oi+Murilo%2C+quero+saber+mais+sobre+a+Vem+Passear+em+Jampa`;
 
 export const metadata: Metadata = {
   title: "Sobre a Vem Passear em Jampa | Quem está por trás dos passeios em João Pessoa",
   description:
-    "Vem Passear em Jampa é uma agência de turismo receptivo em João Pessoa com Cadastur ativo. Atendimento direto com Murillo pelo WhatsApp, sem central impessoal.",
+    "Vem Passear em Jampa é uma agência de turismo receptivo em João Pessoa com Cadastur ativo. Atendimento direto com Murilo pelo WhatsApp, sem central impessoal.",
   alternates: { canonical: PAGE_URL },
   openGraph: {
     title: "Sobre a Vem Passear em Jampa",
     description:
-      "Agência receptiva em João Pessoa com Cadastur ativo. Atendimento direto com Murillo pelo WhatsApp.",
+      "Agência receptiva em João Pessoa com Cadastur ativo. Atendimento direto com Murilo pelo WhatsApp.",
     url: PAGE_URL,
     images: [
       { url: "/og-image.svg", width: 1200, height: 630, alt: "Sobre a Vem Passear em Jampa" },
@@ -47,7 +47,7 @@ export default function SobrePage() {
 
   return (
     <div className="bg-white">
-      <CTASticky whatsappUrl={WA_URL} label="Falar com Murillo no WhatsApp" />
+      <CTASticky whatsappUrl={WA_URL} label="Falar com Murilo no WhatsApp" />
 
       <Breadcrumb
         items={[
@@ -99,9 +99,117 @@ export default function SobrePage() {
             }}
           >
             Operação local, atendimento direto pelo WhatsApp e roteiro organizado
-            sem intermediário. {empresa.proprietario.split(" ")[1]} responde pessoalmente
+            sem intermediário. Murilo responde pessoalmente
             quem procura informação sobre passeios em João Pessoa.
           </p>
+        </div>
+      </section>
+
+      {/* SOBRE A MARCA — quem é o Murilo (copy aprovada 2026-05-11) */}
+      <section className="section-padding" style={{ background: 'var(--cor-fundo-puro)' }}>
+        <div className="container-safe" style={{ maxWidth: '780px' }}>
+          <span
+            style={{
+              display: 'block',
+              fontFamily: 'var(--font-inter)',
+              fontSize: '12px',
+              fontWeight: 600,
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              color: 'var(--cor-acento)',
+              marginBottom: '12px',
+              textAlign: 'center',
+            }}
+          >
+            Sobre a marca
+          </span>
+          <h2
+            className="font-serif"
+            style={{
+              fontSize: 'clamp(26px, 3.8vw, 38px)',
+              color: 'var(--cor-primaria)',
+              lineHeight: 1.2,
+              letterSpacing: '-0.02em',
+              textAlign: 'center',
+              marginBottom: '32px',
+            }}
+          >
+            Atendimento direto com quem ama viajar e conhece o Nordeste
+          </h2>
+
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '20px',
+              fontFamily: 'var(--font-inter)',
+              fontSize: '17px',
+              lineHeight: 1.75,
+              color: 'var(--cor-texto-medio)',
+            }}
+          >
+            <p>
+              A Vem Passear em Jampa nasceu da paixão de{' '}
+              <strong style={{ color: 'var(--cor-texto-escuro)' }}>
+                Affonso Murillo Soledade de Oliveira, conhecido como Murilo
+              </strong>{' '}
+              por viagens, pelo Nordeste e por João Pessoa.
+            </p>
+
+            <p>
+              Ex-atleta, viajante e apaixonado por conhecer novos lugares, Murilo carrega
+              uma relação forte com o Nordeste. Depois de viver muitas experiências de
+              viagem e conhecer diferentes destinos, ele decidiu transformar essa paixão
+              em uma agência feita para ajudar outras pessoas a viverem João Pessoa com
+              mais tranquilidade, segurança e orientação.
+            </p>
+
+            <p>
+              Foi assim que nasceu a Vem Passear em Jampa: uma agência de passeios criada
+              para conectar turistas aos melhores roteiros da Paraíba, sempre com
+              atendimento humano, parceiros de confiança e cuidado em cada detalhe da
+              experiência.
+            </p>
+
+            <p>
+              Aqui, o atendimento é direto. Quem fala com você no WhatsApp é o próprio
+              Murilo, entendendo seu perfil, sua data, seu orçamento e o tipo de passeio
+              que faz mais sentido para a sua viagem.
+            </p>
+
+            <p
+              style={{
+                fontFamily: 'var(--font-fraunces), var(--font-inter)',
+                fontStyle: 'italic',
+                fontSize: '20px',
+                color: 'var(--cor-primaria)',
+                borderLeft: '3px solid var(--cor-acento)',
+                paddingLeft: '20px',
+                margin: '8px 0',
+              }}
+            >
+              A base da agência é simples: parceria, preço justo, qualidade e confiança.
+            </p>
+
+            <p>
+              Por isso, a Vem Passear em Jampa trabalha com operadores locais legalizados
+              e parceiros selecionados, buscando oferecer passeios organizados, seguros e
+              bem orientados — seja para famílias, casais, grupos ou viajantes que estão
+              conhecendo João Pessoa pela primeira vez.
+            </p>
+
+            <p>
+              Mais do que vender passeios, a missão da Vem Passear em Jampa é ajudar
+              cada cliente a escolher o roteiro certo, no melhor momento da viagem, com
+              a tranquilidade de estar em boas mãos.
+            </p>
+
+            <p>
+              Se você quer conhecer João Pessoa com quem ama viajar, conhece o Nordeste
+              e valoriza uma experiência feita com responsabilidade, a Vem Passear em
+              Jampa está pronta para te receber.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -179,7 +287,7 @@ export default function SobrePage() {
             <p className="text-gray-700 text-lg leading-relaxed italic">
               {empresa.missao}
             </p>
-            <p className="text-sm text-gray-500 mt-3">— {empresa.proprietario}, fundador</p>
+            <p className="text-sm text-gray-500 mt-3">— Murilo, fundador</p>
           </blockquote>
 
           <h3 className="font-bold text-secondary text-lg mb-4">Como traduzimos isso na prática</h3>
@@ -218,7 +326,7 @@ export default function SobrePage() {
               },
               {
                 n: "2",
-                t: "Murillo responde com orientação local",
+                t: "Murilo responde com orientação local",
                 d: "Recebe sugestão de roteiro, esclarecimento sobre maré (quando o passeio depende disso), preço e disponibilidade.",
               },
               {
@@ -277,9 +385,9 @@ export default function SobrePage() {
       <CTAFinal
         whatsappUrl={WA_URL}
         label="Quer conhecer a operação?"
-        titulo="Fale direto com Murillo"
+        titulo="Fale direto com Murilo"
         subtitulo="Tire dúvidas sobre roteiros, datas e preços — atendimento direto, sem central impessoal."
-        textoBotao="Falar com Murillo no WhatsApp"
+        textoBotao="Falar com Murilo no WhatsApp"
       />
 
       <div className="container-safe py-6 text-center">

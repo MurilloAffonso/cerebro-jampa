@@ -108,8 +108,7 @@ export function HomeVideoHero({ whatsappUrl }: HomeVideoHeroProps) {
           }}
         >
           Receptivo boutique em João Pessoa. Curadoria pessoal do Murillo,
-          grupos de até 8 pessoas, roteiros que respeitam a maré e o seu
-          ritmo. Nada de van lotada, bandeira no ar e correria.
+          roteiros que respeitam a maré e o seu ritmo.
         </p>
 
         {/* [5] Trust badges */}
@@ -119,7 +118,7 @@ export function HomeVideoHero({ whatsappUrl }: HomeVideoHeroProps) {
         >
           <TrustBadge
             icon={<IconCadastur />}
-            href="https://cadastur.turismo.gov.br/hotsite/#!/public/inicio"
+            href="https://cadastur.turismo.gov.br/cadastur/#!/public/qrcode/52077577000103"
             label="Cadastur verificar"
           >
             Cadastur {empresa.cadastur} ativo

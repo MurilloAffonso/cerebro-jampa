@@ -21,6 +21,9 @@ import { WaveDivider } from "@/components/WaveDivider";
 import { CTAFinal } from "@/components/CTAFinal";
 import { CTASticky } from "@/components/CTASticky";
 import { HomeVideoHero } from "@/components/HomeVideoHero";
+import { PartnersMarquee } from "@/components/PartnersMarquee";
+import { GoogleReviewsBlock } from "@/components/GoogleReviewsBlock";
+import { CadasturCertificate } from "@/components/CadasturCertificate";
 
 const WA_URL = `${empresa.contato.whatsappLink}?text=Oi%2C+quero+informações+sobre+os+passeios+em+João+Pessoa`;
 
@@ -145,120 +148,8 @@ export default function Home() {
       {/* Wave categorias → prova social */}
       <WaveDivider fill="var(--cor-fundo-puro)" />
 
-      {/* ── 3. PROVA SOCIAL GOOGLE ── */}
-      <section
-        className="section-padding"
-        style={{ background: 'var(--cor-fundo-puro)' }}
-        aria-label="Avaliações reais no Google"
-      >
-        <div className="container-safe" style={{ maxWidth: '680px' }}>
-          <a
-            href={empresa.rede.googleMaps}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block text-center group"
-            aria-label={`Ler as ${empresa.rating.totalAvaliacoes} avaliações reais no Google`}
-            style={{ textDecoration: 'none' }}
-          >
-            <p
-              className="font-serif"
-              style={{
-                fontSize: 'clamp(48px, 7vw, 72px)',
-                lineHeight: 1,
-                color: 'var(--cor-primaria)',
-                marginBottom: '8px',
-              }}
-            >
-              <span style={{ color: 'var(--cor-acento-suave)' }}>★</span>{' '}
-              {empresa.rating.valor}
-              <span
-                style={{
-                  fontSize: '28px',
-                  color: 'var(--cor-texto-claro)',
-                  fontFamily: 'var(--font-inter)',
-                  fontWeight: 400,
-                  verticalAlign: 'super',
-                  marginLeft: '4px',
-                }}
-              >
-                /5
-              </span>
-            </p>
-            <p
-              style={{
-                fontFamily: 'var(--font-inter)',
-                fontSize: '18px',
-                color: 'var(--cor-texto-medio)',
-                marginBottom: '12px',
-              }}
-            >
-              <strong style={{ color: 'var(--cor-texto-escuro)' }}>
-                {empresa.rating.totalAvaliacoes} avaliações reais
-              </strong>{' '}
-              no Google
-            </p>
-            <p
-              style={{
-                fontFamily: 'var(--font-inter)',
-                fontSize: '15px',
-                color: 'var(--cor-texto-claro)',
-                maxWidth: '420px',
-                margin: '0 auto 20px',
-                lineHeight: 1.6,
-              }}
-            >
-              Pessoas que viajaram com a Vem Passear em João Pessoa e voltaram para contar.
-            </p>
-
-            <ul className="flex flex-wrap justify-center gap-2 mb-6">
-              {["Atendimento atencioso", "Organização", "Suporte rápido"].map((chip) => (
-                <li
-                  key={chip}
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                    background: 'var(--cor-fundo)',
-                    border: '1px solid var(--cor-borda)',
-                    color: 'var(--cor-primaria)',
-                    fontFamily: 'var(--font-inter)',
-                    fontSize: '13px',
-                    fontWeight: 500,
-                    borderRadius: '999px',
-                    padding: '6px 14px',
-                  }}
-                >
-                  <span
-                    style={{
-                      width: '6px',
-                      height: '6px',
-                      borderRadius: '50%',
-                      background: 'var(--cor-acento)',
-                      flexShrink: 0,
-                    }}
-                    aria-hidden="true"
-                  />
-                  {chip}
-                </li>
-              ))}
-            </ul>
-
-            <span
-              style={{
-                fontFamily: 'var(--font-inter)',
-                fontSize: '14px',
-                fontWeight: 600,
-                color: 'var(--cor-primaria)',
-                borderBottom: '2px solid rgba(16,121,151,0.25)',
-                paddingBottom: '2px',
-                textDecoration: 'none',
-              }}
-            >
-              Ler todas no Google →
-            </span>
-          </a>
-        </div>
-      </section>
+      {/* ── 3. PROVAS REAIS DO GOOGLE (cards estilo print) ── */}
+      <GoogleReviewsBlock />
 
       {/* ── 4. PASSEIOS PRIORITÁRIOS ── */}
       {prioritarios.length > 0 && (
@@ -308,33 +199,11 @@ export default function Home() {
         </section>
       )}
 
-      {/* ── 5. QUOTE POÉTICA (pausa emocional) ── */}
-      <section
-        style={{
-          background: 'var(--cor-areia)',
-          padding: '80px 24px',
-          textAlign: 'center',
-        }}
-        aria-label="Frase do Murillo"
-      >
-        <div className="container-safe" style={{ maxWidth: '700px' }}>
-          <p className="quote-poetica">
-            A Praia do Amor não tem nome à toa.
-            É onde a gente leva quem ama.
-          </p>
-          <p
-            style={{
-              fontFamily: 'var(--font-inter)',
-              fontSize: '14px',
-              fontWeight: 600,
-              color: 'var(--cor-acento)',
-              marginTop: '20px',
-            }}
-          >
-            — Murillo
-          </p>
-        </div>
-      </section>
+      {/* ── 5. PARCEIROS (carrossel rolante) ── */}
+      <PartnersMarquee />
+
+      {/* ── 5b. CADASTUR — credibilidade visual ── */}
+      <CadasturCertificate />
 
       {/* ── 6. BLOCO MURILLO ── */}
       <MurilloBlock whatsappUrl={WA_URL} />

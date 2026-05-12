@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { empresa, paginasInfo } from "@/data/empresa";
 
-const CADASTUR_URL = "https://cadastur.turismo.gov.br/hotsite/#!/public/inicio";
+const CADASTUR_URL = "https://cadastur.turismo.gov.br/cadastur/#!/public/qrcode/52077577000103";
 
 export function Footer() {
   return (
@@ -14,25 +14,16 @@ export function Footer() {
 
           {/* ── Col 1: Institucional ── */}
           <div>
-            {/* Logo */}
-            <div className="mb-5">
+            {/* Logo (versão branca transparente — combina com fundo azul do footer) */}
+            <div className="mb-6">
               <Link href="/" aria-label="Vem Passear em Jampa — Página inicial">
-                <div
-                  style={{
-                    display: 'inline-block',
-                    background: '#fff',
-                    borderRadius: '10px',
-                    padding: '6px 12px',
-                  }}
-                >
-                  <Image
-                    src="/images/logo/logo.jpg"
-                    alt="Vem Passear em Jampa"
-                    width={130}
-                    height={44}
-                    style={{ height: '38px', width: 'auto', display: 'block' }}
-                  />
-                </div>
+                <Image
+                  src="/images/logo/logo-transparente.png"
+                  alt="Vem Passear em Jampa"
+                  width={280}
+                  height={94}
+                  style={{ height: '88px', width: 'auto', display: 'block' }}
+                />
               </Link>
             </div>
 

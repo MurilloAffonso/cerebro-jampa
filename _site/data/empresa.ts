@@ -54,10 +54,10 @@ export const empresa = {
   diferencial:
     'Confiança + Atendimento rápido + Preço justo + Conhecimento local profundo',
 
-  // Avaliação (CONFIRMADO — 2026-04-30)
+  // Avaliação (CONFIRMADO com Murillo — 2026-05-11)
   rating: {
     valor: 4.9,
-    totalAvaliacoes: 61,
+    totalAvaliacoes: 63,
     plataforma: 'Google',
   },
 

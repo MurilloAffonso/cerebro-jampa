@@ -1,6 +1,6 @@
 import { empresa } from "@/data/empresa";
 
-const CADASTUR_URL = "https://cadastur.turismo.gov.br/hotsite/#!/public/inicio";
+const CADASTUR_URL = "https://cadastur.turismo.gov.br/cadastur/#!/public/qrcode/52077577000103";
 
 export function TrustBlock() {
   return (

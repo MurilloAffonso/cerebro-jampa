@@ -1,13 +1,12 @@
 import { empresa } from "@/data/empresa";
 
-const CADASTUR_URL = "https://cadastur.turismo.gov.br/hotsite/#!/public/inicio";
+const CADASTUR_URL = "https://cadastur.turismo.gov.br/cadastur/#!/public/qrcode/52077577000103";
 
 interface MurilloBlockProps {
   whatsappUrl: string;
 }
 
 const DIFERENCIAIS = [
-  "Grupos de até 8 pessoas — nada de van lotada",
   "Roteiros que respeitam a maré e o seu ritmo",
   "Atendimento direto com quem conhece cada praia",
   "Cadastur ativo — empresa registrada e regularizada",
