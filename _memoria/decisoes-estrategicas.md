@@ -561,3 +561,35 @@ Glows alinhados: `cta-orange` shadow agora usa `rgba(16,121,151,0.45)`; `cta-blu
 - `app/page.tsx`, `_conhecimento/sistema-fotos.md` (novo)
 
 **Validação:** `type-check` ✅ + `lint` ✅ + `build` ✅ (22 passeios gerados)
+
+---
+
+## Decisão 43 — Tábua de Maré Manual v2 + Fechamento do PR `feature/migracao-paleta-oficial` (2026-05-12)
+
+**Contexto:** publicação da Tábua de Maré Manual v2 em `/tabua-de-mares-joao-pessoa` (commit `583698e`) e auditoria do PR de paleta aberto desde merge-base `708402d`.
+
+**Decisões tomadas:**
+
+1. **Tábua de Maré v2 é a rota canônica** para o termo "tábua de maré João Pessoa".
+   - Dados Mai–Dez/2026 preenchidos manualmente em `_site/data/tabua-mares-manual.ts` (245 dias).
+   - Componente `TabuaMareMensal` com cara oficial Vem Passear: logo azul-transparente, título `Tábua de Maré — {Mês}/2026`, subtítulo `Seixas · Picãozinho · Areia Vermelha`, aviso de disponibilidade no WhatsApp.
+   - Sem automação CHM, sem `lib/tabua-mares.ts`, sem `getProximaSaida`, sem `revisadoPorMurillo`. Tudo manual.
+
+2. **Página antiga `/passeios/piscinas-naturais/calendario` foi rebaixada (Opção A — sem redirect 301):**
+   - `canonical` aponta para `/tabua-de-mares-joao-pessoa`
+   - `robots: noindex, follow`
+   - H1 trocado para "Calendário operacional — Piscinas Naturais (Maio/2026)"
+   - Banner no topo direcionando para a tábua canônica
+   - Lógica operacional preservada (não tocada)
+
+3. **PR `feature/migracao-paleta-oficial` fechado como obsoleto (superseded):**
+   - **Motivo:** paleta v2 (ocean #107997, navy #092238) já está em `main` desde decisões 41–42, com tokens mais completos (18 CSS vars `--cor-*` + 13 tokens Tailwind nominais) do que o PR propunha.
+   - **Risco descartado:** merge produziria 18 conflitos e regressão visual silenciosa em Header, Footer, `globals.css`, `tailwind.config.ts` e na Tábua de Maré (que depende das CSS vars `--cor-*`).
+   - **Branch remota preservada** (`origin/feature/migracao-paleta-oficial` não foi deletada — fica disponível caso surja necessidade de garimpar refinamento específico).
+   - **Política:** futuros refinamentos visuais entram como issue/PR cirúrgico, não em branch longa de migração.
+
+**Como aplicar daqui em diante:**
+- Conteúdo de maré: editar apenas `_site/data/tabua-mares-manual.ts`. Status do mês controla exibição.
+- Aviso "Confirme sempre a disponibilidade pelo WhatsApp antes de reservar." é fixo e não-removível.
+- Não dizer "tábua oficial da Marinha". Microcopy de indisponível é "Sem saída".
+- Próxima atualização de dados (jan/2027): mesmo padrão manual.
