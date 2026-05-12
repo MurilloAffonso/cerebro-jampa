@@ -1,11 +1,27 @@
+/**
+ * PasseioCard v2 — card comercial reutilizável.
+ *
+ * Suporta:
+ *  - `badges: BadgeComercial[]` — array de badges (até 2 visíveis no card)
+ *  - `badge` (singular, legado) — alias deprecated, sempre prevalece sobre o array
+ *  - `passeio.precoAnterior` — preço riscado opcional (não inventar)
+ *  - `passeio.localizacao` — distinta do ponto de embarque (`saida`)
+ *
+ * Sem inventar dados: preço, localização e badges vêm de `data/passeios.ts`.
+ */
+
 import Link from "next/link";
 import Image from "next/image";
-import { Passeio } from "@/data/passeios";
+import { BADGE_LABEL, type BadgeComercial, type Passeio } from "@/data/passeios";
 import { isCampoIndisponivel } from "@/lib/consultar";
+
+/** Badges legadas (aceitas via prop por chamadores antigos). Migrar para BadgeComercial. */
+type BadgeLegado = "mais-vendido" | "murillo" | "novo" | "privativo" | "em-alta";
 
 interface PasseioCardProps {
   passeio: Passeio;
-  badge?: "mais-vendido" | "murillo" | "novo" | "privativo" | "em-alta";
+  /** @deprecated usar `passeio.badges`. Mantido para chamadores antigos. */
+  badge?: BadgeLegado;
   loading?: "lazy" | "eager";
 }
 
@@ -18,25 +34,50 @@ const CATEGORIA_NOME: Record<string, string> = {
   "interestaduais":    "Interestaduais",
 };
 
-const BADGE_CONFIG = {
-  "mais-vendido": { label: "Mais vendido",           bg: "#D97706", text: "#fff" },
-  "murillo":      { label: "Indicado pelo Murillo",  bg: "#107997", text: "#fff" },
-  "novo":         { label: "Novo",                   bg: "#FBBF24", text: "#0D1F2D" },
-  "privativo":    { label: "Privativo",               bg: "#092238", text: "#fff" },
-  "em-alta":      { label: "Em alta",                bg: "#10B981", text: "#fff" },
-} as const;
+type BadgeStyle = { bg: string; text: string; border?: string };
+
+const BADGE_STYLE: Record<BadgeComercial, BadgeStyle> = {
+  "imperdivel":           { bg: "var(--cor-acento)",          text: "#fff" },
+  "mais-vendido":         { bg: "var(--cor-primaria)",        text: "#fff" },
+  "esgota-rapido":        { bg: "var(--cor-acento-suave)",    text: "var(--cor-navy)" },
+  "recomendado":          { bg: "var(--cor-navy)",            text: "#fff" },
+  "depende-da-mare":      { bg: "var(--cor-areia)",           text: "var(--cor-navy)" },
+  "familia":              { bg: "var(--cor-fundo-puro)",      text: "var(--cor-navy)", border: "var(--cor-primaria)" },
+  "privativo":            { bg: "var(--cor-profunda)",        text: "#fff" },
+  "bate-volta":           { bg: "var(--cor-primaria-clara)",  text: "#fff" },
+  "desconto-progressivo": { bg: "var(--cor-acento)",          text: "#fff" },
+};
+
+const BADGE_LEGACY_STYLE: Record<BadgeLegado, BadgeStyle & { label: string }> = {
+  "mais-vendido": { label: "Mais vendido",            bg: "var(--cor-primaria)",   text: "#fff" },
+  "murillo":      { label: "Indicado pelo Murillo",   bg: "var(--cor-navy)",       text: "#fff" },
+  "novo":         { label: "Novo",                    bg: "var(--cor-acento-suave)", text: "var(--cor-navy)" },
+  "privativo":    { label: "Privativo",               bg: "var(--cor-profunda)",   text: "#fff" },
+  "em-alta":      { label: "Em alta",                 bg: "var(--cor-primaria)",   text: "#fff" },
+};
+
+const MAX_BADGES_VISIBLE = 2;
 
 export function PasseioCard({ passeio, badge, loading = "lazy" }: PasseioCardProps) {
   const href = `/passeios/${passeio.categoria}/${passeio.slug}`;
   const categoriaNome = CATEGORIA_NOME[passeio.categoria] ?? passeio.categoria;
-  const badgeCfg = badge ? BADGE_CONFIG[badge] : null;
   const precoLabel = isCampoIndisponivel(passeio.preco) ? "Consultar" : passeio.preco;
+  const temPrecoAnterior =
+    !!passeio.precoAnterior &&
+    !isCampoIndisponivel(passeio.precoAnterior) &&
+    !isCampoIndisponivel(passeio.preco);
+
+  const localExibicao = passeio.localizacao || passeio.saida;
+
+  // Badges a renderizar — legado (singular) tem prioridade, depois o array.
+  const badgesNovas: BadgeComercial[] = (passeio.badges ?? []).slice(0, MAX_BADGES_VISIBLE);
+  const badgeLegada = badge ? BADGE_LEGACY_STYLE[badge] : null;
 
   return (
     <Link
       href={href}
       aria-label={`Ver passeio ${passeio.nome}`}
-      className="group block"
+      className="group block h-full"
       style={{ textDecoration: 'none' }}
     >
       <article
@@ -47,6 +88,9 @@ export function PasseioCard({ passeio, badge, loading = "lazy" }: PasseioCardPro
           overflow: 'hidden',
           boxShadow: 'var(--sombra-card)',
           transition: 'all 300ms cubic-bezier(0.4, 0, 0.2, 1)',
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
         }}
         className="group-hover:-translate-y-[6px] group-hover:shadow-[var(--sombra-hover)] group-hover:border-[var(--cor-primaria)] transition-all duration-300"
       >
@@ -74,7 +118,6 @@ export function PasseioCard({ passeio, badge, loading = "lazy" }: PasseioCardPro
               className="group-hover:scale-[1.04]"
             />
           ) : (
-            /* Placeholder — slot aguardando foto real */
             <div
               data-foto-id={`CARD-${passeio.slug.toUpperCase().replace(/-/g, '_')}-01`}
               title={`TODO foto: ${passeio.nome}`}
@@ -102,30 +145,45 @@ export function PasseioCard({ passeio, badge, loading = "lazy" }: PasseioCardPro
             </div>
           )}
 
-          {/* Badge */}
-          {badgeCfg && (
-            <span
+          {/* Badges (até 2) — canto superior esquerdo */}
+          {(badgesNovas.length > 0 || badgeLegada) && (
+            <div
               style={{
                 position: 'absolute',
                 top: '12px',
                 left: '12px',
-                background: badgeCfg.bg,
-                color: badgeCfg.text,
-                fontFamily: 'var(--font-inter)',
-                fontWeight: 600,
-                fontSize: '11px',
-                letterSpacing: '0.04em',
-                padding: '4px 10px',
-                borderRadius: '999px',
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '6px',
+                maxWidth: 'calc(100% - 24px)',
               }}
             >
-              {badgeCfg.label}
-            </span>
+              {badgesNovas.map((b) => {
+                const s = BADGE_STYLE[b];
+                return (
+                  <span key={b} style={badgePillStyle(s)}>
+                    {BADGE_LABEL[b]}
+                  </span>
+                );
+              })}
+              {badgeLegada && (
+                <span style={badgePillStyle(badgeLegada)}>
+                  {badgeLegada.label}
+                </span>
+              )}
+            </div>
           )}
         </div>
 
         {/* ── Conteúdo ──────────────────────────────────── */}
-        <div style={{ padding: '24px' }}>
+        <div
+          style={{
+            padding: '24px',
+            display: 'flex',
+            flexDirection: 'column',
+            flex: '1 1 auto',
+          }}
+        >
           {/* Categoria */}
           <span
             style={{
@@ -156,8 +214,8 @@ export function PasseioCard({ passeio, badge, loading = "lazy" }: PasseioCardPro
             {passeio.nome}
           </h3>
 
-          {/* Descrição — 2 linhas */}
-          {passeio.descricao && (
+          {/* Descrição — 2 linhas, ocupa o espaço flexível disponível */}
+          {passeio.descricao ? (
             <p
               style={{
                 fontFamily: 'var(--font-inter)',
@@ -170,10 +228,13 @@ export function PasseioCard({ passeio, badge, loading = "lazy" }: PasseioCardPro
                 WebkitBoxOrient: 'vertical',
                 overflow: 'hidden',
                 maxWidth: '100%',
+                flex: '1 1 auto',
               }}
             >
               {passeio.descricao}
             </p>
+          ) : (
+            <div style={{ flex: '1 1 auto', minHeight: '8px' }} aria-hidden="true" />
           )}
 
           {/* Divider */}
@@ -198,8 +259,8 @@ export function PasseioCard({ passeio, badge, loading = "lazy" }: PasseioCardPro
             {passeio.duracao && (
               <MetaItem icon={<IconClock />} label={passeio.duracao} />
             )}
-            {passeio.saida && (
-              <MetaItem icon={<IconPin />} label={passeio.saida} />
+            {localExibicao && (
+              <MetaItem icon={<IconPin />} label={localExibicao} />
             )}
           </div>
 
@@ -219,29 +280,43 @@ export function PasseioCard({ passeio, badge, loading = "lazy" }: PasseioCardPro
             >
               A partir de
             </span>
-            <span
-              style={{
-                fontFamily: 'var(--font-fraunces)',
-                fontSize: '28px',
-                fontWeight: 600,
-                color: 'var(--cor-primaria)',
-                lineHeight: 1,
-              }}
-            >
-              {precoLabel}
-            </span>
-            {!isCampoIndisponivel(passeio.preco) && (
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', flexWrap: 'wrap' }}>
+              {temPrecoAnterior && (
+                <span
+                  aria-label={`Preço anterior ${passeio.precoAnterior}`}
+                  style={{
+                    fontFamily: 'var(--font-inter)',
+                    fontSize: '15px',
+                    color: 'var(--cor-texto-claro)',
+                    textDecoration: 'line-through',
+                  }}
+                >
+                  {passeio.precoAnterior}
+                </span>
+              )}
               <span
                 style={{
-                  fontFamily: 'var(--font-inter)',
-                  fontSize: '13px',
-                  color: 'var(--cor-texto-claro)',
-                  marginLeft: '4px',
+                  fontFamily: 'var(--font-fraunces)',
+                  fontSize: '28px',
+                  fontWeight: 600,
+                  color: 'var(--cor-primaria)',
+                  lineHeight: 1,
                 }}
               >
-                / pessoa
+                {precoLabel}
               </span>
-            )}
+              {!isCampoIndisponivel(passeio.preco) && (
+                <span
+                  style={{
+                    fontFamily: 'var(--font-inter)',
+                    fontSize: '13px',
+                    color: 'var(--cor-texto-claro)',
+                  }}
+                >
+                  / pessoa
+                </span>
+              )}
+            </div>
           </div>
 
           {/* Botão */}
@@ -260,7 +335,7 @@ export function PasseioCard({ passeio, badge, loading = "lazy" }: PasseioCardPro
             }}
             className="group-hover:text-[var(--cor-acento)] group-hover:border-[var(--cor-acento)]"
           >
-            Ver detalhes
+            Ver passeio
             <span style={{ transition: 'transform 200ms' }} className="group-hover:translate-x-1">
               →
             </span>
@@ -269,6 +344,22 @@ export function PasseioCard({ passeio, badge, loading = "lazy" }: PasseioCardPro
       </article>
     </Link>
   );
+}
+
+function badgePillStyle(s: BadgeStyle): React.CSSProperties {
+  return {
+    background: s.bg,
+    color: s.text,
+    fontFamily: 'var(--font-inter)',
+    fontWeight: 600,
+    fontSize: '11px',
+    letterSpacing: '0.04em',
+    padding: '4px 10px',
+    borderRadius: '999px',
+    border: s.border ? `1px solid ${s.border}` : 'none',
+    whiteSpace: 'nowrap',
+    boxShadow: '0 1px 2px rgba(9,34,56,0.10)',
+  };
 }
 
 /* ── Ícones SVG line ──────────────────────────────────────── */
@@ -295,17 +386,6 @@ function IconClock() {
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <circle cx="12" cy="12" r="10" />
       <polyline points="12 6 12 12 16 14" />
-    </svg>
-  );
-}
-
-function IconPeople() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
-      <circle cx="9" cy="7" r="4" />
-      <path d="M23 21v-2a4 4 0 00-3-3.87" />
-      <path d="M16 3.13a4 4 0 010 7.75" />
     </svg>
   );
 }

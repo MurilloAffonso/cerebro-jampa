@@ -38,6 +38,9 @@ import { PoliticaCancelamento } from "@/components/PoliticaCancelamento";
 import { CTASticky } from "@/components/CTASticky";
 import { PasseioCard } from "@/components/PasseioCard";
 import { ReservationIntentForm } from "@/components/ReservationIntentForm";
+import { PasseioGallery } from "@/components/PasseioGallery";
+import { ClientesReviewsBlock } from "@/components/ClientesReviewsBlock";
+import { getPasseioGalleryImages } from "@/lib/gallery";
 
 const SITE_URL = `https://${empresa.dominio}`;
 const WA_BASE = empresa.contato.whatsappLink;
@@ -181,6 +184,12 @@ export default function PasseioPage({ params }: PasseioPageProps) {
         currentUrl={pageUrl}
       />
 
+      {/* C2.5 — GALERIA (fotos reais + fallback ilustrativo por categoria via lib/gallery) */}
+      <PasseioGallery
+        images={getPasseioGalleryImages(passeio)}
+        passeioNome={passeio.nome}
+      />
+
       {/* C3 — INFO CARD */}
       <section className="container-safe py-4">
         <InfoCard
@@ -316,6 +325,9 @@ export default function PasseioPage({ params }: PasseioPageProps) {
 
       {/* I4.5 — PRÉ-RESERVA WHATSAPP (todos os passeios) */}
       <ReservationIntentForm passeioNome={passeio.nome} />
+
+      {/* I4.7 — O QUE DIZEM NOSSOS CLIENTES (reviews reais do Google) */}
+      <ClientesReviewsBlock />
 
       {/* I5 — FAQ ACCORDION */}
       {faqItems.length > 0 && (

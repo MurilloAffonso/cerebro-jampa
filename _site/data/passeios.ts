@@ -19,17 +19,58 @@ export interface Avaliacao {
   data: string;
 }
 
+/**
+ * Badges comerciais — usar somente quando houver respaldo objetivo.
+ * NUNCA inventar "Mais vendido", "Recomendado" etc sem confirmação do Murillo.
+ */
+export type BadgeComercial =
+  | "imperdivel"
+  | "mais-vendido"
+  | "esgota-rapido"
+  | "recomendado"
+  | "depende-da-mare"
+  | "familia"
+  | "privativo"
+  | "bate-volta"
+  | "desconto-progressivo";
+
+export const BADGE_LABEL: Record<BadgeComercial, string> = {
+  "imperdivel":            "Imperdível",
+  "mais-vendido":          "Mais vendido",
+  "esgota-rapido":         "Esgota rápido",
+  "recomendado":           "Recomendado pelos turistas",
+  "depende-da-mare":       "Depende da maré",
+  "familia":               "Ideal para família",
+  "privativo":             "Privativo",
+  "bate-volta":            "Bate e volta",
+  "desconto-progressivo":  "Desconto progressivo",
+};
+
+/**
+ * Galeria estruturada — usar para PasseioGallery comercial.
+ * Só popular quando existirem fotos REAIS na pasta `public/images/passeios/`.
+ * Placeholder SVG não conta como foto real.
+ */
+export interface GalleryImage {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
 export interface Passeio {
   id: string;
   nome: string;
   categoria: string;
   slug: string;
   preco: string;         // "[CONSULTAR]" quando não confirmado
+  precoAnterior?: string; // riscado — opcional, popular só com confirmação
   duracao: string;       // "[CONSULTAR]" quando não confirmado
   saida: string;         // "[CONSULTAR]" quando não confirmado
+  localizacao?: string;   // ex: "Cabedelo · Litoral Norte" — opcional, distinto de `saida`
   descricao: string;
   descricaoLonga?: string;
   prioritario?: boolean; // true nos 3 passeios prioritários da Fase 1
+  badges?: BadgeComercial[]; // 0..N — card exibe até 2
   // SEO
   h1?: string;
   metaDescription?: string;
@@ -48,7 +89,8 @@ export interface Passeio {
   idealPara?: string[];
   // Imagens
   coverImage?: string;
-  gallery?: string[];
+  gallery?: string[];                    // legado — mantido por compat; pode apontar para placeholder
+  galleryImages?: GalleryImage[];        // novo — só popular com fotos REAIS (PasseioGallery)
   imagemAlt?: string;
   // FAQ
   requisitos?: string[];
@@ -604,6 +646,7 @@ export const passeios: Passeio[] = [
     slug: "areia-vermelha-catamara",
     prioritario: true,
     dependeDeMare: true,
+    badges: ["depende-da-mare"],
     preco: "R$ 70",
     duracao: "~3h",
     saida: "Conforme tábua de marés",
@@ -846,6 +889,7 @@ export const passeios: Passeio[] = [
     slug: "seixas",
     prioritario: true,
     dependeDeMare: true,
+    badges: ["depende-da-mare"],
     preco: "R$ 60",
     duracao: "~3h30",
     saida: "Conforme tábua de marés",
@@ -1024,6 +1068,7 @@ export const passeios: Passeio[] = [
     categoria: "piscinas-naturais",
     slug: "picaozinho",
     dependeDeMare: true,
+    badges: ["depende-da-mare"],
     preco: "R$ 60",
     duracao: "~3h",
     saida: "Conforme maré baixa",

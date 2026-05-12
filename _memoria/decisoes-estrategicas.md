@@ -593,3 +593,59 @@ Glows alinhados: `cta-orange` shadow agora usa `rgba(16,121,151,0.45)`; `cta-blu
 - Aviso "Confirme sempre a disponibilidade pelo WhatsApp antes de reservar." é fixo e não-removível.
 - Não dizer "tábua oficial da Marinha". Microcopy de indisponível é "Sem saída".
 - Próxima atualização de dados (jan/2027): mesmo padrão manual.
+
+---
+
+## Decisão 44 — Galeria estilo Luck + feedbacks limpos + fallback visual provisório (2026-05-12)
+
+**Contexto:** as páginas de passeio precisavam parecer mais comerciais, no padrão de sites turísticos fortes. A galeria caía em fundo azul vazio quando o passeio só tinha SVG placeholder, o slider de reviews tinha controles pesados (setas + dots + contador "X/N" + botões mobile) e a hierarquia visual não convidava ao engajamento.
+
+**Decisões tomadas:**
+
+1. **Toda página de passeio recebe galeria com pelo menos 4 imagens reais (JPG/WebP).**
+   - Pipeline em `_site/lib/gallery.ts`:
+     - `normalizeGalleryImages({...})` — junta `coverImage` real + `galleryImages` + `gallery` legado, deduplicado, sem SVG.
+     - `getFallbackGalleryImages(categoria)` — pool curado de 4 hero JPGs por categoria (`piscinas-naturais`, `litoral-norte`, `litoral-sul`, `city-tour`, `interestaduais`, `pacotes`) + pool genérico.
+     - `getPasseioGalleryImages(passeio)` — pipeline final: normaliza e completa com fallback até `MIN_GALERIA_IMAGES = 4`.
+   - SVG placeholder **nunca** entra na galeria (regex `\.(jpe?g|webp|png)$`).
+   - Imagens de fallback levam `caption: "Foto ilustrativa · Vem Passear em Jampa"` — honestidade total, nada inventado e nada de concorrente.
+
+2. **`PasseioGallery` v3 com visual de site turístico forte.**
+   - API enxuta: `<PasseioGallery images={GalleryImage[]} passeioNome={string} />`. Não decide fallback — quem monta a lista é o caller.
+   - Imagem principal grande (4:3 mobile · 16:10 desktop), bordas arredondadas 16px, sombra suave.
+   - Setas overlay ‹/› brancas circulares na imagem principal quando há ≥2 fotos.
+   - Contador discreto "X / N" no canto superior direito da principal.
+   - Strip de até 4 miniaturas; a **última visível** recebe overlay escurecido "+ N fotos" quando há excedente (não mais célula separada).
+   - Lightbox em `<dialog>` nativo: overlay `rgba(9,34,56,0.94)`, imagem central `object-fit: contain`, contador no topo, botão fechar canto superior direito, setas laterais, teclado (←/→/ESC) e swipe touch (threshold 50px).
+
+3. **`ReviewSlider` v2 — limpo e premium.**
+   - Removidos: setas grandes, dots, contador "X/N" e botões mobile.
+   - Mantido: slide centralizado (max-width 680px), avatar + nome + estrelas + tempo + texto truncado a 220 chars com "Ler completa", foto da review quando há.
+   - Autoplay 5s; pausa em `mouseenter`/`focus`/`touchstart`.
+   - Swipe mobile mantém troca manual; após swipe, pausa por 4s extras para leitura.
+   - Acessibilidade: `aria-roledescription="carousel"`, `aria-live="polite"` no slide, botão pausa/play **sr-only** (focável por teclado, invisível visualmente) atende WCAG sem poluir.
+
+4. **`PasseioCard` preservado.**
+   - Imagem 16:10, badges (até 2) no canto superior esquerdo, preço "A partir de" destacado, `precoAnterior` riscado opcional, descrição clamp 2 linhas, meta-info (duração + localização), CTA "Ver passeio".
+   - Cards equalizados em grid via flex column de altura total.
+   - Sistema `BadgeComercial` mantido (9 tipos): `mais-vendido`, `imperdivel`, `esgota-rapido`, `recomendado`, `depende-da-mare`, `familia`, `privativo`, `bate-volta`, `desconto-progressivo`. Nenhum badge inventado.
+
+**Arquivos criados:**
+- `_site/lib/gallery.ts`
+- `_site/components/PasseioGallery.tsx`
+- `_site/components/ReviewSlider.tsx`
+- `_site/components/ClientesReviewsBlock.tsx`
+
+**Arquivos alterados:**
+- `_site/app/passeios/[categoria]/[slug]/page.tsx` — usa `getPasseioGalleryImages` e nova API do `<PasseioGallery>`.
+- `_site/components/PasseioCard.tsx` — flex column de altura total para equalizar grid.
+
+**Validação:** `npm run type-check` ✅ + `npm run build` ✅ (43 páginas SSG, 14 kB / 115 kB no template de passeio).
+
+**Riscos conhecidos:**
+- Fallback usa fotos cruzadas entre passeios (caption "Foto ilustrativa" deixa claro, mas Murillo pode revisar os pools).
+- Autoplay de 5s no slider pode ser ajustado via prop `autoplayMs` no `ClientesReviewsBlock`.
+
+**Próxima evolução (não bloqueia commit):**
+- Substituir fallback ilustrativo por fotos reais específicas de cada passeio em `_site/public/images/passeios/[slug]/`, populando `galleryImages` no `data/passeios.ts` conforme o README da pasta.
+- Quando houver fotos reais ≥ 4 em um passeio, o fallback some automaticamente (helper já trata).
