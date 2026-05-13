@@ -708,3 +708,24 @@ Glows alinhados: `cta-orange` shadow agora usa `rgba(16,121,151,0.45)`; `cta-blu
 
 **Status:** Fase 1 documental aprovada e registrada. Fase 2 bloqueada por dependência externa (aprovação Google v4.9).
 
+---
+
+### 42. OAuth GBP Validado — Fase 2 Bloqueada por Quota (2026-05-13)
+
+**Decisão:** Registrar que o fluxo OAuth está funcional e que o bloqueio atual é exclusivamente a aprovação de quota da Google Business Profile API.
+
+**O que foi validado:**
+- Fluxo OAuth Desktop completo funcionou: navegador abriu, Murillo autorizou, `token.json` gerado.
+- `credentials.json` e `token.json` confirmados no `.gitignore` — não serão versionados.
+- Script `scripts/gbp-test.ts` executa sem erro até o ponto de autenticação.
+
+**Bloqueio atual:**
+- Chamada a `mybusinessaccountmanagement.googleapis.com/v1/accounts` falhou com quota=0.
+- Causa: acesso à GBP API não aprovado pelo Google ainda.
+- Solicitação enviada via formulário oficial — caso **0-9975000041103** (2026-05-13).
+- Prazo estimado: **7 a 10 dias úteis** (até ~2026-05-27).
+
+**Impacto:** nenhuma funcionalidade do site é afetada. GBP é módulo separado e independente.
+
+**Próxima ação:** aguardar e-mail de aprovação do Google. Ao receber, reabrir Fase 2 do roadmap GBP.
+

@@ -1,0 +1,17 @@
+{
+  "name": "gbp-vem-passear-jampa",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test:readonly": "tsx scripts/gbp-test.ts",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "google-auth-library": "^9.15.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.17",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  }
+}

@@ -170,15 +170,31 @@ Antes de seguir para Fase 2, validar:
 
 - [ ] Cloud Project `vem-passear-jampa-gbp` criado
 - [ ] 7 APIs (modernas) habilitadas
-- [ ] Solicitação de acesso à GMB v4.9 enviada
-- [ ] OAuth consent screen configurada com escopo `business.manage`
-- [ ] Credencial Desktop criada e `credentials.json` salvo localmente
-- [ ] `credentials.json` listado no `.gitignore`
+- ✅ Solicitação de acesso à GMB v4.9 enviada — caso **0-9975000041103** (2026-05-13)
+- ✅ OAuth consent screen configurada com escopo `business.manage`
+- ✅ Credencial Desktop criada e `credentials.json` salvo localmente
+- ✅ `credentials.json` listado no `.gitignore`
 - [ ] Murillo confirmado como Proprietário principal no GBP
 - [ ] 2FA ativo na conta Google
 - [ ] Aprovação Google v4.9 recebida (sinal verde para Fase 2)
 
 Quando os 9 itens estiverem ✅, abrir Fase 2 do roadmap.
+
+---
+
+## Status Atual — 2026-05-13
+
+**OAuth:** ✅ Validado. Fluxo completo funcionou: navegador abriu, autorização concluída, `token.json` gerado.
+
+**API:** ⚠️ Bloqueada por quota. A chamada a `mybusinessaccountmanagement.googleapis.com/v1/accounts` retornou erro de quota=0. Causa: acesso à GBP API ainda não aprovado pelo Google.
+
+**Solicitação de acesso:** enviada via formulário `support.google.com/business/contact/api_default`.
+- Caso: **0-9975000041103**
+- Prazo informado pelo Google: **7 a 10 dias úteis**
+- Data de envio: 2026-05-13
+- Data limite estimada: 2026-05-27
+
+**Próxima ação:** aguardar e-mail de aprovação do Google. Quando chegar, reexecutar `npm run test:readonly` para confirmar que a quota foi liberada e seguir para Fase 2.
 
 ---
 
