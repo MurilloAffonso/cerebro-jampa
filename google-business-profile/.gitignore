@@ -1,0 +1,28 @@
+# Segredos OAuth e credenciais — NUNCA commitar
+.env
+*.env
+!config.example.env
+
+credentials.json
+token.json
+refresh_token.json
+
+# Pastas de segredo
+secrets/
+
+# Logs de chamadas à API podem conter payload sensível
+logs/api-calls/*.json
+logs/api-calls/*.log
+logs/erros/*.json
+logs/execucoes/*.json
+
+# Snapshots locais que ainda não foram revisados
+data/snapshots/*.local.json
+
+# Drafts em fila — decisão: NÃO versionar até estarem aprovados
+data/fila/pendentes/*
+data/fila/rejeitados/*
+
+# Sistema
+.DS_Store
+Thumbs.db

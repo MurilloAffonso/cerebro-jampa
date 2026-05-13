@@ -649,3 +649,62 @@ Glows alinhados: `cta-orange` shadow agora usa `rgba(16,121,151,0.45)`; `cta-blu
 **Próxima evolução (não bloqueia commit):**
 - Substituir fallback ilustrativo por fotos reais específicas de cada passeio em `_site/public/images/passeios/[slug]/`, populando `galleryImages` no `data/passeios.ts` conforme o README da pasta.
 - Quando houver fotos reais ≥ 4 em um passeio, o fallback some automaticamente (helper já trata).
+
+---
+
+## Decisão 45 — Módulo google-business-profile — Fase 1 Documental Aprovada, Opção B (Enxuta) Adotada (2026-05-12)
+
+**Contexto:** foi criada a documentação inicial para gestão assistida do Google Business Profile (GBP) da Vem Passear Jampa via APIs oficiais do Google. Entregues 8 arquivos em `google-business-profile/` (README + `config.example.env` + `.gitignore` + 5 docs). Nenhum código, nenhuma credencial, nenhuma chamada à API, nenhuma alteração real no perfil. Decisão complementa as decisões 43 (Tábua v2) e 44 (Galeria estilo Luck) registradas no mesmo dia.
+
+**Decisão geral:** aprovar a Fase 1 documental do módulo e seguir pela **Opção B (enxuta)** como caminho de implementação inicial.
+
+**Escopo da Opção B (aprovada):**
+- ✅ Leitura via API (snapshot, reviews, Q&A, métricas, palavras-chave)
+- ✅ Relatórios automáticos (semanal e mensal)
+- ✅ Alertas de review nova e pergunta nova
+- ✅ Auditoria de consistência NAP
+- ❌ Nenhuma mutação automática
+- ❌ Nenhuma resposta a review via API sem aprovação humana
+- ❌ Nenhum post, foto, serviço, categoria, descrição, atributo ou Q&A criado via API sem aprovação humana
+- ❌ Nenhum endpoint de escrita chamado nesta fase
+
+**Decisão sobre Opção A (completa):**
+- Adiada para reavaliação após **30 a 60 dias de operação segura da Opção B**.
+- Critérios objetivos para promover B → A documentados em `google-business-profile/docs/roadmap.md`:
+  - ≥10 reviews/semana ou ≥3 perguntas/semana (volume justifica)
+  - Estrutura de resposta validada manualmente por 30 dias
+  - Zero erro na infraestrutura de Fase 3 por 30 dias
+  - Nova decisão formal registrada
+
+**Correção registrada — Q&A do proprietário via API:**
+- A afirmação anterior "Q&A do proprietário não existe via API" foi **corrigida**.
+- Documentação oficial confirma que o endpoint `locations.questions.create` existe na Q&A API v1 e em GMB v4.9.
+- **Status:** "Precisa validar em teste real se a conta proprietária consegue criar perguntas públicas com segurança e dentro das políticas do Google" antes de incluir no workflow automatizado.
+- Correção aplicada em `docs/api-map.md` seção 5 e `docs/permissions-and-risks.md` Tier 2.
+
+**Política de segurança definida:**
+- `.env`, `credentials.json`, `token.json`, `refresh_token.json` no `.gitignore` desde o início
+- 2FA obrigatório na conta Google antes de criar credencial OAuth
+- Refresh token só em `.env` local, nunca em chat, GitHub Actions ou nuvem pública
+- Modo `--dry-run` obrigatório nas primeiras 2 semanas em produção (relevante apenas se promover para Opção A)
+- Snapshot pré-mutação obrigatório (relevante apenas se promover para Opção A)
+
+**Próxima ação operacional (sem implementar código):**
+1. Criar Google Cloud Project `vem-passear-jampa-gbp` no `console.cloud.google.com`
+2. Habilitar 7 APIs modernas conforme `docs/oauth-setup.md` passo 2
+3. Solicitar acesso à GMB v4.9 legacy via formulário oficial (`support.google.com/business/contact/api_default`)
+4. Aguardar aprovação Google (5-30 dias)
+5. **Só quando aprovado**, abrir Fase 2 (implementação dos scripts de leitura)
+
+**Arquivos criados nesta decisão:**
+- `google-business-profile/README.md`
+- `google-business-profile/config.example.env`
+- `google-business-profile/.gitignore`
+- `google-business-profile/docs/api-map.md`
+- `google-business-profile/docs/permissions-and-risks.md`
+- `google-business-profile/docs/workflow-aprovacao.md`
+- `google-business-profile/docs/oauth-setup.md`
+- `google-business-profile/docs/roadmap.md`
+
+**Status:** Fase 1 documental aprovada e registrada. Fase 2 bloqueada por dependência externa (aprovação Google v4.9).
+
