@@ -34,11 +34,11 @@ interface Props {
 
 const STATUS_STYLE: Record<
   StatusMareManual,
-  { bg: string; color: string; border: string }
+  { bg: string; color: string; border: string; rowBg: string }
 > = {
-  "tem-passeio": { bg: "#E6F4EA", color: "#1B5E20", border: "#A5D6A7" },
-  consultar:    { bg: "#FFF4D9", color: "#7A5200", border: "#FFE08A" },
-  "sem-saida":  { bg: "#F1F1F1", color: "#6B6B6B", border: "#D9D9D9" },
+  "tem-passeio": { bg: "#E6F4EA", color: "#1B5E20", border: "#A5D6A7", rowBg: "#F4FBF5" },
+  consultar:    { bg: "#FFF4D9", color: "#7A5200", border: "#FFE08A", rowBg: "#FFFDF0" },
+  "sem-saida":  { bg: "#F1F1F1", color: "#6B6B6B", border: "#D9D9D9", rowBg: "#FAFAFA" },
 };
 
 function formatarData(iso: string): string {
@@ -64,6 +64,7 @@ export function TabuaMareMensal({ mes, visivel }: Props) {
       aria-label={`Tábua de maré — ${mes.mesNome} de ${mes.ano}`}
       hidden={!visivel}
     >
+      <style>{TABUA_CSS}</style>
       <div className="container-safe py-6">
         {/* Card "oficial Vem Passear" */}
         <article
@@ -172,7 +173,7 @@ export function TabuaMareMensal({ mes, visivel }: Props) {
                       <th scope="col" style={thStyle}>Data</th>
                       <th scope="col" style={thStyle}>Dia</th>
                       <th scope="col" style={thStyle}>Saída</th>
-                      <th scope="col" style={thStyle}>Maré</th>
+                      <th scope="col" style={{ ...thStyle, display: 'none' }} className="md-show">Maré</th>
                       <th scope="col" style={thStyle}>Status</th>
                     </tr>
                   </thead>
@@ -182,27 +183,33 @@ export function TabuaMareMensal({ mes, visivel }: Props) {
                       return (
                         <tr
                           key={d.data}
-                          style={{ borderTop: "1px solid var(--cor-borda)" }}
+                          style={{
+                            borderTop: "1px solid var(--cor-borda)",
+                            background: s.rowBg,
+                          }}
                         >
                           <td
                             style={{
                               ...tdStyle,
-                              fontWeight: 600,
+                              fontWeight: 700,
+                              fontSize: "15px",
                               color: "var(--cor-texto-escuro)",
                             }}
                           >
                             {formatarData(d.data)}
                           </td>
-                          <td style={tdStyle}>{d.diaSemana}</td>
+                          <td style={{ ...tdStyle, fontSize: "15px" }}>{d.diaSemana}</td>
                           <td
                             style={{
                               ...tdStyle,
+                              fontSize: "15px",
+                              fontWeight: 600,
                               color: "var(--cor-texto-escuro)",
                             }}
                           >
                             {d.horarioSaida ? formatarHorario(d.horarioSaida) : "—"}
                           </td>
-                          <td style={tdStyle}>
+                          <td style={{ ...tdStyle, display: 'none' }} className="md-show">
                             {d.alturaMare !== null
                               ? `${d.alturaMare.toFixed(1)}m`
                               : "—"}
@@ -211,10 +218,10 @@ export function TabuaMareMensal({ mes, visivel }: Props) {
                             <span
                               style={{
                                 display: "inline-block",
-                                padding: "4px 10px",
+                                padding: "5px 12px",
                                 borderRadius: "999px",
-                                fontSize: "12px",
-                                fontWeight: 600,
+                                fontSize: "13px",
+                                fontWeight: 700,
                                 background: s.bg,
                                 color: s.color,
                                 border: `1px solid ${s.border}`,
@@ -228,6 +235,37 @@ export function TabuaMareMensal({ mes, visivel }: Props) {
                     })}
                   </tbody>
                 </table>
+
+                {/* Legenda */}
+                <div style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: "10px",
+                  marginTop: "14px",
+                  padding: "0 2px",
+                }}>
+                  {(Object.entries(STATUS_STYLE) as [StatusMareManual, typeof STATUS_STYLE[StatusMareManual]][]).map(([key, s]) => (
+                    <span key={key} style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "6px",
+                      fontSize: "12px",
+                      fontFamily: "var(--font-inter)",
+                      color: "var(--cor-texto-medio)",
+                    }}>
+                      <span style={{
+                        display: "inline-block",
+                        width: "12px",
+                        height: "12px",
+                        borderRadius: "3px",
+                        background: s.bg,
+                        border: `1px solid ${s.border}`,
+                        flexShrink: 0,
+                      }} />
+                      {STATUS_LABEL[key]}
+                    </span>
+                  ))}
+                </div>
               </div>
             )}
 
@@ -296,6 +334,13 @@ export function TabuaMareMensal({ mes, visivel }: Props) {
     </section>
   );
 }
+
+// injeta CSS para mostrar coluna Maré em telas ≥ 640px
+const TABUA_CSS = `
+  @media (min-width: 640px) {
+    .md-show { display: table-cell !important; }
+  }
+`;
 
 const thStyle: React.CSSProperties = {
   padding: "10px 12px",
