@@ -8,7 +8,7 @@ const CADASTUR_URL = "https://cadastur.turismo.gov.br/cadastur/#!/public/qrcode/
 
 export function Footer() {
   return (
-    <footer style={{ background: 'var(--cor-primaria)', color: '#fff' }}>
+    <footer style={{ background: 'var(--cor-navy)', color: '#fff' }}>
       <div className="container-safe py-14 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-14 mb-12">
 
@@ -157,16 +157,16 @@ export function Footer() {
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                background: 'var(--cor-acento)',
+                background: 'var(--cor-whatsapp)',
                 color: '#fff',
                 fontFamily: 'var(--font-inter)',
                 fontWeight: 600,
                 fontSize: '14px',
                 padding: '12px 20px',
-                borderRadius: '8px',
+                borderRadius: '999px',
                 textDecoration: 'none',
                 marginBottom: '20px',
-                boxShadow: 'var(--sombra-cta)',
+                boxShadow: '0 4px 20px rgba(37,211,102,0.30)',
                 transition: 'all 200ms',
               }}
               onMouseEnter={e => (e.currentTarget.style.transform = 'translateY(-1px)')}

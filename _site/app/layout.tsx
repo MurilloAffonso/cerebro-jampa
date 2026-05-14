@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
-import { Inter, Fraunces, Caveat } from "next/font/google";
+import { DM_Sans, Lora, Caveat } from "next/font/google";
 import "@/styles/globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { generateLocalBusinessSchema } from "@/lib/seo";
 
-const inter = Inter({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-dm-sans",
   weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
-const fraunces = Fraunces({
+const lora = Lora({
   subsets: ["latin"],
-  variable: "--font-fraunces",
+  variable: "--font-lora",
   weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
   display: "swap",
@@ -88,13 +88,13 @@ export default function RootLayout({
 
   return (
     <html lang="pt-BR">
-      <body className={`${inter.variable} ${fraunces.variable} ${caveat.variable} font-sans flex flex-col min-h-screen overflow-x-hidden antialiased`}>
+      <body className={`${dmSans.variable} ${lora.variable} ${caveat.variable} font-sans flex flex-col min-h-screen overflow-x-hidden antialiased`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1" style={{ paddingTop: 'var(--header-h)' }}>{children}</main>
         <Footer />
       </body>
     </html>

@@ -22,8 +22,9 @@ import {
   generateTouristAttractionSchema,
 } from "@/lib/seo";
 import { isCampoIndisponivel } from "@/lib/consultar";
+import { getPasseioBadges } from "@/lib/badges";
 import { HeroBlock } from "@/components/HeroBlock";
-import { InfoCard } from "@/components/InfoCard";
+import { FichaTecnica } from "@/components/FichaTecnica";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { MareAlert } from "@/components/MareAlert";
@@ -126,6 +127,9 @@ export default function PasseioPage({ params }: PasseioPageProps) {
   // Hero H1 — usa h1 customizado ou nome do passeio
   const h1Text = passeio.h1 || `${passeio.nome} em João Pessoa`;
 
+  // Badges do passeio (sistema Cloud Design)
+  const badges = getPasseioBadges(passeio);
+
   // Rótulo legível da categoria para breadcrumb e schema
   const categoriaLabel = params.categoria
     .split("-")
@@ -160,21 +164,34 @@ export default function PasseioPage({ params }: PasseioPageProps) {
       )}
 
       {/* CTA Sticky — fixed bottom, mobile only, aparece após hero sair do viewport */}
-      <CTASticky whatsappUrl={whatsappUrl} label="Reservar com Murillo no WhatsApp" />
+      <CTASticky
+        whatsappUrl={whatsappUrl}
+        label="Reservar com Murillo no WhatsApp"
+        price={isCampoIndisponivel(passeio.preco) ? undefined : passeio.preco}
+      />
 
-      {/* C2 — HERO */}
+      {/* C2 — HERO com breadcrumb overlay + badges + CTA */}
       <div id="hero-section">
         <HeroBlock
           imageSrc={passeio.coverImage || "/images/placeholders/placeholder-passeio.svg"}
           imageAlt={passeio.imagemAlt || passeio.nome}
           title={h1Text}
           subtitle={passeio.subtituloHero}
+          badges={badges}
+          breadcrumbItems={[
+            { label: "Home", href: "/" },
+            { label: categoriaLabel, href: `/passeios/${params.categoria}` },
+            { label: passeio.nomeCurto || passeio.nome },
+          ]}
           cta={{ text: "💬 Reservar com Murillo no WhatsApp", href: whatsappUrl }}
           isH1
         />
       </div>
 
-      {/* Breadcrumb (emite schema BreadcrumbList automaticamente) */}
+      {/* C2.1 — FICHA TÉCNICA (duração, saída, preço, categoria) */}
+      <FichaTecnica passeio={passeio} />
+
+      {/* Breadcrumb SEO schema — visualmente mínimo */}
       <Breadcrumb
         items={[
           { label: "Home", href: "/" },
@@ -184,22 +201,27 @@ export default function PasseioPage({ params }: PasseioPageProps) {
         currentUrl={pageUrl}
       />
 
-      {/* C2.5 — GALERIA (fotos reais + fallback ilustrativo por categoria via lib/gallery) */}
+      {/* C2.5 — GALERIA */}
       <PasseioGallery
         images={getPasseioGalleryImages(passeio)}
         passeioNome={passeio.nome}
       />
 
-      {/* C3 — INFO CARD */}
-      <section className="container-safe py-4">
-        <InfoCard
-          preco={passeio.preco}
-          duracao={passeio.duracao}
-          saida={passeio.saida}
-          observacao={passeio.observacoes}
-          whatsappUrl={whatsappUrl}
-        />
-      </section>
+      {/* C3 — OBSERVAÇÕES (apenas se houver texto confirmado, sem redundar com FichaTecnica) */}
+      {passeio.observacoes && !passeio.observacoes.includes("[CONSULTAR") && (
+        <section style={{ background: '#F7F8F7', padding: '12px 16px' }}>
+          <p style={{
+            fontFamily: 'var(--font-body)',
+            fontSize: 13,
+            color: '#5A6B78',
+            lineHeight: 1.55,
+            margin: 0,
+            maxWidth: 680,
+          }}>
+            ℹ️ {passeio.observacoes}
+          </p>
+        </section>
+      )}
 
       {/* C4 — AVISO DE MARÉ + PRÓXIMA SAÍDA */}
       {passeio.dependeDeMare && (

@@ -321,9 +321,27 @@ export const passeios: Passeio[] = [
       },
     ],
     coverImage: "/images/passeios/litoral-sul/hero-01.jpg",
-    gallery: [
-      "/images/passeios/litoral-sul/roteiro-classico/galeria-01.webp",
-      "/images/passeios/litoral-sul/roteiro-classico/galeria-02.webp",
+    galleryImages: [
+      {
+        src: "/images/passeios/litoral-sul/hero-01.jpg",
+        alt: "Vista aérea da Praia de Coqueirinho com recifes e morros verdes no litoral sul da Paraíba",
+      },
+      {
+        src: "/images/passeios/litoral-sul/galeria-01.jpg",
+        alt: "Casal no topo da falésia do Mirante Dedo de Deus com praia e mar ao fundo, Coqueirinho",
+      },
+      {
+        src: "/images/passeios/litoral-sul/galeria-02.jpg",
+        alt: "Portal Mirante Dedo de Deus em Coqueirinho, Conde-PB — litoral sul da Paraíba",
+      },
+      {
+        src: "/images/passeios/litoral-sul/galeria-03.jpg",
+        alt: "Swing no Mirante Dedo de Deus em Coqueirinho com mar turquesa ao fundo",
+      },
+      {
+        src: "/images/passeios/litoral-sul/card-01.jpg",
+        alt: "Falésias avermelhadas com trilha de madeira em Coqueirinho, litoral sul da Paraíba",
+      },
     ],
     imagemAlt:
       "Falésias coloridas e coqueiros na Praia de Coqueirinho, litoral sul de João Pessoa",
@@ -695,10 +713,32 @@ export const passeios: Passeio[] = [
           "Quando a maré começa a encher, o banco de areia some de volta para o mar — sinal de que é hora de voltar. Total: ~3h desde o embarque.",
       },
     ],
-    coverImage: "/images/passeios/litoral-norte/areia-vermelha/hero-01.jpg",
-    gallery: [
-      "/images/passeios/areia-vermelha/galeria-01.webp",
-      "/images/passeios/areia-vermelha/galeria-02.webp",
+    coverImage: "/images/passeios/areia-vermelha/hero-01.jpg",
+    galleryImages: [
+      {
+        src: "/images/passeios/areia-vermelha/hero-01.jpg",
+        alt: "Vista aérea de Areia Vermelha com kayak e plataformas flutuantes ao fundo, Cabedelo",
+      },
+      {
+        src: "/images/passeios/areia-vermelha/galeria-01.jpg",
+        alt: "Turistas na água verde-esmeralda de Areia Vermelha, Cabedelo — vista aérea",
+      },
+      {
+        src: "/images/passeios/areia-vermelha/galeria-02.jpg",
+        alt: "Grupo posando nas piscinas naturais de Areia Vermelha com kayaks ao fundo",
+      },
+      {
+        src: "/images/passeios/areia-vermelha/galeria-03.jpg",
+        alt: "Vista aérea do banco de areia de Areia Vermelha lotado de turistas em Cabedelo",
+      },
+      {
+        src: "/images/passeios/areia-vermelha/galeria-04.jpg",
+        alt: "Família posando nas piscinas naturais de Areia Vermelha, Cabedelo",
+      },
+      {
+        src: "/images/passeios/areia-vermelha/galeria-05.jpg",
+        alt: "Casal na água de Areia Vermelha com plataforma e toboágua ao fundo",
+      },
     ],
     imagemAlt:
       "Banco de areia de Areia Vermelha com piscinas naturais verde-esmeralda durante maré baixa em Cabedelo, João Pessoa",
@@ -957,14 +997,28 @@ export const passeios: Passeio[] = [
       "As piscinas naturais só aparecem quando a maré está baixa. Antes de confirmar sua data, a gente consulta a tábua de marés e te avisa o melhor horário. Você não precisa se preocupar com isso. Esse é o nosso trabalho.",
     nomeCurto: "Seixas",
     idealPara: ["Mergulho", "Snorkel", "Fotos", "Aventura marinha"],
-    coverImage: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
-    gallery: [
-      "/images/passeios/seixas/galeria-01.svg",
-      "/images/passeios/seixas/galeria-02.svg",
-      "/images/passeios/seixas/galeria-03.svg",
-      "/images/passeios/seixas/galeria-04.svg",
-      "/images/passeios/seixas/galeria-05.svg",
-      "/images/passeios/seixas/galeria-06.svg",
+    coverImage: "/images/passeios/seixas/hero-01.jpg",
+    galleryImages: [
+      {
+        src: "/images/passeios/seixas/hero-01.jpg",
+        alt: "Casal sobre os recifes do Seixas com ondas quebrando ao fundo, João Pessoa",
+      },
+      {
+        src: "/images/passeios/seixas/galeria-01.jpg",
+        alt: "Turistas nadando nas piscinas naturais do Seixas vistas do drone, João Pessoa",
+      },
+      {
+        src: "/images/passeios/seixas/galeria-02.jpg",
+        alt: "Casal dentro de arco natural de coral nas piscinas naturais do Seixas",
+      },
+      {
+        src: "/images/passeios/seixas/galeria-03.jpg",
+        alt: "Casal posando nas pedras e recifes da Praia do Seixas, João Pessoa",
+      },
+      {
+        src: "/images/passeios/seixas/card-01.jpg",
+        alt: "Vista aérea da praia do Seixas com turistas e palmeiras ao fundo",
+      },
     ],
     imagemAlt:
       "Piscinas naturais de Seixas com coral e água cristalina durante maré baixa em João Pessoa",
@@ -1077,7 +1131,16 @@ export const passeios: Passeio[] = [
     descricaoLonga:
       "Picãozinho é um dos recifes mais procurados de João Pessoa. Piscinas rasas, mornas e cristalinas, ideais para snorkel. Peixes coloridos, algas, fauna marinha preservada. É como mergulhar em um aquário natural.",
     coverImage: "/images/passeios/picaozinho/hero-01.jpg",
-    gallery: ["/images/passeios/picaozinho/galeria-01.webp"],
+    galleryImages: [
+      {
+        src: "/images/passeios/picaozinho/hero-01.jpg",
+        alt: "Vista aérea do catamarã Vida Arretada ancorado nos recifes de Picãozinho, João Pessoa",
+      },
+      {
+        src: "/images/passeios/picaozinho/card-01.jpg",
+        alt: "Catamarã sobre os recifes de Picãozinho com mar turquesa ao fundo, João Pessoa",
+      },
+    ],
     rotario: [
       "Embarque em Tambaú",
       "Navegação curta (1,5 km)",

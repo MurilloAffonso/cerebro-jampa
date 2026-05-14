@@ -1,410 +1,248 @@
-/**
- * PasseioCard v2 — card comercial reutilizável.
- *
- * Suporta:
- *  - `badges: BadgeComercial[]` — array de badges (até 2 visíveis no card)
- *  - `badge` (singular, legado) — alias deprecated, sempre prevalece sobre o array
- *  - `passeio.precoAnterior` — preço riscado opcional (não inventar)
- *  - `passeio.localizacao` — distinta do ponto de embarque (`saida`)
- *
- * Sem inventar dados: preço, localização e badges vêm de `data/passeios.ts`.
- */
+"use client";
 
 import Link from "next/link";
 import Image from "next/image";
-import { BADGE_LABEL, type BadgeComercial, type Passeio } from "@/data/passeios";
-import { isCampoIndisponivel } from "@/lib/consultar";
+import { empresa } from "@/data/empresa";
+import type { Passeio } from "@/data/passeios";
+import { getPasseioBadges, parsePrecoChip, DESIGN_BADGE, type DesignBadgeKind } from "@/lib/badges";
 
-/** Badges legadas (aceitas via prop por chamadores antigos). Migrar para BadgeComercial. */
-type BadgeLegado = "mais-vendido" | "murillo" | "novo" | "privativo" | "em-alta";
+const WA_BASE = empresa.contato.whatsappLink;
 
 interface PasseioCardProps {
   passeio: Passeio;
-  /** @deprecated usar `passeio.badges`. Mantido para chamadores antigos. */
-  badge?: BadgeLegado;
   loading?: "lazy" | "eager";
 }
 
-const CATEGORIA_NOME: Record<string, string> = {
-  "pacotes":           "Pacotes",
-  "litoral-sul":       "Litoral Sul",
-  "litoral-norte":     "Litoral Norte",
-  "piscinas-naturais": "Piscinas Naturais",
-  "city-tour":         "City Tour",
-  "interestaduais":    "Interestaduais",
-};
-
-type BadgeStyle = { bg: string; text: string; border?: string };
-
-const BADGE_STYLE: Record<BadgeComercial, BadgeStyle> = {
-  "imperdivel":           { bg: "var(--cor-acento)",          text: "#fff" },
-  "mais-vendido":         { bg: "var(--cor-primaria)",        text: "#fff" },
-  "esgota-rapido":        { bg: "var(--cor-acento-suave)",    text: "var(--cor-navy)" },
-  "recomendado":          { bg: "var(--cor-navy)",            text: "#fff" },
-  "depende-da-mare":      { bg: "var(--cor-areia)",           text: "var(--cor-navy)" },
-  "familia":              { bg: "var(--cor-fundo-puro)",      text: "var(--cor-navy)", border: "var(--cor-primaria)" },
-  "privativo":            { bg: "var(--cor-profunda)",        text: "#fff" },
-  "bate-volta":           { bg: "var(--cor-primaria-clara)",  text: "#fff" },
-  "desconto-progressivo": { bg: "var(--cor-acento)",          text: "#fff" },
-};
-
-const BADGE_LEGACY_STYLE: Record<BadgeLegado, BadgeStyle & { label: string }> = {
-  "mais-vendido": { label: "Mais vendido",            bg: "var(--cor-primaria)",   text: "#fff" },
-  "murillo":      { label: "Indicado pelo Murillo",   bg: "var(--cor-navy)",       text: "#fff" },
-  "novo":         { label: "Novo",                    bg: "var(--cor-acento-suave)", text: "var(--cor-navy)" },
-  "privativo":    { label: "Privativo",               bg: "var(--cor-profunda)",   text: "#fff" },
-  "em-alta":      { label: "Em alta",                 bg: "var(--cor-primaria)",   text: "#fff" },
-};
-
-const MAX_BADGES_VISIBLE = 2;
-
-export function PasseioCard({ passeio, badge, loading = "lazy" }: PasseioCardProps) {
-  const href = `/passeios/${passeio.categoria}/${passeio.slug}`;
-  const categoriaNome = CATEGORIA_NOME[passeio.categoria] ?? passeio.categoria;
-  const precoLabel = isCampoIndisponivel(passeio.preco) ? "Consultar" : passeio.preco;
-  const temPrecoAnterior =
-    !!passeio.precoAnterior &&
-    !isCampoIndisponivel(passeio.precoAnterior) &&
-    !isCampoIndisponivel(passeio.preco);
-
-  const localExibicao = passeio.localizacao || passeio.saida;
-
-  // Badges a renderizar — legado (singular) tem prioridade, depois o array.
-  const badgesNovas: BadgeComercial[] = (passeio.badges ?? []).slice(0, MAX_BADGES_VISIBLE);
-  const badgeLegada = badge ? BADGE_LEGACY_STYLE[badge] : null;
+export function PasseioCard({ passeio, loading = "lazy" }: PasseioCardProps) {
+  const href   = `/passeios/${passeio.categoria}/${passeio.slug}`;
+  const waUrl  = `${WA_BASE}?text=${encodeURIComponent(`Oi, tenho interesse no passeio ${passeio.nome}`)}`;
+  const badges = getPasseioBadges(passeio);
+  const preco  = parsePrecoChip(passeio.preco);
+  const local  = passeio.localizacao || passeio.saida;
 
   return (
-    <Link
-      href={href}
-      aria-label={`Ver passeio ${passeio.nome}`}
-      className="group block h-full"
-      style={{ textDecoration: 'none' }}
+    <article style={{
+      width: '100%',
+      background: '#fff',
+      borderRadius: 14,
+      overflow: 'hidden',
+      border: '1px solid #E6E9EB',
+      boxShadow: '0 10px 30px -22px rgba(9,34,56,0.35)',
+      display: 'flex',
+      flexDirection: 'column',
+      transition: 'transform 240ms cubic-bezier(0.22,1,0.36,1), box-shadow 240ms ease, border-color 180ms ease',
+      willChange: 'transform',
+    }}
+      onMouseEnter={e => {
+        const el = e.currentTarget;
+        el.style.transform = 'translateY(-4px)';
+        el.style.boxShadow = '0 20px 50px -24px rgba(9,34,56,0.35)';
+        el.style.borderColor = '#107997';
+      }}
+      onMouseLeave={e => {
+        const el = e.currentTarget;
+        el.style.transform = 'translateY(0)';
+        el.style.boxShadow = '0 10px 30px -22px rgba(9,34,56,0.35)';
+        el.style.borderColor = '#E6E9EB';
+      }}
     >
-      <article
-        style={{
-          background: 'var(--cor-fundo-puro)',
-          border: '1px solid transparent',
-          borderRadius: '16px',
-          overflow: 'hidden',
-          boxShadow: 'var(--sombra-card)',
-          transition: 'all 300ms cubic-bezier(0.4, 0, 0.2, 1)',
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-        }}
-        className="group-hover:-translate-y-[6px] group-hover:shadow-[var(--sombra-hover)] group-hover:border-[var(--cor-primaria)] transition-all duration-300"
-      >
-        {/* ── Imagem 16:10 ──────────────────────────────── */}
-        <div
-          style={{
-            position: 'relative',
-            aspectRatio: '16/10',
-            overflow: 'hidden',
-            borderRadius: '16px 16px 0 0',
-            background: 'var(--cor-navy)',
-          }}
-        >
-          {passeio.coverImage ? (
-            <Image
-              src={passeio.coverImage}
-              alt={passeio.imagemAlt || `${passeio.nome} em João Pessoa`}
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              loading={loading}
-              style={{
-                objectFit: 'cover',
-                transition: 'transform 550ms cubic-bezier(0.22, 1, 0.36, 1)',
-              }}
-              className="group-hover:scale-[1.04]"
-            />
-          ) : (
-            <div
-              data-foto-id={`CARD-${passeio.slug.toUpperCase().replace(/-/g, '_')}-01`}
-              title={`TODO foto: ${passeio.nome}`}
-              style={{
-                width: '100%',
-                height: '100%',
-                background: 'linear-gradient(135deg, var(--cor-navy) 0%, var(--cor-primaria) 100%)',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '8px',
-              }}
-            >
-              <IconImage />
-              <span style={{
-                fontFamily: 'var(--font-inter)',
-                fontSize: '10px',
-                letterSpacing: '0.08em',
-                color: 'rgba(255,255,255,0.35)',
-                textTransform: 'uppercase',
-              }}>
-                foto em breve
-              </span>
-            </div>
-          )}
+      {/* ── Área de imagem (200px) ── */}
+      <div style={{ position: 'relative', height: 200, flexShrink: 0 }}>
 
-          {/* Badges (até 2) — canto superior esquerdo */}
-          {(badgesNovas.length > 0 || badgeLegada) && (
-            <div
-              style={{
-                position: 'absolute',
-                top: '12px',
-                left: '12px',
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: '6px',
-                maxWidth: 'calc(100% - 24px)',
-              }}
-            >
-              {badgesNovas.map((b) => {
-                const s = BADGE_STYLE[b];
-                return (
-                  <span key={b} style={badgePillStyle(s)}>
-                    {BADGE_LABEL[b]}
-                  </span>
-                );
-              })}
-              {badgeLegada && (
-                <span style={badgePillStyle(badgeLegada)}>
-                  {badgeLegada.label}
-                </span>
-              )}
-            </div>
+        {/* Foto */}
+        {passeio.coverImage ? (
+          <Image
+            src={passeio.coverImage}
+            alt={passeio.imagemAlt || `${passeio.nome} em João Pessoa`}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            loading={loading}
+            style={{ objectFit: 'cover', filter: 'saturate(1.05)' }}
+          />
+        ) : (
+          <div style={{
+            width: '100%', height: '100%',
+            background: 'linear-gradient(135deg, #092238 0%, #107997 100%)',
+          }} />
+        )}
+
+        {/* Overlay gradiente */}
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'linear-gradient(180deg, rgba(9,34,56,0) 30%, rgba(9,34,56,0.65) 100%)',
+          pointerEvents: 'none',
+        }} />
+
+        {/* Badges — top left */}
+        {badges.length > 0 && (
+          <div style={{
+            position: 'absolute', top: 12, left: 12,
+            display: 'flex', gap: 6, flexWrap: 'wrap',
+          }}>
+            {badges.map((k) => <BadgePill key={k} kind={k} />)}
+          </div>
+        )}
+
+        {/* Favorito — top right */}
+        <div style={{
+          position: 'absolute', top: 12, right: 12,
+          width: 32, height: 32, borderRadius: 999,
+          background: 'rgba(255,255,255,0.94)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          color: '#092238', fontSize: 14, lineHeight: 1,
+        }} aria-hidden="true">♡</div>
+
+        {/* Chip de preço — bottom right */}
+        {preco && (
+          <div style={{
+            position: 'absolute', bottom: 12, right: 12,
+            background: '#fff', borderRadius: 8,
+            padding: '6px 10px',
+            boxShadow: '0 6px 18px -10px rgba(0,0,0,0.4)',
+            lineHeight: 1.1,
+          }}>
+            <div style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: 9, fontWeight: 500, textTransform: 'uppercase',
+              letterSpacing: '0.06em', color: '#5A6B78',
+            }}>a partir de</div>
+            <div style={{
+              fontFamily: 'var(--font-heading)',
+              fontSize: 18, fontWeight: 700, color: '#107997', marginTop: 1,
+            }}>{preco}</div>
+          </div>
+        )}
+      </div>
+
+      {/* ── Conteúdo ── */}
+      <div style={{ padding: '14px 16px 16px', display: 'flex', flexDirection: 'column', flex: '1 1 auto' }}>
+
+        {/* Título */}
+        <Link href={href} style={{ textDecoration: 'none' }}>
+          <h3 style={{
+            fontFamily: 'var(--font-heading)',
+            fontSize: 19, fontWeight: 600,
+            color: '#092238', letterSpacing: '-0.01em', lineHeight: 1.15,
+            marginBottom: 8,
+            transition: 'color 150ms',
+          }}
+            onMouseEnter={e => (e.currentTarget.style.color = '#107997')}
+            onMouseLeave={e => (e.currentTarget.style.color = '#092238')}
+          >{passeio.nome}</h3>
+        </Link>
+
+        {/* Meta-info */}
+        <div style={{
+          display: 'flex', gap: 12, flex: '1 1 auto',
+          fontSize: 12, color: '#5A6B78',
+          marginBottom: 14,
+        }}>
+          {passeio.duracao && (
+            <MetaItem icon={<IcoClock />}>{passeio.duracao}</MetaItem>
+          )}
+          {local && (
+            <MetaItem icon={<IcoPin />}>{local}</MetaItem>
           )}
         </div>
 
-        {/* ── Conteúdo ──────────────────────────────────── */}
-        <div
-          style={{
-            padding: '24px',
-            display: 'flex',
-            flexDirection: 'column',
-            flex: '1 1 auto',
+        {/* Botões */}
+        <div style={{ display: 'flex', gap: 8 }}>
+          <Link href={href} style={{
+            flex: 1,
+            display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+            fontFamily: 'var(--font-body)', fontSize: 13, fontWeight: 600,
+            color: '#092238', background: 'transparent',
+            border: '1.5px solid #E6E9EB', borderRadius: 999,
+            padding: '10px 0', textDecoration: 'none', minHeight: 44,
+            transition: 'border-color 150ms, background 150ms',
           }}
-        >
-          {/* Categoria */}
-          <span
-            style={{
-              fontFamily: 'var(--font-inter)',
-              fontSize: '12px',
-              fontWeight: 600,
-              letterSpacing: '0.10em',
-              textTransform: 'uppercase',
-              color: 'var(--cor-acento)',
-              display: 'block',
-              marginBottom: '8px',
+            onMouseEnter={e => {
+              e.currentTarget.style.borderColor = '#092238';
+              e.currentTarget.style.background = '#F7F8F7';
             }}
-          >
-            {categoriaNome}
-          </span>
-
-          {/* Nome */}
-          <h3
-            style={{
-              fontFamily: 'var(--font-fraunces)',
-              fontSize: '22px',
-              fontWeight: 500,
-              lineHeight: 1.2,
-              color: 'var(--cor-primaria)',
-              marginBottom: '10px',
+            onMouseLeave={e => {
+              e.currentTarget.style.borderColor = '#E6E9EB';
+              e.currentTarget.style.background = 'transparent';
             }}
-          >
-            {passeio.nome}
-          </h3>
-
-          {/* Descrição — 2 linhas, ocupa o espaço flexível disponível */}
-          {passeio.descricao ? (
-            <p
-              style={{
-                fontFamily: 'var(--font-inter)',
-                fontSize: '15px',
-                color: 'var(--cor-texto-medio)',
-                lineHeight: 1.55,
-                marginBottom: '16px',
-                display: '-webkit-box',
-                WebkitLineClamp: 2,
-                WebkitBoxOrient: 'vertical',
-                overflow: 'hidden',
-                maxWidth: '100%',
-                flex: '1 1 auto',
-              }}
-            >
-              {passeio.descricao}
-            </p>
-          ) : (
-            <div style={{ flex: '1 1 auto', minHeight: '8px' }} aria-hidden="true" />
-          )}
-
-          {/* Divider */}
-          <div
-            style={{
-              height: '1px',
-              background: 'var(--cor-borda)',
-              marginBottom: '16px',
-            }}
-            aria-hidden="true"
-          />
-
-          {/* Meta-info */}
-          <div
-            style={{
-              display: 'flex',
-              gap: '16px',
-              marginBottom: '20px',
-              flexWrap: 'wrap',
-            }}
-          >
-            {passeio.duracao && (
-              <MetaItem icon={<IconClock />} label={passeio.duracao} />
-            )}
-            {localExibicao && (
-              <MetaItem icon={<IconPin />} label={localExibicao} />
-            )}
-          </div>
-
-          {/* Preço */}
-          <div style={{ marginBottom: '20px' }}>
-            <span
-              style={{
-                fontFamily: 'var(--font-inter)',
-                fontSize: '11px',
-                fontWeight: 600,
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase',
-                color: 'var(--cor-texto-claro)',
-                display: 'block',
-                marginBottom: '4px',
-              }}
-            >
-              A partir de
-            </span>
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', flexWrap: 'wrap' }}>
-              {temPrecoAnterior && (
-                <span
-                  aria-label={`Preço anterior ${passeio.precoAnterior}`}
-                  style={{
-                    fontFamily: 'var(--font-inter)',
-                    fontSize: '15px',
-                    color: 'var(--cor-texto-claro)',
-                    textDecoration: 'line-through',
-                  }}
-                >
-                  {passeio.precoAnterior}
-                </span>
-              )}
-              <span
-                style={{
-                  fontFamily: 'var(--font-fraunces)',
-                  fontSize: '28px',
-                  fontWeight: 600,
-                  color: 'var(--cor-primaria)',
-                  lineHeight: 1,
-                }}
-              >
-                {precoLabel}
-              </span>
-              {!isCampoIndisponivel(passeio.preco) && (
-                <span
-                  style={{
-                    fontFamily: 'var(--font-inter)',
-                    fontSize: '13px',
-                    color: 'var(--cor-texto-claro)',
-                  }}
-                >
-                  / pessoa
-                </span>
-              )}
-            </div>
-          </div>
-
-          {/* Botão */}
-          <span
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              fontFamily: 'var(--font-inter)',
-              fontWeight: 600,
-              fontSize: '15px',
-              color: 'var(--cor-primaria)',
-              borderBottom: '1.5px solid rgba(16,121,151,0.28)',
-              paddingBottom: '2px',
-              transition: 'color 200ms, border-color 200ms',
-            }}
-            className="group-hover:text-[var(--cor-acento)] group-hover:border-[var(--cor-acento)]"
           >
             Ver passeio
-            <span style={{ transition: 'transform 200ms' }} className="group-hover:translate-x-1">
-              →
-            </span>
-          </span>
+          </Link>
+
+          <a href={waUrl} target="_blank" rel="noopener noreferrer"
+            onClick={e => e.stopPropagation()}
+            aria-label={`Reservar ${passeio.nome} pelo WhatsApp`}
+            style={{
+              flex: 1.3,
+              display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+              gap: 6,
+              fontFamily: 'var(--font-body)', fontSize: 13, fontWeight: 700,
+              color: '#fff', background: '#107997', border: 'none',
+              borderRadius: 999, padding: '10px 0', textDecoration: 'none',
+              minHeight: 44,
+              boxShadow: '0 8px 22px -10px rgba(16,121,151,0.55)',
+              transition: 'background 150ms',
+            }}
+            onMouseEnter={e => (e.currentTarget.style.background = '#0E8FA8')}
+            onMouseLeave={e => (e.currentTarget.style.background = '#107997')}
+          >
+            <IcoWA /> WhatsApp
+          </a>
         </div>
-      </article>
-    </Link>
+      </div>
+    </article>
   );
 }
 
-function badgePillStyle(s: BadgeStyle): React.CSSProperties {
-  return {
-    background: s.bg,
-    color: s.text,
-    fontFamily: 'var(--font-inter)',
-    fontWeight: 600,
-    fontSize: '11px',
-    letterSpacing: '0.04em',
-    padding: '4px 10px',
-    borderRadius: '999px',
-    border: s.border ? `1px solid ${s.border}` : 'none',
-    whiteSpace: 'nowrap',
-    boxShadow: '0 1px 2px rgba(9,34,56,0.10)',
-  };
-}
+/* ── Sub-componentes ── */
 
-/* ── Ícones SVG line ──────────────────────────────────────── */
-function MetaItem({ icon, label }: { icon: React.ReactNode; label: string }) {
+function BadgePill({ kind }: { kind: DesignBadgeKind }) {
+  const b = DESIGN_BADGE[kind];
   return (
-    <span
-      style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        gap: '6px',
-        fontFamily: 'var(--font-inter)',
-        fontSize: '13px',
-        color: 'var(--cor-texto-claro)',
-      }}
-    >
-      <span style={{ color: 'var(--cor-primaria-clara)', flexShrink: 0 }}>{icon}</span>
-      {label}
+    <span style={{
+      fontFamily: 'var(--font-body)',
+      display: 'inline-flex', alignItems: 'center', gap: 5,
+      background: b.bg, color: '#fff',
+      padding: '4px 9px', fontSize: 10.5, fontWeight: 700,
+      borderRadius: 999, textTransform: 'uppercase', letterSpacing: '0.04em',
+      lineHeight: 1, whiteSpace: 'nowrap',
+      boxShadow: '0 4px 14px -6px rgba(0,0,0,0.4)',
+    }}>
+      <span style={{ fontSize: 11.5, lineHeight: 1 }}>{b.icon}</span>
+      {b.label}
     </span>
   );
 }
 
-function IconClock() {
+function MetaItem({ icon, children }: { icon: React.ReactNode; children: React.ReactNode }) {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <circle cx="12" cy="12" r="10" />
-      <polyline points="12 6 12 12 16 14" />
+    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+      <span style={{ color: '#107997', flexShrink: 0 }}>{icon}</span>
+      {children}
+    </span>
+  );
+}
+
+function IcoClock() {
+  return (
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
     </svg>
   );
 }
 
-function IconPin() {
+function IcoPin() {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-      <circle cx="12" cy="10" r="3" />
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" />
     </svg>
   );
 }
 
-function IconImage() {
+function IcoWA() {
   return (
-    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <rect x="3" y="3" width="18" height="18" rx="2" />
-      <circle cx="8.5" cy="8.5" r="1.5" />
-      <polyline points="21 15 16 10 5 21" />
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path fill="#fff" d="M17.5 14.4c-.3-.1-1.8-.9-2-.9-.2-.1-.5-.2-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.9-.4-1.7-.9-2.4-1.6-.7-.7-1.1-1.5-1.5-2.3-.2-.3-.1-.4 0-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.8-2c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.4-.2.3-1 .9-1 2.3 0 1.3 1 2.6 1.1 2.8.1.2 2 3 4.8 4.1 1.8.7 2.5.7 3.4.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.1-.2-.4-.3z"/>
+      <path fill="#fff" fillRule="evenodd" clipRule="evenodd" d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.3c-1.5 0-3-.4-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3c-.9-1.3-1.3-2.9-1.3-4.4C4.5 7.5 8 4 12 4s7.5 3.5 7.5 8-3.5 8-7.5 8z"/>
     </svg>
   );
 }

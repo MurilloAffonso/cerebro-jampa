@@ -44,8 +44,8 @@ const config: Config = {
         light:        '#EEF2F5',
       },
       fontFamily: {
-        sans:  ['var(--font-inter)',     'system-ui', 'sans-serif'],
-        serif: ['var(--font-fraunces)', 'Georgia',   'serif'],
+        sans:  ['var(--font-dm-sans)',  'system-ui', 'sans-serif'],
+        serif: ['var(--font-lora)',     'Georgia',   'serif'],
         mono:  ['ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
       },
       fontSize: {

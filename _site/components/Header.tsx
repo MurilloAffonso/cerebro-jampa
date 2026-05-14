@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { empresa } from "@/data/empresa";
@@ -22,23 +22,43 @@ const SERVICOS = [
 ] as const;
 
 export function Header() {
-  const [mobileOpen, setMobileOpen]   = useState(false);
+  const [mobileOpen, setMobileOpen]     = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [servicosOpen, setServicosOpen] = useState(false);
+  const [scrolled, setScrolled]         = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   const closeMobile = () => setMobileOpen(false);
 
+  const linkColor      = scrolled ? 'var(--cor-texto-escuro)' : 'rgba(255,255,255,0.92)';
+  const linkHoverColor = scrolled ? 'var(--cor-primaria)'     : '#fff';
+  const lineColor      = scrolled ? 'var(--cor-primaria)'     : 'rgba(255,255,255,0.9)';
+
   return (
     <header
-      className="sticky top-0 z-50"
       style={{
-        backdropFilter: 'blur(12px)',
-        WebkitBackdropFilter: 'blur(12px)',
-        background: 'rgba(250, 250, 247, 0.95)',
-        borderBottom: '1px solid var(--cor-borda)',
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 50,
+        height: 'var(--header-h)',
+        display: 'flex',
+        alignItems: 'center',
+        transition: 'background 280ms ease, border-color 280ms ease',
+        backdropFilter: scrolled ? 'blur(14px)' : 'none',
+        WebkitBackdropFilter: scrolled ? 'blur(14px)' : 'none',
+        background: scrolled ? 'rgba(250,250,247,0.97)' : 'transparent',
+        borderBottom: `1px solid ${scrolled ? 'var(--cor-borda)' : 'transparent'}`,
       }}
     >
-      <div className="container-safe py-3">
+      <div className="container-safe w-full">
         <div className="flex items-center justify-between gap-4">
 
           {/* ── Logo ── */}
@@ -49,14 +69,18 @@ export function Header() {
             aria-label="Vem Passear em Jampa — Página inicial"
           >
             <Image
-              src="/images/logo/logo-azul-transparente.png"
+              src={scrolled
+                ? "/images/logo/logo-azul-transparente.png"
+                : "/images/logo/logo-transparente.png"
+              }
               alt="Vem Passear em Jampa"
               width={500}
               height={167}
               style={{
-                height: '150px',
+                height: '100px',
                 width: 'auto',
                 objectFit: 'contain',
+                transition: 'opacity 180ms',
               }}
               priority
             />
@@ -65,7 +89,7 @@ export function Header() {
           {/* ── Nav desktop ── */}
           <nav className="hidden md:flex items-center gap-6" aria-label="Navegação principal">
 
-            <NavLink href="/">Início</NavLink>
+            <NavLink href="/" color={linkColor} hoverColor={linkHoverColor}>Início</NavLink>
 
             {/* Passeios dropdown */}
             <div
@@ -77,14 +101,15 @@ export function Header() {
                 href="/passeios"
                 className="flex items-center gap-1 py-2 transition-colors"
                 style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-body)',
                   fontWeight: 500,
                   fontSize: '14px',
-                  color: 'var(--cor-texto-escuro)',
+                  color: linkColor,
                   textDecoration: 'none',
+                  transition: 'color 150ms',
                 }}
-                onMouseEnter={e => (e.currentTarget.style.color = 'var(--cor-primaria)')}
-                onMouseLeave={e => (e.currentTarget.style.color = 'var(--cor-texto-escuro)')}
+                onMouseEnter={e => (e.currentTarget.style.color = linkHoverColor)}
+                onMouseLeave={e => (e.currentTarget.style.color = linkColor)}
               >
                 Passeios
                 <span style={{ fontSize: '10px', opacity: 0.5 }} aria-hidden="true">▾</span>
@@ -111,7 +136,7 @@ export function Header() {
                         style={{
                           display: 'block',
                           padding: '10px 16px',
-                          fontFamily: 'var(--font-inter)',
+                          fontFamily: 'var(--font-body)',
                           fontSize: '14px',
                           fontWeight: 500,
                           color: 'var(--cor-texto-medio)',
@@ -132,15 +157,8 @@ export function Header() {
                     </li>
                   ))}
 
-                  {/* Separador + Tábua de Maré */}
                   <li role="separator" aria-hidden="true">
-                    <hr
-                      style={{
-                        border: 'none',
-                        borderTop: '1px solid var(--cor-borda)',
-                        margin: '6px 12px',
-                      }}
-                    />
+                    <hr style={{ border: 'none', borderTop: '1px solid var(--cor-borda)', margin: '6px 12px' }} />
                   </li>
                   <li role="none">
                     <Link
@@ -150,19 +168,15 @@ export function Header() {
                       style={{
                         display: 'block',
                         padding: '10px 16px',
-                        fontFamily: 'var(--font-inter)',
+                        fontFamily: 'var(--font-body)',
                         fontSize: '14px',
                         fontWeight: 600,
                         color: 'var(--cor-primaria)',
                         textDecoration: 'none',
                         transition: 'color 150ms, background 150ms',
                       }}
-                      onMouseEnter={e => {
-                        e.currentTarget.style.background = 'var(--cor-fundo)'
-                      }}
-                      onMouseLeave={e => {
-                        e.currentTarget.style.background = 'transparent'
-                      }}
+                      onMouseEnter={e => { e.currentTarget.style.background = 'var(--cor-fundo)' }}
+                      onMouseLeave={e => { e.currentTarget.style.background = 'transparent' }}
                     >
                       Tábua de Maré
                     </Link>
@@ -181,16 +195,17 @@ export function Header() {
                 type="button"
                 aria-expanded={servicosOpen}
                 aria-haspopup="menu"
-                className="flex items-center gap-1 py-2 transition-colors"
+                className="flex items-center gap-1 py-2"
                 style={{
-                  fontFamily: 'var(--font-inter)',
+                  fontFamily: 'var(--font-body)',
                   fontWeight: 500,
                   fontSize: '14px',
-                  color: 'var(--cor-texto-escuro)',
+                  color: linkColor,
                   background: 'none',
                   border: 'none',
                   cursor: 'pointer',
                   padding: '8px 0',
+                  transition: 'color 150ms',
                 }}
               >
                 Serviços
@@ -218,7 +233,7 @@ export function Header() {
                         style={{
                           display: 'block',
                           padding: '10px 16px',
-                          fontFamily: 'var(--font-inter)',
+                          fontFamily: 'var(--font-body)',
                           fontSize: '14px',
                           fontWeight: 500,
                           color: 'var(--cor-texto-medio)',
@@ -242,8 +257,8 @@ export function Header() {
               )}
             </div>
 
-            <NavLink href="/sobre">Sobre</NavLink>
-            <NavLink href="/faq">FAQ</NavLink>
+            <NavLink href="/sobre" color={linkColor} hoverColor={linkHoverColor}>Sobre</NavLink>
+            <NavLink href="/faq" color={linkColor} hoverColor={linkHoverColor}>FAQ</NavLink>
           </nav>
 
           {/* ── CTA + hamburger ── */}
@@ -259,7 +274,7 @@ export function Header() {
                 gap: '6px',
                 background: 'var(--cor-whatsapp)',
                 color: '#fff',
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-body)',
                 fontWeight: 600,
                 fontSize: '13px',
                 padding: '10px 16px',
@@ -280,45 +295,15 @@ export function Header() {
 
             {/* Hamburger */}
             <button
-              className="md:hidden flex flex-col justify-center items-center gap-1.5 w-10 h-10 rounded-lg transition-colors"
+              className="md:hidden flex flex-col justify-center items-center gap-1.5 w-10 h-10 rounded-lg"
               aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
               aria-expanded={mobileOpen}
               onClick={() => setMobileOpen((v) => !v)}
               style={{ background: 'transparent', border: 'none', cursor: 'pointer' }}
             >
-              <span
-                style={{
-                  display: 'block',
-                  width: '20px',
-                  height: '2px',
-                  background: 'var(--cor-primaria)',
-                  borderRadius: '2px',
-                  transition: 'transform 200ms',
-                  transform: mobileOpen ? 'rotate(45deg) translate(3px, 5px)' : 'none',
-                }}
-              />
-              <span
-                style={{
-                  display: 'block',
-                  width: '20px',
-                  height: '2px',
-                  background: 'var(--cor-primaria)',
-                  borderRadius: '2px',
-                  transition: 'opacity 200ms',
-                  opacity: mobileOpen ? 0 : 1,
-                }}
-              />
-              <span
-                style={{
-                  display: 'block',
-                  width: '20px',
-                  height: '2px',
-                  background: 'var(--cor-primaria)',
-                  borderRadius: '2px',
-                  transition: 'transform 200ms',
-                  transform: mobileOpen ? 'rotate(-45deg) translate(3px, -5px)' : 'none',
-                }}
-              />
+              <span style={{ display: 'block', width: '20px', height: '2px', background: lineColor, borderRadius: '2px', transition: 'transform 200ms', transform: mobileOpen ? 'rotate(45deg) translate(3px, 5px)' : 'none' }} />
+              <span style={{ display: 'block', width: '20px', height: '2px', background: lineColor, borderRadius: '2px', transition: 'opacity 200ms', opacity: mobileOpen ? 0 : 1 }} />
+              <span style={{ display: 'block', width: '20px', height: '2px', background: lineColor, borderRadius: '2px', transition: 'transform 200ms', transform: mobileOpen ? 'rotate(-45deg) translate(3px, -5px)' : 'none' }} />
             </button>
           </div>
         </div>
@@ -327,7 +312,7 @@ export function Header() {
       {/* ── Mobile menu ── */}
       {mobileOpen && (
         <div
-          className="md:hidden"
+          className="md:hidden absolute top-full left-0 right-0"
           style={{
             borderTop: '1px solid var(--cor-borda)',
             background: 'var(--cor-fundo-puro)',
@@ -347,7 +332,7 @@ export function Header() {
                     style={{
                       display: 'block',
                       padding: '8px 12px',
-                      fontFamily: 'var(--font-inter)',
+                      fontFamily: 'var(--font-body)',
                       fontSize: '14px',
                       color: 'var(--cor-texto-medio)',
                       textDecoration: 'none',
@@ -364,7 +349,7 @@ export function Header() {
                     display: 'block',
                     padding: '8px 12px',
                     marginTop: '4px',
-                    fontFamily: 'var(--font-inter)',
+                    fontFamily: 'var(--font-body)',
                     fontSize: '14px',
                     fontWeight: 600,
                     color: 'var(--cor-primaria)',
@@ -380,15 +365,7 @@ export function Header() {
             </div>
 
             <div>
-              <p
-                style={{
-                  padding: '10px 12px',
-                  fontFamily: 'var(--font-inter)',
-                  fontWeight: 500,
-                  fontSize: '15px',
-                  color: 'var(--cor-texto-escuro)',
-                }}
-              >
+              <p style={{ padding: '10px 12px', fontFamily: 'var(--font-body)', fontWeight: 500, fontSize: '15px', color: 'var(--cor-texto-escuro)' }}>
                 Serviços
               </p>
               <div className="pl-5 mt-1 flex flex-col gap-0.5">
@@ -400,7 +377,7 @@ export function Header() {
                     style={{
                       display: 'block',
                       padding: '8px 12px',
-                      fontFamily: 'var(--font-inter)',
+                      fontFamily: 'var(--font-body)',
                       fontSize: '14px',
                       color: 'var(--cor-texto-medio)',
                       textDecoration: 'none',
@@ -429,7 +406,7 @@ export function Header() {
                 marginTop: '12px',
                 background: 'var(--cor-whatsapp)',
                 color: '#fff',
-                fontFamily: 'var(--font-inter)',
+                fontFamily: 'var(--font-body)',
                 fontWeight: 600,
                 fontSize: '15px',
                 padding: '14px 20px',
@@ -449,27 +426,45 @@ export function Header() {
 }
 
 /* ── Helpers ────────────────────────────────────────────── */
-function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
+function NavLink({
+  href,
+  children,
+  color,
+  hoverColor,
+}: {
+  href: string;
+  children: React.ReactNode;
+  color: string;
+  hoverColor: string;
+}) {
   return (
     <Link
       href={href}
       style={{
-        fontFamily: 'var(--font-inter)',
+        fontFamily: 'var(--font-body)',
         fontWeight: 500,
         fontSize: '14px',
-        color: 'var(--cor-texto-escuro)',
+        color,
         textDecoration: 'none',
         transition: 'color 150ms',
       }}
-      onMouseEnter={e => (e.currentTarget.style.color = 'var(--cor-primaria)')}
-      onMouseLeave={e => (e.currentTarget.style.color = 'var(--cor-texto-escuro)')}
+      onMouseEnter={e => (e.currentTarget.style.color = hoverColor)}
+      onMouseLeave={e => (e.currentTarget.style.color = color)}
     >
       {children}
     </Link>
   );
 }
 
-function MobileLink({ href, onClick, children }: { href: string; onClick: () => void; children: React.ReactNode }) {
+function MobileLink({
+  href,
+  onClick,
+  children,
+}: {
+  href: string;
+  onClick: () => void;
+  children: React.ReactNode;
+}) {
   return (
     <Link
       href={href}
@@ -477,7 +472,7 @@ function MobileLink({ href, onClick, children }: { href: string; onClick: () => 
       style={{
         display: 'block',
         padding: '10px 12px',
-        fontFamily: 'var(--font-inter)',
+        fontFamily: 'var(--font-body)',
         fontWeight: 500,
         fontSize: '15px',
         color: 'var(--cor-texto-escuro)',
