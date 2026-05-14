@@ -34,20 +34,12 @@ export function HomeVideoHero({ whatsappUrl }: HomeVideoHeroProps) {
         muted
         loop
         playsInline
-        poster="/images/passeios/seixas/hero-01.jpg"
         className="absolute inset-0 w-full h-full object-cover motion-reduce:hidden"
         aria-hidden="true"
       >
         <source src="/videos/home/hero-jampa.webm" type="video/webm" />
         <source src="/videos/home/hero-jampa.mp4"  type="video/mp4"  />
       </video>
-
-      {/* Poster estático (prefers-reduced-motion) */}
-      <div
-        className="absolute inset-0 bg-cover bg-center motion-safe:hidden"
-        style={{ backgroundImage: "url('/images/passeios/seixas/hero-01.jpg')" }}
-        aria-hidden="true"
-      />
 
       {/* ── Overlay gradiente ── */}
       <div
