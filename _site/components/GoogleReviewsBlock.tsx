@@ -235,7 +235,7 @@ function ReviewCard({ review, duplicate }: { review: GoogleReview; duplicate: bo
               loading="lazy"
               style={{
                 width: '100%',
-                aspectRatio: '1 / 1',
+                height: '90px',
                 objectFit: 'cover',
                 borderRadius: '10px',
                 background: 'var(--cor-fundo)',
