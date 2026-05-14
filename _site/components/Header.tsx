@@ -77,7 +77,7 @@ export function Header() {
               width={500}
               height={167}
               style={{
-                height: '100px',
+                height: '180px',
                 width: 'auto',
                 objectFit: 'contain',
                 transition: 'opacity 180ms',
