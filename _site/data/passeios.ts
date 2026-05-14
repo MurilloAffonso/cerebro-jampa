@@ -133,10 +133,10 @@ export const passeios: Passeio[] = [
   // =========================================================================
 
   {
-    id: "pacote-3-dias-completo",
-    nome: "Pacote 3 Dias Completo",
+    id: "roteiro-do-murillo-3-dias",
+    nome: "Roteiro do Murillo — 3 dias",
     categoria: "pacotes",
-    slug: "3-dias-completo",
+    slug: "roteiro-do-murillo-3-dias",
     preco: "Individual: R$ 400 / Dupla: R$ 700",
     duracao: "3 dias",
     saida: "8h–9h",
@@ -157,10 +157,10 @@ export const passeios: Passeio[] = [
       "Famílias e casais",
     ],
     coverImage: "/images/passeios/litoral-norte/areia-vermelha/hero-01.jpg",
-    imagemAlt: "Colagem dos melhores passeios em João Pessoa em 3 dias",
+    imagemAlt: "Roteiro completo de 3 dias em João Pessoa com Murillo",
     faq: [
       {
-        pergunta: "O que está incluso no Pacote 3 Dias Completo?",
+        pergunta: "O que está incluso no Roteiro do Murillo — 3 dias?",
         resposta:
           "Transfer, acompanhamento com condutores credenciados nos 3 dias, quadriciclo (1 máquina) no Litoral Sul e catamarã no Pôr do Sol do Jacaré. Alimentação não está inclusa.",
       },
@@ -178,10 +178,10 @@ export const passeios: Passeio[] = [
   },
 
   {
-    id: "pacote-3-dias-basico",
-    nome: "Pacote 3 Dias Básico",
+    id: "combo-sol-nascente-3-dias",
+    nome: "Combo Sol Nascente — 3 dias",
     categoria: "pacotes",
-    slug: "3-dias-basico",
+    slug: "combo-sol-nascente-3-dias",
     preco: "Individual: R$ 280 / Dupla: R$ 430",
     duracao: "3 dias",
     saida: "8h–9h",
@@ -203,12 +203,12 @@ export const passeios: Passeio[] = [
       "Primeiro contato com João Pessoa",
     ],
     coverImage: "/images/passeios/litoral-sul/coqueirinho/hero-01.jpg",
-    imagemAlt: "Passeios em João Pessoa — Pacote 3 Dias com custo-benefício",
+    imagemAlt: "Combo Sol Nascente — 3 dias de passeios em João Pessoa",
     faq: [
       {
-        pergunta: "Qual a diferença entre o Básico e o Completo?",
+        pergunta: "Qual a diferença entre o Combo Sol Nascente e o Roteiro do Murillo?",
         resposta:
-          "O Básico não inclui quadriciclo nem catamarã Pôr do Sol (ambos opcionais à parte). O Completo já inclui os dois.",
+          "O Combo Sol Nascente não inclui quadriciclo nem catamarã Pôr do Sol (ambos opcionais à parte). O Roteiro do Murillo já inclui os dois.",
       },
       {
         pergunta: "Criança paga?",
@@ -219,10 +219,10 @@ export const passeios: Passeio[] = [
   },
 
   {
-    id: "pacote-super-economico",
-    nome: "Pacote Super Econômico",
+    id: "combo-mare-boa-2-dias",
+    nome: "Combo Maré Boa — 2 dias",
     categoria: "pacotes",
-    slug: "super-economico",
+    slug: "combo-mare-boa-2-dias",
     preco: "Individual: R$ 140 / Dupla: R$ 260",
     duracao: "2 dias",
     saida: "8h–9h",
@@ -240,7 +240,7 @@ export const passeios: Passeio[] = [
       "Primeiro contato com João Pessoa",
     ],
     coverImage: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
-    imagemAlt: "Passeio econômico em João Pessoa — 2 dias de experiência",
+    imagemAlt: "Combo Maré Boa — 2 dias de passeios em João Pessoa",
     faq: [
       {
         pergunta: "Quais passeios estão inclusos?",

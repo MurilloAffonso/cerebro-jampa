@@ -9,27 +9,39 @@ export type DesignBadgeKind =
   | "mais-vendido"
   | "imperdivel"
   | "mare"
+  | "so-mare-baixa"
   | "promo"
   | "vagas"
+  | "vagas-embarcacao"
+  | "equipamentos"
+  | "visibilidade"
   | "familia"
   | "transfer"
   | "novo";
 
 export const DESIGN_BADGE: Record<DesignBadgeKind, { bg: string; label: string; icon: string }> = {
-  "mais-vendido": { bg: "#107997", label: "Mais vendido",    icon: "★" },
-  "imperdivel":   { bg: "#E05C00", label: "Imperdível",      icon: "⚡" },
-  "mare":         { bg: "#0056B3", label: "Depende da maré", icon: "〜" },
-  "promo":        { bg: "#C0392B", label: "Promoção",        icon: "%" },
-  "vagas":        { bg: "#7D3C98", label: "Vagas limitadas", icon: "⏳" },
-  "familia":      { bg: "#27AE60", label: "Família",         icon: "♡" },
-  "transfer":     { bg: "#092238", label: "Transfer incluso","icon": "→" },
-  "novo":         { bg: "#0E8FA8", label: "Novo roteiro",    icon: "+" },
+  "mais-vendido":      { bg: "#107997", label: "Mais vendido",             icon: "★" },
+  "imperdivel":        { bg: "#E05C00", label: "Imperdível",               icon: "⚡" },
+  "mare":              { bg: "#0056B3", label: "Depende da maré",          icon: "〜" },
+  "so-mare-baixa":     { bg: "#0056B3", label: "Só com maré baixa",       icon: "〜" },
+  "promo":             { bg: "#C0392B", label: "Promoção",                 icon: "%" },
+  "vagas":             { bg: "#7D3C98", label: "Vagas limitadas",          icon: "⏳" },
+  "vagas-embarcacao":  { bg: "#7D3C98", label: "Vagas por embarcação",    icon: "⚓" },
+  "equipamentos":      { bg: "#B25000", label: "Equipamentos limitados",   icon: "🏍" },
+  "visibilidade":      { bg: "#5A6B78", label: "Sujeito à visibilidade",   icon: "👁" },
+  "familia":           { bg: "#27AE60", label: "Família",                  icon: "♡" },
+  "transfer":          { bg: "#092238", label: "Transfer incluso",         icon: "→" },
+  "novo":              { bg: "#0E8FA8", label: "Novo roteiro",             icon: "+" },
 };
 
 /** Slugs que recebem badge automático por serem comprovadamente populares */
-const MAIS_VENDIDOS = new Set(["seixas", "picaozinho", "roteiro-classico"]);
-const IMPERDIVEIS   = new Set(["areia-vermelha-catamara", "por-do-sol-jacare"]);
-const FAMILIA_SLUGS = new Set(["3-dias-completo", "3-dias-basico", "super-economico"]);
+const MAIS_VENDIDOS    = new Set(["seixas", "picaozinho", "roteiro-classico"]);
+const IMPERDIVEIS      = new Set(["areia-vermelha-catamara", "por-do-sol-jacare"]);
+const FAMILIA_SLUGS    = new Set(["roteiro-do-murillo-3-dias", "combo-sol-nascente-3-dias", "combo-mare-boa-2-dias"]);
+const SO_MARE_BAIXA    = new Set(["seixas", "penha", "picaozinho"]);
+const VAGAS_EMBARCACAO = new Set(["por-do-sol-jacare", "areia-vermelha-catamara", "lancha-privativa"]);
+const EQUIPAMENTOS     = new Set(["quadriciclo-coqueirinho", "quadriciclo-praia-bela", "combo-jampa-quadriciclo", "combo-praia-bela-quadriciclo"]);
+const VISIBILIDADE     = new Set(["mergulho"]);
 
 export function getPasseioBadges(passeio: Passeio): DesignBadgeKind[] {
   const result = new Set<DesignBadgeKind>();
@@ -46,8 +58,11 @@ export function getPasseioBadges(passeio: Passeio): DesignBadgeKind[] {
     if (b === "desconto-progressivo") result.add("promo");
   }
 
-  // 2. Flag dependeDeMare
-  if (passeio.dependeDeMare) result.add("mare");
+  // 2. Escassez real por slug
+  if (SO_MARE_BAIXA.has(passeio.slug))    result.add("so-mare-baixa");
+  if (VAGAS_EMBARCACAO.has(passeio.slug)) result.add("vagas-embarcacao");
+  if (EQUIPAMENTOS.has(passeio.slug))     result.add("equipamentos");
+  if (VISIBILIDADE.has(passeio.slug))     result.add("visibilidade");
 
   // 3. Overrides por slug (respaldo objetivo — passeios prioritários confirmados)
   if (MAIS_VENDIDOS.has(passeio.slug)) result.add("mais-vendido");

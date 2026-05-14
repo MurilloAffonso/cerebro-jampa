@@ -1,6 +1,25 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  async redirects() {
+    return [
+      {
+        source: '/passeios/pacotes/3-dias-completo',
+        destination: '/passeios/pacotes/roteiro-do-murillo-3-dias',
+        permanent: true,
+      },
+      {
+        source: '/passeios/pacotes/3-dias-basico',
+        destination: '/passeios/pacotes/combo-sol-nascente-3-dias',
+        permanent: true,
+      },
+      {
+        source: '/passeios/pacotes/super-economico',
+        destination: '/passeios/pacotes/combo-mare-boa-2-dias',
+        permanent: true,
+      },
+    ];
+  },
   images: {
     unoptimized: true,
     dangerouslyAllowSVG: true,

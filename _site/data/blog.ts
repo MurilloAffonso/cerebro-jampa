@@ -62,8 +62,8 @@ export const blogPosts: BlogPost[] = [
       "Roteiro completo de João Pessoa por quem vive aqui: praias, piscinas naturais, city tour e dicas práticas para aproveitar cada dia.",
     category: "Guia da Cidade",
     cluster: "guia-cidade",
-    status: "draft",
-    updatedAt: "2026-05-02",
+    status: "published",
+    updatedAt: "2026-05-14",
     author: AUTHOR,
     readingTime: 12,
     keywords: [
@@ -127,8 +127,8 @@ export const blogPosts: BlogPost[] = [
       "Seixas, Picãozinho, Areia Vermelha e Penha: como funcionam as piscinas naturais de João Pessoa, melhor maré e o que esperar de cada uma.",
     category: "Piscinas Naturais",
     cluster: "piscinas-naturais",
-    status: "draft",
-    updatedAt: "2026-05-02",
+    status: "published",
+    updatedAt: "2026-05-14",
     author: AUTHOR,
     readingTime: 10,
     keywords: [
@@ -192,8 +192,8 @@ export const blogPosts: BlogPost[] = [
       "Como funciona o passeio para a Praia do Seixas em João Pessoa, melhor horário pela tábua de marés e o que levar.",
     category: "Piscinas Naturais",
     cluster: "piscinas-naturais",
-    status: "draft",
-    updatedAt: "2026-05-02",
+    status: "published",
+    updatedAt: "2026-05-14",
     author: AUTHOR,
     readingTime: 8,
     keywords: [
@@ -252,8 +252,8 @@ export const blogPosts: BlogPost[] = [
       "A ilha paraibana que aparece e desaparece com a maré: como é o passeio de catamarã para a Areia Vermelha, melhor época e o que levar.",
     category: "Litoral Norte",
     cluster: "litoral-norte",
-    status: "draft",
-    updatedAt: "2026-05-02",
+    status: "published",
+    updatedAt: "2026-05-14",
     author: AUTHOR,
     readingTime: 8,
     keywords: [
@@ -312,8 +312,8 @@ export const blogPosts: BlogPost[] = [
       "Roteiro completo de 3 dias em João Pessoa: do litoral norte ao litoral sul, com orientação pela tábua de marés e dicas práticas.",
     category: "Roteiros",
     cluster: "roteiros",
-    status: "draft",
-    updatedAt: "2026-05-02",
+    status: "published",
+    updatedAt: "2026-05-14",
     author: AUTHOR,
     readingTime: 12,
     keywords: [
@@ -324,7 +324,7 @@ export const blogPosts: BlogPost[] = [
       "férias João Pessoa",
       "João Pessoa fim de semana",
     ],
-    relatedPasseios: ["pacote-3-dias-completo", "pacote-3-dias-basico", "pacote-super-economico"],
+    relatedPasseios: ["roteiro-do-murillo-3-dias", "combo-sol-nascente-3-dias", "combo-mare-boa-2-dias"],
     faq: [
       {
         pergunta: "É possível fazer todos esses passeios em 3 dias?",
@@ -376,8 +376,8 @@ export const blogPosts: BlogPost[] = [
       "Coqueirinho, Tabatinga, Praia Bela e Tambaba: o que ver e fazer no litoral sul de João Pessoa em um dia de passeio.",
     category: "Litoral Sul",
     cluster: "litoral-sul",
-    status: "draft",
-    updatedAt: "2026-05-02",
+    status: "published",
+    updatedAt: "2026-05-14",
     author: AUTHOR,
     readingTime: 10,
     keywords: [
@@ -445,8 +445,8 @@ export const blogPosts: BlogPost[] = [
       "Pôr do sol no Jacaré, ilha da Areia Vermelha e história colonial: o que ver no litoral norte de João Pessoa e como organizar o roteiro.",
     category: "Litoral Norte",
     cluster: "litoral-norte",
-    status: "draft",
-    updatedAt: "2026-05-02",
+    status: "published",
+    updatedAt: "2026-05-14",
     author: AUTHOR,
     readingTime: 10,
     keywords: [
@@ -472,7 +472,7 @@ export const blogPosts: BlogPost[] = [
       {
         pergunta: "Qual é o horário do pôr do sol no Jacaré?",
         resposta:
-          "[CONFIRMAR COM MURILLO: horário aproximado do pôr do sol no Jacaré por época do ano — o horário varia entre junho/julho (menos luz no fim do dia) e novembro/dezembro (mais luz)]",
+          "O horário varia ao longo do ano: em outubro o sol se põe por volta das 17h; em janeiro, por volta das 17h45. O saxofonista Jurandy do Sax executa o Bolero de Ravel durante aproximadamente 17 minutos — que é exatamente a duração do pôr do sol. Vale chegar com pelo menos 30 minutos de antecedência para garantir um bom lugar.",
       },
       {
         pergunta: "Como ir de João Pessoa para Cabedelo?",
@@ -491,15 +491,15 @@ export const blogPosts: BlogPost[] = [
       },
       {
         heading: "O Pôr do Sol do Jacaré: o mais famoso de João Pessoa",
-        body: "O Pôr do Sol do Jacaré não é apenas um pôr do sol bonito — é um ritual coletivo. Todas as tardes, turistas e pessoenses se reúnem nas margens do Rio Jacaré para assistir ao sol se por sobre o estuário. O evento ganhou fama mundial quando entrou no livro dos recordes como o pôr do sol mais lindo do mundo — [CONFIRMAR COM MURILLO: se essa afirmação pode ser mantida com segurança]. Um saxofonista toca ao vivo durante o evento, o que se tornou parte da tradição. O horário varia ao longo do ano conforme a posição do sol.",
+        body: "O Pôr do Sol do Jacaré não é apenas um pôr do sol bonito — é um ritual coletivo. Todas as tardes, turistas e pessoenses se reúnem nas margens do Rio Jacaré para assistir ao sol se por sobre o estuário do Rio Paraíba. O evento é reconhecido como um dos mais belos do Brasil — uma reputação consolidada ao longo de décadas pela beleza do estuário e pela tradição musical do saxofonista Jurandy do Sax, que toca o Bolero de Ravel ao vivo diariamente. O horário varia ao longo do ano conforme a posição do sol.",
       },
       {
-        heading: "Fort Orange: história colonial às margens do Rio Paraíba",
-        body: "O Fort Orange é uma fortaleza holandesa construída no século XVII às margens do Rio Paraíba, em Cabedelo. Os holandeses ocuparam parte do nordeste do Brasil por algumas décadas antes de serem expulsos pelos portugueses, e o Fort Orange é uma das poucas estruturas que restaram desse período. As ruínas são abertas à visita e ficam próximas ao embarcadouro do Jacaré. É uma parada curta mas com peso histórico real.",
+        heading: "Fortaleza de Santa Catarina: história colonial às margens do Rio Paraíba",
+        body: "A Fortaleza de Santa Catarina é uma fortaleza portuguesa construída em 1585 às margens do Rio Paraíba, em Cabedelo — uma das mais antigas do Brasil. Foi construída para defender a foz do rio dos ataques de corsários e potências europeias que disputavam o controle do litoral nordestino. A estrutura é aberta à visitação e fica próxima ao embarcadouro do Jacaré. É uma parada curta mas com peso histórico real — 440 anos de história concentrados num ponto de vista privilegiado sobre o estuário.",
       },
       {
         heading: "Como organizar o roteiro do Litoral Norte",
-        body: "O ideal é combinar o passeio de catamarã para a Areia Vermelha de manhã (quando a maré costuma estar baixa) com a visita ao Fort Orange no início da tarde e o Pôr do Sol do Jacaré ao fim da tarde. Murillo verifica a tábua de marés do seu dia e organiza a sequência certa. Existe também um passeio combinado que une Areia Vermelha e pôr do sol no Jacaré em um único roteiro — fale com Murillo no WhatsApp para verificar disponibilidade.",
+        body: "O ideal é combinar o passeio de catamarã para a Areia Vermelha de manhã (quando a maré costuma estar baixa) com a visita à Fortaleza de Santa Catarina no início da tarde e o Pôr do Sol do Jacaré ao fim da tarde. Murillo verifica a tábua de marés do seu dia e organiza a sequência certa. Existe também um passeio combinado que une Areia Vermelha e pôr do sol no Jacaré em um único roteiro — fale com Murillo no WhatsApp para verificar disponibilidade.",
       },
     ],
   },
@@ -510,8 +510,8 @@ export const blogPosts: BlogPost[] = [
       "Como ler a tábua de marés e escolher o melhor dia para visitar Seixas, Picãozinho e Areia Vermelha em João Pessoa.",
     category: "Marés e Natureza",
     cluster: "mares-natureza",
-    status: "draft",
-    updatedAt: "2026-05-02",
+    status: "published",
+    updatedAt: "2026-05-14",
     author: AUTHOR,
     readingTime: 7,
     keywords: [
@@ -571,8 +571,8 @@ export const blogPosts: BlogPost[] = [
       "Quais passeios em João Pessoa funcionam bem com crianças, o que observar em segurança e dicas práticas para aproveitar a viagem em família.",
     category: "Família",
     cluster: "familia",
-    status: "draft",
-    updatedAt: "2026-05-02",
+    status: "published",
+    updatedAt: "2026-05-14",
     author: AUTHOR,
     readingTime: 9,
     keywords: [
@@ -635,8 +635,8 @@ export const blogPosts: BlogPost[] = [
       "Opções de transfer do Aeroporto Presidente Castro Pinto para João Pessoa, com atendimento 24h e como agendar antes de chegar.",
     category: "Logística",
     cluster: "logistica",
-    status: "draft",
-    updatedAt: "2026-05-02",
+    status: "published",
+    updatedAt: "2026-05-14",
     author: AUTHOR,
     readingTime: 6,
     keywords: [
@@ -685,6 +685,136 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "Vale contratar o transfer antes de chegar em João Pessoa?",
         body: "Para quem chega à noite ou de madrugada, especialmente com crianças ou muita bagagem, o transfer vale bastante pela tranquilidade. Você sai do desembarque sem precisar instalar app, sem depender de wi-fi, sem fila. O carro já está esperando com o seu nome. Para chegadas de dia e com pouca bagagem, os aplicativos de transporte são uma alternativa funcional. Para grupos maiores ou quem já vai usar os passeios da Vem Passear durante a viagem, faz sentido unificar o atendimento e agendar o transfer junto com os passeios.",
+      },
+    ],
+  },
+  {
+    slug: "melhor-epoca-joao-pessoa",
+    title: "Melhor Época para Visitar João Pessoa: guia de clima, chuva e marés",
+    description:
+      "Quando ir a João Pessoa: setembro a fevereiro têm menos chuva, mais sol e marés favoráveis para piscinas naturais. Guia mês a mês com dicas práticas.",
+    category: "Marés e Natureza",
+    cluster: "mares-natureza",
+    status: "published",
+    updatedAt: "2026-05-14",
+    author: AUTHOR,
+    readingTime: 8,
+    keywords: [
+      "melhor época João Pessoa",
+      "quando visitar João Pessoa",
+      "clima João Pessoa",
+      "chuva João Pessoa por mês",
+      "temperatura João Pessoa",
+      "alta temporada João Pessoa",
+      "quando ir João Pessoa",
+    ],
+    relatedPasseios: ["seixas", "picaozinho", "areia-vermelha-catamara"],
+    faq: [
+      {
+        pergunta: "Qual é o mês com menos chuva em João Pessoa?",
+        resposta:
+          "O período de outubro a novembro costuma ter os meses com menos chuva acumulada de João Pessoa. Outubro e novembro são especialmente consistentes: dias de sol, poucas chuvas, temperatura entre 28°C e 31°C. Junho é historicamente o mês com mais chuva — médias que podem ultrapassar 350 mm. Setembro a fevereiro é o período seco no geral.",
+      },
+      {
+        pergunta: "João Pessoa é quente o ano todo?",
+        resposta:
+          "Sim. A temperatura em João Pessoa varia entre 24°C e 32°C ao longo do ano, sem período frio. Julho e agosto são levemente mais amenos — especialmente à noite — mas durante o dia o calor continua. Protetor solar é necessário em qualquer época do ano.",
+      },
+      {
+        pergunta: "Julho é boa época para visitar João Pessoa?",
+        resposta:
+          "Julho é o pico da alta temporada de inverno — hotéis enchem e os passeios ficam mais concorridos. O clima já começa a melhorar (julho é mais seco que junho), mas ainda há mais nebulosidade do que em outubro. Se a prioridade é clima mais estável, menos gente e preços mais acessíveis, outubro e novembro são melhores. Para quem só pode viajar em julho, vale muito a pena — apenas reserve com antecedência.",
+      },
+    ],
+    sections: [
+      {
+        heading: "João Pessoa tem clima quente o ano todo — mas tem uma época melhor",
+        body: "João Pessoa fica a 7° de latitude sul, com temperatura média entre 26°C e 32°C durante o ano inteiro. Não há frio no sentido convencional — mas há uma diferença significativa entre o período seco e o período chuvoso. O período seco (setembro a fevereiro) é quando as praias ficam mais bonitas, as piscinas naturais aparecem em melhor condição de visibilidade e o sol brilha com mais consistência. O período chuvoso (março a agosto) concentra as chuvas entre abril e julho — e junho costuma ser o mês mais chuvoso, com médias históricas acima de 350 mm. Mesmo no período chuvoso, as chuvas costumam ser rápidas, de tarde, e o restante do dia fica aberto. Mas a orla fica mais cinza e o mar pode ficar levemente mais turvo.",
+      },
+      {
+        heading: "Os melhores meses: setembro a fevereiro",
+        body: "O período de setembro a fevereiro é o mais recomendado para quem quer aproveitar as praias e piscinas naturais com melhor condição. Outubro, novembro e dezembro são os mais equilibrados: menos chuva, sol consistente (8 a 9 horas de luz por dia), marés que costumam ser favoráveis pela manhã. Janeiro e fevereiro têm dias mais longos — o sol se põe por volta das 17h45 em janeiro, mais tarde do que em outubro, quando cai por volta das 17h00. Para quem quer o melhor equilíbrio entre clima, qualidade de mar e tranquilidade turística, outubro e novembro se destacam: boa condição de praia, movimento de turistas mais moderado e preços de hospedagem tendendo a ser mais acessíveis do que em julho ou janeiro.",
+      },
+      {
+        heading: "Período chuvoso: março a agosto",
+        body: "O período chuvoso vai de março a agosto, com pico em junho e julho. As chuvas costumam ser concentradas em rajadas curtas — chove forte por uma ou duas horas, especialmente no final da tarde, e o tempo abre rapidamente. Isso significa que mesmo em junho é possível aproveitar a manhã nas piscinas naturais sem problema. O que muda é a consistência: no período chuvoso há mais dias com nuvens pesadas, o mar pode ficar mais agitado e a visibilidade para snorkel fica menos previsível. Junho costuma ser o mês com mais chuva acumulada da região. Se você só pode viajar no inverno, não deixe de ir — mas ajuste as expectativas: pode chover no seu dia de piscinas naturais e não chover no dia seguinte.",
+      },
+      {
+        heading: "A maré não tem época ruim — mas tem horário certo",
+        body: "As piscinas naturais de João Pessoa não dependem do clima para existir — dependem da maré. A maré baixa acontece o ano todo, em qualquer mês, o que significa que as piscinas naturais podem estar em condição ótima em pleno junho chuvoso, desde que a tábua de marés esteja favorável. O que muda com o clima é a qualidade da água: no período seco, o mar costuma ser mais cristalino e a visibilidade para snorkel é melhor. O horário da maré baixa muda todos os dias — pode cair de manhã ou de tarde, e varia semana a semana conforme o ciclo lunar. O fator mais importante é planejar o passeio para quando a maré baixa cair num horário conveniente, independente do mês.",
+      },
+      {
+        heading: "Alta temporada: julho e dezembro/janeiro",
+        body: "João Pessoa tem dois picos de turismo: julho (férias de inverno do sul e sudeste do Brasil) e dezembro/janeiro (férias de verão e festas de fim de ano). No pico de julho, os hotéis ficam cheios, os passeios ficam mais concorridos e os preços sobem. O Carnaval (fevereiro/março) também concentra visitantes, especialmente no Litoral Sul. Semana Santa tem movimentação alta. Para quem prefere a cidade com menos gente e melhor relação custo-benefício de hospedagem, outubro e novembro são a escolha certa: bom clima, marés favoráveis e movimento turístico tranquilo.",
+      },
+      {
+        heading: "Resumo: quando ir a João Pessoa conforme seu objetivo",
+        body: "Se a prioridade são piscinas naturais com melhor visibilidade: escolha outubro, novembro ou dezembro. Se quer aproveitar a cidade com mais movimento e programação: julho ou janeiro. Se a prioridade é custo-benefício e menos gente: outubro ou novembro. Se só pode viajar no período chuvoso: vá — a experiência é diferente mas vale a pena, especialmente se a maré estiver favorável. A regra de ouro é simples: independente do mês, consulte a tábua de marés antes de planejar os passeios de piscinas naturais. Murillo faz isso pelo WhatsApp antes de confirmar qualquer saída.",
+      },
+    ],
+  },
+  {
+    slug: "por-do-sol-jacare-joao-pessoa",
+    title: "Pôr do Sol do Jacaré em João Pessoa: guia completo com horários",
+    description:
+      "Tudo sobre o Pôr do Sol do Jacaré: onde fica, horário por época do ano, o saxofonista Jurandy do Sax e como combinar com o passeio de catamarã para a Areia Vermelha.",
+    category: "Litoral Norte",
+    cluster: "litoral-norte",
+    status: "published",
+    updatedAt: "2026-05-14",
+    author: AUTHOR,
+    readingTime: 7,
+    keywords: [
+      "pôr do sol Jacaré João Pessoa",
+      "Jurandy do Sax",
+      "pôr do sol Jacaré horário",
+      "Cabedelo pôr do sol",
+      "Rio Jacaré João Pessoa",
+      "catamarã Jacaré João Pessoa",
+      "passeio Jacaré João Pessoa",
+    ],
+    relatedPasseios: ["por-do-sol-jacare", "areia-vermelha-catamara", "combo-litoral-norte-areia-vermelha"],
+    faq: [
+      {
+        pergunta: "O Pôr do Sol do Jacaré acontece todos os dias?",
+        resposta:
+          "Sim. O pôr do sol acontece diariamente e Jurandy do Sax toca ao vivo com regularidade — acumulando mais de 9.000 apresentações ao longo dos anos. Em dias de chuva intensa, a visibilidade pode ser reduzida, mas a tradição musical continua independente do tempo.",
+      },
+      {
+        pergunta: "Quanto custa ir ao Pôr do Sol do Jacaré?",
+        resposta:
+          "O evento em si é gratuito — você fica na margem do rio e assiste sem ingresso. O que você paga são os consumos nos bares da orla. Se for no passeio organizado da Vem Passear em Jampa, o valor inclui o transfer e pode incluir o catamarã combinado. Fale com Murillo no WhatsApp para montar o roteiro do Litoral Norte conforme as marés do seu dia.",
+      },
+      {
+        pergunta: "Qual é a melhor posição para assistir ao pôr do sol no Jacaré?",
+        resposta:
+          "A margem do rio, de frente para o horizonte onde o sol se põe, é a melhor posição. Chegar com 30 minutos de antecedência garante um bom lugar. Do barco ancorado no rio também é uma experiência diferenciada — o catamarã do passeio organizado permanece ancorado durante o evento.",
+      },
+    ],
+    sections: [
+      {
+        heading: "O Pôr do Sol do Jacaré: por que todo mundo fala nisso",
+        body: "O Pôr do Sol do Jacaré acontece diariamente às margens do Rio Jacaré, em Cabedelo, a cerca de 18 km de João Pessoa. O que começou como um ponto de encontro informal virou um dos eventos mais fotografados do Nordeste. Turistas e moradores se reúnem nas margens do rio, nos barcos ancorados e nos bares da beira d'água para assistir ao sol se por sobre o estuário do Rio Paraíba. A moldura de água, o céu do Nordeste e o saxofonista que toca ao vivo criaram uma experiência difícil de reproduzir em outro lugar — e que explica por que o Jacaré é uma parada obrigatória em qualquer roteiro de João Pessoa.",
+      },
+      {
+        heading: "Jurandy do Sax e o Bolero de Ravel",
+        body: "A tradição musical do Pôr do Sol do Jacaré se deve ao saxofonista Jurandy do Sax, que toca o Bolero de Ravel diariamente às margens do rio. A peça dura aproximadamente 17 minutos — justamente a duração média do espetáculo de luz que o pôr do sol projeta sobre o estuário. Jurandy acumula mais de 9.000 apresentações ao longo dos anos, tornando-se uma figura indissociável da experiência do Jacaré. O Bolero de Ravel tem uma qualidade hipnótica única: começa suave e vai crescendo progressivamente até o final, acompanhando o ritmo do próprio pôr do sol. Mesmo quem nunca ouviu a obra de Ravel sai com a melodia guardada.",
+      },
+      {
+        heading: "Horário do pôr do sol no Jacaré por época do ano",
+        body: "O horário do pôr do sol varia ao longo do ano conforme a posição do sol. Em outubro, o sol se põe por volta das 17h00. Em janeiro, o horário é por volta das 17h45 — os dias são mais longos no verão. O evento dura em média 17 minutos, que é a duração do Bolero de Ravel. A recomendação é chegar com pelo menos 30 minutos de antecedência para garantir um lugar próximo à margem do rio. Os melhores ângulos ficam na margem, onde o reflexo do sol na água compõe o cenário.",
+      },
+      {
+        heading: "Como chegar ao Jacaré saindo de João Pessoa",
+        body: "O Jacaré fica em Cabedelo, a aproximadamente 18 km do centro de João Pessoa. De carro, pela BR-230, o percurso leva entre 20 e 30 minutos dependendo do trânsito. O passeio organizado da Vem Passear em Jampa inclui transfer de ida e volta — a opção mais prática para quem não está de carro. Para quem vai por conta própria, é possível usar aplicativo de transporte. A chegada por volta das 16h30 garante lugar na margem e tempo para explorar os bares e a orla antes do espetáculo.",
+      },
+      {
+        heading: "O que combinar com o Pôr do Sol do Jacaré",
+        body: "O Pôr do Sol do Jacaré combina naturalmente com o passeio de catamarã para a Areia Vermelha — ambos partem do mesmo ponto no Rio Jacaré. Se a tábua de marés do dia permitir, dá para fazer o catamarã pela manhã ou início da tarde, visitar a Fortaleza de Santa Catarina (construída em 1585, próxima ao embarcadouro) no início da tarde, e encerrar com o pôr do sol ao final do dia. Existe um passeio combinado da Vem Passear em Jampa que une Areia Vermelha e Pôr do Sol do Jacaré em um único roteiro. Fale com Murillo no WhatsApp para verificar disponibilidade conforme a tábua de marés do seu dia.",
+      },
+      {
+        heading: "Dicas práticas para aproveitar o Pôr do Sol do Jacaré",
+        body: "Chegue cedo — pelo menos 30 minutos antes do horário do pôr do sol do dia. O evento atrai bastante gente e os melhores lugares na margem ficam ocupados rápido. Leve água. Vista roupas leves mas guarde uma blusa na mochila — o vento do rio depois do pôr do sol pode ser mais fresco do que parece. Câmera com zoom ajuda a registrar o sol no horizonte. E silêncio enquanto Jurandy toca — é parte da etiqueta tácita do lugar, respeitada por turistas e pessoenses igualmente.",
       },
     ],
   },

@@ -21,6 +21,7 @@ interface Parceiro {
   link?: string;
 }
 
+// [CONFIRMAR COM MURILLO: adicionar parceiros reais com logoSrc confirmado]
 const PARCEIROS: Parceiro[] = [
   {
     nome: "Quiosque Pé na Areia",
@@ -29,17 +30,10 @@ const PARCEIROS: Parceiro[] = [
     alt: "Logo do Quiosque Pé na Areia",
     link: "https://maps.app.goo.gl/8zoxqPMp7VhS5ZoJ7",
   },
-  // [CONFIRMAR COM MURILLO: lista real de parceiros — placeholders abaixo]
-  { nome: "Parceiro 2", tipo: "Hotel" },
-  { nome: "Parceiro 3", tipo: "Restaurante" },
-  { nome: "Parceiro 4", tipo: "Pousada" },
-  { nome: "Parceiro 5", tipo: "Quiosque" },
-  { nome: "Parceiro 6", tipo: "Marca" },
-  { nome: "Parceiro 7", tipo: "Restaurante" },
-  { nome: "Parceiro 8", tipo: "Hotel" },
-];
+].filter((p) => !!p.logoSrc); // só exibe parceiros com logo real confirmado
 
 export function PartnersMarquee() {
+  if (PARCEIROS.length < 2) return null;
   const loopList = [...PARCEIROS, ...PARCEIROS];
 
   return (

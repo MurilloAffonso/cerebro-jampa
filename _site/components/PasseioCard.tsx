@@ -5,6 +5,7 @@ import Image from "next/image";
 import { empresa } from "@/data/empresa";
 import type { Passeio } from "@/data/passeios";
 import { getPasseioBadges, parsePrecoChip, DESIGN_BADGE, type DesignBadgeKind } from "@/lib/badges";
+import { DESCONTOS } from "@/data/descontos";
 
 const WA_BASE = empresa.contato.whatsappLink;
 
@@ -14,11 +15,12 @@ interface PasseioCardProps {
 }
 
 export function PasseioCard({ passeio, loading = "lazy" }: PasseioCardProps) {
-  const href   = `/passeios/${passeio.categoria}/${passeio.slug}`;
-  const waUrl  = `${WA_BASE}?text=${encodeURIComponent(`Oi, tenho interesse no passeio ${passeio.nome}`)}`;
-  const badges = getPasseioBadges(passeio);
-  const preco  = parsePrecoChip(passeio.preco);
-  const local  = passeio.localizacao || passeio.saida;
+  const href     = `/passeios/${passeio.categoria}/${passeio.slug}`;
+  const waUrl    = `${WA_BASE}?text=${encodeURIComponent(`Oi, tenho interesse no passeio ${passeio.nome}`)}`;
+  const badges   = getPasseioBadges(passeio);
+  const preco    = parsePrecoChip(passeio.preco);
+  const desconto = DESCONTOS[passeio.slug];
+  const local    = passeio.localizacao || passeio.saida;
 
   return (
     <article style={{
@@ -101,15 +103,39 @@ export function PasseioCard({ passeio, loading = "lazy" }: PasseioCardProps) {
             boxShadow: '0 6px 18px -10px rgba(0,0,0,0.4)',
             lineHeight: 1.1,
           }}>
-            <div style={{
-              fontFamily: 'var(--font-body)',
-              fontSize: 9, fontWeight: 500, textTransform: 'uppercase',
-              letterSpacing: '0.06em', color: '#5A6B78',
-            }}>a partir de</div>
-            <div style={{
-              fontFamily: 'var(--font-heading)',
-              fontSize: 18, fontWeight: 700, color: '#107997', marginTop: 1,
-            }}>{preco}</div>
+            {desconto ? (
+              <>
+                <div style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: 10, fontWeight: 600,
+                  color: '#107997', textTransform: 'uppercase',
+                  letterSpacing: '0.04em', marginBottom: 1,
+                }}>{desconto.label}</div>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 4 }}>
+                  <span style={{
+                    fontFamily: 'var(--font-body)',
+                    fontSize: 11, color: '#9AA5AF',
+                    textDecoration: 'line-through',
+                  }}>{desconto.precoAnterior}</span>
+                  <span style={{
+                    fontFamily: 'var(--font-heading)',
+                    fontSize: 18, fontWeight: 700, color: '#107997',
+                  }}>{preco}</span>
+                </div>
+              </>
+            ) : (
+              <>
+                <div style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: 9, fontWeight: 500, textTransform: 'uppercase',
+                  letterSpacing: '0.06em', color: '#5A6B78',
+                }}>a partir de</div>
+                <div style={{
+                  fontFamily: 'var(--font-heading)',
+                  fontSize: 18, fontWeight: 700, color: '#107997', marginTop: 1,
+                }}>{preco}</div>
+              </>
+            )}
           </div>
         )}
       </div>

@@ -259,6 +259,7 @@ export function Header() {
 
             <NavLink href="/sobre" color={linkColor} hoverColor={linkHoverColor}>Sobre</NavLink>
             <NavLink href="/faq" color={linkColor} hoverColor={linkHoverColor}>FAQ</NavLink>
+            <NavLink href="/blog" color={linkColor} hoverColor={linkHoverColor}>Blog</NavLink>
           </nav>
 
           {/* ── CTA + hamburger ── */}
@@ -392,6 +393,7 @@ export function Header() {
 
             <MobileLink href="/sobre" onClick={closeMobile}>Sobre</MobileLink>
             <MobileLink href="/faq" onClick={closeMobile}>FAQ</MobileLink>
+            <MobileLink href="/blog" onClick={closeMobile}>Blog</MobileLink>
 
             <a
               href={WA_URL}
