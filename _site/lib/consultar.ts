@@ -7,12 +7,10 @@
  * Fonte da regra: ISSUE-05 / _site/docs/issues-site-fase-1.md
  */
 
-const SENTINEL = "[CONSULTAR]";
-
 /** True quando o campo não tem dado seguro para exibir. */
 export function isCampoIndisponivel(value: string | null | undefined): boolean {
   if (value == null || value.trim() === "") return true;
-  return value.includes(SENTINEL);
+  return value.includes("[CONSULTAR");
 }
 
 /**

@@ -153,7 +153,9 @@ export function HomeVideoHero({ whatsappUrl }: HomeVideoHeroProps) {
           </a>
 
           <a
-            href="/passeios"
+            href="https://wa.me/558399087830?text=Oi%20Murillo!%20Vou%20ficar%20em%20Jo%C3%A3o%20Pessoa%20por%20alguns%20dias%2C%20pode%20me%20ajudar%20a%20montar%20um%20roteiro%3F"
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
               display: 'inline-flex', alignItems: 'center', gap: 8,
               fontFamily: 'var(--font-body)', fontWeight: 600, fontSize: 15,
@@ -172,7 +174,7 @@ export function HomeVideoHero({ whatsappUrl }: HomeVideoHeroProps) {
               e.currentTarget.style.borderColor = 'rgba(255,255,255,0.4)';
             }}
           >
-            Ver todos os passeios →
+            Quais passeios combinam com meus dias? →
           </a>
         </div>
 

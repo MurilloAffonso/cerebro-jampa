@@ -42,6 +42,8 @@ import { ReservationIntentForm } from "@/components/ReservationIntentForm";
 import { PasseioGallery } from "@/components/PasseioGallery";
 import { ClientesReviewsBlock } from "@/components/ClientesReviewsBlock";
 import { getPasseioGalleryImages } from "@/lib/gallery";
+import { getCronograma } from "@/data/cronogramas";
+import { PasseioCronograma } from "@/components/PasseioCronograma";
 
 const SITE_URL = `https://${empresa.dominio}`;
 const WA_BASE = empresa.contato.whatsappLink;
@@ -130,6 +132,9 @@ export default function PasseioPage({ params }: PasseioPageProps) {
   // Badges do passeio (sistema Cloud Design)
   const badges = getPasseioBadges(passeio);
 
+  // Cronograma do passeio (accordion timeline)
+  const cronograma = getCronograma(params.categoria, params.slug);
+
   // Rótulo legível da categoria para breadcrumb e schema
   const categoriaLabel = params.categoria
     .split("-")
@@ -190,6 +195,9 @@ export default function PasseioPage({ params }: PasseioPageProps) {
 
       {/* C2.1 — FICHA TÉCNICA (duração, saída, preço, categoria) */}
       <FichaTecnica passeio={passeio} />
+
+      {/* C2.2 — CRONOGRAMA (accordion timeline) */}
+      {cronograma && <PasseioCronograma cronograma={cronograma} />}
 
       {/* Breadcrumb SEO schema — visualmente mínimo */}
       <Breadcrumb

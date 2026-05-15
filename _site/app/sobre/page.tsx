@@ -24,17 +24,17 @@ const SITE_URL = "https://vempassearjampa.com.br";
 const PAGE_URL = `${SITE_URL}/sobre/`;
 const CADASTUR_URL = "https://cadastur.turismo.gov.br/cadastur/#!/public/qrcode/52077577000103";
 
-const WA_URL = `${empresa.contato.whatsappLink}?text=Oi+Murilo%2C+quero+saber+mais+sobre+a+Vem+Passear+em+Jampa`;
+const WA_URL = `${empresa.contato.whatsappLink}?text=Oi+Murillo%2C+quero+saber+mais+sobre+a+Vem+Passear+em+Jampa`;
 
 export const metadata: Metadata = {
   title: "Sobre a Vem Passear em Jampa | Quem está por trás dos passeios em João Pessoa",
   description:
-    "Vem Passear em Jampa é uma agência de turismo receptivo em João Pessoa com Cadastur ativo. Atendimento direto com Murilo pelo WhatsApp, sem central impessoal.",
+    "Vem Passear em Jampa é uma agência de turismo receptivo em João Pessoa com Cadastur ativo. Atendimento direto com Murillo pelo WhatsApp, sem central impessoal.",
   alternates: { canonical: PAGE_URL },
   openGraph: {
     title: "Sobre a Vem Passear em Jampa",
     description:
-      "Agência receptiva em João Pessoa com Cadastur ativo. Atendimento direto com Murilo pelo WhatsApp.",
+      "Agência receptiva em João Pessoa com Cadastur ativo. Atendimento direto com Murillo pelo WhatsApp.",
     url: PAGE_URL,
     images: [
       { url: "/og-image.svg", width: 1200, height: 630, alt: "Sobre a Vem Passear em Jampa" },
@@ -47,7 +47,7 @@ export default function SobrePage() {
 
   return (
     <div className="bg-white">
-      <CTASticky whatsappUrl={WA_URL} label="Falar com Murilo no WhatsApp" />
+      <CTASticky whatsappUrl={WA_URL} label="Falar com Murillo no WhatsApp" />
 
       <Breadcrumb
         items={[
@@ -99,13 +99,13 @@ export default function SobrePage() {
             }}
           >
             Operação local, atendimento direto pelo WhatsApp e roteiro organizado
-            sem intermediário. Murilo responde pessoalmente
+            sem intermediário. Murillo responde pessoalmente
             quem procura informação sobre passeios em João Pessoa.
           </p>
         </div>
       </section>
 
-      {/* SOBRE A MARCA — quem é o Murilo (copy aprovada 2026-05-11) */}
+      {/* SOBRE A MARCA — quem é o Murillo (copy aprovada 2026-05-11) */}
       <section className="section-padding" style={{ background: 'var(--cor-fundo-puro)' }}>
         <div className="container-safe" style={{ maxWidth: '780px' }}>
           <span
@@ -151,13 +151,13 @@ export default function SobrePage() {
             <p>
               A Vem Passear em Jampa nasceu da paixão de{' '}
               <strong style={{ color: 'var(--cor-texto-escuro)' }}>
-                Affonso Murillo Soledade de Oliveira, conhecido como Murilo
+                Affonso Murillo Soledade de Oliveira, conhecido como Murillo
               </strong>{' '}
               por viagens, pelo Nordeste e por João Pessoa.
             </p>
 
             <p>
-              Ex-atleta, viajante e apaixonado por conhecer novos lugares, Murilo carrega
+              Ex-atleta, viajante e apaixonado por conhecer novos lugares, Murillo carrega
               uma relação forte com o Nordeste. Depois de viver muitas experiências de
               viagem e conhecer diferentes destinos, ele decidiu transformar essa paixão
               em uma agência feita para ajudar outras pessoas a viverem João Pessoa com
@@ -173,7 +173,7 @@ export default function SobrePage() {
 
             <p>
               Aqui, o atendimento é direto. Quem fala com você no WhatsApp é o próprio
-              Murilo, entendendo seu perfil, sua data, seu orçamento e o tipo de passeio
+              Murillo, entendendo seu perfil, sua data, seu orçamento e o tipo de passeio
               que faz mais sentido para a sua viagem.
             </p>
 
@@ -287,7 +287,7 @@ export default function SobrePage() {
             <p className="text-gray-700 text-lg leading-relaxed italic">
               {empresa.missao}
             </p>
-            <p className="text-sm text-gray-500 mt-3">— Murilo, fundador</p>
+            <p className="text-sm text-gray-500 mt-3">— Murillo, fundador</p>
           </blockquote>
 
           <h3 className="font-bold text-secondary text-lg mb-4">Como traduzimos isso na prática</h3>
@@ -326,7 +326,7 @@ export default function SobrePage() {
               },
               {
                 n: "2",
-                t: "Murilo responde com orientação local",
+                t: "Murillo responde com orientação local",
                 d: "Recebe sugestão de roteiro, esclarecimento sobre maré (quando o passeio depende disso), preço e disponibilidade.",
               },
               {
@@ -385,9 +385,9 @@ export default function SobrePage() {
       <CTAFinal
         whatsappUrl={WA_URL}
         label="Quer conhecer a operação?"
-        titulo="Fale direto com Murilo"
+        titulo="Fale direto com Murillo"
         subtitulo="Tire dúvidas sobre roteiros, datas e preços — atendimento direto, sem central impessoal."
-        textoBotao="Falar com Murilo no WhatsApp"
+        textoBotao="Falar com Murillo no WhatsApp"
       />
 
       <div className="container-safe py-6 text-center">

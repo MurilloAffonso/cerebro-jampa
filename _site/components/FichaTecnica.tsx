@@ -20,12 +20,14 @@ interface FichaTecnicaProps {
 }
 
 export function FichaTecnica({ passeio }: FichaTecnicaProps) {
-  const precoExibir = isCampoIndisponivel(passeio.preco) ? "Consultar" : passeio.preco;
-  const categoriaLabel = CATEGORIA_LABEL[passeio.categoria] ?? passeio.categoria;
+  const precoExibir    = isCampoIndisponivel(passeio.preco)    ? "Sob consulta" : passeio.preco;
+  const duracaoExibir  = isCampoIndisponivel(passeio.duracao)  ? "Via WhatsApp"  : passeio.duracao;
+  const saidaExibir    = isCampoIndisponivel(passeio.saida)    ? "Via WhatsApp"  : passeio.saida;
+  const categoriaLabel = CATEGORIA_LABEL[passeio.categoria]   ?? passeio.categoria;
 
   const cells = [
-    { icon: <IcoClock />, label: "Duração",    value: passeio.duracao || "Consultar" },
-    { icon: <IcoPin />,   label: "Saída",      value: passeio.saida || "Consultar" },
+    { icon: <IcoClock />, label: "Duração",    value: duracaoExibir },
+    { icon: <IcoPin />,   label: "Saída",      value: saidaExibir },
     { icon: <IcoTag />,   label: "A partir de", value: precoExibir },
     { icon: <IcoGrid />,  label: "Categoria",  value: categoriaLabel },
   ];
