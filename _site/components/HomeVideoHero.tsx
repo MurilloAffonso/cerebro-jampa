@@ -34,6 +34,7 @@ export function HomeVideoHero({ whatsappUrl }: HomeVideoHeroProps) {
         muted
         loop
         playsInline
+        poster="/videos/home/hero-poster.jpg"
         className="absolute inset-0 w-full h-full object-cover motion-reduce:hidden"
         aria-hidden="true"
       >

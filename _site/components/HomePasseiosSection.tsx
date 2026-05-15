@@ -17,6 +17,7 @@ const CATEGORIAS = [
   { slug: "litoral-norte",   label: "Litoral Norte" },
   { slug: "pacotes",         label: "Pacotes" },
   { slug: "city-tour",       label: "City Tour" },
+  { slug: "interestaduais",  label: "Interestaduais" },
 ];
 
 export function HomePasseiosSection({ passeios, showViewAll = true }: HomePasseiosSectionProps) {

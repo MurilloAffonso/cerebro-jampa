@@ -838,7 +838,7 @@ export const passeios: Passeio[] = [
       "Navegação pelo Rio Paraíba com apresentação ao vivo do Bolero de Ravel. Experiência única que existe há mais de 20 anos.",
     descricaoLonga:
       "O pôr do sol do Jacaré é uma parada obrigatória em João Pessoa. Navegação pelo Rio Paraíba ao som de músicas ao vivo (Bolero de Ravel ao sax), dança de forró, violino. Uma experiência única no mundo.",
-    coverImage: "/images/passeios/litoral-norte/jacare/hero-01.jpg",
+    coverImage: "/images/passeios/litoral-norte/por-do-sol-jacare/hero-01.jpg",
     gallery: ["/images/passeios/por-do-sol-jacare/galeria-01.webp"],
     rotario: [
       "Embarque na Praia do Jacaré, Cabedelo",

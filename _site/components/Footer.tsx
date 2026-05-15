@@ -10,7 +10,60 @@ export function Footer() {
   return (
     <footer style={{ background: 'var(--cor-navy)', color: '#fff' }}>
       <div className="container-safe py-14 md:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-14 mb-12">
+
+        {/* ── Passeios mais procurados (full-width) ── */}
+        <div style={{ marginBottom: 48 }}>
+          <h4 style={{
+            fontFamily: 'var(--font-inter)',
+            fontWeight: 600,
+            fontSize: '12px',
+            letterSpacing: '0.10em',
+            textTransform: 'uppercase',
+            color: 'var(--cor-acento)',
+            marginBottom: '16px',
+          }}>
+            Passeios mais procurados
+          </h4>
+          <ul style={{
+            listStyle: 'none',
+            padding: 0,
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
+            gap: '8px 24px',
+          }}>
+            {[
+              { label: 'Areia Vermelha de Catamarã',   href: '/passeios/litoral-norte/areia-vermelha-catamara' },
+              { label: 'Piscinas Naturais do Seixas',  href: '/passeios/piscinas-naturais/seixas' },
+              { label: 'Pôr do Sol no Jacaré',         href: '/passeios/litoral-norte/por-do-sol-jacare' },
+              { label: 'Picaozinho',                   href: '/passeios/piscinas-naturais/picaozinho' },
+              { label: 'Roteiro Clássico Litoral Sul', href: '/passeios/litoral-sul/roteiro-classico' },
+              { label: 'Roteiro do Murillo — 3 Dias',  href: '/passeios/pacotes/roteiro-do-murillo-3-dias' },
+              { label: 'Combo Areia Vermelha',         href: '/passeios/litoral-norte/combo-areia-vermelha' },
+              { label: 'Piscinas da Penha',            href: '/passeios/piscinas-naturais/penha' },
+              { label: 'Porto de Galinhas',            href: '/passeios/interestaduais/porto-de-galinhas' },
+              { label: 'City Tour João Pessoa',        href: '/passeios/city-tour/jampa-historica' },
+            ].map(({ label, href }) => (
+              <li key={href}>
+                <Link
+                  href={href}
+                  style={{
+                    fontFamily: 'var(--font-inter)',
+                    fontSize: '13px',
+                    color: 'rgba(197, 183, 163, 0.72)',
+                    textDecoration: 'none',
+                    transition: 'color 150ms',
+                  }}
+                  onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
+                  onMouseLeave={e => (e.currentTarget.style.color = 'rgba(197, 183, 163, 0.72)')}
+                >
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-10 mb-12">
 
           {/* ── Col 1: Institucional ── */}
           <div>
@@ -87,7 +140,49 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* ── Col 2: Navegação ── */}
+          {/* ── Col 2: Categorias ── */}
+          <div>
+            <h4 style={{
+              fontFamily: 'var(--font-inter)',
+              fontWeight: 600,
+              fontSize: '12px',
+              letterSpacing: '0.10em',
+              textTransform: 'uppercase',
+              color: 'var(--cor-acento)',
+              marginBottom: '16px',
+            }}>
+              Categorias
+            </h4>
+            <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              {[
+                { label: 'Litoral Sul',       href: '/passeios/litoral-sul' },
+                { label: 'Litoral Norte',     href: '/passeios/litoral-norte' },
+                { label: 'Piscinas Naturais', href: '/passeios/piscinas-naturais' },
+                { label: 'City Tour',         href: '/passeios/city-tour' },
+                { label: 'Pacotes',           href: '/passeios/pacotes' },
+                { label: 'Interestaduais',    href: '/passeios/interestaduais' },
+              ].map(({ label, href }) => (
+                <li key={href}>
+                  <Link
+                    href={href}
+                    style={{
+                      fontFamily: 'var(--font-inter)',
+                      fontSize: '14px',
+                      color: 'rgba(197, 183, 163, 0.75)',
+                      textDecoration: 'none',
+                      transition: 'color 150ms',
+                    }}
+                    onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
+                    onMouseLeave={e => (e.currentTarget.style.color = 'rgba(197, 183, 163, 0.75)')}
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* ── Col 3: Navegação ── */}
           <div>
             <h4
               style={{
@@ -132,7 +227,7 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* ── Col 3: Contato ── */}
+          {/* ── Col 4: Contato ── */}
           <div>
             <h4
               style={{
@@ -223,6 +318,30 @@ export function Footer() {
                 </li>
               )}
             </ul>
+
+            {/* Áreas de atendimento */}
+            <div style={{ marginTop: 24 }}>
+              <h5 style={{
+                fontFamily: 'var(--font-inter)',
+                fontWeight: 600,
+                fontSize: '11px',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                color: 'rgba(197, 183, 163, 0.5)',
+                marginBottom: '10px',
+              }}>
+                Áreas de atendimento
+              </h5>
+              <p style={{
+                fontFamily: 'var(--font-inter)',
+                fontSize: '13px',
+                lineHeight: 1.6,
+                color: 'rgba(197, 183, 163, 0.55)',
+                margin: 0,
+              }}>
+                João Pessoa · Cabedelo · Bayeux · Santa Rita · Conde · Pitimbu
+              </p>
+            </div>
           </div>
         </div>
 
