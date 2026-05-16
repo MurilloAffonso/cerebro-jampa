@@ -24,6 +24,66 @@
     "transfer24h": "24h Transfer",
     "excursoesGrupos": "Group Excursions"
   },
+  "Tags": {
+    "maisVendido": "Best seller",
+    "imperdivel": "Must-see",
+    "dependeMare": "Tide-dependent",
+    "soMareBaixa": "Low tide only",
+    "promo": "Sale",
+    "vagas": "Limited spots",
+    "vagasEmbarcacao": "Boat capacity",
+    "equipamentos": "Limited gear",
+    "visibilidade": "Visibility-dependent",
+    "familia": "Family",
+    "transferIncluso": "Transfer included",
+    "novoRoteiro": "New route",
+    "aPartirDe": "From",
+    "verPasseio": "View tour",
+    "reservar": "Book"
+  },
+  "Filtros": {
+    "todos": "All",
+    "labelTodos": "Most popular",
+    "labelCategoria": "Tours",
+    "tituloTodos": "The tours no one skips.",
+    "ctaWa": "Plan my itinerary on WhatsApp →",
+    "verTodos": "See all {count} tours →",
+    "semPasseios": "No tours in this category yet. Talk to Murillo!"
+  },
+  "Hero": {
+    "titulo1": "The sun rises",
+    "titulo2": "here",
+    "titulo3Em": "first.",
+    "subtituloMobile": "Tours along the beaches, reefs and natural pools of the easternmost tip of the Americas.",
+    "subtituloDesktop": "Tours along the beaches, reefs and natural pools of the easternmost tip of the Americas — local operation, human service, accredited guides.",
+    "ctaPrimario": "Book on WhatsApp",
+    "ctaSecundario": "Which tours match my days here? →",
+    "ratingText": "reviews on Google",
+    "statNota": "Google rating",
+    "statAvaliacoes": "reviews",
+    "statCadastur": "Cadastur",
+    "statAtivo": "active"
+  },
+  "Murillo": {
+    "horario": "Available 7am–10pm, replies within 5 minutes",
+    "kicker": "Your host",
+    "titulo1": "Murillo. Not a call center,",
+    "titulo2": "not a bot.",
+    "ctaFalar": "Talk to Murillo →",
+    "diferencial1": "Itineraries that respect the tides and your pace",
+    "diferencial2": "Direct service from someone who knows every beach",
+    "diferencial3": "Cadastur certified — registered and compliant business"
+  },
+  "CTAHome": {
+    "label": "Let's talk",
+    "titulo": "The best of João Pessoa starts with a conversation.",
+    "subtitulo": "Send a message. Murillo replies fast, no script, no fluff. If we're not the right fit, he'll point you to someone trustworthy.",
+    "botao": "Chat with Murillo now",
+    "microcopy": "Available 7am–10pm, every day · Replies within 5 minutes"
+  },
+  "CTASticky": {
+    "label": "Talk to Murillo on WhatsApp"
+  },
   "Footer": {
     "maisPasseios": "Most popular tours",
     "categorias": "Categories",
@@ -44,24 +104,6 @@
       "sobre": "About Vem Passear"
     }
   },
-  "Hero": {
-    "titulo": "The sun rises here first",
-    "subtitulo": "João Pessoa is the easternmost city in the Americas. Here, every tour begins with daylight before anywhere else.",
-    "ctaPrincipal": "See the tours",
-    "ctaSecundario": "Talk to Murillo",
-    "ratingLabel": "on Google",
-    "anosLabel": "years of experience",
-    "turistasLabel": "tourists served"
-  },
-  "Tags": {
-    "maisVendido": "Best seller",
-    "imperdivel": "Must-see",
-    "dependeMare": "Tide-dependent",
-    "transferIncluso": "Transfer included",
-    "aPartirDe": "From",
-    "verPasseio": "View tour",
-    "reservar": "Book"
-  },
   "Passeio": {
     "duracao": "Duration",
     "saida": "Departure",
@@ -74,16 +116,14 @@
     "relacionados": "Related tours",
     "faq": "Frequently asked questions"
   },
-  "Murillo": {
-    "horario": "Available 7am–10pm, replies within 5 minutes"
-  },
   "Tabua": {
     "mareAlta": "High tide",
     "mareBaixa": "Low tide"
   },
   "Whatsapp": {
     "mensagemPasseio": "Hi Murillo! I'd like to know about the tour",
-    "mensagemGeral": "Hi+Murillo!+I%27d+like+to+know+about+the+tours+in+João+Pessoa"
+    "mensagemGeral": "Hi%2C+I%27d+like+to+know+about+the+tours+in+João+Pessoa",
+    "mensagemRoteiro": "Hi+Murillo!+I%27ll+be+in+João+Pessoa+for+a+few+days%2C+can+you+help+me+plan+an+itinerary%3F"
   },
   "LangSelector": {
     "label": "Language"

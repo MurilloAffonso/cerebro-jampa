@@ -24,6 +24,66 @@
     "transfer24h": "Transfer 24h",
     "excursoesGrupos": "Excursões e Grupos"
   },
+  "Tags": {
+    "maisVendido": "Mais vendido",
+    "imperdivel": "Imperdível",
+    "dependeMare": "Depende da maré",
+    "soMareBaixa": "Só com maré baixa",
+    "promo": "Promoção",
+    "vagas": "Vagas limitadas",
+    "vagasEmbarcacao": "Vagas por embarcação",
+    "equipamentos": "Equipamentos limitados",
+    "visibilidade": "Sujeito à visibilidade",
+    "familia": "Família",
+    "transferIncluso": "Transfer incluso",
+    "novoRoteiro": "Novo roteiro",
+    "aPartirDe": "a partir de",
+    "verPasseio": "Ver passeio",
+    "reservar": "Reservar"
+  },
+  "Filtros": {
+    "todos": "Todos",
+    "labelTodos": "Mais procurados",
+    "labelCategoria": "Passeios",
+    "tituloTodos": "Os passeios que ninguém pula.",
+    "ctaWa": "Montar roteiro no WhatsApp →",
+    "verTodos": "Ver todos os {count} passeios →",
+    "semPasseios": "Nenhum passeio nesta categoria ainda. Fale com o Murillo!"
+  },
+  "Hero": {
+    "titulo1": "O sol nasce",
+    "titulo2": "aqui",
+    "titulo3Em": "primeiro.",
+    "subtituloMobile": "Passeios pelas praias, recifes e piscinas naturais da ponta mais oriental das Américas.",
+    "subtituloDesktop": "Passeios pelas praias, recifes e piscinas naturais da ponta mais oriental das Américas — operação local, atendimento humano, guias credenciados.",
+    "ctaPrimario": "Reservar pelo WhatsApp",
+    "ctaSecundario": "Quais passeios combinam com meus dias? →",
+    "ratingText": "avaliações no Google",
+    "statNota": "nota Google",
+    "statAvaliacoes": "avaliações",
+    "statCadastur": "Cadastur",
+    "statAtivo": "ativo"
+  },
+  "Murillo": {
+    "horario": "Atende de 7h às 22h, resposta em até 5 minutos",
+    "kicker": "Quem te atende",
+    "titulo1": "Murillo. Não é atendente,",
+    "titulo2": "não é central.",
+    "ctaFalar": "Falar com o Murillo →",
+    "diferencial1": "Roteiros que respeitam a maré e o seu ritmo",
+    "diferencial2": "Atendimento direto com quem conhece cada praia",
+    "diferencial3": "Cadastur ativo — empresa registrada e regularizada"
+  },
+  "CTAHome": {
+    "label": "Vamos conversar",
+    "titulo": "O melhor de João Pessoa começa numa conversa.",
+    "subtitulo": "Manda mensagem. O Murillo responde rápido, sem script, sem enrolação. Se não for com a gente, ele indica quem confiar.",
+    "botao": "Conversar com o Murillo agora",
+    "microcopy": "Atende de 7h às 22h, todos os dias · Resposta em até 5 minutos"
+  },
+  "CTASticky": {
+    "label": "Falar com Murillo no WhatsApp"
+  },
   "Footer": {
     "maisPasseios": "Passeios mais procurados",
     "categorias": "Categorias",
@@ -44,24 +104,6 @@
       "sobre": "Sobre a Vem Passear"
     }
   },
-  "Hero": {
-    "titulo": "O sol nasce aqui primeiro",
-    "subtitulo": "João Pessoa é a cidade mais a leste das Américas. Aqui, cada passeio começa com a luz do dia antes de qualquer outro lugar.",
-    "ctaPrincipal": "Ver os passeios",
-    "ctaSecundario": "Falar com Murillo",
-    "ratingLabel": "no Google",
-    "anosLabel": "anos de experiência",
-    "turistasLabel": "turistas atendidos"
-  },
-  "Tags": {
-    "maisVendido": "Mais vendido",
-    "imperdivel": "Imperdível",
-    "dependeMare": "Depende da maré",
-    "transferIncluso": "Transfer incluso",
-    "aPartirDe": "A partir de",
-    "verPasseio": "Ver passeio",
-    "reservar": "Reservar"
-  },
   "Passeio": {
     "duracao": "Duração",
     "saida": "Saída",
@@ -74,16 +116,14 @@
     "relacionados": "Passeios relacionados",
     "faq": "Perguntas frequentes"
   },
-  "Murillo": {
-    "horario": "Atende de 7h às 22h, resposta em até 5 minutos"
-  },
   "Tabua": {
     "mareAlta": "Maré alta",
     "mareBaixa": "Maré baixa"
   },
   "Whatsapp": {
     "mensagemPasseio": "Oi Murillo! Quero saber sobre o passeio de",
-    "mensagemGeral": "Oi%2C+quero+informações+sobre+os+passeios+em+João+Pessoa"
+    "mensagemGeral": "Oi%2C+quero+informações+sobre+os+passeios+em+João+Pessoa",
+    "mensagemRoteiro": "Oi+Murillo!+Vou+ficar+em+João+Pessoa+por+alguns+dias%2C+pode+me+ajudar+a+montar+um+roteiro%3F"
   },
   "LangSelector": {
     "label": "Idioma"

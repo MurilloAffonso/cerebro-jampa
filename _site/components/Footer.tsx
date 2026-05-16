@@ -1,12 +1,19 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/lib/navigation";
 import { empresa, paginasInfo } from "@/data/empresa";
 
 const CADASTUR_URL = "https://cadastur.turismo.gov.br/cadastur/#!/public/qrcode/52077577000103";
 
 export function Footer() {
+  const t    = useTranslations('Footer');
+  const tCat = useTranslations('Categorias');
+  const tWa  = useTranslations('Whatsapp');
+
+  const waUrl = `${empresa.contato.whatsappLink}?text=${tWa('mensagemGeral')}`;
+
   return (
     <footer style={{ background: 'var(--cor-navy)', color: '#fff' }}>
       <div className="container-safe py-14 md:py-20">
@@ -22,7 +29,7 @@ export function Footer() {
             color: 'var(--cor-acento)',
             marginBottom: '16px',
           }}>
-            Passeios mais procurados
+            {t('maisPasseios')}
           </h4>
           <ul style={{
             listStyle: 'none',
@@ -67,7 +74,6 @@ export function Footer() {
 
           {/* ── Col 1: Institucional ── */}
           <div>
-            {/* Logo (versão branca transparente — combina com fundo azul do footer) */}
             <div className="mb-6">
               <Link href="/" aria-label="Vem Passear em Jampa — Página inicial">
                 <Image
@@ -90,8 +96,7 @@ export function Footer() {
                 maxWidth: '280px',
               }}
             >
-              Turismo receptivo em João Pessoa, Paraíba. Murillo atende direto
-              pelo WhatsApp — sem intermediários, com conhecimento local de quem vive aqui.
+              {t('descricao')}
             </p>
 
             <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -100,7 +105,7 @@ export function Footer() {
                   href={empresa.rede.googleMaps}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`Ver ${empresa.rating.totalAvaliacoes} avaliações reais no Google`}
+                  aria-label={`Ver ${empresa.rating.totalAvaliacoes} ${t('avaliacoes')} no Google`}
                   style={{
                     fontFamily: 'var(--font-inter)',
                     fontSize: '13px',
@@ -113,7 +118,7 @@ export function Footer() {
                 >
                   <span style={{ color: 'var(--cor-acento-suave)' }}>★</span>{' '}
                   <strong style={{ color: '#fff' }}>{empresa.rating.valor}/5</strong>{' '}
-                  no Google ({empresa.rating.totalAvaliacoes} avaliações)
+                  no Google ({empresa.rating.totalAvaliacoes} {t('avaliacoes')})
                 </a>
               </li>
               <li>
@@ -151,16 +156,16 @@ export function Footer() {
               color: 'var(--cor-acento)',
               marginBottom: '16px',
             }}>
-              Categorias
+              {t('categorias')}
             </h4>
             <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
               {[
-                { label: 'Litoral Sul',       href: '/passeios/litoral-sul' },
-                { label: 'Litoral Norte',     href: '/passeios/litoral-norte' },
-                { label: 'Piscinas Naturais', href: '/passeios/piscinas-naturais' },
-                { label: 'City Tour',         href: '/passeios/city-tour' },
-                { label: 'Pacotes',           href: '/passeios/pacotes' },
-                { label: 'Interestaduais',    href: '/passeios/interestaduais' },
+                { label: tCat('litoralSul'),       href: '/passeios/litoral-sul' },
+                { label: tCat('litoralNorte'),     href: '/passeios/litoral-norte' },
+                { label: tCat('piscinasNaturais'), href: '/passeios/piscinas-naturais' },
+                { label: tCat('cityTour'),         href: '/passeios/city-tour' },
+                { label: tCat('pacotes'),          href: '/passeios/pacotes' },
+                { label: tCat('interestaduais'),   href: '/passeios/interestaduais' },
               ].map(({ label, href }) => (
                 <li key={href}>
                   <Link
@@ -195,17 +200,17 @@ export function Footer() {
                 marginBottom: '16px',
               }}
             >
-              Navegação
+              {t('navegacao')}
             </h4>
             <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
               {[
-                { label: 'Início',                       href: '/' },
-                { label: 'Passeios em João Pessoa',      href: '/passeios' },
-                { label: 'Tábua de Maré em João Pessoa', href: '/tabua-de-mares-joao-pessoa' },
-                { label: 'Perguntas Frequentes',         href: '/faq' },
-                { label: 'Transfer 24h',                 href: '/servicos/transfer-24h' },
-                { label: 'Excursões e Grupos',           href: '/servicos/excursoes-e-grupos' },
-                { label: 'Sobre a Vem Passear',          href: '/sobre' },
+                { label: t('navLinks.inicio'),    href: '/' },
+                { label: t('navLinks.passeios'),  href: '/passeios' },
+                { label: t('navLinks.tabua'),     href: '/tabua-de-mares-joao-pessoa' },
+                { label: t('navLinks.faq'),       href: '/faq' },
+                { label: t('navLinks.transfer'),  href: '/servicos/transfer-24h' },
+                { label: t('navLinks.excursoes'), href: '/servicos/excursoes-e-grupos' },
+                { label: t('navLinks.sobre'),     href: '/sobre' },
               ].map(({ label, href }) => (
                 <li key={href}>
                   <Link
@@ -240,14 +245,14 @@ export function Footer() {
                 marginBottom: '16px',
               }}
             >
-              Contato
+              {t('contato')}
             </h4>
 
             <a
-              href={`${empresa.contato.whatsappLink}?text=Oi%2C+quero+informações+sobre+os+passeios`}
+              href={waUrl}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Falar com Murillo no WhatsApp"
+              aria-label={t('falarMurillo')}
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -330,7 +335,7 @@ export function Footer() {
                 color: 'rgba(197, 183, 163, 0.5)',
                 marginBottom: '10px',
               }}>
-                Áreas de atendimento
+                {t('areasAtendimento')}
               </h5>
               <p style={{
                 fontFamily: 'var(--font-inter)',
@@ -365,7 +370,7 @@ export function Footer() {
               margin: 0,
             }}
           >
-            © 2026 {empresa.nome}. CNPJ {empresa.cnpj}. Todos os direitos reservados.
+            © 2026 {empresa.nome}. CNPJ {empresa.cnpj}. {t('direitos')}.
           </p>
           <div
             style={{

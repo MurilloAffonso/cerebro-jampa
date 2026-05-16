@@ -1,7 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
+import { Link } from "@/lib/navigation";
 import { empresa } from "@/data/empresa";
 import type { Passeio } from "@/data/passeios";
 import { getPasseioBadges, parsePrecoChip, DESIGN_BADGE, type DesignBadgeKind } from "@/lib/badges";
@@ -9,14 +10,32 @@ import { DESCONTOS } from "@/data/descontos";
 
 const WA_BASE = empresa.contato.whatsappLink;
 
+const BADGE_T_KEY: Record<DesignBadgeKind, string> = {
+  "mais-vendido":     "maisVendido",
+  "imperdivel":       "imperdivel",
+  "mare":             "dependeMare",
+  "so-mare-baixa":    "soMareBaixa",
+  "promo":            "promo",
+  "vagas":            "vagas",
+  "vagas-embarcacao": "vagasEmbarcacao",
+  "equipamentos":     "equipamentos",
+  "visibilidade":     "visibilidade",
+  "familia":          "familia",
+  "transfer":         "transferIncluso",
+  "novo":             "novoRoteiro",
+};
+
 interface PasseioCardProps {
   passeio: Passeio;
   loading?: "lazy" | "eager";
 }
 
 export function PasseioCard({ passeio, loading = "lazy" }: PasseioCardProps) {
+  const t   = useTranslations('Tags');
+  const tWa = useTranslations('Whatsapp');
+
   const href     = `/passeios/${passeio.categoria}/${passeio.slug}`;
-  const waUrl    = `${WA_BASE}?text=${encodeURIComponent(`Oi, tenho interesse no passeio ${passeio.nome}`)}`;
+  const waUrl    = `${WA_BASE}?text=${encodeURIComponent(`${tWa('mensagemPasseio')} ${passeio.nome}`)}`;
   const badges   = getPasseioBadges(passeio);
   const preco    = parsePrecoChip(passeio.preco);
   const desconto = DESCONTOS[passeio.slug];
@@ -81,7 +100,7 @@ export function PasseioCard({ passeio, loading = "lazy" }: PasseioCardProps) {
             position: 'absolute', top: 12, left: 12,
             display: 'flex', gap: 6, flexWrap: 'wrap',
           }}>
-            {badges.map((k) => <BadgePill key={k} kind={k} />)}
+            {badges.map((k) => <BadgePill key={k} kind={k} label={t(BADGE_T_KEY[k])} />)}
           </div>
         )}
 
@@ -129,7 +148,7 @@ export function PasseioCard({ passeio, loading = "lazy" }: PasseioCardProps) {
                   fontFamily: 'var(--font-body)',
                   fontSize: 9, fontWeight: 500, textTransform: 'uppercase',
                   letterSpacing: '0.06em', color: '#5A6B78',
-                }}>a partir de</div>
+                }}>{t('aPartirDe')}</div>
                 <div style={{
                   fontFamily: 'var(--font-heading)',
                   fontSize: 18, fontWeight: 700, color: '#107997', marginTop: 1,
@@ -191,12 +210,12 @@ export function PasseioCard({ passeio, loading = "lazy" }: PasseioCardProps) {
               e.currentTarget.style.background = 'transparent';
             }}
           >
-            Ver passeio
+            {t('verPasseio')}
           </Link>
 
           <a href={waUrl} target="_blank" rel="noopener noreferrer"
             onClick={e => e.stopPropagation()}
-            aria-label={`Reservar ${passeio.nome} pelo WhatsApp`}
+            aria-label={`${t('reservar')} ${passeio.nome}`}
             style={{
               flex: 1.3,
               display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
@@ -211,7 +230,7 @@ export function PasseioCard({ passeio, loading = "lazy" }: PasseioCardProps) {
             onMouseEnter={e => (e.currentTarget.style.background = '#0E8FA8')}
             onMouseLeave={e => (e.currentTarget.style.background = '#107997')}
           >
-            <IcoWA /> WhatsApp
+            <IcoWA /> {t('reservar')}
           </a>
         </div>
       </div>
@@ -221,7 +240,7 @@ export function PasseioCard({ passeio, loading = "lazy" }: PasseioCardProps) {
 
 /* ── Sub-componentes ── */
 
-function BadgePill({ kind }: { kind: DesignBadgeKind }) {
+function BadgePill({ kind, label }: { kind: DesignBadgeKind; label: string }) {
   const b = DESIGN_BADGE[kind];
   return (
     <span style={{
@@ -234,7 +253,7 @@ function BadgePill({ kind }: { kind: DesignBadgeKind }) {
       boxShadow: '0 4px 14px -6px rgba(0,0,0,0.4)',
     }}>
       <span style={{ fontSize: 11.5, lineHeight: 1 }}>{b.icon}</span>
-      {b.label}
+      {label}
     </span>
   );
 }

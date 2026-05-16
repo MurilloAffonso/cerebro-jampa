@@ -1,7 +1,10 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import { useTranslations } from 'next-intl'
 import { empresa } from '@/data/empresa'
+
+const WA_BASE = empresa.contato.whatsappLink
 
 interface HomeVideoHeroProps {
   whatsappUrl: string
@@ -9,11 +12,15 @@ interface HomeVideoHeroProps {
 
 export function HomeVideoHero({ whatsappUrl }: HomeVideoHeroProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
+  const t   = useTranslations('Hero')
+  const tWa = useTranslations('Whatsapp')
 
   // Workaround React 18 hydration — garante muted via DOM
   useEffect(() => {
     if (videoRef.current) videoRef.current.muted = true
   }, [])
+
+  const secondaryHref = `${WA_BASE}?text=${tWa('mensagemRoteiro')}`
 
   return (
     <section
@@ -62,14 +69,14 @@ export function HomeVideoHero({ whatsappUrl }: HomeVideoHeroProps) {
           fontSize: 38, fontWeight: 600, lineHeight: 1.05,
           margin: '12px 0 8px', letterSpacing: '-0.02em',
         }}>
-          O sol nasce<br />aqui primeiro.
+          {t('titulo1')}<br />{t('titulo2')} {t('titulo3Em')}
         </h1>
         <p style={{
           fontFamily: 'var(--font-body)',
           fontSize: 14.5, lineHeight: 1.5, color: 'rgba(255,255,255,0.86)',
           margin: '0 0 18px', maxWidth: 280,
         }}>
-          Passeios pelas praias, recifes e piscinas naturais da ponta mais oriental das Américas.
+          {t('subtituloMobile')}
         </p>
 
         {/* CTA WhatsApp — full width */}
@@ -77,7 +84,7 @@ export function HomeVideoHero({ whatsappUrl }: HomeVideoHeroProps) {
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Reservar pelo WhatsApp"
+          aria-label={t('ctaPrimario')}
           style={{
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             gap: 9, width: '100%',
@@ -88,7 +95,7 @@ export function HomeVideoHero({ whatsappUrl }: HomeVideoHeroProps) {
             boxShadow: '0 8px 22px -10px rgba(16,121,151,0.6)',
           }}
         >
-          <IcoWA size={18} /> Reservar pelo WhatsApp
+          <IcoWA size={18} /> {t('ctaPrimario')}
         </a>
 
         {/* Stars */}
@@ -96,11 +103,11 @@ export function HomeVideoHero({ whatsappUrl }: HomeVideoHeroProps) {
           display: 'flex', alignItems: 'center', gap: 6, marginTop: 12,
           fontFamily: 'var(--font-body)', fontSize: 12.5, color: 'rgba(255,255,255,0.78)',
         }}>
-          <Stars /> {empresa.rating.valor} · {empresa.rating.totalAvaliacoes} avaliações no Google
+          <Stars /> {empresa.rating.valor} · {empresa.rating.totalAvaliacoes} {t('ratingText')}
         </div>
       </div>
 
-      {/* ── DESKTOP: texto à esquerda, centralizdo verticalmente ── */}
+      {/* ── DESKTOP: texto à esquerda, centrado verticalmente ── */}
       <div
         className="hidden md:flex absolute flex-col justify-center"
         style={{
@@ -118,9 +125,9 @@ export function HomeVideoHero({ whatsappUrl }: HomeVideoHeroProps) {
           letterSpacing: '-0.025em',
           margin: '20px 0 18px',
         }}>
-          O sol nasce<br />
-          aqui{' '}
-          <em style={{ fontStyle: 'italic', color: '#9FE3D9', fontWeight: 500 }}>primeiro.</em>
+          {t('titulo1')}<br />
+          {t('titulo2')}{' '}
+          <em style={{ fontStyle: 'italic', color: '#9FE3D9', fontWeight: 500 }}>{t('titulo3Em')}</em>
         </h1>
 
         <p style={{
@@ -128,8 +135,7 @@ export function HomeVideoHero({ whatsappUrl }: HomeVideoHeroProps) {
           fontSize: 17, lineHeight: 1.55, color: 'rgba(255,255,255,0.86)',
           maxWidth: 460, marginBottom: 28,
         }}>
-          Passeios pelas praias, recifes e piscinas naturais da ponta mais oriental das Américas —
-          operação local, atendimento humano, guias credenciados.
+          {t('subtituloDesktop')}
         </p>
 
         {/* CTAs desktop */}
@@ -150,11 +156,11 @@ export function HomeVideoHero({ whatsappUrl }: HomeVideoHeroProps) {
             onMouseEnter={e => (e.currentTarget.style.background = '#0E8FA8')}
             onMouseLeave={e => (e.currentTarget.style.background = '#107997')}
           >
-            <IcoWA size={18} /> Reservar pelo WhatsApp
+            <IcoWA size={18} /> {t('ctaPrimario')}
           </a>
 
           <a
-            href="https://wa.me/558399087830?text=Oi%20Murillo!%20Vou%20ficar%20em%20Jo%C3%A3o%20Pessoa%20por%20alguns%20dias%2C%20pode%20me%20ajudar%20a%20montar%20um%20roteiro%3F"
+            href={secondaryHref}
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -175,7 +181,7 @@ export function HomeVideoHero({ whatsappUrl }: HomeVideoHeroProps) {
               e.currentTarget.style.borderColor = 'rgba(255,255,255,0.4)';
             }}
           >
-            Quais passeios combinam com meus dias? →
+            {t('ctaSecundario')}
           </a>
         </div>
 
@@ -184,11 +190,11 @@ export function HomeVideoHero({ whatsappUrl }: HomeVideoHeroProps) {
           display: 'flex', gap: 24, marginTop: 38,
           fontFamily: 'var(--font-body)', fontSize: 13, color: 'rgba(255,255,255,0.82)',
         }}>
-          <StatItem value={String(empresa.rating.valor)} label="nota Google" />
+          <StatItem value={String(empresa.rating.valor)} label={t('statNota')} />
           <div style={{ width: 1, background: 'rgba(255,255,255,0.2)' }} />
-          <StatItem value={`${empresa.rating.totalAvaliacoes}`} label="avaliações" />
+          <StatItem value={`${empresa.rating.totalAvaliacoes}`} label={t('statAvaliacoes')} />
           <div style={{ width: 1, background: 'rgba(255,255,255,0.2)' }} />
-          <StatItem value="Cadastur" label="ativo" />
+          <StatItem value={t('statCadastur')} label={t('statAtivo')} />
         </div>
       </div>
 

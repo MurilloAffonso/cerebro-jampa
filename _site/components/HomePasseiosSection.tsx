@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/lib/navigation";
 import type { Passeio } from "@/data/passeios";
 import { PasseioCard } from "@/components/PasseioCard";
 import { empresa } from "@/data/empresa";
@@ -10,29 +12,33 @@ interface HomePasseiosSectionProps {
   showViewAll?: boolean;
 }
 
-const CATEGORIAS = [
-  { slug: "todos",           label: "Todos" },
-  { slug: "piscinas-naturais", label: "Piscinas Naturais" },
-  { slug: "litoral-sul",     label: "Litoral Sul" },
-  { slug: "litoral-norte",   label: "Litoral Norte" },
-  { slug: "pacotes",         label: "Pacotes" },
-  { slug: "city-tour",       label: "City Tour" },
-  { slug: "interestaduais",  label: "Interestaduais" },
-];
+type CatSlug = "todos" | "piscinas-naturais" | "litoral-sul" | "litoral-norte" | "pacotes" | "city-tour" | "interestaduais";
 
 export function HomePasseiosSection({ passeios, showViewAll = true }: HomePasseiosSectionProps) {
-  const [active, setActive] = useState("todos");
+  const [active, setActive] = useState<CatSlug>("todos");
+  const tFil = useTranslations('Filtros');
+  const tCat = useTranslations('Categorias');
+  const tWa  = useTranslations('Whatsapp');
+
+  const CATEGORIAS: { slug: CatSlug; label: string }[] = [
+    { slug: "todos",             label: tFil('todos') },
+    { slug: "piscinas-naturais", label: tCat('piscinasNaturais') },
+    { slug: "litoral-sul",       label: tCat('litoralSul') },
+    { slug: "litoral-norte",     label: tCat('litoralNorte') },
+    { slug: "pacotes",           label: tCat('pacotes') },
+    { slug: "city-tour",         label: tCat('cityTour') },
+    { slug: "interestaduais",    label: tCat('interestaduais') },
+  ];
 
   const filtered = active === "todos"
     ? passeios
     : passeios.filter((p) => p.categoria === active);
 
-  // Na view "todos", priorizar os prioritários no topo
   const sorted = active === "todos"
     ? [...filtered].sort((a, b) => (b.prioritario ? 1 : 0) - (a.prioritario ? 1 : 0))
     : filtered;
 
-  const waUrl = `${empresa.contato.whatsappLink}?text=${encodeURIComponent("Oi, quero montar um roteiro personalizado para João Pessoa")}`;
+  const waUrl = `${empresa.contato.whatsappLink}?text=${tWa('mensagemRoteiro')}`;
 
   return (
     <section style={{ background: '#fff', paddingBottom: 48 }}>
@@ -74,7 +80,7 @@ export function HomePasseiosSection({ passeios, showViewAll = true }: HomePassei
           fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase',
           color: '#5A6B78', fontWeight: 600,
         }}>
-          {active === "todos" ? "Mais procurados" : "Passeios"}
+          {active === "todos" ? tFil('labelTodos') : tFil('labelCategoria')}
         </div>
         <div style={{
           fontFamily: 'var(--font-heading)',
@@ -82,8 +88,8 @@ export function HomePasseiosSection({ passeios, showViewAll = true }: HomePassei
           color: '#092238', marginTop: 4, letterSpacing: '-0.01em',
         }}>
           {active === "todos"
-            ? "Os passeios que ninguém pula."
-            : CATEGORIAS.find((c) => c.slug === active)?.label ?? "Passeios"}
+            ? tFil('tituloTodos')
+            : CATEGORIAS.find((c) => c.slug === active)?.label ?? tFil('labelCategoria')}
         </div>
       </div>
 
@@ -106,7 +112,7 @@ export function HomePasseiosSection({ passeios, showViewAll = true }: HomePassei
             fontFamily: 'var(--font-body)', fontSize: 14,
             color: '#5A6B78', padding: '24px 0',
           }}>
-            Nenhum passeio nesta categoria ainda. Fale com o Murillo!
+            {tFil('semPasseios')}
           </p>
         )}
       </div>
@@ -131,9 +137,9 @@ export function HomePasseiosSection({ passeios, showViewAll = true }: HomePassei
             onMouseEnter={e => (e.currentTarget.style.background = '#0E8FA8')}
             onMouseLeave={e => (e.currentTarget.style.background = '#107997')}
           >
-            Montar roteiro no WhatsApp →
+            {tFil('ctaWa')}
           </a>
-          <a
+          <Link
             href="/passeios"
             style={{
               display: 'block', marginTop: 12,
@@ -141,8 +147,8 @@ export function HomePasseiosSection({ passeios, showViewAll = true }: HomePassei
               color: '#107997', textDecoration: 'none',
             }}
           >
-            Ver todos os {passeios.length} passeios →
-          </a>
+            {tFil('verTodos', { count: passeios.length })}
+          </Link>
         </div>
       )}
     </section>

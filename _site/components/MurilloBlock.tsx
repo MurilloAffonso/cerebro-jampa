@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { empresa } from "@/data/empresa";
 
 const CADASTUR_URL = "https://cadastur.turismo.gov.br/cadastur/#!/public/qrcode/52077577000103";
@@ -6,13 +7,15 @@ interface MurilloBlockProps {
   whatsappUrl: string;
 }
 
-const DIFERENCIAIS = [
-  "Roteiros que respeitam a maré e o seu ritmo",
-  "Atendimento direto com quem conhece cada praia",
-  "Cadastur ativo — empresa registrada e regularizada",
-];
+export async function MurilloBlock({ whatsappUrl }: MurilloBlockProps) {
+  const t = await getTranslations('Murillo');
 
-export function MurilloBlock({ whatsappUrl }: MurilloBlockProps) {
+  const diferenciais = [
+    t('diferencial1'),
+    t('diferencial2'),
+    t('diferencial3'),
+  ];
+
   return (
     <section
       style={{ background: 'var(--cor-primaria)' }}
@@ -166,7 +169,7 @@ export function MurilloBlock({ whatsappUrl }: MurilloBlockProps) {
                 marginBottom: '16px',
               }}
             >
-              Quem te atende
+              {t('kicker')}
             </span>
 
             <h2
@@ -180,7 +183,7 @@ export function MurilloBlock({ whatsappUrl }: MurilloBlockProps) {
                 letterSpacing: '-0.02em',
               }}
             >
-              Murillo. Não é atendente,<br />não é central.
+              {t('titulo1')}<br />{t('titulo2')}
             </h2>
 
             <div
@@ -204,7 +207,7 @@ export function MurilloBlock({ whatsappUrl }: MurilloBlockProps) {
             </div>
 
             <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 28px', display: 'flex', flexDirection: 'column', gap: '14px' }}>
-              {DIFERENCIAIS.map((item) => (
+              {diferenciais.map((item) => (
                 <li
                   key={item}
                   style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}
@@ -258,7 +261,7 @@ export function MurilloBlock({ whatsappUrl }: MurilloBlockProps) {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Falar com Murillo no WhatsApp"
+              aria-label={t('ctaFalar')}
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -278,7 +281,7 @@ export function MurilloBlock({ whatsappUrl }: MurilloBlockProps) {
               className="hover:-translate-y-[2px] hover:shadow-[0_8px_28px_rgba(217,119,6,0.55)]"
             >
               <IconWhatsApp />
-              Falar com o Murillo →
+              {t('ctaFalar')}
             </a>
           </div>
 
