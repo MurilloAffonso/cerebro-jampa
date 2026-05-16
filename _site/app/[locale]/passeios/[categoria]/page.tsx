@@ -3,7 +3,8 @@
  */
 
 import type { Metadata } from "next";
-import Link from "next/link";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { Link } from "@/lib/navigation";
 import { passeios, getPasseiosByCategoria } from "@/data/passeios";
 import { generateMetadata as generateSeoMetadata } from "@/lib/seo";
 import { empresa } from "@/data/empresa";
@@ -14,7 +15,7 @@ import { CategoryIcon } from "@/components/CategoryIcon";
 import { PasseioCard } from "@/components/PasseioCard";
 
 interface CategoriaPageProps {
-  params: { categoria: string };
+  params: { locale: string; categoria: string };
 }
 
 const CATEGORIAS_META: Record<string, { nome: string; descricao: string }> = {
@@ -67,18 +68,25 @@ export async function generateMetadata({ params }: CategoriaPageProps): Promise<
   });
 }
 
-export default function CategoriaPage({ params }: CategoriaPageProps) {
-  const itens = getPasseiosByCategoria(params.categoria);
-  const meta  = CATEGORIAS_META[params.categoria];
-  const nome  = meta?.nome ?? params.categoria.replace(/-/g, " ");
-  const descricao = meta?.descricao ?? null;
-  const mostraExcursoesCallout = params.categoria === "pacotes" || params.categoria === "interestaduais";
+export default async function CategoriaPage({ params }: CategoriaPageProps) {
+  const { locale, categoria } = params;
+  setRequestLocale(locale);
 
-  const waUrl = `${empresa.contato.whatsappLink}?text=Oi%2C+quero+saber+sobre+os+passeios+de+${encodeURIComponent(nome)}+em+Jo%C3%A3o+Pessoa`;
+  const t   = await getTranslations('Categoria');
+  const tSt = await getTranslations('CTASticky');
+  const tWa = await getTranslations('Whatsapp');
+
+  const itens = getPasseiosByCategoria(categoria);
+  const meta  = CATEGORIAS_META[categoria];
+  const nome  = meta?.nome ?? categoria.replace(/-/g, " ");
+  const descricao = meta?.descricao ?? null;
+  const mostraExcursoesCallout = categoria === "pacotes" || categoria === "interestaduais";
+
+  const waUrl = `${empresa.contato.whatsappLink}?text=${tWa('mensagemGeral')}`;
 
   return (
     <div style={{ background: 'var(--cor-fundo)' }}>
-      <CTASticky whatsappUrl={waUrl} label="Falar com Murillo no WhatsApp" />
+      <CTASticky whatsappUrl={waUrl} label={tSt('label')} />
 
       <Breadcrumb
         items={[
@@ -86,7 +94,7 @@ export default function CategoriaPage({ params }: CategoriaPageProps) {
           { label: "Passeios", href: "/passeios" },
           { label: nome },
         ]}
-        currentUrl={`https://${empresa.dominio}/passeios/${params.categoria}/`}
+        currentUrl={`https://${empresa.dominio}/passeios/${categoria}/`}
       />
 
       {/* ── Hero ── */}
@@ -111,7 +119,7 @@ export default function CategoriaPage({ params }: CategoriaPageProps) {
               marginBottom: '20px',
             }}
           >
-            <CategoryIcon slug={params.categoria} size={36} strokeWidth={1.5} />
+            <CategoryIcon slug={categoria} size={36} strokeWidth={1.5} />
           </div>
 
           <h1
@@ -125,7 +133,7 @@ export default function CategoriaPage({ params }: CategoriaPageProps) {
               letterSpacing: '-0.02em',
             }}
           >
-            {nome} em João Pessoa
+            {nome} {t('emJoaoPessoa')}
           </h1>
 
           {descricao && (
@@ -150,7 +158,9 @@ export default function CategoriaPage({ params }: CategoriaPageProps) {
               letterSpacing: '0.05em',
             }}
           >
-            {itens.length} {itens.length === 1 ? 'passeio disponível' : 'passeios disponíveis'}
+            {itens.length === 1
+              ? t('disponivel', { count: itens.length })
+              : t('disponiveis', { count: itens.length })}
           </p>
         </div>
       </section>
@@ -160,7 +170,7 @@ export default function CategoriaPage({ params }: CategoriaPageProps) {
         <div className="container-safe">
           {itens.length === 0 ? (
             <div style={{ textAlign: 'center', padding: '48px 0' }}>
-              <p style={{ color: 'var(--cor-texto-claro)' }}>Nenhum passeio disponível nesta categoria.</p>
+              <p style={{ color: 'var(--cor-texto-claro)' }}>{t('nenhumPasseio')}</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -188,7 +198,7 @@ export default function CategoriaPage({ params }: CategoriaPageProps) {
             className="md:flex-row md:items-center md:justify-between"
           >
             <div>
-              <span className="section-kicker">Vai trazer um grupo?</span>
+              <span className="section-kicker">{t('grupoKicker')}</span>
               <h3
                 className="font-serif"
                 style={{
@@ -198,7 +208,7 @@ export default function CategoriaPage({ params }: CategoriaPageProps) {
                   margin: '0 0 8px',
                 }}
               >
-                Excursões e grupos têm operação dedicada
+                {t('grupoTitulo')}
               </h3>
               <p
                 style={{
@@ -209,7 +219,7 @@ export default function CategoriaPage({ params }: CategoriaPageProps) {
                   margin: 0,
                 }}
               >
-                Roteiro, transporte local, van/ônibus e apoio em campo para igreja, escola, família grande ou agência parceira.
+                {t('grupoSubtitulo')}
               </p>
             </div>
             <Link
@@ -232,7 +242,7 @@ export default function CategoriaPage({ params }: CategoriaPageProps) {
               }}
               className="hover:opacity-90 transition-opacity"
             >
-              Ver Excursões e Grupos →
+              {t('grupoCta')}
             </Link>
           </div>
         </div>
@@ -241,11 +251,11 @@ export default function CategoriaPage({ params }: CategoriaPageProps) {
       {/* ── CTA Final ── */}
       <CTAFinal
         whatsappUrl={waUrl}
-        label="Ficou com dúvida?"
-        titulo={`Qual passeio de ${nome} combina com você?`}
-        subtitulo="Murillo orienta direto pelo WhatsApp — ele ajuda você a montar o roteiro certo, com preço justo."
-        textoBotao="Falar com Murillo no WhatsApp"
-        microcopy="Atendimento direto · Sem script · Resposta rápida"
+        label={t('ctaLabel')}
+        titulo={t('ctaTitulo', { nome })}
+        subtitulo={t('ctaSubtitulo')}
+        textoBotao={t('ctaBotao')}
+        microcopy={t('ctaMicrocopy')}
       />
     </div>
   );

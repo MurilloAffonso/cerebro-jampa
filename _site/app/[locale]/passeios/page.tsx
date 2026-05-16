@@ -4,6 +4,7 @@
  */
 
 import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { passeios } from "@/data/passeios";
 import { empresa } from "@/data/empresa";
 import { Breadcrumb } from "@/components/Breadcrumb";
@@ -21,12 +22,23 @@ export const metadata: Metadata = generateSeoMetadata({
   canonical: "/passeios/",
 });
 
-const WA_URL = `${empresa.contato.whatsappLink}?text=Oi%2C+quero+escolher+um+passeio+em+Jo%C3%A3o+Pessoa`;
+interface PasseiosPageProps {
+  params: { locale: string };
+}
 
-export default function PasseiosPage() {
+export default async function PasseiosPage({ params }: PasseiosPageProps) {
+  const { locale } = params;
+  setRequestLocale(locale);
+
+  const t   = await getTranslations('ListaPasseios');
+  const tSt = await getTranslations('CTASticky');
+  const tWa = await getTranslations('Whatsapp');
+
+  const WA_URL = `${empresa.contato.whatsappLink}?text=${tWa('mensagemGeral')}`;
+
   return (
     <div style={{ background: '#fff' }}>
-      <CTASticky whatsappUrl={WA_URL} label="Falar com Murillo no WhatsApp" />
+      <CTASticky whatsappUrl={WA_URL} label={tSt('label')} />
 
       {/* ── Hero da página ── */}
       <section style={{
@@ -39,7 +51,7 @@ export default function PasseiosPage() {
             fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase',
             color: 'rgba(255,255,255,0.6)', fontWeight: 600, marginBottom: 10,
           }}>
-            Curadoria do Murillo
+            {t('kicker')}
           </div>
           <h1 style={{
             fontFamily: 'var(--font-heading)',
@@ -48,14 +60,14 @@ export default function PasseiosPage() {
             letterSpacing: '-0.02em',
             color: '#fff', margin: 0,
           }}>
-            Todos os passeios<br />em João Pessoa
+            {t('titulo')}
           </h1>
           <p style={{
             fontFamily: 'var(--font-body)',
             fontSize: 15, color: 'rgba(255,255,255,0.72)',
             lineHeight: 1.55, marginTop: 12, marginBottom: 0,
           }}>
-            {passeios.length} passeios. Filtre por categoria ou deixa o Murillo montar o roteiro.
+            {t('subtitulo', { count: passeios.length })}
           </p>
         </div>
       </section>
@@ -72,11 +84,11 @@ export default function PasseiosPage() {
       {/* ── CTA Final ── */}
       <CTAFinal
         whatsappUrl={WA_URL}
-        label="Ficou com dúvida?"
-        titulo="Qual passeio combina com você?"
-        subtitulo="Manda mensagem para Murillo — ele orienta sobre roteiro, datas e o que combina com seu tempo e orçamento."
-        textoBotao="Falar com Murillo no WhatsApp"
-        microcopy="Atendimento direto · Sem script · Resposta rápida"
+        label={t('ctaLabel')}
+        titulo={t('ctaTitulo')}
+        subtitulo={t('ctaSubtitulo')}
+        textoBotao={t('ctaBotao')}
+        microcopy={t('ctaMicrocopy')}
       />
     </div>
   );

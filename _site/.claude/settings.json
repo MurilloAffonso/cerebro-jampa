@@ -1,4 +1,15 @@
 {
+  "allowedTools": [
+    "Bash(git add*)",
+    "Bash(git commit*)",
+    "Bash(git status*)",
+    "Bash(git log*)",
+    "Bash(git diff*)",
+    "Bash(git show*)",
+    "Bash(npm run type-check*)",
+    "Bash(npm run build*)",
+    "Bash(npm run lint*)"
+  ],
   "hooks": {
     "PreToolUse": [
       {

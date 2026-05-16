@@ -114,7 +114,42 @@
     "reservarWhatsapp": "Book with Murillo on WhatsApp",
     "politicaCancelamento": "Cancellation policy",
     "relacionados": "Related tours",
-    "faq": "Frequently asked questions"
+    "faq": "Frequently asked questions",
+    "heroCta": "💬 Book with Murillo on WhatsApp",
+    "ctaStickyLabel": "Book with Murillo on WhatsApp",
+    "oQueEspera": "What awaits you in {nome}",
+    "passoPasso": "How the tour works — step by step",
+    "roteiro": "Itinerary",
+    "perguntasTitle": "Questions about {nome}",
+    "ficouDuvida": "Still have a question? Reach out — we reply fast.",
+    "ctaBotao": "💬 Book on WhatsApp",
+    "outrosPasseios": "More tours in {categoria} in João Pessoa",
+    "verTodosCategoria": "See all {categoria} tours →"
+  },
+  "ListaPasseios": {
+    "kicker": "Murillo's Selection",
+    "titulo": "All tours in João Pessoa",
+    "subtitulo": "{count} tours. Filter by category or let Murillo plan your itinerary.",
+    "ctaLabel": "Have a question?",
+    "ctaTitulo": "Which tour suits you?",
+    "ctaSubtitulo": "Message Murillo — he'll guide you on itinerary, dates and what fits your time and budget.",
+    "ctaBotao": "Talk to Murillo on WhatsApp",
+    "ctaMicrocopy": "Direct service · No script · Fast replies"
+  },
+  "Categoria": {
+    "disponivel": "{count} tour available",
+    "disponiveis": "{count} tours available",
+    "nenhumPasseio": "No tours available in this category.",
+    "emJoaoPessoa": "in João Pessoa",
+    "grupoKicker": "Bringing a group?",
+    "grupoTitulo": "Group excursions have dedicated support",
+    "grupoSubtitulo": "Itinerary, local transport, van/bus and field support for churches, schools, large families or travel agencies.",
+    "grupoCta": "See Group Excursions →",
+    "ctaLabel": "Have a question?",
+    "ctaTitulo": "Which {nome} tour suits you?",
+    "ctaSubtitulo": "Murillo guides you directly on WhatsApp — he'll help you plan the right itinerary at a fair price.",
+    "ctaBotao": "Talk to Murillo on WhatsApp",
+    "ctaMicrocopy": "Direct service · No script · Fast replies"
   },
   "Tabua": {
     "mareAlta": "High tide",

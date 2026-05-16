@@ -6,9 +6,9 @@ import { useEffect } from 'react';
 import type { Locale } from '@/i18n/routing';
 
 const LOCALES: { code: Locale; flag: string; label: string }[] = [
-  { code: 'pt', flag: '🇧🇷', label: 'PT' },
-  { code: 'en', flag: '🇺🇸', label: 'EN' },
-  { code: 'es', flag: '🇪🇸', label: 'ES' },
+  { code: 'pt', flag: '🇧🇷', label: 'Português' },
+  { code: 'en', flag: '🇺🇸', label: 'English' },
+  { code: 'es', flag: '🇪🇸', label: 'Español' },
 ];
 
 export function LanguageSelector({ scrolled }: { scrolled: boolean }) {
@@ -42,46 +42,38 @@ export function LanguageSelector({ scrolled }: { scrolled: boolean }) {
             onClick={() => switchLocale(code)}
             aria-label={`Switch to ${label}`}
             aria-pressed={isActive}
+            title={label}
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '3px',
-              padding: '4px 5px',
-              borderRadius: '6px',
+              justifyContent: 'center',
+              width: '32px',
+              height: '32px',
+              borderRadius: '8px',
               border: isActive
-                ? '1.5px solid #107997'
-                : '1.5px solid transparent',
+                ? '2px solid #107997'
+                : '2px solid transparent',
               background: isActive
-                ? 'rgba(16, 121, 151, 0.12)'
+                ? 'rgba(16, 121, 151, 0.15)'
                 : 'transparent',
               cursor: isActive ? 'default' : 'pointer',
-              fontFamily: 'var(--font-body)',
-              fontSize: '11px',
-              fontWeight: isActive ? 700 : 500,
-              color: isActive
-                ? '#107997'
-                : scrolled
-                ? 'var(--cor-texto-medio)'
-                : 'rgba(255,255,255,0.78)',
               transition: 'all 150ms',
               lineHeight: 1,
-              whiteSpace: 'nowrap',
             }}
             onMouseEnter={e => {
               if (!isActive) {
-                e.currentTarget.style.border = '1.5px solid rgba(16,121,151,0.4)';
-                e.currentTarget.style.background = 'rgba(16,121,151,0.07)';
+                e.currentTarget.style.border = '2px solid rgba(16,121,151,0.4)';
+                e.currentTarget.style.background = 'rgba(16,121,151,0.08)';
               }
             }}
             onMouseLeave={e => {
               if (!isActive) {
-                e.currentTarget.style.border = '1.5px solid transparent';
+                e.currentTarget.style.border = '2px solid transparent';
                 e.currentTarget.style.background = 'transparent';
               }
             }}
           >
-            <span style={{ fontSize: '13px', lineHeight: 1 }}>{flag}</span>
-            <span>{label}</span>
+            <span style={{ fontSize: '18px', lineHeight: 1 }}>{flag}</span>
           </button>
         );
       })}

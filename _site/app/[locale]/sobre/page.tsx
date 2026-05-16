@@ -14,6 +14,7 @@
  */
 
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 import Link from "next/link";
 import { empresa } from "@/data/empresa";
 import { Breadcrumb } from "@/components/Breadcrumb";
@@ -42,7 +43,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function SobrePage() {
+export default function SobrePage({ params }: { params: { locale: string } }) {
+  setRequestLocale(params.locale);
   const diferenciais = empresa.diferencial.split(" + ");
 
   return (

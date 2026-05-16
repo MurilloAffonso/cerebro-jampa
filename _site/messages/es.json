@@ -114,7 +114,42 @@
     "reservarWhatsapp": "Reservar con Murillo por WhatsApp",
     "politicaCancelamento": "Política de cancelación",
     "relacionados": "Tours relacionados",
-    "faq": "Preguntas frecuentes"
+    "faq": "Preguntas frecuentes",
+    "heroCta": "💬 Reservar con Murillo por WhatsApp",
+    "ctaStickyLabel": "Reservar con Murillo por WhatsApp",
+    "oQueEspera": "Lo que te espera en {nome}",
+    "passoPasso": "Cómo es el tour — paso a paso",
+    "roteiro": "Itinerario",
+    "perguntasTitle": "Preguntas sobre {nome}",
+    "ficouDuvida": "¿Tienes alguna duda? Contáctanos — respondemos rápido.",
+    "ctaBotao": "💬 Reservar por WhatsApp",
+    "outrosPasseios": "Más tours en {categoria} en João Pessoa",
+    "verTodosCategoria": "Ver todos los tours de {categoria} →"
+  },
+  "ListaPasseios": {
+    "kicker": "Selección de Murillo",
+    "titulo": "Todos los tours en João Pessoa",
+    "subtitulo": "{count} tours. Filtra por categoría o deja que Murillo planifique el itinerario.",
+    "ctaLabel": "¿Tienes dudas?",
+    "ctaTitulo": "¿Qué tour te conviene?",
+    "ctaSubtitulo": "Escríbele a Murillo — él te orienta sobre itinerarios, fechas y lo que se adapta a tu tiempo y presupuesto.",
+    "ctaBotao": "Hablar con Murillo por WhatsApp",
+    "ctaMicrocopy": "Atención directa · Sin guión · Respuesta rápida"
+  },
+  "Categoria": {
+    "disponivel": "{count} tour disponible",
+    "disponiveis": "{count} tours disponibles",
+    "nenhumPasseio": "No hay tours disponibles en esta categoría.",
+    "emJoaoPessoa": "en João Pessoa",
+    "grupoKicker": "¿Traes un grupo?",
+    "grupoTitulo": "Las excursiones grupales tienen operación dedicada",
+    "grupoSubtitulo": "Itinerario, transporte local, van/autobús y apoyo en campo para iglesias, escuelas, familias grandes o agencias.",
+    "grupoCta": "Ver Excursiones Grupales →",
+    "ctaLabel": "¿Tienes dudas?",
+    "ctaTitulo": "¿Qué tour de {nome} te conviene?",
+    "ctaSubtitulo": "Murillo te orienta directamente por WhatsApp — te ayuda a planificar el itinerario correcto al precio justo.",
+    "ctaBotao": "Hablar con Murillo por WhatsApp",
+    "ctaMicrocopy": "Atención directa · Sin guión · Respuesta rápida"
   },
   "Tabua": {
     "mareAlta": "Marea alta",

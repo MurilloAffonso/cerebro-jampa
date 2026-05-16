@@ -114,7 +114,42 @@
     "reservarWhatsapp": "Reservar com Murillo no WhatsApp",
     "politicaCancelamento": "Política de cancelamento",
     "relacionados": "Passeios relacionados",
-    "faq": "Perguntas frequentes"
+    "faq": "Perguntas frequentes",
+    "heroCta": "💬 Reservar com Murillo no WhatsApp",
+    "ctaStickyLabel": "Reservar com Murillo no WhatsApp",
+    "oQueEspera": "O que espera por você em {nome}",
+    "passoPasso": "Como é o passeio — passo a passo",
+    "roteiro": "Roteiro",
+    "perguntasTitle": "Perguntas sobre o passeio de {nome}",
+    "ficouDuvida": "Ficou com alguma dúvida que não está aqui? Fala com a gente — é rápido.",
+    "ctaBotao": "💬 Reservar no WhatsApp",
+    "outrosPasseios": "Outros passeios em {categoria} em João Pessoa",
+    "verTodosCategoria": "Ver todos os passeios em {categoria} →"
+  },
+  "ListaPasseios": {
+    "kicker": "Curadoria do Murillo",
+    "titulo": "Todos os passeios em João Pessoa",
+    "subtitulo": "{count} passeios. Filtre por categoria ou deixa o Murillo montar o roteiro.",
+    "ctaLabel": "Ficou com dúvida?",
+    "ctaTitulo": "Qual passeio combina com você?",
+    "ctaSubtitulo": "Manda mensagem para Murillo — ele orienta sobre roteiro, datas e o que combina com seu tempo e orçamento.",
+    "ctaBotao": "Falar com Murillo no WhatsApp",
+    "ctaMicrocopy": "Atendimento direto · Sem script · Resposta rápida"
+  },
+  "Categoria": {
+    "disponivel": "{count} passeio disponível",
+    "disponiveis": "{count} passeios disponíveis",
+    "nenhumPasseio": "Nenhum passeio disponível nesta categoria.",
+    "emJoaoPessoa": "em João Pessoa",
+    "grupoKicker": "Vai trazer um grupo?",
+    "grupoTitulo": "Excursões e grupos têm operação dedicada",
+    "grupoSubtitulo": "Roteiro, transporte local, van/ônibus e apoio em campo para igreja, escola, família grande ou agência parceira.",
+    "grupoCta": "Ver Excursões e Grupos →",
+    "ctaLabel": "Ficou com dúvida?",
+    "ctaTitulo": "Qual passeio de {nome} combina com você?",
+    "ctaSubtitulo": "Murillo orienta direto pelo WhatsApp — ele ajuda você a montar o roteiro certo, com preço justo.",
+    "ctaBotao": "Falar com Murillo no WhatsApp",
+    "ctaMicrocopy": "Atendimento direto · Sem script · Resposta rápida"
   },
   "Tabua": {
     "mareAlta": "Maré alta",

@@ -20,6 +20,7 @@
  */
 
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 import { empresa } from "@/data/empresa";
 import {
   TABUA_MARES_MANUAL_2026,
@@ -113,7 +114,8 @@ const BREADCRUMB_SCHEMA = generateBreadcrumbSchema([
 
 const WA_URL = `${empresa.contato.whatsappLink}?text=${encodeURIComponent(buildMensagemWhatsApp())}`;
 
-export default function TabuaMaresJoaoPessoaPage() {
+export default function TabuaMaresJoaoPessoaPage({ params }: { params: { locale: string } }) {
+  setRequestLocale(params.locale);
   const mesAtual = getMesAtual();
 
   return (

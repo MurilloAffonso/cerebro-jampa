@@ -6,6 +6,7 @@
  */
 
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 import Link from "next/link";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { Breadcrumb } from "@/components/Breadcrumb";
@@ -97,7 +98,8 @@ const FAQ_ITEMS = [
 
 const faqSchema = generateFAQSchema(FAQ_ITEMS);
 
-export default function FaqPage() {
+export default function FaqPage({ params }: { params: { locale: string } }) {
+  setRequestLocale(params.locale);
   return (
     <>
       {/* Schema FAQPage */}
