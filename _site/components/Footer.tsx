@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/lib/navigation";
 import { empresa, paginasInfo } from "@/data/empresa";
+import { LanguageSelector } from "@/components/LanguageSelector";
 
 const CADASTUR_URL = "https://cadastur.turismo.gov.br/cadastur/#!/public/qrcode/52077577000103";
 
@@ -348,6 +349,35 @@ export function Footer() {
               </p>
             </div>
           </div>
+        </div>
+
+        {/* ── Seletor de idiomas ── */}
+        <div
+          style={{
+            borderTop: '1px solid rgba(255,255,255,0.08)',
+            paddingTop: '24px',
+            marginBottom: '20px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '12px',
+            alignItems: 'flex-start',
+          }}
+          className="sm:flex-row sm:items-center sm:justify-between sm:gap-6"
+        >
+          <h5
+            style={{
+              fontFamily: 'var(--font-inter)',
+              fontWeight: 600,
+              fontSize: '11px',
+              letterSpacing: '0.10em',
+              textTransform: 'uppercase',
+              color: 'rgba(197, 183, 163, 0.55)',
+              margin: 0,
+            }}
+          >
+            {t('idioma')}
+          </h5>
+          <LanguageSelector scrolled={true} />
         </div>
 
         {/* ── Bottom bar ── */}

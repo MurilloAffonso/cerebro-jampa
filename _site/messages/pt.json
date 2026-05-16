@@ -1,4 +1,9 @@
 {
+  "Seo": {
+    "titleDefault": "Passeios em João Pessoa | Vem Passear em Jampa",
+    "titleTemplate": "%s | Vem Passear em Jampa",
+    "description": "Agência de turismo em João Pessoa com Cadastur ativo. Passeios para praias, piscinas naturais, city tour e pacotes. Atendimento direto pelo WhatsApp com orientação local."
+  },
   "Nav": {
     "inicio": "Início",
     "passeios": "Passeios",
@@ -94,6 +99,7 @@
     "avaliacoes": "avaliações",
     "direitos": "Todos os direitos reservados",
     "falarMurillo": "Falar com Murillo",
+    "idioma": "Idioma",
     "navLinks": {
       "inicio": "Início",
       "passeios": "Passeios em João Pessoa",

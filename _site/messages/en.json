@@ -1,4 +1,9 @@
 {
+  "Seo": {
+    "titleDefault": "Tours in João Pessoa | Vem Passear em Jampa",
+    "titleTemplate": "%s | Vem Passear em Jampa",
+    "description": "Travel agency in João Pessoa with active Cadastur. Beach tours, natural pools, city tour and packages. Direct WhatsApp service with local guidance from Murillo."
+  },
   "Nav": {
     "inicio": "Home",
     "passeios": "Tours",
@@ -94,6 +99,7 @@
     "avaliacoes": "reviews",
     "direitos": "All rights reserved",
     "falarMurillo": "Talk to Murillo",
+    "idioma": "Language",
     "navLinks": {
       "inicio": "Home",
       "passeios": "Tours in João Pessoa",
