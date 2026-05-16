@@ -12,6 +12,7 @@
  */
 
 import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { passeios } from "@/data/passeios";
 import { empresa } from "@/data/empresa";
 import { MurilloBlock } from "@/components/MurilloBlock";
@@ -23,9 +24,6 @@ import { HomePasseiosSection } from "@/components/HomePasseiosSection";
 import { PartnersMarquee } from "@/components/PartnersMarquee";
 import { GoogleReviewsBlock } from "@/components/GoogleReviewsBlock";
 import { CadasturCertificate } from "@/components/CadasturCertificate";
-
-const WA_URL = `${empresa.contato.whatsappLink}?text=Oi%2C+quero+informações+sobre+os+passeios+em+João+Pessoa`;
-
 
 export const metadata: Metadata = {
   title: "Passeios em João Pessoa | Vem Passear em Jampa",
@@ -43,11 +41,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
+export default async function Home({ params }: { params: { locale: string } }) {
+  const { locale } = params;
+  setRequestLocale(locale);
+
+  const tCTA    = await getTranslations('CTAHome');
+  const tSticky = await getTranslations('CTASticky');
+  const tWa     = await getTranslations('Whatsapp');
+
+  const WA_URL = `${empresa.contato.whatsappLink}?text=${tWa('mensagemGeral')}`;
+
   return (
     <div style={{ background: 'var(--cor-fundo)' }}>
 
-      <CTASticky whatsappUrl={WA_URL} label="Falar com Murillo no WhatsApp" />
+      <CTASticky whatsappUrl={WA_URL} label={tSticky('label')} />
 
       {/* ── 1. HERO ── */}
       <HomeVideoHero whatsappUrl={WA_URL} />
@@ -74,11 +81,11 @@ export default function Home() {
       <CTAFinal
         whatsappUrl={WA_URL}
         variante="laranja"
-        label="Vamos conversar"
-        titulo="O melhor de João Pessoa começa numa conversa."
-        subtitulo="Manda mensagem. O Murillo responde rápido, sem script, sem enrolação. Se não for com a gente, ele indica quem confiar."
-        textoBotao="Conversar com o Murillo agora"
-        microcopy="Atende de 7h às 22h, todos os dias · Resposta em até 5 minutos"
+        label={tCTA('label')}
+        titulo={tCTA('titulo')}
+        subtitulo={tCTA('subtitulo')}
+        textoBotao={tCTA('botao')}
+        microcopy={tCTA('microcopy')}
       />
 
     </div>
