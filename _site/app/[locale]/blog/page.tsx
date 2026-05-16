@@ -12,24 +12,32 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { empresa } from "@/data/empresa";
 import { getPublishedPosts, listClusters } from "@/lib/blog";
+import { buildLocaleAlternates } from "@/lib/seo";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTASticky } from "@/components/CTASticky";
 
 const WA_URL = `${empresa.contato.whatsappLink}?text=Oi%2C+quero+informações+sobre+os+passeios+em+João+Pessoa`;
 
-export const metadata: Metadata = {
-  title: "Blog — Guias de João Pessoa | Vem Passear em Jampa",
-  description:
-    "Guias práticos sobre João Pessoa: piscinas naturais, roteiros, marés e dicas locais com orientação direta de Murillo.",
-  alternates: { canonical: "/blog" },
-  openGraph: {
-    title: "Blog — Guias de João Pessoa",
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const alternates = buildLocaleAlternates(params.locale, "/blog");
+  return {
+    title: "Blog — Guias de João Pessoa | Vem Passear em Jampa",
     description:
-      "Guias práticos sobre João Pessoa escritos por quem vive aqui. Piscinas naturais, roteiros, marés e dicas locais.",
-    url: "/blog",
-    type: "website",
-  },
-};
+      "Guias práticos sobre João Pessoa: piscinas naturais, roteiros, marés e dicas locais com orientação direta de Murillo.",
+    alternates,
+    openGraph: {
+      title: "Blog — Guias de João Pessoa",
+      description:
+        "Guias práticos sobre João Pessoa escritos por quem vive aqui. Piscinas naturais, roteiros, marés e dicas locais.",
+      url: alternates.canonical,
+      type: "website",
+    },
+  };
+}
 
 export default function BlogIndexPage() {
   const published = getPublishedPosts();

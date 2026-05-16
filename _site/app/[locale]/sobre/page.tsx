@@ -20,6 +20,7 @@ import { empresa } from "@/data/empresa";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTASticky } from "@/components/CTASticky";
 import { CTAFinal } from "@/components/CTAFinal";
+import { buildLocaleAlternates } from "@/lib/seo";
 
 const SITE_URL = "https://vempassearjampa.com.br";
 const PAGE_URL = `${SITE_URL}/sobre/`;
@@ -27,21 +28,28 @@ const CADASTUR_URL = "https://cadastur.turismo.gov.br/cadastur/#!/public/qrcode/
 
 const WA_URL = `${empresa.contato.whatsappLink}?text=Oi+Murillo%2C+quero+saber+mais+sobre+a+Vem+Passear+em+Jampa`;
 
-export const metadata: Metadata = {
-  title: "Sobre a Vem Passear em Jampa | Quem está por trás dos passeios em João Pessoa",
-  description:
-    "Vem Passear em Jampa é uma agência de turismo receptivo em João Pessoa com Cadastur ativo. Atendimento direto com Murillo pelo WhatsApp, sem central impessoal.",
-  alternates: { canonical: PAGE_URL },
-  openGraph: {
-    title: "Sobre a Vem Passear em Jampa",
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const alternates = buildLocaleAlternates(params.locale, "/sobre");
+  return {
+    title: "Sobre a Vem Passear em Jampa | Quem está por trás dos passeios em João Pessoa",
     description:
-      "Agência receptiva em João Pessoa com Cadastur ativo. Atendimento direto com Murillo pelo WhatsApp.",
-    url: PAGE_URL,
-    images: [
-      { url: "/og-image.svg", width: 1200, height: 630, alt: "Sobre a Vem Passear em Jampa" },
-    ],
-  },
-};
+      "Vem Passear em Jampa é uma agência de turismo receptivo em João Pessoa com Cadastur ativo. Atendimento direto com Murillo pelo WhatsApp, sem central impessoal.",
+    alternates,
+    openGraph: {
+      title: "Sobre a Vem Passear em Jampa",
+      description:
+        "Agência receptiva em João Pessoa com Cadastur ativo. Atendimento direto com Murillo pelo WhatsApp.",
+      url: alternates.canonical,
+      images: [
+        { url: "/og-image.svg", width: 1200, height: 630, alt: "Sobre a Vem Passear em Jampa" },
+      ],
+    },
+  };
+}
 
 export default function SobrePage({ params }: { params: { locale: string } }) {
   setRequestLocale(params.locale);

@@ -16,6 +16,7 @@ import type { PasseioMareSlug } from "@/types/tabua-mares";
 import {
   generateFAQSchema,
   generateTouristAttractionSchema,
+  buildLocaleAlternates,
 } from "@/lib/seo";
 import { isCampoIndisponivel } from "@/lib/consultar";
 import { getPasseioBadges } from "@/lib/badges";
@@ -65,7 +66,8 @@ export async function generateMetadata({
   const passeio = getPasseioBySlug(params.slug, params.categoria);
   if (!passeio) return {};
 
-  const pageUrl = `${SITE_URL}/passeios/${params.categoria}/${params.slug}`;
+  const path = `/passeios/${params.categoria}/${params.slug}`;
+  const alternates = buildLocaleAlternates(params.locale, path);
   const title = `${passeio.nome} em João Pessoa | Vem Passear`;
   const precoMeta = isCampoIndisponivel(passeio.preco) ? "valor sob consulta" : `${passeio.preco} por pessoa`;
   const duracaoMeta = isCampoIndisponivel(passeio.duracao) ? "" : ` Duração: ${passeio.duracao}.`;
@@ -76,13 +78,12 @@ export async function generateMetadata({
   return {
     title,
     description,
-    alternates: { canonical: pageUrl },
+    alternates,
     openGraph: {
       title,
       description,
-      url: pageUrl,
+      url: alternates.canonical,
       type: "website",
-      locale: "pt_BR",
       images: passeio.coverImage
         ? [
             {

@@ -21,13 +21,14 @@ import { empresa } from "@/data/empresa";
 import {
   generateFAQSchema,
   generateBreadcrumbSchema,
+  buildLocaleAlternates,
 } from "@/lib/seo";
 
 const SITE_URL = `https://${empresa.dominio}`;
 const WA_URL = `${empresa.contato.whatsappLink}?text=Oi%2C+vi+o+blog+da+Vem+Passear+e+quero+informações+sobre+passeios`;
 
 interface BlogArticleProps {
-  params: { slug: string };
+  params: { locale: string; slug: string };
 }
 
 export function generateStaticParams() {
@@ -38,16 +39,16 @@ export function generateMetadata({ params }: BlogArticleProps): Metadata {
   const post = getPublishedPostBySlug(params.slug);
   if (!post) return { title: "Guia não encontrado" };
 
-  const url = `${SITE_URL}/blog/${post.slug}`;
+  const alternates = buildLocaleAlternates(params.locale, `/blog/${post.slug}`);
   return {
     title: `${post.title} | Vem Passear em Jampa`,
     description: post.description,
     keywords: post.keywords.join(", "),
-    alternates: { canonical: `/blog/${post.slug}` },
+    alternates,
     openGraph: {
       title: post.title,
       description: post.description,
-      url,
+      url: alternates.canonical,
       type: "article",
       publishedTime: post.updatedAt,
       modifiedTime: post.updatedAt,

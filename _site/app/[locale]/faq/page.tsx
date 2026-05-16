@@ -12,24 +12,31 @@ import { FAQAccordion } from "@/components/FAQAccordion";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTASticky } from "@/components/CTASticky";
 import { CTAFinal } from "@/components/CTAFinal";
-import { generateFAQSchema } from "@/lib/seo";
+import { generateFAQSchema, buildLocaleAlternates } from "@/lib/seo";
 import { empresa } from "@/data/empresa";
 
-export const metadata: Metadata = {
-  title: "Perguntas Frequentes sobre Passeios em João Pessoa | Vem Passear em Jampa",
-  description:
-    "Reservas, pagamento, política de cancelamento, tábua de marés, segurança e crianças nos passeios em João Pessoa. Atendimento direto com Murillo no WhatsApp.",
-  alternates: { canonical: "https://vempassearjampa.com.br/faq/" },
-  openGraph: {
-    title: "Perguntas Frequentes — Passeios em João Pessoa",
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const alternates = buildLocaleAlternates(params.locale, "/faq");
+  return {
+    title: "Perguntas Frequentes sobre Passeios em João Pessoa | Vem Passear em Jampa",
     description:
-      "Tudo que você precisa saber antes de reservar passeio em João Pessoa: pagamento, cancelamento, marés, segurança e mais.",
-    url: "https://vempassearjampa.com.br/faq/",
-    images: [
-      { url: "/og-image.svg", width: 1200, height: 630, alt: "Vem Passear em Jampa — FAQ" },
-    ],
-  },
-};
+      "Reservas, pagamento, política de cancelamento, tábua de marés, segurança e crianças nos passeios em João Pessoa. Atendimento direto com Murillo no WhatsApp.",
+    alternates,
+    openGraph: {
+      title: "Perguntas Frequentes — Passeios em João Pessoa",
+      description:
+        "Tudo que você precisa saber antes de reservar passeio em João Pessoa: pagamento, cancelamento, marés, segurança e mais.",
+      url: alternates.canonical,
+      images: [
+        { url: "/og-image.svg", width: 1200, height: 630, alt: "Vem Passear em Jampa — FAQ" },
+      ],
+    },
+  };
+}
 
 const WA_URL = `${empresa.contato.whatsappLink}?text=Oi%2C+tenho+uma+d%C3%BAvida+sobre+os+passeios`;
 

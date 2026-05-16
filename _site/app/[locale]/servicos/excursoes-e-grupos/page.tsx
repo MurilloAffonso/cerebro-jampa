@@ -12,7 +12,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { empresa } from "@/data/empresa";
-import { generateMetadata as generateSeoMetadata, generateFAQSchema } from "@/lib/seo";
+import { generateMetadata as generateSeoMetadata, generateFAQSchema, buildLocaleAlternates } from "@/lib/seo";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { CTAFinal } from "@/components/CTAFinal";
 import { CTASticky } from "@/components/CTASticky";
@@ -33,23 +33,37 @@ const BRIEFING_TEMPLATE = `Oi Murillo, quero proposta para um grupo em João Pes
 
 const WA_URL = `${empresa.contato.whatsappLink}?text=${encodeURIComponent(BRIEFING_TEMPLATE)}`;
 
-export const metadata: Metadata = generateSeoMetadata({
-  title: "Excursões em João Pessoa — Roteiros e Logística para Grupos",
-  description:
-    "Organize excursão, caravana ou grupo em João Pessoa com operação local Cadastur. Roteiros, transfer e van. Consultoria direta com Murillo pelo WhatsApp.",
-  keywords: [
-    "excursão João Pessoa",
-    "excursão para João Pessoa",
-    "fechar van João Pessoa",
-    "ônibus turístico João Pessoa",
-    "roteiro grupo Paraíba",
-    "excursão grupo religioso João Pessoa",
-    "excursão escolar João Pessoa",
-    "receptivo João Pessoa",
-  ],
-  ogImage: "/og-image.svg",
-  canonical: "/servicos/excursoes-e-grupos/",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const base = generateSeoMetadata({
+    title: "Excursões em João Pessoa — Roteiros e Logística para Grupos",
+    description:
+      "Organize excursão, caravana ou grupo em João Pessoa com operação local Cadastur. Roteiros, transfer e van. Consultoria direta com Murillo pelo WhatsApp.",
+    keywords: [
+      "excursão João Pessoa",
+      "excursão para João Pessoa",
+      "fechar van João Pessoa",
+      "ônibus turístico João Pessoa",
+      "roteiro grupo Paraíba",
+      "excursão grupo religioso João Pessoa",
+      "excursão escolar João Pessoa",
+      "receptivo João Pessoa",
+    ],
+    ogImage: "/og-image.svg",
+  });
+  const alternates = buildLocaleAlternates(params.locale, "/servicos/excursoes-e-grupos");
+  return {
+    ...base,
+    alternates,
+    openGraph: {
+      ...(base.openGraph ?? {}),
+      url: alternates.canonical,
+    },
+  };
+}
 
 const PERFIS = [
   "Igrejas e grupos religiosos",

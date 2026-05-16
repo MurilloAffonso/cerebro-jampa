@@ -11,16 +11,30 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTASticky } from "@/components/CTASticky";
 import { CTAFinal } from "@/components/CTAFinal";
 import { HomePasseiosSection } from "@/components/HomePasseiosSection";
-import { generateMetadata as generateSeoMetadata } from "@/lib/seo";
+import { generateMetadata as generateSeoMetadata, buildLocaleAlternates } from "@/lib/seo";
 
-export const metadata: Metadata = generateSeoMetadata({
-  title: "Passeios em João Pessoa — Vem Passear em Jampa",
-  description:
-    `${passeios.length} passeios em João Pessoa com guia local: piscinas naturais, litoral sul e norte, city tour e pacotes. Cadastur ativo, 4,9★. Agende pelo WhatsApp.`,
-  keywords: ["passeios João Pessoa", "piscinas naturais", "litoral sul", "litoral norte", "city tour", "Paraíba", "Cadastur"],
-  ogImage: "/og-image.svg",
-  canonical: "/passeios/",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const base = generateSeoMetadata({
+    title: "Passeios em João Pessoa — Vem Passear em Jampa",
+    description:
+      `${passeios.length} passeios em João Pessoa com guia local: piscinas naturais, litoral sul e norte, city tour e pacotes. Cadastur ativo, 4,9★. Agende pelo WhatsApp.`,
+    keywords: ["passeios João Pessoa", "piscinas naturais", "litoral sul", "litoral norte", "city tour", "Paraíba", "Cadastur"],
+    ogImage: "/og-image.svg",
+  });
+  const alternates = buildLocaleAlternates(params.locale, "/passeios");
+  return {
+    ...base,
+    alternates,
+    openGraph: {
+      ...(base.openGraph ?? {}),
+      url: alternates.canonical,
+    },
+  };
+}
 
 interface PasseiosPageProps {
   params: { locale: string };

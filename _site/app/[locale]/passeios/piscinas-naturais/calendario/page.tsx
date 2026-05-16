@@ -10,7 +10,7 @@ import {
   formatarDataCurta,
   formatarHorario,
 } from "@/lib/tabua-mares";
-import { generateFAQSchema, generateBreadcrumbSchema } from "@/lib/seo";
+import { generateFAQSchema, generateBreadcrumbSchema, buildLocaleAlternates } from "@/lib/seo";
 import { ProximaSaidaCard } from "@/components/ProximaSaidaCard";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTAFinal } from "@/components/CTAFinal";
@@ -24,21 +24,27 @@ const TABUA_URL = `${SITE_URL}/tabua-de-mares-joao-pessoa`;
 
 const WA_URL = `${WA_BASE}?text=Oi%2C+quero+saber+sobre+as+datas+dispon%C3%ADveis+para+as+piscinas+naturais`;
 
-export const metadata: Metadata = {
-  title: "Calendário operacional — Piscinas Naturais (Maio/2026) | Vem Passear",
-  description:
-    "Datas de saída para Seixas, Picãozinho e Areia Vermelha em maio/2026. Para a tábua completa, consulte a Tábua de Maré em João Pessoa.",
-  alternates: { canonical: TABUA_URL },
-  robots: { index: false, follow: true },
-  openGraph: {
-    title: "Calendário operacional — Piscinas Naturais (Maio/2026)",
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const alternates = buildLocaleAlternates(params.locale, "/tabua-de-mares-joao-pessoa");
+  return {
+    title: "Calendário operacional — Piscinas Naturais (Maio/2026) | Vem Passear",
     description:
-      "Datas de saída para Seixas, Picãozinho e Areia Vermelha em maio/2026.",
-    url: TABUA_URL,
-    type: "website",
-    locale: "pt_BR",
-  },
-};
+      "Datas de saída para Seixas, Picãozinho e Areia Vermelha em maio/2026. Para a tábua completa, consulte a Tábua de Maré em João Pessoa.",
+    alternates,
+    robots: { index: false, follow: true },
+    openGraph: {
+      title: "Calendário operacional — Piscinas Naturais (Maio/2026)",
+      description:
+        "Datas de saída para Seixas, Picãozinho e Areia Vermelha em maio/2026.",
+      url: alternates.canonical,
+      type: "website",
+    },
+  };
+}
 
 const STATUS_STYLE = {
   excelente: {

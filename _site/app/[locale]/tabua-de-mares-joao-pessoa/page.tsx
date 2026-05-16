@@ -27,7 +27,7 @@ import {
   getMesAtual,
   buildMensagemWhatsApp,
 } from "@/data/tabua-mares-manual";
-import { generateFAQSchema, generateBreadcrumbSchema } from "@/lib/seo";
+import { generateFAQSchema, generateBreadcrumbSchema, buildLocaleAlternates } from "@/lib/seo";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTAFinal } from "@/components/CTAFinal";
 import { FAQAccordion } from "@/components/FAQAccordion";
@@ -48,23 +48,29 @@ const KEYWORDS = [
   "Picãozinho",
 ];
 
-export const metadata: Metadata = {
-  title:
-    "Tábua de Maré João Pessoa 2026 — Seixas, Picãozinho e Areia Vermelha | Vem Passear em Jampa",
-  description:
-    "Consulte as melhores datas de maré baixa em João Pessoa para Piscinas Naturais do Seixas, Picãozinho e Areia Vermelha. Atendimento direto com Murillo no WhatsApp.",
-  keywords: KEYWORDS.join(", "),
-  alternates: { canonical: PAGE_URL },
-  openGraph: {
-    title: "Tábua de Maré João Pessoa 2026 — Vem Passear em Jampa",
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const alternates = buildLocaleAlternates(params.locale, "/tabua-de-mares-joao-pessoa");
+  return {
+    title:
+      "Tábua de Maré João Pessoa 2026 — Seixas, Picãozinho e Areia Vermelha | Vem Passear em Jampa",
     description:
-      "Veja as melhores datas para passeios de maré baixa em João Pessoa: Piscinas Naturais do Seixas, Picãozinho e Areia Vermelha.",
-    url: PAGE_URL,
-    type: "website",
-    locale: "pt_BR",
-    siteName: "Vem Passear em Jampa",
-  },
-};
+      "Consulte as melhores datas de maré baixa em João Pessoa para Piscinas Naturais do Seixas, Picãozinho e Areia Vermelha. Atendimento direto com Murillo no WhatsApp.",
+    keywords: KEYWORDS.join(", "),
+    alternates,
+    openGraph: {
+      title: "Tábua de Maré João Pessoa 2026 — Vem Passear em Jampa",
+      description:
+        "Veja as melhores datas para passeios de maré baixa em João Pessoa: Piscinas Naturais do Seixas, Picãozinho e Areia Vermelha.",
+      url: alternates.canonical,
+      type: "website",
+      siteName: "Vem Passear em Jampa",
+    },
+  };
+}
 
 const FAQ_ITEMS: Array<{ pergunta: string; resposta: string }> = [
   {

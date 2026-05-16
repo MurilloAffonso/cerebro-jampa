@@ -10,26 +10,33 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getServico } from "@/data/servicos";
 import { empresa } from "@/data/empresa";
+import { buildLocaleAlternates } from "@/lib/seo";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTASticky } from "@/components/CTASticky";
 
 const servico = getServico("transfer-24h");
 
-export const metadata: Metadata = servico
-  ? {
-      title: `${servico.h1} | Vem Passear em Jampa`,
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  if (!servico) return {};
+  const alternates = buildLocaleAlternates(params.locale, "/servicos/transfer-24h");
+  return {
+    title: `${servico.h1} | Vem Passear em Jampa`,
+    description: servico.metaDescription,
+    alternates,
+    openGraph: {
+      title: servico.h1,
       description: servico.metaDescription,
-      alternates: { canonical: "https://vempassearjampa.com.br/servicos/transfer-24h/" },
-      openGraph: {
-        title: servico.h1,
-        description: servico.metaDescription,
-        url: "https://vempassearjampa.com.br/servicos/transfer-24h/",
-        images: [
-          { url: "/og-image.svg", width: 1200, height: 630, alt: servico.h1 },
-        ],
-      },
-    }
-  : {};
+      url: alternates.canonical,
+      images: [
+        { url: "/og-image.svg", width: 1200, height: 630, alt: servico.h1 },
+      ],
+    },
+  };
+}
 
 const WA_URL = `${empresa.contato.whatsappLink}?text=Oi%2C+quero+solicitar+cota%C3%A7%C3%A3o+de+transfer`;
 

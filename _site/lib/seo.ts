@@ -212,6 +212,39 @@ export function generateBreadcrumbSchema(items: BreadcrumbSchemaItem[]) {
   };
 }
 
+/**
+ * Constrói alternates (canonical + hreflang) locale-aware.
+ *
+ * Convenção: PT é o defaultLocale e fica sem prefixo (`/`); EN/ES levam prefixo.
+ * O canonical retornado é a URL absoluta da página neste locale; languages
+ * lista as 3 versões + x-default (= PT).
+ *
+ * @param locale "pt" | "en" | "es"
+ * @param path caminho sem prefixo de locale, começando com "/" (ex.: "/sobre", "/blog/foo"). Use "/" para a home.
+ */
+export function buildLocaleAlternates(
+  locale: string,
+  path: string
+): { canonical: string; languages: Record<string, string> } {
+  const clean = path === "" || path === "/" ? "" : path.startsWith("/") ? path : `/${path}`;
+  const ptUrl = `${SITE_URL}${clean || "/"}`;
+  const enUrl = `${SITE_URL}/en${clean}`;
+  const esUrl = `${SITE_URL}/es${clean}`;
+
+  const canonical =
+    locale === "en" ? enUrl : locale === "es" ? esUrl : ptUrl;
+
+  return {
+    canonical,
+    languages: {
+      "pt-BR": ptUrl,
+      en: enUrl,
+      es: esUrl,
+      "x-default": ptUrl,
+    },
+  };
+}
+
 export function slugify(texto: string): string {
   return texto
     .toLowerCase()

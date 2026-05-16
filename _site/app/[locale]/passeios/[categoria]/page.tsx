@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/lib/navigation";
 import { passeios, getPasseiosByCategoria } from "@/data/passeios";
-import { generateMetadata as generateSeoMetadata } from "@/lib/seo";
+import { generateMetadata as generateSeoMetadata, buildLocaleAlternates } from "@/lib/seo";
 import { empresa } from "@/data/empresa";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTASticky } from "@/components/CTASticky";
@@ -59,13 +59,21 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: CategoriaPageProps): Promise<Metadata> {
   const meta = CATEGORIAS_META[params.categoria];
   const nome = meta?.nome ?? params.categoria.replace(/-/g, " ");
-  return generateSeoMetadata({
+  const base = generateSeoMetadata({
     title: `Passeios ${nome} em João Pessoa | Vem Passear em Jampa`,
     description: meta?.descricao ?? `Descubra os passeios de ${nome.toLowerCase()} em João Pessoa. Agende pelo WhatsApp.`,
     keywords: [nome, "João Pessoa", "passeios", "turismo", "Paraíba"],
     ogImage: "/og-image.svg",
-    canonical: `/passeios/${params.categoria}/`,
   });
+  const alternates = buildLocaleAlternates(params.locale, `/passeios/${params.categoria}`);
+  return {
+    ...base,
+    alternates,
+    openGraph: {
+      ...(base.openGraph ?? {}),
+      url: alternates.canonical,
+    },
+  };
 }
 
 export default async function CategoriaPage({ params }: CategoriaPageProps) {
