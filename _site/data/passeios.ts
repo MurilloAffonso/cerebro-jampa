@@ -156,7 +156,7 @@ export const passeios: Passeio[] = [
       "Quem quer o máximo da experiência",
       "Famílias e casais",
     ],
-    coverImage: "/images/passeios/litoral-norte/areia-vermelha/hero-01.jpg",
+    coverImage: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
     imagemAlt: "Roteiro completo de 3 dias em João Pessoa com Murillo",
     faq: [
       {
@@ -202,7 +202,7 @@ export const passeios: Passeio[] = [
       "Grupos",
       "Primeiro contato com João Pessoa",
     ],
-    coverImage: "/images/passeios/litoral-sul/coqueirinho/hero-01.jpg",
+    coverImage: "/images/passeios/litoral-sul/roteiro-classico/hero-01.jpg",
     imagemAlt: "Combo Sol Nascente — 3 dias de passeios em João Pessoa",
     faq: [
       {
@@ -320,27 +320,31 @@ export const passeios: Passeio[] = [
           "Deixamos você de volta no hotel. Total: ~8h desde a saída.",
       },
     ],
-    coverImage: "/images/passeios/litoral-sul/hero-01.jpg",
+    coverImage: "/images/passeios/litoral-sul/roteiro-classico/hero-01.jpg",
     galleryImages: [
       {
-        src: "/images/passeios/litoral-sul/hero-01.jpg",
-        alt: "Vista aérea da Praia de Coqueirinho com recifes e morros verdes no litoral sul da Paraíba",
+        src: "/images/passeios/litoral-sul/roteiro-classico/hero-01.jpg",
+        alt: "Vista aérea do litoral sul da Paraíba com praias e recifes",
       },
       {
-        src: "/images/passeios/litoral-sul/galeria-01.jpg",
-        alt: "Casal no topo da falésia do Mirante Dedo de Deus com praia e mar ao fundo, Coqueirinho",
+        src: "/images/passeios/litoral-sul/roteiro-classico/galeria-01.jpg",
+        alt: "Vista drone da Praia de Coqueirinho, litoral sul da Paraíba",
       },
       {
-        src: "/images/passeios/litoral-sul/galeria-02.jpg",
-        alt: "Portal Mirante Dedo de Deus em Coqueirinho, Conde-PB — litoral sul da Paraíba",
+        src: "/images/passeios/litoral-sul/roteiro-classico/galeria-02.jpg",
+        alt: "Praia do litoral sul de João Pessoa",
       },
       {
-        src: "/images/passeios/litoral-sul/galeria-03.jpg",
-        alt: "Swing no Mirante Dedo de Deus em Coqueirinho com mar turquesa ao fundo",
+        src: "/images/passeios/litoral-sul/roteiro-classico/galeria-03.jpg",
+        alt: "Paisagem do litoral sul paraibano",
       },
       {
-        src: "/images/passeios/litoral-sul/card-01.jpg",
-        alt: "Falésias avermelhadas com trilha de madeira em Coqueirinho, litoral sul da Paraíba",
+        src: "/images/passeios/litoral-sul/roteiro-classico/galeria-04.jpg",
+        alt: "Praias e falésias do litoral sul da Paraíba",
+      },
+      {
+        src: "/images/passeios/litoral-sul/roteiro-classico/galeria-05.jpg",
+        alt: "Litoral sul de João Pessoa — passeio de um dia",
       },
     ],
     imagemAlt:
@@ -481,7 +485,7 @@ export const passeios: Passeio[] = [
     observacoes:
       "Quadriciclo: mínimo 7 anos, máximo 2 pessoas por máquina. Valor privativo: [CONSULTAR].",
     idealPara: ["Aventureiros", "Casais", "Famílias com crianças ≥ 7 anos"],
-    coverImage: "/images/passeios/litoral-sul/coqueirinho/hero-01.jpg",
+    coverImage: "/images/passeios/litoral-sul/combo-jampa-quadriciclo/hero-01.jpg",
     imagemAlt: "Trilha de quadriciclo nos mirantes de Coqueirinho, Litoral Sul da Paraíba",
     faq: [
       {
@@ -516,7 +520,7 @@ export const passeios: Passeio[] = [
     observacoes:
       "Quadriciclo: mínimo 7 anos. Valor privativo: [CONSULTAR].",
     idealPara: ["Aventureiros", "Casais", "Famílias com crianças ≥ 7 anos"],
-    coverImage: "/images/passeios/litoral-sul/tambaba/hero-01.jpg",
+    coverImage: "/images/passeios/litoral-sul/praia-bela/hero-01.jpg",
     imagemAlt: "Quadriciclo nas falésias da Praia Bela, litoral sul da Paraíba",
     faq: [
       {
@@ -532,15 +536,15 @@ export const passeios: Passeio[] = [
     nome: "Quadriciclo em Coqueirinho",
     categoria: "litoral-sul",
     slug: "quadriciclo-coqueirinho",
-    preco: "[CONSULTAR]",
+    preco: "Sob consulta · Resposta em 5 min",
     duracao: "1h30–2h",
-    saida: "[CONSULTAR]",
+    saida: "A combinar · Manhã ou tarde",
     descricao:
       "Trilha de quadriciclo pelos mirantes e falésias históricas de Coqueirinho — sem o passeio de praias.",
     observacoes:
       "Mínimo 7 anos. Transporte e disponibilidade: [CONSULTAR]. Formato: privativo.",
     idealPara: ["Aventureiros", "Grupos", "Quem já conhece as praias"],
-    coverImage: "/images/passeios/litoral-sul/coqueirinho/hero-01.jpg",
+    coverImage: "/images/passeios/litoral-sul/quadriciclo-coqueirinho/hero-01.jpg",
     imagemAlt: "Quadriciclo nos mirantes de Coqueirinho, Paraíba",
     faq: [
       {
@@ -556,9 +560,9 @@ export const passeios: Passeio[] = [
     nome: "Quadriciclo em Praia Bela",
     categoria: "litoral-sul",
     slug: "quadriciclo-praia-bela",
-    preco: "[CONSULTAR]",
+    preco: "Sob consulta · Resposta em 5 min",
     duracao: "1h30–2h",
-    saida: "[CONSULTAR]",
+    saida: "A combinar · Manhã ou tarde",
     descricao:
       "Trilha de quadriciclo pelas falésias coloridas de Praia Bela e o encontro do Rio Abiaí com o mar.",
     observacoes:
@@ -604,7 +608,7 @@ export const passeios: Passeio[] = [
       "Quem aprecia história e cultura",
       "Casais",
     ],
-    coverImage: "/images/passeios/litoral-norte/areia-vermelha/hero-01.jpg",
+    coverImage: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
     imagemAlt: "Litoral norte de João Pessoa com história colonial e natureza",
     faq: [
       {
@@ -628,7 +632,7 @@ export const passeios: Passeio[] = [
     dependeDeMare: true,
     preco: "Com catamarã: R$ 160 / Sem catamarã: R$ 80",
     duracao: "~8h",
-    saida: "[CONSULTAR — sujeito à tábua de marés]",
+    saida: "Manhã · Confirmado conforme tábua de marés",
     descricao:
       "Pontos históricos do litoral norte + catamarã até a Ilha de Areia Vermelha com piscinas naturais e pôr do sol.",
     incluso: [
@@ -640,7 +644,7 @@ export const passeios: Passeio[] = [
     observacoes:
       "Areia Vermelha: sujeito à maré baixa. Horário de saída confirmar antes.",
     idealPara: ["Quem quer litoral norte + piscinas naturais em um dia"],
-    coverImage: "/images/passeios/litoral-norte/areia-vermelha/hero-01.jpg",
+    coverImage: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
     imagemAlt: "Combo Litoral Norte com Areia Vermelha — João Pessoa",
     faq: [
       {
@@ -713,33 +717,7 @@ export const passeios: Passeio[] = [
           "Quando a maré começa a encher, o banco de areia some de volta para o mar — sinal de que é hora de voltar. Total: ~3h desde o embarque.",
       },
     ],
-    coverImage: "/images/passeios/areia-vermelha/hero-01.jpg",
-    galleryImages: [
-      {
-        src: "/images/passeios/areia-vermelha/hero-01.jpg",
-        alt: "Vista aérea de Areia Vermelha com kayak e plataformas flutuantes ao fundo, Cabedelo",
-      },
-      {
-        src: "/images/passeios/areia-vermelha/galeria-01.jpg",
-        alt: "Turistas na água verde-esmeralda de Areia Vermelha, Cabedelo — vista aérea",
-      },
-      {
-        src: "/images/passeios/areia-vermelha/galeria-02.jpg",
-        alt: "Grupo posando nas piscinas naturais de Areia Vermelha com kayaks ao fundo",
-      },
-      {
-        src: "/images/passeios/areia-vermelha/galeria-03.jpg",
-        alt: "Vista aérea do banco de areia de Areia Vermelha lotado de turistas em Cabedelo",
-      },
-      {
-        src: "/images/passeios/areia-vermelha/galeria-04.jpg",
-        alt: "Família posando nas piscinas naturais de Areia Vermelha, Cabedelo",
-      },
-      {
-        src: "/images/passeios/areia-vermelha/galeria-05.jpg",
-        alt: "Casal na água de Areia Vermelha com plataforma e toboágua ao fundo",
-      },
-    ],
+    coverImage: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
     imagemAlt:
       "Banco de areia de Areia Vermelha com piscinas naturais verde-esmeralda durante maré baixa em Cabedelo, João Pessoa",
     rotario: [
@@ -833,13 +811,12 @@ export const passeios: Passeio[] = [
     slug: "por-do-sol-jacare",
     preco: "R$ 90",
     duracao: "~1h30",
-    saida: "Tarde (conforme pôr do sol — [CONSULTAR horário exato])",
+    saida: "Tarde · Horário varia conforme estação",
     descricao:
       "Navegação pelo Rio Paraíba com apresentação ao vivo do Bolero de Ravel. Experiência única que existe há mais de 20 anos.",
     descricaoLonga:
       "O pôr do sol do Jacaré é uma parada obrigatória em João Pessoa. Navegação pelo Rio Paraíba ao som de músicas ao vivo (Bolero de Ravel ao sax), dança de forró, violino. Uma experiência única no mundo.",
-    coverImage: "/images/passeios/litoral-norte/por-do-sol-jacare/hero-01.jpg",
-    gallery: ["/images/passeios/por-do-sol-jacare/galeria-01.webp"],
+    coverImage: "/images/passeios/piscinas-naturais/penha/hero-01.jpg",
     rotario: [
       "Embarque na Praia do Jacaré, Cabedelo",
       "Navegação pelo Rio Paraíba com informações históricas",
@@ -901,7 +878,7 @@ export const passeios: Passeio[] = [
     observacoes:
       "100% privativo — não monta grupos com desconhecidos. Capacidade: [CONSULTAR]. Crianças acima de 5 anos entram na composição do grupo.",
     idealPara: ["Grupos", "Casais", "Famílias que querem experiência premium"],
-    coverImage: "/images/passeios/litoral-norte/areia-vermelha/hero-01.jpg",
+    coverImage: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
     imagemAlt: "Lancha privativa no litoral norte de João Pessoa ao pôr do sol",
     faq: [
       {
@@ -997,27 +974,31 @@ export const passeios: Passeio[] = [
       "As piscinas naturais só aparecem quando a maré está baixa. Antes de confirmar sua data, a gente consulta a tábua de marés e te avisa o melhor horário. Você não precisa se preocupar com isso. Esse é o nosso trabalho.",
     nomeCurto: "Seixas",
     idealPara: ["Mergulho", "Snorkel", "Fotos", "Aventura marinha"],
-    coverImage: "/images/passeios/seixas/hero-01.jpg",
+    coverImage: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
     galleryImages: [
       {
-        src: "/images/passeios/seixas/hero-01.jpg",
-        alt: "Casal sobre os recifes do Seixas com ondas quebrando ao fundo, João Pessoa",
+        src: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
+        alt: "Vista aérea das piscinas naturais do Seixas, João Pessoa",
       },
       {
-        src: "/images/passeios/seixas/galeria-01.jpg",
-        alt: "Turistas nadando nas piscinas naturais do Seixas vistas do drone, João Pessoa",
+        src: "/images/passeios/piscinas-naturais/seixas/galeria-01.jpg",
+        alt: "Turistas nas piscinas naturais do Seixas vistas do drone, João Pessoa",
       },
       {
-        src: "/images/passeios/seixas/galeria-02.jpg",
-        alt: "Casal dentro de arco natural de coral nas piscinas naturais do Seixas",
+        src: "/images/passeios/piscinas-naturais/seixas/galeria-02.jpg",
+        alt: "Piscinas naturais do Seixas com água cristalina, João Pessoa",
       },
       {
-        src: "/images/passeios/seixas/galeria-03.jpg",
-        alt: "Casal posando nas pedras e recifes da Praia do Seixas, João Pessoa",
+        src: "/images/passeios/piscinas-naturais/seixas/galeria-03.jpg",
+        alt: "Recifes e piscinas naturais da Praia do Seixas, João Pessoa",
       },
       {
-        src: "/images/passeios/seixas/card-01.jpg",
-        alt: "Vista aérea da praia do Seixas com turistas e palmeiras ao fundo",
+        src: "/images/passeios/piscinas-naturais/seixas/galeria-04.jpg",
+        alt: "Vista aérea da praia do Seixas com recifes, João Pessoa",
+      },
+      {
+        src: "/images/passeios/piscinas-naturais/seixas/galeria-05.jpg",
+        alt: "Piscinas naturais do Seixas durante maré baixa, João Pessoa",
       },
     ],
     imagemAlt:
@@ -1130,15 +1111,27 @@ export const passeios: Passeio[] = [
       "A apenas 1.500 metros de Tambaú. Aquário natural a céu aberto com peixes de todas as cores e formações de recife.",
     descricaoLonga:
       "Picãozinho é um dos recifes mais procurados de João Pessoa. Piscinas rasas, mornas e cristalinas, ideais para snorkel. Peixes coloridos, algas, fauna marinha preservada. É como mergulhar em um aquário natural.",
-    coverImage: "/images/passeios/picaozinho/hero-01.jpg",
+    coverImage: "/images/passeios/piscinas-naturais/picaozinho/hero-01.jpg",
     galleryImages: [
       {
-        src: "/images/passeios/picaozinho/hero-01.jpg",
-        alt: "Vista aérea do catamarã Vida Arretada ancorado nos recifes de Picãozinho, João Pessoa",
+        src: "/images/passeios/piscinas-naturais/picaozinho/hero-01.jpg",
+        alt: "Vista aérea dos recifes de Picãozinho com mar turquesa, João Pessoa",
       },
       {
-        src: "/images/passeios/picaozinho/card-01.jpg",
-        alt: "Catamarã sobre os recifes de Picãozinho com mar turquesa ao fundo, João Pessoa",
+        src: "/images/passeios/piscinas-naturais/picaozinho/galeria-01.jpg",
+        alt: "Turistas nas piscinas naturais de Picãozinho, João Pessoa",
+      },
+      {
+        src: "/images/passeios/piscinas-naturais/picaozinho/galeria-02.jpg",
+        alt: "Recifes e fauna marinha de Picãozinho, João Pessoa",
+      },
+      {
+        src: "/images/passeios/piscinas-naturais/picaozinho/galeria-03.jpg",
+        alt: "Snorkel nas piscinas naturais de Picãozinho, João Pessoa",
+      },
+      {
+        src: "/images/passeios/piscinas-naturais/picaozinho/galeria-04.jpg",
+        alt: "Mar cristalino nos recifes de Picãozinho, João Pessoa",
       },
     ],
     rotario: [
@@ -1182,9 +1175,9 @@ export const passeios: Passeio[] = [
     nome: "Mergulho com Cilindro",
     categoria: "piscinas-naturais",
     slug: "mergulho",
-    preco: "[CONSULTAR]",
-    duracao: "[CONSULTAR]",
-    saida: "[CONSULTAR — sujeito à maré e visibilidade]",
+    preco: "Sob consulta · Resposta em 5 min",
+    duracao: "Sob consulta",
+    saida: "Conforme maré e visibilidade",
     descricao:
       "Mergulho com equipamento completo nas piscinas naturais de João Pessoa, com profissional certificado.",
     incluso: [
@@ -1238,7 +1231,7 @@ export const passeios: Passeio[] = [
       "Quem aprecia história e arquitetura",
       "Turistas culturais",
     ],
-    coverImage: "/images/passeios/city-tour/hero-01.jpg",
+    coverImage: "/images/passeios/litoral-sul/roteiro-classico/hero-01.jpg",
     imagemAlt: "Centro histórico de João Pessoa — 3ª cidade mais antiga do Brasil",
     faq: [
       {
@@ -1270,7 +1263,7 @@ export const passeios: Passeio[] = [
     slug: "porto-de-galinhas",
     preco: "R$ 160",
     duracao: "Dia inteiro",
-    saida: "Manhã — [CONSULTAR horário exato]",
+    saida: "Saída pela manhã · Horário confirmado por WhatsApp",
     descricao:
       "Um dos destinos mais famosos do Brasil — piscinas naturais únicas, jangadas e águas esverdeadas.",
     incluso: ["Transporte (João Pessoa → Porto de Galinhas → João Pessoa)"],
@@ -1278,7 +1271,7 @@ export const passeios: Passeio[] = [
     observacoes:
       "Documento com foto obrigatório (viagem interestadual PB → PE). Disponibilidade: [CONSULTAR]. Retorno à noite.",
     idealPara: ["Quem quer conhecer Porto de Galinhas a partir de João Pessoa"],
-    coverImage: "/images/passeios/interestaduais/porto-de-galinhas/hero-01.jpg",
+    coverImage: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
     imagemAlt: "Piscinas naturais de Porto de Galinhas em Pernambuco",
     faq: [
       {
@@ -1306,7 +1299,7 @@ export const passeios: Passeio[] = [
     slug: "praia-de-pipa",
     preco: "R$ 160",
     duracao: "Dia inteiro",
-    saida: "Manhã — [CONSULTAR horário exato]",
+    saida: "Saída pela manhã · Horário confirmado por WhatsApp",
     descricao:
       "Visual cinematográfico, praias paradisíacas, vila charmosa — o destino mais descolado do nordeste.",
     incluso: ["Transporte (João Pessoa → Pipa → João Pessoa)"],
@@ -1314,7 +1307,7 @@ export const passeios: Passeio[] = [
     observacoes:
       "Documento com foto obrigatório (viagem interestadual). Disponibilidade: [CONSULTAR].",
     idealPara: ["Quem busca praias bonitas e vila animada"],
-    coverImage: "/images/passeios/interestaduais/praia-de-pipa/hero-01.jpg",
+    coverImage: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
     imagemAlt: "Praia de Pipa no Rio Grande do Norte — falésias e águas cristalinas",
     faq: [
       {
@@ -1337,7 +1330,7 @@ export const passeios: Passeio[] = [
     slug: "natal",
     preco: "R$ 160",
     duracao: "Dia inteiro",
-    saida: "Manhã — [CONSULTAR horário exato]",
+    saida: "Saída pela manhã · Horário confirmado por WhatsApp",
     descricao:
       "Maior cajueiro do mundo, Centro de Lançamento de Foguetes e praias mornas de Ponta Negra.",
     incluso: ["Transporte (João Pessoa → Natal → João Pessoa)"],

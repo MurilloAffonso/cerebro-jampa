@@ -42,7 +42,7 @@ export function Footer() {
               { label: 'Areia Vermelha de Catamarã',   href: '/passeios/litoral-norte/areia-vermelha-catamara' },
               { label: 'Piscinas Naturais do Seixas',  href: '/passeios/piscinas-naturais/seixas' },
               { label: 'Pôr do Sol no Jacaré',         href: '/passeios/litoral-norte/por-do-sol-jacare' },
-              { label: 'Picaozinho',                   href: '/passeios/piscinas-naturais/picaozinho' },
+              { label: 'Picãozinho',                   href: '/passeios/piscinas-naturais/picaozinho' },
               { label: 'Roteiro Clássico Litoral Sul', href: '/passeios/litoral-sul/roteiro-classico' },
               { label: 'Roteiro do Murillo — 3 Dias',  href: '/passeios/pacotes/roteiro-do-murillo-3-dias' },
               { label: 'Combo Areia Vermelha',         href: '/passeios/litoral-norte/combo-areia-vermelha' },
