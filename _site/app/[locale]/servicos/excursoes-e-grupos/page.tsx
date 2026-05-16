@@ -229,9 +229,9 @@ const SERVICE_SCHEMA = {
     "@type": "TravelAgency",
     name: "Vem Passear em Jampa",
     telephone: "+55 83 9908-7830",
-    url: "https://vempassearjampa.com.br",
+    url: "https://vempassearjampa.netlify.app",
   },
-  url: "https://vempassearjampa.com.br/servicos/excursoes-e-grupos",
+  url: "https://vempassearjampa.netlify.app/servicos/excursoes-e-grupos",
   audience: {
     "@type": "Audience",
     audienceType: "Grupos, igrejas, escolas, empresas, agências parceiras, famílias grandes",

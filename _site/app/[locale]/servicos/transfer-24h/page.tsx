@@ -57,9 +57,9 @@ const SERVICE_SCHEMA = servico
         "@type": "TravelAgency",
         name: "Vem Passear em Jampa",
         telephone: "+55 83 9908-7830",
-        url: "https://vempassearjampa.com.br",
+        url: "https://vempassearjampa.netlify.app",
       },
-      url: "https://vempassearjampa.com.br/servicos/transfer-24h",
+      url: "https://vempassearjampa.netlify.app/servicos/transfer-24h",
       hoursAvailable: {
         "@type": "OpeningHoursSpecification",
         dayOfWeek: [

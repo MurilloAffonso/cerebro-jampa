@@ -18,7 +18,7 @@ import { CTASticky } from "@/components/CTASticky";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { PoliticaCancelamento } from "@/components/PoliticaCancelamento";
 
-const SITE_URL = "https://vempassearjampa.com.br";
+const SITE_URL = "https://vempassearjampa.netlify.app";
 const WA_BASE = "https://wa.me/558399087830";
 const TABUA_URL = `${SITE_URL}/tabua-de-mares-joao-pessoa`;
 
