@@ -24,6 +24,66 @@
     "transfer24h": "Transfer 24h",
     "excursoesGrupos": "Excursiones y Grupos"
   },
+  "Tags": {
+    "maisVendido": "Más vendido",
+    "imperdivel": "Imperdible",
+    "dependeMare": "Depende de la marea",
+    "soMareBaixa": "Solo con marea baja",
+    "promo": "Promoción",
+    "vagas": "Cupos limitados",
+    "vagasEmbarcacao": "Cupos por embarcación",
+    "equipamentos": "Equipamiento limitado",
+    "visibilidade": "Sujeto a visibilidad",
+    "familia": "Familia",
+    "transferIncluso": "Transfer incluido",
+    "novoRoteiro": "Ruta nueva",
+    "aPartirDe": "Desde",
+    "verPasseio": "Ver tour",
+    "reservar": "Reservar"
+  },
+  "Filtros": {
+    "todos": "Todos",
+    "labelTodos": "Más populares",
+    "labelCategoria": "Tours",
+    "tituloTodos": "Los tours que nadie se salta.",
+    "ctaWa": "Planificar itinerario por WhatsApp →",
+    "verTodos": "Ver todos los {count} tours →",
+    "semPasseios": "Aún no hay tours en esta categoría. ¡Habla con Murillo!"
+  },
+  "Hero": {
+    "titulo1": "El sol nace",
+    "titulo2": "aquí",
+    "titulo3Em": "primero.",
+    "subtituloMobile": "Tours por las playas, arrecifes y piscinas naturales del extremo más oriental de las Américas.",
+    "subtituloDesktop": "Tours por las playas, arrecifes y piscinas naturales del extremo más oriental de las Américas — operación local, atención humana, guías certificados.",
+    "ctaPrimario": "Reservar por WhatsApp",
+    "ctaSecundario": "¿Qué tours se adaptan a mis días? →",
+    "ratingText": "reseñas en Google",
+    "statNota": "nota Google",
+    "statAvaliacoes": "reseñas",
+    "statCadastur": "Cadastur",
+    "statAtivo": "activo"
+  },
+  "Murillo": {
+    "horario": "Atención de 7h a 22h, respuesta en 5 minutos",
+    "kicker": "Tu anfitrión",
+    "titulo1": "Murillo. No es un call center,",
+    "titulo2": "no es un bot.",
+    "ctaFalar": "Hablar con Murillo →",
+    "diferencial1": "Itinerarios que respetan las mareas y tu ritmo",
+    "diferencial2": "Atención directa de quien conoce cada playa",
+    "diferencial3": "Certificado Cadastur — empresa registrada y en regla"
+  },
+  "CTAHome": {
+    "label": "Hablemos",
+    "titulo": "Lo mejor de João Pessoa empieza con una conversación.",
+    "subtitulo": "Manda un mensaje. Murillo responde rápido, sin guion, sin rodeos. Si no somos lo que buscas, él te indica a alguien de confianza.",
+    "botao": "Chatear con Murillo ahora",
+    "microcopy": "Atención de 7h a 22h, todos los días · Respuesta en 5 minutos"
+  },
+  "CTASticky": {
+    "label": "Hablar con Murillo por WhatsApp"
+  },
   "Footer": {
     "maisPasseios": "Tours más buscados",
     "categorias": "Categorías",
@@ -44,24 +104,6 @@
       "sobre": "Sobre Vem Passear"
     }
   },
-  "Hero": {
-    "titulo": "El sol nace aquí primero",
-    "subtitulo": "João Pessoa es la ciudad más al este de las Américas. Aquí, cada tour comienza con la luz del día antes que cualquier otro lugar.",
-    "ctaPrincipal": "Ver los tours",
-    "ctaSecundario": "Hablar con Murillo",
-    "ratingLabel": "en Google",
-    "anosLabel": "años de experiencia",
-    "turistasLabel": "turistas atendidos"
-  },
-  "Tags": {
-    "maisVendido": "Más vendido",
-    "imperdivel": "Imperdible",
-    "dependeMare": "Depende de la marea",
-    "transferIncluso": "Transfer incluido",
-    "aPartirDe": "Desde",
-    "verPasseio": "Ver tour",
-    "reservar": "Reservar"
-  },
   "Passeio": {
     "duracao": "Duración",
     "saida": "Salida",
@@ -74,16 +116,14 @@
     "relacionados": "Tours relacionados",
     "faq": "Preguntas frecuentes"
   },
-  "Murillo": {
-    "horario": "Atención de 7h a 22h, respuesta en 5 minutos"
-  },
   "Tabua": {
     "mareAlta": "Marea alta",
     "mareBaixa": "Marea baja"
   },
   "Whatsapp": {
     "mensagemPasseio": "Hola Murillo! Me gustaría saber sobre el tour",
-    "mensagemGeral": "Hola+Murillo!+Me+gustar%C3%ADa+saber+sobre+los+tours+en+João+Pessoa"
+    "mensagemGeral": "Hola%2C+me+gustar%C3%ADa+saber+sobre+los+tours+en+João+Pessoa",
+    "mensagemRoteiro": "Hola+Murillo!+Estar%C3%A9+en+João+Pessoa+unos+d%C3%ADas%2C+%C2%BFme+ayudas+a+planificar+un+itinerario%3F"
   },
   "LangSelector": {
     "label": "Idioma"
