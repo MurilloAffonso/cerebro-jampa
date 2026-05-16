@@ -1,0 +1,91 @@
+{
+  "Nav": {
+    "inicio": "Início",
+    "passeios": "Passeios",
+    "servicos": "Serviços",
+    "sobre": "Sobre",
+    "faq": "FAQ",
+    "blog": "Blog",
+    "tabuaMare": "Tábua de Maré",
+    "reservarWhatsapp": "Reservar no WhatsApp",
+    "whatsappShort": "WhatsApp",
+    "abrirMenu": "Abrir menu",
+    "fecharMenu": "Fechar menu"
+  },
+  "Categorias": {
+    "litoralSul": "Litoral Sul",
+    "litoralNorte": "Litoral Norte",
+    "piscinasNaturais": "Piscinas Naturais",
+    "cityTour": "City Tour",
+    "pacotes": "Pacotes",
+    "interestaduais": "Interestaduais"
+  },
+  "Servicos": {
+    "transfer24h": "Transfer 24h",
+    "excursoesGrupos": "Excursões e Grupos"
+  },
+  "Footer": {
+    "maisPasseios": "Passeios mais procurados",
+    "categorias": "Categorias",
+    "navegacao": "Navegação",
+    "contato": "Contato",
+    "areasAtendimento": "Áreas de atendimento",
+    "descricao": "Turismo receptivo em João Pessoa, Paraíba. Murillo atende direto pelo WhatsApp — sem intermediários, com conhecimento local de quem vive aqui.",
+    "avaliacoes": "avaliações",
+    "direitos": "Todos os direitos reservados",
+    "falarMurillo": "Falar com Murillo",
+    "navLinks": {
+      "inicio": "Início",
+      "passeios": "Passeios em João Pessoa",
+      "tabua": "Tábua de Maré em João Pessoa",
+      "faq": "Perguntas Frequentes",
+      "transfer": "Transfer 24h",
+      "excursoes": "Excursões e Grupos",
+      "sobre": "Sobre a Vem Passear"
+    }
+  },
+  "Hero": {
+    "titulo": "O sol nasce aqui primeiro",
+    "subtitulo": "João Pessoa é a cidade mais a leste das Américas. Aqui, cada passeio começa com a luz do dia antes de qualquer outro lugar.",
+    "ctaPrincipal": "Ver os passeios",
+    "ctaSecundario": "Falar com Murillo",
+    "ratingLabel": "no Google",
+    "anosLabel": "anos de experiência",
+    "turistasLabel": "turistas atendidos"
+  },
+  "Tags": {
+    "maisVendido": "Mais vendido",
+    "imperdivel": "Imperdível",
+    "dependeMare": "Depende da maré",
+    "transferIncluso": "Transfer incluso",
+    "aPartirDe": "A partir de",
+    "verPasseio": "Ver passeio",
+    "reservar": "Reservar"
+  },
+  "Passeio": {
+    "duracao": "Duração",
+    "saida": "Saída",
+    "preco": "Preço",
+    "categoria": "Categoria",
+    "oQueIncluso": "O que está incluso",
+    "oQueNaoIncluso": "O que NÃO está incluso",
+    "reservarWhatsapp": "Reservar com Murillo no WhatsApp",
+    "politicaCancelamento": "Política de cancelamento",
+    "relacionados": "Passeios relacionados",
+    "faq": "Perguntas frequentes"
+  },
+  "Murillo": {
+    "horario": "Atende de 7h às 22h, resposta em até 5 minutos"
+  },
+  "Tabua": {
+    "mareAlta": "Maré alta",
+    "mareBaixa": "Maré baixa"
+  },
+  "Whatsapp": {
+    "mensagemPasseio": "Oi Murillo! Quero saber sobre o passeio de",
+    "mensagemGeral": "Oi%2C+quero+informações+sobre+os+passeios+em+João+Pessoa"
+  },
+  "LangSelector": {
+    "label": "Idioma"
+  }
+}

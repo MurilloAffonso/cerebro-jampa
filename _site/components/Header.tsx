@@ -3,25 +3,31 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { empresa } from "@/data/empresa";
+import { LanguageSelector } from "@/components/LanguageSelector";
 
 const WA_URL = `${empresa.contato.whatsappLink}?text=Oi%2C+quero+informações+sobre+os+passeios`;
 
-const CATEGORIAS = [
-  { nome: "Pacotes",           slug: "pacotes" },
-  { nome: "Litoral Sul",       slug: "litoral-sul" },
-  { nome: "Litoral Norte",     slug: "litoral-norte" },
-  { nome: "Piscinas Naturais", slug: "piscinas-naturais" },
-  { nome: "City Tour",         slug: "city-tour" },
-  { nome: "Interestaduais",    slug: "interestaduais" },
+const CATEGORIA_SLUGS = [
+  { key: "pacotes",           slug: "pacotes" },
+  { key: "litoralSul",       slug: "litoral-sul" },
+  { key: "litoralNorte",     slug: "litoral-norte" },
+  { key: "piscinasNaturais", slug: "piscinas-naturais" },
+  { key: "cityTour",         slug: "city-tour" },
+  { key: "interestaduais",   slug: "interestaduais" },
 ] as const;
 
-const SERVICOS = [
-  { nome: "Transfer 24h",       slug: "transfer-24h" },
-  { nome: "Excursões e Grupos", slug: "excursoes-e-grupos" },
+const SERVICO_SLUGS = [
+  { key: "transfer24h",      slug: "transfer-24h" },
+  { key: "excursoesGrupos",  slug: "excursoes-e-grupos" },
 ] as const;
 
 export function Header() {
+  const t  = useTranslations("Nav");
+  const tC = useTranslations("Categorias");
+  const tS = useTranslations("Servicos");
+
   const [mobileOpen, setMobileOpen]     = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [servicosOpen, setServicosOpen] = useState(false);
@@ -30,32 +36,32 @@ export function Header() {
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const closeMobile = () => setMobileOpen(false);
 
-  const linkColor      = scrolled ? 'var(--cor-texto-escuro)' : 'rgba(255,255,255,0.92)';
-  const linkHoverColor = scrolled ? 'var(--cor-primaria)'     : '#fff';
-  const lineColor      = scrolled ? 'var(--cor-primaria)'     : 'rgba(255,255,255,0.9)';
+  const linkColor      = scrolled ? "var(--cor-texto-escuro)" : "rgba(255,255,255,0.92)";
+  const linkHoverColor = scrolled ? "var(--cor-primaria)"     : "#fff";
+  const lineColor      = scrolled ? "var(--cor-primaria)"     : "rgba(255,255,255,0.9)";
 
   return (
     <header
       style={{
-        position: 'fixed',
+        position: "fixed",
         top: 0,
         left: 0,
         right: 0,
         zIndex: 50,
-        height: 'var(--header-h)',
-        display: 'flex',
-        alignItems: 'center',
-        transition: 'background 280ms ease, border-color 280ms ease',
-        backdropFilter: scrolled ? 'blur(14px)' : 'none',
-        WebkitBackdropFilter: scrolled ? 'blur(14px)' : 'none',
-        background: scrolled ? 'rgba(250,250,247,0.97)' : 'transparent',
-        borderBottom: `1px solid ${scrolled ? 'var(--cor-borda)' : 'transparent'}`,
+        height: "var(--header-h)",
+        display: "flex",
+        alignItems: "center",
+        transition: "background 280ms ease, border-color 280ms ease",
+        backdropFilter: scrolled ? "blur(14px)" : "none",
+        WebkitBackdropFilter: scrolled ? "blur(14px)" : "none",
+        background: scrolled ? "rgba(250,250,247,0.97)" : "transparent",
+        borderBottom: `1px solid ${scrolled ? "var(--cor-borda)" : "transparent"}`,
       }}
     >
       <div className="container-safe w-full">
@@ -77,10 +83,10 @@ export function Header() {
               width={500}
               height={167}
               style={{
-                height: '180px',
-                width: 'auto',
-                objectFit: 'contain',
-                transition: 'opacity 180ms',
+                height: "180px",
+                width: "auto",
+                objectFit: "contain",
+                transition: "opacity 180ms",
               }}
               priority
             />
@@ -89,7 +95,7 @@ export function Header() {
           {/* ── Nav desktop ── */}
           <nav className="hidden md:flex items-center gap-6" aria-label="Navegação principal">
 
-            <NavLink href="/" color={linkColor} hoverColor={linkHoverColor}>Início</NavLink>
+            <NavLink href="/" color={linkColor} hoverColor={linkHoverColor}>{t("inicio")}</NavLink>
 
             {/* Passeios dropdown */}
             <div
@@ -101,18 +107,18 @@ export function Header() {
                 href="/passeios"
                 className="flex items-center gap-1 py-2 transition-colors"
                 style={{
-                  fontFamily: 'var(--font-body)',
+                  fontFamily: "var(--font-body)",
                   fontWeight: 500,
-                  fontSize: '14px',
+                  fontSize: "14px",
                   color: linkColor,
-                  textDecoration: 'none',
-                  transition: 'color 150ms',
+                  textDecoration: "none",
+                  transition: "color 150ms",
                 }}
                 onMouseEnter={e => (e.currentTarget.style.color = linkHoverColor)}
                 onMouseLeave={e => (e.currentTarget.style.color = linkColor)}
               >
-                Passeios
-                <span style={{ fontSize: '10px', opacity: 0.5 }} aria-hidden="true">▾</span>
+                {t("passeios")}
+                <span style={{ fontSize: "10px", opacity: 0.5 }} aria-hidden="true">▾</span>
               </Link>
 
               {dropdownOpen && (
@@ -120,45 +126,45 @@ export function Header() {
                   className="absolute top-full left-0 py-2"
                   role="menu"
                   style={{
-                    background: 'var(--cor-fundo-puro)',
-                    border: '1px solid var(--cor-borda)',
-                    borderRadius: '12px',
-                    minWidth: '220px',
-                    boxShadow: 'var(--sombra-hover)',
+                    background: "var(--cor-fundo-puro)",
+                    border: "1px solid var(--cor-borda)",
+                    borderRadius: "12px",
+                    minWidth: "220px",
+                    boxShadow: "var(--sombra-hover)",
                   }}
                 >
-                  {CATEGORIAS.map((cat) => (
-                    <li key={cat.slug} role="none">
+                  {CATEGORIA_SLUGS.map(({ key, slug }) => (
+                    <li key={slug} role="none">
                       <Link
-                        href={`/passeios/${cat.slug}`}
+                        href={`/passeios/${slug}`}
                         role="menuitem"
                         onClick={() => setDropdownOpen(false)}
                         style={{
-                          display: 'block',
-                          padding: '10px 16px',
-                          fontFamily: 'var(--font-body)',
-                          fontSize: '14px',
+                          display: "block",
+                          padding: "10px 16px",
+                          fontFamily: "var(--font-body)",
+                          fontSize: "14px",
                           fontWeight: 500,
-                          color: 'var(--cor-texto-medio)',
-                          textDecoration: 'none',
-                          transition: 'color 150ms, background 150ms',
+                          color: "var(--cor-texto-medio)",
+                          textDecoration: "none",
+                          transition: "color 150ms, background 150ms",
                         }}
                         onMouseEnter={e => {
-                          e.currentTarget.style.color = 'var(--cor-primaria)'
-                          e.currentTarget.style.background = 'var(--cor-fundo)'
+                          e.currentTarget.style.color = "var(--cor-primaria)";
+                          e.currentTarget.style.background = "var(--cor-fundo)";
                         }}
                         onMouseLeave={e => {
-                          e.currentTarget.style.color = 'var(--cor-texto-medio)'
-                          e.currentTarget.style.background = 'transparent'
+                          e.currentTarget.style.color = "var(--cor-texto-medio)";
+                          e.currentTarget.style.background = "transparent";
                         }}
                       >
-                        {cat.nome}
+                        {tC(key)}
                       </Link>
                     </li>
                   ))}
 
                   <li role="separator" aria-hidden="true">
-                    <hr style={{ border: 'none', borderTop: '1px solid var(--cor-borda)', margin: '6px 12px' }} />
+                    <hr style={{ border: "none", borderTop: "1px solid var(--cor-borda)", margin: "6px 12px" }} />
                   </li>
                   <li role="none">
                     <Link
@@ -166,19 +172,19 @@ export function Header() {
                       role="menuitem"
                       onClick={() => setDropdownOpen(false)}
                       style={{
-                        display: 'block',
-                        padding: '10px 16px',
-                        fontFamily: 'var(--font-body)',
-                        fontSize: '14px',
+                        display: "block",
+                        padding: "10px 16px",
+                        fontFamily: "var(--font-body)",
+                        fontSize: "14px",
                         fontWeight: 600,
-                        color: 'var(--cor-primaria)',
-                        textDecoration: 'none',
-                        transition: 'color 150ms, background 150ms',
+                        color: "var(--cor-primaria)",
+                        textDecoration: "none",
+                        transition: "color 150ms, background 150ms",
                       }}
-                      onMouseEnter={e => { e.currentTarget.style.background = 'var(--cor-fundo)' }}
-                      onMouseLeave={e => { e.currentTarget.style.background = 'transparent' }}
+                      onMouseEnter={e => { e.currentTarget.style.background = "var(--cor-fundo)"; }}
+                      onMouseLeave={e => { e.currentTarget.style.background = "transparent"; }}
                     >
-                      Tábua de Maré
+                      {t("tabuaMare")}
                     </Link>
                   </li>
                 </ul>
@@ -197,19 +203,19 @@ export function Header() {
                 aria-haspopup="menu"
                 className="flex items-center gap-1 py-2"
                 style={{
-                  fontFamily: 'var(--font-body)',
+                  fontFamily: "var(--font-body)",
                   fontWeight: 500,
-                  fontSize: '14px',
+                  fontSize: "14px",
                   color: linkColor,
-                  background: 'none',
-                  border: 'none',
-                  cursor: 'pointer',
-                  padding: '8px 0',
-                  transition: 'color 150ms',
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  padding: "8px 0",
+                  transition: "color 150ms",
                 }}
               >
-                Serviços
-                <span style={{ fontSize: '10px', opacity: 0.5 }} aria-hidden="true">▾</span>
+                {t("servicos")}
+                <span style={{ fontSize: "10px", opacity: 0.5 }} aria-hidden="true">▾</span>
               </button>
 
               {servicosOpen && (
@@ -217,39 +223,39 @@ export function Header() {
                   className="absolute top-full left-0 py-2"
                   role="menu"
                   style={{
-                    background: 'var(--cor-fundo-puro)',
-                    border: '1px solid var(--cor-borda)',
-                    borderRadius: '12px',
-                    minWidth: '210px',
-                    boxShadow: 'var(--sombra-hover)',
+                    background: "var(--cor-fundo-puro)",
+                    border: "1px solid var(--cor-borda)",
+                    borderRadius: "12px",
+                    minWidth: "210px",
+                    boxShadow: "var(--sombra-hover)",
                   }}
                 >
-                  {SERVICOS.map((srv) => (
-                    <li key={srv.slug} role="none">
+                  {SERVICO_SLUGS.map(({ key, slug }) => (
+                    <li key={slug} role="none">
                       <Link
-                        href={`/servicos/${srv.slug}`}
+                        href={`/servicos/${slug}`}
                         role="menuitem"
                         onClick={() => setServicosOpen(false)}
                         style={{
-                          display: 'block',
-                          padding: '10px 16px',
-                          fontFamily: 'var(--font-body)',
-                          fontSize: '14px',
+                          display: "block",
+                          padding: "10px 16px",
+                          fontFamily: "var(--font-body)",
+                          fontSize: "14px",
                           fontWeight: 500,
-                          color: 'var(--cor-texto-medio)',
-                          textDecoration: 'none',
-                          transition: 'color 150ms, background 150ms',
+                          color: "var(--cor-texto-medio)",
+                          textDecoration: "none",
+                          transition: "color 150ms, background 150ms",
                         }}
                         onMouseEnter={e => {
-                          e.currentTarget.style.color = 'var(--cor-primaria)'
-                          e.currentTarget.style.background = 'var(--cor-fundo)'
+                          e.currentTarget.style.color = "var(--cor-primaria)";
+                          e.currentTarget.style.background = "var(--cor-fundo)";
                         }}
                         onMouseLeave={e => {
-                          e.currentTarget.style.color = 'var(--cor-texto-medio)'
-                          e.currentTarget.style.background = 'transparent'
+                          e.currentTarget.style.color = "var(--cor-texto-medio)";
+                          e.currentTarget.style.background = "transparent";
                         }}
                       >
-                        {srv.nome}
+                        {tS(key)}
                       </Link>
                     </li>
                   ))}
@@ -257,54 +263,59 @@ export function Header() {
               )}
             </div>
 
-            <NavLink href="/sobre" color={linkColor} hoverColor={linkHoverColor}>Sobre</NavLink>
-            <NavLink href="/faq" color={linkColor} hoverColor={linkHoverColor}>FAQ</NavLink>
-            <NavLink href="/blog" color={linkColor} hoverColor={linkHoverColor}>Blog</NavLink>
+            <NavLink href="/sobre" color={linkColor} hoverColor={linkHoverColor}>{t("sobre")}</NavLink>
+            <NavLink href="/faq" color={linkColor} hoverColor={linkHoverColor}>{t("faq")}</NavLink>
+            <NavLink href="/blog" color={linkColor} hoverColor={linkHoverColor}>{t("blog")}</NavLink>
           </nav>
 
-          {/* ── CTA + hamburger ── */}
+          {/* ── CTA + Language Selector + Hamburger ── */}
           <div className="flex items-center gap-2 shrink-0">
+
+            {/* Seletor de idioma */}
+            <LanguageSelector scrolled={scrolled} />
+
+            {/* WhatsApp CTA */}
             <a
               href={WA_URL}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Reservar no WhatsApp"
               style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '6px',
-                background: 'var(--cor-whatsapp)',
-                color: '#fff',
-                fontFamily: 'var(--font-body)',
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "6px",
+                background: "var(--cor-whatsapp)",
+                color: "#fff",
+                fontFamily: "var(--font-body)",
                 fontWeight: 600,
-                fontSize: '13px',
-                padding: '10px 16px',
-                borderRadius: '999px',
-                minHeight: '40px',
-                textDecoration: 'none',
-                boxShadow: '0 2px 12px rgba(37,211,102,0.3)',
-                transition: 'background 200ms',
-                whiteSpace: 'nowrap',
+                fontSize: "13px",
+                padding: "10px 16px",
+                borderRadius: "999px",
+                minHeight: "40px",
+                textDecoration: "none",
+                boxShadow: "0 2px 12px rgba(37,211,102,0.3)",
+                transition: "background 200ms",
+                whiteSpace: "nowrap",
               }}
-              onMouseEnter={e => (e.currentTarget.style.background = '#1ea355')}
-              onMouseLeave={e => (e.currentTarget.style.background = 'var(--cor-whatsapp)')}
+              onMouseEnter={e => (e.currentTarget.style.background = "#1ea355")}
+              onMouseLeave={e => (e.currentTarget.style.background = "var(--cor-whatsapp)")}
             >
               <IconWhatsApp />
-              <span className="hidden sm:inline">Reservar no WhatsApp</span>
-              <span className="sm:hidden">WhatsApp</span>
+              <span className="hidden sm:inline">{t("reservarWhatsapp")}</span>
+              <span className="sm:hidden">{t("whatsappShort")}</span>
             </a>
 
             {/* Hamburger */}
             <button
               className="md:hidden flex flex-col justify-center items-center gap-1.5 w-10 h-10 rounded-lg"
-              aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
+              aria-label={mobileOpen ? t("fecharMenu") : t("abrirMenu")}
               aria-expanded={mobileOpen}
               onClick={() => setMobileOpen((v) => !v)}
-              style={{ background: 'transparent', border: 'none', cursor: 'pointer' }}
+              style={{ background: "transparent", border: "none", cursor: "pointer" }}
             >
-              <span style={{ display: 'block', width: '20px', height: '2px', background: lineColor, borderRadius: '2px', transition: 'transform 200ms', transform: mobileOpen ? 'rotate(45deg) translate(3px, 5px)' : 'none' }} />
-              <span style={{ display: 'block', width: '20px', height: '2px', background: lineColor, borderRadius: '2px', transition: 'opacity 200ms', opacity: mobileOpen ? 0 : 1 }} />
-              <span style={{ display: 'block', width: '20px', height: '2px', background: lineColor, borderRadius: '2px', transition: 'transform 200ms', transform: mobileOpen ? 'rotate(-45deg) translate(3px, -5px)' : 'none' }} />
+              <span style={{ display: "block", width: "20px", height: "2px", background: lineColor, borderRadius: "2px", transition: "transform 200ms", transform: mobileOpen ? "rotate(45deg) translate(3px, 5px)" : "none" }} />
+              <span style={{ display: "block", width: "20px", height: "2px", background: lineColor, borderRadius: "2px", transition: "opacity 200ms", opacity: mobileOpen ? 0 : 1 }} />
+              <span style={{ display: "block", width: "20px", height: "2px", background: lineColor, borderRadius: "2px", transition: "transform 200ms", transform: mobileOpen ? "rotate(-45deg) translate(3px, -5px)" : "none" }} />
             </button>
           </div>
         </div>
@@ -315,85 +326,90 @@ export function Header() {
         <div
           className="md:hidden absolute top-full left-0 right-0"
           style={{
-            borderTop: '1px solid var(--cor-borda)',
-            background: 'var(--cor-fundo-puro)',
+            borderTop: "1px solid var(--cor-borda)",
+            background: "var(--cor-fundo-puro)",
           }}
         >
           <nav className="container-safe py-4 flex flex-col gap-1" aria-label="Menu mobile">
-            <MobileLink href="/" onClick={closeMobile}>Início</MobileLink>
+            <MobileLink href="/" onClick={closeMobile}>{t("inicio")}</MobileLink>
 
             <div>
-              <MobileLink href="/passeios" onClick={closeMobile}>Passeios</MobileLink>
+              <MobileLink href="/passeios" onClick={closeMobile}>{t("passeios")}</MobileLink>
               <div className="pl-5 mt-1 flex flex-col gap-0.5">
-                {CATEGORIAS.map((cat) => (
+                {CATEGORIA_SLUGS.map(({ key, slug }) => (
                   <Link
-                    key={cat.slug}
-                    href={`/passeios/${cat.slug}`}
+                    key={slug}
+                    href={`/passeios/${slug}`}
                     onClick={closeMobile}
                     style={{
-                      display: 'block',
-                      padding: '8px 12px',
-                      fontFamily: 'var(--font-body)',
-                      fontSize: '14px',
-                      color: 'var(--cor-texto-medio)',
-                      textDecoration: 'none',
-                      borderRadius: '8px',
+                      display: "block",
+                      padding: "8px 12px",
+                      fontFamily: "var(--font-body)",
+                      fontSize: "14px",
+                      color: "var(--cor-texto-medio)",
+                      textDecoration: "none",
+                      borderRadius: "8px",
                     }}
                   >
-                    {cat.nome}
+                    {tC(key)}
                   </Link>
                 ))}
                 <Link
                   href="/tabua-de-mares-joao-pessoa"
                   onClick={closeMobile}
                   style={{
-                    display: 'block',
-                    padding: '8px 12px',
-                    marginTop: '4px',
-                    fontFamily: 'var(--font-body)',
-                    fontSize: '14px',
+                    display: "block",
+                    padding: "8px 12px",
+                    marginTop: "4px",
+                    fontFamily: "var(--font-body)",
+                    fontSize: "14px",
                     fontWeight: 600,
-                    color: 'var(--cor-primaria)',
-                    textDecoration: 'none',
-                    borderRadius: '8px',
-                    borderTop: '1px solid var(--cor-borda)',
-                    paddingTop: '12px',
+                    color: "var(--cor-primaria)",
+                    textDecoration: "none",
+                    borderRadius: "8px",
+                    borderTop: "1px solid var(--cor-borda)",
+                    paddingTop: "12px",
                   }}
                 >
-                  Tábua de Maré
+                  {t("tabuaMare")}
                 </Link>
               </div>
             </div>
 
             <div>
-              <p style={{ padding: '10px 12px', fontFamily: 'var(--font-body)', fontWeight: 500, fontSize: '15px', color: 'var(--cor-texto-escuro)' }}>
-                Serviços
+              <p style={{ padding: "10px 12px", fontFamily: "var(--font-body)", fontWeight: 500, fontSize: "15px", color: "var(--cor-texto-escuro)" }}>
+                {t("servicos")}
               </p>
               <div className="pl-5 mt-1 flex flex-col gap-0.5">
-                {SERVICOS.map((srv) => (
+                {SERVICO_SLUGS.map(({ key, slug }) => (
                   <Link
-                    key={srv.slug}
-                    href={`/servicos/${srv.slug}`}
+                    key={slug}
+                    href={`/servicos/${slug}`}
                     onClick={closeMobile}
                     style={{
-                      display: 'block',
-                      padding: '8px 12px',
-                      fontFamily: 'var(--font-body)',
-                      fontSize: '14px',
-                      color: 'var(--cor-texto-medio)',
-                      textDecoration: 'none',
-                      borderRadius: '8px',
+                      display: "block",
+                      padding: "8px 12px",
+                      fontFamily: "var(--font-body)",
+                      fontSize: "14px",
+                      color: "var(--cor-texto-medio)",
+                      textDecoration: "none",
+                      borderRadius: "8px",
                     }}
                   >
-                    {srv.nome}
+                    {tS(key)}
                   </Link>
                 ))}
               </div>
             </div>
 
-            <MobileLink href="/sobre" onClick={closeMobile}>Sobre</MobileLink>
-            <MobileLink href="/faq" onClick={closeMobile}>FAQ</MobileLink>
-            <MobileLink href="/blog" onClick={closeMobile}>Blog</MobileLink>
+            <MobileLink href="/sobre" onClick={closeMobile}>{t("sobre")}</MobileLink>
+            <MobileLink href="/faq" onClick={closeMobile}>{t("faq")}</MobileLink>
+            <MobileLink href="/blog" onClick={closeMobile}>{t("blog")}</MobileLink>
+
+            {/* Language selector no mobile */}
+            <div style={{ padding: "8px 12px", marginTop: "4px" }}>
+              <LanguageSelector scrolled={true} />
+            </div>
 
             <a
               href={WA_URL}
@@ -401,24 +417,24 @@ export function Header() {
               rel="noopener noreferrer"
               onClick={closeMobile}
               style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '8px',
-                marginTop: '12px',
-                background: 'var(--cor-whatsapp)',
-                color: '#fff',
-                fontFamily: 'var(--font-body)',
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "8px",
+                marginTop: "12px",
+                background: "var(--cor-whatsapp)",
+                color: "#fff",
+                fontFamily: "var(--font-body)",
                 fontWeight: 600,
-                fontSize: '15px',
-                padding: '14px 20px',
-                borderRadius: '999px',
-                minHeight: '48px',
-                textDecoration: 'none',
+                fontSize: "15px",
+                padding: "14px 20px",
+                borderRadius: "999px",
+                minHeight: "48px",
+                textDecoration: "none",
               }}
             >
               <IconWhatsApp />
-              Reservar no WhatsApp
+              {t("reservarWhatsapp")}
             </a>
           </nav>
         </div>
@@ -443,12 +459,12 @@ function NavLink({
     <Link
       href={href}
       style={{
-        fontFamily: 'var(--font-body)',
+        fontFamily: "var(--font-body)",
         fontWeight: 500,
-        fontSize: '14px',
+        fontSize: "14px",
         color,
-        textDecoration: 'none',
-        transition: 'color 150ms',
+        textDecoration: "none",
+        transition: "color 150ms",
       }}
       onMouseEnter={e => (e.currentTarget.style.color = hoverColor)}
       onMouseLeave={e => (e.currentTarget.style.color = color)}
@@ -472,14 +488,14 @@ function MobileLink({
       href={href}
       onClick={onClick}
       style={{
-        display: 'block',
-        padding: '10px 12px',
-        fontFamily: 'var(--font-body)',
+        display: "block",
+        padding: "10px 12px",
+        fontFamily: "var(--font-body)",
         fontWeight: 500,
-        fontSize: '15px',
-        color: 'var(--cor-texto-escuro)',
-        textDecoration: 'none',
-        borderRadius: '8px',
+        fontSize: "15px",
+        color: "var(--cor-texto-escuro)",
+        textDecoration: "none",
+        borderRadius: "8px",
       }}
     >
       {children}

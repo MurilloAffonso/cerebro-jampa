@@ -1,0 +1,91 @@
+{
+  "Nav": {
+    "inicio": "Inicio",
+    "passeios": "Tours",
+    "servicos": "Servicios",
+    "sobre": "Nosotros",
+    "faq": "FAQ",
+    "blog": "Blog",
+    "tabuaMare": "Tabla de mareas",
+    "reservarWhatsapp": "Reservar por WhatsApp",
+    "whatsappShort": "WhatsApp",
+    "abrirMenu": "Abrir menú",
+    "fecharMenu": "Cerrar menú"
+  },
+  "Categorias": {
+    "litoralSul": "Costa Sur",
+    "litoralNorte": "Costa Norte",
+    "piscinasNaturais": "Piscinas Naturales",
+    "cityTour": "City Tour",
+    "pacotes": "Paquetes",
+    "interestaduais": "Tours Interestatales"
+  },
+  "Servicos": {
+    "transfer24h": "Transfer 24h",
+    "excursoesGrupos": "Excursiones y Grupos"
+  },
+  "Footer": {
+    "maisPasseios": "Tours más buscados",
+    "categorias": "Categorías",
+    "navegacao": "Navegación",
+    "contato": "Contacto",
+    "areasAtendimento": "Áreas de servicio",
+    "descricao": "Turismo receptivo en João Pessoa, Paraíba. Murillo te atiende directamente por WhatsApp — sin intermediarios, con conocimiento local de quien vive aquí.",
+    "avaliacoes": "reseñas",
+    "direitos": "Todos los derechos reservados",
+    "falarMurillo": "Hablar con Murillo",
+    "navLinks": {
+      "inicio": "Inicio",
+      "passeios": "Tours en João Pessoa",
+      "tabua": "Tabla de mareas en João Pessoa",
+      "faq": "Preguntas frecuentes",
+      "transfer": "Transfer 24h",
+      "excursoes": "Excursiones y grupos",
+      "sobre": "Sobre Vem Passear"
+    }
+  },
+  "Hero": {
+    "titulo": "El sol nace aquí primero",
+    "subtitulo": "João Pessoa es la ciudad más al este de las Américas. Aquí, cada tour comienza con la luz del día antes que cualquier otro lugar.",
+    "ctaPrincipal": "Ver los tours",
+    "ctaSecundario": "Hablar con Murillo",
+    "ratingLabel": "en Google",
+    "anosLabel": "años de experiencia",
+    "turistasLabel": "turistas atendidos"
+  },
+  "Tags": {
+    "maisVendido": "Más vendido",
+    "imperdivel": "Imperdible",
+    "dependeMare": "Depende de la marea",
+    "transferIncluso": "Transfer incluido",
+    "aPartirDe": "Desde",
+    "verPasseio": "Ver tour",
+    "reservar": "Reservar"
+  },
+  "Passeio": {
+    "duracao": "Duración",
+    "saida": "Salida",
+    "preco": "Precio",
+    "categoria": "Categoría",
+    "oQueIncluso": "Qué incluye",
+    "oQueNaoIncluso": "No incluye",
+    "reservarWhatsapp": "Reservar con Murillo por WhatsApp",
+    "politicaCancelamento": "Política de cancelación",
+    "relacionados": "Tours relacionados",
+    "faq": "Preguntas frecuentes"
+  },
+  "Murillo": {
+    "horario": "Atención de 7h a 22h, respuesta en 5 minutos"
+  },
+  "Tabua": {
+    "mareAlta": "Marea alta",
+    "mareBaixa": "Marea baja"
+  },
+  "Whatsapp": {
+    "mensagemPasseio": "Hola Murillo! Me gustaría saber sobre el tour",
+    "mensagemGeral": "Hola+Murillo!+Me+gustar%C3%ADa+saber+sobre+los+tours+en+João+Pessoa"
+  },
+  "LangSelector": {
+    "label": "Idioma"
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "Nav": {
+    "inicio": "Home",
+    "passeios": "Tours",
+    "servicos": "Services",
+    "sobre": "About",
+    "faq": "FAQ",
+    "blog": "Blog",
+    "tabuaMare": "Tide Table",
+    "reservarWhatsapp": "Book on WhatsApp",
+    "whatsappShort": "WhatsApp",
+    "abrirMenu": "Open menu",
+    "fecharMenu": "Close menu"
+  },
+  "Categorias": {
+    "litoralSul": "South Coast",
+    "litoralNorte": "North Coast",
+    "piscinasNaturais": "Natural Pools",
+    "cityTour": "City Tour",
+    "pacotes": "Packages",
+    "interestaduais": "Interstate Tours"
+  },
+  "Servicos": {
+    "transfer24h": "24h Transfer",
+    "excursoesGrupos": "Group Excursions"
+  },
+  "Footer": {
+    "maisPasseios": "Most popular tours",
+    "categorias": "Categories",
+    "navegacao": "Navigation",
+    "contato": "Contact",
+    "areasAtendimento": "Service areas",
+    "descricao": "Receptive tourism in João Pessoa, Paraíba. Murillo serves you directly via WhatsApp — no intermediaries, with local knowledge from someone who lives here.",
+    "avaliacoes": "reviews",
+    "direitos": "All rights reserved",
+    "falarMurillo": "Talk to Murillo",
+    "navLinks": {
+      "inicio": "Home",
+      "passeios": "Tours in João Pessoa",
+      "tabua": "Tide Table in João Pessoa",
+      "faq": "Frequently Asked Questions",
+      "transfer": "24h Transfer",
+      "excursoes": "Group Excursions",
+      "sobre": "About Vem Passear"
+    }
+  },
+  "Hero": {
+    "titulo": "The sun rises here first",
+    "subtitulo": "João Pessoa is the easternmost city in the Americas. Here, every tour begins with daylight before anywhere else.",
+    "ctaPrincipal": "See the tours",
+    "ctaSecundario": "Talk to Murillo",
+    "ratingLabel": "on Google",
+    "anosLabel": "years of experience",
+    "turistasLabel": "tourists served"
+  },
+  "Tags": {
+    "maisVendido": "Best seller",
+    "imperdivel": "Must-see",
+    "dependeMare": "Tide-dependent",
+    "transferIncluso": "Transfer included",
+    "aPartirDe": "From",
+    "verPasseio": "View tour",
+    "reservar": "Book"
+  },
+  "Passeio": {
+    "duracao": "Duration",
+    "saida": "Departure",
+    "preco": "Price",
+    "categoria": "Category",
+    "oQueIncluso": "What's included",
+    "oQueNaoIncluso": "Not included",
+    "reservarWhatsapp": "Book with Murillo on WhatsApp",
+    "politicaCancelamento": "Cancellation policy",
+    "relacionados": "Related tours",
+    "faq": "Frequently asked questions"
+  },
+  "Murillo": {
+    "horario": "Available 7am–10pm, replies within 5 minutes"
+  },
+  "Tabua": {
+    "mareAlta": "High tide",
+    "mareBaixa": "Low tide"
+  },
+  "Whatsapp": {
+    "mensagemPasseio": "Hi Murillo! I'd like to know about the tour",
+    "mensagemGeral": "Hi+Murillo!+I%27d+like+to+know+about+the+tours+in+João+Pessoa"
+  },
+  "LangSelector": {
+    "label": "Language"
+  }
+}
