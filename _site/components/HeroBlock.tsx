@@ -4,7 +4,8 @@
  */
 
 import Image from "next/image";
-import { DESIGN_BADGE, type DesignBadgeKind } from "@/lib/badges";
+import { type DesignBadgeKind } from "@/lib/badges";
+import { HeroBadgePills } from "@/components/HeroBadgePills";
 
 interface BreadcrumbItem {
   label: string;
@@ -159,23 +160,7 @@ export function HeroBlock({
           flexWrap: "wrap",
           zIndex: 2,
         }}>
-          {badges.map((k) => {
-            const b = DESIGN_BADGE[k];
-            return (
-              <span key={k} style={{
-                fontFamily: "var(--font-body)",
-                display: "inline-flex", alignItems: "center", gap: 5,
-                background: b.bg, color: "#fff",
-                padding: "5px 10px", fontSize: 11, fontWeight: 700,
-                borderRadius: 999, textTransform: "uppercase", letterSpacing: "0.04em",
-                lineHeight: 1, whiteSpace: "nowrap",
-                boxShadow: "0 4px 14px -6px rgba(0,0,0,0.45)",
-              }}>
-                <span style={{ fontSize: 12, lineHeight: 1 }}>{b.icon}</span>
-                {b.label}
-              </span>
-            );
-          })}
+          <HeroBadgePills badges={badges} />
         </div>
       )}
 

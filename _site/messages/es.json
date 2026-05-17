@@ -156,6 +156,14 @@
     "ctaMicrocopy": "Atención directa · Sin guión · Respuesta rápida"
   },
   "Categoria": {
+    "descricoes": {
+      "pacotes": "Combina los mejores tours de João Pessoa en un solo itinerario. Playas, piscinas naturales y cultura — todo con transfer y guías acreditados.",
+      "litoralSul": "Playas desiertas, acantilados de colores y cuatriciclo en las dunas. El Litoral Sur de João Pessoa es la salida favorita de quien busca aventura.",
+      "litoralNorte": "Atardecer en el Jacaré, Areia Vermelha y catamarán en el Atlántico. El Litoral Norte combina naturaleza y uno de los paisajes más fotografiados de Paraíba.",
+      "piscinasNaturais": "Arrecifes de coral a pocos minutos de João Pessoa. Agua tibia, transparente y fauna marina — experiencia única en el litoral nordestino.",
+      "cityTour": "Conoce la historia y la arquitectura de João Pessoa — la segunda ciudad más antigua de Brasil — con guía especializado.",
+      "interestaduais": "Porto de Galinhas, Praia de Pipa y Natal desde João Pessoa. Destinos imperdibles del Nordeste en excursiones con salida garantizada."
+    },
     "disponivel": "{count} tour disponible",
     "disponiveis": "{count} tours disponibles",
     "nenhumPasseio": "No hay tours disponibles en esta categoría.",
@@ -215,5 +223,30 @@
   },
   "LangSelector": {
     "label": "Idioma"
+  },
+  "Blog": {
+    "kicker": "Blog Vem Passear",
+    "titulo": "Guías de João Pessoa por quien vive aquí",
+    "subtitulo": "Contenido creado por Murillo, fundador de Vem Passear em Jampa — atención directa, orientación local y curaduría de los tours. Sin clichés turísticos. Solo lo que funciona de verdad.",
+    "emPreparacao": "En preparación",
+    "guiasEmBreve": "Guías llegando pronto",
+    "preparandoGuias": "Estamos preparando una serie de guías prácticas sobre João Pessoa. Mientras tanto, habla directamente con Murillo por WhatsApp para recibir orientación personalizada de itinerario.",
+    "falarMurillo": "Hablar con Murillo",
+    "minLeitura": "{min} min de lectura · actualizado en {data}",
+    "temasCobrimos": "Temas que cubrimos",
+    "totalPublicados": "{count} guía publicada",
+    "totalPublicadosPlural": "{count} guías publicadas",
+    "emPreparacaoCluster": "Contenido en preparación por cluster editorial.",
+    "guiaPublicado": "{count} guía publicada",
+    "guiasPublicados": "{count} guías publicadas",
+    "ctaPrefereConversar": "¿Prefieres conversar directo?",
+    "ctaMurilloResponde": "Murillo responde por WhatsApp. Atención humana, orientación local, sin rodeos.",
+    "ctaChamarMurillo": "Hablar con Murillo por WhatsApp",
+    "porAutor": "Por {autor} · {min} min de lectura · actualizado en {data}",
+    "perguntasFrequentes": "Preguntas Frecuentes",
+    "passeiosMencionados": "Tours mencionados en esta guía",
+    "verDetalhes": "Ver detalles del tour →",
+    "ctaAjudaRoteiro": "¿Necesitas ayuda para armar tu itinerario?",
+    "ctaMurilloOrientacao": "Murillo responde por WhatsApp con orientación personalizada para tu caso."
   }
 }

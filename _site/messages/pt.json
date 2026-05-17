@@ -156,6 +156,14 @@
     "ctaMicrocopy": "Atendimento direto · Sem script · Resposta rápida"
   },
   "Categoria": {
+    "descricoes": {
+      "pacotes": "Combine os melhores passeios de João Pessoa em um só roteiro. Praias, piscinas naturais e cultura — tudo com transfer e condutores credenciados.",
+      "litoralSul": "Praias desertas, falésias coloridas e quadriciclo nas dunas. O Litoral Sul de João Pessoa é a saída favorita de quem quer aventura.",
+      "litoralNorte": "Pôr do sol no Jacaré, Areia Vermelha e catamarã no Atlântico. O Litoral Norte combina natureza e uma das paisagens mais fotografadas da Paraíba.",
+      "piscinasNaturais": "Recifes de coral a poucos minutos de João Pessoa. Água morna, transparente e fauna marinha — experiência única no litoral nordestino.",
+      "cityTour": "Conheça a história e a arquitetura de João Pessoa — a segunda cidade mais antiga do Brasil — com guia especializado.",
+      "interestaduais": "Porto de Galinhas, Praia de Pipa e Natal a partir de João Pessoa. Destinos imperdíveis do Nordeste em excursões com saída garantida."
+    },
     "disponivel": "{count} passeio disponível",
     "disponiveis": "{count} passeios disponíveis",
     "nenhumPasseio": "Nenhum passeio disponível nesta categoria.",
@@ -215,5 +223,30 @@
   },
   "LangSelector": {
     "label": "Idioma"
+  },
+  "Blog": {
+    "kicker": "Blog Vem Passear",
+    "titulo": "Guias de João Pessoa por quem vive aqui",
+    "subtitulo": "Conteúdo criado por Murillo, fundador da Vem Passear em Jampa — atendimento direto, orientação local e curadoria dos passeios. Sem clichê turístico. Só o que funciona de verdade.",
+    "emPreparacao": "Em preparação",
+    "guiasEmBreve": "Guias chegando em breve",
+    "preparandoGuias": "Estamos preparando uma série de guias práticos sobre João Pessoa. Enquanto isso, fale direto com Murillo no WhatsApp para receber orientação personalizada de roteiro.",
+    "falarMurillo": "Falar com Murillo",
+    "minLeitura": "{min} min de leitura · atualizado em {data}",
+    "temasCobrimos": "Temas que cobrimos",
+    "totalPublicados": "{count} guia publicado",
+    "totalPublicadosPlural": "{count} guias publicados",
+    "emPreparacaoCluster": "Conteúdo em preparação por cluster editorial.",
+    "guiaPublicado": "{count} guia publicado",
+    "guiasPublicados": "{count} guias publicados",
+    "ctaPrefereConversar": "Prefere conversar direto?",
+    "ctaMurilloResponde": "Murillo responde no WhatsApp. Atendimento humano, orientação local, sem enrolação.",
+    "ctaChamarMurillo": "Chamar Murillo no WhatsApp",
+    "porAutor": "Por {autor} · {min} min de leitura · atualizado em {data}",
+    "perguntasFrequentes": "Perguntas Frequentes",
+    "passeiosMencionados": "Passeios mencionados neste guia",
+    "verDetalhes": "Ver detalhes do passeio →",
+    "ctaAjudaRoteiro": "Quer ajuda para montar seu roteiro?",
+    "ctaMurilloOrientacao": "Murillo responde no WhatsApp com orientação personalizada para o seu caso."
   }
 }

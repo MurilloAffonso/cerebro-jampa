@@ -10,8 +10,10 @@
 
 import type { Metadata } from "next";
 import Link from "next/link";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { empresa } from "@/data/empresa";
 import { getPublishedPosts, listClusters } from "@/lib/blog";
+import { localizarPosts, getClusterMetaLocalized } from "@/lib/blog-i18n";
 import { buildLocaleAlternates } from "@/lib/seo";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTASticky } from "@/components/CTASticky";
@@ -39,9 +41,19 @@ export async function generateMetadata({
   };
 }
 
-export default function BlogIndexPage() {
-  const published = getPublishedPosts();
-  const clusters = listClusters();
+export default async function BlogIndexPage({
+  params,
+}: {
+  params: { locale: string };
+}) {
+  setRequestLocale(params.locale);
+  const t = await getTranslations("Blog");
+
+  const published = localizarPosts(getPublishedPosts(), params.locale);
+  const clusters = listClusters().map((c) => ({
+    ...c,
+    ...getClusterMetaLocalized(c.key, params.locale),
+  }));
   const totalPlanejados = clusters.reduce((acc, c) => acc + c.count, 0);
   const emPreparacao = published.length === 0;
 
@@ -62,14 +74,13 @@ export default function BlogIndexPage() {
       <section id="hero-section" className="bg-[#F7F8F7] py-16 md:py-20">
         <div className="container-safe max-w-4xl">
           <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
-            Blog Vem Passear
+            {t("kicker")}
           </p>
           <h1 className="font-serif font-bold text-4xl md:text-5xl text-dark leading-tight mb-5">
-            Guias de João Pessoa por quem vive aqui
+            {t("titulo")}
           </h1>
           <p className="text-gray-600 text-lg leading-relaxed max-w-2xl">
-            Conteúdo criado por Murillo, fundador da Vem Passear em Jampa — atendimento direto, orientação local e curadoria dos passeios.
-            Sem clichê turístico. Só o que funciona de verdade.
+            {t("subtitulo")}
           </p>
         </div>
       </section>
@@ -80,15 +91,13 @@ export default function BlogIndexPage() {
           {emPreparacao ? (
             <div className="bg-[#F7F8F7] border border-gray-200 rounded-2xl p-8 md:p-12 mb-10">
               <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-3">
-                Em preparação
+                {t("emPreparacao")}
               </p>
               <h2 className="font-serif font-bold text-2xl md:text-3xl text-dark mb-4 leading-tight">
-                Guias chegando em breve
+                {t("guiasEmBreve")}
               </h2>
               <p className="text-gray-600 leading-relaxed mb-6 max-w-2xl">
-                Estamos preparando uma série de guias práticos sobre João Pessoa.
-                Enquanto isso, fale direto com Murillo no WhatsApp para receber
-                orientação personalizada de roteiro.
+                {t("preparandoGuias")}
               </p>
               <a
                 href={WA_URL}
@@ -96,7 +105,7 @@ export default function BlogIndexPage() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-primary hover:bg-accent text-white font-bold px-6 py-3 rounded-full min-h-[44px] transition-colors"
               >
-                💬 Falar com Murillo
+                {t("falarMurillo")}
               </a>
             </div>
           ) : (
@@ -117,7 +126,7 @@ export default function BlogIndexPage() {
                       {post.description}
                     </p>
                     <p className="text-xs text-gray-400">
-                      {post.readingTime} min de leitura · atualizado em {post.updatedAt}
+                      {t("minLeitura", { min: post.readingTime, data: post.updatedAt })}
                     </p>
                   </Link>
                 </li>
@@ -128,12 +137,14 @@ export default function BlogIndexPage() {
           {/* Clusters editoriais */}
           <div>
             <h2 className="font-serif font-bold text-2xl md:text-3xl text-dark mb-2 leading-tight">
-              Temas que cobrimos
+              {t("temasCobrimos")}
             </h2>
             <p className="text-gray-500 text-sm mb-6">
               {totalPlanejados > 0
-                ? `${totalPlanejados} guia${totalPlanejados > 1 ? "s" : ""} publicado${totalPlanejados > 1 ? "s" : ""}.`
-                : "Conteúdo em preparação por cluster editorial."}
+                ? totalPlanejados === 1
+                  ? t("guiaPublicado", { count: totalPlanejados })
+                  : t("guiasPublicados", { count: totalPlanejados })
+                : t("emPreparacaoCluster")}
             </p>
 
             <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
@@ -150,8 +161,10 @@ export default function BlogIndexPage() {
                   </p>
                   <p className="text-xs text-gray-400">
                     {cluster.count === 0
-                      ? "Em preparação"
-                      : `${cluster.count} guia${cluster.count > 1 ? "s" : ""} publicado${cluster.count > 1 ? "s" : ""}`}
+                      ? t("emPreparacao")
+                      : cluster.count === 1
+                      ? t("guiaPublicado", { count: cluster.count })
+                      : t("guiasPublicados", { count: cluster.count })}
                   </p>
                 </li>
               ))}
@@ -161,18 +174,25 @@ export default function BlogIndexPage() {
       </section>
 
       {/* CTA WhatsApp */}
-      <section
+      <BlogIndexCta />
+    </div>
+  );
+}
+
+async function BlogIndexCta() {
+  const t = await getTranslations("Blog");
+  return (
+    <section
         id="cta-final"
         className="py-14 md:py-20"
         style={{ background: "#092238" }}
       >
         <div className="container-safe text-center max-w-2xl">
           <h2 className="font-serif font-bold text-white text-2xl md:text-3xl mb-3 leading-tight">
-            Prefere conversar direto?
+            {t("ctaPrefereConversar")}
           </h2>
           <p className="text-white/70 mb-8 leading-relaxed">
-            Murillo responde no WhatsApp. Atendimento humano, orientação local, sem
-            enrolação.
+            {t("ctaMurilloResponde")}
           </p>
           <a
             href={WA_URL}
@@ -180,10 +200,9 @@ export default function BlogIndexPage() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-primary hover:bg-accent text-white font-extrabold px-8 py-4 rounded-full min-h-[56px] transition-all"
           >
-            💬 Chamar Murillo no WhatsApp
+            {t("ctaChamarMurillo")}
           </a>
         </div>
       </section>
-    </div>
   );
 }

@@ -156,6 +156,14 @@
     "ctaMicrocopy": "Direct service · No script · Fast replies"
   },
   "Categoria": {
+    "descricoes": {
+      "pacotes": "Combine the best of João Pessoa in a single itinerary. Beaches, natural pools and culture — all with transfer and accredited guides.",
+      "litoralSul": "Empty beaches, colorful cliffs and ATV on the dunes. João Pessoa's South Coast is the favorite for adventure seekers.",
+      "litoralNorte": "Sunset at Jacaré, Areia Vermelha and catamaran on the Atlantic. The North Coast combines nature and one of Paraíba's most photographed landscapes.",
+      "piscinasNaturais": "Coral reefs minutes from João Pessoa. Warm, transparent water and marine life — a unique experience on the Northeast coast.",
+      "cityTour": "Discover the history and architecture of João Pessoa — the second oldest city in Brazil — with an expert guide.",
+      "interestaduais": "Porto de Galinhas, Praia de Pipa and Natal from João Pessoa. Must-see Northeast destinations on day-trip excursions with guaranteed departure."
+    },
     "disponivel": "{count} tour available",
     "disponiveis": "{count} tours available",
     "nenhumPasseio": "No tours available in this category.",
@@ -215,5 +223,30 @@
   },
   "LangSelector": {
     "label": "Language"
+  },
+  "Blog": {
+    "kicker": "Vem Passear Blog",
+    "titulo": "João Pessoa guides by someone who lives here",
+    "subtitulo": "Content by Murillo, founder of Vem Passear em Jampa — direct service, local guidance and tour curation. No tourist clichés. Just what actually works.",
+    "emPreparacao": "In preparation",
+    "guiasEmBreve": "Guides coming soon",
+    "preparandoGuias": "We're preparing a series of practical guides about João Pessoa. In the meantime, talk directly to Murillo on WhatsApp for personalized itinerary guidance.",
+    "falarMurillo": "Talk to Murillo",
+    "minLeitura": "{min} min read · updated {data}",
+    "temasCobrimos": "Topics we cover",
+    "totalPublicados": "{count} guide published",
+    "totalPublicadosPlural": "{count} guides published",
+    "emPreparacaoCluster": "Content in preparation per editorial cluster.",
+    "guiaPublicado": "{count} guide published",
+    "guiasPublicados": "{count} guides published",
+    "ctaPrefereConversar": "Prefer to talk directly?",
+    "ctaMurilloResponde": "Murillo replies on WhatsApp. Human service, local guidance, no fluff.",
+    "ctaChamarMurillo": "Talk to Murillo on WhatsApp",
+    "porAutor": "By {autor} · {min} min read · updated {data}",
+    "perguntasFrequentes": "Frequently Asked Questions",
+    "passeiosMencionados": "Tours mentioned in this guide",
+    "verDetalhes": "View tour details →",
+    "ctaAjudaRoteiro": "Need help planning your itinerary?",
+    "ctaMurilloOrientacao": "Murillo replies on WhatsApp with personalized guidance for your case."
   }
 }

@@ -11,12 +11,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import {
   getPublishedPostBySlug,
   getPublishedPosts,
   getRelatedPasseios,
-  getClusterMeta,
 } from "@/lib/blog";
+import { localizarPost, getClusterMetaLocalized } from "@/lib/blog-i18n";
+import { localizarPasseios } from "@/lib/passeios-i18n";
 import { empresa } from "@/data/empresa";
 import {
   generateFAQSchema,
@@ -27,6 +29,8 @@ import {
 const SITE_URL = `https://${empresa.dominio}`;
 const WA_URL = `${empresa.contato.whatsappLink}?text=Oi%2C+vi+o+blog+da+Vem+Passear+e+quero+informações+sobre+passeios`;
 
+const HTML_LANG: Record<string, string> = { pt: "pt-BR", en: "en", es: "es" };
+
 interface BlogArticleProps {
   params: { locale: string; slug: string };
 }
@@ -36,8 +40,9 @@ export function generateStaticParams() {
 }
 
 export function generateMetadata({ params }: BlogArticleProps): Metadata {
-  const post = getPublishedPostBySlug(params.slug);
-  if (!post) return { title: "Guia não encontrado" };
+  const raw = getPublishedPostBySlug(params.slug);
+  if (!raw) return { title: "Guia não encontrado" };
+  const post = localizarPost(raw, params.locale);
 
   const alternates = buildLocaleAlternates(params.locale, `/blog/${post.slug}`);
   return {
@@ -57,13 +62,21 @@ export function generateMetadata({ params }: BlogArticleProps): Metadata {
   };
 }
 
-export default function BlogArticlePage({ params }: BlogArticleProps) {
-  const post = getPublishedPostBySlug(params.slug);
-  if (!post) notFound();
+export default async function BlogArticlePage({ params }: BlogArticleProps) {
+  const { locale, slug } = params;
+  setRequestLocale(locale);
+  const t = await getTranslations("Blog");
 
-  const cluster = getClusterMeta(post.cluster);
-  const relatedPasseios = getRelatedPasseios(post);
+  const raw = getPublishedPostBySlug(slug);
+  if (!raw) notFound();
+  const post = localizarPost(raw, locale);
+
+  const cluster = getClusterMetaLocalized(post.cluster, locale);
+  const relatedPasseios = localizarPasseios(getRelatedPasseios(post), locale);
   const url = `${SITE_URL}/blog/${post.slug}`;
+  const inLanguage = HTML_LANG[locale] ?? "pt-BR";
+
+  const homeLabel = locale === "en" ? "Home" : locale === "es" ? "Inicio" : "Início";
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -79,12 +92,12 @@ export default function BlogArticlePage({ params }: BlogArticleProps) {
       url: SITE_URL,
     },
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
-    inLanguage: "pt-BR",
+    inLanguage,
     keywords: post.keywords.join(", "),
   };
 
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Início", item: SITE_URL },
+    { name: homeLabel, item: SITE_URL },
     { name: "Blog", item: `${SITE_URL}/blog` },
     { name: post.title, item: url },
   ]);
@@ -110,7 +123,7 @@ export default function BlogArticlePage({ params }: BlogArticleProps) {
       <section id="hero-section" className="bg-[#F7F8F7] py-14 md:py-20">
         <div className="container-safe max-w-3xl">
           <nav className="text-xs text-gray-500 mb-5" aria-label="Breadcrumb">
-            <Link href="/" className="hover:text-primary">Início</Link>
+            <Link href="/" className="hover:text-primary">{homeLabel}</Link>
             <span aria-hidden="true"> · </span>
             <Link href="/blog" className="hover:text-primary">Blog</Link>
             <span aria-hidden="true"> · </span>
@@ -127,7 +140,7 @@ export default function BlogArticlePage({ params }: BlogArticleProps) {
             {post.description}
           </p>
           <p className="text-xs text-gray-400">
-            Por {post.author} · {post.readingTime} min de leitura · atualizado em {post.updatedAt}
+            {t("porAutor", { autor: post.author, min: post.readingTime, data: post.updatedAt })}
           </p>
         </div>
       </section>
@@ -149,7 +162,7 @@ export default function BlogArticlePage({ params }: BlogArticleProps) {
           {post.faq.length > 0 && (
             <div className="mt-12">
               <h2 className="font-serif font-bold text-2xl md:text-3xl text-dark leading-tight mb-6">
-                Perguntas Frequentes
+                {t("perguntasFrequentes")}
               </h2>
               <ul className="space-y-5">
                 {post.faq.map((item) => (
@@ -172,7 +185,7 @@ export default function BlogArticlePage({ params }: BlogArticleProps) {
           {relatedPasseios.length > 0 && (
             <div className="mt-12 border-t border-gray-200 pt-10">
               <h2 className="font-serif font-bold text-xl md:text-2xl text-dark mb-5">
-                Passeios mencionados neste guia
+                {t("passeiosMencionados")}
               </h2>
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {relatedPasseios.map((passeio) => (
@@ -185,7 +198,7 @@ export default function BlogArticlePage({ params }: BlogArticleProps) {
                         {passeio.nome}
                       </p>
                       <p className="text-xs text-gray-500">
-                        Ver detalhes do passeio →
+                        {t("verDetalhes")}
                       </p>
                     </Link>
                   </li>
@@ -204,10 +217,10 @@ export default function BlogArticlePage({ params }: BlogArticleProps) {
       >
         <div className="container-safe text-center max-w-2xl">
           <h2 className="font-serif font-bold text-white text-2xl md:text-3xl mb-3 leading-tight">
-            Quer ajuda para montar seu roteiro?
+            {t("ctaAjudaRoteiro")}
           </h2>
           <p className="text-white/85 mb-8 leading-relaxed">
-            Murillo responde no WhatsApp com orientação personalizada para o seu caso.
+            {t("ctaMurilloOrientacao")}
           </p>
           <a
             href={WA_URL}
@@ -215,7 +228,7 @@ export default function BlogArticlePage({ params }: BlogArticleProps) {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-white text-primary hover:bg-orange-50 font-extrabold px-8 py-4 rounded-full min-h-[56px] transition-colors"
           >
-            💬 Chamar Murillo no WhatsApp
+            {t("ctaChamarMurillo")}
           </a>
         </div>
       </section>

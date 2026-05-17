@@ -6,6 +6,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { passeios } from "@/data/passeios";
+import { localizarPasseios } from "@/lib/passeios-i18n";
 import { empresa } from "@/data/empresa";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTASticky } from "@/components/CTASticky";
@@ -93,7 +94,7 @@ export default async function PasseiosPage({ params }: PasseiosPageProps) {
       />
 
       {/* ── Chips + Grid Cloud Design ── */}
-      <HomePasseiosSection passeios={passeios} showViewAll={false} />
+      <HomePasseiosSection passeios={localizarPasseios(passeios, locale)} showViewAll={false} />
 
       {/* ── CTA Final ── */}
       <CTAFinal

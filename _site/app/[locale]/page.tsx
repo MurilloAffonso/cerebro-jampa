@@ -16,6 +16,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { passeios } from "@/data/passeios";
 import { empresa } from "@/data/empresa";
 import { buildLocaleAlternates } from "@/lib/seo";
+import { localizarPasseios } from "@/lib/passeios-i18n";
 import { MurilloBlock } from "@/components/MurilloBlock";
 import { WaveDivider } from "@/components/WaveDivider";
 import { CTAFinal } from "@/components/CTAFinal";
@@ -96,7 +97,7 @@ export default async function Home({ params }: { params: { locale: string } }) {
       <HomeVideoHero whatsappUrl={WA_URL} />
 
       {/* ── 2. PASSEIOS COM FILTRO POR CATEGORIA ── */}
-      <HomePasseiosSection passeios={passeios} />
+      <HomePasseiosSection passeios={localizarPasseios(passeios, locale)} />
 
       {/* Wave passeios → prova social */}
       <WaveDivider fill="var(--cor-fundo-puro)" />

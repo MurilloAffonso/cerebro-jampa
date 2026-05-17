@@ -19,37 +19,13 @@ interface CategoriaPageProps {
   params: { locale: string; categoria: string };
 }
 
-const CATEGORIAS_META: Record<string, { nome: string; descricao: string }> = {
-  pacotes: {
-    nome: "Pacotes",
-    descricao:
-      "Combine os melhores passeios de João Pessoa em um só roteiro. Praias, piscinas naturais e cultura — tudo com transfer e condutores credenciados.",
-  },
-  "litoral-sul": {
-    nome: "Litoral Sul",
-    descricao:
-      "Praias desertas, falésias coloridas e quadriciclo nas dunas. O Litoral Sul de João Pessoa é a saída favorita de quem quer aventura.",
-  },
-  "litoral-norte": {
-    nome: "Litoral Norte",
-    descricao:
-      "Pôr do sol no Jacaré, Areia Vermelha e catamarã no Atlântico. O Litoral Norte combina natureza e uma das paisagens mais fotografadas da Paraíba.",
-  },
-  "piscinas-naturais": {
-    nome: "Piscinas Naturais",
-    descricao:
-      "Recifes de coral a poucos minutos de João Pessoa. Água morna, transparente e fauna marinha — experiência única no litoral nordestino.",
-  },
-  "city-tour": {
-    nome: "City Tour",
-    descricao:
-      "Conheça a história e a arquitetura de João Pessoa — a segunda cidade mais antiga do Brasil — com guia especializado.",
-  },
-  interestaduais: {
-    nome: "Interestaduais",
-    descricao:
-      "Porto de Galinhas, Praia de Pipa e Natal a partir de João Pessoa. Destinos imperdíveis do Nordeste em excursões com saída garantida.",
-  },
+const CATEGORIA_TKEY: Record<string, string> = {
+  pacotes: "pacotes",
+  "litoral-sul": "litoralSul",
+  "litoral-norte": "litoralNorte",
+  "piscinas-naturais": "piscinasNaturais",
+  "city-tour": "cityTour",
+  interestaduais: "interestaduais",
 };
 
 export function generateStaticParams() {
@@ -58,12 +34,17 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: CategoriaPageProps): Promise<Metadata> {
-  const meta = CATEGORIAS_META[params.categoria];
-  const nome = meta?.nome ?? params.categoria.replace(/-/g, " ");
+  const tkey = CATEGORIA_TKEY[params.categoria];
+  const tCat = await getTranslations({ locale: params.locale, namespace: "Categorias" });
+  const tCatDesc = await getTranslations({ locale: params.locale, namespace: "Categoria.descricoes" });
+  const nome = tkey ? tCat(tkey) : params.categoria.replace(/-/g, " ");
+  const descricao = tkey ? tCatDesc(tkey) : `${nome} — João Pessoa`;
+  const titleSuffix =
+    params.locale === "en" ? "in João Pessoa" : params.locale === "es" ? "en João Pessoa" : "em João Pessoa";
   const base = generateSeoMetadata({
-    title: `Passeios ${nome} em João Pessoa | Vem Passear em Jampa`,
-    description: meta?.descricao ?? `Descubra os passeios de ${nome.toLowerCase()} em João Pessoa. Agende pelo WhatsApp.`,
-    keywords: [nome, "João Pessoa", "passeios", "turismo", "Paraíba"],
+    title: `${params.locale === "en" ? "Tours" : params.locale === "es" ? "Tours" : "Passeios"} ${nome} ${titleSuffix} | Vem Passear em Jampa`,
+    description: descricao,
+    keywords: [nome, "João Pessoa", "Paraíba"],
     ogImage: "/og-image.svg",
   });
   const alternates = buildLocaleAlternates(params.locale, `/passeios/${params.categoria}`);
@@ -86,9 +67,11 @@ export default async function CategoriaPage({ params }: CategoriaPageProps) {
   const tWa = await getTranslations('Whatsapp');
 
   const itens = localizarPasseios(getPasseiosByCategoria(categoria), locale);
-  const meta  = CATEGORIAS_META[categoria];
-  const nome  = meta?.nome ?? categoria.replace(/-/g, " ");
-  const descricao = meta?.descricao ?? null;
+  const tkey  = CATEGORIA_TKEY[categoria];
+  const tCat  = await getTranslations("Categorias");
+  const tCatDesc = await getTranslations("Categoria.descricoes");
+  const nome  = tkey ? tCat(tkey) : categoria.replace(/-/g, " ");
+  const descricao = tkey ? tCatDesc(tkey) : null;
   const mostraExcursoesCallout = categoria === "pacotes" || categoria === "interestaduais";
 
   const waUrl = `${empresa.contato.whatsappLink}?text=${tWa('mensagemGeral')}`;
