@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/lib/navigation";
 import { passeios, getPasseiosByCategoria } from "@/data/passeios";
+import { localizarPasseios } from "@/lib/passeios-i18n";
 import { generateMetadata as generateSeoMetadata, buildLocaleAlternates } from "@/lib/seo";
 import { empresa } from "@/data/empresa";
 import { Breadcrumb } from "@/components/Breadcrumb";
@@ -84,7 +85,7 @@ export default async function CategoriaPage({ params }: CategoriaPageProps) {
   const tSt = await getTranslations('CTASticky');
   const tWa = await getTranslations('Whatsapp');
 
-  const itens = getPasseiosByCategoria(categoria);
+  const itens = localizarPasseios(getPasseiosByCategoria(categoria), locale);
   const meta  = CATEGORIAS_META[categoria];
   const nome  = meta?.nome ?? categoria.replace(/-/g, " ");
   const descricao = meta?.descricao ?? null;

@@ -9,6 +9,7 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/lib/navigation";
 import { passeios, getPasseioBySlug, getPasseiosByCategoria } from "@/data/passeios";
+import { localizarPasseio, localizarPasseios } from "@/lib/passeios-i18n";
 import { empresa } from "@/data/empresa";
 import { TABUA_MARES_2026 } from "@/data/tabua-mares";
 import { buildProximaSaidaCard } from "@/lib/tabua-mares";
@@ -63,12 +64,15 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: PasseioPageProps): Promise<Metadata> {
-  const passeio = getPasseioBySlug(params.slug, params.categoria);
-  if (!passeio) return {};
+  const passeioRaw = getPasseioBySlug(params.slug, params.categoria);
+  if (!passeioRaw) return {};
+  const passeio = localizarPasseio(passeioRaw, params.locale);
 
   const path = `/passeios/${params.categoria}/${params.slug}`;
   const alternates = buildLocaleAlternates(params.locale, path);
-  const title = `${passeio.nome} em João Pessoa | Vem Passear`;
+  const titleSuffix =
+    params.locale === "en" ? "in João Pessoa" : params.locale === "es" ? "en João Pessoa" : "em João Pessoa";
+  const title = `${passeio.nome} ${titleSuffix} | Vem Passear`;
   const precoMeta = isCampoIndisponivel(passeio.preco) ? "valor sob consulta" : `${passeio.preco} por pessoa`;
   const duracaoMeta = isCampoIndisponivel(passeio.duracao) ? "" : ` Duração: ${passeio.duracao}.`;
   const description =
@@ -109,8 +113,9 @@ export default async function PasseioPage({ params }: PasseioPageProps) {
 
   const t = await getTranslations('Passeio');
 
-  const passeio = getPasseioBySlug(slug, categoria);
-  if (!passeio) notFound();
+  const passeioRaw = getPasseioBySlug(slug, categoria);
+  if (!passeioRaw) notFound();
+  const passeio = localizarPasseio(passeioRaw, locale);
 
   const pageUrl = `${SITE_URL}/passeios/${categoria}/${slug}`;
   const whatsappUrl = `${WA_BASE}?text=${encodeURIComponent(`${t('reservarWhatsapp')} ${passeio.nome}`)}`;
@@ -122,11 +127,18 @@ export default async function PasseioPage({ params }: PasseioPageProps) {
       ? buildProximaSaidaCard(mareSlug, TABUA_MARES_2026)
       : null;
 
-  const similares = getPasseiosByCategoria(categoria)
-    .filter((p) => p.slug !== slug)
-    .slice(0, 3);
+  const similares = localizarPasseios(
+    getPasseiosByCategoria(categoria).filter((p) => p.slug !== slug).slice(0, 3),
+    locale,
+  );
 
-  const h1Text = passeio.h1 || `${passeio.nome} em João Pessoa`;
+  const h1Text =
+    passeio.h1 ||
+    (locale === "en"
+      ? `${passeio.nome} in João Pessoa`
+      : locale === "es"
+      ? `${passeio.nome} en João Pessoa`
+      : `${passeio.nome} em João Pessoa`);
   const badges = getPasseioBadges(passeio);
   const cronograma = getCronograma(categoria, slug);
 
