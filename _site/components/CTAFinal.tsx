@@ -1,3 +1,7 @@
+"use client";
+
+import { useTranslations } from "next-intl";
+
 interface CTAFinalProps {
   whatsappUrl: string;
   titulo?: string;
@@ -10,13 +14,20 @@ interface CTAFinalProps {
 
 export function CTAFinal({
   whatsappUrl,
-  titulo = "O melhor de João Pessoa começa numa conversa.",
-  subtitulo = "Manda mensagem. O Murillo responde rápido, sem script, sem enrolação.",
-  textoBotao = "Conversar com o Murillo agora",
-  variante = "azul",
+  titulo,
+  subtitulo,
+  textoBotao,
+  // variante: prop legada, atualmente sem efeito (todas usam --cor-primaria)
+  variante: _variante = "azul",
   label,
-  microcopy = "Atende de 7h às 22h, todos os dias · Resposta em até 5 minutos",
+  microcopy,
 }: CTAFinalProps) {
+  const tHome = useTranslations("CTAHome");
+  const tWa = useTranslations("Whatsapp");
+  const tituloFinal     = titulo     ?? tHome("titulo");
+  const subtituloFinal  = subtitulo  ?? tHome("subtitulo");
+  const textoBotaoFinal = textoBotao ?? tWa("falarMurillo");
+  const microcopyFinal  = microcopy  ?? tHome("microcopy");
   return (
     <section
       id="cta-final"
@@ -72,7 +83,7 @@ export function CTAFinal({
             margin: '0 auto 16px',
           }}
         >
-          {titulo}
+          {tituloFinal}
         </h2>
 
         <p
@@ -85,14 +96,14 @@ export function CTAFinal({
             margin: '0 auto 40px',
           }}
         >
-          {subtitulo}
+          {subtituloFinal}
         </p>
 
         <a
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={textoBotao}
+          aria-label={textoBotaoFinal}
           style={{
             display: 'inline-flex',
             alignItems: 'center',
@@ -114,10 +125,10 @@ export function CTAFinal({
           className="hover:-translate-y-[2px] hover:shadow-[0_8px_28px_rgba(217,119,6,0.55)]"
         >
           <IconWhatsApp />
-          {textoBotao}
+          {textoBotaoFinal}
         </a>
 
-        {microcopy && (
+        {microcopyFinal && (
           <p
             style={{
               fontFamily: 'var(--font-inter)',
@@ -126,7 +137,7 @@ export function CTAFinal({
               marginTop: '16px',
             }}
           >
-            {microcopy}
+            {microcopyFinal}
           </p>
         )}
       </div>

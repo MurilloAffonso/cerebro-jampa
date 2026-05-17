@@ -3,16 +3,19 @@
  * Renderizada abaixo do hero na página de passeio.
  */
 
+"use client";
+
+import { useTranslations } from "next-intl";
 import type { Passeio } from "@/data/passeios";
 import { isCampoIndisponivel } from "@/lib/consultar";
 
-const CATEGORIA_LABEL: Record<string, string> = {
-  "pacotes":           "Pacote",
-  "litoral-sul":       "Litoral Sul",
-  "litoral-norte":     "Litoral Norte",
-  "piscinas-naturais": "Piscinas Naturais",
-  "city-tour":         "City Tour",
-  "interestaduais":    "Interestadual",
+const CATEGORIA_TKEY: Record<string, string> = {
+  "pacotes":           "pacotes",
+  "litoral-sul":       "litoralSul",
+  "litoral-norte":     "litoralNorte",
+  "piscinas-naturais": "piscinasNaturais",
+  "city-tour":         "cityTour",
+  "interestaduais":    "interestaduais",
 };
 
 interface FichaTecnicaProps {
@@ -20,16 +23,20 @@ interface FichaTecnicaProps {
 }
 
 export function FichaTecnica({ passeio }: FichaTecnicaProps) {
-  const precoExibir    = isCampoIndisponivel(passeio.preco)    ? "Sob consulta" : passeio.preco;
-  const duracaoExibir  = isCampoIndisponivel(passeio.duracao)  ? "Via WhatsApp"  : passeio.duracao;
-  const saidaExibir    = isCampoIndisponivel(passeio.saida)    ? "Via WhatsApp"  : passeio.saida;
-  const categoriaLabel = CATEGORIA_LABEL[passeio.categoria]   ?? passeio.categoria;
+  const t    = useTranslations("Passeio");
+  const tCat = useTranslations("Categorias");
+
+  const precoExibir    = isCampoIndisponivel(passeio.preco)    ? t("sobConsulta") : passeio.preco;
+  const duracaoExibir  = isCampoIndisponivel(passeio.duracao)  ? t("viaWhatsapp") : passeio.duracao;
+  const saidaExibir    = isCampoIndisponivel(passeio.saida)    ? t("viaWhatsapp") : passeio.saida;
+  const tkey           = CATEGORIA_TKEY[passeio.categoria];
+  const categoriaLabel = tkey ? tCat(tkey) : passeio.categoria;
 
   const cells = [
-    { icon: <IcoClock />, label: "Duração",    value: duracaoExibir },
-    { icon: <IcoPin />,   label: "Saída",      value: saidaExibir },
-    { icon: <IcoTag />,   label: "A partir de", value: precoExibir },
-    { icon: <IcoGrid />,  label: "Categoria",  value: categoriaLabel },
+    { icon: <IcoClock />, label: t("duracao"),    value: duracaoExibir },
+    { icon: <IcoPin />,   label: t("saida"),      value: saidaExibir },
+    { icon: <IcoTag />,   label: t("aPartirDe"),  value: precoExibir },
+    { icon: <IcoGrid />,  label: t("categoria"),  value: categoriaLabel },
   ];
 
   return (

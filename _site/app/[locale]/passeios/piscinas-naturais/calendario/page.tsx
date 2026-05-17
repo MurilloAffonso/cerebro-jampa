@@ -190,7 +190,7 @@ export default function CalendarioPage() {
         </div>
       </div>
 
-      <CTASticky whatsappUrl={WA_URL} label="Falar com Murillo no WhatsApp" />
+      <CTASticky whatsappUrl={WA_URL} />
 
       {/* HERO */}
       <section id="hero-section" className="bg-secondary text-white">

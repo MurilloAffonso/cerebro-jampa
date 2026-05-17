@@ -57,7 +57,7 @@ export default function SobrePage({ params }: { params: { locale: string } }) {
 
   return (
     <div className="bg-white">
-      <CTASticky whatsappUrl={WA_URL} label="Falar com Murillo no WhatsApp" />
+      <CTASticky whatsappUrl={WA_URL} />
 
       <Breadcrumb
         items={[
@@ -397,7 +397,6 @@ export default function SobrePage({ params }: { params: { locale: string } }) {
         label="Quer conhecer a operação?"
         titulo="Fale direto com Murillo"
         subtitulo="Tire dúvidas sobre roteiros, datas e preços — atendimento direto, sem central impessoal."
-        textoBotao="Falar com Murillo no WhatsApp"
       />
 
       <div className="container-safe py-6 text-center">

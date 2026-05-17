@@ -124,7 +124,7 @@ export default function FaqPage({ params }: { params: { locale: string } }) {
         currentUrl={`https://${empresa.dominio}/faq/`}
       />
 
-      <CTASticky whatsappUrl={WA_URL} label="Falar com Murillo no WhatsApp" />
+      <CTASticky whatsappUrl={WA_URL} />
 
       {/* Hero */}
       <section

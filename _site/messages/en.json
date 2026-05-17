@@ -56,6 +56,7 @@
     "semPasseios": "No tours in this category yet. Talk to Murillo!"
   },
   "Hero": {
+    "localizacao": "João Pessoa · Paraíba",
     "titulo1": "The sun rises",
     "titulo2": "here",
     "titulo3Em": "first.",
@@ -115,14 +116,21 @@
     "saida": "Departure",
     "preco": "Price",
     "categoria": "Category",
+    "aPartirDe": "From",
+    "sobConsulta": "On request",
+    "viaWhatsapp": "Via WhatsApp",
+    "falarMurilloWhatsapp": "Talk to Murillo on WhatsApp",
+    "conversarAgora": "Chat with Murillo now",
+    "consultarPoliticaCta": "Ask about my tour's policy on WhatsApp",
+    "montarReservaCta": "Plan my booking on WhatsApp",
     "oQueIncluso": "What's included",
     "oQueNaoIncluso": "Not included",
-    "reservarWhatsapp": "Book with Murillo on WhatsApp",
+    "reservarWhatsapp": "Book on WhatsApp",
     "politicaCancelamento": "Cancellation policy",
     "relacionados": "Related tours",
     "faq": "Frequently asked questions",
-    "heroCta": "💬 Book with Murillo on WhatsApp",
-    "ctaStickyLabel": "Book with Murillo on WhatsApp",
+    "heroCta": "Book on WhatsApp",
+    "ctaStickyLabel": "Book on WhatsApp",
     "oQueEspera": "What awaits you in {nome}",
     "passoPasso": "How the tour works — step by step",
     "roteiro": "Itinerary",
@@ -130,7 +138,12 @@
     "ficouDuvida": "Still have a question? Reach out — we reply fast.",
     "ctaBotao": "💬 Book on WhatsApp",
     "outrosPasseios": "More tours in {categoria} in João Pessoa",
-    "verTodosCategoria": "See all {categoria} tours →"
+    "verTodosCategoria": "See all {categoria} tours →",
+    "informacoesPraticas": "Practical info for the tour day",
+    "oQueLevar": "What to bring",
+    "pontoEncontro": "Meeting point",
+    "horarioSaida": "Departure time",
+    "abrirMaps": "Open in Maps ↗"
   },
   "ListaPasseios": {
     "kicker": "Murillo's Selection",
@@ -164,7 +177,41 @@
   "Whatsapp": {
     "mensagemPasseio": "Hi Murillo! I'd like to know about the tour",
     "mensagemGeral": "Hi%2C+I%27d+like+to+know+about+the+tours+in+João+Pessoa",
-    "mensagemRoteiro": "Hi+Murillo!+I%27ll+be+in+João+Pessoa+for+a+few+days%2C+can+you+help+me+plan+an+itinerary%3F"
+    "mensagemRoteiro": "Hi+Murillo!+I%27ll+be+in+João+Pessoa+for+a+few+days%2C+can+you+help+me+plan+an+itinerary%3F",
+    "falarMurillo": "Talk to Murillo on WhatsApp",
+    "falarMurilloCurto": "Talk to Murillo"
+  },
+  "ReservaForm": {
+    "kicker": "Pre-booking via WhatsApp",
+    "titulo": "Plan your pre-booking with Murillo",
+    "subtitulo": "No online payment. You send the details and Murillo confirms availability, tour info and instructions on WhatsApp.",
+    "dataPasseio": "Tour date",
+    "hotel": "Hotel or neighborhood",
+    "hotelPlaceholder": "E.g. Hotel Tambaú, Cabo Branco, Manaíra...",
+    "adultos": "Adults",
+    "adultosHint": "12+ years",
+    "criancas": "Children",
+    "criancasHint": "2 to 11 years",
+    "bebes": "Infants",
+    "bebesHint": "Under 2 years · On request",
+    "nome": "Name",
+    "nomePlaceholder": "How you'd like to be called",
+    "whatsapp": "My WhatsApp",
+    "whatsappPlaceholder": "Country code + number",
+    "cta": "Plan my booking on WhatsApp",
+    "microcopy": "You'll be redirected to WhatsApp with the message ready — just review and send.",
+    "removerUm": "Remove one"
+  },
+  "Politica": {
+    "kicker": "Cancellation and rescheduling",
+    "titulo": "How it works if your trip needs to change",
+    "mareLabel": "Tide or bad weather:",
+    "mareTexto": "Murillo lets you know in advance via WhatsApp and rescheduling is free — no fees.",
+    "outrasLabel": "Other situations:",
+    "outrasTexto": "cancellation, change of date, number of people — message me on WhatsApp and I'll assess each case transparently.",
+    "canalLabel": "Single channel:",
+    "canalTexto": "everything is arranged and recorded on WhatsApp — you talk directly to me, no middlemen.",
+    "consultarCta": "Ask about my tour's policy on WhatsApp →"
   },
   "LangSelector": {
     "label": "Language"

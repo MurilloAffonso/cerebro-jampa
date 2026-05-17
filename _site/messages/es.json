@@ -56,6 +56,7 @@
     "semPasseios": "Aún no hay tours en esta categoría. ¡Habla con Murillo!"
   },
   "Hero": {
+    "localizacao": "João Pessoa · Paraíba",
     "titulo1": "El sol nace",
     "titulo2": "aquí",
     "titulo3Em": "primero.",
@@ -115,14 +116,21 @@
     "saida": "Salida",
     "preco": "Precio",
     "categoria": "Categoría",
+    "aPartirDe": "Desde",
+    "sobConsulta": "Consultar",
+    "viaWhatsapp": "Por WhatsApp",
+    "falarMurilloWhatsapp": "Hablar con Murillo por WhatsApp",
+    "conversarAgora": "Chatear con Murillo ahora",
+    "consultarPoliticaCta": "Consultar la política de mi tour por WhatsApp",
+    "montarReservaCta": "Hacer mi reserva por WhatsApp",
     "oQueIncluso": "Qué incluye",
     "oQueNaoIncluso": "No incluye",
-    "reservarWhatsapp": "Reservar con Murillo por WhatsApp",
+    "reservarWhatsapp": "Reservar por WhatsApp",
     "politicaCancelamento": "Política de cancelación",
     "relacionados": "Tours relacionados",
     "faq": "Preguntas frecuentes",
-    "heroCta": "💬 Reservar con Murillo por WhatsApp",
-    "ctaStickyLabel": "Reservar con Murillo por WhatsApp",
+    "heroCta": "Reservar por WhatsApp",
+    "ctaStickyLabel": "Reservar por WhatsApp",
     "oQueEspera": "Lo que te espera en {nome}",
     "passoPasso": "Cómo es el tour — paso a paso",
     "roteiro": "Itinerario",
@@ -130,7 +138,12 @@
     "ficouDuvida": "¿Tienes alguna duda? Contáctanos — respondemos rápido.",
     "ctaBotao": "💬 Reservar por WhatsApp",
     "outrosPasseios": "Más tours en {categoria} en João Pessoa",
-    "verTodosCategoria": "Ver todos los tours de {categoria} →"
+    "verTodosCategoria": "Ver todos los tours de {categoria} →",
+    "informacoesPraticas": "Información práctica para el día del tour",
+    "oQueLevar": "Qué llevar",
+    "pontoEncontro": "Punto de encuentro",
+    "horarioSaida": "Hora de salida",
+    "abrirMaps": "Abrir en Maps ↗"
   },
   "ListaPasseios": {
     "kicker": "Selección de Murillo",
@@ -164,7 +177,41 @@
   "Whatsapp": {
     "mensagemPasseio": "Hola Murillo! Me gustaría saber sobre el tour",
     "mensagemGeral": "Hola%2C+me+gustar%C3%ADa+saber+sobre+los+tours+en+João+Pessoa",
-    "mensagemRoteiro": "Hola+Murillo!+Estar%C3%A9+en+João+Pessoa+unos+d%C3%ADas%2C+%C2%BFme+ayudas+a+planificar+un+itinerario%3F"
+    "mensagemRoteiro": "Hola+Murillo!+Estar%C3%A9+en+João+Pessoa+unos+d%C3%ADas%2C+%C2%BFme+ayudas+a+planificar+un+itinerario%3F",
+    "falarMurillo": "Hablar con Murillo por WhatsApp",
+    "falarMurilloCurto": "Hablar con Murillo"
+  },
+  "ReservaForm": {
+    "kicker": "Pre-reserva por WhatsApp",
+    "titulo": "Arma tu pre-reserva con Murillo",
+    "subtitulo": "Sin pago online. Tú envías los datos y Murillo confirma disponibilidad, detalles del tour y orientaciones por WhatsApp.",
+    "dataPasseio": "Fecha del tour",
+    "hotel": "Hotel o barrio de alojamiento",
+    "hotelPlaceholder": "Ej.: Hotel Tambaú, Cabo Branco, Manaíra...",
+    "adultos": "Adultos",
+    "adultosHint": "12+ años",
+    "criancas": "Niños",
+    "criancasHint": "2 a 11 años",
+    "bebes": "Bebés",
+    "bebesHint": "Menor de 2 años · Consultar",
+    "nome": "Nombre",
+    "nomePlaceholder": "Cómo te gustaría que te llamemos",
+    "whatsapp": "Mi WhatsApp",
+    "whatsappPlaceholder": "Código + número",
+    "cta": "Hacer mi reserva por WhatsApp",
+    "microcopy": "Serás redirigido a WhatsApp con el mensaje listo — solo revisar y enviar.",
+    "removerUm": "Quitar uno"
+  },
+  "Politica": {
+    "kicker": "Cancelación y reprogramación",
+    "titulo": "Cómo funciona si tu viaje necesita cambiar",
+    "mareLabel": "Marea o clima desfavorable:",
+    "mareTexto": "Murillo te avisa con antelación por WhatsApp y la reprogramación es gratuita — sin cobro de tasa.",
+    "outrasLabel": "Otras situaciones:",
+    "outrasTexto": "cancelación, cambio de fecha, número de personas — escríbeme por WhatsApp y evalúo caso por caso, con transparencia.",
+    "canalLabel": "Canal único:",
+    "canalTexto": "todo se combina y registra por WhatsApp — hablas directamente conmigo, sin intermediarios.",
+    "consultarCta": "Consultar la política de mi tour por WhatsApp →"
   },
   "LangSelector": {
     "label": "Idioma"

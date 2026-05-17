@@ -56,6 +56,7 @@
     "semPasseios": "Nenhum passeio nesta categoria ainda. Fale com o Murillo!"
   },
   "Hero": {
+    "localizacao": "João Pessoa · Paraíba",
     "titulo1": "O sol nasce",
     "titulo2": "aqui",
     "titulo3Em": "primeiro.",
@@ -115,14 +116,21 @@
     "saida": "Saída",
     "preco": "Preço",
     "categoria": "Categoria",
+    "aPartirDe": "A partir de",
+    "sobConsulta": "Sob consulta",
+    "viaWhatsapp": "Via WhatsApp",
+    "falarMurilloWhatsapp": "Falar com Murillo no WhatsApp",
+    "conversarAgora": "Conversar com o Murillo agora",
+    "consultarPoliticaCta": "Consultar política específica do meu passeio no WhatsApp",
+    "montarReservaCta": "Montar minha reserva no WhatsApp",
     "oQueIncluso": "O que está incluso",
     "oQueNaoIncluso": "O que NÃO está incluso",
-    "reservarWhatsapp": "Reservar com Murillo no WhatsApp",
+    "reservarWhatsapp": "Reservar pelo WhatsApp",
     "politicaCancelamento": "Política de cancelamento",
     "relacionados": "Passeios relacionados",
     "faq": "Perguntas frequentes",
-    "heroCta": "💬 Reservar com Murillo no WhatsApp",
-    "ctaStickyLabel": "Reservar com Murillo no WhatsApp",
+    "heroCta": "Reservar pelo WhatsApp",
+    "ctaStickyLabel": "Reservar pelo WhatsApp",
     "oQueEspera": "O que espera por você em {nome}",
     "passoPasso": "Como é o passeio — passo a passo",
     "roteiro": "Roteiro",
@@ -130,7 +138,12 @@
     "ficouDuvida": "Ficou com alguma dúvida que não está aqui? Fala com a gente — é rápido.",
     "ctaBotao": "💬 Reservar no WhatsApp",
     "outrosPasseios": "Outros passeios em {categoria} em João Pessoa",
-    "verTodosCategoria": "Ver todos os passeios em {categoria} →"
+    "verTodosCategoria": "Ver todos os passeios em {categoria} →",
+    "informacoesPraticas": "Informações práticas para o dia do passeio",
+    "oQueLevar": "O que levar",
+    "pontoEncontro": "Ponto de Encontro",
+    "horarioSaida": "Horário de Saída",
+    "abrirMaps": "Abrir no Maps ↗"
   },
   "ListaPasseios": {
     "kicker": "Curadoria do Murillo",
@@ -164,7 +177,41 @@
   "Whatsapp": {
     "mensagemPasseio": "Oi Murillo! Quero saber sobre o passeio de",
     "mensagemGeral": "Oi%2C+quero+informações+sobre+os+passeios+em+João+Pessoa",
-    "mensagemRoteiro": "Oi+Murillo!+Vou+ficar+em+João+Pessoa+por+alguns+dias%2C+pode+me+ajudar+a+montar+um+roteiro%3F"
+    "mensagemRoteiro": "Oi+Murillo!+Vou+ficar+em+João+Pessoa+por+alguns+dias%2C+pode+me+ajudar+a+montar+um+roteiro%3F",
+    "falarMurillo": "Falar com Murillo no WhatsApp",
+    "falarMurilloCurto": "Falar com Murillo"
+  },
+  "ReservaForm": {
+    "kicker": "Pré-reserva pelo WhatsApp",
+    "titulo": "Monte sua pré-reserva com o Murillo",
+    "subtitulo": "Sem pagamento online. Você envia os dados e o Murillo confirma disponibilidade, detalhes do passeio e orientações pelo WhatsApp.",
+    "dataPasseio": "Data do passeio",
+    "hotel": "Hotel ou bairro de hospedagem",
+    "hotelPlaceholder": "Ex.: Hotel Tambaú, Cabo Branco, Manaíra...",
+    "adultos": "Adultos",
+    "adultosHint": "12+ anos",
+    "criancas": "Crianças",
+    "criancasHint": "2 a 11 anos",
+    "bebes": "Bebês",
+    "bebesHint": "Menor de 2 anos · Consultar",
+    "nome": "Nome",
+    "nomePlaceholder": "Como você gostaria de ser chamado",
+    "whatsapp": "Meu WhatsApp",
+    "whatsappPlaceholder": "(DDD) número",
+    "cta": "Montar minha reserva no WhatsApp",
+    "microcopy": "Você será redirecionado para o WhatsApp com a mensagem pronta — é só revisar e enviar.",
+    "removerUm": "Remover um"
+  },
+  "Politica": {
+    "kicker": "Cancelamento e remarcação",
+    "titulo": "Como funciona se a viagem precisar mudar",
+    "mareLabel": "Maré ou clima desfavorável:",
+    "mareTexto": "Murillo avisa com antecedência pelo WhatsApp e a remarcação é gratuita — sem cobrança de taxa.",
+    "outrasLabel": "Outras situações:",
+    "outrasTexto": "cancelamento, mudança de data, número de pessoas — fale comigo no WhatsApp que avalio caso a caso, com transparência.",
+    "canalLabel": "Canal único:",
+    "canalTexto": "tudo é combinado e registrado por WhatsApp — você fala direto comigo, sem intermediário.",
+    "consultarCta": "Consultar política específica do meu passeio no WhatsApp →"
   },
   "LangSelector": {
     "label": "Idioma"

@@ -47,7 +47,7 @@ export default function BlogIndexPage() {
 
   return (
     <div className="bg-white">
-      <CTASticky whatsappUrl={WA_URL} label="Falar com Murillo no WhatsApp" />
+      <CTASticky whatsappUrl={WA_URL} />
 
       {/* Breadcrumb (emite schema BreadcrumbList automaticamente) */}
       <Breadcrumb

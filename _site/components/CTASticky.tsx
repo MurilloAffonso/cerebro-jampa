@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 interface CTAStickyProps {
   whatsappUrl: string;
@@ -10,9 +11,12 @@ interface CTAStickyProps {
 
 export function CTASticky({
   whatsappUrl,
-  label = "Reservar no WhatsApp",
+  label,
   price,
 }: CTAStickyProps) {
+  const t = useTranslations("Whatsapp");
+  const tTags = useTranslations("Tags");
+  const labelFinal = label ?? t("falarMurillo");
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -46,7 +50,7 @@ export function CTASticky({
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={label}
+      aria-label={labelFinal}
       className="md:hidden"
       style={{
         position: 'fixed',
@@ -81,7 +85,7 @@ export function CTASticky({
             textTransform: 'uppercase',
             color: 'var(--cor-texto-claro)',
           }}>
-            a partir de
+            {tTags("aPartirDe")}
           </div>
           <div style={{
             fontFamily: 'var(--font-fraunces)',

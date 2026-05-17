@@ -82,12 +82,8 @@ export function Header() {
               alt="Vem Passear em Jampa"
               width={500}
               height={167}
-              style={{
-                height: "180px",
-                width: "auto",
-                objectFit: "contain",
-                transition: "opacity 180ms",
-              }}
+              sizes="(max-width: 767px) 110px, 500px"
+              className="h-[64px] md:h-[180px] w-auto object-contain transition-opacity duration-200"
               priority
             />
           </Link>
@@ -274,35 +270,18 @@ export function Header() {
             {/* Seletor de idioma */}
             <LanguageSelector scrolled={scrolled} />
 
-            {/* WhatsApp CTA */}
+            {/* WhatsApp CTA — desktop tem texto, mobile compacto só com ícone */}
             <a
               href={WA_URL}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Reservar no WhatsApp"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "6px",
-                background: "var(--cor-whatsapp)",
-                color: "#fff",
-                fontFamily: "var(--font-body)",
-                fontWeight: 600,
-                fontSize: "13px",
-                padding: "10px 16px",
-                borderRadius: "999px",
-                minHeight: "40px",
-                textDecoration: "none",
-                boxShadow: "0 2px 12px rgba(37,211,102,0.3)",
-                transition: "background 200ms",
-                whiteSpace: "nowrap",
-              }}
+              aria-label={t("reservarWhatsapp")}
+              className="wa-cta-header"
               onMouseEnter={e => (e.currentTarget.style.background = "#1ea355")}
               onMouseLeave={e => (e.currentTarget.style.background = "var(--cor-whatsapp)")}
             >
               <IconWhatsApp />
-              <span className="hidden sm:inline">{t("reservarWhatsapp")}</span>
-              <span className="sm:hidden">{t("whatsappShort")}</span>
+              <span className="hidden md:inline">{t("reservarWhatsapp")}</span>
             </a>
 
             {/* Hamburger */}

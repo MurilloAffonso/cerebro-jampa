@@ -369,13 +369,13 @@ export default async function PasseioPage({ params }: PasseioPageProps) {
       {passeio.informacoesPraticas && (
         <section className="section-padding bg-white">
           <div className="container-safe max-w-3xl">
-            <h2>Informações práticas para o dia do passeio</h2>
+            <h2>{t("informacoesPraticas")}</h2>
 
             <div className="mt-6 space-y-6">
               {passeio.informacoesPraticas.oqueLevar &&
                 passeio.informacoesPraticas.oqueLevar.length > 0 && (
                   <div>
-                    <h3 className="font-bold text-dark text-base mb-3">O que levar</h3>
+                    <h3 className="font-bold text-dark text-base mb-3">{t("oQueLevar")}</h3>
                     <ul className="space-y-2">
                       {passeio.informacoesPraticas.oqueLevar.map((item, i) => (
                         <li key={i} className="flex items-start gap-2 text-gray-700 text-sm">
@@ -390,7 +390,7 @@ export default async function PasseioPage({ params }: PasseioPageProps) {
               {passeio.informacoesPraticas.pontoEncontro && (
                 <div>
                   <h3 className="font-bold text-dark text-base mb-2">
-                    📍 Ponto de Encontro
+                    📍 {t("pontoEncontro")}
                   </h3>
                   <p className="text-gray-700 text-sm leading-relaxed">
                     {passeio.informacoesPraticas.pontoEncontro}
@@ -402,7 +402,7 @@ export default async function PasseioPage({ params }: PasseioPageProps) {
                       rel="noopener noreferrer"
                       className="text-sm text-primary hover:text-accent mt-1 inline-block"
                     >
-                      Abrir no Maps ↗
+                      {t("abrirMaps")}
                     </a>
                   )}
                 </div>
@@ -410,7 +410,7 @@ export default async function PasseioPage({ params }: PasseioPageProps) {
 
               {passeio.informacoesPraticas.horario && (
                 <div>
-                  <h3 className="font-bold text-dark text-base mb-2">⏱ Horário de Saída</h3>
+                  <h3 className="font-bold text-dark text-base mb-2">⏱ {t("horarioSaida")}</h3>
                   <p className="text-gray-700 text-sm leading-relaxed">
                     {passeio.informacoesPraticas.horario}
                   </p>

@@ -408,3 +408,39 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* ══════════════════════════════════════════════════════════════
+   HEADER — CTA WhatsApp responsivo
+   Mobile: compacto (só ícone, 40x40) — não vaza da tela
+   Desktop: pill com texto
+══════════════════════════════════════════════════════════════ */
+.wa-cta-header {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  background: var(--cor-whatsapp);
+  color: #fff;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 13px;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  min-height: 40px;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 2px 12px rgba(37, 211, 102, 0.3);
+  transition: background 200ms;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .wa-cta-header {
+    gap: 6px;
+    padding: 10px 16px;
+    width: auto;
+    height: auto;
+  }
+}

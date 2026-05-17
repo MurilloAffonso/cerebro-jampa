@@ -13,6 +13,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { empresa } from "@/data/empresa";
 import { buildReservationWhatsAppUrl } from "@/lib/whatsapp";
 
@@ -32,6 +33,7 @@ function clamp(n: number, min: number, max: number): number {
 }
 
 export function ReservationIntentForm({ passeioNome }: Props) {
+  const t = useTranslations("ReservaForm");
   const [dataPasseio, setDataPasseio] = useState("");
   const [hotel, setHotel] = useState("");
   const [adultos, setAdultos] = useState(MIN_ADULTOS);
@@ -88,7 +90,7 @@ export function ReservationIntentForm({ passeioNome }: Props) {
               margin: "0 0 8px",
             }}
           >
-            Pré-reserva pelo WhatsApp
+            {t("kicker")}
           </p>
           <h2
             id="pre-reserva-titulo"
@@ -101,7 +103,7 @@ export function ReservationIntentForm({ passeioNome }: Props) {
               lineHeight: 1.2,
             }}
           >
-            Monte sua pré-reserva com o Murillo
+            {t("titulo")}
           </h2>
           <p
             style={{
@@ -112,14 +114,13 @@ export function ReservationIntentForm({ passeioNome }: Props) {
               margin: "0 0 24px",
             }}
           >
-            Sem pagamento online. Você envia os dados e o Murillo confirma
-            disponibilidade, detalhes do passeio e orientações pelo WhatsApp.
+            {t("subtitulo")}
           </p>
 
           {/* Linha 1: Data */}
           <div style={fieldWrap}>
             <label htmlFor="r-data" style={labelStyle}>
-              Data do passeio
+              {t("dataPasseio")}
             </label>
             <input
               id="r-data"
@@ -133,58 +134,61 @@ export function ReservationIntentForm({ passeioNome }: Props) {
           {/* Linha 2: Hotel */}
           <div style={fieldWrap}>
             <label htmlFor="r-hotel" style={labelStyle}>
-              Hotel ou bairro de hospedagem
+              {t("hotel")}
             </label>
             <input
               id="r-hotel"
               type="text"
               value={hotel}
               onChange={(e) => setHotel(e.target.value)}
-              placeholder="Ex.: Hotel Tambaú, Cabo Branco, Manaíra..."
+              placeholder={t("hotelPlaceholder")}
               style={inputStyle}
             />
           </div>
 
           {/* Steppers */}
           <Stepper
-            label="Adultos"
+            label={t("adultos")}
+            removeLabel={t("removerUm")}
             id="r-adultos"
             value={adultos}
             min={MIN_ADULTOS}
             max={MAX_ADULTOS}
             onChange={(n) => setAdultos(clamp(n, MIN_ADULTOS, MAX_ADULTOS))}
-            hint="12+ anos"
+            hint={t("adultosHint")}
           />
           <Stepper
-            label="Crianças"
+            label={t("criancas")}
+            removeLabel={t("removerUm")}
             id="r-criancas"
             value={criancas}
             min={MIN_CRIANCAS}
             max={MAX_CRIANCAS}
             onChange={(n) => setCriancas(clamp(n, MIN_CRIANCAS, MAX_CRIANCAS))}
-            hint="2 a 11 anos"
+            hint={t("criancasHint")}
           />
           <Stepper
-            label="Bebês"
+            label={t("bebes")}
+            removeLabel={t("removerUm")}
             id="r-bebes"
             value={bebes}
             min={MIN_BEBES}
             max={MAX_BEBES}
             onChange={(n) => setBebes(clamp(n, MIN_BEBES, MAX_BEBES))}
-            hint="Menor de 2 anos · Consultar"
+            hint={t("bebesHint")}
           />
 
           {/* Linha 6: Nome */}
           <div style={fieldWrap}>
             <label htmlFor="r-nome" style={labelStyle}>
-              Nome
+              {t("nome")}
             </label>
             <input
               id="r-nome"
               type="text"
               value={nome}
               onChange={(e) => setNome(e.target.value)}
-              placeholder="Como você gostaria de ser chamado"
+              placeholder={t("nomePlaceholder")}
               autoComplete="name"
               style={inputStyle}
             />
@@ -193,7 +197,7 @@ export function ReservationIntentForm({ passeioNome }: Props) {
           {/* Linha 7: WhatsApp */}
           <div style={fieldWrap}>
             <label htmlFor="r-whatsapp" style={labelStyle}>
-              Meu WhatsApp
+              {t("whatsapp")}
             </label>
             <input
               id="r-whatsapp"
@@ -201,7 +205,7 @@ export function ReservationIntentForm({ passeioNome }: Props) {
               inputMode="tel"
               value={whatsapp}
               onChange={(e) => setWhatsapp(e.target.value)}
-              placeholder="(DDD) número"
+              placeholder={t("whatsappPlaceholder")}
               autoComplete="tel"
               style={inputStyle}
             />
@@ -231,7 +235,7 @@ export function ReservationIntentForm({ passeioNome }: Props) {
               boxShadow: "0 4px 18px rgba(37,211,102,0.30)",
             }}
           >
-            Montar minha reserva no WhatsApp
+            {t("cta")}
           </a>
 
           <p
@@ -244,8 +248,7 @@ export function ReservationIntentForm({ passeioNome }: Props) {
               lineHeight: 1.5,
             }}
           >
-            Você será redirecionado para o WhatsApp com a mensagem pronta — é
-            só revisar e enviar.
+            {t("microcopy")}
           </p>
         </div>
       </div>
@@ -259,6 +262,7 @@ export function ReservationIntentForm({ passeioNome }: Props) {
 
 interface StepperProps {
   label: string;
+  removeLabel: string;
   id: string;
   value: number;
   min: number;
@@ -267,7 +271,7 @@ interface StepperProps {
   onChange: (n: number) => void;
 }
 
-function Stepper({ label, id, value, min, max, hint, onChange }: StepperProps) {
+function Stepper({ label, removeLabel, id, value, min, max, hint, onChange }: StepperProps) {
   const atMin = value <= min;
   const atMax = value >= max;
   return (
@@ -296,7 +300,7 @@ function Stepper({ label, id, value, min, max, hint, onChange }: StepperProps) {
       >
         <button
           type="button"
-          aria-label={`Remover um ${label.toLowerCase()}`}
+          aria-label={`${removeLabel} ${label.toLowerCase()}`}
           onClick={() => onChange(value - 1)}
           disabled={atMin}
           style={stepperBtnStyle(atMin)}

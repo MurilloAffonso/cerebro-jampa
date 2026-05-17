@@ -563,7 +563,6 @@ export default function ExcursoesGruposPage() {
         label="Pronto para começar?"
         titulo="Vamos montar o roteiro do seu grupo"
         subtitulo="Cadastur ativo · operação local · resposta em horas pelo WhatsApp."
-        textoBotao="Falar com Murillo no WhatsApp"
         variante="azul"
       />
 

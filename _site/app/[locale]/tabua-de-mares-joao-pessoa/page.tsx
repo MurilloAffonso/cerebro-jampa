@@ -333,7 +333,6 @@ export default function TabuaMaresJoaoPessoaPage({ params }: { params: { locale:
         label="Tábua de maré"
         titulo="Vamos confirmar a melhor data para o seu passeio?"
         subtitulo="Manda mensagem com a data da sua viagem. Eu confirmo a maré e indico o passeio certo para o seu dia."
-        textoBotao="Falar com Murillo no WhatsApp"
         microcopy="Resposta rápida durante o dia · sem compromisso"
       />
     </>

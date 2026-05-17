@@ -21,6 +21,7 @@ export function HomeVideoHero({ whatsappUrl }: HomeVideoHeroProps) {
   }, [])
 
   const secondaryHref = `${WA_BASE}?text=${tWa('mensagemRoteiro')}`
+  const localizacao = t('localizacao')
 
   return (
     <section
@@ -63,7 +64,7 @@ export function HomeVideoHero({ whatsappUrl }: HomeVideoHeroProps) {
         className="md:hidden absolute"
         style={{ left: 18, right: 18, bottom: 28, color: '#fff' }}
       >
-        <Kicker />
+        <Kicker label={localizacao} />
         <h1 style={{
           fontFamily: 'var(--font-heading)',
           fontSize: 38, fontWeight: 600, lineHeight: 1.05,
@@ -117,7 +118,7 @@ export function HomeVideoHero({ whatsappUrl }: HomeVideoHeroProps) {
           paddingTop: 'var(--header-h)',
         }}
       >
-        <Kicker />
+        <Kicker label={localizacao} />
         <h1 style={{
           fontFamily: 'var(--font-heading)',
           fontSize: 'clamp(48px, 5.8vw, 76px)',
@@ -213,7 +214,7 @@ export function HomeVideoHero({ whatsappUrl }: HomeVideoHeroProps) {
 
 /* ── Sub-componentes ── */
 
-function Kicker() {
+function Kicker({ label }: { label: string }) {
   return (
     <div style={{
       fontFamily: 'var(--font-body)',
@@ -222,7 +223,7 @@ function Kicker() {
       display: 'inline-flex', alignItems: 'center', gap: 6,
     }}>
       <span style={{ display: 'inline-block', width: 24, height: 1, background: 'rgba(255,255,255,0.7)' }} />
-      João Pessoa · Paraíba
+      {label}
     </div>
   );
 }
