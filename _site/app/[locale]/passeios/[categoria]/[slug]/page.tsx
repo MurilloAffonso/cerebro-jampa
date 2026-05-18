@@ -72,7 +72,8 @@ export async function generateMetadata({
   const alternates = buildLocaleAlternates(params.locale, path);
   const titleSuffix =
     params.locale === "en" ? "in João Pessoa" : params.locale === "es" ? "en João Pessoa" : "em João Pessoa";
-  const title = `${passeio.nome} ${titleSuffix} | Vem Passear`;
+  // title.absolute evita que o template raiz "%s | Vem Passear em Jampa" duplique a marca
+  const titleStr = `${passeio.nome} ${titleSuffix} | Vem Passear em Jampa`;
   const precoMeta = isCampoIndisponivel(passeio.preco) ? "valor sob consulta" : `${passeio.preco} por pessoa`;
   const duracaoMeta = isCampoIndisponivel(passeio.duracao) ? "" : ` Duração: ${passeio.duracao}.`;
   const description =
@@ -80,11 +81,11 @@ export async function generateMetadata({
     `Conheça ${passeio.nome} em João Pessoa. ${precoMeta}.${duracaoMeta} Cadastur ativo. Reserve pelo WhatsApp!`;
 
   return {
-    title,
+    title: { absolute: titleStr },
     description,
     alternates,
     openGraph: {
-      title,
+      title: titleStr,
       description,
       url: alternates.canonical,
       type: "website",
@@ -101,7 +102,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title,
+      title: titleStr,
       description,
     },
   };
