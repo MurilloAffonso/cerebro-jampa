@@ -46,7 +46,6 @@ export function HomeVideoHero({ whatsappUrl }: HomeVideoHeroProps) {
         className="absolute inset-0 w-full h-full object-cover motion-reduce:hidden"
         aria-hidden="true"
       >
-        <source src="/videos/home/hero-jampa.webm" type="video/webm" />
         <source src="/videos/home/hero-jampa.mp4"  type="video/mp4"  />
       </video>
 
