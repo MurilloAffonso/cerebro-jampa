@@ -41,17 +41,17 @@ const FALLBACK_GENERICO: GalleryImage[] = [
     caption: CAPTION_ILUSTRATIVA,
   },
   {
-    src: "/images/passeios/litoral-norte/areia-vermelha/hero-01.jpg",
+    src: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
     alt: "Banco de Areia Vermelha em João Pessoa",
     caption: CAPTION_ILUSTRATIVA,
   },
   {
-    src: "/images/passeios/litoral-sul/coqueirinho/hero-01.jpg",
+    src: "/images/passeios/litoral-sul/roteiro-classico/hero-01.jpg",
     alt: "Falésias de Coqueirinho no Litoral Sul de João Pessoa",
     caption: CAPTION_ILUSTRATIVA,
   },
   {
-    src: "/images/passeios/litoral-norte/por-do-sol-jacare/hero-01.jpg",
+    src: "/images/passeios/piscinas-naturais/penha/hero-01.jpg",
     alt: "Pôr do sol no Rio Jacaré em João Pessoa",
     caption: CAPTION_ILUSTRATIVA,
   },
@@ -75,36 +75,36 @@ const FALLBACK_POR_CATEGORIA: Record<string, GalleryImage[]> = {
       caption: CAPTION_ILUSTRATIVA,
     },
     {
-      src: "/images/passeios/litoral-norte/areia-vermelha/hero-01.jpg",
+      src: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
       alt: "Banco de Areia Vermelha em maré baixa, João Pessoa",
       caption: CAPTION_ILUSTRATIVA,
     },
   ],
   "litoral-norte": [
     {
-      src: "/images/passeios/litoral-norte/areia-vermelha/hero-01.jpg",
+      src: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
       alt: "Banco de Areia Vermelha em maré baixa, João Pessoa",
       caption: CAPTION_ILUSTRATIVA,
     },
     {
-      src: "/images/passeios/litoral-norte/por-do-sol-jacare/hero-01.jpg",
+      src: "/images/passeios/piscinas-naturais/penha/hero-01.jpg",
       alt: "Pôr do sol no Rio Jacaré com o Bolero de Ravel ao vivo",
       caption: CAPTION_ILUSTRATIVA,
     },
     {
-      src: "/images/passeios/litoral-norte/hero-01.jpg",
+      src: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
       alt: "Litoral Norte de João Pessoa",
       caption: CAPTION_ILUSTRATIVA,
     },
     {
-      src: "/images/passeios/litoral-norte/jacare/hero-01.jpg",
+      src: "/images/passeios/piscinas-naturais/penha/hero-01.jpg",
       alt: "Praia do Jacaré em Cabedelo, próxima a João Pessoa",
       caption: CAPTION_ILUSTRATIVA,
     },
   ],
   "litoral-sul": [
     {
-      src: "/images/passeios/litoral-sul/coqueirinho/hero-01.jpg",
+      src: "/images/passeios/litoral-sul/roteiro-classico/hero-01.jpg",
       alt: "Falésias coloridas de Coqueirinho no Litoral Sul, João Pessoa",
       caption: CAPTION_ILUSTRATIVA,
     },
@@ -114,24 +114,24 @@ const FALLBACK_POR_CATEGORIA: Record<string, GalleryImage[]> = {
       caption: CAPTION_ILUSTRATIVA,
     },
     {
-      src: "/images/passeios/litoral-sul/tambaba/hero-01.jpg",
+      src: "/images/passeios/litoral-sul/roteiro-classico/galeria-04.jpg",
       alt: "Praia de Tambaba no Litoral Sul de João Pessoa",
       caption: CAPTION_ILUSTRATIVA,
     },
     {
-      src: "/images/passeios/litoral-sul/hero-01.jpg",
+      src: "/images/passeios/litoral-sul/roteiro-classico/hero-01.jpg",
       alt: "Litoral Sul da Paraíba",
       caption: CAPTION_ILUSTRATIVA,
     },
   ],
   "city-tour": [
     {
-      src: "/images/passeios/city-tour/hero-01.jpg",
+      src: "/images/passeios/litoral-sul/roteiro-classico/hero-01.jpg",
       alt: "Centro histórico de João Pessoa",
       caption: CAPTION_ILUSTRATIVA,
     },
     {
-      src: "/images/passeios/litoral-norte/areia-vermelha/hero-01.jpg",
+      src: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
       alt: "Areia Vermelha em João Pessoa",
       caption: CAPTION_ILUSTRATIVA,
     },
@@ -141,7 +141,7 @@ const FALLBACK_POR_CATEGORIA: Record<string, GalleryImage[]> = {
       caption: CAPTION_ILUSTRATIVA,
     },
     {
-      src: "/images/passeios/litoral-sul/coqueirinho/hero-01.jpg",
+      src: "/images/passeios/litoral-sul/roteiro-classico/hero-01.jpg",
       alt: "Falésias do Litoral Sul de João Pessoa",
       caption: CAPTION_ILUSTRATIVA,
     },
@@ -158,12 +158,12 @@ const FALLBACK_POR_CATEGORIA: Record<string, GalleryImage[]> = {
       caption: CAPTION_ILUSTRATIVA,
     },
     {
-      src: "/images/passeios/litoral-norte/areia-vermelha/hero-01.jpg",
+      src: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
       alt: "Litoral nordestino visto do mar",
       caption: CAPTION_ILUSTRATIVA,
     },
     {
-      src: "/images/passeios/litoral-sul/coqueirinho/hero-01.jpg",
+      src: "/images/passeios/litoral-sul/roteiro-classico/hero-01.jpg",
       alt: "Falésias do Nordeste brasileiro",
       caption: CAPTION_ILUSTRATIVA,
     },
@@ -175,17 +175,17 @@ const FALLBACK_POR_CATEGORIA: Record<string, GalleryImage[]> = {
       caption: CAPTION_ILUSTRATIVA,
     },
     {
-      src: "/images/passeios/litoral-norte/areia-vermelha/hero-01.jpg",
+      src: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
       alt: "Banco de Areia Vermelha — incluso em pacotes da Vem Passear",
       caption: CAPTION_ILUSTRATIVA,
     },
     {
-      src: "/images/passeios/litoral-sul/coqueirinho/hero-01.jpg",
+      src: "/images/passeios/litoral-sul/roteiro-classico/hero-01.jpg",
       alt: "Falésias do Litoral Sul — incluso em pacotes da Vem Passear",
       caption: CAPTION_ILUSTRATIVA,
     },
     {
-      src: "/images/passeios/litoral-norte/por-do-sol-jacare/hero-01.jpg",
+      src: "/images/passeios/piscinas-naturais/penha/hero-01.jpg",
       alt: "Pôr do sol no Jacaré — incluso em pacotes da Vem Passear",
       caption: CAPTION_ILUSTRATIVA,
     },

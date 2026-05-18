@@ -32,28 +32,28 @@ const CRONOGRAMAS: Record<string, CronogramaPasseio> = {
     paradas: [
       {
         n: "01",
-        foto: "/images/passeios/litoral-sul/hero-01.jpg",
+        foto: "/images/passeios/litoral-sul/roteiro-classico/hero-01.jpg",
         titulo: "Saída de João Pessoa",
         hora: "08:30",
         desc: "Embarque na van climatizada no ponto combinado.",
       },
       {
         n: "02",
-        foto: "/images/passeios/litoral-sul/hero-01.jpg",
+        foto: "/images/passeios/litoral-sul/roteiro-classico/hero-01.jpg",
         titulo: "Tabatinga",
         hora: "09:30",
         desc: "Piscinas naturais, recifes de coral e área de naturismo regulamentada.",
       },
       {
         n: "03",
-        foto: "/images/passeios/litoral-sul/coqueirinho/hero-01.jpg",
+        foto: "/images/passeios/litoral-sul/roteiro-classico/hero-01.jpg",
         titulo: "Coqueirinho",
         hora: "11:30",
         desc: "Falésias vermelhas, piscinas naturais e almoço livre nos quiosques.",
       },
       {
         n: "04",
-        foto: "/images/passeios/litoral-sul/tambaba/hero-01.jpg",
+        foto: "/images/passeios/litoral-sul/roteiro-classico/galeria-04.jpg",
         titulo: "Tambaba",
         hora: "14:30",
         desc: "Falésias, banho livre e mirante com vista para o litoral.",
@@ -72,14 +72,14 @@ const CRONOGRAMAS: Record<string, CronogramaPasseio> = {
     paradas: [
       {
         n: "01",
-        foto: "/images/passeios/litoral-sul/hero-01.jpg",
+        foto: "/images/passeios/litoral-sul/roteiro-classico/hero-01.jpg",
         titulo: "Saída de João Pessoa",
         hora: "08:30",
         desc: "Embarque na van climatizada no ponto combinado.",
       },
       {
         n: "02",
-        foto: "/images/passeios/litoral-sul/hero-01.jpg",
+        foto: "/images/passeios/litoral-sul/roteiro-classico/hero-01.jpg",
         titulo: "Tabatinga",
         hora: "09:30",
         desc: "Piscinas naturais em maré baixa e recifes de coral.",
@@ -93,7 +93,7 @@ const CRONOGRAMAS: Record<string, CronogramaPasseio> = {
       },
       {
         n: "04",
-        foto: "/images/passeios/litoral-sul/tambaba/hero-01.jpg",
+        foto: "/images/passeios/litoral-sul/roteiro-classico/galeria-04.jpg",
         titulo: "Tambaba",
         hora: "14:00",
         desc: "Banho livre e falésias.",
@@ -112,21 +112,21 @@ const CRONOGRAMAS: Record<string, CronogramaPasseio> = {
     paradas: [
       {
         n: "01",
-        foto: "/images/passeios/litoral-sul/hero-01.jpg",
+        foto: "/images/passeios/litoral-sul/roteiro-classico/hero-01.jpg",
         titulo: "Saída de João Pessoa",
         hora: "08:30",
         desc: "Embarque na van climatizada.",
       },
       {
         n: "02",
-        foto: "/images/passeios/litoral-sul/coqueirinho/hero-01.jpg",
+        foto: "/images/passeios/litoral-sul/roteiro-classico/hero-01.jpg",
         titulo: "Coqueirinho — Piscinas Naturais",
         hora: "09:30",
         desc: "Piscinas e falésias antes do quadriciclo.",
       },
       {
         n: "03",
-        foto: "/images/passeios/litoral-sul/coqueirinho/hero-01.jpg",
+        foto: "/images/passeios/litoral-sul/roteiro-classico/hero-01.jpg",
         titulo: "Quadriciclo nas Dunas",
         hora: "11:30",
         desc: "Trilha de ~1h30 nas dunas e mirantes do litoral sul.",
@@ -139,7 +139,7 @@ const CRONOGRAMAS: Record<string, CronogramaPasseio> = {
       },
       {
         n: "05",
-        foto: "/images/passeios/litoral-sul/tambaba/hero-01.jpg",
+        foto: "/images/passeios/litoral-sul/roteiro-classico/galeria-04.jpg",
         titulo: "Tambaba / Praia livre",
         hora: "15:00",
         desc: "Banho final antes do retorno.",
@@ -158,7 +158,7 @@ const CRONOGRAMAS: Record<string, CronogramaPasseio> = {
     paradas: [
       {
         n: "01",
-        foto: "/images/passeios/litoral-sul/hero-01.jpg",
+        foto: "/images/passeios/litoral-sul/roteiro-classico/hero-01.jpg",
         titulo: "Saída de João Pessoa",
         hora: "08:30",
         desc: "Embarque na van climatizada.",
@@ -197,7 +197,7 @@ const CRONOGRAMAS: Record<string, CronogramaPasseio> = {
     paradas: [
       {
         n: "01",
-        foto: "/images/passeios/litoral-sul/coqueirinho/hero-01.jpg",
+        foto: "/images/passeios/litoral-sul/roteiro-classico/hero-01.jpg",
         titulo: "Chegada em Coqueirinho",
         hora: "Conforme agendamento",
         desc: "Recepção no ponto de saída do quadriciclo.",
@@ -210,7 +210,7 @@ const CRONOGRAMAS: Record<string, CronogramaPasseio> = {
       },
       {
         n: "03",
-        foto: "/images/passeios/litoral-sul/coqueirinho/hero-01.jpg",
+        foto: "/images/passeios/litoral-sul/roteiro-classico/hero-01.jpg",
         titulo: "Trilha nas Dunas",
         hora: "~1h30",
         desc: "Percurso pelas dunas, mirantes e trilhas do litoral sul.",
@@ -281,7 +281,7 @@ const CRONOGRAMAS: Record<string, CronogramaPasseio> = {
       },
       {
         n: "04",
-        foto: "/images/passeios/litoral-norte/jacare/hero-01.jpg",
+        foto: "/images/passeios/piscinas-naturais/penha/hero-01.jpg",
         titulo: "Pôr do Sol do Jacaré",
         hora: "~16:30",
         desc: "Às margens do Rio Jacaré — Jurandy do Sax toca o Bolero de Ravel (~17 min).",
@@ -300,14 +300,14 @@ const CRONOGRAMAS: Record<string, CronogramaPasseio> = {
     paradas: [
       {
         n: "01",
-        foto: "/images/passeios/litoral-norte/areia-vermelha/hero-01.jpg",
+        foto: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
         titulo: "Catamarã — Areia Vermelha",
         hora: "Conforme maré",
         desc: "Embarcação no Rio Jacaré, travessia até a ilha de areia no oceano.",
       },
       {
         n: "02",
-        foto: "/images/passeios/litoral-norte/areia-vermelha/hero-01.jpg",
+        foto: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
         titulo: "Areia Vermelha",
         hora: "~3h na ilha",
         desc: "Piscinas naturais rasas ao redor da ilha, banho e fotos.",
@@ -320,7 +320,7 @@ const CRONOGRAMAS: Record<string, CronogramaPasseio> = {
       },
       {
         n: "04",
-        foto: "/images/passeios/litoral-norte/jacare/hero-01.jpg",
+        foto: "/images/passeios/piscinas-naturais/penha/hero-01.jpg",
         titulo: "Pôr do Sol do Jacaré",
         hora: "~16:30",
         desc: "Bolero de Ravel ao vivo — encerramento do dia.",
@@ -339,21 +339,21 @@ const CRONOGRAMAS: Record<string, CronogramaPasseio> = {
     paradas: [
       {
         n: "01",
-        foto: "/images/passeios/litoral-norte/jacare/hero-01.jpg",
+        foto: "/images/passeios/piscinas-naturais/penha/hero-01.jpg",
         titulo: "Embarcação no Rio Jacaré",
         hora: "Conforme maré",
         desc: "Catamarã parte do embarcadouro do Rio Jacaré, em Cabedelo.",
       },
       {
         n: "02",
-        foto: "/images/passeios/litoral-norte/areia-vermelha/hero-01.jpg",
+        foto: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
         titulo: "Chegada na Areia Vermelha",
         hora: "+15 min",
         desc: "Desembarque na ilha de areia — piscinas naturais rasas ao redor.",
       },
       {
         n: "03",
-        foto: "/images/passeios/litoral-norte/areia-vermelha/hero-01.jpg",
+        foto: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
         titulo: "Tempo na Ilha",
         hora: "~3h",
         desc: "Banho, fotos e exploração da ilha no oceano.",
@@ -372,21 +372,21 @@ const CRONOGRAMAS: Record<string, CronogramaPasseio> = {
     paradas: [
       {
         n: "01",
-        foto: "/images/passeios/litoral-norte/jacare/hero-01.jpg",
+        foto: "/images/passeios/piscinas-naturais/penha/hero-01.jpg",
         titulo: "Chegada ao Rio Jacaré",
         hora: "~16:00",
         desc: "Chegue com 30 min de antecedência para garantir posição na margem.",
       },
       {
         n: "02",
-        foto: "/images/passeios/litoral-norte/jacare/hero-01.jpg",
+        foto: "/images/passeios/piscinas-naturais/penha/hero-01.jpg",
         titulo: "Embarcação",
         hora: "~16:30",
         desc: "Catamarã posicionado no rio, frente ao sol poente.",
       },
       {
         n: "03",
-        foto: "/images/passeios/litoral-norte/jacare/hero-01.jpg",
+        foto: "/images/passeios/piscinas-naturais/penha/hero-01.jpg",
         titulo: "Pôr do Sol + Bolero de Ravel",
         hora: "Out: 17h · Jan: 17h45",
         desc: "Jurandy do Sax toca o Bolero de Ravel ao vivo — duração ~17 minutos.",
@@ -405,14 +405,14 @@ const CRONOGRAMAS: Record<string, CronogramaPasseio> = {
     paradas: [
       {
         n: "01",
-        foto: "/images/passeios/litoral-norte/jacare/hero-01.jpg",
+        foto: "/images/passeios/piscinas-naturais/penha/hero-01.jpg",
         titulo: "Saída da Marina — Rio Jacaré",
         hora: "08:30",
         desc: "Embarque privativo na lancha, grupo fechado.",
       },
       {
         n: "02",
-        foto: "/images/passeios/litoral-norte/areia-vermelha/hero-01.jpg",
+        foto: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
         titulo: "Areia Vermelha",
         hora: "Conforme maré",
         desc: "Ilha de areia no oceano — até 3h na ilha com piscinas naturais.",
@@ -425,14 +425,14 @@ const CRONOGRAMAS: Record<string, CronogramaPasseio> = {
       },
       {
         n: "04",
-        foto: "/images/passeios/litoral-norte/jacare/hero-01.jpg",
+        foto: "/images/passeios/piscinas-naturais/penha/hero-01.jpg",
         titulo: "Passeio no Rio Paraíba",
         hora: "~14:00",
         desc: "Navegação pelo estuário até a Fortaleza de Santa Catarina.",
       },
       {
         n: "05",
-        foto: "/images/passeios/litoral-norte/jacare/hero-01.jpg",
+        foto: "/images/passeios/piscinas-naturais/penha/hero-01.jpg",
         titulo: "Pôr do Sol do Jacaré",
         hora: "~16:30",
         desc: "Bolero de Ravel ao vivo — encerramento do dia.",
@@ -519,21 +519,21 @@ const CRONOGRAMAS: Record<string, CronogramaPasseio> = {
     paradas: [
       {
         n: "01",
-        foto: "/images/passeios/picaozinho/hero-01.jpg",
+        foto: "/images/passeios/piscinas-naturais/picaozinho/hero-01.jpg",
         titulo: "Praia de Tambaú",
         hora: "Conforme maré",
         desc: "Embarque na orla da cidade, a 700 m do Picãozinho.",
       },
       {
         n: "02",
-        foto: "/images/passeios/picaozinho/hero-01.jpg",
+        foto: "/images/passeios/piscinas-naturais/picaozinho/hero-01.jpg",
         titulo: "Chegada ao Picãozinho",
         hora: "+10 min",
         desc: "A piscina natural mais próxima da orla — ideal para crianças.",
       },
       {
         n: "03",
-        foto: "/images/passeios/picaozinho/hero-01.jpg",
+        foto: "/images/passeios/piscinas-naturais/picaozinho/hero-01.jpg",
         titulo: "Piscinas Naturais",
         hora: "~2h",
         desc: "Água rasa e tranquila, peixinhos coloridos, recifes acessíveis.",
@@ -586,7 +586,7 @@ const CRONOGRAMAS: Record<string, CronogramaPasseio> = {
     paradas: [
       {
         n: "01",
-        foto: "/images/passeios/city-tour/hero-01.jpg",
+        foto: "/images/passeios/litoral-sul/roteiro-classico/hero-01.jpg",
         titulo: "Saída em van climatizada",
         hora: "09:00",
         desc: "Grupo pequeno, van climatizada, guia local.",
@@ -605,7 +605,7 @@ const CRONOGRAMAS: Record<string, CronogramaPasseio> = {
       },
       {
         n: "04",
-        foto: "/images/passeios/city-tour/hero-01.jpg",
+        foto: "/images/passeios/litoral-sul/roteiro-classico/hero-01.jpg",
         titulo: "Parque Solon de Lucena (Lagoa)",
         hora: "12:00",
         desc: "Ponto de encontro dos pessoenses — projeto de Roberto Burle Marx, anos 1940.",
@@ -626,14 +626,14 @@ const CRONOGRAMAS: Record<string, CronogramaPasseio> = {
     paradas: [
       {
         n: "01",
-        foto: "/images/passeios/litoral-sul/hero-01.jpg",
+        foto: "/images/passeios/litoral-sul/roteiro-classico/hero-01.jpg",
         titulo: "Dia 1 — Litoral Sul Clássico",
         hora: "Saída 08:30",
         desc: "Tabatinga, Coqueirinho, Tambaba — dia inteiro de praias e piscinas naturais.",
       },
       {
         n: "02",
-        foto: "/images/passeios/litoral-norte/jacare/hero-01.jpg",
+        foto: "/images/passeios/piscinas-naturais/penha/hero-01.jpg",
         titulo: "Dia 2 — Litoral Norte + Pôr do Sol",
         hora: "Saída 09:00",
         desc: "Fortaleza de Santa Catarina, praias do norte e Bolero de Ravel no Jacaré.",
@@ -653,14 +653,14 @@ const CRONOGRAMAS: Record<string, CronogramaPasseio> = {
     paradas: [
       {
         n: "01",
-        foto: "/images/passeios/litoral-sul/hero-01.jpg",
+        foto: "/images/passeios/litoral-sul/roteiro-classico/hero-01.jpg",
         titulo: "Dia 1 — Litoral Sul",
         hora: "Saída 08:30",
         desc: "Tabatinga, Coqueirinho, Tambaba.",
       },
       {
         n: "02",
-        foto: "/images/passeios/litoral-norte/jacare/hero-01.jpg",
+        foto: "/images/passeios/piscinas-naturais/penha/hero-01.jpg",
         titulo: "Dia 2 — Litoral Norte + Pôr do Sol",
         hora: "Saída 09:00",
         desc: "Fortaleza de Santa Catarina e Bolero de Ravel no Jacaré.",
@@ -680,14 +680,14 @@ const CRONOGRAMAS: Record<string, CronogramaPasseio> = {
     paradas: [
       {
         n: "01",
-        foto: "/images/passeios/city-tour/hero-01.jpg",
+        foto: "/images/passeios/litoral-sul/roteiro-classico/hero-01.jpg",
         titulo: "Dia 1 — City Tour + Piscinas Naturais",
         hora: "Conforme maré",
         desc: "Manhã: City Tour histórico. Tarde: piscinas naturais (Picãozinho ou Seixas).",
       },
       {
         n: "02",
-        foto: "/images/passeios/litoral-norte/jacare/hero-01.jpg",
+        foto: "/images/passeios/piscinas-naturais/penha/hero-01.jpg",
         titulo: "Dia 2 — Pôr do Sol do Jacaré",
         hora: "Tarde",
         desc: "Tarde livre e Pôr do Sol no Jacaré com Bolero de Ravel.",
