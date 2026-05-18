@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: CategoriaPageProps): Promise<
   const titleSuffix =
     params.locale === "en" ? "in João Pessoa" : params.locale === "es" ? "en João Pessoa" : "em João Pessoa";
   const base = generateSeoMetadata({
-    title: `${params.locale === "en" ? "Tours" : params.locale === "es" ? "Tours" : "Passeios"} ${nome} ${titleSuffix} | Vem Passear em Jampa`,
+    title: `${params.locale === "en" ? "Tours" : params.locale === "es" ? "Tours" : "Passeios"} ${nome} ${titleSuffix}`,
     description: descricao,
     keywords: [nome, "João Pessoa", "Paraíba"],
     ogImage: "/og-image.svg",
@@ -62,9 +62,10 @@ export default async function CategoriaPage({ params }: CategoriaPageProps) {
   const { locale, categoria } = params;
   setRequestLocale(locale);
 
-  const t   = await getTranslations('Categoria');
-  const tSt = await getTranslations('CTASticky');
-  const tWa = await getTranslations('Whatsapp');
+  const t    = await getTranslations('Categoria');
+  const tSt  = await getTranslations('CTASticky');
+  const tWa  = await getTranslations('Whatsapp');
+  const tNav = await getTranslations('Nav');
 
   const itens = localizarPasseios(getPasseiosByCategoria(categoria), locale);
   const tkey  = CATEGORIA_TKEY[categoria];
@@ -82,8 +83,8 @@ export default async function CategoriaPage({ params }: CategoriaPageProps) {
 
       <Breadcrumb
         items={[
-          { label: "Home",     href: "/" },
-          { label: "Passeios", href: "/passeios" },
+          { label: tNav("inicio"),  href: "/" },
+          { label: tNav("passeios"), href: "/passeios" },
           { label: nome },
         ]}
         currentUrl={`https://${empresa.dominio}/passeios/${categoria}/`}

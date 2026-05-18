@@ -44,7 +44,10 @@
     "novoRoteiro": "Novo roteiro",
     "aPartirDe": "a partir de",
     "verPasseio": "Ver passeio",
-    "reservar": "Reservar"
+    "reservar": "Reservar",
+    "pix": "PIX à vista",
+    "grupo": "Grupo (3+)",
+    "antecipado": "Reserva antecipada"
   },
   "Filtros": {
     "todos": "Todos",

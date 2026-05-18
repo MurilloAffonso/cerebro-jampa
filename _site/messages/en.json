@@ -44,7 +44,10 @@
     "novoRoteiro": "New route",
     "aPartirDe": "From",
     "verPasseio": "View tour",
-    "reservar": "Book"
+    "reservar": "Book",
+    "pix": "PIX cash price",
+    "grupo": "Group (3+)",
+    "antecipado": "Early booking"
   },
   "Filtros": {
     "todos": "All",

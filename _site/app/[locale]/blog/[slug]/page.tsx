@@ -46,7 +46,7 @@ export function generateMetadata({ params }: BlogArticleProps): Metadata {
 
   const alternates = buildLocaleAlternates(params.locale, `/blog/${post.slug}`);
   return {
-    title: `${post.title} | Vem Passear em Jampa`,
+    title: { absolute: `${post.title} | Vem Passear em Jampa` },
     description: post.description,
     keywords: post.keywords.join(", "),
     alternates,

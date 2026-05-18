@@ -27,7 +27,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const alternates = buildLocaleAlternates(params.locale, "/blog");
   return {
-    title: "Blog — Guias de João Pessoa | Vem Passear em Jampa",
+    title: { absolute: "Blog — Guias de João Pessoa | Vem Passear em Jampa" },
     description:
       "Guias práticos sobre João Pessoa: piscinas naturais, roteiros, marés e dicas locais com orientação direta de Murillo.",
     alternates,
@@ -48,6 +48,7 @@ export default async function BlogIndexPage({
 }) {
   setRequestLocale(params.locale);
   const t = await getTranslations("Blog");
+  const tNav = await getTranslations("Nav");
 
   const published = localizarPosts(getPublishedPosts(), params.locale);
   const clusters = listClusters().map((c) => ({
@@ -64,7 +65,7 @@ export default async function BlogIndexPage({
       {/* Breadcrumb (emite schema BreadcrumbList automaticamente) */}
       <Breadcrumb
         items={[
-          { label: "Home", href: "/" },
+          { label: tNav("inicio"), href: "/" },
           { label: "Blog" },
         ]}
         currentUrl={`https://${empresa.dominio}/blog/`}

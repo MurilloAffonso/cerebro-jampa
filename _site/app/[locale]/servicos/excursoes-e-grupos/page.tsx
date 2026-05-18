@@ -43,7 +43,8 @@ export async function generateMetadata({
 
 export default async function ExcursoesGruposPage({ params }: { params: { locale: string } }) {
   setRequestLocale(params.locale);
-  const t = await getTranslations("ExcursoesPage");
+  const t    = await getTranslations("ExcursoesPage");
+  const tNav = await getTranslations("Nav");
 
   const WA_URL = `${empresa.contato.whatsappLink}?text=${encodeURIComponent(t("briefingTemplate"))}`;
 
@@ -126,7 +127,7 @@ export default async function ExcursoesGruposPage({ params }: { params: { locale
 
       <Breadcrumb
         items={[
-          { label: "Home", href: "/" },
+          { label: tNav("inicio"), href: "/" },
           { label: t("crumbServicos") },
           { label: t("crumbExcursoes") },
         ]}

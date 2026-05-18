@@ -25,7 +25,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale: params.locale, namespace: "SobrePage" });
   const alternates = buildLocaleAlternates(params.locale, "/sobre");
   return {
-    title: t("seoTitle"),
+    title: { absolute: t("seoTitle") },
     description: t("seoDescription"),
     alternates,
     openGraph: {

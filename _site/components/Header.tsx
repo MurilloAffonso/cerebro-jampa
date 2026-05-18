@@ -7,8 +7,6 @@ import { useTranslations } from "next-intl";
 import { empresa } from "@/data/empresa";
 import { LanguageSelector } from "@/components/LanguageSelector";
 
-const WA_URL = `${empresa.contato.whatsappLink}?text=Oi%2C+quero+informações+sobre+os+passeios`;
-
 const CATEGORIA_SLUGS = [
   { key: "pacotes",           slug: "pacotes" },
   { key: "litoralSul",       slug: "litoral-sul" },
@@ -27,6 +25,9 @@ export function Header() {
   const t  = useTranslations("Nav");
   const tC = useTranslations("Categorias");
   const tS = useTranslations("Servicos");
+  const tWa = useTranslations("Whatsapp");
+
+  const WA_URL = `${empresa.contato.whatsappLink}?text=${tWa("mensagemGeral")}`;
 
   const [mobileOpen, setMobileOpen]     = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);

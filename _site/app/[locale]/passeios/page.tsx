@@ -20,7 +20,7 @@ export async function generateMetadata({
   params: { locale: string };
 }): Promise<Metadata> {
   const base = generateSeoMetadata({
-    title: "Passeios em João Pessoa — Vem Passear em Jampa",
+    title: "Passeios em João Pessoa",
     description:
       `${passeios.length} passeios em João Pessoa com guia local: piscinas naturais, litoral sul e norte, city tour e pacotes. Cadastur ativo, 4,9★. Agende pelo WhatsApp.`,
     keywords: ["passeios João Pessoa", "piscinas naturais", "litoral sul", "litoral norte", "city tour", "Paraíba", "Cadastur"],
@@ -45,9 +45,10 @@ export default async function PasseiosPage({ params }: PasseiosPageProps) {
   const { locale } = params;
   setRequestLocale(locale);
 
-  const t   = await getTranslations('ListaPasseios');
-  const tSt = await getTranslations('CTASticky');
-  const tWa = await getTranslations('Whatsapp');
+  const t    = await getTranslations('ListaPasseios');
+  const tSt  = await getTranslations('CTASticky');
+  const tWa  = await getTranslations('Whatsapp');
+  const tNav = await getTranslations('Nav');
 
   const WA_URL = `${empresa.contato.whatsappLink}?text=${tWa('mensagemGeral')}`;
 
@@ -89,7 +90,7 @@ export default async function PasseiosPage({ params }: PasseiosPageProps) {
 
       {/* ── Breadcrumb ── */}
       <Breadcrumb
-        items={[{ label: "Home", href: "/" }, { label: "Passeios" }]}
+        items={[{ label: tNav("inicio"), href: "/" }, { label: tNav("passeios") }]}
         currentUrl={`https://${empresa.dominio}/passeios/`}
       />
 

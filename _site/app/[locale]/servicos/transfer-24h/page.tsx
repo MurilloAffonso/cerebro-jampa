@@ -18,7 +18,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale: params.locale, namespace: "TransferPage" });
   const alternates = buildLocaleAlternates(params.locale, "/servicos/transfer-24h");
   return {
-    title: `${t("h1")} | Vem Passear em Jampa`,
+    title: { absolute: `${t("h1")} | Vem Passear em Jampa` },
     description: t("metaDescription"),
     alternates,
     openGraph: {
@@ -36,7 +36,8 @@ const WA_URL = `${empresa.contato.whatsappLink}?text=Oi%2C+quero+solicitar+cota%
 
 export default async function TransferPage({ params }: { params: { locale: string } }) {
   setRequestLocale(params.locale);
-  const t = await getTranslations("TransferPage");
+  const t    = await getTranslations("TransferPage");
+  const tNav = await getTranslations("Nav");
 
   const SERVICE_SCHEMA = {
     "@context": "https://schema.org",
@@ -76,7 +77,7 @@ export default async function TransferPage({ params }: { params: { locale: strin
 
       <Breadcrumb
         items={[
-          { label: "Home", href: "/" },
+          { label: tNav("inicio"), href: "/" },
           { label: t("crumbServicos") },
           { label: t("crumbTransfer") },
         ]}

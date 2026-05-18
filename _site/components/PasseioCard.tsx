@@ -129,7 +129,7 @@ export function PasseioCard({ passeio, loading = "lazy" }: PasseioCardProps) {
                   fontSize: 10, fontWeight: 600,
                   color: '#107997', textTransform: 'uppercase',
                   letterSpacing: '0.04em', marginBottom: 1,
-                }}>{desconto.label}</div>
+                }}>{t(desconto.tipo)}</div>
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: 4 }}>
                   <span style={{
                     fontFamily: 'var(--font-body)',

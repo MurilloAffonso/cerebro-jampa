@@ -20,7 +20,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale: params.locale, namespace: "FaqPage" });
   const alternates = buildLocaleAlternates(params.locale, "/faq");
   return {
-    title: t("seoTitle"),
+    title: { absolute: t("seoTitle") },
     description: t("seoDescription"),
     alternates,
     openGraph: {

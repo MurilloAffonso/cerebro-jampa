@@ -20,7 +20,8 @@ export function generateMetadata(meta: SeoMeta) {
     : undefined;
 
   return {
-    title: `${meta.title} | ${BRAND_NAME}`,
+    // absolute para não duplicar com o `template` do layout raiz por locale
+    title: { absolute: `${meta.title} | ${BRAND_NAME}` },
     description: meta.description,
     keywords: meta.keywords?.join(", "),
     ...(canonicalUrl ? { alternates: { canonical: canonicalUrl } } : {}),

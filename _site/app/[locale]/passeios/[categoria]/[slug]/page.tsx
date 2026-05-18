@@ -112,7 +112,8 @@ export default async function PasseioPage({ params }: PasseioPageProps) {
   const { locale, categoria, slug } = params;
   setRequestLocale(locale);
 
-  const t = await getTranslations('Passeio');
+  const t    = await getTranslations('Passeio');
+  const tNav = await getTranslations('Nav');
 
   const passeioRaw = getPasseioBySlug(slug, categoria);
   if (!passeioRaw) notFound();
@@ -187,7 +188,7 @@ export default async function PasseioPage({ params }: PasseioPageProps) {
           subtitle={passeio.subtituloHero}
           badges={badges}
           breadcrumbItems={[
-            { label: "Home", href: "/" },
+            { label: tNav("inicio"), href: "/" },
             { label: categoriaLabel, href: `/passeios/${categoria}` },
             { label: passeio.nomeCurto || passeio.nome },
           ]}
@@ -202,7 +203,7 @@ export default async function PasseioPage({ params }: PasseioPageProps) {
 
       <Breadcrumb
         items={[
-          { label: "Home", href: "/" },
+          { label: tNav("inicio"), href: "/" },
           { label: categoriaLabel, href: `/passeios/${categoria}` },
           { label: passeio.nome },
         ]}

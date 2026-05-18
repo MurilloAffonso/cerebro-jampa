@@ -39,7 +39,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale: params.locale, namespace: "TabuaPage" });
   const alternates = buildLocaleAlternates(params.locale, "/tabua-de-mares-joao-pessoa");
   return {
-    title: t("seoTitle"),
+    title: { absolute: t("seoTitle") },
     description: t("seoDescription"),
     keywords: KEYWORDS.join(", "),
     alternates,

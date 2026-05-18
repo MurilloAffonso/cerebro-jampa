@@ -44,7 +44,10 @@
     "novoRoteiro": "Ruta nueva",
     "aPartirDe": "Desde",
     "verPasseio": "Ver tour",
-    "reservar": "Reservar"
+    "reservar": "Reservar",
+    "pix": "PIX al contado",
+    "grupo": "Grupo (3+)",
+    "antecipado": "Reserva anticipada"
   },
   "Filtros": {
     "todos": "Todos",
