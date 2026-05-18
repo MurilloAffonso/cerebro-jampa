@@ -251,6 +251,10 @@
     "homeAria": "Real Google reviews",
     "homeBadge": "{nota} · {total} reviews",
     "homeCta": "Read the {total} reviews on Google →",
+    "originalPt": "Original review in Portuguese",
+    "lerCompleta": "Read full review",
+    "mostrarMenos": "Show less",
+    "estrelasAria": "{count} out of 5 stars",
     "fotoDeAria": "Photo of {nome}",
     "fotoDaAvaliacao": "Photo {n} of {nome}'s review"
   },

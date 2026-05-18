@@ -20,6 +20,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 import type { GoogleReview } from "@/data/google-reviews";
 
 interface Props {
@@ -117,6 +118,7 @@ export function ReviewSlider({ reviews, autoplayMs = 5000 }: Props) {
 // ---------------------------------------------------------------------------
 
 function ReviewCard({ review }: { review: GoogleReview }) {
+  const t = useTranslations("Reviews");
   const [expandido, setExpandido] = useState(false);
   const paragrafos = review.text.split("\n\n");
   const primeiroLongo = paragrafos[0].length > 220;
@@ -196,6 +198,19 @@ function ReviewCard({ review }: { review: GoogleReview }) {
               · {review.tempo}
             </span>
           </div>
+          {t("originalPt") && (
+            <p
+              style={{
+                fontFamily: "var(--font-inter)",
+                fontSize: "11px",
+                color: "var(--cor-texto-claro)",
+                margin: "4px 0 0",
+                fontStyle: "italic",
+              }}
+            >
+              {t("originalPt")}
+            </p>
+          )}
         </div>
       </header>
 
@@ -244,7 +259,7 @@ function ReviewCard({ review }: { review: GoogleReview }) {
               cursor: "pointer",
             }}
           >
-            {expandido ? "Mostrar menos" : "Ler completa"}
+            {expandido ? t("mostrarMenos") : t("lerCompleta")}
           </button>
         )}
       </div>
@@ -275,10 +290,11 @@ function ReviewCard({ review }: { review: GoogleReview }) {
 }
 
 function Stars({ count }: { count: number }) {
+  const t = useTranslations("Reviews");
   const cheias = Math.max(0, Math.min(5, Math.round(count)));
   return (
     <span
-      aria-label={`${cheias} de 5 estrelas`}
+      aria-label={t("estrelasAria", { count: cheias })}
       style={{ display: "inline-flex", gap: "1px" }}
     >
       {[0, 1, 2, 3, 4].map((i) => (

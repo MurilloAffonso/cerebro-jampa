@@ -251,6 +251,10 @@
     "homeAria": "Reseñas reales de Google",
     "homeBadge": "{nota} · {total} reseñas",
     "homeCta": "Leer las {total} reseñas en Google →",
+    "originalPt": "Reseña original en portugués",
+    "lerCompleta": "Leer reseña completa",
+    "mostrarMenos": "Mostrar menos",
+    "estrelasAria": "{count} de 5 estrellas",
     "fotoDeAria": "Foto de {nome}",
     "fotoDaAvaliacao": "Foto {n} de la reseña de {nome}"
   },

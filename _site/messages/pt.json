@@ -251,6 +251,10 @@
     "homeAria": "Avaliações reais do Google",
     "homeBadge": "{nota} · {total} avaliações",
     "homeCta": "Ler as {total} avaliações no Google →",
+    "originalPt": "",
+    "lerCompleta": "Ler completa",
+    "mostrarMenos": "Mostrar menos",
+    "estrelasAria": "{count} de 5 estrelas",
     "fotoDeAria": "Foto de {nome}",
     "fotoDaAvaliacao": "Foto {n} da avaliação de {nome}"
   },
