@@ -31,7 +31,7 @@ const caveat = Caveat({
   display: "swap",
 });
 
-const SITE_URL = "https://vempassearjampa.netlify.app";
+const SITE_URL = "https://vempassearjampacom.netlify.app";
 
 const HTML_LANG: Record<Locale, string> = {
   pt: "pt-BR",

@@ -55,9 +55,9 @@ export default async function TransferPage({ params }: { params: { locale: strin
       "@type": "TravelAgency",
       name: "Vem Passear em Jampa",
       telephone: "+55 83 9908-7830",
-      url: "https://vempassearjampa.netlify.app",
+      url: "https://vempassearjampacom.netlify.app",
     },
-    url: "https://vempassearjampa.netlify.app/servicos/transfer-24h",
+    url: "https://vempassearjampacom.netlify.app/servicos/transfer-24h",
     hoursAvailable: {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],

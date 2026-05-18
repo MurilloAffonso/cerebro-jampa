@@ -11,7 +11,7 @@ import { CTASticky } from "@/components/CTASticky";
 import { CTAFinal } from "@/components/CTAFinal";
 import { buildLocaleAlternates } from "@/lib/seo";
 
-const SITE_URL = "https://vempassearjampa.netlify.app";
+const SITE_URL = "https://vempassearjampacom.netlify.app";
 const PAGE_URL = `${SITE_URL}/sobre/`;
 const CADASTUR_URL = "https://cadastur.turismo.gov.br/cadastur/#!/public/qrcode/52077577000103";
 
