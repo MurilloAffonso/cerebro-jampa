@@ -44,7 +44,7 @@
   --font-fraunces: var(--font-lora);
 
   /* ── Layout ───────────────────────────────────────────────── */
-  --header-h: 108px;
+  --header-h: 180px;
 
   /* ── Ritmo vertical ───────────────────────────────────────── */
   --space-section-y-mobile:   72px;

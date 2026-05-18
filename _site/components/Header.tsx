@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/lib/navigation";
 import { useTranslations } from "next-intl";
 import { empresa } from "@/data/empresa";
 import { LanguageSelector } from "@/components/LanguageSelector";
@@ -83,8 +83,8 @@ export function Header() {
               alt="Vem Passear em Jampa"
               width={500}
               height={167}
-              sizes="(max-width: 767px) 110px, 500px"
-              className="h-[64px] md:h-[180px] w-auto object-contain transition-opacity duration-200"
+              sizes="(max-width: 767px) 240px, 500px"
+              className="h-[160px] md:h-[180px] w-auto object-contain transition-opacity duration-200"
               priority
             />
           </Link>
