@@ -41,9 +41,8 @@ export function FichaTecnica({ passeio }: FichaTecnicaProps) {
 
   return (
     <div
+      className="grid grid-cols-2 md:grid-cols-4"
       style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(4, 1fr)',
         gap: 1,
         background: '#E6E9EB',
         borderTop: '1px solid #E6E9EB',

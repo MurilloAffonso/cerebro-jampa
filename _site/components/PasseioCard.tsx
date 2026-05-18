@@ -167,8 +167,13 @@ export function PasseioCard({ passeio, loading = "lazy" }: PasseioCardProps) {
           <h3 style={{
             fontFamily: 'var(--font-heading)',
             fontSize: 19, fontWeight: 600,
-            color: '#092238', letterSpacing: '-0.01em', lineHeight: 1.15,
-            marginBottom: 8,
+            color: '#092238', letterSpacing: '-0.01em', lineHeight: 1.2,
+            marginBottom: 10,
+            display: '-webkit-box',
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden',
+            minHeight: '2.4em',
             transition: 'color 150ms',
           }}
             onMouseEnter={e => (e.currentTarget.style.color = '#107997')}
@@ -178,12 +183,16 @@ export function PasseioCard({ passeio, loading = "lazy" }: PasseioCardProps) {
 
         {/* Meta-info */}
         <div style={{
-          display: 'flex', gap: 12, flex: '1 1 auto',
+          display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap',
+          flex: '1 1 auto',
           fontSize: 12, color: '#5A6B78',
           marginBottom: 14,
         }}>
           {passeio.duracao && (
             <MetaItem icon={<IcoClock />}>{passeio.duracao}</MetaItem>
+          )}
+          {passeio.duracao && local && (
+            <span aria-hidden="true" style={{ color: '#C5CDD3' }}>·</span>
           )}
           {local && (
             <MetaItem icon={<IcoPin />}>{local}</MetaItem>
