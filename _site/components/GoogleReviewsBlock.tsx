@@ -6,23 +6,27 @@
  * Dados em data/google-reviews.ts (extraídos do Maps real, nunca editar manualmente).
  */
 
+"use client";
+
+import { useTranslations } from "next-intl";
 import { googleReviews, type GoogleReview } from "@/data/google-reviews";
 import { empresa } from "@/data/empresa";
 
 export function GoogleReviewsBlock() {
+  const t = useTranslations("Reviews");
   // Duplicamos a lista pra loop sem corte visível
   const loopList = [...googleReviews, ...googleReviews];
 
   return (
     <section
       style={{ background: 'var(--cor-fundo)', padding: '80px 0', overflow: 'hidden' }}
-      aria-label="Avaliações reais do Google"
+      aria-label={t("homeAria")}
     >
       <div className="container-safe" style={{ marginBottom: '40px' }}>
         {/* ── Cabeçalho ── */}
         <div style={{ textAlign: 'center' }}>
           <span className="section-kicker block" style={{ marginBottom: '8px' }}>
-            Provas reais
+            {t("homeKicker")}
           </span>
           <h2
             className="font-serif"
@@ -35,7 +39,7 @@ export function GoogleReviewsBlock() {
               maxWidth: '720px',
             }}
           >
-            O que dizem no Google
+            {t("homeTitulo")}
           </h2>
 
           <div
@@ -59,7 +63,8 @@ export function GoogleReviewsBlock() {
                 color: 'var(--cor-texto-escuro)',
               }}
             >
-              <span style={{ color: '#FBBC05' }}>★★★★★</span> {empresa.rating.valor} · {empresa.rating.totalAvaliacoes} avaliações
+              <span style={{ color: '#FBBC05' }}>★★★★★</span>{' '}
+              {t("homeBadge", { nota: String(empresa.rating.valor), total: empresa.rating.totalAvaliacoes })}
             </span>
           </div>
         </div>
@@ -77,7 +82,13 @@ export function GoogleReviewsBlock() {
         }}
       >
         {loopList.map((r, i) => (
-          <ReviewCard key={`${r.name}-${i}`} review={r} duplicate={i >= googleReviews.length} />
+          <ReviewCard
+            key={`${r.name}-${i}`}
+            review={r}
+            duplicate={i >= googleReviews.length}
+            fotoDeLabel={t("fotoDeAria", { nome: r.name })}
+            fotoDaAvaliacaoLabel={(n: number) => t("fotoDaAvaliacao", { n, nome: r.name })}
+          />
         ))}
       </div>
 
@@ -100,7 +111,7 @@ export function GoogleReviewsBlock() {
             textDecoration: 'none',
           }}
         >
-          Ler as {empresa.rating.totalAvaliacoes} avaliações no Google →
+          {t("homeCta", { total: empresa.rating.totalAvaliacoes })}
         </a>
       </div>
 
@@ -127,7 +138,17 @@ export function GoogleReviewsBlock() {
 
 /* ── Sub-componente: card de review ──────────────────────────── */
 
-function ReviewCard({ review, duplicate }: { review: GoogleReview; duplicate: boolean }) {
+function ReviewCard({
+  review,
+  duplicate,
+  fotoDeLabel,
+  fotoDaAvaliacaoLabel,
+}: {
+  review: GoogleReview;
+  duplicate: boolean;
+  fotoDeLabel: string;
+  fotoDaAvaliacaoLabel: (n: number) => string;
+}) {
   return (
     <article
       aria-hidden={duplicate}
@@ -149,7 +170,7 @@ function ReviewCard({ review, duplicate }: { review: GoogleReview; duplicate: bo
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={review.avatarUrl}
-          alt={`Foto de ${review.name}`}
+          alt={fotoDeLabel}
           width={44}
           height={44}
           referrerPolicy="no-referrer"
@@ -230,7 +251,7 @@ function ReviewCard({ review, duplicate }: { review: GoogleReview; duplicate: bo
             <img
               key={i}
               src={url}
-              alt={`Foto ${i + 1} da avaliação de ${review.name}`}
+              alt={fotoDaAvaliacaoLabel(i + 1)}
               referrerPolicy="no-referrer"
               loading="lazy"
               style={{

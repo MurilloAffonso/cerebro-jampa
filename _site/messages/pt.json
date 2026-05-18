@@ -224,6 +224,33 @@
   "LangSelector": {
     "label": "Idioma"
   },
+  "Trust": {
+    "aria": "Por que confiar na Vem Passear",
+    "titulo": "Por que confiar na Vem Passear em Jampa?",
+    "cadasturAria": "Verificar registro Cadastur no portal do Ministério do Turismo",
+    "cadasturTitulo": "Cadastur {numero} — Ativo",
+    "cadasturDesc": "Agência registrada no Ministério do Turismo. Verifique o registro no portal oficial.",
+    "ratingAria": "Ver as {total} avaliações reais no Google",
+    "ratingTitulo": "{nota}/5 no Google",
+    "ratingDesc": "{total} avaliações reais. Atendimento rápido, organização e confiança são os pontos mais citados.",
+    "murilloTitulo": "Murillo — Atendimento e Curadoria",
+    "murilloDesc": "Conhece cada maré, cada coral e cada canto de João Pessoa. Atendimento direto no WhatsApp — você fala comigo, não com atendente."
+  },
+  "Reviews": {
+    "kicker": "Prova social · Google Maps",
+    "titulo": "O que dizem nossos clientes",
+    "subtitulo": "Quem passeia com a Vem Passear destaca o atendimento, a pontualidade e a confiança antes, durante e depois do passeio.",
+    "falarMurillo": "Falar com Murillo no WhatsApp",
+    "rodape": "Avaliações reais do Google Maps · {total} avaliações na plataforma",
+    "mensagemWa": "Oi, Murillo! Quero saber mais sobre os passeios da Vem Passear em Jampa.",
+    "homeKicker": "Provas reais",
+    "homeTitulo": "O que dizem no Google",
+    "homeAria": "Avaliações reais do Google",
+    "homeBadge": "{nota} · {total} avaliações",
+    "homeCta": "Ler as {total} avaliações no Google →",
+    "fotoDeAria": "Foto de {nome}",
+    "fotoDaAvaliacao": "Foto {n} da avaliação de {nome}"
+  },
   "SobrePage": {
     "seoTitle": "Sobre a Vem Passear em Jampa | Quem está por trás dos passeios em João Pessoa",
     "seoDescription": "Vem Passear em Jampa é uma agência de turismo receptivo em João Pessoa com Cadastur ativo. Atendimento direto com Murillo pelo WhatsApp, sem central impessoal.",

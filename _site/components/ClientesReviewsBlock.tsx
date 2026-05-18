@@ -12,16 +12,16 @@
 
 "use client";
 
+import { useTranslations } from "next-intl";
 import { googleReviews } from "@/data/google-reviews";
 import { empresa } from "@/data/empresa";
 import { ReviewSlider } from "@/components/ReviewSlider";
 
 export function ClientesReviewsBlock() {
+  const t = useTranslations("Reviews");
   if (googleReviews.length === 0) return null;
 
-  const waUrl = `${empresa.contato.whatsappLink}?text=${encodeURIComponent(
-    "Oi, Murillo! Quero saber mais sobre os passeios da Vem Passear em Jampa.",
-  )}`;
+  const waUrl = `${empresa.contato.whatsappLink}?text=${encodeURIComponent(t("mensagemWa"))}`;
 
   return (
     <section
@@ -53,7 +53,7 @@ export function ClientesReviewsBlock() {
               margin: "0 0 8px",
             }}
           >
-            Prova social · Google Maps
+            {t("kicker")}
           </p>
           <h2
             id="clientes-reviews-titulo"
@@ -66,7 +66,7 @@ export function ClientesReviewsBlock() {
               lineHeight: 1.2,
             }}
           >
-            O que dizem nossos clientes
+            {t("titulo")}
           </h2>
           <p
             style={{
@@ -77,8 +77,7 @@ export function ClientesReviewsBlock() {
               margin: 0,
             }}
           >
-            Quem passeia com a Vem Passear destaca o atendimento, a pontualidade
-            e a confiança antes, durante e depois do passeio.
+            {t("subtitulo")}
           </p>
         </header>
 
@@ -105,7 +104,7 @@ export function ClientesReviewsBlock() {
               boxShadow: "0 4px 14px rgba(37,211,102,0.25)",
             }}
           >
-            Falar com Murillo no WhatsApp
+            {t("falarMurillo")}
           </a>
         </div>
 
@@ -118,8 +117,7 @@ export function ClientesReviewsBlock() {
             color: "var(--cor-texto-claro)",
           }}
         >
-          Avaliações reais do Google Maps · {empresa.rating.totalAvaliacoes}{" "}
-          avaliações na plataforma
+          {t("rodape", { total: empresa.rating.totalAvaliacoes })}
         </p>
       </div>
     </section>
