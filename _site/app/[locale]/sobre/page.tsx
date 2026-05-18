@@ -1,20 +1,9 @@
 /**
  * Página: Sobre — /sobre/
- *
- * Regra crítica:
- *   Esta página usa SOMENTE dados confirmados em data/empresa.ts.
- *   Anos de operação, formação e história pessoal NÃO existem aqui
- *   porque o vault marca esses campos como pendentes [CONFIRMAR COM MURILLO].
- *
- * Conteúdo:
- *   - Identidade (Cadastur, CNPJ, rating Google) — verificável
- *   - Missão e diferencial — texto já aprovado em data/empresa.ts
- *   - Como funciona o atendimento — descreve o canal real (WhatsApp direto)
- *   - CTA final WhatsApp
  */
 
 import type { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import Link from "next/link";
 import { empresa } from "@/data/empresa";
 import { Breadcrumb } from "@/components/Breadcrumb";
@@ -33,26 +22,26 @@ export async function generateMetadata({
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
+  const t = await getTranslations({ locale: params.locale, namespace: "SobrePage" });
   const alternates = buildLocaleAlternates(params.locale, "/sobre");
   return {
-    title: "Sobre a Vem Passear em Jampa | Quem está por trás dos passeios em João Pessoa",
-    description:
-      "Vem Passear em Jampa é uma agência de turismo receptivo em João Pessoa com Cadastur ativo. Atendimento direto com Murillo pelo WhatsApp, sem central impessoal.",
+    title: t("seoTitle"),
+    description: t("seoDescription"),
     alternates,
     openGraph: {
-      title: "Sobre a Vem Passear em Jampa",
-      description:
-        "Agência receptiva em João Pessoa com Cadastur ativo. Atendimento direto com Murillo pelo WhatsApp.",
+      title: t("ogTitle"),
+      description: t("ogDescription"),
       url: alternates.canonical,
       images: [
-        { url: "/og-image.svg", width: 1200, height: 630, alt: "Sobre a Vem Passear em Jampa" },
+        { url: "/og-image.svg", width: 1200, height: 630, alt: t("ogAlt") },
       ],
     },
   };
 }
 
-export default function SobrePage({ params }: { params: { locale: string } }) {
+export default async function SobrePage({ params }: { params: { locale: string } }) {
   setRequestLocale(params.locale);
+  const t = await getTranslations("SobrePage");
   const diferenciais = empresa.diferencial.split(" + ");
 
   return (
@@ -61,8 +50,8 @@ export default function SobrePage({ params }: { params: { locale: string } }) {
 
       <Breadcrumb
         items={[
-          { label: "Home", href: "/" },
-          { label: "Sobre" },
+          { label: t("crumbHome"), href: "/" },
+          { label: t("crumbSobre") },
         ]}
         currentUrl={PAGE_URL}
       />
@@ -85,7 +74,7 @@ export default function SobrePage({ params }: { params: { locale: string } }) {
               marginBottom: '16px',
             }}
           >
-            Quem somos
+            {t("heroKicker")}
           </span>
           <h1
             className="font-serif"
@@ -98,7 +87,7 @@ export default function SobrePage({ params }: { params: { locale: string } }) {
               letterSpacing: '-0.02em',
             }}
           >
-            Vem Passear em Jampa — agência receptiva em João Pessoa
+            {t("heroTitulo")}
           </h1>
           <p
             style={{
@@ -108,14 +97,12 @@ export default function SobrePage({ params }: { params: { locale: string } }) {
               lineHeight: 1.65,
             }}
           >
-            Operação local, atendimento direto pelo WhatsApp e roteiro organizado
-            sem intermediário. Murillo responde pessoalmente
-            quem procura informação sobre passeios em João Pessoa.
+            {t("heroSubtitulo")}
           </p>
         </div>
       </section>
 
-      {/* SOBRE A MARCA — quem é o Murillo (copy aprovada 2026-05-11) */}
+      {/* SOBRE A MARCA */}
       <section className="section-padding" style={{ background: 'var(--cor-fundo-puro)' }}>
         <div className="container-safe" style={{ maxWidth: '780px' }}>
           <span
@@ -131,7 +118,7 @@ export default function SobrePage({ params }: { params: { locale: string } }) {
               textAlign: 'center',
             }}
           >
-            Sobre a marca
+            {t("marcaKicker")}
           </span>
           <h2
             className="font-serif"
@@ -144,7 +131,7 @@ export default function SobrePage({ params }: { params: { locale: string } }) {
               marginBottom: '32px',
             }}
           >
-            Atendimento direto com quem ama viajar e conhece o Nordeste
+            {t("marcaTitulo")}
           </h2>
 
           <div
@@ -158,35 +145,10 @@ export default function SobrePage({ params }: { params: { locale: string } }) {
               color: 'var(--cor-texto-medio)',
             }}
           >
-            <p>
-              A Vem Passear em Jampa nasceu da paixão de{' '}
-              <strong style={{ color: 'var(--cor-texto-escuro)' }}>
-                Affonso Murillo Soledade de Oliveira, conhecido como Murillo
-              </strong>{' '}
-              por viagens, pelo Nordeste e por João Pessoa.
-            </p>
-
-            <p>
-              Ex-atleta, viajante e apaixonado por conhecer novos lugares, Murillo carrega
-              uma relação forte com o Nordeste. Depois de viver muitas experiências de
-              viagem e conhecer diferentes destinos, ele decidiu transformar essa paixão
-              em uma agência feita para ajudar outras pessoas a viverem João Pessoa com
-              mais tranquilidade, segurança e orientação.
-            </p>
-
-            <p>
-              Foi assim que nasceu a Vem Passear em Jampa: uma agência de passeios criada
-              para conectar turistas aos melhores roteiros da Paraíba, sempre com
-              atendimento humano, parceiros de confiança e cuidado em cada detalhe da
-              experiência.
-            </p>
-
-            <p>
-              Aqui, o atendimento é direto. Quem fala com você no WhatsApp é o próprio
-              Murillo, entendendo seu perfil, sua data, seu orçamento e o tipo de passeio
-              que faz mais sentido para a sua viagem.
-            </p>
-
+            <p dangerouslySetInnerHTML={{ __html: t.raw("marcaP1") as string }} />
+            <p>{t("marcaP2")}</p>
+            <p>{t("marcaP3")}</p>
+            <p>{t("marcaP4")}</p>
             <p
               style={{
                 fontFamily: 'var(--font-fraunces), var(--font-inter)',
@@ -198,27 +160,11 @@ export default function SobrePage({ params }: { params: { locale: string } }) {
                 margin: '8px 0',
               }}
             >
-              A base da agência é simples: parceria, preço justo, qualidade e confiança.
+              {t("marcaQuote")}
             </p>
-
-            <p>
-              Por isso, a Vem Passear em Jampa trabalha com operadores locais legalizados
-              e parceiros selecionados, buscando oferecer passeios organizados, seguros e
-              bem orientados — seja para famílias, casais, grupos ou viajantes que estão
-              conhecendo João Pessoa pela primeira vez.
-            </p>
-
-            <p>
-              Mais do que vender passeios, a missão da Vem Passear em Jampa é ajudar
-              cada cliente a escolher o roteiro certo, no melhor momento da viagem, com
-              a tranquilidade de estar em boas mãos.
-            </p>
-
-            <p>
-              Se você quer conhecer João Pessoa com quem ama viajar, conhece o Nordeste
-              e valoriza uma experiência feita com responsabilidade, a Vem Passear em
-              Jampa está pronta para te receber.
-            </p>
+            <p>{t("marcaP5")}</p>
+            <p>{t("marcaP6")}</p>
+            <p>{t("marcaP7")}</p>
           </div>
         </div>
       </section>
@@ -227,58 +173,53 @@ export default function SobrePage({ params }: { params: { locale: string } }) {
       <section className="section-padding">
         <div className="container-safe max-w-4xl">
           <h2 className="font-serif font-bold text-2xl md:text-3xl text-dark mb-6 text-center">
-            Identidade verificável
+            {t("identidadeTitulo")}
           </h2>
           <p className="text-center text-gray-600 mb-10 max-w-xl mx-auto">
-            Tudo que aparece aqui é checável em fonte oficial. Clique nas referências
-            abaixo para confirmar antes de fechar qualquer passeio.
+            {t("identidadeIntro")}
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {/* Cadastur */}
             <a
               href={CADASTUR_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="group block bg-white border border-gray-200 hover:border-primary rounded-xl p-5 transition-colors"
-              aria-label="Verificar registro Cadastur no portal do Ministério do Turismo"
+              aria-label={t("cadasturVerificar")}
             >
-              <p className="text-xs font-bold uppercase tracking-[2px] text-primary mb-2">Cadastur</p>
+              <p className="text-xs font-bold uppercase tracking-[2px] text-primary mb-2">{t("cadasturLabel")}</p>
               <p className="text-2xl font-bold text-secondary mb-1">{empresa.cadastur}</p>
-              <p className="text-sm text-gray-600">Ativo até {empresa.cadasturValido}</p>
+              <p className="text-sm text-gray-600">{t("cadasturAtivoAte", { data: empresa.cadasturValido })}</p>
               <p className="text-xs text-gray-500 mt-3 group-hover:text-primary transition-colors">
-                Verificar no portal do Ministério do Turismo →
+                {t("cadasturVerificar")}
               </p>
             </a>
 
-            {/* CNPJ */}
             <div className="bg-white border border-gray-200 rounded-xl p-5">
-              <p className="text-xs font-bold uppercase tracking-[2px] text-primary mb-2">CNPJ</p>
+              <p className="text-xs font-bold uppercase tracking-[2px] text-primary mb-2">{t("cnpjLabel")}</p>
               <p className="text-2xl font-bold text-secondary mb-1">{empresa.cnpj}</p>
-              <p className="text-sm text-gray-600">Pessoa jurídica regular — emite nota</p>
+              <p className="text-sm text-gray-600">{t("cnpjSubtitulo")}</p>
             </div>
 
-            {/* Avaliação Google */}
             <a
               href={empresa.rede.googleMaps}
               target="_blank"
               rel="noopener noreferrer"
               className="group block bg-white border border-gray-200 hover:border-primary rounded-xl p-5 transition-colors"
-              aria-label="Ver avaliações no Google Maps"
+              aria-label={t("googleVerificar")}
             >
-              <p className="text-xs font-bold uppercase tracking-[2px] text-primary mb-2">Avaliações Google</p>
+              <p className="text-xs font-bold uppercase tracking-[2px] text-primary mb-2">{t("googleLabel")}</p>
               <p className="text-2xl font-bold text-secondary mb-1">
                 {empresa.rating.valor}/5 ★ <span className="text-base font-normal text-gray-500">({empresa.rating.totalAvaliacoes})</span>
               </p>
-              <p className="text-sm text-gray-600">Avaliações reais de turistas</p>
+              <p className="text-sm text-gray-600">{t("googleSubtitulo")}</p>
               <p className="text-xs text-gray-500 mt-3 group-hover:text-primary transition-colors">
-                Ler todas no Google →
+                {t("googleVerificar")}
               </p>
             </a>
 
-            {/* Localização */}
             <div className="bg-white border border-gray-200 rounded-xl p-5">
-              <p className="text-xs font-bold uppercase tracking-[2px] text-primary mb-2">Localização</p>
+              <p className="text-xs font-bold uppercase tracking-[2px] text-primary mb-2">{t("localizacaoLabel")}</p>
               <p className="text-2xl font-bold text-secondary mb-1">{empresa.localizacao.cidade}</p>
               <p className="text-sm text-gray-600">{empresa.localizacao.estado}, {empresa.localizacao.pais}</p>
             </div>
@@ -286,21 +227,21 @@ export default function SobrePage({ params }: { params: { locale: string } }) {
         </div>
       </section>
 
-      {/* MISSÃO E DIFERENCIAL */}
+      {/* MISSÃO */}
       <section className="section-padding" style={{ background: 'var(--cor-areia)' }}>
         <div className="container-safe max-w-3xl">
           <h2 className="font-serif font-bold text-2xl md:text-3xl text-dark mb-6 text-center">
-            Por que existimos
+            {t("missaoTitulo")}
           </h2>
 
           <blockquote className="border-l-[3px] border-primary pl-5 mb-8">
             <p className="text-gray-700 text-lg leading-relaxed italic">
               {empresa.missao}
             </p>
-            <p className="text-sm text-gray-500 mt-3">— Murillo, fundador</p>
+            <p className="text-sm text-gray-500 mt-3">{t("missaoQuoteAutor")}</p>
           </blockquote>
 
-          <h3 className="font-bold text-secondary text-lg mb-4">Como traduzimos isso na prática</h3>
+          <h3 className="font-bold text-secondary text-lg mb-4">{t("praticaTitulo")}</h3>
           <ul className="space-y-3">
             {diferenciais.map((item) => (
               <li key={item} className="flex items-start gap-3">
@@ -320,30 +261,17 @@ export default function SobrePage({ params }: { params: { locale: string } }) {
       <section className="section-padding">
         <div className="container-safe max-w-3xl">
           <h2 className="font-serif font-bold text-2xl md:text-3xl text-dark mb-6 text-center">
-            Como funciona o atendimento
+            {t("atendimentoTitulo")}
           </h2>
           <p className="text-center text-gray-600 mb-10 max-w-xl mx-auto">
-            Sem central impessoal, sem script padronizado. Quem responde no WhatsApp é
-            quem organiza os passeios.
+            {t("atendimentoIntro")}
           </p>
 
           <ol className="space-y-5">
             {[
-              {
-                n: "1",
-                t: "Você manda mensagem pelo WhatsApp",
-                d: "Conte qual passeio te interessa, número de pessoas e a data prevista. Pode mandar dúvida solta também — ajuda a entender o que combina com o seu roteiro.",
-              },
-              {
-                n: "2",
-                t: "Murillo responde com orientação local",
-                d: "Recebe sugestão de roteiro, esclarecimento sobre maré (quando o passeio depende disso), preço e disponibilidade.",
-              },
-              {
-                n: "3",
-                t: "Confirmação e instruções de embarque",
-                d: "Após confirmar, você recebe instruções claras: ponto de encontro, horário, o que levar e contato do operador no dia.",
-              },
+              { n: "1", t: t("step1Titulo"), d: t("step1Desc") },
+              { n: "2", t: t("step2Titulo"), d: t("step2Desc") },
+              { n: "3", t: t("step3Titulo"), d: t("step3Desc") },
             ].map((step) => (
               <li key={step.n} className="flex gap-4">
                 <span className="w-9 h-9 bg-primary text-white rounded-full flex items-center justify-center font-bold shrink-0 mt-0.5">
@@ -359,14 +287,14 @@ export default function SobrePage({ params }: { params: { locale: string } }) {
         </div>
       </section>
 
-      {/* LINKS REDES */}
+      {/* REDES */}
       <section className="section-padding bg-bg-soft">
         <div className="container-safe max-w-2xl text-center">
           <h2 className="font-serif font-bold text-xl md:text-2xl text-dark mb-4">
-            Acompanhe o dia a dia da operação
+            {t("redesTitulo")}
           </h2>
           <p className="text-gray-600 mb-6">
-            Stories e conteúdo dos passeios em tempo real no Instagram.
+            {t("redesIntro")}
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <a
@@ -374,7 +302,7 @@ export default function SobrePage({ params }: { params: { locale: string } }) {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-white border border-gray-200 hover:border-primary text-secondary hover:text-primary font-semibold px-5 py-3 rounded-full text-sm transition-colors"
-              aria-label="Abrir Instagram da Vem Passear em Jampa"
+              aria-label={t("instagramAria")}
             >
               📷 Instagram {empresa.rede.instagram.handle}
             </a>
@@ -383,9 +311,9 @@ export default function SobrePage({ params }: { params: { locale: string } }) {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-white border border-gray-200 hover:border-primary text-secondary hover:text-primary font-semibold px-5 py-3 rounded-full text-sm transition-colors"
-              aria-label="Abrir perfil da empresa no Google Maps"
+              aria-label={t("googleMapsAria")}
             >
-              📍 Perfil no Google
+              📍 {t("googlePerfil")}
             </a>
           </div>
         </div>
@@ -394,14 +322,14 @@ export default function SobrePage({ params }: { params: { locale: string } }) {
       {/* CTA FINAL */}
       <CTAFinal
         whatsappUrl={WA_URL}
-        label="Quer conhecer a operação?"
-        titulo="Fale direto com Murillo"
-        subtitulo="Tire dúvidas sobre roteiros, datas e preços — atendimento direto, sem central impessoal."
+        label={t("ctaLabel")}
+        titulo={t("ctaTitulo")}
+        subtitulo={t("ctaSubtitulo")}
       />
 
       <div className="container-safe py-6 text-center">
         <Link href="/passeios" className="text-sm text-primary hover:text-accent font-medium transition-colors">
-          ← Ver todos os passeios em João Pessoa
+          {t("verTodosPasseios")}
         </Link>
       </div>
     </div>

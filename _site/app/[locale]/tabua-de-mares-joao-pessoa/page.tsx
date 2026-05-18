@@ -1,26 +1,9 @@
 /**
- * Página pública — Tábua de Maré em João Pessoa (versão MANUAL v1).
- *
- * Rota: `/tabua-de-mares-joao-pessoa`
- *
- * Foco SEO (keywords-alvo):
- *  - tábua de maré João Pessoa
- *  - tábua de marés João Pessoa 2026
- *  - maré baixa João Pessoa
- *  - piscinas naturais João Pessoa
- *  - Piscinas Naturais do Seixas / Areia Vermelha / Picãozinho
- *
- * Esta página NÃO se anuncia como "tábua oficial da Marinha". Usa linguagem
- * "consulte as melhores datas" e "confirme com Murillo no WhatsApp", e
- * funciona como porta de entrada editorial para os 3 passeios de maré.
- *
- * Co-existe com `/passeios/piscinas-naturais/calendario` (operacional, com
- * dados automáticos). A relação canônica entre as duas será decidida em
- * issue posterior.
+ * Página pública — Tábua de Maré em João Pessoa.
  */
 
 import type { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { empresa } from "@/data/empresa";
 import {
   TABUA_MARES_MANUAL_2026,
@@ -53,18 +36,16 @@ export async function generateMetadata({
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
+  const t = await getTranslations({ locale: params.locale, namespace: "TabuaPage" });
   const alternates = buildLocaleAlternates(params.locale, "/tabua-de-mares-joao-pessoa");
   return {
-    title:
-      "Tábua de Maré João Pessoa 2026 — Seixas, Picãozinho e Areia Vermelha | Vem Passear em Jampa",
-    description:
-      "Consulte as melhores datas de maré baixa em João Pessoa para Piscinas Naturais do Seixas, Picãozinho e Areia Vermelha. Atendimento direto com Murillo no WhatsApp.",
+    title: t("seoTitle"),
+    description: t("seoDescription"),
     keywords: KEYWORDS.join(", "),
     alternates,
     openGraph: {
-      title: "Tábua de Maré João Pessoa 2026 — Vem Passear em Jampa",
-      description:
-        "Veja as melhores datas para passeios de maré baixa em João Pessoa: Piscinas Naturais do Seixas, Picãozinho e Areia Vermelha.",
+      title: t("ogTitle"),
+      description: t("ogDescription"),
       url: alternates.canonical,
       type: "website",
       siteName: "Vem Passear em Jampa",
@@ -72,74 +53,28 @@ export async function generateMetadata({
   };
 }
 
-const FAQ_ITEMS: Array<{ pergunta: string; resposta: string }> = [
-  {
-    pergunta:
-      "Qual a melhor maré para piscinas naturais em João Pessoa?",
-    resposta:
-      "A melhor condição é a maré bem baixa — quanto mais baixa, mais piscina de coral fica exposta e mais tranquilo é o mergulho. Em geral, alturas próximas de 0,5m ou menos rendem passeios mais bonitos. A altura varia todo dia, por isso é preciso consultar a tábua antes de marcar.",
-  },
-  {
-    pergunta: "Quais passeios dependem da maré baixa?",
-    resposta:
-      "Os três principais são: Piscinas Naturais do Seixas, Picãozinho e Areia Vermelha. Outros passeios da costa de João Pessoa — Pôr do Sol do Jacaré, Litoral Sul Clássico, City Tour — não dependem da maré e operam todos os dias.",
-  },
-  {
-    pergunta: "A Areia Vermelha sai todos os dias?",
-    resposta:
-      "Não. A Areia Vermelha é um banco de areia em Cabedelo que só aparece com a maré baixa. Algumas semanas têm vários dias de saída seguidos; outras não têm nenhum. Por isso o melhor é consultar a tábua e confirmar comigo no WhatsApp antes de fechar a data.",
-  },
-  {
-    pergunta: "Picãozinho depende da maré?",
-    resposta:
-      "Sim. O Picãozinho é um conjunto de piscinas naturais a cerca de 1,5 km da praia de Tambaú, e só fica seguro para nado e snorkel quando a maré está baixa. Quando a maré sobe, as piscinas desaparecem.",
-  },
-  {
-    pergunta: "Piscinas Naturais do Seixas dependem da maré?",
-    resposta:
-      "Sim. As Piscinas do Seixas ficam no ponto mais oriental do continente americano e só são visitáveis na maré baixa. Quando a maré está alta, a área fica coberta e o passeio não acontece.",
-  },
-  {
-    pergunta: "Como saber o melhor dia para reservar?",
-    resposta:
-      "Olha a tábua nesta página para ter uma referência geral e me chama no WhatsApp com a data da sua viagem. Eu confirmo se a maré está favorável e indico qual o melhor passeio para o seu dia.",
-  },
-  {
-    pergunta:
-      "Posso reservar um passeio de piscinas naturais sem olhar a tábua de marés?",
-    resposta:
-      "Pode mandar mensagem mesmo sem consultar — eu cruzo a sua data com a maré e te oriento. Mas se você já consultou e tem flexibilidade de data, fica mais fácil escolher uma janela com a maré boa.",
-  },
-];
-
-const FAQ_SCHEMA = generateFAQSchema(FAQ_ITEMS);
-const BREADCRUMB_SCHEMA = generateBreadcrumbSchema([
-  { name: "Início", item: SITE_URL },
-  { name: "Tábua de Maré em João Pessoa", item: PAGE_URL },
-]);
-
 const WA_URL = `${empresa.contato.whatsappLink}?text=${encodeURIComponent(buildMensagemWhatsApp())}`;
 
-export default function TabuaMaresJoaoPessoaPage({ params }: { params: { locale: string } }) {
+export default async function TabuaMaresJoaoPessoaPage({ params }: { params: { locale: string } }) {
   setRequestLocale(params.locale);
+  const t = await getTranslations("TabuaPage");
   const mesAtual = getMesAtual();
+  const faqItems = t.raw("faq") as Array<{ pergunta: string; resposta: string }>;
+  const faqSchema = generateFAQSchema(faqItems);
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: t("crumbHome"), item: SITE_URL },
+    { name: t("crumbTabua"), item: PAGE_URL },
+  ]);
 
   return (
     <>
-      {/* JSON-LD: FAQ + Breadcrumb */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_SCHEMA) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
       <Breadcrumb
         items={[
-          { label: "Início", href: "/" },
-          { label: "Tábua de Maré em João Pessoa" },
+          { label: t("crumbHome"), href: "/" },
+          { label: t("crumbTabua") },
         ]}
         currentUrl={PAGE_URL}
       />
@@ -164,7 +99,7 @@ export default function TabuaMaresJoaoPessoaPage({ params }: { params: { locale:
               marginBottom: "14px",
             }}
           >
-            João Pessoa · Paraíba · 2026
+            {t("heroKicker")}
           </span>
           <h1
             className="font-serif"
@@ -177,7 +112,7 @@ export default function TabuaMaresJoaoPessoaPage({ params }: { params: { locale:
               marginBottom: "20px",
             }}
           >
-            Tábua de Maré em João Pessoa
+            {t("heroTitulo")}
           </h1>
           <p
             style={{
@@ -189,9 +124,7 @@ export default function TabuaMaresJoaoPessoaPage({ params }: { params: { locale:
               marginBottom: "28px",
             }}
           >
-            Consulte as melhores datas para passeios que dependem da maré baixa —
-            Piscinas Naturais do Seixas, Picãozinho e Areia Vermelha. Confirme a
-            data ideal direto com Murillo no WhatsApp.
+            {t("heroSubtitulo")}
           </p>
           <a
             href={WA_URL}
@@ -213,12 +146,12 @@ export default function TabuaMaresJoaoPessoaPage({ params }: { params: { locale:
               boxShadow: "0 4px 18px rgba(37,211,102,0.30)",
             }}
           >
-            Consultar melhor dia no WhatsApp
+            {t("heroCta")}
           </a>
         </div>
       </section>
 
-      {/* EXPLICAÇÃO EDITORIAL */}
+      {/* EXPLICAÇÃO */}
       <section className="container-safe py-12 md:py-16">
         <div style={{ maxWidth: "720px" }}>
           <h2
@@ -230,7 +163,7 @@ export default function TabuaMaresJoaoPessoaPage({ params }: { params: { locale:
               marginBottom: "16px",
             }}
           >
-            Por que a maré importa
+            {t("explicacaoTitulo")}
           </h2>
           <div
             style={{
@@ -240,23 +173,16 @@ export default function TabuaMaresJoaoPessoaPage({ params }: { params: { locale:
               color: "var(--cor-texto-medio)",
             }}
           >
-            <p style={{ marginBottom: "14px" }}>
-              Alguns passeios em João Pessoa dependem da{" "}
-              <strong>maré baixa</strong> para acontecer no melhor momento. É o
-              caso das <strong>Piscinas Naturais do Seixas</strong>,{" "}
-              <strong>Picãozinho</strong> e <strong>Areia Vermelha</strong>.
-            </p>
-            <p>
-              Quando a maré baixa, aparecem os corais, bancos de areia e
-              piscinas naturais com água rasa e cristalina. Por isso, antes de
-              reservar, confira o mês da sua viagem e confirme a melhor data
-              pelo WhatsApp.
-            </p>
+            <p
+              style={{ marginBottom: "14px" }}
+              dangerouslySetInnerHTML={{ __html: t.raw("explicacaoP1") as string }}
+            />
+            <p>{t("explicacaoP2")}</p>
           </div>
         </div>
       </section>
 
-      {/* SELETOR + PAINÉIS MENSAIS */}
+      {/* CALENDÁRIOS */}
       <section
         id="calendarios"
         className="py-8 md:py-12"
@@ -275,7 +201,7 @@ export default function TabuaMaresJoaoPessoaPage({ params }: { params: { locale:
               marginBottom: "8px",
             }}
           >
-            Tábua mês a mês — Maio a Dezembro de 2026
+            {t("calendariosTitulo")}
           </h2>
           <p
             style={{
@@ -285,7 +211,7 @@ export default function TabuaMaresJoaoPessoaPage({ params }: { params: { locale:
               marginBottom: "8px",
             }}
           >
-            Selecione o mês para ver as janelas de maré baixa.
+            {t("calendariosSub")}
           </p>
         </div>
 
@@ -294,8 +220,6 @@ export default function TabuaMaresJoaoPessoaPage({ params }: { params: { locale:
           defaultMesSlug={mesAtual.mesSlug}
         />
 
-        {/* Painéis renderizados todos no SSR — atributo hidden inicial
-            é controlado pela prop `visivel`; o componente client alterna depois. */}
         {TABUA_MARES_MANUAL_2026.map((mes) => (
           <TabuaMareMensal
             key={mes.mesSlug}
@@ -305,7 +229,6 @@ export default function TabuaMaresJoaoPessoaPage({ params }: { params: { locale:
         ))}
       </section>
 
-      {/* CARDS DE PASSEIOS DE MARÉ */}
       <TabuaMarePasseiosRelacionados />
 
       {/* FAQ */}
@@ -320,20 +243,19 @@ export default function TabuaMaresJoaoPessoaPage({ params }: { params: { locale:
             textAlign: "center",
           }}
         >
-          Perguntas frequentes sobre a tábua de maré
+          {t("faqTitulo")}
         </h2>
         <div style={{ maxWidth: "760px", margin: "0 auto" }}>
-          <FAQAccordion items={FAQ_ITEMS} />
+          <FAQAccordion items={faqItems} />
         </div>
       </section>
 
-      {/* CTA FINAL */}
       <CTAFinal
         whatsappUrl={WA_URL}
-        label="Tábua de maré"
-        titulo="Vamos confirmar a melhor data para o seu passeio?"
-        subtitulo="Manda mensagem com a data da sua viagem. Eu confirmo a maré e indico o passeio certo para o seu dia."
-        microcopy="Resposta rápida durante o dia · sem compromisso"
+        label={t("ctaLabel")}
+        titulo={t("ctaTitulo")}
+        subtitulo={t("ctaSub")}
+        microcopy={t("ctaMicrocopy")}
       />
     </>
   );

@@ -1,38 +1,32 @@
 /**
  * Página: Transfer 24h — /servicos/transfer-24h/
- * ISSUE-13
- * Fonte dos dados: _site/data/servicos.ts
- * Preço: cobrado por trajeto, valor sob consulta — não inventar.
  */
 
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getServico } from "@/data/servicos";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { empresa } from "@/data/empresa";
 import { buildLocaleAlternates } from "@/lib/seo";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTASticky } from "@/components/CTASticky";
-
-const servico = getServico("transfer-24h");
 
 export async function generateMetadata({
   params,
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
-  if (!servico) return {};
+  const t = await getTranslations({ locale: params.locale, namespace: "TransferPage" });
   const alternates = buildLocaleAlternates(params.locale, "/servicos/transfer-24h");
   return {
-    title: `${servico.h1} | Vem Passear em Jampa`,
-    description: servico.metaDescription,
+    title: `${t("h1")} | Vem Passear em Jampa`,
+    description: t("metaDescription"),
     alternates,
     openGraph: {
-      title: servico.h1,
-      description: servico.metaDescription,
+      title: t("h1"),
+      description: t("metaDescription"),
       url: alternates.canonical,
       images: [
-        { url: "/og-image.svg", width: 1200, height: 630, alt: servico.h1 },
+        { url: "/og-image.svg", width: 1200, height: 630, alt: t("h1") },
       ],
     },
   };
@@ -40,67 +34,51 @@ export async function generateMetadata({
 
 const WA_URL = `${empresa.contato.whatsappLink}?text=Oi%2C+quero+solicitar+cota%C3%A7%C3%A3o+de+transfer`;
 
-const SERVICE_SCHEMA = servico
-  ? {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      serviceType: "Transfer privativo",
-      name: servico.h1,
-      description: servico.descricao,
-      areaServed: {
-        "@type": "City",
-        name: "João Pessoa",
-        addressRegion: "PB",
-        addressCountry: "BR",
-      },
-      provider: {
-        "@type": "TravelAgency",
-        name: "Vem Passear em Jampa",
-        telephone: "+55 83 9908-7830",
-        url: "https://vempassearjampa.netlify.app",
-      },
-      url: "https://vempassearjampa.netlify.app/servicos/transfer-24h",
-      hoursAvailable: {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday",
-        ],
-        opens: "00:00",
-        closes: "23:59",
-      },
-      audience: {
-        "@type": "Audience",
-        audienceType: "Turistas em João Pessoa, transfer de aeroporto, transfer entre hotéis",
-      },
-    }
-  : null;
+export default async function TransferPage({ params }: { params: { locale: string } }) {
+  setRequestLocale(params.locale);
+  const t = await getTranslations("TransferPage");
 
-export default function TransferPage() {
-  if (!servico) notFound();
+  const SERVICE_SCHEMA = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: t("nome"),
+    name: t("h1"),
+    description: t("descricao"),
+    areaServed: {
+      "@type": "City",
+      name: "João Pessoa",
+      addressRegion: "PB",
+      addressCountry: "BR",
+    },
+    provider: {
+      "@type": "TravelAgency",
+      name: "Vem Passear em Jampa",
+      telephone: "+55 83 9908-7830",
+      url: "https://vempassearjampa.netlify.app",
+    },
+    url: "https://vempassearjampa.netlify.app/servicos/transfer-24h",
+    hoursAvailable: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      opens: "00:00",
+      closes: "23:59",
+    },
+  };
 
   return (
     <div>
-      {SERVICE_SCHEMA && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICE_SCHEMA) }}
-        />
-      )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICE_SCHEMA) }}
+      />
 
-      <CTASticky whatsappUrl={WA_URL} label="Solicitar cotação no WhatsApp" />
+      <CTASticky whatsappUrl={WA_URL} label={t("stickyLabel")} />
 
-      {/* Breadcrumb (emite schema BreadcrumbList automaticamente) */}
       <Breadcrumb
         items={[
           { label: "Home", href: "/" },
-          { label: "Serviços" },
-          { label: "Transfer 24h" },
+          { label: t("crumbServicos") },
+          { label: t("crumbTransfer") },
         ]}
         currentUrl={`https://${empresa.dominio}/servicos/transfer-24h/`}
       />
@@ -123,7 +101,7 @@ export default function TransferPage() {
               marginBottom: '16px',
             }}
           >
-            Serviço
+            {t("heroKicker")}
           </span>
           <h1
             className="font-serif"
@@ -136,7 +114,7 @@ export default function TransferPage() {
               letterSpacing: '-0.02em',
             }}
           >
-            {servico.h1}
+            {t("h1")}
           </h1>
           <p
             style={{
@@ -147,7 +125,7 @@ export default function TransferPage() {
               marginBottom: '32px',
             }}
           >
-            {servico.descricao}
+            {t("descricao")}
           </p>
           <a
             href={WA_URL}
@@ -168,51 +146,43 @@ export default function TransferPage() {
               boxShadow: 'var(--sombra-cta)',
             }}
           >
-            💬 Solicitar cotação pelo WhatsApp
+            {t("heroCta")}
           </a>
         </div>
       </section>
 
-      {/* Informações do serviço */}
+      {/* Informações */}
       <section className="section-padding">
         <div className="container-safe max-w-3xl">
-
-          {/* Cards de destaque */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
             <div className="bg-white border border-gray-200 rounded-lg p-5">
-              <p className="text-sm text-gray-500 mb-1">Atendimento</p>
-              <p className="text-xl font-bold text-secondary">{servico.atendimento}</p>
-              <p className="text-sm text-gray-600 mt-1">Disponível todos os dias, qualquer horário</p>
+              <p className="text-sm text-gray-500 mb-1">{t("cardAtendimentoTitulo")}</p>
+              <p className="text-xl font-bold text-secondary">{t("atendimento")}</p>
+              <p className="text-sm text-gray-600 mt-1">{t("cardAtendimentoSub")}</p>
             </div>
             <div className="bg-white border border-gray-200 rounded-lg p-5">
-              <p className="text-sm text-gray-500 mb-1">Cobertura</p>
-              <p className="text-lg font-bold text-secondary">{servico.cobertura}</p>
+              <p className="text-sm text-gray-500 mb-1">{t("cardCoberturaTitulo")}</p>
+              <p className="text-lg font-bold text-secondary">{t("cobertura")}</p>
             </div>
             <div className="bg-white border border-gray-200 rounded-lg p-5">
-              <p className="text-sm text-gray-500 mb-1">Como é cobrado</p>
-              <p className="text-xl font-bold text-secondary">Por trajeto</p>
-              <p className="text-sm text-gray-600 mt-1">Não é por pessoa — um preço por corrida</p>
+              <p className="text-sm text-gray-500 mb-1">{t("cardCobrancaTitulo")}</p>
+              <p className="text-xl font-bold text-secondary">{t("cardCobrancaValor")}</p>
+              <p className="text-sm text-gray-600 mt-1">{t("cardCobrancaSub")}</p>
             </div>
             <div className="bg-white border border-gray-200 rounded-lg p-5">
-              <p className="text-sm text-gray-500 mb-1">Valor</p>
-              <p className="text-lg font-bold text-primary">Sob consulta</p>
-              <p className="text-sm text-gray-600 mt-1">Varia por trajeto — solicite cotação no WhatsApp</p>
+              <p className="text-sm text-gray-500 mb-1">{t("cardValorTitulo")}</p>
+              <p className="text-lg font-bold text-primary">{t("cardValorValor")}</p>
+              <p className="text-sm text-gray-600 mt-1">{t("cardValorSub")}</p>
             </div>
           </div>
 
-          {/* Por que contratar */}
+          {/* Por que */}
           <div className="bg-light rounded-lg p-6 mb-10">
             <h2 className="text-xl font-bold text-secondary mb-4">
-              Por que contratar o transfer com a Vem Passear?
+              {t("porqueTitulo")}
             </h2>
             <ul className="space-y-3 text-gray-700">
-              {[
-                "Motorista pontual — você não fica esperando na chegada ao aeroporto",
-                "Veículo privativo — só o seu grupo, sem dividir com desconhecidos",
-                "Atendimento 24h — funciona para voos noturnos e madrugada",
-                "Cadastur ativo — empresa registrada no Ministério do Turismo",
-                "Comunicação direta com Murillo pelo WhatsApp — sem intermediários",
-              ].map((item, i) => (
+              {[t("porque1"), t("porque2"), t("porque3"), t("porque4"), t("porque5")].map((item, i) => (
                 <li key={i} className="flex items-start gap-2">
                   <span className="text-primary mt-0.5 shrink-0" aria-hidden="true">✓</span>
                   <span>{item}</span>
@@ -221,35 +191,33 @@ export default function TransferPage() {
             </ul>
           </div>
 
-          {/* Trajetos comuns */}
+          {/* Trajetos */}
           <div className="mb-10">
-            <h2 className="text-xl font-bold text-secondary mb-4">Trajetos mais solicitados</h2>
+            <h2 className="text-xl font-bold text-secondary mb-4">{t("trajetosTitulo")}</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[
-                { de: "Aeroporto Castro Pinto", para: "Hotéis de Tambaú / Cabo Branco" },
-                { de: "Hotel", para: "Aeroporto (early check-out ou voo noturno)" },
-                { de: "Aeroporto", para: "Qualquer ponto de João Pessoa" },
-                { de: "Hotel / pousada", para: "Ponto de embarque dos passeios" },
-              ].map((t, i) => (
+                { de: t("trajeto1De"), para: t("trajeto1Para") },
+                { de: t("trajeto2De"), para: t("trajeto2Para") },
+                { de: t("trajeto3De"), para: t("trajeto3Para") },
+                { de: t("trajeto4De"), para: t("trajeto4Para") },
+              ].map((trj, i) => (
                 <div key={i} className="border border-gray-200 rounded-lg p-4 text-sm">
-                  <p className="text-gray-500">{t.de}</p>
-                  <p className="text-primary font-semibold">→ {t.para}</p>
+                  <p className="text-gray-500">{trj.de}</p>
+                  <p className="text-primary font-semibold">→ {trj.para}</p>
                 </div>
               ))}
             </div>
-            <p className="text-sm text-gray-500 mt-3">
-              Outros trajetos disponíveis — consulte disponibilidade pelo WhatsApp.
-            </p>
+            <p className="text-sm text-gray-500 mt-3">{t("trajetosNota")}</p>
           </div>
 
-          {/* Como contratar */}
+          {/* Contratar */}
           <div className="mb-10">
-            <h2 className="text-xl font-bold text-secondary mb-4">Como contratar</h2>
+            <h2 className="text-xl font-bold text-secondary mb-4">{t("contratarTitulo")}</h2>
             <ol className="space-y-4">
               {[
-                { n: "1", t: "Mande uma mensagem no WhatsApp", d: "Informe: data, horário, trajeto e número de pessoas." },
-                { n: "2", t: "Receba a cotação", d: "Murillo responde com o valor por trajeto e confirma disponibilidade." },
-                { n: "3", t: "Confirme e aguarde", d: "O motorista chega no horário combinado. Sem surpresas." },
+                { n: "1", t: t("contratar1Titulo"), d: t("contratar1Desc") },
+                { n: "2", t: t("contratar2Titulo"), d: t("contratar2Desc") },
+                { n: "3", t: t("contratar3Titulo"), d: t("contratar3Desc") },
               ].map((step) => (
                 <li key={step.n} className="flex gap-4">
                   <span className="w-7 h-7 bg-primary text-white rounded-full flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">
@@ -263,18 +231,17 @@ export default function TransferPage() {
               ))}
             </ol>
           </div>
-
         </div>
       </section>
 
-      {/* CTA Final — id permite ao CTASticky recolher na area final */}
+      {/* CTA Final */}
       <section id="cta-final" className="section-padding bg-primary text-white">
         <div className="container-safe text-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
-            Precisa de transfer em João Pessoa?
+            {t("ctaFinalTitulo")}
           </h2>
           <p className="text-lg mb-8 opacity-90">
-            Mande uma mensagem com data, horário e trajeto — Murillo envia a cotação na hora.
+            {t("ctaFinalSub")}
           </p>
           <a
             href={WA_URL}
@@ -282,32 +249,31 @@ export default function TransferPage() {
             rel="noopener noreferrer"
             className="inline-block bg-white text-primary px-8 py-4 rounded-md font-semibold text-lg hover:bg-gray-100 transition-colors"
           >
-            💬 Solicitar cotação pelo WhatsApp
+            {t("ctaFinalBotao")}
           </a>
         </div>
       </section>
 
-      {/* Cross-link Excursões e Grupos */}
+      {/* Cross-link */}
       <section className="container-safe py-10">
         <div className="rounded-2xl border border-[#C5B7A3]/50 bg-[#F7F8F7] p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center gap-4 justify-between">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-1">Vai trazer um grupo?</p>
-            <h3 className="font-serif font-bold text-secondary text-lg md:text-xl mb-1">Excursões e grupos têm operação dedicada</h3>
-            <p className="text-sm text-gray-700 max-w-xl">Roteiro, transporte local, van/ônibus e apoio em campo para igreja, escola, família grande ou agência parceira.</p>
+            <p className="text-xs font-bold uppercase tracking-[2.5px] text-primary mb-1">{t("crossKicker")}</p>
+            <h3 className="font-serif font-bold text-secondary text-lg md:text-xl mb-1">{t("crossTitulo")}</h3>
+            <p className="text-sm text-gray-700 max-w-xl">{t("crossDesc")}</p>
           </div>
           <Link
             href="/servicos/excursoes-e-grupos"
             className="inline-flex items-center gap-2 bg-secondary hover:bg-secondary/90 text-white font-bold px-5 py-3 rounded-full text-sm transition-colors whitespace-nowrap"
           >
-            Ver Excursões e Grupos →
+            {t("crossCta")}
           </Link>
         </div>
       </section>
 
-      {/* Link de volta */}
       <div className="container-safe py-6 text-center">
         <Link href="/passeios" className="text-sm text-primary hover:text-accent font-medium transition-colors">
-          ← Ver todos os passeios em João Pessoa
+          {t("verTodosPasseios")}
         </Link>
       </div>
     </div>
