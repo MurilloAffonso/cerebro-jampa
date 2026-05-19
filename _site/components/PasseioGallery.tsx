@@ -102,15 +102,15 @@ export function PasseioGallery({ images, passeioNome }: Props) {
     <section
       aria-label={`Galeria de fotos — ${passeioNome}`}
       className="container-safe"
-      style={{ paddingTop: "16px", paddingBottom: "16px" }}
+      style={{ paddingTop: "24px", paddingBottom: "24px" }}
     >
       <div
         style={{
           display: "grid",
           gridTemplateColumns: "1fr",
-          gap: "8px",
+          gap: "10px",
         }}
-        className="md:grid-cols-[1fr_120px]"
+        className="md:grid-cols-[1fr_140px] md:gap-3"
       >
         {/* ───── Imagem principal ───── */}
         <div

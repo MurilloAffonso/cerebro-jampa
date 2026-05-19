@@ -30,7 +30,7 @@ export function ClientesReviewsBlock() {
         background: "var(--cor-fundo)",
         borderTop: "1px solid var(--cor-borda)",
         borderBottom: "1px solid var(--cor-borda)",
-        padding: "56px 0",
+        padding: "64px 0",
       }}
     >
       <div className="container-safe">

@@ -308,9 +308,17 @@ export function Header() {
           style={{
             borderTop: "1px solid var(--cor-borda)",
             background: "var(--cor-fundo-puro)",
+            maxHeight: "calc(100dvh - var(--header-h))",
+            overflowY: "auto",
+            WebkitOverflowScrolling: "touch",
+            overscrollBehavior: "contain",
           }}
         >
-          <nav className="container-safe py-4 flex flex-col gap-1" aria-label="Menu mobile">
+          <nav
+            className="container-safe py-4 flex flex-col gap-1"
+            aria-label="Menu mobile"
+            style={{ paddingBottom: "calc(96px + env(safe-area-inset-bottom))" }}
+          >
             <MobileLink href="/" onClick={closeMobile}>{t("inicio")}</MobileLink>
 
             <div>

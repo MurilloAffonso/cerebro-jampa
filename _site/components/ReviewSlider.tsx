@@ -98,6 +98,37 @@ export function ReviewSlider({ reviews, autoplayMs = 5000 }: Props) {
         <ReviewCard review={review} key={`${review.name}-${idx}`} />
       </div>
 
+      {/* Barra de progresso do autoplay (sutil). */}
+      {autoplayMs > 0 && total > 1 && (
+        <div
+          aria-hidden="true"
+          style={{
+            position: "relative",
+            height: "3px",
+            marginTop: "12px",
+            borderRadius: "999px",
+            background: "rgba(0,0,0,0.06)",
+            overflow: "hidden",
+          }}
+        >
+          <span
+            key={`bar-${idx}-${pausado ? "p" : "r"}`}
+            style={{
+              display: "block",
+              height: "100%",
+              width: "100%",
+              background: "var(--cor-primaria)",
+              transformOrigin: "left center",
+              transform: "scaleX(0)",
+              animation: pausado
+                ? "none"
+                : `reviewSliderProgress ${autoplayMs}ms linear forwards`,
+            }}
+          />
+          <style>{`@keyframes reviewSliderProgress { from { transform: scaleX(0); } to { transform: scaleX(1); } }`}</style>
+        </div>
+      )}
+
       {/* Controle de pausa/play oculto — só para teclado/SR (WCAG). */}
       <button
         type="button"
@@ -120,6 +151,8 @@ export function ReviewSlider({ reviews, autoplayMs = 5000 }: Props) {
 function ReviewCard({ review }: { review: GoogleReview }) {
   const t = useTranslations("Reviews");
   const [expandido, setExpandido] = useState(false);
+  const [avatarOk, setAvatarOk] = useState(true);
+  const [fotoOk, setFotoOk] = useState(true);
   const paragrafos = review.text.split("\n\n");
   const primeiroLongo = paragrafos[0].length > 220;
   const compacto = primeiroLongo
@@ -129,7 +162,15 @@ function ReviewCard({ review }: { review: GoogleReview }) {
 
   useEffect(() => {
     setExpandido(false);
+    setAvatarOk(true);
+    setFotoOk(true);
   }, [review.name, review.text]);
+
+  const iniciais = review.name
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((p) => p[0]?.toUpperCase() ?? "")
+    .join("");
 
   return (
     <article
@@ -137,12 +178,14 @@ function ReviewCard({ review }: { review: GoogleReview }) {
         background: "var(--cor-fundo-puro)",
         border: "1px solid var(--cor-borda)",
         borderRadius: "16px",
-        padding: "28px 24px",
+        padding: "clamp(20px, 5vw, 32px) clamp(18px, 5vw, 28px)",
         boxShadow: "var(--sombra-card)",
         display: "flex",
         flexDirection: "column",
         gap: "16px",
-        minHeight: "240px",
+        minHeight: "280px",
+        boxSizing: "border-box",
+        maxWidth: "100%",
         transition: "opacity 280ms ease",
       }}
     >
@@ -154,17 +197,30 @@ function ReviewCard({ review }: { review: GoogleReview }) {
             height: "44px",
             borderRadius: "999px",
             overflow: "hidden",
-            background: "var(--cor-fundo)",
+            background: "var(--cor-primaria)",
+            color: "#fff",
+            fontFamily: "var(--font-inter)",
+            fontWeight: 700,
+            fontSize: "15px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
             flexShrink: 0,
           }}
         >
-          <Image
-            src={review.avatarUrl}
-            alt=""
-            fill
-            sizes="44px"
-            style={{ objectFit: "cover" }}
-          />
+          {avatarOk && review.avatarUrl ? (
+            <Image
+              src={review.avatarUrl}
+              alt=""
+              fill
+              sizes="44px"
+              style={{ objectFit: "cover" }}
+              onError={() => setAvatarOk(false)}
+              unoptimized
+            />
+          ) : (
+            <span aria-hidden="true">{iniciais || "★"}</span>
+          )}
         </div>
         <div style={{ minWidth: 0, flex: 1 }}>
           <p
@@ -264,16 +320,17 @@ function ReviewCard({ review }: { review: GoogleReview }) {
         )}
       </div>
 
-      {review.photoUrls && review.photoUrls[0] && (
+      {fotoOk && review.photoUrls && review.photoUrls[0] && (
         <div
           style={{
             position: "relative",
             width: "100%",
-            aspectRatio: "16/9",
+            aspectRatio: "4/3",
             borderRadius: "12px",
             overflow: "hidden",
             background: "var(--cor-fundo)",
           }}
+          className="md:aspect-[16/9]"
         >
           <Image
             src={review.photoUrls[0]}
@@ -282,6 +339,8 @@ function ReviewCard({ review }: { review: GoogleReview }) {
             sizes="(max-width: 768px) 100vw, 680px"
             style={{ objectFit: "cover" }}
             loading="lazy"
+            onError={() => setFotoOk(false)}
+            unoptimized
           />
         </div>
       )}
