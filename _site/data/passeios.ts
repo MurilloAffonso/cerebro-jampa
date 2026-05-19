@@ -1170,50 +1170,140 @@ export const passeios: Passeio[] = [
     preco: "R$ 90",
     duracao: "~1h30",
     saida: "Tarde · Horário varia conforme estação",
+    h1: "Pôr do Sol do Jacaré em João Pessoa — Catamarã com Bolero de Ravel ao Vivo",
+    metaDescription:
+      "Navegação pelo Rio Paraíba no catamarã com Bolero de Ravel ao vivo. Espetáculo de Jurandy do Sax há mais de 20 anos. R$ 90 por pessoa. Reserve no WhatsApp!",
+    subtituloHero:
+      "1h30 de navegação no Rio Paraíba ao entardecer, com forró pé de serra, violino e o Bolero de Ravel tocado ao vivo quando o sol toca o horizonte.",
     descricao:
       "Navegação pelo Rio Paraíba com apresentação ao vivo do Bolero de Ravel. Experiência única que existe há mais de 20 anos.",
     descricaoLonga:
       "O pôr do sol do Jacaré é uma parada obrigatória em João Pessoa. Navegação pelo Rio Paraíba ao som de músicas ao vivo (Bolero de Ravel ao sax), dança de forró, violino. Uma experiência única no mundo.",
+    lead:
+      "Quer viver uma das experiências mais marcantes do nordeste brasileiro?\n\nO Pôr do Sol do Jacaré não é um passeio comum de catamarã. É um ritual que acontece há mais de 20 anos: a cada entardecer, um catamarã navega pelo Rio Paraíba enquanto Jurandy do Sax toca o Bolero de Ravel ao vivo, a bordo da sua canoa. Quando o sol toca o horizonte, ele eleva o solo — e ninguém esquece o momento.\n\nO embarque é na Praia do Jacaré, em Cabedelo. 1h30 de navegação com música, dança de forró e história. Não importa quantas vezes você veja, é sempre cinematográfico.",
+    descricaoSensorial:
+      "Você chega à Praia do Jacaré um pouco antes do horário e já vê o catamarã ancorado à beira do rio. O movimento é grande, mas o clima é leve. Ao embarcar, escolhe lugar — o melhor é virado para o oeste, lado do pôr do sol.\n\nA navegação começa tranquila. O guia conta a história do Rio Paraíba, dos manguezais e da relação da cidade com o rio. Belle Soares aparece com violino, depois um casal de cangaceiros leva a galera para uma dança de forró pé de serra. O catamarã ri com a gente.\n\nO sol vai descendo. Quando começa a se aproximar do horizonte, todo mundo silencia. O Jurandy aparece numa canoa pequena, ao lado do catamarã. O saxofone começa o Bolero de Ravel. A música cresce junto com a luz alaranjada. Quando o sol toca a linha do horizonte, ele eleva o solo até o limite. É o momento que ficou famoso — e que repete, lindo, todos os dias.",
     coverImage: "/images/passeios/piscinas-naturais/penha/hero-01.jpg",
+    roteiroNarrativo: [
+      {
+        emoji: "🚢",
+        titulo: "Embarque na Praia do Jacaré, Cabedelo",
+        texto:
+          "Chegue 30 minutos antes do horário marcado para escolher seu lugar. O embarque é na Praia do Jacaré (Cabedelo). Localização exata no voucher.",
+      },
+      {
+        emoji: "🌊",
+        titulo: "Navegação pelo Rio Paraíba",
+        texto:
+          "O catamarã solta amarras e começa a navegar pelo rio. O guia conta a história da região, dos manguezais e da Praia do Jacaré.",
+      },
+      {
+        emoji: "🎻",
+        titulo: "Apresentação de Belle Soares ao violino",
+        texto:
+          "Belle Soares se apresenta a bordo, com violino. Ambiente intimista, repertório que prepara o clima do pôr do sol.",
+      },
+      {
+        emoji: "💃",
+        titulo: "Forró pé de serra com casal de cangaceiros",
+        texto:
+          "Casal de cangaceiros leva os passageiros para a dança de forró pé de serra. Música nordestina, brincadeira, fotos memoráveis.",
+      },
+      {
+        emoji: "🎷",
+        titulo: "Bolero de Ravel ao vivo no pôr do sol",
+        texto:
+          "Quando o sol começa a tocar o horizonte, Jurandy do Sax aparece em sua canoa ao lado do catamarã e toca o Bolero de Ravel ao vivo. O grande momento do passeio.",
+      },
+      {
+        emoji: "🚢",
+        titulo: "Retorno após o entardecer",
+        texto:
+          "Após o término da apresentação, o catamarã retorna ao porto. Total: ~1h30.",
+      },
+    ],
     rotario: [
-      "Embarque na Praia do Jacaré, Cabedelo",
-      "Navegação pelo Rio Paraíba com informações históricas",
+      "Embarque na Praia do Jacaré (Cabedelo)",
+      "Navegação pelo Rio Paraíba com história da região",
       "Apresentação de Belle Soares ao violino",
-      "Dança de forró pé de serra com cangaceiros",
-      "Jurandy do Sax tocando Bolero de Ravel ao vivo",
-      "Retorno ao entardecer",
+      "Forró pé de serra com casal de cangaceiros",
+      "Bolero de Ravel ao vivo por Jurandy do Sax no pôr do sol",
+      "Retorno ~1h30 total",
     ],
     incluso: [
-      "Catamarã com estrutura (bar a bordo, banheiro, som)",
-      "Apresentações musicais (Bolero de Ravel, forró)",
+      "Passeio compartilhado em catamarã (~1h30)",
+      "Apresentações musicais ao vivo (Bolero de Ravel ao sax, violino, forró)",
       "Informações históricas do Rio Paraíba",
+      "Bar a bordo, banheiro, som com microfone",
+      "Kit de primeiros socorros e equipamento de salvatagem",
+      "Orientação e atendimento (Murillo ou equipe)",
     ],
-    naoIncluso: ["Alimentação"],
+    naoIncluso: [
+      "Alimentação (consumo a bordo à parte)",
+      "Bebidas no bar do catamarã",
+      "Transfer até a Praia do Jacaré (consultar disponibilidade)",
+    ],
     observacoes:
-      "Saída diariamente à tarde. Horário varia conforme época do ano — confirmar no WhatsApp. Transfer até Jacaré: [CONSULTAR].",
-    idealPara: ["Romance", "Pôr do sol", "Música ao vivo", "Experiência cultural única"],
+      "Saída diariamente à tarde. Horário varia conforme época do ano (entardecer) — confirmamos no WhatsApp. Em condições climáticas extremas, o passeio pode ser remarcado. Transfer até Jacaré: consultar.",
+    nomeCurto: "Pôr do Sol Jacaré",
+    idealPara: ["Romance", "Pôr do sol", "Música ao vivo", "Casais", "Experiência cultural única em Jampa"],
     imagemAlt: "Pôr do sol do Jacaré com Bolero de Ravel ao vivo em João Pessoa",
     faq: [
       {
         pergunta: "O Bolero de Ravel toca sempre?",
         resposta:
-          "Sim. Jurandy do Sax toca diariamente. É a marca registrada do passeio.",
+          "Sim. Jurandy do Sax toca todos os dias ao pôr do sol, exceto em condições climáticas extremas. É o ritual há mais de 20 anos e o ponto alto do passeio.",
       },
       {
         pergunta: "Que horas sai o catamarã?",
         resposta:
-          "Saída conforme o pôr do sol — varia por época. Consulte Murillo para o horário exato.",
+          "O horário varia conforme o pôr do sol da época do ano — geralmente entre 16h30 e 17h30. Confirmamos com você o horário exato no WhatsApp na véspera ou no momento da reserva.",
       },
       {
         pergunta: "Criança pode ir?",
         resposta:
-          "Sim. Abaixo de 5 anos não paga. De 5 a 11 anos: R$ 72. A partir de 12 anos: valor adulto.",
+          "Sim. Abaixo de 5 anos não paga. De 5 a 11 anos: R$ 72. A partir de 12 anos: valor adulto. Crianças devem estar acompanhadas por um responsável.",
+      },
+      {
+        pergunta: "Posso ver da margem em vez de pagar o catamarã?",
+        resposta:
+          "Sim, dá pra escutar o Bolero da margem da Praia do Jacaré. Mas o catamarã oferece a navegação no rio, a vista 360° do pôr do sol e o show de perto — vale a experiência completa.",
+      },
+      {
+        pergunta: "Que horas devo chegar?",
+        resposta:
+          "Recomendamos chegar 30 minutos antes do embarque para escolher um lugar bom no catamarã (lado oeste para o pôr do sol).",
+      },
+      {
+        pergunta: "O que está incluso nos R$ 90?",
+        resposta:
+          "Passeio compartilhado em catamarã (~1h30), apresentações musicais ao vivo (Bolero, violino, forró), bar a bordo (consumo à parte), banheiro, som e equipamento de segurança. Alimentação e bebidas são pagas no bar.",
+      },
+      {
+        pergunta: "Qual é a política de cancelamento?",
+        resposta:
+          "Em caso de chuva intensa ou condições climáticas que impeçam a saída, remarcamos sem custo. Para cancelamentos pelo cliente, consulte a política completa no WhatsApp.",
       },
     ],
     depoimento: {
       texto:
         "[CONFIRMAR COM MURILLO: depoimento real de cliente sobre o Pôr do Sol do Jacaré]",
       autor: "[CONFIRMAR: nome e cidade do cliente]",
+    },
+    temAvaliacoes: false,
+    avaliacoes: [],
+    informacoesPraticas: {
+      oqueLevar: [
+        "Roupa leve (calor à tarde, levemente fresca após o pôr do sol)",
+        "Casaco leve ou camisa de manga para o entardecer",
+        "Câmera ou celular (vale a foto)",
+        "Dinheiro ou cartão para consumo no bar",
+        "Repelente (rio tem mosquitos no fim da tarde)",
+      ],
+      pontoEncontro:
+        "Praia do Jacaré, Cabedelo, PB. A localização exata é enviada no voucher após a confirmação da reserva.",
+      horario:
+        "Varia conforme a época do ano (entardecer). Confirmamos com você no WhatsApp.",
     },
   },
 
@@ -1434,30 +1524,143 @@ export const passeios: Passeio[] = [
     categoria: "piscinas-naturais",
     slug: "penha",
     dependeDeMare: true,
+    badges: ["depende-da-mare"],
     preco: "R$ 60",
     duracao: "~3h",
     saida: "Conforme tábua de marés",
+    h1: "Piscinas Naturais da Penha em João Pessoa — Versão Exclusiva e Tranquila",
+    metaDescription:
+      "As piscinas naturais mais exclusivas de João Pessoa, na Praia da Penha. Apenas 2 embarcações por vez. Águas mornas, recifes e tranquilidade. R$ 60. Reserve no WhatsApp!",
+    subtituloHero:
+      "Apenas duas embarcações por vez. Sem aglomeração. Recifes preservados em frente à Praia da Penha — o mar de Jampa no modo tranquilo.",
     descricao:
       "As piscinas mais exclusivas de João Pessoa — apenas 2 embarcações por vez garantem tranquilidade e contato genuíno com a natureza.",
-    incluso: ["Embarcação", "Acesso às piscinas naturais"],
-    naoIncluso: ["Alimentação"],
-    observacoes:
-      "Sujeito à maré baixa. Ponto de saída: Praia da Penha. Transfer até a Penha: [CONSULTAR].",
-    idealPara: ["Quem busca tranquilidade", "Natureza", "Família"],
+    lead:
+      "Quer mergulhar nas piscinas naturais de João Pessoa sem dividir o recife com dezenas de barcos?\n\nA Penha funciona diferente. Apenas 2 embarcações por vez são liberadas para chegar até as piscinas, o que mantém o ambiente preservado e a experiência muito mais íntima. As águas são as mesmas — mornas, cristalinas, com peixes ao redor — mas o ritmo é outro.\n\nA gente parte da Praia da Penha (sul de João Pessoa) e em 10–15 minutos já está nas piscinas. Saída ajustada à maré baixa. Você só aproveita.",
+    descricaoSensorial:
+      "O embarque é na Praia da Penha, no extremo sul da orla de João Pessoa, longe do movimento de Tambaú e Cabo Branco. Já o ponto de saída tem uma vibe diferente: praia tranquila, ritmo de vila, mar aberto.\n\nA travessia até as piscinas é curta — 10 a 15 minutos. Quando o catamarã ancora, o recife já está exposto. Águas mornas, fundo claro, peixes circulando perto. Por ter um número limitado de embarcações no local, o silêncio é maior, a água fica mais limpa e dá pra ouvir as ondas e o vento.\n\nNo catamarã tem bar a bordo, banheiros, som e equipamento de salvatagem. Snorkel e máscara opcionais. Você fica nas piscinas até a maré começar a encher — em média 3h de experiência total.",
     coverImage: "/images/passeios/piscinas-naturais/penha/hero-01.jpg",
     imagemAlt: "Piscinas naturais da Penha em João Pessoa — ambiente exclusivo e tranquilo",
+    roteiroNarrativo: [
+      {
+        emoji: "🚢",
+        titulo: "Embarque na Praia da Penha",
+        texto:
+          "Ponto de encontro na Praia da Penha (sul de João Pessoa). Horário ajustado conforme a maré do dia — confirmamos na véspera no WhatsApp.",
+      },
+      {
+        emoji: "🌊",
+        titulo: "Travessia tranquila",
+        texto:
+          "10 a 15 minutos de catamarã até o recife. Mar aberto, vento, paisagem do litoral sul de Jampa.",
+      },
+      {
+        emoji: "🐠",
+        titulo: "Nas piscinas exclusivas",
+        texto:
+          "Apenas 2 embarcações por vez. Águas mornas, recife preservado, peixes coloridos. Snorkel à vontade (opcional). Em boa parte das piscinas você fica de pé.",
+      },
+      {
+        emoji: "⚡",
+        titulo: "Catamarã como base",
+        texto:
+          "Bar a bordo, banheiros, som com microfone, kit de primeiros socorros. Coletes disponíveis. Snorkel e máscara opcionais.",
+      },
+      {
+        emoji: "🚢",
+        titulo: "Retorno para a Penha",
+        texto:
+          "Quando a maré começa a encher e cobre o recife, retornamos. Total ~3h desde o embarque.",
+      },
+    ],
+    rotario: [
+      "Embarque na Praia da Penha (conforme tábua de marés)",
+      "Travessia curta (~10–15 min)",
+      "Banho e snorkel nas piscinas naturais exclusivas",
+      "Base no catamarã com bar e banheiro",
+      "Retorno ~3h total",
+    ],
+    incluso: [
+      "Passeio compartilhado em catamarã (apenas 2 embarcações por vez no recife)",
+      "Acesso às piscinas naturais",
+      "Bar a bordo, banheiros, som com microfone",
+      "Coletes salva-vidas e kit de primeiros socorros",
+      "Orientação e atendimento (Murillo ou equipe)",
+    ],
+    naoIncluso: [
+      "Alimentação (consumo a bordo à parte)",
+      "Snorkel e máscara (opcional — consulte no WhatsApp)",
+      "Fotógrafo subaquático (opcional)",
+      "Transfer até a Praia da Penha (consultar disponibilidade)",
+    ],
+    observacoes:
+      "Sujeito à tábua de marés. Apenas 2 embarcações por vez — reserve com antecedência para garantir vaga. Transfer até a Penha: consultar.",
+    alertaMare:
+      "As piscinas da Penha só ficam expostas com a maré baixa. A gente checa a tábua de marés antes e confirma com você o melhor horário.",
+    nomeCurto: "Penha",
+    idealPara: [
+      "Quem busca tranquilidade",
+      "Casais",
+      "Famílias com crianças",
+      "Quem quer experiência exclusiva sem aglomeração",
+    ],
     faq: [
       {
         pergunta: "O que torna a Penha diferente de Seixas e Picãozinho?",
         resposta:
-          "A Penha tem apenas 2 embarcações por vez, garantindo mais tranquilidade e contato real com a natureza.",
+          "Na Penha são liberadas apenas 2 embarcações por vez no recife — número muito menor que Seixas e Picãozinho. Isso garante mais silêncio, água mais limpa e uma experiência mais íntima com a natureza. O ponto de saída também é diferente: Praia da Penha, no sul de João Pessoa.",
       },
       {
         pergunta: "Criança pode ir?",
         resposta:
-          "Sim. Abaixo de 5 anos não paga. De 5 a 11 anos: R$ 48. A partir de 12 anos: valor adulto.",
+          "Sim. Abaixo de 5 anos não paga. De 5 a 11 anos: R$ 48. A partir de 12 anos: valor adulto. As piscinas são rasas e seguras para família.",
+      },
+      {
+        pergunta: "Preciso saber nadar?",
+        resposta:
+          "Não. As piscinas naturais da Penha são rasas — você fica de pé em boa parte delas. Coletes disponíveis a bordo. Não é necessário saber nadar.",
+      },
+      {
+        pergunta: "Como chego até a Praia da Penha?",
+        resposta:
+          "A Penha fica no extremo sul de João Pessoa, depois de Cabo Branco e Seixas. Se precisar de transfer de hotel até lá, consulte a gente no WhatsApp — verificamos disponibilidade.",
+      },
+      {
+        pergunta: "O que está incluso nos R$ 60?",
+        resposta:
+          "Passeio compartilhado em catamarã, acesso às piscinas, bar a bordo, banheiros, coletes e orientação. Snorkel, máscara, fotógrafo e alimentação são à parte.",
+      },
+      {
+        pergunta: "Quanto tempo dura o passeio?",
+        resposta:
+          "Em média 3h, contando embarque, travessia, tempo nas piscinas e retorno. Janela ajustada à maré.",
+      },
+      {
+        pergunta: "Qual é a política de cancelamento?",
+        resposta:
+          "Em caso de tempo ou maré desfavorável, remarcamos sem custo. Para cancelamentos pelo cliente, consulte a política completa no WhatsApp.",
       },
     ],
+    depoimento: {
+      texto:
+        "[CONFIRMAR COM MURILLO: depoimento real de cliente sobre Penha]",
+      autor: "[CONFIRMAR: nome e cidade do cliente]",
+    },
+    temAvaliacoes: false,
+    avaliacoes: [],
+    informacoesPraticas: {
+      oqueLevar: [
+        "Roupa de banho (já venha com ela)",
+        "Toalha",
+        "Protetor solar biodegradável",
+        "Água ou compre a bordo",
+        "Câmera à prova d'água (opcional)",
+      ],
+      pontoEncontro:
+        "Praia da Penha — João Pessoa, PB. A localização exata é enviada no voucher após a confirmação da reserva.",
+      horario:
+        "Varia conforme a tábua de marés. Confirmamos com você no WhatsApp na véspera.",
+    },
   },
 
   {
@@ -1470,10 +1673,19 @@ export const passeios: Passeio[] = [
     preco: "R$ 60",
     duracao: "~3h",
     saida: "Conforme maré baixa",
+    h1: "Piscinas Naturais de Picãozinho — Snorkel a 1,5 km da Praia de Tambaú",
+    metaDescription:
+      "Aquário natural a céu aberto a 1.500 metros de Tambaú em João Pessoa. Recifes, peixes coloridos e águas mornas. R$ 60 por pessoa. Reserve no WhatsApp!",
+    subtituloHero:
+      "A apenas 1.500 metros da Praia de Tambaú, um aquário natural com peixes coloridos e águas mornas e rasas. Travessia curta, experiência grande.",
     descricao:
       "A apenas 1.500 metros de Tambaú. Aquário natural a céu aberto com peixes de todas as cores e formações de recife.",
     descricaoLonga:
       "Picãozinho é um dos recifes mais procurados de João Pessoa. Piscinas rasas, mornas e cristalinas, ideais para snorkel. Peixes coloridos, algas, fauna marinha preservada. É como mergulhar em um aquário natural.",
+    lead:
+      "Quer ver de perto a vida marinha de João Pessoa sem precisar viajar longe?\n\nPicãozinho fica a apenas 1.500 metros da Praia de Tambaú — pertinho da orla. Em poucos minutos de catamarã você já está sobre as formações de recife que criam piscinas naturais rasas, mornas e cristalinas, com peixes coloridos passando ao seu lado.\n\nÉ o passeio ideal para quem quer ver corais, fazer snorkel pela primeira vez ou simplesmente ficar de pé na água esmeralda. A gente cuida da maré, do horário e da estrutura. Você só aproveita.",
+    descricaoSensorial:
+      "O embarque é em Tambaú, bem na orla. Em poucos minutos de catamarã você chega aos recifes — a travessia é curta o suficiente para crianças e idosos curtirem sem cansar.\n\nQuando a maré recua, as piscinas se abrem. Águas que vão do esverdeado ao azul-claro, fundo de coral com algas e peixes coloridos circulando perto. Em vários pontos você fica de pé na água. Em outros, é só flutuar com a máscara e observar.\n\nNo catamarã tem espaço para tomar água, comprar bebida, descansar. A volta acontece quando a maré começa a subir e cobre os recifes — em média, 3h de experiência total.",
     coverImage: "/images/passeios/piscinas-naturais/picaozinho/hero-01.jpg",
     galleryImages: [
       {
@@ -1497,40 +1709,120 @@ export const passeios: Passeio[] = [
         alt: "Mar cristalino nos recifes de Picãozinho, João Pessoa",
       },
     ],
+    roteiroNarrativo: [
+      {
+        emoji: "🚢",
+        titulo: "Embarque em Tambaú",
+        texto:
+          "Ponto de encontro na Praia de Tambaú. Horário ajustado conforme a maré do dia — a gente confirma com você na véspera no WhatsApp.",
+      },
+      {
+        emoji: "🌊",
+        titulo: "Travessia curta de catamarã",
+        texto:
+          "Apenas 1.500 metros da orla. Em poucos minutos você já está sobre o recife. Ideal para quem prefere navegação rápida.",
+      },
+      {
+        emoji: "🐠",
+        titulo: "Mergulho nas piscinas naturais",
+        texto:
+          "Maré baixa, recifes expostos, piscinas formadas. Águas rasas, mornas e cristalinas. Peixes coloridos passando perto, fauna marinha preservada. Snorkel à vontade (opcional, à parte).",
+      },
+      {
+        emoji: "⚡",
+        titulo: "Catamarã é sua base",
+        texto:
+          "Espaço para descansar, beber água, comprar bebida. Coletes disponíveis para quem preferir.",
+      },
+      {
+        emoji: "🚢",
+        titulo: "Retorno para Tambaú",
+        texto:
+          "Quando a maré começa a subir e cobre os recifes, retornamos. Total ~3h desde o embarque.",
+      },
+    ],
     rotario: [
-      "Embarque em Tambaú",
-      "Navegação curta (1,5 km)",
-      "Banho nas piscinas naturais",
-      "Snorkel nos recifes",
-      "Exploração da fauna marinha",
-      "Retorno (~3h total)",
+      "Embarque em Tambaú (conforme tábua de marés)",
+      "Travessia curta de catamarã (~1,5 km)",
+      "Banho e snorkel nas piscinas naturais",
+      "Observação da fauna marinha",
+      "Retorno ~3h total",
     ],
     incluso: [
-      "Catamarã com estrutura básica",
-      "Acesso aos recifes",
+      "Passeio compartilhado em catamarã",
+      "Acesso aos recifes e piscinas naturais",
+      "Coletes salva-vidas",
+      "Orientação e atendimento (Murillo ou equipe)",
     ],
-    naoIncluso: ["Alimentação"],
+    naoIncluso: [
+      "Alimentação (consumo a bordo à parte)",
+      "Snorkel e máscara (opcional — consulte no WhatsApp)",
+      "Fotógrafo subaquático (opcional)",
+      "Transfer até Tambaú (consultar disponibilidade)",
+    ],
     observacoes:
-      "Sujeito à maré baixa. Piscinas rasas e seguras, ideais para família.",
-    idealPara: ["Snorkel", "Família", "Crianças", "Fotos marinhas"],
+      "Sujeito à maré baixa — só dá pra ir quando a tábua de marés permite. Piscinas rasas e seguras, ideais para família. A gente confirma o horário antes.",
+    alertaMare:
+      "Picãozinho só aparece com maré baixa. A gente consulta a tábua de marés de João Pessoa antes e te avisa o melhor horário. Você não precisa se preocupar.",
+    nomeCurto: "Picãozinho",
+    idealPara: ["Snorkel", "Família", "Crianças", "Quem nunca mergulhou", "Fotos marinhas"],
     imagemAlt: "Recife de Picãozinho com peixes coloridos em João Pessoa",
     faq: [
       {
         pergunta: "É seguro para crianças?",
         resposta:
-          "Sim. Águas rasas, mornas e cristalinas. Supervisão recomendada para menores de 6 anos.",
+          "Sim. Águas rasas, mornas e cristalinas — em boa parte do recife dá pra ficar de pé. Coletes disponíveis. Supervisão de um responsável é necessária para menores de 6 anos.",
       },
       {
         pergunta: "Vejo muitos peixes?",
         resposta:
-          "Sim. Fauna marinha preservada, peixes coloridos. Aquário natural de verdade.",
+          "Sim. Picãozinho é conhecido pela fauna marinha preservada, com peixes coloridos que circulam perto sem se assustar. É como mergulhar em um aquário natural.",
       },
       {
         pergunta: "Preciso saber nadar?",
         resposta:
-          "Não obrigatório. Água é rasa. Coletes disponíveis.",
+          "Não. A água é rasa em quase todo o recife — você fica de pé. Coletes salva-vidas disponíveis a bordo para quem se sentir mais confortável.",
+      },
+      {
+        pergunta: "Qual a diferença entre Picãozinho e Seixas?",
+        resposta:
+          "Picãozinho fica a 1,5 km da Praia de Tambaú — embarque na orla, travessia curta. Seixas exige travessia um pouco mais longa e fica no ponto mais oriental das Américas. Ambos são piscinas naturais lindas; Picãozinho é mais prático para quem quer logística simples.",
+      },
+      {
+        pergunta: "O que está incluso nos R$ 60?",
+        resposta:
+          "Passeio compartilhado em catamarã, acesso ao recife, coletes salva-vidas e orientação. Snorkel, máscara, fotógrafo subaquático e alimentação são pagos à parte.",
+      },
+      {
+        pergunta: "Quanto tempo dura o passeio?",
+        resposta:
+          "Em média 3h, contando embarque, travessia, tempo nas piscinas e retorno. Tudo conforme a janela da maré baixa.",
+      },
+      {
+        pergunta: "Qual é a política de cancelamento?",
+        resposta:
+          "Em caso de tempo ou maré desfavorável, remarcamos sem custo. Para cancelamentos pelo cliente, consulte a política completa no WhatsApp.",
       },
     ],
+    depoimento: {
+      texto:
+        "[CONFIRMAR COM MURILLO: depoimento real de cliente sobre Picãozinho]",
+      autor: "[CONFIRMAR: nome e cidade do cliente]",
+    },
+    temAvaliacoes: false,
+    avaliacoes: [],
+    informacoesPraticas: {
+      oqueLevar: [
+        "Roupa de banho (já venha com ela)",
+        "Toalha",
+        "Protetor solar biodegradável (preserva os corais)",
+        "Água ou compre a bordo",
+      ],
+      pontoEncontro:
+        "Praia de Tambaú — João Pessoa, PB. A localização exata é enviada no voucher após a confirmação da reserva.",
+      horario:
+        "Varia conforme a tábua de marés. Confirmamos com você no WhatsApp na véspera.",
+    },
   },
 
   {
@@ -1578,41 +1870,149 @@ export const passeios: Passeio[] = [
     preco: "R$ 80",
     duracao: "~3h30",
     saida: "Manhã",
+    h1: "City Tour em João Pessoa — Centro Histórico, Niemeyer e Ponta do Seixas",
+    metaDescription:
+      "Tour pela 3ª cidade mais antiga do Brasil: Letreiro, Farol do Cabo Branco, Estação Cabo Branco de Niemeyer, Centro Cultural São Francisco e mais. R$ 80. Reserve no WhatsApp!",
+    subtituloHero:
+      "3h30 pelo centro histórico, obras de Niemeyer e o ponto mais oriental das Américas. Transfer e guia credenciado.",
     descricao:
       "Conhecer a 3ª cidade mais antiga do Brasil: Niemeyer, ponto mais oriental, patrimônio colonial e praças históricas.",
+    lead:
+      "Quer entender João Pessoa de verdade, não só as praias?\n\nO City Tour Jampa leva você pelos pontos que contam a história da cidade — a 3ª mais antiga do Brasil, a segunda capital mais verde do mundo e o lugar onde o sol nasce primeiro nas Américas.\n\nA gente passa pelo Letreiro 'João Pessoa', pelo Farol do Cabo Branco na Ponta do Seixas, pela Estação Cabo Branco (obra de Oscar Niemeyer), pelo Bosque dos Sonhos, pela Praça da Independência, pelo Centro Cultural São Francisco, pelo Hotel Globo (patrimônio histórico) e pelo Parque Sólon de Lucena. Transfer ida e volta incluso. Guia credenciado que conta a história enquanto você anda.",
+    descricaoSensorial:
+      "A manhã começa cedo. A van busca você no hotel ou airbnb em Tambaú, Cabo Branco, Manaíra ou Bessa. A primeira parada costuma ser o Letreiro 'João Pessoa' — clássico para foto. Dali, o Farol do Cabo Branco, na Ponta do Seixas: o ponto mais oriental das Américas. O sol que nasce no Brasil nasce ali.\n\nSegue para a Estação Cabo Branco — espaço de arte e ciência projetado por Oscar Niemeyer. Arquitetura curvilínea, branca, com vista para o mar. Bosque dos Sonhos na sequência: jardim com vista panorâmica.\n\nA parte mais histórica vem agora. Praça da Independência, Centro Cultural São Francisco (entrada não inclusa, mas vale pagar — uma das igrejas barrocas mais importantes do Brasil), Hotel Globo (patrimônio, vista do rio Sanhauá), Praça dos Três Poderes e Parque Sólon de Lucena — a lagoa cercada de palmeiras imperiais no coração da cidade.\n\nO guia conta a história sem pressa. Você fotografa, faz pergunta, entende a cidade. Volta pro hotel por volta do meio-dia.",
+    coverImage: "/images/passeios/litoral-sul/roteiro-classico/hero-01.jpg",
+    imagemAlt: "Centro histórico de João Pessoa — 3ª cidade mais antiga do Brasil",
+    roteiroNarrativo: [
+      {
+        emoji: "🚐",
+        titulo: "Embarque (transfer) — manhã",
+        texto:
+          "Buscamos você no hotel ou airbnb em Tambaú, Cabo Branco, Manaíra ou Bessa. Horário no voucher.",
+      },
+      {
+        emoji: "📸",
+        titulo: "Letreiro 'João Pessoa' + Farol do Cabo Branco",
+        texto:
+          "Foto no letreiro icônico e parada no Farol do Cabo Branco (Ponta do Seixas) — ponto mais oriental das Américas.",
+      },
+      {
+        emoji: "🏛️",
+        titulo: "Estação Cabo Branco (Niemeyer) + Bosque dos Sonhos",
+        texto:
+          "Obra de Oscar Niemeyer com vista para o mar. Bosque dos Sonhos com mirante para a cidade.",
+      },
+      {
+        emoji: "⛪",
+        titulo: "Centro Cultural São Francisco e Hotel Globo",
+        texto:
+          "Patrimônio barroco do Centro Cultural São Francisco (entrada à parte, opcional). Hotel Globo com vista do rio Sanhauá.",
+      },
+      {
+        emoji: "🌳",
+        titulo: "Praças históricas + Parque Sólon de Lucena",
+        texto:
+          "Praça da Independência, Praça dos Três Poderes e Parque Sólon de Lucena — lagoa cercada de palmeiras imperiais no centro da cidade.",
+      },
+      {
+        emoji: "🚐",
+        titulo: "Retorno por volta do meio-dia",
+        texto:
+          "Devolução no hotel ao final. Total: ~3h30.",
+      },
+    ],
+    rotario: [
+      "Saída pela manhã (Tambaú, Cabo Branco, Manaíra, Bessa)",
+      "Letreiro 'João Pessoa'",
+      "Farol do Cabo Branco / Ponta do Seixas",
+      "Estação Cabo Branco (Niemeyer)",
+      "Bosque dos Sonhos",
+      "Praça da Independência",
+      "Centro Cultural São Francisco",
+      "Hotel Globo",
+      "Praça dos Três Poderes",
+      "Parque Sólon de Lucena",
+      "Retorno ao hotel ~3h30",
+    ],
     incluso: [
-      "Transfer (Tambaú, Cabo Branco, Manaíra, Bessa)",
-      "Condutores credenciados",
+      "Transfer ida e volta (Tambaú, Cabo Branco, Manaíra, Bessa)",
+      "Condutores e guia credenciados",
+      "Acompanhamento histórico em todos os pontos",
+      "Orientação e atendimento (Murillo ou equipe)",
     ],
     naoIncluso: [
-      "Entrada Centro Cultural São Francisco",
+      "Entrada no Centro Cultural São Francisco (opcional, R$ a consultar no local)",
+      "Alimentação e bebidas",
+      "Compras",
     ],
     observacoes:
-      "Funciona terça a domingo (não opera às segundas). Valor privativo: [CONSULTAR].",
+      "Funciona de terça a domingo (não opera às segundas). Valor privativo: consultar.",
+    nomeCurto: "City Tour",
     idealPara: [
       "Primeiro contato com João Pessoa",
       "Quem aprecia história e arquitetura",
       "Turistas culturais",
+      "Dias nublados ou de tempo instável",
+      "Famílias",
     ],
-    coverImage: "/images/passeios/litoral-sul/roteiro-classico/hero-01.jpg",
-    imagemAlt: "Centro histórico de João Pessoa — 3ª cidade mais antiga do Brasil",
     faq: [
       {
         pergunta: "O que é visitado no City Tour?",
         resposta:
-          "Centro histórico, patrimônio colonial, ponto mais oriental das Américas, obras de Oscar Niemeyer e praças históricas.",
+          "Letreiro 'João Pessoa', Farol do Cabo Branco (Ponta do Seixas), Estação Cabo Branco (Niemeyer), Bosque dos Sonhos, Praça da Independência, Centro Cultural São Francisco, Hotel Globo, Praça dos Três Poderes e Parque Sólon de Lucena.",
       },
       {
         pergunta: "Funciona todos os dias?",
         resposta:
-          "Terça a domingo. Não opera às segundas.",
+          "De terça a domingo. Não opera às segundas — alguns dos pontos visitados também fecham nesse dia.",
+      },
+      {
+        pergunta: "A entrada do Centro Cultural São Francisco está inclusa?",
+        resposta:
+          "Não. A entrada é cobrada no local (valor a consultar) e é opcional — você decide se quer entrar para ver o interior barroco da igreja. Vale a pena para quem aprecia arte sacra.",
       },
       {
         pergunta: "Criança pode ir?",
         resposta:
-          "Sim. Abaixo de 5 anos não paga. De 5 a 11 anos: R$ 64. A partir de 12 anos: valor adulto.",
+          "Sim. Abaixo de 5 anos não paga. De 5 a 11 anos: R$ 64. A partir de 12 anos: valor adulto. O passeio é tranquilo, sem trilha.",
+      },
+      {
+        pergunta: "Quanto tempo dura?",
+        resposta:
+          "Em torno de 3h30, contando saída pela manhã, todas as paradas com tempo para fotos, e retorno ao hotel.",
+      },
+      {
+        pergunta: "Vale a pena se eu tiver pouco tempo em João Pessoa?",
+        resposta:
+          "Sim — é exatamente para isso. O City Tour resume o melhor da história, arquitetura e cultura de João Pessoa em uma manhã. Combina bem com passeios de praia em outros dias.",
+      },
+      {
+        pergunta: "Qual é a política de cancelamento por chuva?",
+        resposta:
+          "Com aviso de 2h de antecedência, remarcamos sem custo. O City Tour é uma das melhores opções para dias de tempo instável, já que a maioria dos pontos é coberta ou tem opção interna.",
       },
     ],
+    depoimento: {
+      texto:
+        "[CONFIRMAR COM MURILLO: depoimento real de cliente sobre o City Tour Jampa]",
+      autor: "[CONFIRMAR: nome e cidade do cliente]",
+    },
+    temAvaliacoes: false,
+    avaliacoes: [],
+    informacoesPraticas: {
+      oqueLevar: [
+        "Roupa leve e confortável",
+        "Tênis ou sapato fechado (alguns pisos históricos)",
+        "Protetor solar e óculos de sol",
+        "Câmera",
+        "Garrafa de água",
+        "Dinheiro ou cartão (entrada do Centro Cultural opcional)",
+      ],
+      pontoEncontro:
+        "Buscamos você no hotel ou airbnb em Tambaú, Cabo Branco, Manaíra ou Bessa — João Pessoa, PB. Localização exata no voucher.",
+      horario:
+        "Saída pela manhã. Retorno por volta do meio-dia (total ~3h30).",
+    },
   },
 
   // =========================================================================
@@ -1627,32 +2027,144 @@ export const passeios: Passeio[] = [
     preco: "R$ 160",
     duracao: "Dia inteiro",
     saida: "Saída pela manhã · Horário confirmado por WhatsApp",
+    h1: "Porto de Galinhas saindo de João Pessoa — Bate-volta às Piscinas Naturais",
+    metaDescription:
+      "Bate-volta de João Pessoa para Porto de Galinhas (PE): piscinas naturais únicas, jangadas e águas esverdeadas. R$ 160 com transporte. Reserve no WhatsApp!",
+    subtituloHero:
+      "Saída pela manhã, retorno à noite. Transporte João Pessoa → Porto de Galinhas → João Pessoa em veículo confortável, com tempo livre para curtir as piscinas e a vila.",
     descricao:
       "Um dos destinos mais famosos do Brasil — piscinas naturais únicas, jangadas e águas esverdeadas.",
-    incluso: ["Transporte (João Pessoa → Porto de Galinhas → João Pessoa)"],
-    naoIncluso: ["Alimentação", "Jangada nas piscinas (pagar no local)"],
-    observacoes:
-      "Documento com foto obrigatório (viagem interestadual PB → PE). Disponibilidade: [CONSULTAR]. Retorno à noite.",
-    idealPara: ["Quem quer conhecer Porto de Galinhas a partir de João Pessoa"],
+    lead:
+      "Quer conhecer Porto de Galinhas sem precisar mudar de hospedagem?\n\nA gente faz o bate-volta saindo de João Pessoa pela manhã e voltando à noite. O percurso é cerca de 2h30 de ida em veículo confortável, com saída direto do seu hotel. Você ganha um dia inteiro em uma das praias mais famosas do Brasil — piscinas naturais únicas, vila charmosa e águas esverdeadas — sem perder a logística da sua viagem.\n\nDocumento com foto é obrigatório (viagem interestadual PB → PE). Alimentação e passeio de jangada nas piscinas são por conta do visitante.",
+    descricaoSensorial:
+      "A van busca você no hotel pela manhã (horário confirmado no WhatsApp). A viagem é tranquila, com paradas para banheiro e lanche no caminho. Em pouco tempo você está em Porto de Galinhas.\n\nA vila é charmosa: lojas, restaurantes, ambiente turístico organizado. Da praia central, você vê as jangadas levando turistas para as piscinas naturais — formações de coral a poucos metros da areia que criam aquários a céu aberto com água verde-cristalina e peixes coloridos.\n\nTempo livre para você curtir do seu jeito: piscinas naturais (jangada paga no local), praia, vila, almoço. A gente combina o ponto e horário de retorno antes da chegada. À noite, transporte de volta para João Pessoa.",
     coverImage: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
     imagemAlt: "Piscinas naturais de Porto de Galinhas em Pernambuco",
+    roteiroNarrativo: [
+      {
+        emoji: "🚐",
+        titulo: "Embarque pela manhã",
+        texto:
+          "Buscamos você no hotel em João Pessoa. Horário ajustado para chegar em Porto de Galinhas com tempo de aproveitar.",
+      },
+      {
+        emoji: "🛣️",
+        titulo: "Viagem João Pessoa → Porto de Galinhas",
+        texto:
+          "Cerca de 2h30 de viagem em veículo confortável, com parada para banheiro/lanche. Documento com foto obrigatório (interestadual).",
+      },
+      {
+        emoji: "🏖️",
+        titulo: "Chegada em Porto de Galinhas",
+        texto:
+          "Tempo livre na vila e na praia. Lojas, restaurantes, ambiente turístico organizado.",
+      },
+      {
+        emoji: "⛵",
+        titulo: "Piscinas naturais (opcional)",
+        texto:
+          "Jangadas levam turistas até as piscinas a poucos metros da praia — água verde-cristalina, corais e peixes. Pagamento da jangada feito no local.",
+      },
+      {
+        emoji: "🍽️",
+        titulo: "Almoço e tempo livre (não incluso)",
+        texto:
+          "Várias opções de restaurantes na vila. O guia indica os melhores para o seu perfil.",
+      },
+      {
+        emoji: "🚐",
+        titulo: "Retorno à noite",
+        texto:
+          "Combinamos horário de embarque para retornar a João Pessoa à noite, com chegada ao hotel.",
+      },
+    ],
+    rotario: [
+      "Saída de João Pessoa pela manhã",
+      "Viagem ~2h30 (parada técnica no caminho)",
+      "Tempo livre em Porto de Galinhas (vila + praia)",
+      "Piscinas naturais via jangada (opcional, à parte)",
+      "Almoço (não incluso)",
+      "Retorno a João Pessoa à noite",
+    ],
+    incluso: [
+      "Transporte ida e volta (João Pessoa ↔ Porto de Galinhas) em veículo confortável",
+      "Condutor credenciado",
+      "Orientação e atendimento (Murillo ou equipe)",
+    ],
+    naoIncluso: [
+      "Alimentação (almoço, bebidas, lanches)",
+      "Jangada para as piscinas naturais (pagar no local)",
+      "Compras e atividades extras na vila",
+      "Pedágios e taxas locais (quando aplicável)",
+    ],
+    observacoes:
+      "Documento com foto obrigatório (viagem interestadual PB → PE). Saída sujeita a número mínimo de passageiros — verifique disponibilidade. Retorno à noite.",
+    nomeCurto: "Porto de Galinhas",
+    idealPara: [
+      "Quem quer conhecer Porto de Galinhas sem mudar de hospedagem",
+      "Famílias",
+      "Casais",
+      "Bate-volta organizado",
+    ],
     faq: [
       {
         pergunta: "O que está incluso nos R$ 160?",
         resposta:
-          "Transporte de ida e volta (João Pessoa ↔ Porto de Galinhas). Alimentação e jangada são por conta do visitante.",
+          "Transporte de ida e volta (João Pessoa ↔ Porto de Galinhas) em veículo confortável, com condutor credenciado e orientação. Alimentação, jangada para as piscinas e pedágios são por conta do visitante.",
       },
       {
         pergunta: "Preciso de documento?",
         resposta:
-          "Sim. Documento com foto obrigatório — é viagem interestadual.",
+          "Sim. Documento com foto obrigatório — é viagem interestadual entre Paraíba e Pernambuco. Traga RG, CNH ou passaporte.",
+      },
+      {
+        pergunta: "Quanto custa a jangada para as piscinas naturais?",
+        resposta:
+          "O valor da jangada é pago diretamente aos jangadeiros no local, em Porto de Galinhas. O preço varia conforme a temporada e o tamanho do grupo. Consulte ao chegar.",
       },
       {
         pergunta: "Criança paga?",
         resposta:
-          "Abaixo de 5 anos não paga. De 5 a 11 anos: R$ 128. A partir de 12 anos: valor adulto.",
+          "Abaixo de 5 anos não paga. De 5 a 11 anos: R$ 128. A partir de 12 anos: valor adulto. Crianças devem estar acompanhadas por responsável.",
+      },
+      {
+        pergunta: "Quanto tempo dura a viagem de ida?",
+        resposta:
+          "Cerca de 2h30 a 3h, com parada para banheiro e lanche. O retorno é à noite, geralmente após o pôr do sol.",
+      },
+      {
+        pergunta: "Tem como almoçar em Porto de Galinhas?",
+        resposta:
+          "Sim. A vila tem dezenas de restaurantes — de comida regional a internacional. O guia indica opções para o seu perfil. Alimentação não está inclusa no valor.",
+      },
+      {
+        pergunta: "Qual é a política de cancelamento?",
+        resposta:
+          "Em caso de imprevistos com aviso de 24h, remarcamos sem custo. Cancelamentos pelo cliente: consulte a política completa no WhatsApp.",
       },
     ],
+    depoimento: {
+      texto:
+        "[CONFIRMAR COM MURILLO: depoimento real de cliente sobre Porto de Galinhas]",
+      autor: "[CONFIRMAR: nome e cidade do cliente]",
+    },
+    temAvaliacoes: false,
+    avaliacoes: [],
+    informacoesPraticas: {
+      oqueLevar: [
+        "Documento com foto (obrigatório)",
+        "Roupa de banho (vista por baixo)",
+        "Toalha",
+        "Protetor solar biodegradável",
+        "Chapéu ou boné",
+        "Câmera",
+        "Dinheiro em espécie e cartão (jangada, almoço, compras)",
+      ],
+      pontoEncontro:
+        "Buscamos você no hotel em João Pessoa, em regiões atendidas (Tambaú, Cabo Branco, Manaíra, Bessa). Confirmamos o ponto e horário exatos no voucher.",
+      horario:
+        "Saída pela manhã (horário confirmado no WhatsApp). Retorno à noite ao hotel.",
+    },
   },
 
   {
@@ -1663,27 +2175,146 @@ export const passeios: Passeio[] = [
     preco: "R$ 160",
     duracao: "Dia inteiro",
     saida: "Saída pela manhã · Horário confirmado por WhatsApp",
+    h1: "Praia de Pipa saindo de João Pessoa — Bate-volta a Tibau do Sul, RN",
+    metaDescription:
+      "Bate-volta de João Pessoa para Praia de Pipa (RN): Praia do Amor, Praia do Moleque, vila charmosa e mirantes com vista do Atlântico. R$ 160. Reserve no WhatsApp!",
+    subtituloHero:
+      "Saída pela manhã, retorno à noite. Transporte João Pessoa → Pipa → João Pessoa para curtir um dia inteiro no destino mais charmoso do nordeste.",
     descricao:
       "Visual cinematográfico, praias paradisíacas, vila charmosa — o destino mais descolado do nordeste.",
-    incluso: ["Transporte (João Pessoa → Pipa → João Pessoa)"],
-    naoIncluso: ["Alimentação"],
-    observacoes:
-      "Documento com foto obrigatório (viagem interestadual). Disponibilidade: [CONSULTAR].",
-    idealPara: ["Quem busca praias bonitas e vila animada"],
+    lead:
+      "Quer conhecer Pipa em um dia, sem precisar trocar de hotel?\n\nA gente faz o bate-volta a Praia de Pipa (Tibau do Sul, RN) saindo de João Pessoa pela manhã. São aproximadamente 2h de viagem em veículo confortável. Você ganha um dia inteiro para curtir a Praia do Amor, a Praia do Moleque, mirantes com vista do Atlântico e a vila com restaurantes, lojinhas e vida noturna.\n\nDocumento com foto é obrigatório (viagem interestadual PB → RN). Alimentação não está inclusa.",
+    descricaoSensorial:
+      "A van busca você no hotel pela manhã (horário confirmado no WhatsApp). O trajeto até Pipa passa por estradas costeiras com paisagens bonitas. Em pouco tempo você chega à vila.\n\nPipa é uma vila charmosa, com ruas de pedra, fachadas coloridas e gente do mundo todo. A praia central é movimentada, mas as vizinhas — Amor, Moleque, Madeiro — são paraíso. Falésias coloridas caindo no mar, ondas para surf, golfinhos que às vezes aparecem perto da costa, mirantes com vista do Atlântico.\n\nTempo livre para você curtir do seu jeito: caminhar pela vila, almoçar com vista, banho de mar nas praias paradisíacas, esquecer do mundo. Antes do retorno, a gente combina o ponto e horário. À noite, transporte de volta para João Pessoa.",
     coverImage: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
     imagemAlt: "Praia de Pipa no Rio Grande do Norte — falésias e águas cristalinas",
+    roteiroNarrativo: [
+      {
+        emoji: "🚐",
+        titulo: "Embarque pela manhã",
+        texto:
+          "Buscamos você no hotel em João Pessoa. Horário ajustado para chegar em Pipa com tempo livre para aproveitar.",
+      },
+      {
+        emoji: "🛣️",
+        titulo: "Viagem João Pessoa → Pipa",
+        texto:
+          "Cerca de 2h de viagem em veículo confortável, com paisagem costeira. Documento com foto obrigatório (interestadual PB → RN).",
+      },
+      {
+        emoji: "🏖️",
+        titulo: "Chegada em Pipa",
+        texto:
+          "Tempo livre na vila e nas praias. Praia do Amor, Praia do Moleque, mirantes do Atlântico.",
+      },
+      {
+        emoji: "🐬",
+        titulo: "Praias paradisíacas",
+        texto:
+          "Banho nas praias mais bonitas do RN. Em alguns dias, dá pra ver golfinhos perto da costa.",
+      },
+      {
+        emoji: "🍽️",
+        titulo: "Almoço e tempo na vila (não incluso)",
+        texto:
+          "Restaurantes com vista de mar, comida regional ou internacional. Lojas, vida charmosa de vila.",
+      },
+      {
+        emoji: "🚐",
+        titulo: "Retorno à noite",
+        texto:
+          "Combinamos horário de embarque para retornar a João Pessoa à noite, com chegada ao hotel.",
+      },
+    ],
+    rotario: [
+      "Saída de João Pessoa pela manhã",
+      "Viagem ~2h (estradas costeiras)",
+      "Tempo livre em Pipa (vila + praias)",
+      "Visita à Praia do Amor e Praia do Moleque",
+      "Mirantes com vista do Atlântico",
+      "Almoço (não incluso)",
+      "Retorno a João Pessoa à noite",
+    ],
+    incluso: [
+      "Transporte ida e volta (João Pessoa ↔ Pipa) em veículo confortável",
+      "Condutor credenciado",
+      "Orientação e atendimento (Murillo ou equipe)",
+    ],
+    naoIncluso: [
+      "Alimentação (almoço, bebidas, lanches)",
+      "Passeios de barco e atividades náuticas em Pipa (pagar no local)",
+      "Compras na vila",
+      "Pedágios e taxas locais (quando aplicável)",
+    ],
+    observacoes:
+      "Documento com foto obrigatório (viagem interestadual PB → RN). Saída sujeita a número mínimo de passageiros. Retorno à noite.",
+    nomeCurto: "Pipa",
+    idealPara: [
+      "Quem busca praias bonitas e vila animada",
+      "Casais",
+      "Amigos",
+      "Bate-volta cultural e de praia",
+    ],
     faq: [
       {
-        pergunta: "O que está incluso?",
+        pergunta: "O que está incluso nos R$ 160?",
         resposta:
-          "Transporte de ida e volta. Alimentação por conta do visitante.",
+          "Transporte de ida e volta (João Pessoa ↔ Pipa) em veículo confortável, condutor credenciado e orientação. Alimentação, passeios náuticos e compras são por conta do visitante.",
+      },
+      {
+        pergunta: "Preciso de documento?",
+        resposta:
+          "Sim. Documento com foto obrigatório — é viagem interestadual entre Paraíba e Rio Grande do Norte. Traga RG, CNH ou passaporte.",
       },
       {
         pergunta: "Criança paga?",
         resposta:
-          "Abaixo de 5 anos não paga. De 5 a 11 anos: R$ 128. A partir de 12 anos: valor adulto.",
+          "Abaixo de 5 anos não paga. De 5 a 11 anos: R$ 128. A partir de 12 anos: valor adulto. Crianças devem estar acompanhadas por responsável.",
+      },
+      {
+        pergunta: "Quanto tempo dura a viagem?",
+        resposta:
+          "Cerca de 2h de João Pessoa até Pipa. O retorno é à noite, com chegada ao hotel após o pôr do sol.",
+      },
+      {
+        pergunta: "Dá para ver golfinhos?",
+        resposta:
+          "Em alguns dias, dá. Os golfinhos aparecem com mais frequência na Praia do Madeiro e em mar aberto. Para garantir, recomendamos pagar um passeio de barco no local (à parte).",
+      },
+      {
+        pergunta: "Qual praia é melhor para banho em Pipa?",
+        resposta:
+          "Praia do Amor e Praia do Madeiro são as mais paradisíacas. Praia do Moleque tem mais agito. Praia Central da vila é boa para combinar com restaurantes e lojinhas.",
+      },
+      {
+        pergunta: "Qual é a política de cancelamento?",
+        resposta:
+          "Em caso de imprevistos com aviso de 24h, remarcamos sem custo. Cancelamentos pelo cliente: consulte a política completa no WhatsApp.",
       },
     ],
+    depoimento: {
+      texto:
+        "[CONFIRMAR COM MURILLO: depoimento real de cliente sobre Pipa]",
+      autor: "[CONFIRMAR: nome e cidade do cliente]",
+    },
+    temAvaliacoes: false,
+    avaliacoes: [],
+    informacoesPraticas: {
+      oqueLevar: [
+        "Documento com foto (obrigatório)",
+        "Roupa de banho (vista por baixo)",
+        "Toalha",
+        "Protetor solar biodegradável",
+        "Chapéu ou boné",
+        "Câmera",
+        "Tênis confortável para a vila (ruas de pedra)",
+        "Dinheiro em espécie e cartão",
+      ],
+      pontoEncontro:
+        "Buscamos você no hotel em João Pessoa, em regiões atendidas (Tambaú, Cabo Branco, Manaíra, Bessa). Ponto e horário exatos no voucher.",
+      horario:
+        "Saída pela manhã (horário confirmado no WhatsApp). Retorno à noite ao hotel.",
+    },
   },
 
   {
@@ -1694,26 +2325,152 @@ export const passeios: Passeio[] = [
     preco: "R$ 160",
     duracao: "Dia inteiro",
     saida: "Saída pela manhã · Horário confirmado por WhatsApp",
+    h1: "Natal saindo de João Pessoa — Cajueiro de Pirangi, Foguetes e Ponta Negra",
+    metaDescription:
+      "Bate-volta de João Pessoa para Natal (RN): Maior Cajueiro do Mundo, Barreira do Inferno, Pirangi e Ponta Negra. R$ 160 com transporte. Reserve no WhatsApp!",
+    subtituloHero:
+      "Saída pela manhã, retorno à noite. Transporte João Pessoa → Natal → João Pessoa em veículo confortável para um dia inteiro de praias e história potiguar.",
     descricao:
       "Maior cajueiro do mundo, Centro de Lançamento de Foguetes e praias mornas de Ponta Negra.",
-    incluso: ["Transporte (João Pessoa → Natal → João Pessoa)"],
-    naoIncluso: ["Alimentação"],
-    observacoes:
-      "Documento com foto obrigatório. Disponibilidade: [CONSULTAR].",
-    idealPara: ["Quem quer conhecer Natal a partir de João Pessoa"],
+    lead:
+      "Quer conhecer a capital potiguar em um dia, sem mudar de hotel?\n\nA gente faz o bate-volta a Natal saindo de João Pessoa pela manhã. São cerca de 3h de viagem em veículo confortável. Você ganha um dia inteiro para conhecer o Maior Cajueiro do Mundo (em Pirangi), o Centro de Lançamento da Barreira do Inferno e as praias mornas de Pirangi e Ponta Negra — incluindo o Morro do Careca, cartão postal da cidade.\n\nDocumento com foto é obrigatório (viagem interestadual PB → RN). Alimentação não está inclusa.",
+    descricaoSensorial:
+      "A van busca você no hotel pela manhã (horário confirmado no WhatsApp). O trajeto até Natal passa por estradas tranquilas, com paisagem nordestina.\n\nEm Pirangi do Norte você visita o Maior Cajueiro do Mundo — uma árvore tão grande que cobre quase 9.000 m². Caminhar por baixo dela é uma experiência diferente. Depois, a Barreira do Inferno: Centro de Lançamento de Foguetes da Força Aérea Brasileira (visita externa).\n\nA tarde é nas praias. Pirangi tem água morna e areia clara. Ponta Negra é o cartão postal — o Morro do Careca é aquela duna gigante que aparece em toda foto. Tempo livre para banho, almoço (não incluso) e descanso. Antes do retorno, combinamos o ponto e horário. À noite, transporte de volta para João Pessoa.",
+    coverImage: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
     imagemAlt: "Ponta Negra em Natal, Rio Grande do Norte",
+    roteiroNarrativo: [
+      {
+        emoji: "🚐",
+        titulo: "Embarque pela manhã",
+        texto:
+          "Buscamos você no hotel em João Pessoa. Horário ajustado para chegar em Natal com tempo de aproveitar.",
+      },
+      {
+        emoji: "🛣️",
+        titulo: "Viagem João Pessoa → Natal",
+        texto:
+          "Cerca de 3h de viagem em veículo confortável, com parada técnica. Documento com foto obrigatório (interestadual PB → RN).",
+      },
+      {
+        emoji: "🌳",
+        titulo: "Maior Cajueiro do Mundo (Pirangi)",
+        texto:
+          "Visita ao cajueiro gigante de Pirangi do Norte, com cerca de 9.000 m² de copa. Caminhada por baixo da árvore, fotos, mirante.",
+      },
+      {
+        emoji: "🚀",
+        titulo: "Centro de Lançamento Barreira do Inferno",
+        texto:
+          "Passagem pelo Centro de Lançamento de Foguetes da Força Aérea Brasileira (visita externa, sem entrada).",
+      },
+      {
+        emoji: "🏖️",
+        titulo: "Praias de Pirangi e Ponta Negra",
+        texto:
+          "Tempo nas praias mornas de Pirangi e Ponta Negra, com vista do Morro do Careca — cartão postal de Natal.",
+      },
+      {
+        emoji: "🍽️",
+        titulo: "Almoço livre (não incluso)",
+        texto:
+          "Restaurantes em Ponta Negra com comida regional e vista de mar.",
+      },
+      {
+        emoji: "🚐",
+        titulo: "Retorno à noite",
+        texto:
+          "Combinamos horário de embarque para retornar a João Pessoa à noite, com chegada ao hotel.",
+      },
+    ],
+    rotario: [
+      "Saída de João Pessoa pela manhã",
+      "Viagem ~3h (com parada técnica)",
+      "Maior Cajueiro do Mundo em Pirangi",
+      "Centro de Lançamento Barreira do Inferno",
+      "Praia de Pirangi e Praia de Ponta Negra (Morro do Careca)",
+      "Almoço (não incluso)",
+      "Retorno a João Pessoa à noite",
+    ],
+    incluso: [
+      "Transporte ida e volta (João Pessoa ↔ Natal) em veículo confortável",
+      "Condutor credenciado",
+      "Orientação e atendimento (Murillo ou equipe)",
+    ],
+    naoIncluso: [
+      "Alimentação (almoço, bebidas, lanches)",
+      "Entradas em atrações que cobrem ingresso (quando houver)",
+      "Compras",
+      "Pedágios e taxas locais (quando aplicável)",
+    ],
+    observacoes:
+      "Documento com foto obrigatório (viagem interestadual PB → RN). Saída sujeita a número mínimo de passageiros. Retorno à noite.",
+    nomeCurto: "Natal",
+    idealPara: [
+      "Quem quer conhecer Natal a partir de João Pessoa",
+      "Famílias",
+      "Casais",
+      "Curiosos por história e ciência (cajueiro + foguetes)",
+    ],
     faq: [
       {
-        pergunta: "O que está incluso?",
+        pergunta: "O que está incluso nos R$ 160?",
         resposta:
-          "Transporte de ida e volta. Alimentação por conta do visitante.",
+          "Transporte de ida e volta (João Pessoa ↔ Natal) em veículo confortável, com condutor credenciado e orientação. Alimentação, entradas e compras são por conta do visitante.",
+      },
+      {
+        pergunta: "Preciso de documento?",
+        resposta:
+          "Sim. Documento com foto obrigatório — é viagem interestadual entre Paraíba e Rio Grande do Norte. Traga RG, CNH ou passaporte.",
       },
       {
         pergunta: "Criança paga?",
         resposta:
-          "Abaixo de 5 anos não paga. De 5 a 11 anos: R$ 128. A partir de 12 anos: valor adulto.",
+          "Abaixo de 5 anos não paga. De 5 a 11 anos: R$ 128. A partir de 12 anos: valor adulto. Crianças devem estar acompanhadas por responsável.",
+      },
+      {
+        pergunta: "Quanto tempo dura a viagem?",
+        resposta:
+          "Cerca de 3h de João Pessoa até Natal. O retorno é à noite, com chegada ao hotel após o pôr do sol.",
+      },
+      {
+        pergunta: "Dá para entrar no cajueiro?",
+        resposta:
+          "Sim. O Maior Cajueiro do Mundo tem entrada paga (não inclusa no valor do passeio). Vale muito a visita — caminhar por baixo de uma única árvore que cobre 9.000 m² é uma experiência única.",
+      },
+      {
+        pergunta: "É possível entrar na Barreira do Inferno?",
+        resposta:
+          "A visita à Barreira do Inferno (Centro de Lançamento de Foguetes da FAB) é externa nesse passeio. Para visitação interna, é necessário agendamento prévio com a Força Aérea — não está incluso.",
+      },
+      {
+        pergunta: "Qual é a política de cancelamento?",
+        resposta:
+          "Em caso de imprevistos com aviso de 24h, remarcamos sem custo. Cancelamentos pelo cliente: consulte a política completa no WhatsApp.",
       },
     ],
+    depoimento: {
+      texto:
+        "[CONFIRMAR COM MURILLO: depoimento real de cliente sobre Natal]",
+      autor: "[CONFIRMAR: nome e cidade do cliente]",
+    },
+    temAvaliacoes: false,
+    avaliacoes: [],
+    informacoesPraticas: {
+      oqueLevar: [
+        "Documento com foto (obrigatório)",
+        "Roupa de banho (vista por baixo)",
+        "Toalha",
+        "Protetor solar biodegradável",
+        "Chapéu ou boné",
+        "Câmera",
+        "Tênis confortável",
+        "Dinheiro em espécie e cartão",
+      ],
+      pontoEncontro:
+        "Buscamos você no hotel em João Pessoa, em regiões atendidas (Tambaú, Cabo Branco, Manaíra, Bessa). Ponto e horário exatos no voucher.",
+      horario:
+        "Saída pela manhã (horário confirmado no WhatsApp). Retorno à noite ao hotel.",
+    },
   },
 ];
 
