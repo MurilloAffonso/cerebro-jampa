@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Analytics } from "@/components/Analytics";
+import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
 import { generateLocalBusinessSchema, SITE_URL } from "@/lib/seo";
 import { routing, type Locale } from "@/i18n/routing";
 import "@/styles/globals.css";
@@ -134,6 +135,7 @@ export default async function LocaleLayout({
             dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
           />
           <Analytics />
+          <VercelAnalytics />
           <Header />
           <main className="flex-1" style={{ paddingTop: "var(--header-h)" }}>
             {children}
