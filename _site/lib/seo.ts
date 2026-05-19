@@ -6,8 +6,9 @@
  */
 
 import { SeoMeta } from "@/types";
+import { empresa } from "@/data/empresa";
 
-const SITE_URL = "https://vempassearjampacom.netlify.app";
+export const SITE_URL = `https://${empresa.dominio}`;
 const BRAND_NAME = "Vem Passear em Jampa";
 const WHATSAPP = "+55 83 9908-7830";
 
