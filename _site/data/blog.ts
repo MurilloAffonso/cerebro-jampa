@@ -818,6 +818,250 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+
+  {
+    slug: "melhores-passeios-joao-pessoa",
+    title: "Melhores Passeios em João Pessoa: ranking honesto por quem organiza",
+    description:
+      "Ranking dos melhores passeios em João Pessoa por quem organiza: piscinas naturais, litoral sul, pôr do sol no Jacaré e city tour — com critério.",
+    category: "Guia da Cidade",
+    cluster: "guia-cidade",
+    status: "published",
+    updatedAt: "2026-05-19",
+    author: AUTHOR,
+    readingTime: 11,
+    keywords: [
+      "melhores passeios João Pessoa",
+      "passeios João Pessoa",
+      "ranking passeios João Pessoa",
+      "o que fazer João Pessoa",
+      "melhores atrações João Pessoa",
+      "passeio imperdível João Pessoa",
+    ],
+    relatedPasseios: [
+      "seixas",
+      "areia-vermelha-catamara",
+      "litoral-sul-classico",
+      "por-do-sol-jacare",
+      "city-tour-jampa",
+    ],
+    faq: [
+      {
+        pergunta: "Qual é o passeio mais vendido em João Pessoa?",
+        resposta:
+          "Seixas e Areia Vermelha disputam essa posição. Ambos dependem de maré baixa e oferecem piscinas naturais. Quando a maré favorece, são os primeiros a esgotar. O Litoral Sul Clássico (Gramame, Amor, Tambaba, Coqueirinho) vem logo em seguida — independente de maré, opera quase todos os dias.",
+      },
+      {
+        pergunta: "Qual passeio combina com criança pequena?",
+        resposta:
+          "Picãozinho e o Pôr do Sol do Jacaré são os mais tranquilos com crianças. Picãozinho tem águas rasas, travessia curta e o catamarã é a base. Jacaré é uma navegação curta de 1h30 com música e dança, sem esforço físico. Litoral Sul com criança grande (5+) também vai bem.",
+      },
+      {
+        pergunta: "Posso fazer todos os passeios em poucos dias?",
+        resposta:
+          "Com 3 dias bem planejados, dá pra ver o essencial: Seixas/Picãozinho em um dia, Litoral Sul em outro, Litoral Norte com pôr do sol no terceiro. Areia Vermelha encaixa quando a maré ajuda. Combos como Litoral Norte + Areia Vermelha resolvem 2 atrações em 1 dia.",
+      },
+      {
+        pergunta: "Qual passeio vale mais o investimento?",
+        resposta:
+          "Em custo-benefício, Litoral Sul Clássico (R$ 80) entrega 4 praias com transfer e guia — não tem como bater. Seixas (R$ 60) oferece a experiência mais fotografável da cidade. Pôr do Sol do Jacaré (R$ 90) é uma experiência única no mundo. Para grupo, vale fazer todos.",
+      },
+    ],
+    sections: [
+      {
+        heading: "Por que esse ranking é diferente",
+        body: "Quem mora em João Pessoa e organiza passeio todo dia sabe que existe diferença entre passeio bom em foto e passeio bom de verdade. Esse ranking é montado a partir do que clientes dizem quando voltam, do que pede repetição, do que combina com criança, do que rende foto sem pose forçada, do que respeita seu tempo. Os preços citados são reais e atualizados em 2026. Para combinar passeios e checar maré, fala com o Murillo no WhatsApp — ele monta o roteiro do seu jeito.",
+      },
+      {
+        heading: "1. Piscinas Naturais do Seixas — o melhor da Paraíba em água",
+        body: "Seixas fica no ponto mais oriental das Américas e tem o recife mais bonito do estado. Maré baixa, água morna, peixes coloridos, fundo cristalino. Travessia curta de catamarã em Tambaú. Em torno de 3h30 de experiência por R$ 60 por pessoa. É o passeio que mais aparece em foto de turista e o que mais ouve 'valeu cada centavo' no fim do dia. Quando a maré ajuda, ele esgota. Reserve com antecedência.",
+      },
+      {
+        heading: "2. Litoral Sul — Roteiro Clássico — o melhor custo-benefício",
+        body: "4 praias em um dia com transfer ida e volta, guia credenciado e R$ 80 por pessoa. Gramame para começar com calma, Amor para a falésia colorida, Tambaba (parada opcional, única praia naturista oficial do Nordeste) e Coqueirinho para o almoço com vista. Independente de maré, opera quase todos os dias. Se você só pode fazer um passeio terrestre em Jampa, faz esse.",
+      },
+      {
+        heading: "3. Areia Vermelha — Catamarã — a foto mais instagramável",
+        body: "Banco de areia que aparece com a maré baixa em Cabedelo, cercado por piscinas naturais verde-esmeralda. Catamarã com toboágua, bar a bordo e churrasqueira. R$ 70 por pessoa, ~3h de experiência. Depende de maré (a gente confirma a data certa). É o cenário que mais aparece no Instagram dos turistas — e por bons motivos.",
+      },
+      {
+        heading: "4. Pôr do Sol do Jacaré — a experiência única no mundo",
+        body: "Há mais de 20 anos, Jurandy do Sax toca o Bolero de Ravel ao vivo numa canoa no Rio Paraíba enquanto o sol desce. 1h30 de navegação em catamarã com violino de Belle Soares, dança de forró pé de serra e o saxofone do Jurandy. R$ 90 por pessoa. Acontece todos os dias. Combina com Litoral Norte no mesmo dia.",
+      },
+      {
+        heading: "5. Combo Jampa — Litoral Sul com Quadriciclo — adrenalina + praia",
+        body: "Para quem quer praia de manhã e aventura à tarde, sem dirigir. Mesmas 4 praias do Clássico do Litoral Sul + trilha de quadriciclo em Coqueirinho (Mirante Dedo de Deus, Mirante das Tartarugas, Castelinho, Shopping Rural). R$ 150 a R$ 310 dependendo do modelo (sem quad, individual ou dupla). Mínimo 7 anos para operar o quad.",
+      },
+      {
+        heading: "6. Combo Litoral Norte com Areia Vermelha — 2 em 1",
+        body: "História colonial em Cabedelo (Reserva de Tartarugas, Dique, Fortaleza de Santa Catarina) + catamarã para Areia Vermelha + Pôr do Sol do Jacaré com Bolero de Ravel. R$ 80 sem catamarã ou R$ 160 com catamarã. Dia completo, depende de maré favorável.",
+      },
+      {
+        heading: "7. City Tour Jampa — para entender a cidade",
+        body: "Para quem chega cedo no destino e quer absorver João Pessoa antes de ir pra praia. Letreiro 'João Pessoa', Farol do Cabo Branco, Estação Cabo Branco (Niemeyer), Bosque dos Sonhos, Centro Cultural São Francisco, Hotel Globo, Praça Sólon de Lucena. R$ 80 por pessoa, ~3h30. De terça a domingo (segunda fecha).",
+      },
+      {
+        heading: "Como combinar tudo isso",
+        body: "Manda mensagem pro Murillo no WhatsApp com a data da sua viagem. Ele checa a tábua de marés, confirma quais passeios encaixam no seu calendário e monta a ordem. Sem formulário, sem central, sem intermediário. É a forma mais rápida de garantir vaga nos passeios que dependem de maré e de evitar arrependimento de quem chega com tudo pré-planejado e descobre que a maré não ajuda no dia.",
+      },
+    ],
+  },
+
+  {
+    slug: "litoral-sul-ou-norte-joao-pessoa",
+    title: "Litoral Sul ou Litoral Norte de João Pessoa: qual escolher?",
+    description:
+      "Comparação honesta entre Litoral Sul e Litoral Norte de João Pessoa: quando ir em cada, perfil ideal e como combinar os dois no roteiro.",
+    category: "Guia da Cidade",
+    cluster: "guia-cidade",
+    status: "published",
+    updatedAt: "2026-05-19",
+    author: AUTHOR,
+    readingTime: 9,
+    keywords: [
+      "litoral sul ou norte João Pessoa",
+      "litoral sul João Pessoa",
+      "litoral norte João Pessoa",
+      "diferenças litoral João Pessoa",
+      "comparação praias João Pessoa",
+      "qual lado é melhor João Pessoa",
+    ],
+    relatedPasseios: [
+      "litoral-sul-classico",
+      "combo-jampa-quadriciclo",
+      "litoral-norte-classico",
+      "combo-litoral-norte-areia-vermelha",
+      "por-do-sol-jacare",
+    ],
+    faq: [
+      {
+        pergunta: "Se eu tiver só um dia, qual escolher?",
+        resposta:
+          "Litoral Sul. Em um dia, você vê 4 praias diferentes (Gramame, Amor, Tambaba, Coqueirinho) com transfer e guia por R$ 80. Litoral Norte é mais espalhado e o Pôr do Sol do Jacaré só vale com tempo pra ir e voltar tranquilo — o que torna o pacote mais longo.",
+      },
+      {
+        pergunta: "Qual é mais família-friendly?",
+        resposta:
+          "Litoral Norte. O ritmo é mais calmo: Reserva de Tartarugas, Fortaleza, Dique, almoço em Cabedelo e Pôr do Sol do Jacaré com música ao vivo. Sem trilha, sem ondas fortes. Litoral Sul tem falésias e praias com mais agito — bom para crianças maiores, casais e grupos de amigos.",
+      },
+      {
+        pergunta: "Qual é melhor para fotos?",
+        resposta:
+          "Os dois rendem fotos lindas, mas em estilos diferentes. Litoral Sul tem as falésias coloridas e o cenário de coqueiro com mar (a foto mais cliché de Jampa) — Coqueirinho e Amor. Litoral Norte tem o banco de areia de Areia Vermelha (a foto mais instagram) e a silhueta do Bolero de Ravel ao pôr do sol.",
+      },
+      {
+        pergunta: "Dá para combinar os dois lados no mesmo dia?",
+        resposta:
+          "Não recomendamos. Cada um já leva o dia inteiro. O ideal é Litoral Sul em um dia e Litoral Norte em outro. Se você só tem um dia, escolhe um e fala com o Murillo sobre encaixar passeios menores nos demais.",
+      },
+    ],
+    sections: [
+      {
+        heading: "Geografia rápida: o que é cada lado",
+        body: "João Pessoa fica no meio do litoral paraibano. A partir da orla, o litoral sul desce pela costa em direção ao Conde e à Praia Bela. O litoral norte sobe em direção a Cabedelo, onde o Rio Paraíba encontra o mar. Os dois lados são acessíveis por carro em até 40 minutos da orla central. Mas o que cada lado oferece é muito diferente — e essa diferença é o que vamos detalhar.",
+      },
+      {
+        heading: "Litoral Sul: praias, falésias e adrenalina",
+        body: "O Litoral Sul é o cartão postal de João Pessoa. Começa em Jacarapé, passa por Gramame, Amor, Tambaba, Coqueirinho, Tabatinga, Carapibus e Praia Bela. A maioria das praias tem falésias coloridas (laranja, amarelo, rosa), coqueirais e mar aberto. Coqueirinho é o ponto alto, com a foto mais conhecida da Paraíba (falésia + coqueiro + mar). Tem também a trilha de quadriciclo (Mirante Dedo de Deus, Castelinho da Princesa) para quem quer adrenalina. É o lado ideal para um dia inteiro de praia, com saídas em torno das 8h-9h e retorno por volta das 16h30.",
+      },
+      {
+        heading: "Litoral Norte: história, mar calmo e o pôr do sol",
+        body: "O Litoral Norte de João Pessoa tem outro DNA. Cabedelo é a cidade vizinha e centraliza tudo: Reserva de Desova das Tartarugas Marinhas (Projeto Tamar), Dique de Cabedelo (encontro do Rio Paraíba com o mar), Fortaleza de Santa Catarina (período colonial português) e o icônico Pôr do Sol do Jacaré, com Bolero de Ravel ao vivo. A noroeste, o banco de areia de Areia Vermelha aparece com a maré baixa em frente à Praia de Camboinha. É um dia de mar mais calmo, história e o entardecer mais marcante do Brasil.",
+      },
+      {
+        heading: "Como escolher entre os dois",
+        body: "Se você gosta de praia ativa, falésia, foto colorida e tem energia para um dia inteiro de orla — Litoral Sul. Se você prefere ritmo contemplativo, história, mar calmo e um pôr do sol marcante — Litoral Norte. Se vai com criança pequena ou idoso — Litoral Norte é mais leve. Se vai com casal jovem ou grupo de amigos buscando fotos e adrenalina — Litoral Sul (especialmente com quadriciclo).",
+      },
+      {
+        heading: "O ideal é fazer os dois",
+        body: "Em 2 ou 3 dias de roteiro, dá pra fazer os dois lados com folga. Dia 1: Litoral Sul Clássico ou Combo Jampa com Quadriciclo. Dia 2: Litoral Norte + Areia Vermelha + Pôr do Sol do Jacaré. Os roteiros já estão estruturados — basta combinar com o Murillo no WhatsApp considerando a tábua de marés. Quando a maré ajuda, encaixamos Areia Vermelha. Quando não, ajustamos sem perder o melhor de cada lado.",
+      },
+      {
+        heading: "Fale direto com quem organiza",
+        body: "Murillo conhece a tábua de marés do mês inteiro de cabeça e sabe qual lado funciona melhor no seu calendário. Manda mensagem pelo WhatsApp com a data da sua viagem e ele monta a ordem dos passeios para você não perder o melhor de cada lado.",
+      },
+    ],
+  },
+
+  {
+    slug: "porto-de-galinhas-de-joao-pessoa-vale-a-pena",
+    title: "Porto de Galinhas saindo de João Pessoa vale a pena? Guia honesto",
+    description:
+      "Avaliação honesta do bate-volta a Porto de Galinhas saindo de João Pessoa: quando vale, como é o transporte, jangadas e o que esperar do dia.",
+    category: "Logística",
+    cluster: "logistica",
+    status: "published",
+    updatedAt: "2026-05-19",
+    author: AUTHOR,
+    readingTime: 8,
+    keywords: [
+      "Porto de Galinhas João Pessoa",
+      "Porto de Galinhas saindo de João Pessoa",
+      "bate-volta Porto de Galinhas",
+      "vale a pena Porto de Galinhas",
+      "passeio Porto de Galinhas João Pessoa",
+      "excursão Porto de Galinhas Paraíba",
+    ],
+    relatedPasseios: [
+      "porto-de-galinhas",
+      "praia-de-pipa",
+      "natal",
+      "seixas",
+      "areia-vermelha-catamara",
+    ],
+    faq: [
+      {
+        pergunta: "Quanto tempo de viagem para Porto de Galinhas saindo de João Pessoa?",
+        resposta:
+          "Cerca de 2h30 a 3h de ida, dependendo do trânsito e da rota. Saída cedo pela manhã, retorno à noite. Veículo confortável, com parada técnica para banheiro e lanche.",
+      },
+      {
+        pergunta: "Documento obrigatório?",
+        resposta:
+          "Sim. Documento com foto é obrigatório — é viagem interestadual entre Paraíba (PB) e Pernambuco (PE). RG, CNH ou passaporte funcionam. Sem documento, embarque negado.",
+      },
+      {
+        pergunta: "A jangada para as piscinas naturais está inclusa?",
+        resposta:
+          "Não. O valor de R$ 160 cobre o transporte ida e volta. A jangada para as piscinas naturais é paga separadamente no local (varia conforme grupo e temporada). Alimentação também é à parte.",
+      },
+      {
+        pergunta: "Quando NÃO vale a pena fazer o bate-volta?",
+        resposta:
+          "Quando você tem só 2-3 dias em João Pessoa. Nesse caso, melhor aproveitar Jampa (Seixas, Litoral Sul, Areia Vermelha) que tem qualidade equivalente sem perder um dia inteiro em estrada. Se você tem 5+ dias, vale incluir.",
+      },
+    ],
+    sections: [
+      {
+        heading: "Quem essa pergunta costuma fazer",
+        body: "Turista que está em João Pessoa por 4-7 dias, ouve falar de Porto de Galinhas e quer entender se faz sentido incluir no roteiro sem mudar de hotel. Resposta curta: vale, se você tem dias sobrando e quer conhecer um destino diferente. Mas se você está com 2-3 dias, vale mais aproveitar Jampa — que tem piscinas naturais equivalentes e logística mais simples.",
+      },
+      {
+        heading: "Como funciona o bate-volta",
+        body: "A gente busca você no hotel pela manhã, cerca de 2h30 a 3h de viagem em veículo confortável até Porto de Galinhas (PE). Tempo livre no destino para você curtir do seu jeito: vila com lojas e restaurantes, praia central, piscinas naturais via jangada (pagamento no local) e almoço (não incluso). À noite, volta para João Pessoa. R$ 160 por pessoa, transporte ida e volta. Documento com foto obrigatório.",
+      },
+      {
+        heading: "O que esperar das piscinas naturais",
+        body: "As piscinas naturais de Porto de Galinhas são famosas: formações de coral a poucos metros da praia que criam aquários a céu aberto com peixes coloridos e água verde-cristalina. Você sai de jangada da praia central até as piscinas. Já é experiência cobrada lá (não incluída no R$ 160 do bate-volta) — varia conforme temporada e tamanho do grupo. Vale negociar e checar preço antes de embarcar.",
+      },
+      {
+        heading: "Comparação honesta: Porto de Galinhas vs. Seixas e Picãozinho",
+        body: "As piscinas naturais de Porto de Galinhas e as de João Pessoa (Seixas, Picãozinho, Areia Vermelha) são parecidas em conceito: corais que formam piscinas com a maré baixa. A diferença real está na logística. Em Jampa, você sai do hotel, faz o passeio em 3h e está de volta à tarde. Em Porto de Galinhas, é um dia inteiro de logística com 5-6h de estrada. Para quem tem tempo, vale a experiência. Para quem está apertado de dias, melhor priorizar Jampa.",
+      },
+      {
+        heading: "Quando vale (e quando não vale) fazer o bate-volta",
+        body: "Vale: você tem 5+ dias em João Pessoa, já fez os principais passeios de Jampa, quer conhecer um destino diferente do nordeste pernambucano, e topa um dia inteiro de logística. Não vale: você tem 2-3 dias, está focado em conhecer Jampa, ou prefere ritmo lento. O bate-volta consome o dia inteiro — se for o melhor uso dos seus dias é uma decisão de prioridade.",
+      },
+      {
+        heading: "Outras opções de bate-volta",
+        body: "Se a ideia é conhecer outro destino do nordeste a partir de João Pessoa, também oferecemos bate-volta para Praia de Pipa (RN, ~2h de viagem) e Natal (RN, ~3h de viagem). Pipa tem vila charmosa e praias paradisíacas. Natal tem o Maior Cajueiro do Mundo e Ponta Negra. Ambos R$ 160 por pessoa, ida e volta. Documento obrigatório.",
+      },
+      {
+        heading: "Como decidir",
+        body: "Manda mensagem para o Murillo no WhatsApp com a data e quantidade de dias da sua viagem. Ele analisa o que faz mais sentido no seu calendário: priorizar Jampa (sem perder dia em estrada), incluir Porto de Galinhas (se sobram dias), ou trocar por Pipa/Natal. É orientação direta de quem organiza esses bate-voltas toda semana.",
+      },
+    ],
+  },
 ];
 
 export const blogClusters: Record<BlogCluster, { nome: string; descricao: string }> = {

@@ -1270,4 +1270,369 @@ export const blogPostsTranslations: Record<
       ],
     },
   },
+
+  "melhores-passeios-joao-pessoa": {
+    en: {
+      title: "Best Tours in João Pessoa: an honest ranking by the organizer",
+      description:
+        "Honest ranking of the best tours in João Pessoa by the person who organizes them: natural pools, south coast, Jacaré sunset and city tour — with criteria.",
+      category: "City Guide",
+      faq: [
+        {
+          pergunta: "What's the best-selling tour in João Pessoa?",
+          resposta:
+            "Seixas and Areia Vermelha share that spot. Both depend on low tide and offer natural pools. When the tide favors, they sell out first. The Classic South Coast (Gramame, Amor, Tambaba, Coqueirinho) comes next — tide-independent, runs almost every day.",
+        },
+        {
+          pergunta: "Which tour suits small kids?",
+          resposta:
+            "Picãozinho and Sunset at Jacaré are the easiest with children. Picãozinho has shallow waters, short crossing and the catamaran as base. Jacaré is a 1h30 short cruise with music and dance, no physical effort. Classic South Coast with older kids (5+) also works.",
+        },
+        {
+          pergunta: "Can I fit all tours in a few days?",
+          resposta:
+            "With 3 well-planned days, you can see the essentials: Seixas/Picãozinho one day, South Coast another, North Coast with sunset on the third. Areia Vermelha fits when the tide allows. Combos like North Coast + Areia Vermelha cover 2 attractions in 1 day.",
+        },
+        {
+          pergunta: "Which tour gives the most value?",
+          resposta:
+            "By cost-benefit, the Classic South Coast (R$ 80) delivers 4 beaches with transfer and guide — unbeatable. Seixas (R$ 60) offers the city's most photogenic experience. Sunset at Jacaré (R$ 90) is a one-of-a-kind experience. For groups, do them all.",
+        },
+      ],
+      sections: [
+        {
+          heading: "Why this ranking is different",
+          body: "Someone who lives in João Pessoa and runs tours daily knows there's a difference between a tour that looks good in photos and a tour that's actually good. This ranking is built from what clients say when they come back, what gets repeated, what works with kids, what produces effortless photos, what respects your time. Prices mentioned are real and updated for 2026. To combine tours and check tides, message Murillo on WhatsApp — he builds the itinerary your way.",
+        },
+        {
+          heading: "1. Seixas Natural Pools — Paraíba's best in water",
+          body: "Seixas is at the easternmost point of the Americas and has the prettiest reef in the state. Low tide, warm water, colorful fish, crystal-clear bottom. Short catamaran crossing from Tambaú. About 3h30 of experience for R$ 60 per person. It's the tour that shows up most in tourist photos and the one that earns 'worth every cent' at day's end. When tide cooperates, it sells out. Book ahead.",
+        },
+        {
+          heading: "2. Classic South Coast — best value for money",
+          body: "4 beaches in one day with round-trip transfer, accredited guide and R$ 80 per person. Gramame to ease in, Amor for the colorful cliff, Tambaba (optional stop, the only official nudist beach in the Northeast) and Coqueirinho for lunch with a view. Tide-independent, runs almost every day. If you can only do one land tour in Jampa, do this one.",
+        },
+        {
+          heading: "3. Areia Vermelha Catamaran — the most Instagrammable photo",
+          body: "Sandbank that emerges at low tide in Cabedelo, surrounded by emerald-green natural pools. Catamaran with water slide, onboard bar and grill. R$ 70 per person, ~3h of experience. Tide-dependent (we confirm the right date). It's the scene that shows up most on tourist Instagram — for good reason.",
+        },
+        {
+          heading: "4. Sunset at Jacaré — a one-of-a-kind experience",
+          body: "For over 20 years, Jurandy do Sax has played Ravel's Bolero live from a canoe on the Paraíba River as the sun sets. 1h30 of catamaran sailing with Belle Soares' violin, forró pé de serra dance and Jurandy's saxophone. R$ 90 per person. Happens daily. Pairs with North Coast on the same day.",
+        },
+        {
+          heading: "5. Jampa Combo — South Coast with ATV — beach + adrenaline",
+          body: "For anyone wanting beach in the morning and adventure in the afternoon, without driving. Same 4 beaches as Classic South Coast + ATV trail in Coqueirinho (Mirante Dedo de Deus, Mirante das Tartarugas, Castelinho, Shopping Rural). R$ 150 to R$ 310 depending on the package (no ATV, single or double). Minimum 7 years old to ride.",
+        },
+        {
+          heading: "6. North Coast Combo with Areia Vermelha — 2-in-1",
+          body: "Colonial history in Cabedelo (Sea Turtle Reserve, Dike, Fort Santa Catarina) + catamaran to Areia Vermelha + Sunset at Jacaré with Ravel's Bolero. R$ 80 without catamaran or R$ 160 with catamaran. Full day, tide-dependent.",
+        },
+        {
+          heading: "7. Jampa City Tour — to understand the city",
+          body: "For those who arrive early and want to absorb João Pessoa before hitting the beach. 'João Pessoa' sign, Cabo Branco Lighthouse, Cabo Branco Station (Niemeyer), Bosque dos Sonhos, São Francisco Cultural Center, Hotel Globo, Sólon de Lucena Park. R$ 80 per person, ~3h30. Tuesday to Sunday (closed Mondays).",
+        },
+        {
+          heading: "How to combine all this",
+          body: "Send Murillo a WhatsApp message with your travel dates. He checks the tide table, confirms which tours fit your calendar and arranges the order. No form, no call center, no middleman. It's the fastest way to secure a spot in tide-dependent tours and avoid the disappointment of arriving with everything pre-planned only to find the tide doesn't cooperate.",
+        },
+      ],
+    },
+    es: {
+      title: "Mejores Tours en João Pessoa: ranking honesto por quien organiza",
+      description:
+        "Ranking honesto de los mejores tours en João Pessoa por quien organiza: piscinas naturales, litoral sur, atardecer del Jacaré y city tour — con criterio.",
+      category: "Guía de la Ciudad",
+      faq: [
+        {
+          pergunta: "¿Cuál es el tour más vendido en João Pessoa?",
+          resposta:
+            "Seixas y Areia Vermelha se disputan esa posición. Ambos dependen de marea baja y ofrecen piscinas naturales. Cuando la marea ayuda, son los primeros en agotarse. El Litoral Sur Clásico (Gramame, Amor, Tambaba, Coqueirinho) viene enseguida — sin depender de marea, opera casi todos los días.",
+        },
+        {
+          pergunta: "¿Qué tour combina con niño pequeño?",
+          resposta:
+            "Picãozinho y el Atardecer del Jacaré son los más tranquilos con niños. Picãozinho tiene aguas poco profundas, travesía corta y el catamarán como base. Jacaré es una navegación corta de 1h30 con música y baile, sin esfuerzo físico. Litoral Sur con niño mayor (5+) también funciona.",
+        },
+        {
+          pergunta: "¿Puedo hacer todos los tours en pocos días?",
+          resposta:
+            "Con 3 días bien planificados, puedes ver lo esencial: Seixas/Picãozinho un día, Litoral Sur otro, Litoral Norte con atardecer el tercero. Areia Vermelha encaja cuando la marea ayuda. Combos como Litoral Norte + Areia Vermelha resuelven 2 atracciones en 1 día.",
+        },
+        {
+          pergunta: "¿Qué tour vale más la inversión?",
+          resposta:
+            "En costo-beneficio, Litoral Sur Clásico (R$ 80) entrega 4 playas con transfer y guía — no hay como superarlo. Seixas (R$ 60) ofrece la experiencia más fotografiable de la ciudad. Atardecer del Jacaré (R$ 90) es una experiencia única en el mundo. Para grupo, vale hacerlos todos.",
+        },
+      ],
+      sections: [
+        {
+          heading: "Por qué este ranking es diferente",
+          body: "Quien vive en João Pessoa y organiza tours todos los días sabe que existe diferencia entre tour bueno en foto y tour realmente bueno. Este ranking se monta a partir de lo que los clientes dicen al volver, de lo que pide repetición, de lo que combina con niño, de lo que da foto sin pose forzada, de lo que respeta tu tiempo. Los precios citados son reales y actualizados en 2026. Para combinar tours y verificar marea, habla con Murillo por WhatsApp — él arma el itinerario a tu manera.",
+        },
+        {
+          heading: "1. Piscinas Naturales de Seixas — lo mejor de Paraíba en agua",
+          body: "Seixas está en el punto más oriental de las Américas y tiene el arrecife más bonito del estado. Marea baja, agua tibia, peces coloridos, fondo cristalino. Travesía corta en catamarán desde Tambaú. Cerca de 3h30 de experiencia por R$ 60 por persona. Es el tour que más aparece en foto de turista y el que más escucha 'valió cada centavo' al final del día. Cuando la marea ayuda, se agota. Reserva con antelación.",
+        },
+        {
+          heading: "2. Litoral Sur — Itinerario Clásico — mejor costo-beneficio",
+          body: "4 playas en un día con transfer ida y vuelta, guía acreditado y R$ 80 por persona. Gramame para empezar tranquilo, Amor para el acantilado colorido, Tambaba (parada opcional, la única playa naturista oficial del Nordeste) y Coqueirinho para el almuerzo con vista. Sin depender de marea, opera casi todos los días. Si solo puedes hacer un tour terrestre en Jampa, haz este.",
+        },
+        {
+          heading: "3. Areia Vermelha en Catamarán — la foto más instagramable",
+          body: "Banco de arena que aparece con marea baja en Cabedelo, rodeado de piscinas naturales verde-esmeralda. Catamarán con tobogán, bar a bordo y parrilla. R$ 70 por persona, ~3h de experiencia. Depende de marea (confirmamos la fecha correcta). Es el escenario que más aparece en el Instagram de los turistas — por buenas razones.",
+        },
+        {
+          heading: "4. Atardecer del Jacaré — la experiencia única en el mundo",
+          body: "Hace más de 20 años, Jurandy do Sax toca el Bolero de Ravel en vivo en una canoa en el Río Paraíba mientras el sol baja. 1h30 de navegación en catamarán con violín de Belle Soares, baile de forró pé de serra y el saxofón de Jurandy. R$ 90 por persona. Sucede todos los días. Combina con Litoral Norte el mismo día.",
+        },
+        {
+          heading: "5. Combo Jampa — Litoral Sur con Cuatriciclo — adrenalina + playa",
+          body: "Para quien quiere playa por la mañana y aventura por la tarde, sin conducir. Mismas 4 playas del Clásico del Litoral Sur + trail en cuatriciclo en Coqueirinho (Mirante Dedo de Deus, Mirante das Tartarugas, Castelinho, Shopping Rural). R$ 150 a R$ 310 según el modelo (sin cuatri, individual o doble). Mínimo 7 años para conducir el cuatri.",
+        },
+        {
+          heading: "6. Combo Litoral Norte con Areia Vermelha — 2 en 1",
+          body: "Historia colonial en Cabedelo (Reserva de Tortugas, Dique, Fortaleza de Santa Catarina) + catamarán a Areia Vermelha + Atardecer del Jacaré con Bolero de Ravel. R$ 80 sin catamarán o R$ 160 con catamarán. Día completo, depende de marea favorable.",
+        },
+        {
+          heading: "7. City Tour Jampa — para entender la ciudad",
+          body: "Para quien llega temprano al destino y quiere absorber João Pessoa antes de ir a la playa. Letrero 'João Pessoa', Faro del Cabo Branco, Estación Cabo Branco (Niemeyer), Bosque dos Sonhos, Centro Cultural São Francisco, Hotel Globo, Parque Sólon de Lucena. R$ 80 por persona, ~3h30. De martes a domingo (lunes cierra).",
+        },
+        {
+          heading: "Cómo combinar todo esto",
+          body: "Manda mensaje a Murillo por WhatsApp con la fecha de tu viaje. Él verifica la tabla de mareas, confirma qué tours encajan en tu calendario y arma el orden. Sin formulario, sin central, sin intermediario. Es la forma más rápida de garantizar lugar en los tours que dependen de marea y de evitar el arrepentimiento de llegar con todo pre-planeado y descubrir que la marea no ayuda ese día.",
+        },
+      ],
+    },
+  },
+
+  "litoral-sul-ou-norte-joao-pessoa": {
+    en: {
+      title: "South Coast or North Coast of João Pessoa: which to choose?",
+      description:
+        "Honest comparison between South Coast and North Coast of João Pessoa: when each works, ideal profile and how to combine both in your itinerary.",
+      category: "City Guide",
+      faq: [
+        {
+          pergunta: "If I only have one day, which should I choose?",
+          resposta:
+            "South Coast. In one day, you see 4 different beaches (Gramame, Amor, Tambaba, Coqueirinho) with transfer and guide for R$ 80. North Coast is more spread out and Sunset at Jacaré only works with comfortable round-trip time — which makes the package longer.",
+        },
+        {
+          pergunta: "Which is more family-friendly?",
+          resposta:
+            "North Coast. The pace is calmer: Sea Turtle Reserve, Fort, Dike, lunch in Cabedelo and Sunset at Jacaré with live music. No trail, no strong waves. South Coast has cliffs and beaches with more action — better for older kids, couples and groups of friends.",
+        },
+        {
+          pergunta: "Which is better for photos?",
+          resposta:
+            "Both produce beautiful photos, in different styles. South Coast has colorful cliffs and the coconut-tree-and-sea scene (Jampa's most cliché photo) — Coqueirinho and Amor. North Coast has the Areia Vermelha sandbank (the most Instagram-worthy photo) and the Bolero de Ravel silhouette at sunset.",
+        },
+        {
+          pergunta: "Can I combine both sides on the same day?",
+          resposta:
+            "We don't recommend it. Each one already takes the full day. The ideal is South Coast one day and North Coast another. If you only have one day, pick one and ask Murillo about fitting smaller tours into the other days.",
+        },
+      ],
+      sections: [
+        {
+          heading: "Quick geography: what each side is",
+          body: "João Pessoa sits in the middle of Paraíba's coast. From the urban shoreline, the south coast goes down toward Conde and Praia Bela. The north coast goes up toward Cabedelo, where the Paraíba River meets the sea. Both sides are reachable by car within 40 minutes from the central shoreline. But what each side offers is very different — and that's what we'll detail.",
+        },
+        {
+          heading: "South Coast: beaches, cliffs and adrenaline",
+          body: "The South Coast is João Pessoa's postcard. It starts in Jacarapé, passes through Gramame, Amor, Tambaba, Coqueirinho, Tabatinga, Carapibus and Praia Bela. Most beaches feature colorful cliffs (orange, yellow, pink), palm groves and open sea. Coqueirinho is the highlight, with Paraíba's most famous photo (cliff + palm + sea). There's also the ATV trail (Mirante Dedo de Deus, Castelinho da Princesa) for those wanting adrenaline. It's the ideal side for a full beach day, with departures around 8am-9am and return by 4:30pm.",
+        },
+        {
+          heading: "North Coast: history, calm sea and the sunset",
+          body: "João Pessoa's North Coast has a different DNA. Cabedelo is the neighboring city and the hub: Sea Turtle Nesting Reserve (Tamar Project), Cabedelo Dike (where the Paraíba River meets the sea), Fort Santa Catarina (Portuguese colonial period) and the iconic Sunset at Jacaré, with live Ravel's Bolero. To the northwest, the Areia Vermelha sandbank appears at low tide off Camboinha Beach. It's a day of calmer sea, history and Brazil's most memorable sunset.",
+        },
+        {
+          heading: "How to choose between them",
+          body: "If you like active beaches, cliffs, colorful photos and have energy for a full day on the shore — South Coast. If you prefer a contemplative pace, history, calm sea and a memorable sunset — North Coast. If you're with small kids or seniors — North Coast is lighter. If you're with a young couple or friend group hunting photos and adrenaline — South Coast (especially with ATV).",
+        },
+        {
+          heading: "The ideal is to do both",
+          body: "In 2 or 3 days of itinerary, you can do both sides comfortably. Day 1: Classic South Coast or Jampa Combo with ATV. Day 2: North Coast + Areia Vermelha + Sunset at Jacaré. The routes are already structured — just talk to Murillo on WhatsApp considering the tide table. When the tide helps, we fit Areia Vermelha in. When it doesn't, we adjust without losing the best of each side.",
+        },
+        {
+          heading: "Talk to the person who organizes",
+          body: "Murillo knows the month's tide table by heart and knows which side works best for your calendar. Send a WhatsApp message with your travel dates and he'll arrange the tour order so you don't miss the best of each side.",
+        },
+      ],
+    },
+    es: {
+      title: "¿Litoral Sur o Litoral Norte de João Pessoa: cuál elegir?",
+      description:
+        "Comparación honesta entre Litoral Sur y Litoral Norte de João Pessoa: cuándo funciona cada uno, perfil ideal y cómo combinar los dos en tu itinerario.",
+      category: "Guía de la Ciudad",
+      faq: [
+        {
+          pergunta: "Si solo tengo un día, ¿cuál elegir?",
+          resposta:
+            "Litoral Sur. En un día ves 4 playas diferentes (Gramame, Amor, Tambaba, Coqueirinho) con transfer y guía por R$ 80. El Litoral Norte está más disperso y el Atardecer del Jacaré solo vale con tiempo de ida y vuelta tranquilo — lo que hace el paquete más largo.",
+        },
+        {
+          pergunta: "¿Cuál es más family-friendly?",
+          resposta:
+            "Litoral Norte. El ritmo es más calmo: Reserva de Tortugas, Fortaleza, Dique, almuerzo en Cabedelo y Atardecer del Jacaré con música en vivo. Sin caminata, sin olas fuertes. Litoral Sur tiene acantilados y playas con más movimiento — bueno para niños mayores, parejas y grupos de amigos.",
+        },
+        {
+          pergunta: "¿Cuál es mejor para fotos?",
+          resposta:
+            "Los dos rinden fotos hermosas, en estilos diferentes. Litoral Sur tiene los acantilados de colores y la escena de cocotero con mar (la foto más cliché de Jampa) — Coqueirinho y Amor. Litoral Norte tiene el banco de arena de Areia Vermelha (la foto más instagram) y la silueta del Bolero de Ravel al atardecer.",
+        },
+        {
+          pergunta: "¿Se pueden combinar los dos lados el mismo día?",
+          resposta:
+            "No recomendamos. Cada uno ya lleva el día completo. Lo ideal es Litoral Sur un día y Litoral Norte en otro. Si solo tienes un día, elige uno y consulta a Murillo sobre encajar tours menores en los demás días.",
+        },
+      ],
+      sections: [
+        {
+          heading: "Geografía rápida: qué es cada lado",
+          body: "João Pessoa está en medio del litoral paraibano. Desde la orla urbana, el litoral sur baja hacia Conde y Praia Bela. El litoral norte sube hacia Cabedelo, donde el Río Paraíba se encuentra con el mar. Ambos lados son accesibles en auto en hasta 40 minutos desde la orla central. Pero lo que cada lado ofrece es muy diferente — y eso es lo que vamos a detallar.",
+        },
+        {
+          heading: "Litoral Sur: playas, acantilados y adrenalina",
+          body: "El Litoral Sur es la postal de João Pessoa. Empieza en Jacarapé, pasa por Gramame, Amor, Tambaba, Coqueirinho, Tabatinga, Carapibus y Praia Bela. La mayoría de las playas tienen acantilados de colores (naranja, amarillo, rosa), cocoteros y mar abierto. Coqueirinho es el punto alto, con la foto más conocida de Paraíba (acantilado + cocotero + mar). También está el trail en cuatriciclo (Mirante Dedo de Deus, Castelinho da Princesa) para quien quiere adrenalina. Es el lado ideal para un día entero de playa, con salidas alrededor de las 8h-9h y regreso a las 16h30.",
+        },
+        {
+          heading: "Litoral Norte: historia, mar calmo y el atardecer",
+          body: "El Litoral Norte de João Pessoa tiene otro ADN. Cabedelo es la ciudad vecina y centraliza todo: Reserva de Desova de Tortugas Marinas (Proyecto Tamar), Dique de Cabedelo (encuentro del Río Paraíba con el mar), Fortaleza de Santa Catarina (período colonial portugués) y el icónico Atardecer del Jacaré, con Bolero de Ravel en vivo. Al noroeste, el banco de arena de Areia Vermelha aparece con marea baja frente a la Playa de Camboinha. Es un día de mar más calmo, historia y el atardecer más marcante de Brasil.",
+        },
+        {
+          heading: "Cómo elegir entre los dos",
+          body: "Si te gusta la playa activa, el acantilado, la foto colorida y tienes energía para un día entero de orla — Litoral Sur. Si prefieres ritmo contemplativo, historia, mar calmo y un atardecer marcante — Litoral Norte. Si vas con niño pequeño o adulto mayor — Litoral Norte es más liviano. Si vas con pareja joven o grupo de amigos buscando fotos y adrenalina — Litoral Sur (especialmente con cuatriciclo).",
+        },
+        {
+          heading: "Lo ideal es hacer los dos",
+          body: "En 2 o 3 días de itinerario, puedes hacer los dos lados con holgura. Día 1: Litoral Sur Clásico o Combo Jampa con Cuatriciclo. Día 2: Litoral Norte + Areia Vermelha + Atardecer del Jacaré. Los itinerarios ya están estructurados — basta combinar con Murillo por WhatsApp considerando la tabla de mareas. Cuando la marea ayuda, encajamos Areia Vermelha. Cuando no, ajustamos sin perder lo mejor de cada lado.",
+        },
+        {
+          heading: "Habla directo con quien organiza",
+          body: "Murillo conoce la tabla de mareas del mes completo de memoria y sabe qué lado funciona mejor en tu calendario. Manda mensaje por WhatsApp con la fecha de tu viaje y él arma el orden de los tours para que no pierdas lo mejor de cada lado.",
+        },
+      ],
+    },
+  },
+
+  "porto-de-galinhas-de-joao-pessoa-vale-a-pena": {
+    en: {
+      title: "Is Porto de Galinhas from João Pessoa worth it? An honest guide",
+      description:
+        "Honest review of the Porto de Galinhas day trip from João Pessoa: when it's worth it, how the transport works, jangadas and what to expect.",
+      category: "Logistics",
+      faq: [
+        {
+          pergunta: "How long is the drive to Porto de Galinhas from João Pessoa?",
+          resposta:
+            "About 2h30 to 3h one-way, depending on traffic and route. Morning departure, night return. Comfortable vehicle, with a technical stop for restroom and snack.",
+        },
+        {
+          pergunta: "Is photo ID mandatory?",
+          resposta:
+            "Yes. Photo ID is mandatory — it's an interstate trip between Paraíba (PB) and Pernambuco (PE). RG, driver's license or passport work. Without ID, boarding is denied.",
+        },
+        {
+          pergunta: "Is the jangada to the natural pools included?",
+          resposta:
+            "No. The R$ 160 covers round-trip transport. The jangada to the natural pools is paid separately on-site (varies by group and season). Meals are also extra.",
+        },
+        {
+          pergunta: "When is the day trip NOT worth it?",
+          resposta:
+            "When you only have 2-3 days in João Pessoa. In that case, better enjoy Jampa (Seixas, South Coast, Areia Vermelha) which offers equivalent quality without losing a full day on the road. With 5+ days, it's worth including.",
+        },
+      ],
+      sections: [
+        {
+          heading: "Who usually asks this question",
+          body: "A tourist staying in João Pessoa for 4-7 days, who hears about Porto de Galinhas and wants to know if it makes sense to include without changing hotels. Short answer: yes, if you have days to spare and want to see a different destination. But if you have 2-3 days, it's better to enjoy Jampa — which has equivalent natural pools with simpler logistics.",
+        },
+        {
+          heading: "How the day trip works",
+          body: "We pick you up at the hotel in the morning, about 2h30 to 3h drive in a comfortable vehicle to Porto de Galinhas (PE). Free time at the destination to enjoy as you like: village with shops and restaurants, central beach, natural pools via jangada (paid on-site) and lunch (not included). At night, return to João Pessoa. R$ 160 per person, round-trip transport. Photo ID mandatory.",
+        },
+        {
+          heading: "What to expect at the natural pools",
+          body: "Porto de Galinhas' natural pools are famous: coral formations a few meters from the beach that create open-air aquariums with colorful fish and green-crystal water. You take a jangada from the central beach to the pools. It's a paid experience there (not included in the R$ 160 of the day trip) — varies by season and group size. Worth negotiating and checking the price before boarding.",
+        },
+        {
+          heading: "Honest comparison: Porto de Galinhas vs. Seixas and Picãozinho",
+          body: "The natural pools in Porto de Galinhas and in João Pessoa (Seixas, Picãozinho, Areia Vermelha) are similar in concept: corals that form pools at low tide. The real difference is logistics. In Jampa, you leave the hotel, do the tour in 3h, and you're back in the afternoon. In Porto de Galinhas, it's a full-day logistics with 5-6h of road. For those with time, the experience is worth it. For those tight on days, better prioritize Jampa.",
+        },
+        {
+          heading: "When the day trip IS (and ISN'T) worth it",
+          body: "Worth it: you have 5+ days in João Pessoa, you've done Jampa's main tours, you want to see a different northeastern destination, and you're OK with a full day of logistics. Not worth it: you have 2-3 days, you're focused on Jampa, or you prefer a slow pace. The day trip consumes the whole day — whether it's the best use of your days is a priority decision.",
+        },
+        {
+          heading: "Other day-trip options",
+          body: "If you want to see another northeastern destination from João Pessoa, we also offer day trips to Praia de Pipa (RN, ~2h drive) and Natal (RN, ~3h drive). Pipa has a charming village and paradise beaches. Natal has the World's Largest Cashew Tree and Ponta Negra. Both R$ 160 per person, round-trip. ID mandatory.",
+        },
+        {
+          heading: "How to decide",
+          body: "Send Murillo a WhatsApp message with your travel dates and number of days. He'll analyze what makes the most sense for your calendar: prioritize Jampa (no day lost on the road), include Porto de Galinhas (if you have extra days), or swap for Pipa/Natal. It's direct guidance from someone who runs these day trips every week.",
+        },
+      ],
+    },
+    es: {
+      title: "¿Vale la pena Porto de Galinhas desde João Pessoa? Guía honesta",
+      description:
+        "Evaluación honesta del bate-y-vuelta a Porto de Galinhas desde João Pessoa: cuándo vale la pena, cómo funciona el transporte, jangadas y qué esperar.",
+      category: "Logística",
+      faq: [
+        {
+          pergunta: "¿Cuánto dura el viaje a Porto de Galinhas desde João Pessoa?",
+          resposta:
+            "Cerca de 2h30 a 3h de ida, según el tráfico y la ruta. Salida temprano por la mañana, regreso por la noche. Vehículo cómodo, con parada técnica para baño y refrigerio.",
+        },
+        {
+          pergunta: "¿Documento obligatorio?",
+          resposta:
+            "Sí. Documento con foto es obligatorio — es viaje interestatal entre Paraíba (PB) y Pernambuco (PE). RG, licencia de conducir o pasaporte funcionan. Sin documento, embarque negado.",
+        },
+        {
+          pergunta: "¿La jangada para las piscinas naturales está incluida?",
+          resposta:
+            "No. El valor de R$ 160 cubre el transporte ida y vuelta. La jangada para las piscinas naturales se paga aparte en el lugar (varía según grupo y temporada). Las comidas también aparte.",
+        },
+        {
+          pergunta: "¿Cuándo NO vale la pena hacer el bate-y-vuelta?",
+          resposta:
+            "Cuando tienes solo 2-3 días en João Pessoa. En ese caso, es mejor aprovechar Jampa (Seixas, Litoral Sur, Areia Vermelha) que ofrece calidad equivalente sin perder un día entero en carretera. Con 5+ días, vale la pena incluirlo.",
+        },
+      ],
+      sections: [
+        {
+          heading: "Quién suele hacer esta pregunta",
+          body: "Turista que está en João Pessoa por 4-7 días, oye hablar de Porto de Galinhas y quiere entender si tiene sentido incluirlo en el itinerario sin cambiar de hotel. Respuesta corta: vale la pena, si tienes días de sobra y quieres conocer un destino diferente. Pero si tienes 2-3 días, vale más aprovechar Jampa — que tiene piscinas naturales equivalentes con logística más simple.",
+        },
+        {
+          heading: "Cómo funciona el bate-y-vuelta",
+          body: "Te recogemos en el hotel por la mañana, cerca de 2h30 a 3h de viaje en vehículo cómodo hasta Porto de Galinhas (PE). Tiempo libre en el destino para disfrutar a tu manera: pueblo con tiendas y restaurantes, playa central, piscinas naturales por jangada (pago en el lugar) y almuerzo (no incluido). Por la noche, vuelta a João Pessoa. R$ 160 por persona, transporte ida y vuelta. Documento con foto obligatorio.",
+        },
+        {
+          heading: "Qué esperar de las piscinas naturales",
+          body: "Las piscinas naturales de Porto de Galinhas son famosas: formaciones de coral a pocos metros de la playa que crean acuarios a cielo abierto con peces coloridos y agua verde-cristalina. Sales en jangada desde la playa central hasta las piscinas. Es una experiencia pagada allí (no incluida en los R$ 160 del bate-y-vuelta) — varía según temporada y tamaño del grupo. Vale negociar y verificar el precio antes de embarcar.",
+        },
+        {
+          heading: "Comparación honesta: Porto de Galinhas vs. Seixas y Picãozinho",
+          body: "Las piscinas naturales de Porto de Galinhas y las de João Pessoa (Seixas, Picãozinho, Areia Vermelha) son similares en concepto: corales que forman piscinas con la marea baja. La diferencia real está en la logística. En Jampa, sales del hotel, haces el tour en 3h y estás de vuelta por la tarde. En Porto de Galinhas, es un día entero de logística con 5-6h de carretera. Para quien tiene tiempo, vale la experiencia. Para quien está apretado de días, mejor priorizar Jampa.",
+        },
+        {
+          heading: "Cuándo vale (y cuándo no) el bate-y-vuelta",
+          body: "Vale: tienes 5+ días en João Pessoa, ya hiciste los tours principales de Jampa, quieres conocer un destino diferente del nordeste pernambucano, y aceptas un día entero de logística. No vale: tienes 2-3 días, estás enfocado en conocer Jampa, o prefieres ritmo lento. El bate-y-vuelta consume el día entero — si es el mejor uso de tus días es una decisión de prioridad.",
+        },
+        {
+          heading: "Otras opciones de bate-y-vuelta",
+          body: "Si la idea es conocer otro destino del nordeste desde João Pessoa, también ofrecemos bate-y-vuelta a Praia de Pipa (RN, ~2h de viaje) y Natal (RN, ~3h de viaje). Pipa tiene pueblo encantador y playas paradisíacas. Natal tiene el Mayor Cajueiro del Mundo y Ponta Negra. Ambos R$ 160 por persona, ida y vuelta. Documento obligatorio.",
+        },
+        {
+          heading: "Cómo decidir",
+          body: "Manda mensaje a Murillo por WhatsApp con la fecha y cantidad de días de tu viaje. Él analiza lo que más tiene sentido en tu calendario: priorizar Jampa (sin perder día en carretera), incluir Porto de Galinhas (si sobran días), o cambiar por Pipa/Natal. Es orientación directa de quien organiza estos bate-y-vueltas toda la semana.",
+        },
+      ],
+    },
+  },
 };
