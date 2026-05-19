@@ -172,10 +172,10 @@ export function HeroBlock({
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-end",
-          padding: "0 18px 28px",
+          padding: "0 clamp(16px, 4vw, 28px) clamp(24px, 5vw, 36px)",
         }}
       >
-        <div style={{ maxWidth: 600 }}>
+        <div style={{ maxWidth: 600, width: "100%" }}>
           {kicker && (
             <p style={{
               fontFamily: "var(--font-body)",
@@ -192,14 +192,15 @@ export function HeroBlock({
 
           <Heading style={{
             fontFamily: "var(--font-heading)",
-            fontSize: "clamp(28px, 5.5vw, 52px)",
+            fontSize: "clamp(30px, 6vw, 54px)",
             fontWeight: 600,
-            lineHeight: 1.08,
+            lineHeight: 1.05,
             letterSpacing: "-0.02em",
             color: "#fff",
             margin: 0,
-            marginBottom: subtitle ? 12 : 0,
+            marginBottom: subtitle ? 14 : 0,
             textShadow: "0 2px 20px rgba(9,34,56,0.4)",
+            overflowWrap: "break-word",
           }}>
             {title}
           </Heading>
@@ -207,12 +208,12 @@ export function HeroBlock({
           {subtitle && (
             <p style={{
               fontFamily: "var(--font-body)",
-              fontSize: "clamp(14px, 1.4vw, 16px)",
-              lineHeight: 1.55,
-              color: "rgba(255,255,255,0.82)",
+              fontSize: "clamp(15px, 1.5vw, 17px)",
+              lineHeight: 1.5,
+              color: "rgba(255,255,255,0.88)",
               margin: 0,
-              marginBottom: cta ? 20 : 0,
-              maxWidth: 480,
+              marginBottom: cta ? 22 : 0,
+              maxWidth: 520,
             }}>
               {subtitle}
             </p>
@@ -227,28 +228,38 @@ export function HeroBlock({
                 display: "inline-flex",
                 alignItems: "center",
                 justifyContent: "center",
-                gap: 8,
+                gap: 10,
                 width: "100%",
                 maxWidth: 380,
                 fontFamily: "var(--font-body)",
                 fontWeight: 700,
-                fontSize: 15,
+                fontSize: 16,
                 color: "#fff",
                 background: "#107997",
                 border: "none",
                 borderRadius: 999,
-                padding: "14px 24px",
+                padding: "16px 28px",
                 textDecoration: "none",
-                minHeight: 50,
-                boxShadow: "0 8px 22px -10px rgba(16,121,151,0.65)",
-                marginTop: subtitle ? 0 : 20,
+                minHeight: 54,
+                boxShadow: "0 12px 28px -8px rgba(16,121,151,0.75), 0 4px 10px -4px rgba(0,0,0,0.25)",
+                marginTop: subtitle ? 0 : 22,
               }}
             >
+              <IcoWA size={18} />
               {cta.text}
             </a>
           )}
         </div>
       </div>
     </section>
+  );
+}
+
+function IcoWA({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path fill="#fff" d="M17.5 14.4c-.3-.1-1.8-.9-2-.9-.2-.1-.5-.2-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.9-.4-1.7-.9-2.4-1.6-.7-.7-1.1-1.5-1.5-2.3-.2-.3-.1-.4 0-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.8-2c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.4-.2.3-1 .9-1 2.3 0 1.3 1 2.6 1.1 2.8.1.2 2 3 4.8 4.1 1.8.7 2.5.7 3.4.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.1-.2-.4-.3z" />
+      <path fill="#fff" fillRule="evenodd" clipRule="evenodd" d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.3c-1.5 0-3-.4-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3c-.9-1.3-1.3-2.9-1.3-4.4C4.5 7.5 8 4 12 4s7.5 3.5 7.5 8-3.5 8-7.5 8z" />
+    </svg>
   );
 }

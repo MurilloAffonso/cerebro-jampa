@@ -199,6 +199,8 @@ export default async function PasseioPage({ params }: PasseioPageProps) {
 
       <FichaTecnica passeio={passeio} />
 
+      <ReservationIntentForm passeioNome={passeio.nome} />
+
       {cronograma && <PasseioCronograma cronograma={cronograma} />}
 
       <Breadcrumb
@@ -342,8 +344,6 @@ export default async function PasseioPage({ params }: PasseioPageProps) {
 
       <IncluidoBlock incluso={passeio.incluso} naoIncluso={passeio.naoIncluso} />
 
-      <ReservationIntentForm passeioNome={passeio.nome} />
-
       <ClientesReviewsBlock />
 
       {faqItems.length > 0 && (
@@ -356,21 +356,6 @@ export default async function PasseioPage({ params }: PasseioPageProps) {
           </div>
         </section>
       )}
-
-      <section className="bg-white">
-        <div className="container-safe max-w-3xl py-6 text-center">
-          <p className="text-gray-600 text-sm mb-4">{t('ficouDuvida')}</p>
-          <Link
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1ea355] text-white font-bold text-base px-6 py-3 rounded-lg min-h-[44px] w-full max-w-xs transition-colors"
-            aria-label={t('reservarWhatsapp')}
-          >
-            {t('ctaBotao')}
-          </Link>
-        </div>
-      </section>
 
       {passeio.depoimento && (
         <DepoimentoBlock
