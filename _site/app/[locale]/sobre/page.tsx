@@ -9,7 +9,8 @@ import { empresa } from "@/data/empresa";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTASticky } from "@/components/CTASticky";
 import { CTAFinal } from "@/components/CTAFinal";
-import { buildLocaleAlternates, SITE_URL } from "@/lib/seo";
+import { FAQAccordion } from "@/components/FAQAccordion";
+import { buildLocaleAlternates, generateFAQSchema, SITE_URL } from "@/lib/seo";
 
 const PAGE_URL = `${SITE_URL}/sobre/`;
 const CADASTUR_URL = "https://cadastur.turismo.gov.br/cadastur/#!/public/qrcode/52077577000103";
@@ -42,9 +43,15 @@ export default async function SobrePage({ params }: { params: { locale: string }
   setRequestLocale(params.locale);
   const t = await getTranslations("SobrePage");
   const diferenciais = empresa.diferencial.split(" + ");
+  const faqItems = t.raw("faq") as Array<{ pergunta: string; resposta: string }>;
+  const faqSchema = generateFAQSchema(faqItems);
 
   return (
     <div className="bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <CTASticky whatsappUrl={WA_URL} />
 
       <Breadcrumb
@@ -314,6 +321,16 @@ export default async function SobrePage({ params }: { params: { locale: string }
             >
               📍 {t("googlePerfil")}
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section-padding bg-white">
+        <div className="container-safe max-w-3xl">
+          <h2>{t("faqTitulo")}</h2>
+          <div className="mt-6">
+            <FAQAccordion items={faqItems} />
           </div>
         </div>
       </section>

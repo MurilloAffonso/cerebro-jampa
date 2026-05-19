@@ -9,6 +9,8 @@ import { empresa } from "@/data/empresa";
 import { buildLocaleAlternates, SITE_URL } from "@/lib/seo";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTASticky } from "@/components/CTASticky";
+import { FAQAccordion } from "@/components/FAQAccordion";
+import { generateFAQSchema } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -66,11 +68,18 @@ export default async function TransferPage({ params }: { params: { locale: strin
     },
   };
 
+  const faqItems = t.raw("faq") as Array<{ pergunta: string; resposta: string }>;
+  const faqSchema = generateFAQSchema(faqItems);
+
   return (
     <div>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICE_SCHEMA) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
       <CTASticky whatsappUrl={WA_URL} label={t("stickyLabel")} />
@@ -231,6 +240,16 @@ export default async function TransferPage({ params }: { params: { locale: strin
                 </li>
               ))}
             </ol>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section-padding bg-white">
+        <div className="container-safe max-w-3xl">
+          <h2>{t("faqTitulo")}</h2>
+          <div className="mt-6">
+            <FAQAccordion items={faqItems} />
           </div>
         </div>
       </section>

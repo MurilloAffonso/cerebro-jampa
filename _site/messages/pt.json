@@ -309,7 +309,34 @@
     "ctaLabel": "Quer conhecer a operação?",
     "ctaTitulo": "Fale direto com Murillo",
     "ctaSubtitulo": "Tire dúvidas sobre roteiros, datas e preços — atendimento direto, sem central impessoal.",
-    "verTodosPasseios": "← Ver todos os passeios em João Pessoa"
+    "verTodosPasseios": "← Ver todos os passeios em João Pessoa",
+    "faqTitulo": "Perguntas sobre a empresa",
+    "faq": [
+      {
+        "pergunta": "Vem Passear em Jampa é agência registrada?",
+        "resposta": "Sim. Empresa registrada no Cadastur (Ministério do Turismo do Brasil) sob o nº 52.077.577. Operamos de acordo com a legislação brasileira de turismo e seguimos todos os requisitos de segurança e atendimento exigidos para agências de viagens receptivas."
+      },
+      {
+        "pergunta": "Como funciona o atendimento? Há central impessoal?",
+        "resposta": "O atendimento é direto com o Murillo pelo WhatsApp — sem central, sem call center, sem intermediário. Murillo é quem mora em João Pessoa, organiza os passeios, acompanha cada reserva e tira suas dúvidas com calma antes, durante e depois do passeio."
+      },
+      {
+        "pergunta": "Os guias e condutores são credenciados?",
+        "resposta": "Sim. Todos os condutores e guias dos passeios são credenciados conforme exige a legislação brasileira de turismo. Trabalhamos apenas com parceiros que apresentam documentação em dia e que entendem do destino."
+      },
+      {
+        "pergunta": "Vocês atendem em outros idiomas?",
+        "resposta": "O site está em português, inglês e espanhol. O atendimento via WhatsApp acontece principalmente em português, com suporte em inglês e espanhol básico para turistas internacionais. Para passeios privativos com necessidade de guia bilíngue, consulte disponibilidade."
+      },
+      {
+        "pergunta": "Como vocês escolhem os parceiros (catamarãs, motoristas, restaurantes)?",
+        "resposta": "Trabalhamos com parceiros que conhecemos pessoalmente, que têm tempo de mercado, embarcações em conformidade e atendimento humano. A reputação no Google é importante, mas o teste real é o nosso próprio cliente: se alguém volta da viagem reclamando, não repetimos."
+      },
+      {
+        "pergunta": "Posso passar contato de quem já fez passeio para conferir?",
+        "resposta": "Sim. Temos 60+ avaliações reais no Google (4,9/5 estrelas) que você pode ler agora mesmo, e Murillo compartilha referências de clientes diretamente pelo WhatsApp, se você preferir falar com alguém que já viajou com a gente."
+      }
+    ]
   },
   "FaqPage": {
     "seoTitle": "Perguntas Frequentes sobre Passeios em João Pessoa | Vem Passear em Jampa",
@@ -328,18 +355,54 @@
     "ctaBotao": "Perguntar no WhatsApp",
     "verTodosPasseios": "← Ver todos os passeios em João Pessoa",
     "faq": [
-      { "pergunta": "Como faço para reservar um passeio?", "resposta": "Pelo WhatsApp — é o canal direto com Murillo. Você manda mensagem com o passeio que quer, a data e o número de pessoas. Ele verifica disponibilidade, confirma maré (quando necessário) e te passa as instruções de pagamento. Simples assim, sem formulário nem intermediário." },
-      { "pergunta": "Quais formas de pagamento são aceitas?", "resposta": "Aceitamos cartão de crédito e débito. O parcelamento é possível, mas a taxa fica por conta do cliente — número de parcelas e plataforma confirmados na hora do pagamento. Qualquer dúvida, é só perguntar pelo WhatsApp antes de fechar." },
-      { "pergunta": "Criança paga? Tem desconto para crianças?", "resposta": "Crianças abaixo de 5 anos não pagam. De 5 a 11 anos: 20% de desconto sobre o valor adulto. A partir de 12 anos: valor adulto. Para passeios de quadriciclo há restrição de idade mínima de 7 anos — confirme no WhatsApp antes de reservar." },
-      { "pergunta": "O que acontece se chover no dia do passeio?", "resposta": "Chuva leve não cancela — João Pessoa tem clima que muda rápido e o passeio segue normalmente. Se houver chuva forte ou condição de mar ruim, o passeio não sai. Nesse caso, você recebe aviso com pelo menos 2 horas de antecedência e pode remarcar sem custo adicional. Se não for possível remarcar: devolução de 100% do valor pago." },
-      { "pergunta": "Qual é a política de cancelamento?", "resposta": "Cancelamento com mais de 24 horas de antecedência: remarcação sem custo. No-show ou cancelamento em cima da hora: sem reembolso. Caso o passeio seja cancelado pela operadora por condições climáticas ou de maré: remarcação gratuita ou reembolso integral. Dúvidas específicas, consulte pelo WhatsApp." },
-      { "pergunta": "O que é tábua de marés e como ela afeta meu passeio?", "resposta": "A tábua de marés é o calendário oficial da Marinha que indica os horários de maré baixa e alta de cada dia. Passeios de piscinas naturais (Seixas, Picãozinho, Areia Vermelha) dependem de maré baixa para funcionar. Antes de confirmar sua reserva, Murillo já verifica se o dia tem condição de maré adequada — você nunca agenda sem essa confirmação." },
-      { "pergunta": "Os passeios são seguros? Tem colete salva-vidas?", "resposta": "Sim. Colete salva-vidas disponível a bordo durante todo o passeio — recomendado para não-nadadores e crianças. A Vem Passear em Jampa tem Cadastur ativo (número 52.077.577). A operação segue normas de segurança marítima e os passeios são conduzidos por profissionais regularizados e capacitados." },
-      { "pergunta": "É possível fazer um passeio privativo (só para o meu grupo)?", "resposta": "Sim — todos os passeios têm opção privativa. No modo privativo, apenas o seu grupo vai no passeio. O valor depende do passeio, da data e da quantidade de pessoas — nunca é um preço fixo, é sempre consultado caso a caso. Mande mensagem no WhatsApp com detalhes do grupo e Murillo passa a opção." },
-      { "pergunta": "A Vem Passear tem registro oficial no Ministério do Turismo?", "resposta": "Sim. CNPJ 52.077.577/0001-03, Cadastur número 52.077.577 — válido até 16/12/2026. Você pode verificar o registro no site oficial do Ministério do Turismo a qualquer momento." },
-      { "pergunta": "Onde posso ver avaliações de clientes reais?", "resposta": "No Google — a Vem Passear em Jampa tem nota 4.9/5 com 61 avaliações de clientes reais. Murillo pode enviar o link direto das avaliações pelo WhatsApp se preferir conferir antes de reservar." },
-      { "pergunta": "Não sei nadar. Posso fazer os passeios de piscinas naturais?", "resposta": "Sim. A maioria das piscinas naturais tem água rasa — você fica em pé ou usa colete salva-vidas. O guia fica próximo durante todo o passeio. Muitas pessoas que nunca nadaram fazem o passeio tranquilamente. Se tiver dúvida sobre um passeio específico, é só perguntar no WhatsApp." },
-      { "pergunta": "O passeio inclui transfer do hotel?", "resposta": "Depende do passeio. A maioria inclui transfer para pontos de saída em Tambaú, Cabo Branco, Manaíra e Bessa. Para outros bairros ou hotéis fora desses pontos, consulte disponibilidade pelo WhatsApp. A Vem Passear também oferece Transfer 24h separado para aeroporto e qualquer ponto da cidade." }
+      {
+        "pergunta": "Como faço para reservar um passeio?",
+        "resposta": "Pelo WhatsApp — é o canal direto com Murillo. Você manda mensagem com o passeio que quer, a data e o número de pessoas. Ele verifica disponibilidade, confirma maré (quando necessário) e te passa as instruções de pagamento. Simples assim, sem formulário nem intermediário."
+      },
+      {
+        "pergunta": "Quais formas de pagamento são aceitas?",
+        "resposta": "Aceitamos cartão de crédito e débito. O parcelamento é possível, mas a taxa fica por conta do cliente — número de parcelas e plataforma confirmados na hora do pagamento. Qualquer dúvida, é só perguntar pelo WhatsApp antes de fechar."
+      },
+      {
+        "pergunta": "Criança paga? Tem desconto para crianças?",
+        "resposta": "Crianças abaixo de 5 anos não pagam. De 5 a 11 anos: 20% de desconto sobre o valor adulto. A partir de 12 anos: valor adulto. Para passeios de quadriciclo há restrição de idade mínima de 7 anos — confirme no WhatsApp antes de reservar."
+      },
+      {
+        "pergunta": "O que acontece se chover no dia do passeio?",
+        "resposta": "Chuva leve não cancela — João Pessoa tem clima que muda rápido e o passeio segue normalmente. Se houver chuva forte ou condição de mar ruim, o passeio não sai. Nesse caso, você recebe aviso com pelo menos 2 horas de antecedência e pode remarcar sem custo adicional. Se não for possível remarcar: devolução de 100% do valor pago."
+      },
+      {
+        "pergunta": "Qual é a política de cancelamento?",
+        "resposta": "Cancelamento com mais de 24 horas de antecedência: remarcação sem custo. No-show ou cancelamento em cima da hora: sem reembolso. Caso o passeio seja cancelado pela operadora por condições climáticas ou de maré: remarcação gratuita ou reembolso integral. Dúvidas específicas, consulte pelo WhatsApp."
+      },
+      {
+        "pergunta": "O que é tábua de marés e como ela afeta meu passeio?",
+        "resposta": "A tábua de marés é o calendário oficial da Marinha que indica os horários de maré baixa e alta de cada dia. Passeios de piscinas naturais (Seixas, Picãozinho, Areia Vermelha) dependem de maré baixa para funcionar. Antes de confirmar sua reserva, Murillo já verifica se o dia tem condição de maré adequada — você nunca agenda sem essa confirmação."
+      },
+      {
+        "pergunta": "Os passeios são seguros? Tem colete salva-vidas?",
+        "resposta": "Sim. Colete salva-vidas disponível a bordo durante todo o passeio — recomendado para não-nadadores e crianças. A Vem Passear em Jampa tem Cadastur ativo (número 52.077.577). A operação segue normas de segurança marítima e os passeios são conduzidos por profissionais regularizados e capacitados."
+      },
+      {
+        "pergunta": "É possível fazer um passeio privativo (só para o meu grupo)?",
+        "resposta": "Sim — todos os passeios têm opção privativa. No modo privativo, apenas o seu grupo vai no passeio. O valor depende do passeio, da data e da quantidade de pessoas — nunca é um preço fixo, é sempre consultado caso a caso. Mande mensagem no WhatsApp com detalhes do grupo e Murillo passa a opção."
+      },
+      {
+        "pergunta": "A Vem Passear tem registro oficial no Ministério do Turismo?",
+        "resposta": "Sim. CNPJ 52.077.577/0001-03, Cadastur número 52.077.577 — válido até 16/12/2026. Você pode verificar o registro no site oficial do Ministério do Turismo a qualquer momento."
+      },
+      {
+        "pergunta": "Onde posso ver avaliações de clientes reais?",
+        "resposta": "No Google — a Vem Passear em Jampa tem nota 4.9/5 com 61 avaliações de clientes reais. Murillo pode enviar o link direto das avaliações pelo WhatsApp se preferir conferir antes de reservar."
+      },
+      {
+        "pergunta": "Não sei nadar. Posso fazer os passeios de piscinas naturais?",
+        "resposta": "Sim. A maioria das piscinas naturais tem água rasa — você fica em pé ou usa colete salva-vidas. O guia fica próximo durante todo o passeio. Muitas pessoas que nunca nadaram fazem o passeio tranquilamente. Se tiver dúvida sobre um passeio específico, é só perguntar no WhatsApp."
+      },
+      {
+        "pergunta": "O passeio inclui transfer do hotel?",
+        "resposta": "Depende do passeio. A maioria inclui transfer para pontos de saída em Tambaú, Cabo Branco, Manaíra e Bessa. Para outros bairros ou hotéis fora desses pontos, consulte disponibilidade pelo WhatsApp. A Vem Passear também oferece Transfer 24h separado para aeroporto e qualquer ponto da cidade."
+      }
     ]
   },
   "TransferPage": {
@@ -394,7 +457,38 @@
     "crossTitulo": "Excursões e grupos têm operação dedicada",
     "crossDesc": "Roteiro, transporte local, van/ônibus e apoio em campo para igreja, escola, família grande ou agência parceira.",
     "crossCta": "Ver Excursões e Grupos →",
-    "verTodosPasseios": "← Ver todos os passeios em João Pessoa"
+    "verTodosPasseios": "← Ver todos os passeios em João Pessoa",
+    "faqTitulo": "Perguntas frequentes sobre o Transfer",
+    "faq": [
+      {
+        "pergunta": "Como solicito a cotação?",
+        "resposta": "Pelo WhatsApp. Você manda a origem, o destino, a data e o horário desejado, e o número de passageiros. A gente confirma o valor por trajeto e a disponibilidade na hora."
+      },
+      {
+        "pergunta": "O transfer é cobrado por pessoa ou por trajeto?",
+        "resposta": "Por trajeto. O valor é um único preço por corrida — independente de ir 1, 2 ou 4 passageiros (respeitando a capacidade do veículo). Sem cobrança por pessoa adicional."
+      },
+      {
+        "pergunta": "Vocês atendem voos noturnos e de madrugada?",
+        "resposta": "Sim. Nosso transfer funciona 24h, todos os dias, incluindo voos da madrugada, finais de semana e feriados. Avise o horário do voo no momento da reserva."
+      },
+      {
+        "pergunta": "E se o meu voo atrasar?",
+        "resposta": "A gente acompanha o status do voo. Se houver atraso, o motorista ajusta e espera. Você não paga por isso — o monitoramento de voos já está incluso no valor do trajeto."
+      },
+      {
+        "pergunta": "Posso reservar transfer para qualquer ponto de João Pessoa?",
+        "resposta": "Sim. Aeroporto, hotéis, airbnb, restaurantes, embarques de passeio, rodoviária — atendemos qualquer ponto da cidade. Cidades vizinhas (Cabedelo, Conde): consulte valor pelo WhatsApp."
+      },
+      {
+        "pergunta": "Quantos passageiros cabem no veículo?",
+        "resposta": "Veículo padrão acomoda até 4 passageiros com bagagem. Para grupos maiores (5+), avise no momento da reserva — temos opções de veículo executivo ou van. Valor a consultar."
+      },
+      {
+        "pergunta": "Como pago o transfer?",
+        "resposta": "Pagamento via PIX ou cartão (crédito/débito). A confirmação acontece via WhatsApp antes do trajeto. Sem cobrança extra além do valor cotado."
+      }
+    ]
   },
   "ExcursoesPage": {
     "seoTitle": "Excursões em João Pessoa — Roteiros e Logística para Grupos",
@@ -487,12 +581,30 @@
     "voltarTransfer": "← Transfer 24h",
     "verTodosPasseios": "Ver todos os passeios →",
     "faq": [
-      { "pergunta": "A Vem Passear opera excursões fechadas vindas de outras cidades?", "resposta": "Sim. Operamos a parte de João Pessoa — roteiro, transporte local, guias, suporte em campo. Você pode chegar com seu próprio ônibus de origem ou contratar transporte conosco a partir do aeroporto, rodoviária ou hotel." },
-      { "pergunta": "Vocês fornecem o ônibus ou trabalham com o transporte que o grupo já tem?", "resposta": "As duas opções. Se você já vem com ônibus da cidade de origem, a gente opera só o roteiro e o apoio em campo. Se precisa de transporte em João Pessoa, a gente fecha com parceiros operacionais credenciados — capacidade e formato são confirmados na proposta, conforme o tamanho do grupo." },
-      { "pergunta": "Tem desconto para grupo grande?", "resposta": "Não temos tabela fixa de desconto. O que existe é condição especial avaliada caso a caso a partir de 4 pessoas — depende de tamanho do grupo, datas, combinação de passeios. Vale perguntar no briefing." },
-      { "pergunta": "Vocês cuidam de alimentação, hospedagem ou só do roteiro de passeios?", "resposta": "Roteiro, transporte e suporte em campo são o foco. Hospedagem e restaurante: indicamos parceiros confiáveis para grupo, mas a contratação fica com você. Quem já organizou grupo sabe que misturar tudo numa única conta atrapalha mais do que ajuda." },
-      { "pergunta": "Posso montar um roteiro 100% personalizado ou só os pré-prontos?", "resposta": "100% personalizado. Os templates da página são pontos de partida, não pacote fechado. A proposta real é montada depois do briefing." },
-      { "pergunta": "Como vocês lidam com data fechada que pega maré ruim?", "resposta": "Para passeios de piscinas naturais (Seixas, Picãozinho, Areia Vermelha), Murillo confere a tábua de marés antes de aceitar a data. Se não tiver janela de maré boa no dia que o grupo já fechou, a gente ajusta o roteiro: troca para passeio que não depende de maré (city tour, litoral sul, pôr do sol, catamarã em maré alta) ou sugere outro horário do mesmo dia. Você nunca chega aqui e descobre que o passeio não tem como sair." }
+      {
+        "pergunta": "A Vem Passear opera excursões fechadas vindas de outras cidades?",
+        "resposta": "Sim. Operamos a parte de João Pessoa — roteiro, transporte local, guias, suporte em campo. Você pode chegar com seu próprio ônibus de origem ou contratar transporte conosco a partir do aeroporto, rodoviária ou hotel."
+      },
+      {
+        "pergunta": "Vocês fornecem o ônibus ou trabalham com o transporte que o grupo já tem?",
+        "resposta": "As duas opções. Se você já vem com ônibus da cidade de origem, a gente opera só o roteiro e o apoio em campo. Se precisa de transporte em João Pessoa, a gente fecha com parceiros operacionais credenciados — capacidade e formato são confirmados na proposta, conforme o tamanho do grupo."
+      },
+      {
+        "pergunta": "Tem desconto para grupo grande?",
+        "resposta": "Não temos tabela fixa de desconto. O que existe é condição especial avaliada caso a caso a partir de 4 pessoas — depende de tamanho do grupo, datas, combinação de passeios. Vale perguntar no briefing."
+      },
+      {
+        "pergunta": "Vocês cuidam de alimentação, hospedagem ou só do roteiro de passeios?",
+        "resposta": "Roteiro, transporte e suporte em campo são o foco. Hospedagem e restaurante: indicamos parceiros confiáveis para grupo, mas a contratação fica com você. Quem já organizou grupo sabe que misturar tudo numa única conta atrapalha mais do que ajuda."
+      },
+      {
+        "pergunta": "Posso montar um roteiro 100% personalizado ou só os pré-prontos?",
+        "resposta": "100% personalizado. Os templates da página são pontos de partida, não pacote fechado. A proposta real é montada depois do briefing."
+      },
+      {
+        "pergunta": "Como vocês lidam com data fechada que pega maré ruim?",
+        "resposta": "Para passeios de piscinas naturais (Seixas, Picãozinho, Areia Vermelha), Murillo confere a tábua de marés antes de aceitar a data. Se não tiver janela de maré boa no dia que o grupo já fechou, a gente ajusta o roteiro: troca para passeio que não depende de maré (city tour, litoral sul, pôr do sol, catamarã em maré alta) ou sugere outro horário do mesmo dia. Você nunca chega aqui e descobre que o passeio não tem como sair."
+      }
     ]
   },
   "CalendarioPage": {
@@ -528,11 +640,26 @@
     "ctaFinalTitulo": "Escolheu a data? Fala com Murillo para confirmar a reserva.",
     "ctaFinalSub": "Atendimento direto, preço justo e roteiro organizado.",
     "faq": [
-      { "pergunta": "Quantas saídas têm em maio de 2026 para as piscinas naturais?", "resposta": "Em maio de 2026, há 18 dias com saída confirmada para as piscinas naturais — divididos em 3 ciclos de maré. Os melhores dias são entre 13 e 20 de maio, quando a maré atinge condição excelente (abaixo de 0,5m), com destaque para 16, 17 e 18/05 com maré histórica de 0,2m (sizígia)." },
-      { "pergunta": "Por que os passeios de piscinas naturais dependem da maré?", "resposta": "As piscinas naturais do Seixas, Picãozinho e Areia Vermelha só aparecem quando a maré baixa. Com água acima de 0,8m o acesso fica comprometido. Por isso os passeios saem apenas em determinados dias do mês, sempre na janela da maré baixa da manhã." },
-      { "pergunta": "O que significa maré 'excelente', 'boa' e 'consultar'?", "resposta": "Excelente (0,0–0,5m): piscinas bem expostas, experiência completa. Boa (0,6–0,7m): piscinas acessíveis com boa visibilidade. Consultar (0,8m): condições reduzidas — verificar com Murillo antes de reservar. Sem passeio (acima de 0,9m): piscinas submersas, passeio não realizado." },
-      { "pergunta": "Posso reservar uma data específica do calendário?", "resposta": "Sim. Escolha a data desejada no calendário e entre em contato pelo WhatsApp com Murillo. Ele confirma a disponibilidade, o horário exato de saída e o ponto de encontro. As saídas partem de Tambaú, João Pessoa." },
-      { "pergunta": "Os dados do calendário são oficiais da Marinha?", "resposta": "Os horários são baseados na tábua de marés do Porto de Cabedelo/PB e revisados por Murillo antes de cada publicação. Pequenas variações podem ocorrer — sempre confirme o horário final pelo WhatsApp na véspera do passeio." }
+      {
+        "pergunta": "Quantas saídas têm em maio de 2026 para as piscinas naturais?",
+        "resposta": "Em maio de 2026, há 18 dias com saída confirmada para as piscinas naturais — divididos em 3 ciclos de maré. Os melhores dias são entre 13 e 20 de maio, quando a maré atinge condição excelente (abaixo de 0,5m), com destaque para 16, 17 e 18/05 com maré histórica de 0,2m (sizígia)."
+      },
+      {
+        "pergunta": "Por que os passeios de piscinas naturais dependem da maré?",
+        "resposta": "As piscinas naturais do Seixas, Picãozinho e Areia Vermelha só aparecem quando a maré baixa. Com água acima de 0,8m o acesso fica comprometido. Por isso os passeios saem apenas em determinados dias do mês, sempre na janela da maré baixa da manhã."
+      },
+      {
+        "pergunta": "O que significa maré 'excelente', 'boa' e 'consultar'?",
+        "resposta": "Excelente (0,0–0,5m): piscinas bem expostas, experiência completa. Boa (0,6–0,7m): piscinas acessíveis com boa visibilidade. Consultar (0,8m): condições reduzidas — verificar com Murillo antes de reservar. Sem passeio (acima de 0,9m): piscinas submersas, passeio não realizado."
+      },
+      {
+        "pergunta": "Posso reservar uma data específica do calendário?",
+        "resposta": "Sim. Escolha a data desejada no calendário e entre em contato pelo WhatsApp com Murillo. Ele confirma a disponibilidade, o horário exato de saída e o ponto de encontro. As saídas partem de Tambaú, João Pessoa."
+      },
+      {
+        "pergunta": "Os dados do calendário são oficiais da Marinha?",
+        "resposta": "Os horários são baseados na tábua de marés do Porto de Cabedelo/PB e revisados por Murillo antes de cada publicação. Pequenas variações podem ocorrer — sempre confirme o horário final pelo WhatsApp na véspera do passeio."
+      }
     ]
   },
   "TabuaPage": {
@@ -557,13 +684,34 @@
     "ctaSub": "Manda mensagem com a data da sua viagem. Eu confirmo a maré e indico o passeio certo para o seu dia.",
     "ctaMicrocopy": "Resposta rápida durante o dia · sem compromisso",
     "faq": [
-      { "pergunta": "Qual a melhor maré para piscinas naturais em João Pessoa?", "resposta": "A melhor condição é a maré bem baixa — quanto mais baixa, mais piscina de coral fica exposta e mais tranquilo é o mergulho. Em geral, alturas próximas de 0,5m ou menos rendem passeios mais bonitos. A altura varia todo dia, por isso é preciso consultar a tábua antes de marcar." },
-      { "pergunta": "Quais passeios dependem da maré baixa?", "resposta": "Os três principais são: Piscinas Naturais do Seixas, Picãozinho e Areia Vermelha. Outros passeios da costa de João Pessoa — Pôr do Sol do Jacaré, Litoral Sul Clássico, City Tour — não dependem da maré e operam todos os dias." },
-      { "pergunta": "A Areia Vermelha sai todos os dias?", "resposta": "Não. A Areia Vermelha é um banco de areia em Cabedelo que só aparece com a maré baixa. Algumas semanas têm vários dias de saída seguidos; outras não têm nenhum. Por isso o melhor é consultar a tábua e confirmar comigo no WhatsApp antes de fechar a data." },
-      { "pergunta": "Picãozinho depende da maré?", "resposta": "Sim. O Picãozinho é um conjunto de piscinas naturais a cerca de 1,5 km da praia de Tambaú, e só fica seguro para nado e snorkel quando a maré está baixa. Quando a maré sobe, as piscinas desaparecem." },
-      { "pergunta": "Piscinas Naturais do Seixas dependem da maré?", "resposta": "Sim. As Piscinas do Seixas ficam no ponto mais oriental do continente americano e só são visitáveis na maré baixa. Quando a maré está alta, a área fica coberta e o passeio não acontece." },
-      { "pergunta": "Como saber o melhor dia para reservar?", "resposta": "Olha a tábua nesta página para ter uma referência geral e me chama no WhatsApp com a data da sua viagem. Eu confirmo se a maré está favorável e indico qual o melhor passeio para o seu dia." },
-      { "pergunta": "Posso reservar um passeio de piscinas naturais sem olhar a tábua de marés?", "resposta": "Pode mandar mensagem mesmo sem consultar — eu cruzo a sua data com a maré e te oriento. Mas se você já consultou e tem flexibilidade de data, fica mais fácil escolher uma janela com a maré boa." }
+      {
+        "pergunta": "Qual a melhor maré para piscinas naturais em João Pessoa?",
+        "resposta": "A melhor condição é a maré bem baixa — quanto mais baixa, mais piscina de coral fica exposta e mais tranquilo é o mergulho. Em geral, alturas próximas de 0,5m ou menos rendem passeios mais bonitos. A altura varia todo dia, por isso é preciso consultar a tábua antes de marcar."
+      },
+      {
+        "pergunta": "Quais passeios dependem da maré baixa?",
+        "resposta": "Os três principais são: Piscinas Naturais do Seixas, Picãozinho e Areia Vermelha. Outros passeios da costa de João Pessoa — Pôr do Sol do Jacaré, Litoral Sul Clássico, City Tour — não dependem da maré e operam todos os dias."
+      },
+      {
+        "pergunta": "A Areia Vermelha sai todos os dias?",
+        "resposta": "Não. A Areia Vermelha é um banco de areia em Cabedelo que só aparece com a maré baixa. Algumas semanas têm vários dias de saída seguidos; outras não têm nenhum. Por isso o melhor é consultar a tábua e confirmar comigo no WhatsApp antes de fechar a data."
+      },
+      {
+        "pergunta": "Picãozinho depende da maré?",
+        "resposta": "Sim. O Picãozinho é um conjunto de piscinas naturais a cerca de 1,5 km da praia de Tambaú, e só fica seguro para nado e snorkel quando a maré está baixa. Quando a maré sobe, as piscinas desaparecem."
+      },
+      {
+        "pergunta": "Piscinas Naturais do Seixas dependem da maré?",
+        "resposta": "Sim. As Piscinas do Seixas ficam no ponto mais oriental do continente americano e só são visitáveis na maré baixa. Quando a maré está alta, a área fica coberta e o passeio não acontece."
+      },
+      {
+        "pergunta": "Como saber o melhor dia para reservar?",
+        "resposta": "Olha a tábua nesta página para ter uma referência geral e me chama no WhatsApp com a data da sua viagem. Eu confirmo se a maré está favorável e indico qual o melhor passeio para o seu dia."
+      },
+      {
+        "pergunta": "Posso reservar um passeio de piscinas naturais sem olhar a tábua de marés?",
+        "resposta": "Pode mandar mensagem mesmo sem consultar — eu cruzo a sua data com a maré e te oriento. Mas se você já consultou e tem flexibilidade de data, fica mais fácil escolher uma janela com a maré boa."
+      }
     ]
   },
   "Blog": {

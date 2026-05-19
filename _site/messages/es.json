@@ -309,7 +309,34 @@
     "ctaLabel": "¿Quieres conocer la operación?",
     "ctaTitulo": "Habla directo con Murillo",
     "ctaSubtitulo": "Aclara dudas sobre itinerarios, fechas y precios — atención directa, sin call center impersonal.",
-    "verTodosPasseios": "← Ver todos los tours en João Pessoa"
+    "verTodosPasseios": "← Ver todos los tours en João Pessoa",
+    "faqTitulo": "Preguntas sobre la empresa",
+    "faq": [
+      {
+        "pergunta": "¿Vem Passear em Jampa es una agencia registrada?",
+        "resposta": "Sí. Empresa registrada en Cadastur (Ministerio de Turismo de Brasil) bajo el nº 52.077.577. Operamos según la legislación brasileña de turismo y cumplimos los requisitos de seguridad y atención exigidos para agencias receptivas."
+      },
+      {
+        "pergunta": "¿Cómo funciona la atención? ¿Hay central impersonal?",
+        "resposta": "La atención es directa con Murillo por WhatsApp — sin central, sin call center, sin intermediario. Murillo vive en João Pessoa, organiza los tours, acompaña cada reserva y aclara tus dudas con calma antes, durante y después del paseo."
+      },
+      {
+        "pergunta": "¿Los guías y conductores están acreditados?",
+        "resposta": "Sí. Todos los conductores y guías de los tours están acreditados conforme exige la legislación brasileña de turismo. Trabajamos solo con socios con documentación en regla y que conocen el destino."
+      },
+      {
+        "pergunta": "¿Atienden en otros idiomas?",
+        "resposta": "El sitio está en portugués, inglés y español. La atención por WhatsApp ocurre principalmente en portugués, con soporte en inglés y español básico para turistas internacionales. Para tours privados con guía bilingüe, consulta disponibilidad."
+      },
+      {
+        "pergunta": "¿Cómo eligen a los socios (catamaranes, conductores, restaurantes)?",
+        "resposta": "Trabajamos con socios que conocemos personalmente, con tiempo de mercado, embarcaciones en conformidad y atención humana. La reputación en Google importa, pero la prueba real es nuestro propio cliente: si alguien vuelve quejándose, no repetimos."
+      },
+      {
+        "pergunta": "¿Pueden compartir contacto de quien ya hizo tour para verificar?",
+        "resposta": "Sí. Tenemos 60+ reseñas reales en Google (4,9/5 estrellas) que puedes leer ahora mismo, y Murillo comparte referencias de clientes directamente por WhatsApp, si prefieres hablar con alguien que ya viajó con nosotros."
+      }
+    ]
   },
   "FaqPage": {
     "seoTitle": "Preguntas Frecuentes sobre Tours en João Pessoa | Vem Passear em Jampa",
@@ -328,18 +355,54 @@
     "ctaBotao": "Preguntar por WhatsApp",
     "verTodosPasseios": "← Ver todos los tours en João Pessoa",
     "faq": [
-      { "pergunta": "¿Cómo hago para reservar un tour?", "resposta": "Por WhatsApp — es el canal directo con Murillo. Mandas mensaje con el tour que quieres, la fecha y el número de personas. Él verifica disponibilidad, confirma marea (cuando necesario) y te pasa las instrucciones de pago. Simple, sin formulario ni intermediario." },
-      { "pergunta": "¿Qué formas de pago se aceptan?", "resposta": "Aceptamos tarjeta de crédito y débito. El financiamiento es posible, pero la tasa corre por cuenta del cliente — número de cuotas y plataforma confirmados al momento del pago. Cualquier duda, pregunta por WhatsApp antes de cerrar." },
-      { "pergunta": "¿Pagan los niños? ¿Hay descuento para niños?", "resposta": "Menores de 5 años no pagan. De 5 a 11 años: 20% de descuento sobre el valor adulto. Desde 12 años: valor adulto. Para tours en cuatriciclo hay restricción de edad mínima de 7 años — confirma por WhatsApp antes de reservar." },
-      { "pergunta": "¿Qué pasa si llueve el día del tour?", "resposta": "Lluvia leve no cancela — João Pessoa tiene clima que cambia rápido y el tour sigue normalmente. Si hay lluvia fuerte o condición de mar mala, el tour no sale. En ese caso, recibes aviso con al menos 2 horas de antelación y puedes reprogramar sin costo adicional. Si no es posible reprogramar: devolución del 100% del valor pagado." },
-      { "pergunta": "¿Cuál es la política de cancelación?", "resposta": "Cancelación con más de 24 horas de antelación: reprogramación sin costo. No-show o cancelación a última hora: sin reembolso. Si el tour es cancelado por la operadora por condiciones climáticas o de marea: reprogramación gratuita o reembolso integral. Dudas específicas, consulta por WhatsApp." },
-      { "pergunta": "¿Qué es la tabla de mareas y cómo afecta mi tour?", "resposta": "La tabla de mareas es el calendario oficial de la Marina que indica los horarios de marea baja y alta de cada día. Los tours de piscinas naturales (Seixas, Picãozinho, Areia Vermelha) dependen de marea baja para funcionar. Antes de confirmar tu reserva, Murillo ya verifica si el día tiene condición de marea adecuada — nunca agendas sin esa confirmación." },
-      { "pergunta": "¿Los tours son seguros? ¿Hay chaleco salvavidas?", "resposta": "Sí. Chaleco salvavidas disponible a bordo durante todo el tour — recomendado para no nadadores y niños. Vem Passear em Jampa tiene Cadastur activo (número 52.077.577). La operación sigue normas de seguridad marítima y los tours son conducidos por profesionales regularizados y capacitados." },
-      { "pergunta": "¿Es posible hacer un tour privativo (solo para mi grupo)?", "resposta": "Sí — todos los tours tienen opción privativa. En modo privativo, solo tu grupo va en el tour. El valor depende del tour, la fecha y la cantidad de personas — nunca es un precio fijo, siempre se consulta caso por caso. Manda mensaje por WhatsApp con detalles del grupo y Murillo te pasa la opción." },
-      { "pergunta": "¿Vem Passear tiene registro oficial en el Ministerio de Turismo?", "resposta": "Sí. CNPJ 52.077.577/0001-03, Cadastur número 52.077.577 — válido hasta 16/12/2026. Puedes verificar el registro en el sitio oficial del Ministerio de Turismo en cualquier momento." },
-      { "pergunta": "¿Dónde puedo ver reseñas de clientes reales?", "resposta": "En Google — Vem Passear em Jampa tiene nota 4.9/5 con 61 reseñas de clientes reales. Murillo puede enviar el enlace directo de las reseñas por WhatsApp si prefieres revisar antes de reservar." },
-      { "pergunta": "No sé nadar. ¿Puedo hacer los tours de piscinas naturales?", "resposta": "Sí. La mayoría de las piscinas naturales tienen agua poco profunda — te quedas de pie o usas chaleco salvavidas. El guía queda cerca durante todo el tour. Mucha gente que nunca nadó hace el tour tranquilamente. Si tienes duda sobre un tour específico, pregunta por WhatsApp." },
-      { "pergunta": "¿El tour incluye transfer del hotel?", "resposta": "Depende del tour. La mayoría incluye transfer a puntos de salida en Tambaú, Cabo Branco, Manaíra y Bessa. Para otros barrios u hoteles fuera de esos puntos, consulta disponibilidad por WhatsApp. Vem Passear también ofrece Transfer 24h separado para aeropuerto y cualquier punto de la ciudad." }
+      {
+        "pergunta": "¿Cómo hago para reservar un tour?",
+        "resposta": "Por WhatsApp — es el canal directo con Murillo. Mandas mensaje con el tour que quieres, la fecha y el número de personas. Él verifica disponibilidad, confirma marea (cuando necesario) y te pasa las instrucciones de pago. Simple, sin formulario ni intermediario."
+      },
+      {
+        "pergunta": "¿Qué formas de pago se aceptan?",
+        "resposta": "Aceptamos tarjeta de crédito y débito. El financiamiento es posible, pero la tasa corre por cuenta del cliente — número de cuotas y plataforma confirmados al momento del pago. Cualquier duda, pregunta por WhatsApp antes de cerrar."
+      },
+      {
+        "pergunta": "¿Pagan los niños? ¿Hay descuento para niños?",
+        "resposta": "Menores de 5 años no pagan. De 5 a 11 años: 20% de descuento sobre el valor adulto. Desde 12 años: valor adulto. Para tours en cuatriciclo hay restricción de edad mínima de 7 años — confirma por WhatsApp antes de reservar."
+      },
+      {
+        "pergunta": "¿Qué pasa si llueve el día del tour?",
+        "resposta": "Lluvia leve no cancela — João Pessoa tiene clima que cambia rápido y el tour sigue normalmente. Si hay lluvia fuerte o condición de mar mala, el tour no sale. En ese caso, recibes aviso con al menos 2 horas de antelación y puedes reprogramar sin costo adicional. Si no es posible reprogramar: devolución del 100% del valor pagado."
+      },
+      {
+        "pergunta": "¿Cuál es la política de cancelación?",
+        "resposta": "Cancelación con más de 24 horas de antelación: reprogramación sin costo. No-show o cancelación a última hora: sin reembolso. Si el tour es cancelado por la operadora por condiciones climáticas o de marea: reprogramación gratuita o reembolso integral. Dudas específicas, consulta por WhatsApp."
+      },
+      {
+        "pergunta": "¿Qué es la tabla de mareas y cómo afecta mi tour?",
+        "resposta": "La tabla de mareas es el calendario oficial de la Marina que indica los horarios de marea baja y alta de cada día. Los tours de piscinas naturales (Seixas, Picãozinho, Areia Vermelha) dependen de marea baja para funcionar. Antes de confirmar tu reserva, Murillo ya verifica si el día tiene condición de marea adecuada — nunca agendas sin esa confirmación."
+      },
+      {
+        "pergunta": "¿Los tours son seguros? ¿Hay chaleco salvavidas?",
+        "resposta": "Sí. Chaleco salvavidas disponible a bordo durante todo el tour — recomendado para no nadadores y niños. Vem Passear em Jampa tiene Cadastur activo (número 52.077.577). La operación sigue normas de seguridad marítima y los tours son conducidos por profesionales regularizados y capacitados."
+      },
+      {
+        "pergunta": "¿Es posible hacer un tour privativo (solo para mi grupo)?",
+        "resposta": "Sí — todos los tours tienen opción privativa. En modo privativo, solo tu grupo va en el tour. El valor depende del tour, la fecha y la cantidad de personas — nunca es un precio fijo, siempre se consulta caso por caso. Manda mensaje por WhatsApp con detalles del grupo y Murillo te pasa la opción."
+      },
+      {
+        "pergunta": "¿Vem Passear tiene registro oficial en el Ministerio de Turismo?",
+        "resposta": "Sí. CNPJ 52.077.577/0001-03, Cadastur número 52.077.577 — válido hasta 16/12/2026. Puedes verificar el registro en el sitio oficial del Ministerio de Turismo en cualquier momento."
+      },
+      {
+        "pergunta": "¿Dónde puedo ver reseñas de clientes reales?",
+        "resposta": "En Google — Vem Passear em Jampa tiene nota 4.9/5 con 61 reseñas de clientes reales. Murillo puede enviar el enlace directo de las reseñas por WhatsApp si prefieres revisar antes de reservar."
+      },
+      {
+        "pergunta": "No sé nadar. ¿Puedo hacer los tours de piscinas naturales?",
+        "resposta": "Sí. La mayoría de las piscinas naturales tienen agua poco profunda — te quedas de pie o usas chaleco salvavidas. El guía queda cerca durante todo el tour. Mucha gente que nunca nadó hace el tour tranquilamente. Si tienes duda sobre un tour específico, pregunta por WhatsApp."
+      },
+      {
+        "pergunta": "¿El tour incluye transfer del hotel?",
+        "resposta": "Depende del tour. La mayoría incluye transfer a puntos de salida en Tambaú, Cabo Branco, Manaíra y Bessa. Para otros barrios u hoteles fuera de esos puntos, consulta disponibilidad por WhatsApp. Vem Passear también ofrece Transfer 24h separado para aeropuerto y cualquier punto de la ciudad."
+      }
     ]
   },
   "TransferPage": {
@@ -394,7 +457,38 @@
     "crossTitulo": "Excursiones y grupos tienen operación dedicada",
     "crossDesc": "Itinerario, transporte local, van/autobús y apoyo en campo para iglesia, escuela, familia grande o agencia socia.",
     "crossCta": "Ver Excursiones y Grupos →",
-    "verTodosPasseios": "← Ver todos los tours en João Pessoa"
+    "verTodosPasseios": "← Ver todos los tours en João Pessoa",
+    "faqTitulo": "Preguntas frecuentes sobre el Transfer",
+    "faq": [
+      {
+        "pergunta": "¿Cómo solicito la cotización?",
+        "resposta": "Por WhatsApp. Envías el origen, el destino, la fecha y el horario deseado, y el número de pasajeros. Confirmamos el valor por trayecto y la disponibilidad al instante."
+      },
+      {
+        "pergunta": "¿El transfer se cobra por persona o por trayecto?",
+        "resposta": "Por trayecto. El precio es único por carrera — sin importar si vas con 1, 2 o 4 pasajeros (respetando la capacidad del vehículo). Sin cargo por pasajero adicional."
+      },
+      {
+        "pergunta": "¿Atienden vuelos nocturnos y de madrugada?",
+        "resposta": "Sí. Nuestro transfer funciona 24h, todos los días, incluyendo vuelos de madrugada, fines de semana y feriados. Avisa el horario del vuelo al reservar."
+      },
+      {
+        "pergunta": "¿Y si mi vuelo se retrasa?",
+        "resposta": "Monitoreamos el vuelo. Si hay retraso, el chofer se ajusta y espera. No pagas extra — el seguimiento de vuelos ya está incluido en el valor del trayecto."
+      },
+      {
+        "pergunta": "¿Puedo reservar transfer a cualquier punto de João Pessoa?",
+        "resposta": "Sí. Aeropuerto, hoteles, Airbnb, restaurantes, embarques de tour, terminal — atendemos cualquier punto de la ciudad. Ciudades vecinas (Cabedelo, Conde): consulta el valor por WhatsApp."
+      },
+      {
+        "pergunta": "¿Cuántos pasajeros caben en el vehículo?",
+        "resposta": "Vehículo estándar acomoda hasta 4 pasajeros con equipaje. Para grupos mayores (5+), avisa al reservar — tenemos opciones de vehículo ejecutivo o van. Valor a consultar."
+      },
+      {
+        "pergunta": "¿Cómo pago el transfer?",
+        "resposta": "Pago vía PIX o tarjeta (crédito/débito). La confirmación se hace por WhatsApp antes del trayecto. Sin cargo extra más allá del valor cotizado."
+      }
+    ]
   },
   "ExcursoesPage": {
     "seoTitle": "Excursiones en João Pessoa — Itinerarios y Logística para Grupos",
@@ -487,12 +581,30 @@
     "voltarTransfer": "← Transfer 24h",
     "verTodosPasseios": "Ver todos los tours →",
     "faq": [
-      { "pergunta": "¿Vem Passear opera excursiones cerradas que vienen de otras ciudades?", "resposta": "Sí. Operamos la parte de João Pessoa — itinerario, transporte local, guías, apoyo en campo. Puedes llegar con tu propio autobús desde origen o contratar transporte con nosotros desde el aeropuerto, terminal u hotel." },
-      { "pergunta": "¿Proveen el autobús o trabajan con el transporte que el grupo ya tiene?", "resposta": "Las dos opciones. Si ya vienes con autobús desde la ciudad de origen, operamos solo el itinerario y el apoyo en campo. Si necesitas transporte en João Pessoa, cerramos con socios operacionales acreditados — capacidad y formato son confirmados en la propuesta, según el tamaño del grupo." },
-      { "pergunta": "¿Hay descuento para grupo grande?", "resposta": "No tenemos tabla fija de descuento. Lo que existe es condición especial evaluada caso por caso a partir de 4 personas — depende del tamaño del grupo, fechas, combinación de tours. Vale preguntar en el briefing." },
-      { "pergunta": "¿Cuidan de alimentación, hospedaje o solo del itinerario de tours?", "resposta": "Itinerario, transporte y apoyo en campo son el foco. Hospedaje y restaurante: recomendamos socios confiables para grupo, pero la contratación queda contigo. Quien ya organizó grupo sabe que mezclar todo en una única cuenta crea más problemas que ayuda." },
-      { "pergunta": "¿Puedo armar un itinerario 100% personalizado o solo los pre-armados?", "resposta": "100% personalizado. Las plantillas de la página son puntos de partida, no paquete cerrado. La propuesta real se arma tras el briefing." },
-      { "pergunta": "¿Cómo manejan una fecha cerrada que cae con mala marea?", "resposta": "Para tours de piscinas naturales (Seixas, Picãozinho, Areia Vermelha), Murillo verifica la tabla de mareas antes de aceptar la fecha. Si no hay ventana de marea buena en el día que el grupo ya cerró, ajustamos el itinerario: cambiamos a tour que no depende de marea (city tour, litoral sur, atardecer, catamarán en marea alta) o sugerimos otro horario del mismo día. Nunca llegas aquí y descubres que el tour no puede salir." }
+      {
+        "pergunta": "¿Vem Passear opera excursiones cerradas que vienen de otras ciudades?",
+        "resposta": "Sí. Operamos la parte de João Pessoa — itinerario, transporte local, guías, apoyo en campo. Puedes llegar con tu propio autobús desde origen o contratar transporte con nosotros desde el aeropuerto, terminal u hotel."
+      },
+      {
+        "pergunta": "¿Proveen el autobús o trabajan con el transporte que el grupo ya tiene?",
+        "resposta": "Las dos opciones. Si ya vienes con autobús desde la ciudad de origen, operamos solo el itinerario y el apoyo en campo. Si necesitas transporte en João Pessoa, cerramos con socios operacionales acreditados — capacidad y formato son confirmados en la propuesta, según el tamaño del grupo."
+      },
+      {
+        "pergunta": "¿Hay descuento para grupo grande?",
+        "resposta": "No tenemos tabla fija de descuento. Lo que existe es condición especial evaluada caso por caso a partir de 4 personas — depende del tamaño del grupo, fechas, combinación de tours. Vale preguntar en el briefing."
+      },
+      {
+        "pergunta": "¿Cuidan de alimentación, hospedaje o solo del itinerario de tours?",
+        "resposta": "Itinerario, transporte y apoyo en campo son el foco. Hospedaje y restaurante: recomendamos socios confiables para grupo, pero la contratación queda contigo. Quien ya organizó grupo sabe que mezclar todo en una única cuenta crea más problemas que ayuda."
+      },
+      {
+        "pergunta": "¿Puedo armar un itinerario 100% personalizado o solo los pre-armados?",
+        "resposta": "100% personalizado. Las plantillas de la página son puntos de partida, no paquete cerrado. La propuesta real se arma tras el briefing."
+      },
+      {
+        "pergunta": "¿Cómo manejan una fecha cerrada que cae con mala marea?",
+        "resposta": "Para tours de piscinas naturales (Seixas, Picãozinho, Areia Vermelha), Murillo verifica la tabla de mareas antes de aceptar la fecha. Si no hay ventana de marea buena en el día que el grupo ya cerró, ajustamos el itinerario: cambiamos a tour que no depende de marea (city tour, litoral sur, atardecer, catamarán en marea alta) o sugerimos otro horario del mismo día. Nunca llegas aquí y descubres que el tour no puede salir."
+      }
     ]
   },
   "CalendarioPage": {
@@ -528,11 +640,26 @@
     "ctaFinalTitulo": "¿Elegiste la fecha? Habla con Murillo para confirmar la reserva.",
     "ctaFinalSub": "Atención directa, precio justo e itinerario organizado.",
     "faq": [
-      { "pergunta": "¿Cuántas salidas hay en mayo de 2026 para las piscinas naturales?", "resposta": "En mayo de 2026 hay 18 días con salida confirmada para las piscinas naturales — divididos en 3 ciclos de marea. Los mejores días son entre el 13 y el 20 de mayo, cuando la marea alcanza condición excelente (debajo de 0,5m), destacando 16, 17 y 18/05 con marea histórica de 0,2m (sicigia)." },
-      { "pergunta": "¿Por qué los tours de piscinas naturales dependen de la marea?", "resposta": "Las piscinas naturales de Seixas, Picãozinho y Areia Vermelha solo aparecen con marea baja. Con agua arriba de 0,8m el acceso queda comprometido. Por eso los tours salen solo en determinados días del mes, siempre en la ventana de marea baja de la mañana." },
-      { "pergunta": "¿Qué significa marea 'excelente', 'buena' y 'consultar'?", "resposta": "Excelente (0,0–0,5m): piscinas bien expuestas, experiencia completa. Buena (0,6–0,7m): piscinas accesibles con buena visibilidad. Consultar (0,8m): condiciones reducidas — verificar con Murillo antes de reservar. Sin tour (arriba de 0,9m): piscinas sumergidas, tour no realizado." },
-      { "pergunta": "¿Puedo reservar una fecha específica del calendario?", "resposta": "Sí. Elige la fecha deseada en el calendario y contacta a Murillo por WhatsApp. Él confirma la disponibilidad, el horario exacto de salida y el punto de encuentro. Las salidas parten de Tambaú, João Pessoa." },
-      { "pergunta": "¿Los datos del calendario son oficiales de la Marina?", "resposta": "Los horarios se basan en la tabla de mareas del Puerto de Cabedelo/PB y son revisados por Murillo antes de cada publicación. Pueden ocurrir pequeñas variaciones — siempre confirma el horario final por WhatsApp en la víspera del tour." }
+      {
+        "pergunta": "¿Cuántas salidas hay en mayo de 2026 para las piscinas naturales?",
+        "resposta": "En mayo de 2026 hay 18 días con salida confirmada para las piscinas naturales — divididos en 3 ciclos de marea. Los mejores días son entre el 13 y el 20 de mayo, cuando la marea alcanza condición excelente (debajo de 0,5m), destacando 16, 17 y 18/05 con marea histórica de 0,2m (sicigia)."
+      },
+      {
+        "pergunta": "¿Por qué los tours de piscinas naturales dependen de la marea?",
+        "resposta": "Las piscinas naturales de Seixas, Picãozinho y Areia Vermelha solo aparecen con marea baja. Con agua arriba de 0,8m el acceso queda comprometido. Por eso los tours salen solo en determinados días del mes, siempre en la ventana de marea baja de la mañana."
+      },
+      {
+        "pergunta": "¿Qué significa marea 'excelente', 'buena' y 'consultar'?",
+        "resposta": "Excelente (0,0–0,5m): piscinas bien expuestas, experiencia completa. Buena (0,6–0,7m): piscinas accesibles con buena visibilidad. Consultar (0,8m): condiciones reducidas — verificar con Murillo antes de reservar. Sin tour (arriba de 0,9m): piscinas sumergidas, tour no realizado."
+      },
+      {
+        "pergunta": "¿Puedo reservar una fecha específica del calendario?",
+        "resposta": "Sí. Elige la fecha deseada en el calendario y contacta a Murillo por WhatsApp. Él confirma la disponibilidad, el horario exacto de salida y el punto de encuentro. Las salidas parten de Tambaú, João Pessoa."
+      },
+      {
+        "pergunta": "¿Los datos del calendario son oficiales de la Marina?",
+        "resposta": "Los horarios se basan en la tabla de mareas del Puerto de Cabedelo/PB y son revisados por Murillo antes de cada publicación. Pueden ocurrir pequeñas variaciones — siempre confirma el horario final por WhatsApp en la víspera del tour."
+      }
     ]
   },
   "TabuaPage": {
@@ -557,13 +684,34 @@
     "ctaSub": "Manda mensaje con la fecha de tu viaje. Confirmo la marea e indico el tour correcto para tu día.",
     "ctaMicrocopy": "Respuesta rápida durante el día · sin compromiso",
     "faq": [
-      { "pergunta": "¿Cuál es la mejor marea para piscinas naturales en João Pessoa?", "resposta": "La mejor condición es la marea bien baja — cuanto más baja, más piscina de coral queda expuesta y más tranquilo el snorkel. En general, alturas cercanas a 0,5m o menos rinden tours más bonitos. La altura varía cada día, por eso hay que consultar la tabla antes de agendar." },
-      { "pergunta": "¿Qué tours dependen de la marea baja?", "resposta": "Los tres principales son: Piscinas Naturales de Seixas, Picãozinho y Areia Vermelha. Otros tours de la costa de João Pessoa — Atardecer del Jacaré, Litoral Sur Clásico, City Tour — no dependen de marea y operan todos los días." },
-      { "pergunta": "¿Areia Vermelha sale todos los días?", "resposta": "No. Areia Vermelha es un banco de arena en Cabedelo que solo aparece con marea baja. Algunas semanas tienen varios días de salida seguidos; otras no tienen ninguno. Por eso lo mejor es consultar la tabla y confirmar conmigo por WhatsApp antes de cerrar la fecha." },
-      { "pergunta": "¿Picãozinho depende de la marea?", "resposta": "Sí. Picãozinho es un conjunto de piscinas naturales a unos 1,5 km de la playa de Tambaú, y solo queda seguro para nadar y hacer snorkel cuando la marea está baja. Cuando sube la marea, las piscinas desaparecen." },
-      { "pergunta": "¿Las Piscinas Naturales de Seixas dependen de la marea?", "resposta": "Sí. Las Piscinas de Seixas están en el punto más oriental del continente americano y solo son visitables con marea baja. Cuando la marea está alta, el área queda cubierta y el tour no sucede." },
-      { "pergunta": "¿Cómo saber el mejor día para reservar?", "resposta": "Mira la tabla en esta página para tener una referencia general y escríbeme por WhatsApp con la fecha de tu viaje. Confirmo si la marea está favorable e indico cuál es el mejor tour para tu día." },
-      { "pergunta": "¿Puedo reservar un tour de piscinas naturales sin mirar la tabla de mareas?", "resposta": "Puedes mandar mensaje incluso sin consultar — cruzo tu fecha con la marea y te oriento. Pero si ya consultaste y tienes flexibilidad de fecha, queda más fácil elegir una ventana con buena marea." }
+      {
+        "pergunta": "¿Cuál es la mejor marea para piscinas naturales en João Pessoa?",
+        "resposta": "La mejor condición es la marea bien baja — cuanto más baja, más piscina de coral queda expuesta y más tranquilo el snorkel. En general, alturas cercanas a 0,5m o menos rinden tours más bonitos. La altura varía cada día, por eso hay que consultar la tabla antes de agendar."
+      },
+      {
+        "pergunta": "¿Qué tours dependen de la marea baja?",
+        "resposta": "Los tres principales son: Piscinas Naturales de Seixas, Picãozinho y Areia Vermelha. Otros tours de la costa de João Pessoa — Atardecer del Jacaré, Litoral Sur Clásico, City Tour — no dependen de marea y operan todos los días."
+      },
+      {
+        "pergunta": "¿Areia Vermelha sale todos los días?",
+        "resposta": "No. Areia Vermelha es un banco de arena en Cabedelo que solo aparece con marea baja. Algunas semanas tienen varios días de salida seguidos; otras no tienen ninguno. Por eso lo mejor es consultar la tabla y confirmar conmigo por WhatsApp antes de cerrar la fecha."
+      },
+      {
+        "pergunta": "¿Picãozinho depende de la marea?",
+        "resposta": "Sí. Picãozinho es un conjunto de piscinas naturales a unos 1,5 km de la playa de Tambaú, y solo queda seguro para nadar y hacer snorkel cuando la marea está baja. Cuando sube la marea, las piscinas desaparecen."
+      },
+      {
+        "pergunta": "¿Las Piscinas Naturales de Seixas dependen de la marea?",
+        "resposta": "Sí. Las Piscinas de Seixas están en el punto más oriental del continente americano y solo son visitables con marea baja. Cuando la marea está alta, el área queda cubierta y el tour no sucede."
+      },
+      {
+        "pergunta": "¿Cómo saber el mejor día para reservar?",
+        "resposta": "Mira la tabla en esta página para tener una referencia general y escríbeme por WhatsApp con la fecha de tu viaje. Confirmo si la marea está favorable e indico cuál es el mejor tour para tu día."
+      },
+      {
+        "pergunta": "¿Puedo reservar un tour de piscinas naturales sin mirar la tabla de mareas?",
+        "resposta": "Puedes mandar mensaje incluso sin consultar — cruzo tu fecha con la marea y te oriento. Pero si ya consultaste y tienes flexibilidad de fecha, queda más fácil elegir una ventana con buena marea."
+      }
     ]
   },
   "Blog": {
