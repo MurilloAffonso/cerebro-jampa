@@ -15,7 +15,7 @@ export const empresa = {
   // Identidade
   nome: 'Vem Passear em Jampa',
   proprietario: 'Affonso Murillo Soledade de Oliveira',
-  dominio: 'vempassearjampa.com',
+  dominio: 'www.vempassearjampa.com',
 
   // Registros
   cnpj: '52.077.577/0001-03',

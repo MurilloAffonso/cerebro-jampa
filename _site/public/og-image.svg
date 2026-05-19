@@ -26,7 +26,7 @@
 
   <!-- Brand name -->
   <text x="190" y="110" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="white">Vem Passear em Jampa</text>
-  <text x="190" y="142" font-family="Arial, sans-serif" font-size="18" fill="#93C5FD">vempassearjampa.com</text>
+  <text x="190" y="142" font-family="Arial, sans-serif" font-size="18" fill="#93C5FD">www.vempassearjampa.com</text>
 
   <!-- Main headline -->
   <text x="110" y="250" font-family="Arial, sans-serif" font-size="58" font-weight="bold" fill="white">Passeios em</text>

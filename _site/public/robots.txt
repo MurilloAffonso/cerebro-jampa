@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vempassearjampa.com/sitemap.xml
+Sitemap: https://www.vempassearjampa.com/sitemap.xml
