@@ -378,6 +378,16 @@ export const passeiosTranslations: Record<
           resposta:
             "With 2h advance notice, we reschedule at no cost. If rescheduling isn't possible, 100% refund.",
         },
+        {
+          pergunta: "Is there a private option instead of the shared one?",
+          resposta:
+            "Yes. We can arrange a private version of the route for groups, families or couples who prefer total flexibility at each beach. Ask for the rate on WhatsApp.",
+        },
+        {
+          pergunta: "Can I combine it with the Coqueirinho ATV trail?",
+          resposta:
+            "Yes — that's exactly what the Jampa Combo offers. Same beach route + ATV trail in the afternoon, in a single day. See the Combo page or ask on WhatsApp.",
+        },
       ],
       informacoesPraticas: {
         oqueLevar: [
@@ -517,6 +527,16 @@ export const passeiosTranslations: Record<
           resposta:
             "Con aviso de 2h de antelación, reprogramamos sin costo. Si es imposible reprogramar, 100% de reembolso.",
         },
+        {
+          pergunta: "¿Hay opción privativa en lugar del compartido?",
+          resposta:
+            "Sí. Podemos armar una versión privativa de la ruta para grupos, familias o parejas que prefieran total flexibilidad de tiempo en cada playa. Consulta el valor por WhatsApp.",
+        },
+        {
+          pergunta: "¿Se puede combinar con el trail de cuatriciclo de Coqueirinho?",
+          resposta:
+            "Sí — eso es exactamente lo que ofrecemos en el Combo Jampa. Misma ruta de playas + trail en cuatriciclo por la tarde, en un solo día. Mira la página del Combo o consulta por WhatsApp.",
+        },
       ],
       informacoesPraticas: {
         oqueLevar: [
@@ -595,60 +615,270 @@ export const passeiosTranslations: Record<
       preco: "Without ATV: R$ 150 / Single ATV: R$ 240 / Double ATV: R$ 310",
       duracao: "~8h (trail 1h30–2h)",
       saida: "8am–9am",
+      h1: "Jampa Combo — South Coast of João Pessoa with ATV in Coqueirinho",
+      metaDescription:
+        "South coast beaches + ATV trail in Coqueirinho in one day. Transfer, guide, Dedo de Deus and Castelinho viewpoints. From R$ 150. Book on WhatsApp!",
+      subtituloHero:
+        "4 beaches in the morning, ATV adrenaline in the afternoon. We pick you up at the hotel, take care of everything, drop you back at the end of the day.",
       descricao:
         "Paradise beaches in the morning + ATV trail through Coqueirinho's historic viewpoints.",
-      incluso: [
-        "Transfer (Tambaú, Cabo Branco, Manaíra, Bessa)",
-        "Guide",
-        "ATV (when booked)",
+      lead:
+        "Want beach and adventure on the same day, without driving or hunting for parking?\n\nThe Jampa Combo pairs the Classic South Coast route (Gramame, Amor, Tambaba and Coqueirinho) with a 1h30–2h ATV trail through Coqueirinho's most stunning viewpoints.\n\nWe pick you up between 8am and 9am in Tambaú, Cabo Branco, Manaíra or Bessa. Four beaches in the morning, lunch in Coqueirinho, ATV in the afternoon — guided by our team. Back to the hotel around 4:30pm.",
+      descricaoSensorial:
+        "The morning follows the Classic South Coast rhythm: white sand in Gramame, raw cliffs at Praia do Amor, the optional stop in Tambaba and lunch in Coqueirinho with that orange-cliff-and-palm view.\n\nAfter lunch, the energy shifts. You swap the beach for the trail. The ATV is yours, the guide leads, and the route covers Mirante Dedo de Deus, Mirante das Tartarugas, Castelinho da Princesa (with little shops of artisanal cachaça) and Shopping Rural (local handicrafts and sweets).\n\nThe trail runs between 1h30 and 2h. At each stop you get off, photograph, breathe in the view and move on. At the end, a calm ride back to the hotel.",
+      roteiroNarrativo: [
+        {
+          emoji: "🚐",
+          titulo: "Pick-up (transfer) — 8am to 9am",
+          texto:
+            "We pick you up at your hotel or airbnb in Tambaú, Cabo Branco, Manaíra or Bessa. Exact time confirmed in the voucher.",
+        },
+        {
+          emoji: "🏖️",
+          titulo: "South coast beaches — morning",
+          texto:
+            "Gramame (calm waters), Praia do Amor (raw cliffs), Tambaba (optional stop) and Coqueirinho for lunch (not included, several options on site).",
+        },
+        {
+          emoji: "🏍️",
+          titulo: "ATV trail starts",
+          texto:
+            "After lunch, you get on the ATV. The guide briefs you on the vehicle, route and safety. Helmet provided. Minimum 7 years old to ride.",
+        },
+        {
+          emoji: "📸",
+          titulo: "Mirante Dedo de Deus and Mirante das Tartarugas",
+          texto:
+            "The most photogenic stops on the trail. Panoramic views of the south coast and time for photos without rushing.",
+        },
+        {
+          emoji: "🏛️",
+          titulo: "Castelinho da Princesa and Shopping Rural",
+          texto:
+            "Castelinho with little shops of artisanal cachaça. Shopping Rural with sweets, fruits, handicrafts and local products — a great stop for souvenirs.",
+        },
+        {
+          emoji: "🚐",
+          titulo: "Return around 4:30pm",
+          texto:
+            "Trail wraps, ATV returned, and transfer back to the hotel.",
+        },
       ],
-      naoIncluso: ["Meals"],
+      rotario: [
+        "Departure 8am–9am (Tambaú, Cabo Branco, Manaíra, Bessa)",
+        "Beaches: Gramame, Amor, Tambaba and Coqueirinho (lunch)",
+        "ATV trail 1h30–2h in Coqueirinho",
+        "Stops: Dedo de Deus, Tartarugas, Castelinho, Shopping Rural",
+        "Return ~4:30pm",
+      ],
+      incluso: [
+        "Round-trip transfer (Tambaú, Cabo Branco, Manaíra, Bessa)",
+        "Accredited drivers and guide at every stop",
+        "ATV on Coqueirinho trail (when booked)",
+        "Helmet and safety gear",
+        "Support and guidance (Murillo or team)",
+      ],
+      naoIncluso: [
+        "Meals (lunch in Coqueirinho at extra cost)",
+        "Drinks",
+        "Purchases at Castelinho and Shopping Rural",
+      ],
       observacoes:
-        "ATV: minimum 7 years old, maximum 2 people per machine. Private rate: on request.",
-      idealPara: ["Adventure seekers", "Couples", "Families with kids 7+"],
+        "ATV: minimum 7 years old to ride, maximum 2 people per machine. Younger kids can do the beach route only. Private rate: on request.",
+      nomeCurto: "Jampa Combo",
+      idealPara: [
+        "Adventure seekers",
+        "Couples",
+        "Families with kids 7+",
+        "Anyone who wants beach + adrenaline in one day",
+      ],
       imagemAlt: "ATV trail through the viewpoints of Coqueirinho, Paraíba's south coast",
       faq: [
         {
           pergunta: "Can I do the tour without the ATV?",
           resposta:
-            "Yes. Without ATV: R$ 150 per person. The beach route is the same.",
+            "Yes. Without ATV: R$ 150 per person. The beach route is exactly the same as the Classic South Coast tour.",
         },
         {
           pergunta: "Can children ride the ATV?",
           resposta:
-            "From 7 years old. Younger children can join the beach tour but cannot operate the ATV.",
+            "From 7 years old to operate it (always with the guide leading). Younger kids can join the beach tour but not the ATV part.",
+        },
+        {
+          pergunta: "Do I need ATV experience?",
+          resposta:
+            "No. The guide briefs you on the vehicle before departure, leads the group and adjusts pace to the riders' level. Trail is safe and well marked.",
+        },
+        {
+          pergunta: "What's the difference between Single and Double ATV?",
+          resposta:
+            "Single: one ATV just for you (R$ 240). Double: two people share the same ATV (R$ 310). Maximum two riders per machine.",
+        },
+        {
+          pergunta: "What's included in R$ 240 / R$ 310?",
+          resposta:
+            "Round-trip transfer, accredited drivers and guide at every stop, ATV on the Coqueirinho trail, helmet and safety gear. Meals and drinks are paid separately.",
+        },
+        {
+          pergunta: "What if it rains on the trail day?",
+          resposta:
+            "With 2 hours' notice, we reschedule at no cost. If rescheduling is impossible, 100% refund. The beach tour usually runs even on cloudy days.",
+        },
+        {
+          pergunta: "Can I skip Tambaba?",
+          resposta:
+            "Yes. The Tambaba stop is optional — anyone who prefers can skip and head straight to Coqueirinho. We let you know in advance.",
         },
       ],
+      informacoesPraticas: {
+        oqueLevar: [
+          "Swimwear (and a spare to change after lunch)",
+          "Comfortable pants or shorts for the ATV",
+          "Closed-toe shoes or sandals with straps for the trail",
+          "Towel",
+          "Sunscreen",
+          "Cash or card for lunch and purchases at Castelinho/Shopping Rural",
+        ],
+        pontoEncontro:
+          "We pick you up at your hotel or airbnb in Tambaú, Cabo Branco, Manaíra or Bessa — João Pessoa, PB. Exact location confirmed in the voucher after booking.",
+        horario:
+          "Departure between 8am and 9am. Return around 4:30pm. ATV trail in the afternoon, 1h30 to 2h.",
+      },
     },
     es: {
       nome: "Combo Jampa — Litoral Sur con Cuatriciclo",
       preco: "Sin cuatri: R$ 150 / Cuatri individual: R$ 240 / Cuatri doble: R$ 310",
       duracao: "~8h (trail 1h30–2h)",
       saida: "8h–9h",
+      h1: "Combo Jampa — Litoral Sur de João Pessoa con Cuatriciclo en Coqueirinho",
+      metaDescription:
+        "Playas del litoral sur + trail en cuatriciclo en Coqueirinho en un solo día. Transfer, guía, miradores Dedo de Deus y Castelinho. Desde R$ 150. Reserva por WhatsApp!",
+      subtituloHero:
+        "4 playas por la mañana y adrenalina en cuatriciclo por la tarde. Te recogemos en el hotel, organizamos todo y te dejamos al final del día.",
       descricao:
         "Playas paradisíacas por la mañana + trail en cuatriciclo por los miradores históricos de Coqueirinho.",
-      incluso: [
-        "Transfer (Tambaú, Cabo Branco, Manaíra, Bessa)",
-        "Guía",
-        "Cuatriciclo (cuando se contrata)",
+      lead:
+        "¿Quieres playa y aventura en el mismo día, sin conducir ni buscar estacionamiento?\n\nEl Combo Jampa une la Ruta Clásica del litoral sur (Gramame, Amor, Tambaba y Coqueirinho) con un trail en cuatriciclo de 1h30 a 2h por los miradores más bonitos de Coqueirinho.\n\nTe recogemos entre las 8h y las 9h en Tambaú, Cabo Branco, Manaíra o Bessa. Cuatro playas por la mañana, almuerzo en Coqueirinho y cuatriciclo guiado por la tarde. Regreso al hotel alrededor de las 16h30.",
+      descricaoSensorial:
+        "La mañana sigue el ritmo del Litoral Sur Clásico: arena blanca en Gramame, acantilados salvajes en Praia do Amor, parada opcional en Tambaba y almuerzo en Coqueirinho con vista de palmeras y acantilado anaranjado.\n\nDespués del almuerzo, cambia la energía. Cambias la playa por el trail. El cuatriciclo es tuyo, el guía va adelante y la ruta pasa por el Mirante Dedo de Deus, el Mirante das Tartarugas, el Castelinho da Princesa (con tienditas de cachaça artesanal) y el Shopping Rural (artesanías y dulces locales).\n\nEl trail dura entre 1h30 y 2h. En cada parada bajas, sacas fotos, respiras la vista y sigues. Al final, regreso tranquilo al hotel.",
+      roteiroNarrativo: [
+        {
+          emoji: "🚐",
+          titulo: "Salida (transfer) — 8h a 9h",
+          texto:
+            "Te recogemos en tu hotel o airbnb en Tambaú, Cabo Branco, Manaíra o Bessa. Horario exacto confirmado en el voucher.",
+        },
+        {
+          emoji: "🏖️",
+          titulo: "Playas del litoral sur — mañana",
+          texto:
+            "Gramame (aguas tranquilas), Praia do Amor (acantilados salvajes), Tambaba (parada opcional) y Coqueirinho para almorzar (no incluido, varias opciones en el lugar).",
+        },
+        {
+          emoji: "🏍️",
+          titulo: "Inicio del trail en cuatriciclo",
+          texto:
+            "Tras el almuerzo, montas en el cuatriciclo. El guía explica el vehículo, la ruta y la seguridad. Casco incluido. Mínimo 7 años para conducir.",
+        },
+        {
+          emoji: "📸",
+          titulo: "Mirante Dedo de Deus y Mirante das Tartarugas",
+          texto:
+            "Las paradas más fotogénicas del trail. Vista panorámica del litoral sur y tiempo para fotos sin prisa.",
+        },
+        {
+          emoji: "🏛️",
+          titulo: "Castelinho da Princesa y Shopping Rural",
+          texto:
+            "Castelinho con tienditas de cachaças artesanales. Shopping Rural con dulces, frutas, artesanías y productos regionales — buena parada para souvenirs.",
+        },
+        {
+          emoji: "🚐",
+          titulo: "Regreso alrededor de las 16h30",
+          texto:
+            "Trail terminado, devolución del cuatriciclo y transfer de vuelta al hotel.",
+        },
       ],
-      naoIncluso: ["Comidas"],
+      rotario: [
+        "Salida 8h–9h (Tambaú, Cabo Branco, Manaíra, Bessa)",
+        "Playas: Gramame, Amor, Tambaba y Coqueirinho (almuerzo)",
+        "Trail en cuatriciclo 1h30–2h en Coqueirinho",
+        "Paradas: Dedo de Deus, Tartarugas, Castelinho, Shopping Rural",
+        "Regreso ~16h30",
+      ],
+      incluso: [
+        "Transfer ida y vuelta (Tambaú, Cabo Branco, Manaíra, Bessa)",
+        "Conductores y guía acreditados en todas las paradas",
+        "Cuatriciclo en el trail de Coqueirinho (cuando se contrata)",
+        "Casco y equipo de seguridad",
+        "Orientación y atención (Murillo o equipo)",
+      ],
+      naoIncluso: [
+        "Comidas (almuerzo en Coqueirinho aparte)",
+        "Bebidas",
+        "Compras en Castelinho y Shopping Rural",
+      ],
       observacoes:
-        "Cuatriciclo: mínimo 7 años, máximo 2 personas por máquina. Valor privativo: consultar.",
-      idealPara: ["Aventureros", "Parejas", "Familias con niños 7+"],
+        "Cuatriciclo: mínimo 7 años para conducir, máximo 2 personas por máquina. Los niños menores pueden hacer solo la ruta de playas. Valor privativo: consultar.",
+      nomeCurto: "Combo Jampa",
+      idealPara: [
+        "Aventureros",
+        "Parejas",
+        "Familias con niños desde 7 años",
+        "Quien busca playa + adrenalina en el mismo día",
+      ],
       imagemAlt: "Trail en cuatriciclo por los miradores de Coqueirinho, Litoral Sur de Paraíba",
       faq: [
         {
           pergunta: "¿Puedo hacer el tour sin el cuatriciclo?",
           resposta:
-            "Sí. Sin cuatri: R$ 150 por persona. El recorrido de playas es el mismo.",
+            "Sí. Sin cuatri: R$ 150 por persona. La ruta de playas es exactamente la misma del Clásico del Litoral Sur.",
         },
         {
           pergunta: "¿Pueden los niños usar el cuatriciclo?",
           resposta:
-            "Desde 7 años. Los menores pueden ir al tour de playas pero no operan el cuatriciclo.",
+            "Desde 7 años para conducir (siempre con el guía adelante). Los menores pueden ir al tour de playas pero no al cuatriciclo.",
+        },
+        {
+          pergunta: "¿Necesito experiencia con cuatriciclo?",
+          resposta:
+            "No. El guía explica el vehículo antes de salir, lidera el grupo y ajusta el ritmo al nivel de los pilotos. El trail es seguro y bien señalizado.",
+        },
+        {
+          pergunta: "¿Cuál es la diferencia entre individual y doble en el cuatri?",
+          resposta:
+            "Individual: 1 cuatri solo para ti (R$ 240). Doble: 2 personas comparten el mismo cuatri (R$ 310). Máximo 2 personas por máquina.",
+        },
+        {
+          pergunta: "¿Qué incluye R$ 240 / R$ 310?",
+          resposta:
+            "Transfer ida y vuelta, conductores y guía en todas las paradas, cuatriciclo en el trail de Coqueirinho, casco y equipo de seguridad. Comidas y bebidas se pagan aparte.",
+        },
+        {
+          pergunta: "¿Y si llueve el día del trail?",
+          resposta:
+            "Con aviso de 2 horas de antelación, reprogramamos sin costo. Si no es posible reprogramar, reembolso del 100%. El tour de playas suele realizarse incluso con tiempo nublado.",
+        },
+        {
+          pergunta: "¿Puedo saltarme Tambaba?",
+          resposta:
+            "Sí. La visita a Tambaba es opcional — quien prefiere sigue directo a Coqueirinho. Te avisamos antes.",
         },
       ],
+      informacoesPraticas: {
+        oqueLevar: [
+          "Traje de baño (y uno extra para cambiarte tras el almuerzo)",
+          "Pantalón o bermuda cómoda para el cuatriciclo",
+          "Zapatillas cerradas o sandalias con tira para el trail",
+          "Toalla",
+          "Protector solar",
+          "Dinero o tarjeta para almuerzo y compras en Castelinho/Shopping Rural",
+        ],
+        pontoEncontro:
+          "Te recogemos en tu hotel o airbnb en Tambaú, Cabo Branco, Manaíra o Bessa — João Pessoa, PB. La ubicación exacta se confirma en el voucher tras la reserva.",
+        horario:
+          "Salida entre las 8h y las 9h. Regreso alrededor de las 16h30. Trail en cuatriciclo por la tarde, 1h30 a 2h.",
+      },
     },
   },
 
@@ -795,66 +1025,286 @@ export const passeiosTranslations: Record<
       preco: "R$ 80",
       duracao: "~8h",
       saida: "Morning",
+      h1: "North Coast of João Pessoa — Classic Itinerary with Jacaré Sunset",
+      metaDescription:
+        "Classic north coast itinerary: Sea Turtle Reserve, Cabedelo Dike, Fort Santa Catarina and Jacaré Sunset to Ravel's Bolero. R$ 80. Book on WhatsApp!",
+      subtituloHero:
+        "Nature, colonial history and Brazil's most moving sunset — in a single day, with transfer and guide.",
       descricao:
         "Nature, colonial history and Brazil's most moving sunset to the sound of Ravel's Bolero.",
-      incluso: ["Transfer (Tambaú, Cabo Branco, Manaíra, Bessa)", "Guide"],
+      lead:
+        "Want to see the contemplative, historic side of João Pessoa, ending with a sunset famous for its live saxophone?\n\nThe Classic North Coast Itinerary takes you to three landmarks in Cabedelo — the Sea Turtle Nesting Reserve, Cabedelo Dike and Fort Santa Catarina — and wraps the day on the Paraíba River banks with Ravel's Bolero played live by Jurandy do Sax.\n\nWe pick you up in the morning in Tambaú, Cabo Branco, Manaíra or Bessa. All led by an accredited guide, round-trip transfer included.",
+      descricaoSensorial:
+        "The morning starts at the Sea Turtle Nesting Reserve — in season, you can see nests protected by the Tamar Project. A short but meaningful stop that sets the tone for the day.\n\nNext, the Cabedelo Dike, where the Paraíba River meets the sea. The contrast between fresh and salt water is visible, and the landscape is unlike anything on the south coast.\n\nFort Santa Catarina follows: a colonial fortification built by the Portuguese, with cannons and walls still preserved. The guide tells the story without rushing.\n\nLunch is in Cabedelo (not included — several options, fresh fish and shrimp). Then the afternoon is dedicated to the Jacaré Sunset.\n\nWe arrive before sunset so you can pick a good table. The catamaran boards from there (optional, R$ 90 extra) and sails the Paraíba River. When the sun touches the horizon, Jurandy do Sax climbs onto his canoe and plays Ravel's Bolero — a scene he's been repeating for over 20 years. Even without the catamaran, you can listen from the shore.",
+      roteiroNarrativo: [
+        {
+          emoji: "🚐",
+          titulo: "Pick-up (transfer) — morning",
+          texto:
+            "We pick you up at your hotel or airbnb in Tambaú, Cabo Branco, Manaíra or Bessa. Time confirmed in the voucher after booking.",
+        },
+        {
+          emoji: "🐢",
+          titulo: "Sea Turtle Nesting Reserve",
+          texto:
+            "Stop at the protected area in Cabedelo. In nesting season, you can see marked nests. Short but important to understand the local ecosystem.",
+        },
+        {
+          emoji: "🌊",
+          titulo: "Cabedelo Dike",
+          texto:
+            "Where the Paraíba River meets the sea. Contrast between the waters and wide-open landscape — good for photos and a breather.",
+        },
+        {
+          emoji: "🏰",
+          titulo: "Fort Santa Catarina",
+          texto:
+            "Portuguese colonial fortification, still with cannons and walls. Historic heritage of Cabedelo. The guide walks you through the story.",
+        },
+        {
+          emoji: "🍤",
+          titulo: "Lunch in Cabedelo (not included)",
+          texto:
+            "Restaurants along the north coast with fresh fish and shrimp. The guide suggests the best options for your style.",
+        },
+        {
+          emoji: "🎷",
+          titulo: "Jacaré Sunset",
+          texto:
+            "Arrival before sunset to pick a table. Jurandy do Sax plays Ravel's Bolero live when the sun touches the horizon. The catamaran is optional (R$ 90 extra) and offers a river view.",
+        },
+        {
+          emoji: "🚐",
+          titulo: "Return after sunset",
+          texto:
+            "We drop you back at the hotel right after the performance ends.",
+        },
+      ],
+      rotario: [
+        "Departure in the morning (Tambaú, Cabo Branco, Manaíra, Bessa)",
+        "Sea Turtle Nesting Reserve",
+        "Cabedelo Dike (river meets sea)",
+        "Fort Santa Catarina (colonial era)",
+        "Lunch in Cabedelo (not included)",
+        "Jacaré Sunset with live Ravel's Bolero",
+        "Return after sunset",
+      ],
+      incluso: [
+        "Round-trip transfer (Tambaú, Cabo Branco, Manaíra, Bessa)",
+        "Accredited drivers and guide",
+        "Historical commentary at every landmark",
+        "Support and guidance (Murillo or team)",
+      ],
       naoIncluso: [
-        "Meals",
-        "Jacaré Sunset catamaran (optional — R$ 90)",
+        "Meals (lunch in Cabedelo at extra cost)",
+        "Drinks",
+        "Jacaré Sunset catamaran (optional — R$ 90 per person)",
+        "Museum or cultural center entries (when applicable)",
       ],
       observacoes:
-        "Private rate: on request. Return after sunset.",
+        "The Jacaré Sunset happens every day, with Jurandy on saxophone live. The catamaran is optional and highly recommended. Private rate: on request.",
+      nomeCurto: "North Coast",
       idealPara: [
         "All types of travelers",
         "Lovers of history and culture",
         "Couples",
+        "Anyone after a memorable sunset",
       ],
       imagemAlt: "João Pessoa's north coast with colonial history and nature",
       faq: [
         {
           pergunta: "Is the Jacaré Sunset included?",
           resposta:
-            "No. It's an optional add-on (R$ 90 per person). We recommend adding it — it's a unique experience.",
+            "No. It's an optional add-on (R$ 90 per person, on the catamaran). We strongly recommend it — it's one of João Pessoa's most memorable experiences. If you prefer, you can watch from the shore without paying for the catamaran.",
+        },
+        {
+          pergunta: "Who plays Ravel's Bolero? Every day?",
+          resposta:
+            "It's Jurandy do Sax, doing it for over 20 years. Every day at sunset, except in extreme weather. The performance is in front of Praia do Jacaré.",
+        },
+        {
+          pergunta: "Can I see turtles outside nesting season?",
+          resposta:
+            "Nests are only marked during nesting season (roughly October to March). Outside that window, the stop is still worthwhile to understand the protection work and see the project's structure.",
         },
         {
           pergunta: "Can children come?",
           resposta:
-            "Yes. Under 5 years old: free. 5 to 11 years old: R$ 64. From 12 years old: adult rate.",
+            "Yes. Under 5 years old: free. 5 to 11 years old: R$ 64. From 12 years old: adult rate. The tour is calm, no trail or physical effort.",
+        },
+        {
+          pergunta: "What's included in R$ 80?",
+          resposta:
+            "Round-trip transfer from Tambaú, Cabo Branco, Manaíra or Bessa, accredited guide at the historic stops and support throughout the day. Meals, drinks and catamaran are extra.",
+        },
+        {
+          pergunta: "What's the best place for lunch in Cabedelo?",
+          resposta:
+            "Several restaurants along the coast. The guide recommends based on your style: traditional, seafood, regional, casual or upscale.",
+        },
+        {
+          pergunta: "What's the cancellation policy in case of rain?",
+          resposta:
+            "With 2 hours' notice, we reschedule at no cost. If rescheduling is impossible, 100% refund.",
         },
       ],
+      informacoesPraticas: {
+        oqueLevar: [
+          "Light, comfortable clothing",
+          "Sneakers or closed-toe shoes for the Fort",
+          "Sunscreen and sunglasses",
+          "Camera (the sunset is worth photographing)",
+          "Light jacket for the river at sunset",
+          "Cash or card for lunch and drinks",
+        ],
+        pontoEncontro:
+          "We pick you up at your hotel or airbnb in Tambaú, Cabo Branco, Manaíra or Bessa — João Pessoa, PB. Exact location confirmed in the voucher after booking.",
+        horario:
+          "Departure in the morning. Return after sunset (usually between 6pm and 7pm depending on the season).",
+      },
     },
     es: {
       nome: "Litoral Norte — Itinerario Clásico",
       preco: "R$ 80",
       duracao: "~8h",
       saida: "Mañana",
+      h1: "Litoral Norte de João Pessoa — Itinerario Clásico con Atardecer del Jacaré",
+      metaDescription:
+        "Itinerario clásico del litoral norte: Reserva de Tortugas, Dique de Cabedelo, Fortaleza de Santa Catarina y Atardecer del Jacaré con Bolero de Ravel. R$ 80. Reserva por WhatsApp!",
+      subtituloHero:
+        "Naturaleza, historia colonial y el atardecer más emocionante de Brasil — en un solo día, con transfer y guía.",
       descricao:
         "Naturaleza, historia colonial y el atardecer más emocionante de Brasil al son del Bolero de Ravel.",
-      incluso: ["Transfer (Tambaú, Cabo Branco, Manaíra, Bessa)", "Guía"],
+      lead:
+        "¿Quieres conocer el lado histórico y contemplativo de João Pessoa, cerrando con un atardecer famoso por su saxofón en vivo?\n\nEl Itinerario Clásico del Litoral Norte te lleva por tres puntos marcantes de Cabedelo — Reserva de Desova de Tortugas, Dique de Cabedelo y Fortaleza de Santa Catarina — y cierra el día frente al Río Paraíba con el Bolero de Ravel tocado en vivo por Jurandy do Sax.\n\nTe recogemos por la mañana en Tambaú, Cabo Branco, Manaíra o Bessa. Todo conducido por guía acreditado, transfer ida y vuelta incluido.",
+      descricaoSensorial:
+        "La mañana empieza en la Reserva de Desova de Tortugas Marinas — en época adecuada, puedes ver nidos protegidos por el Proyecto Tamar. Parada corta pero marcante: cambia el tono del día.\n\nLuego, el Dique de Cabedelo, donde el Río Paraíba se encuentra con el mar. El contraste entre agua dulce y salada se ve a simple vista, y el paisaje es distinto de todo lo del litoral sur.\n\nLa Fortaleza de Santa Catarina viene a continuación: fortificación colonial portuguesa, con cañones y murallas todavía preservados. El guía cuenta la historia sin prisa.\n\nEl almuerzo es en Cabedelo (no incluido — varias opciones, pescado y camarón frescos). Después, la tarde se dedica al Atardecer del Jacaré.\n\nLlegamos antes de que se ponga el sol para que elijas buena mesa. El catamarán embarca desde ahí (opcional, R$ 90 aparte) y navega por el Río Paraíba. Cuando el sol toca el horizonte, Jurandy do Sax sube a su canoa y toca el Bolero de Ravel — una escena que repite hace más de 20 años. Si no haces el catamarán, escuchas desde la orilla.",
+      roteiroNarrativo: [
+        {
+          emoji: "🚐",
+          titulo: "Salida (transfer) — por la mañana",
+          texto:
+            "Te recogemos en tu hotel o airbnb en Tambaú, Cabo Branco, Manaíra o Bessa. Horario confirmado en el voucher tras la reserva.",
+        },
+        {
+          emoji: "🐢",
+          titulo: "Reserva de Desova de Tortugas Marinas",
+          texto:
+            "Parada en el área de protección en Cabedelo. En época de desova, se pueden ver nidos señalizados. Breve pero importante para entender el ecosistema local.",
+        },
+        {
+          emoji: "🌊",
+          titulo: "Dique de Cabedelo",
+          texto:
+            "Donde el Río Paraíba se encuentra con el mar. Contraste entre las aguas y paisaje amplio — bueno para foto y respiro.",
+        },
+        {
+          emoji: "🏰",
+          titulo: "Fortaleza de Santa Catarina",
+          texto:
+            "Fortificación colonial portuguesa, todavía con cañones y murallas. Patrimonio histórico en Cabedelo. El guía explica la historia mientras caminas.",
+        },
+        {
+          emoji: "🍤",
+          titulo: "Almuerzo en Cabedelo (no incluido)",
+          texto:
+            "Restaurantes a lo largo del litoral norte con pescado y camarón fresquito. El guía indica las mejores opciones para tu perfil.",
+        },
+        {
+          emoji: "🎷",
+          titulo: "Atardecer del Jacaré",
+          texto:
+            "Llegada antes del atardecer para elegir mesa. Jurandy do Sax toca el Bolero de Ravel en vivo cuando el sol toca el horizonte. El catamarán es opcional (R$ 90 aparte) y ofrece la vista del río.",
+        },
+        {
+          emoji: "🚐",
+          titulo: "Regreso tras el atardecer",
+          texto:
+            "Te llevamos de vuelta al hotel justo después de terminar la presentación.",
+        },
+      ],
+      rotario: [
+        "Salida por la mañana (Tambaú, Cabo Branco, Manaíra, Bessa)",
+        "Reserva de Desova de Tortugas",
+        "Dique de Cabedelo (encuentro del río con el mar)",
+        "Fortaleza de Santa Catarina (período colonial)",
+        "Almuerzo en Cabedelo (no incluido)",
+        "Atardecer del Jacaré con Bolero de Ravel en vivo",
+        "Regreso tras el atardecer",
+      ],
+      incluso: [
+        "Transfer ida y vuelta (Tambaú, Cabo Branco, Manaíra, Bessa)",
+        "Conductores y guía acreditados",
+        "Acompañamiento histórico en los puntos turísticos",
+        "Orientación y atención (Murillo o equipo)",
+      ],
       naoIncluso: [
-        "Comidas",
-        "Catamarán Atardecer del Jacaré (opcional — R$ 90)",
+        "Comidas (almuerzo en Cabedelo aparte)",
+        "Bebidas",
+        "Catamarán Atardecer del Jacaré (opcional — R$ 90 por persona)",
+        "Entradas a museos o centros culturales (cuando aplique)",
       ],
       observacoes:
-        "Valor privativo: consultar. Retorno tras el atardecer.",
+        "El Atardecer del Jacaré ocurre todos los días con Jurandy en saxofón en vivo. El catamarán es opcional y muy recomendado. Valor privativo: consultar.",
+      nomeCurto: "Litoral Norte",
       idealPara: [
         "Todo tipo de viajeros",
         "Amantes de historia y cultura",
         "Parejas",
+        "Quien quiere un atardecer memorable",
       ],
       imagemAlt: "Litoral norte de João Pessoa con historia colonial y naturaleza",
       faq: [
         {
           pergunta: "¿Está incluido el Atardecer del Jacaré?",
           resposta:
-            "No. Es un opcional aparte (R$ 90 por persona). Recomendamos agregarlo — es una experiencia única.",
+            "No. Es un opcional aparte (R$ 90 por persona, en el catamarán). Recomendamos fuertemente — es una de las experiencias más marcantes de João Pessoa. Si prefieres, puedes verlo desde la orilla sin pagar el catamarán.",
+        },
+        {
+          pergunta: "¿Quién toca el Bolero de Ravel? ¿Es todos los días?",
+          resposta:
+            "Es Jurandy do Sax, hace más de 20 años. Sucede todos los días al atardecer, excepto en condiciones extremas de clima. La presentación es frente a Praia do Jacaré.",
+        },
+        {
+          pergunta: "¿Se ven tortugas fuera de la época de desova?",
+          resposta:
+            "Los nidos solo se señalizan en época de desova (aproximadamente de octubre a marzo). Fuera de ese período, la parada sigue valiendo para entender el trabajo de protección y ver la estructura del proyecto.",
         },
         {
           pergunta: "¿Pueden ir niños?",
           resposta:
-            "Sí. Menores de 5 años: gratis. De 5 a 11 años: R$ 64. Desde 12 años: tarifa adulta.",
+            "Sí. Menores de 5 años: gratis. De 5 a 11 años: R$ 64. Desde 12 años: tarifa adulta. El tour es tranquilo, sin caminata ni esfuerzo físico.",
+        },
+        {
+          pergunta: "¿Qué incluye R$ 80?",
+          resposta:
+            "Transfer ida y vuelta desde Tambaú, Cabo Branco, Manaíra o Bessa, guía acreditado en los puntos históricos y orientación durante el día. Comidas, bebidas y catamarán aparte.",
+        },
+        {
+          pergunta: "¿Cuál es el mejor lugar para almorzar en Cabedelo?",
+          resposta:
+            "Varios restaurantes a lo largo del litoral. El guía recomienda según tu perfil: tradicional, frutos del mar, comida regional, opciones más simples o más elaboradas.",
+        },
+        {
+          pergunta: "¿Cuál es la política de cancelación por lluvia?",
+          resposta:
+            "Con aviso de 2 horas de antelación, reprogramamos sin costo. Si no es posible reprogramar, reembolso del 100%.",
         },
       ],
+      informacoesPraticas: {
+        oqueLevar: [
+          "Ropa ligera y cómoda",
+          "Zapatillas o calzado cerrado para la Fortaleza",
+          "Protector solar y gafas de sol",
+          "Cámara (el atardecer vale la foto)",
+          "Chaqueta ligera para el atardecer en el río",
+          "Dinero o tarjeta para almuerzo y bebidas",
+        ],
+        pontoEncontro:
+          "Te recogemos en tu hotel o airbnb en Tambaú, Cabo Branco, Manaíra o Bessa — João Pessoa, PB. La ubicación exacta se confirma en el voucher tras la reserva.",
+        horario:
+          "Salida por la mañana. Regreso tras el atardecer (generalmente entre las 18h y 19h, según la época del año).",
+      },
     },
   },
 
@@ -864,60 +1314,294 @@ export const passeiosTranslations: Record<
       preco: "With catamaran: R$ 160 / Without catamaran: R$ 80",
       duracao: "~8h",
       saida: "Morning · Confirmed according to the tide table",
+      h1: "North Coast Combo with Areia Vermelha — Catamaran and Jacaré Sunset",
+      metaDescription:
+        "North coast landmarks + catamaran to Areia Vermelha Island. Natural pools in Cabedelo, Ravel's Bolero at sunset. With catamaran R$ 160. Book on WhatsApp!",
+      subtituloHero:
+        "Sea Turtle Reserve, Fort, sandbank with natural pools and Jampa's most famous sunset — all in one day.",
       descricao:
         "Historical landmarks of the north coast + catamaran to Areia Vermelha Island with natural pools and sunset.",
-      incluso: [
-        "Transfer (Tambaú, Cabo Branco, Manaíra, Bessa)",
-        "Guide",
-        "Areia Vermelha catamaran (when booked)",
+      lead:
+        "Want the best of João Pessoa's north coast in one day — with history, natural pools and an unforgettable sunset?\n\nThe North Coast Combo with Areia Vermelha puts together the Sea Turtle Reserve, Cabedelo Dike and Fort Santa Catarina in the morning, with a catamaran crossing to Areia Vermelha Island — a sandbank that surfaces at low tide off Camboinha. The afternoon closes with the Jacaré Sunset to Ravel's Bolero.\n\nDeparture time is set by the tide table to ensure Areia Vermelha is exposed. We handle that and confirm with you the day before.",
+      descricaoSensorial:
+        "The morning follows the north coast's historic route: Sea Turtle Nesting Reserve, Cabedelo Dike (river meeting sea) and Fort Santa Catarina, colonial era.\n\nThen comes the most anticipated part. Catamaran boarding heading to Areia Vermelha Island — a sandbank that only appears at low tide, surrounded by natural pools of crystal-green water. The catamaran has a water slide, onboard bar and grill; the crossing gives you time to relax and take in the north coast from a different angle.\n\nOn the island, you step off, walk the sandbank, swim in the natural pools and photograph the scene that went viral on social media. Marine life nearby, warm water, clear bottom. When the tide starts rising, the catamaran heads back.\n\nLunch is in Cabedelo (not included). Then transfer to Jacaré for sunset with Jurandy do Sax and Ravel's Bolero — the perfect closing of the day.",
+      roteiroNarrativo: [
+        {
+          emoji: "🚐",
+          titulo: "Pick-up (transfer) — morning",
+          texto:
+            "We pick you up at your hotel or airbnb in Tambaú, Cabo Branco, Manaíra or Bessa. Time set by the day's tide table.",
+        },
+        {
+          emoji: "🐢",
+          titulo: "Sea Turtle Reserve and historic stops",
+          texto:
+            "Sea Turtle Nesting Reserve, Cabedelo Dike and Fort Santa Catarina (colonial era). Historical commentary by the guide.",
+        },
+        {
+          emoji: "⛵",
+          titulo: "Catamaran boarding to Areia Vermelha",
+          texto:
+            "Departure from Ponta de Campina. Short crossing with north coast views. Catamaran equipped with water slide, onboard bar and grill.",
+        },
+        {
+          emoji: "🏝️",
+          titulo: "Areia Vermelha Island",
+          texto:
+            "Sandbank that emerges with low tide off Praia de Camboinha. Crystal-green natural pools, swimming and rest. Free time until the tide starts rising.",
+        },
+        {
+          emoji: "🍤",
+          titulo: "Lunch in Cabedelo (not included)",
+          texto:
+            "Seafood restaurants along the north coast. The guide recommends options for your style.",
+        },
+        {
+          emoji: "🎷",
+          titulo: "Jacaré Sunset with Ravel's Bolero",
+          texto:
+            "Arrival at sunset at Praia do Jacaré. Jurandy do Sax plays Ravel's Bolero live as the sun touches the horizon — a daily ritual for over 20 years.",
+        },
+        {
+          emoji: "🚐",
+          titulo: "Return after sunset",
+          texto:
+            "We drop you back at the hotel right after the performance ends.",
+        },
       ],
-      naoIncluso: ["Meals"],
+      rotario: [
+        "Departure in the morning (per tide table)",
+        "Sea Turtle Reserve + Dike + Fort Santa Catarina",
+        "Catamaran to Areia Vermelha Island (sandbank + pools)",
+        "Lunch in Cabedelo (not included)",
+        "Jacaré Sunset with live Ravel's Bolero",
+        "Return after sunset",
+      ],
+      incluso: [
+        "Round-trip transfer (Tambaú, Cabo Branco, Manaíra, Bessa)",
+        "Accredited drivers and guide",
+        "Catamaran to Areia Vermelha Island (when booked)",
+        "Catamaran amenities: water slide, onboard bar, restrooms, first-aid kit",
+        "Historical commentary at landmarks",
+        "Support and guidance (Murillo or team)",
+      ],
+      naoIncluso: [
+        "Meals (lunch in Cabedelo at extra cost)",
+        "Onboard drinks",
+        "Snorkel, mask and underwater photographer (optional)",
+        "Jacaré Sunset catamaran (you watch from the shore; boarding is extra)",
+      ],
       observacoes:
-        "Areia Vermelha: depends on low tide. Departure time confirmed in advance.",
-      idealPara: ["Anyone who wants north coast + natural pools in one day"],
+        "Areia Vermelha Island depends on the tide table (only exposed at low tide). Departure time confirmed the day before. Private rate: on request.",
+      alertaMare:
+        "Areia Vermelha Island is only exposed at low tide. We check the tide table beforehand and confirm with you the best time to ensure the sandbank is visible.",
+      nomeCurto: "North Coast Combo",
+      idealPara: [
+        "Anyone who wants north coast + natural pools in one day",
+        "Couples",
+        "Families",
+        "Anyone after a full day of history, sea and sunset",
+      ],
       imagemAlt: "North Coast Combo with Areia Vermelha — João Pessoa",
       faq: [
         {
-          pergunta: "Can I do it without the catamaran?",
+          pergunta: "Can I do it without the catamaran to Areia Vermelha?",
           resposta:
-            "Yes. Without catamaran: R$ 80. With Areia Vermelha catamaran: R$ 160.",
+            "Yes. Without catamaran: R$ 80 per person (historic route only). With catamaran to Areia Vermelha Island: R$ 160 per person. We recommend the full option — Areia Vermelha is one of João Pessoa's most striking attractions.",
         },
         {
           pergunta: "Do children pay for the catamaran?",
           resposta:
-            "5 to 11 years old: R$ 128 (with catamaran) or R$ 64 (without). Under 5 years old: free.",
+            "5 to 11 years old: R$ 128 (with catamaran) or R$ 64 (without). Under 5 years old: free. From 12 years old: adult rate.",
+        },
+        {
+          pergunta: "What if the tide isn't low on my chosen day?",
+          resposta:
+            "We check the tide table before confirming your booking. If your preferred day has unfavorable tide for Areia Vermelha, we suggest another date at no cost.",
+        },
+        {
+          pergunta: "Does the Jacaré Sunset include the sunset catamaran?",
+          resposta:
+            "No. The historic tour reaches Praia do Jacaré and you watch the Jurandy do Sax performance from the shore. The sunset catamaran is a separate experience (R$ 90), optional. Let us know at booking if you want to add it.",
+        },
+        {
+          pergunta: "How long do we stay on Areia Vermelha Island?",
+          resposta:
+            "Depends on the tide cycle. Usually 1h30 to 2h on the sandbank. Once the tide rises and covers it, we head back to the catamaran.",
+        },
+        {
+          pergunta: "Do I need to know how to swim?",
+          resposta:
+            "No. The natural pools around the sandbank are shallow and protected. You stand in most of them. Life jackets available on board.",
+        },
+        {
+          pergunta: "What's the cancellation policy?",
+          resposta:
+            "For unfavorable tide or weather conditions, we reschedule at no cost. For customer cancellations: see the full policy on WhatsApp.",
         },
       ],
+      informacoesPraticas: {
+        oqueLevar: [
+          "Swimwear (wear it under your clothes)",
+          "Towel",
+          "Reef-safe biodegradable sunscreen",
+          "Comfortable sandals or aqua shoes",
+          "Camera or phone (waterproof is a bonus)",
+          "Light jacket for sunset on the river",
+          "Cash or card for lunch",
+        ],
+        pontoEncontro:
+          "We pick you up at your hotel or airbnb in Tambaú, Cabo Branco, Manaíra or Bessa — João Pessoa, PB. Catamaran boards at Ponta de Campina, Cabedelo. Exact location in the voucher.",
+        horario:
+          "Departure in the morning (exact time per the day's tide table). Return after sunset.",
+      },
     },
     es: {
       nome: "Combo Litoral Norte con Areia Vermelha",
       preco: "Con catamarán: R$ 160 / Sin catamarán: R$ 80",
       duracao: "~8h",
       saida: "Mañana · Confirmado según la tabla de mareas",
+      h1: "Combo Litoral Norte con Areia Vermelha — Catamarán y Atardecer del Jacaré",
+      metaDescription:
+        "Puntos históricos del litoral norte + catamarán hasta la Isla de Areia Vermelha. Piscinas naturales en Cabedelo, Bolero de Ravel al atardecer. Con catamarán R$ 160. Reserva por WhatsApp!",
+      subtituloHero:
+        "Reserva de Tortugas, Fortaleza, banco de arena con piscinas naturales y el atardecer más famoso de Jampa — todo en el mismo día.",
       descricao:
         "Puntos históricos del litoral norte + catamarán hasta la Isla de Areia Vermelha con piscinas naturales y atardecer.",
-      incluso: [
-        "Transfer (Tambaú, Cabo Branco, Manaíra, Bessa)",
-        "Guía",
-        "Catamarán Areia Vermelha (cuando se contrata)",
+      lead:
+        "¿Quieres lo mejor del litoral norte de João Pessoa en un solo día — con historia, piscinas naturales y un atardecer inolvidable?\n\nEl Combo Litoral Norte con Areia Vermelha une la Reserva de Tortugas, el Dique de Cabedelo y la Fortaleza de Santa Catarina por la mañana, con una travesía en catamarán hasta la Isla de Areia Vermelha — banco de arena que aparece con la marea baja frente a Camboinha. Por la tarde, cierra con el Atardecer del Jacaré al son del Bolero de Ravel.\n\nEl horario de salida se ajusta a la tabla de mareas para garantizar que la Isla de Areia Vermelha esté expuesta. Nos ocupamos de eso y te confirmamos la víspera.",
+      descricaoSensorial:
+        "La mañana sigue la ruta histórica del Litoral Norte: Reserva de Desova de Tortugas, Dique de Cabedelo (encuentro del río con el mar) y Fortaleza de Santa Catarina, período colonial.\n\nDespués viene la parte más esperada. Embarque del catamarán rumbo a la Isla de Areia Vermelha — banco de arena que solo aparece con marea baja, rodeado de piscinas naturales de agua verde-cristalina. El catamarán tiene tobogán, bar a bordo y parrilla; durante la travesía da tiempo de relajar y disfrutar el paisaje del litoral norte desde otro ángulo.\n\nEn la isla, bajas, caminas por el banco de arena, te bañas en las piscinas naturales y fotografías el escenario que se hizo famoso en las redes. Vida marina cercana, agua tibia, fondo claro. Cuando la marea empieza a subir, el catamarán retorna.\n\nEl almuerzo es en Cabedelo (no incluido). Después, transfer al Jacaré para el atardecer con Jurandy do Sax y el Bolero de Ravel — cierre perfecto del día.",
+      roteiroNarrativo: [
+        {
+          emoji: "🚐",
+          titulo: "Salida (transfer) — por la mañana",
+          texto:
+            "Te recogemos en tu hotel o airbnb en Tambaú, Cabo Branco, Manaíra o Bessa. Horario ajustado según la tabla de mareas del día.",
+        },
+        {
+          emoji: "🐢",
+          titulo: "Reserva de Tortugas y puntos históricos",
+          texto:
+            "Reserva de Desova de Tortugas Marinas, Dique de Cabedelo y Fortaleza de Santa Catarina (período colonial). Acompañamiento histórico por el guía.",
+        },
+        {
+          emoji: "⛵",
+          titulo: "Embarque del catamarán a Areia Vermelha",
+          texto:
+            "Salida en Ponta de Campina. Travesía corta con vista del litoral norte. Catamarán equipado con tobogán, bar a bordo y parrilla.",
+        },
+        {
+          emoji: "🏝️",
+          titulo: "Isla de Areia Vermelha",
+          texto:
+            "Banco de arena que aparece con marea baja, frente a Praia de Camboinha. Piscinas naturales de agua verde-cristalina, baño y descanso. Tiempo libre hasta que la marea empieza a subir.",
+        },
+        {
+          emoji: "🍤",
+          titulo: "Almuerzo en Cabedelo (no incluido)",
+          texto:
+            "Restaurantes de frutos del mar a lo largo del litoral norte. El guía indica opciones para tu perfil.",
+        },
+        {
+          emoji: "🎷",
+          titulo: "Atardecer del Jacaré con Bolero de Ravel",
+          texto:
+            "Llegada al atardecer en Praia do Jacaré. Jurandy do Sax toca el Bolero de Ravel en vivo cuando el sol toca el horizonte — espectáculo que sucede a diario hace más de 20 años.",
+        },
+        {
+          emoji: "🚐",
+          titulo: "Regreso tras el atardecer",
+          texto:
+            "Te llevamos de vuelta al hotel justo después del final de la presentación.",
+        },
       ],
-      naoIncluso: ["Comidas"],
+      rotario: [
+        "Salida por la mañana (según tabla de mareas)",
+        "Reserva de Tortugas + Dique + Fortaleza de Santa Catarina",
+        "Catamarán hasta Isla de Areia Vermelha (banco + piscinas)",
+        "Almuerzo en Cabedelo (no incluido)",
+        "Atardecer del Jacaré con Bolero de Ravel en vivo",
+        "Regreso tras el atardecer",
+      ],
+      incluso: [
+        "Transfer ida y vuelta (Tambaú, Cabo Branco, Manaíra, Bessa)",
+        "Conductores y guía acreditados",
+        "Catamarán hasta la Isla de Areia Vermelha (cuando se contrata)",
+        "Estructura del catamarán: tobogán, bar a bordo, baños, kit de primeros auxilios",
+        "Acompañamiento histórico en los puntos turísticos",
+        "Orientación y atención (Murillo o equipo)",
+      ],
+      naoIncluso: [
+        "Comidas (almuerzo en Cabedelo aparte)",
+        "Bebidas a bordo",
+        "Snorkel, máscara y fotógrafo subacuático (opcionales)",
+        "Catamarán del Atardecer del Jacaré (se ve desde la orilla; embarcar es aparte)",
+      ],
       observacoes:
-        "Areia Vermelha: depende de marea baja. Horario de salida confirmado antes.",
-      idealPara: ["Quien quiere litoral norte + piscinas naturales en un día"],
+        "Isla de Areia Vermelha sujeta a la tabla de mareas (solo aparece con marea baja). Horario de salida confirmado la víspera. Valor privativo: consultar.",
+      alertaMare:
+        "La Isla de Areia Vermelha solo queda expuesta cuando la marea está baja. Consultamos la tabla de mareas antes y te confirmamos el mejor horario para garantizar que el banco de arena esté visible.",
+      nomeCurto: "Combo Litoral Norte",
+      idealPara: [
+        "Quien quiere litoral norte + piscinas naturales en un día",
+        "Parejas",
+        "Familias",
+        "Quien busca un día completo con historia, mar y atardecer",
+      ],
       imagemAlt: "Combo Litoral Norte con Areia Vermelha — João Pessoa",
       faq: [
         {
-          pergunta: "¿Puedo hacerlo sin el catamarán?",
+          pergunta: "¿Puedo hacerlo sin el catamarán a Areia Vermelha?",
           resposta:
-            "Sí. Sin catamarán: R$ 80. Con catamarán Areia Vermelha: R$ 160.",
+            "Sí. Sin catamarán: R$ 80 por persona (solo la ruta histórica). Con catamarán a la Isla de Areia Vermelha: R$ 160 por persona. Recomendamos la opción completa — Areia Vermelha es una de las atracciones más marcantes de João Pessoa.",
         },
         {
           pergunta: "¿Pagan los niños en el catamarán?",
           resposta:
-            "De 5 a 11 años: R$ 128 (con catamarán) o R$ 64 (sin). Menores de 5 años: gratis.",
+            "De 5 a 11 años: R$ 128 (con catamarán) o R$ 64 (sin). Menores de 5 años: gratis. Desde 12 años: tarifa adulta.",
+        },
+        {
+          pergunta: "¿Y si la marea no está baja el día que quiero?",
+          resposta:
+            "Consultamos la tabla de mareas antes de confirmar la reserva. Si tu día elegido no tiene marea favorable para Areia Vermelha, sugerimos otra fecha sin costo.",
+        },
+        {
+          pergunta: "¿El Atardecer del Jacaré incluye el catamarán del atardecer?",
+          resposta:
+            "No. El tour histórico llega a Praia do Jacaré y ves la presentación de Jurandy do Sax desde la orilla. El catamarán del atardecer es una experiencia aparte (R$ 90), opcional. Si lo quieres, avisa al momento de la reserva.",
+        },
+        {
+          pergunta: "¿Cuánto tiempo nos quedamos en la Isla de Areia Vermelha?",
+          resposta:
+            "Depende del ciclo de la marea. En promedio 1h30 a 2h en el banco de arena. Cuando la marea empieza a subir y lo cubre, retornamos al catamarán.",
+        },
+        {
+          pergunta: "¿Hay que saber nadar?",
+          resposta:
+            "No. Las piscinas naturales alrededor del banco de arena son poco profundas y protegidas. Estás de pie en la mayoría. Chalecos salvavidas disponibles a bordo.",
+        },
+        {
+          pergunta: "¿Cuál es la política de cancelación?",
+          resposta:
+            "En caso de marea desfavorable o condiciones climáticas que impidan la salida, reprogramamos sin costo. Cancelaciones por el cliente: consulta la política completa por WhatsApp.",
         },
       ],
+      informacoesPraticas: {
+        oqueLevar: [
+          "Traje de baño (úsalo debajo de la ropa)",
+          "Toalla",
+          "Protector solar biodegradable (preserva los corales)",
+          "Sandalias cómodas o aqua shoes",
+          "Cámara o celular (a prueba de agua es un plus)",
+          "Chaqueta ligera para el atardecer en el río",
+          "Dinero o tarjeta para almuerzo",
+        ],
+        pontoEncontro:
+          "Te recogemos en tu hotel o airbnb en Tambaú, Cabo Branco, Manaíra o Bessa — João Pessoa, PB. Embarque del catamarán en Ponta de Campina, Cabedelo. Ubicación exacta en el voucher.",
+        horario:
+          "Salida por la mañana (horario exacto según tabla de mareas del día). Regreso tras el atardecer.",
+      },
     },
   },
 
@@ -1452,6 +2136,11 @@ export const passeiosTranslations: Record<
           resposta:
             "In case of unfavorable weather or tide, we reschedule at no cost. For customer cancellations, check our full policy on WhatsApp.",
         },
+        {
+          pergunta: "Is it worth renting snorkel and mask?",
+          resposta:
+            "Yes, especially if you've never tried it. The coral floor at Seixas is rich in marine life and looks even better with a mask. Available onboard at extra cost — ask on WhatsApp.",
+        },
       ],
       informacoesPraticas: {
         oqueLevar: [
@@ -1580,6 +2269,11 @@ export const passeiosTranslations: Record<
           pergunta: "¿Cuál es la política de cancelación?",
           resposta:
             "En caso de condiciones climáticas o marea desfavorable, reprogramamos sin costo. Para cancelaciones del cliente, consulta nuestra política completa por WhatsApp.",
+        },
+        {
+          pergunta: "¿Vale la pena alquilar snorkel y máscara?",
+          resposta:
+            "Sí, sobre todo si nunca lo hiciste. El fondo de coral en Seixas es rico en vida marina y se ve aún mejor con la máscara. Disponibles a bordo por valor aparte — consulta por WhatsApp.",
         },
       ],
       informacoesPraticas: {
