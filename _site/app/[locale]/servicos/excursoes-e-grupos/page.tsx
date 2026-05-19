@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { empresa } from "@/data/empresa";
-import { generateMetadata as generateSeoMetadata, generateFAQSchema, buildLocaleAlternates } from "@/lib/seo";
+import { generateMetadata as generateSeoMetadata, generateFAQSchema, buildLocaleAlternates, SITE_URL } from "@/lib/seo";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { CTAFinal } from "@/components/CTAFinal";
 import { CTASticky } from "@/components/CTASticky";
@@ -107,9 +107,9 @@ export default async function ExcursoesGruposPage({ params }: { params: { locale
       "@type": "TravelAgency",
       name: "Vem Passear em Jampa",
       telephone: "+55 83 9908-7830",
-      url: "https://vempassearjampacom.netlify.app",
+      url: SITE_URL,
     },
-    url: "https://vempassearjampacom.netlify.app/servicos/excursoes-e-grupos",
+    url: `${SITE_URL}/servicos/excursoes-e-grupos`,
   };
 
   return (

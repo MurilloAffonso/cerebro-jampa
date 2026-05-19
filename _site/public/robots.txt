@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vempassearjampacom.netlify.app/sitemap.xml
+Sitemap: https://vempassearjampa.com/sitemap.xml

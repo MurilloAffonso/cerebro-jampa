@@ -10,7 +10,7 @@ import {
   formatarDataCurta,
   formatarHorario,
 } from "@/lib/tabua-mares";
-import { generateFAQSchema, generateBreadcrumbSchema, buildLocaleAlternates } from "@/lib/seo";
+import { generateFAQSchema, generateBreadcrumbSchema, buildLocaleAlternates, SITE_URL } from "@/lib/seo";
 import { ProximaSaidaCard } from "@/components/ProximaSaidaCard";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTAFinal } from "@/components/CTAFinal";
@@ -18,7 +18,6 @@ import { CTASticky } from "@/components/CTASticky";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { PoliticaCancelamento } from "@/components/PoliticaCancelamento";
 
-const SITE_URL = "https://vempassearjampacom.netlify.app";
 const WA_BASE = "https://wa.me/558399087830";
 const TABUA_URL = `${SITE_URL}/tabua-de-mares-joao-pessoa`;
 

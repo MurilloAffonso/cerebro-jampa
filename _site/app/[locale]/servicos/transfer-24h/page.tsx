@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { empresa } from "@/data/empresa";
-import { buildLocaleAlternates } from "@/lib/seo";
+import { buildLocaleAlternates, SITE_URL } from "@/lib/seo";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTASticky } from "@/components/CTASticky";
 
@@ -55,9 +55,9 @@ export default async function TransferPage({ params }: { params: { locale: strin
       "@type": "TravelAgency",
       name: "Vem Passear em Jampa",
       telephone: "+55 83 9908-7830",
-      url: "https://vempassearjampacom.netlify.app",
+      url: SITE_URL,
     },
-    url: "https://vempassearjampacom.netlify.app/servicos/transfer-24h",
+    url: `${SITE_URL}/servicos/transfer-24h`,
     hoursAvailable: {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
