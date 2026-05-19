@@ -13,7 +13,7 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { empresa } from "@/data/empresa";
 import { buildReservationWhatsAppUrl } from "@/lib/whatsapp";
 
@@ -34,6 +34,7 @@ function clamp(n: number, min: number, max: number): number {
 
 export function ReservationIntentForm({ passeioNome }: Props) {
   const t = useTranslations("ReservaForm");
+  const locale = useLocale();
   const [dataPasseio, setDataPasseio] = useState("");
   const [hotel, setHotel] = useState("");
   const [adultos, setAdultos] = useState(MIN_ADULTOS);
@@ -54,6 +55,7 @@ export function ReservationIntentForm({ passeioNome }: Props) {
       whatsapp,
     },
     empresa.contato.whatsappLink,
+    locale,
   );
 
   return (

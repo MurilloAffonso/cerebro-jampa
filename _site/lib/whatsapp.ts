@@ -18,6 +18,57 @@ export interface ReservationIntent {
   whatsapp?: string;
 }
 
+type Locale = "pt" | "en" | "es";
+
+interface ReservationCopy {
+  intro: (passeio: string) => string;
+  data: string;
+  hotel: string;
+  adultos: string;
+  criancas: string;
+  bebes: string;
+  nome: string;
+  whatsapp: string;
+}
+
+const RESERVATION_COPY: Record<Locale, ReservationCopy> = {
+  pt: {
+    intro: (p) => `Oi, Murillo! Quero saber sobre o passeio ${p}.`,
+    data: "Data do passeio",
+    hotel: "Hotel/Bairro",
+    adultos: "Adultos",
+    criancas: "Crianças",
+    bebes: "Bebês",
+    nome: "Nome",
+    whatsapp: "Meu WhatsApp",
+  },
+  en: {
+    intro: (p) => `Hi Murillo! I'd like to know about the ${p} tour.`,
+    data: "Tour date",
+    hotel: "Hotel/Neighborhood",
+    adultos: "Adults",
+    criancas: "Children",
+    bebes: "Babies",
+    nome: "Name",
+    whatsapp: "My WhatsApp",
+  },
+  es: {
+    intro: (p) => `¡Hola Murillo! Me gustaría saber sobre el tour ${p}.`,
+    data: "Fecha del tour",
+    hotel: "Hotel/Barrio",
+    adultos: "Adultos",
+    criancas: "Niños",
+    bebes: "Bebés",
+    nome: "Nombre",
+    whatsapp: "Mi WhatsApp",
+  },
+};
+
+function resolveLocale(locale?: string): Locale {
+  if (locale === "en" || locale === "es") return locale;
+  return "pt";
+}
+
 /**
  * Converte ISO `"2026-05-15"` em formato brasileiro `"15/05/2026"`.
  * Devolve string vazia se entrada for falsy ou inválida.
@@ -32,21 +83,25 @@ function formatarDataBR(iso?: string): string {
 }
 
 /**
- * Monta o texto da mensagem WhatsApp seguindo o template aprovado.
+ * Monta o texto da mensagem WhatsApp seguindo o template aprovado, no idioma do site.
  * Campos vazios viram linhas em branco — não bloqueia envio.
  */
-export function buildReservationIntentMessage(i: ReservationIntent): string {
+export function buildReservationIntentMessage(
+  i: ReservationIntent,
+  locale?: string,
+): string {
+  const c = RESERVATION_COPY[resolveLocale(locale)];
   const data = formatarDataBR(i.dataPasseio);
   const linhas = [
-    `Oi, Murillo! Quero saber sobre o passeio ${i.passeioNome}.`,
+    c.intro(i.passeioNome),
     "",
-    `Data do passeio: ${data}`,
-    `Hotel/Bairro: ${i.hotel ?? ""}`,
-    `Adultos: ${i.adultos}`,
-    `Crianças: ${i.criancas}`,
-    `Bebês: ${i.bebes}`,
-    `Nome: ${i.nome ?? ""}`,
-    `Meu WhatsApp: ${i.whatsapp ?? ""}`,
+    `${c.data}: ${data}`,
+    `${c.hotel}: ${i.hotel ?? ""}`,
+    `${c.adultos}: ${i.adultos}`,
+    `${c.criancas}: ${i.criancas}`,
+    `${c.bebes}: ${i.bebes}`,
+    `${c.nome}: ${i.nome ?? ""}`,
+    `${c.whatsapp}: ${i.whatsapp ?? ""}`,
   ];
   return linhas.join("\n");
 }
@@ -59,7 +114,8 @@ export function buildReservationIntentMessage(i: ReservationIntent): string {
 export function buildReservationWhatsAppUrl(
   intent: ReservationIntent,
   baseUrl: string,
+  locale?: string,
 ): string {
-  const texto = buildReservationIntentMessage(intent);
+  const texto = buildReservationIntentMessage(intent, locale);
   return `${baseUrl}?text=${encodeURIComponent(texto)}`;
 }
