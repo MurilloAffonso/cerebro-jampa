@@ -9,7 +9,7 @@ import { FAQAccordion } from "@/components/FAQAccordion";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTASticky } from "@/components/CTASticky";
 import { CTAFinal } from "@/components/CTAFinal";
-import { generateFAQSchema, buildLocaleAlternates } from "@/lib/seo";
+import { generateFAQSchema, generateBreadcrumbSchema, buildLocaleAlternates, SITE_URL } from "@/lib/seo";
 import { empresa } from "@/data/empresa";
 
 export async function generateMetadata({
@@ -41,12 +41,20 @@ export default async function FaqPage({ params }: { params: { locale: string } }
   const t = await getTranslations("FaqPage");
   const faqItems = t.raw("faq") as Array<{ pergunta: string; resposta: string }>;
   const faqSchema = generateFAQSchema(faqItems);
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: t("crumbHome"), item: SITE_URL },
+    { name: t("crumbFaq"), item: `${SITE_URL}/faq` },
+  ]);
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
       <Breadcrumb

@@ -10,7 +10,7 @@ import { buildLocaleAlternates, SITE_URL } from "@/lib/seo";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTASticky } from "@/components/CTASticky";
 import { FAQAccordion } from "@/components/FAQAccordion";
-import { generateFAQSchema } from "@/lib/seo";
+import { generateFAQSchema, generateBreadcrumbSchema } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -70,6 +70,11 @@ export default async function TransferPage({ params }: { params: { locale: strin
 
   const faqItems = t.raw("faq") as Array<{ pergunta: string; resposta: string }>;
   const faqSchema = generateFAQSchema(faqItems);
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: tNav("inicio"), item: SITE_URL },
+    { name: t("crumbServicos"), item: `${SITE_URL}/servicos` },
+    { name: t("crumbTransfer"), item: `${SITE_URL}/servicos/transfer-24h` },
+  ]);
 
   return (
     <div>
@@ -80,6 +85,10 @@ export default async function TransferPage({ params }: { params: { locale: strin
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
       <CTASticky whatsappUrl={WA_URL} label={t("stickyLabel")} />

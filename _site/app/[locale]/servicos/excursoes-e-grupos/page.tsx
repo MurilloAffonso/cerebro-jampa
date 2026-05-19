@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { empresa } from "@/data/empresa";
-import { generateMetadata as generateSeoMetadata, generateFAQSchema, buildLocaleAlternates, SITE_URL } from "@/lib/seo";
+import { generateMetadata as generateSeoMetadata, generateFAQSchema, generateBreadcrumbSchema, buildLocaleAlternates, SITE_URL } from "@/lib/seo";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { CTAFinal } from "@/components/CTAFinal";
 import { CTASticky } from "@/components/CTASticky";
@@ -121,6 +121,14 @@ export default async function ExcursoesGruposPage({ params }: { params: { locale
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFAQSchema(FAQ_ITEMS)) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateBreadcrumbSchema([
+          { name: tNav("inicio"), item: SITE_URL },
+          { name: t("crumbServicos"), item: `${SITE_URL}/servicos` },
+          { name: t("crumbExcursoes"), item: `${SITE_URL}/servicos/excursoes-e-grupos` },
+        ])) }}
       />
 
       <CTASticky whatsappUrl={WA_URL} label={t("stickyLabel")} />

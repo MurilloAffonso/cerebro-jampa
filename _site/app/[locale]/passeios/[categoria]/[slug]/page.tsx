@@ -17,6 +17,7 @@ import type { PasseioMareSlug } from "@/types/tabua-mares";
 import {
   generateFAQSchema,
   generateTouristAttractionSchema,
+  generateBreadcrumbSchema,
   buildLocaleAlternates,
 } from "@/lib/seo";
 import { isCampoIndisponivel } from "@/lib/consultar";
@@ -162,11 +163,21 @@ export default async function PasseioPage({ params }: PasseioPageProps) {
   const faqItems = passeio.faq || [];
   const faqSchema = faqItems.length > 0 ? generateFAQSchema(faqItems) : null;
 
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: tNav("inicio"), item: SITE_URL },
+    { name: categoriaLabel, item: `${SITE_URL}/passeios/${categoria}` },
+    { name: passeio.nomeCurto || passeio.nome, item: pageUrl },
+  ]);
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(touristAttractionSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       {faqSchema && (
         <script
