@@ -75,7 +75,15 @@ export const blogPosts: BlogPost[] = [
       "roteiro João Pessoa",
       "ponto turístico João Pessoa",
     ],
-    relatedPasseios: ["seixas", "areia-vermelha-catamara", "litoral-sul-classico"],
+    relatedPasseios: [
+      "seixas",
+      "areia-vermelha-catamara",
+      "litoral-sul-classico",
+      "por-do-sol-jacare",
+      "combo-jampa-quadriciclo",
+      "city-tour-jampa",
+      "combo-litoral-norte-areia-vermelha",
+    ],
     faq: [
       {
         pergunta: "Quantos dias são suficientes para conhecer João Pessoa?",
@@ -204,7 +212,7 @@ export const blogPosts: BlogPost[] = [
       "Seixas maré baixa",
       "passeio piscina natural João Pessoa",
     ],
-    relatedPasseios: ["seixas"],
+    relatedPasseios: ["seixas", "picaozinho", "penha", "combo-litoral-norte-areia-vermelha"],
     faq: [
       {
         pergunta: "O Seixas fica longe do centro de João Pessoa?",
@@ -264,7 +272,12 @@ export const blogPosts: BlogPost[] = [
       "passeio Areia Vermelha",
       "ilha Areia Vermelha Paraíba",
     ],
-    relatedPasseios: ["areia-vermelha-catamara", "combo-litoral-norte-areia-vermelha"],
+    relatedPasseios: [
+      "areia-vermelha-catamara",
+      "combo-litoral-norte-areia-vermelha",
+      "por-do-sol-jacare",
+      "litoral-norte-classico",
+    ],
     faq: [
       {
         pergunta: "A Areia Vermelha existe em qualquer época do ano?",
@@ -324,7 +337,15 @@ export const blogPosts: BlogPost[] = [
       "férias João Pessoa",
       "João Pessoa fim de semana",
     ],
-    relatedPasseios: ["roteiro-do-murillo-3-dias", "combo-sol-nascente-3-dias", "combo-mare-boa-2-dias"],
+    relatedPasseios: [
+      "roteiro-do-murillo-3-dias",
+      "combo-sol-nascente-3-dias",
+      "combo-mare-boa-2-dias",
+      "seixas",
+      "litoral-sul-classico",
+      "por-do-sol-jacare",
+      "combo-litoral-norte-areia-vermelha",
+    ],
     faq: [
       {
         pergunta: "É possível fazer todos esses passeios em 3 dias?",
@@ -393,6 +414,8 @@ export const blogPosts: BlogPost[] = [
       "litoral-sul-classico",
       "litoral-sul-praia-bela",
       "quadriciclo-coqueirinho",
+      "combo-jampa-quadriciclo",
+      "combo-praia-bela-quadriciclo",
     ],
     faq: [
       {
@@ -462,6 +485,8 @@ export const blogPosts: BlogPost[] = [
       "litoral-norte-classico",
       "areia-vermelha-catamara",
       "por-do-sol-jacare",
+      "combo-litoral-norte-areia-vermelha",
+      "lancha-privativa",
     ],
     faq: [
       {
@@ -523,7 +548,13 @@ export const blogPosts: BlogPost[] = [
       "tábua de marés Cabo Branco",
       "maré João Pessoa hoje",
     ],
-    relatedPasseios: ["seixas", "picaozinho", "areia-vermelha-catamara"],
+    relatedPasseios: [
+      "seixas",
+      "picaozinho",
+      "areia-vermelha-catamara",
+      "penha",
+      "combo-litoral-norte-areia-vermelha",
+    ],
     faq: [
       {
         pergunta: "Onde encontrar a tábua de marés oficial de João Pessoa?",
@@ -583,7 +614,14 @@ export const blogPosts: BlogPost[] = [
       "férias nordeste com crianças",
       "piscinas naturais criança João Pessoa",
     ],
-    relatedPasseios: ["seixas", "areia-vermelha-catamara", "city-tour-jampa"],
+    relatedPasseios: [
+      "seixas",
+      "areia-vermelha-catamara",
+      "city-tour-jampa",
+      "picaozinho",
+      "penha",
+      "por-do-sol-jacare",
+    ],
     faq: [
       {
         pergunta: "Colete salva-vidas está disponível para crianças nos passeios?",
@@ -647,7 +685,13 @@ export const blogPosts: BlogPost[] = [
       "táxi aeroporto João Pessoa",
       "aeroporto Presidente Castro Pinto",
     ],
-    relatedPasseios: [],
+    relatedPasseios: [
+      "seixas",
+      "litoral-sul-classico",
+      "litoral-norte-classico",
+      "city-tour-jampa",
+      "areia-vermelha-catamara",
+    ],
     faq: [
       {
         pergunta: "O transfer funciona para chegadas de madrugada?",
@@ -708,7 +752,14 @@ export const blogPosts: BlogPost[] = [
       "alta temporada João Pessoa",
       "quando ir João Pessoa",
     ],
-    relatedPasseios: ["seixas", "picaozinho", "areia-vermelha-catamara"],
+    relatedPasseios: [
+      "seixas",
+      "picaozinho",
+      "areia-vermelha-catamara",
+      "por-do-sol-jacare",
+      "litoral-sul-classico",
+      "combo-litoral-norte-areia-vermelha",
+    ],
     faq: [
       {
         pergunta: "Qual é o mês com menos chuva em João Pessoa?",
@@ -773,7 +824,13 @@ export const blogPosts: BlogPost[] = [
       "catamarã Jacaré João Pessoa",
       "passeio Jacaré João Pessoa",
     ],
-    relatedPasseios: ["por-do-sol-jacare", "areia-vermelha-catamara", "combo-litoral-norte-areia-vermelha"],
+    relatedPasseios: [
+      "por-do-sol-jacare",
+      "areia-vermelha-catamara",
+      "combo-litoral-norte-areia-vermelha",
+      "litoral-norte-classico",
+      "city-tour-jampa",
+    ],
     faq: [
       {
         pergunta: "O Pôr do Sol do Jacaré acontece todos os dias?",
