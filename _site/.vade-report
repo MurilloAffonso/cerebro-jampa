@@ -1,0 +1,38 @@
+Installed and configured Vercel Web Analytics for the project.
+
+## What was implemented:
+
+### 1. Installed @vercel/analytics package
+- Ran `npm install @vercel/analytics` to add the official Vercel Analytics package
+- Package version was automatically resolved by npm
+
+### 2. Updated root layout file
+**Modified:** `_site/app/[locale]/layout.tsx`
+- Added import: `import { Analytics as VercelAnalytics } from "@vercel/analytics/next"`
+- Added the `<VercelAnalytics />` component in the body section, right after the existing custom Analytics component
+- Used alias naming to avoid conflict with the existing Google Analytics/Meta Pixel Analytics component
+
+### 3. Implementation details:
+- Followed Next.js App Router specific instructions from official Vercel documentation
+- The Analytics component was added to the locale layout (which contains the actual HTML structure) rather than the root layout (which is a pass-through)
+- Preserved all existing code structure and analytics (GA4 and Meta Pixel)
+- The Vercel Analytics component will now track page views and web vitals automatically
+
+### 4. Verification completed:
+✅ ESLint: No warnings or errors
+✅ TypeScript type checking: Passed
+✅ Build: Successfully compiled (153 static pages generated)
+✅ Lock file: package-lock.json updated with new dependency
+
+## Files changed:
+- `app/[locale]/layout.tsx` - Added Vercel Analytics component
+- `package.json` - Added @vercel/analytics dependency
+- `package-lock.json` - Updated with new package resolutions
+
+## How to use:
+Once deployed to Vercel, the Analytics will automatically start collecting data. You can view the analytics in your Vercel project dashboard under the Analytics tab. No additional configuration or environment variables are needed for basic web analytics.
+
+## Notes:
+- The implementation follows the official Vercel documentation for Next.js App Router
+- The analytics will work alongside the existing GA4 and Meta Pixel tracking
+- Analytics data will be available in the Vercel dashboard after deployment
