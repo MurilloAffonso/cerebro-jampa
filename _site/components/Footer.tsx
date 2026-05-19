@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/lib/navigation";
 import { empresa, paginasInfo } from "@/data/empresa";
 import { LanguageSelector } from "@/components/LanguageSelector";
+import { trackWhatsAppClick } from "@/lib/tracking";
 
 const CADASTUR_URL = "https://cadastur.turismo.gov.br/cadastur/#!/public/qrcode/52077577000103";
 
@@ -254,6 +255,7 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={t('falarMurillo')}
+              onClick={() => trackWhatsAppClick("footer")}
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',

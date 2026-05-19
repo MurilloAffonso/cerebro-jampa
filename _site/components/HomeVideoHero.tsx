@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react'
 import { useTranslations } from 'next-intl'
 import { empresa } from '@/data/empresa'
+import { trackWhatsAppClick } from '@/lib/tracking'
 
 const WA_BASE = empresa.contato.whatsappLink
 
@@ -85,6 +86,7 @@ export function HomeVideoHero({ whatsappUrl }: HomeVideoHeroProps) {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={t('ctaPrimario')}
+          onClick={() => trackWhatsAppClick('home-hero-mobile')}
           style={{
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             gap: 9, width: '100%',
@@ -144,6 +146,7 @@ export function HomeVideoHero({ whatsappUrl }: HomeVideoHeroProps) {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackWhatsAppClick('home-hero-desktop')}
             style={{
               display: 'inline-flex', alignItems: 'center', gap: 9,
               fontFamily: 'var(--font-body)', fontWeight: 700, fontSize: 16,
@@ -163,6 +166,7 @@ export function HomeVideoHero({ whatsappUrl }: HomeVideoHeroProps) {
             href={secondaryHref}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackWhatsAppClick('home-hero-roteiro')}
             style={{
               display: 'inline-flex', alignItems: 'center', gap: 8,
               fontFamily: 'var(--font-body)', fontWeight: 600, fontSize: 15,

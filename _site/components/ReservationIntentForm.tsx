@@ -16,6 +16,7 @@ import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { empresa } from "@/data/empresa";
 import { buildReservationWhatsAppUrl } from "@/lib/whatsapp";
+import { trackWhatsAppClick } from "@/lib/tracking";
 
 interface Props {
   passeioNome: string;
@@ -218,6 +219,7 @@ export function ReservationIntentForm({ passeioNome }: Props) {
             href={waUrl}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackWhatsAppClick("reservation-form")}
             style={{
               display: "flex",
               alignItems: "center",

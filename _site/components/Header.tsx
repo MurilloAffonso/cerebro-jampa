@@ -6,6 +6,7 @@ import { Link } from "@/lib/navigation";
 import { useTranslations } from "next-intl";
 import { empresa } from "@/data/empresa";
 import { LanguageSelector } from "@/components/LanguageSelector";
+import { trackWhatsAppClick } from "@/lib/tracking";
 
 const CATEGORIA_SLUGS = [
   { key: "pacotes",           slug: "pacotes" },
@@ -278,6 +279,7 @@ export function Header() {
               rel="noopener noreferrer"
               aria-label={t("reservarWhatsapp")}
               className="wa-cta-header"
+              onClick={() => trackWhatsAppClick("header")}
               onMouseEnter={e => (e.currentTarget.style.background = "#1ea355")}
               onMouseLeave={e => (e.currentTarget.style.background = "var(--cor-whatsapp)")}
             >
@@ -403,7 +405,7 @@ export function Header() {
               href={WA_URL}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={closeMobile}
+              onClick={() => { trackWhatsAppClick("header-mobile"); closeMobile(); }}
               style={{
                 display: "flex",
                 alignItems: "center",

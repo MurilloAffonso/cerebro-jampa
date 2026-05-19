@@ -7,6 +7,7 @@ import { empresa } from "@/data/empresa";
 import type { Passeio } from "@/data/passeios";
 import { getPasseioBadges, parsePrecoChip, DESIGN_BADGE, type DesignBadgeKind } from "@/lib/badges";
 import { DESCONTOS } from "@/data/descontos";
+import { trackWhatsAppClick } from "@/lib/tracking";
 
 const WA_BASE = empresa.contato.whatsappLink;
 
@@ -223,7 +224,7 @@ export function PasseioCard({ passeio, loading = "lazy" }: PasseioCardProps) {
           </Link>
 
           <a href={waUrl} target="_blank" rel="noopener noreferrer"
-            onClick={e => e.stopPropagation()}
+            onClick={e => { e.stopPropagation(); trackWhatsAppClick(`card:${passeio.slug}`); }}
             aria-label={`${t('reservar')} ${passeio.nome}`}
             style={{
               flex: 1.3,

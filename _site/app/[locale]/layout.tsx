@@ -5,6 +5,7 @@ import { getMessages, setRequestLocale, getTranslations } from "next-intl/server
 import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { Analytics } from "@/components/Analytics";
 import { generateLocalBusinessSchema, SITE_URL } from "@/lib/seo";
 import { routing, type Locale } from "@/i18n/routing";
 import "@/styles/globals.css";
@@ -96,6 +97,9 @@ export async function generateMetadata({
       images: ["/og-image.svg"],
     },
     robots: { index: true, follow: true },
+    ...(process.env.NEXT_PUBLIC_GSC_VERIFICATION
+      ? { verification: { google: process.env.NEXT_PUBLIC_GSC_VERIFICATION } }
+      : {}),
   };
 }
 
@@ -129,6 +133,7 @@ export default async function LocaleLayout({
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
           />
+          <Analytics />
           <Header />
           <main className="flex-1" style={{ paddingTop: "var(--header-h)" }}>
             {children}

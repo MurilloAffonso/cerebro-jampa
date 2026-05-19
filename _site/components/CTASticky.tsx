@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import { trackWhatsAppClick } from "@/lib/tracking";
 
 interface CTAStickyProps {
   whatsappUrl: string;
@@ -52,6 +53,7 @@ export function CTASticky({
       rel="noopener noreferrer"
       aria-label={labelFinal}
       className="md:hidden"
+      onClick={() => trackWhatsAppClick("cta-sticky")}
       style={{
         position: 'fixed',
         bottom: 0,

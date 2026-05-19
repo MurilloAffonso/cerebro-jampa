@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { trackWhatsAppClick } from "@/lib/tracking";
 
 interface CTAFinalProps {
   whatsappUrl: string;
@@ -104,6 +105,7 @@ export function CTAFinal({
           target="_blank"
           rel="noopener noreferrer"
           aria-label={textoBotaoFinal}
+          onClick={() => trackWhatsAppClick("cta-final")}
           style={{
             display: 'inline-flex',
             alignItems: 'center',
