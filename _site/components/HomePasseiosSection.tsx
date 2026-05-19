@@ -104,7 +104,7 @@ export function HomePasseiosSection({ passeios, showViewAll = true }: HomePassei
           <PasseioCard
             key={p.id}
             passeio={p}
-            loading={i < 2 ? "eager" : "lazy"}
+            loading={i === 0 ? "eager" : "lazy"}
           />
         ))}
         {sorted.length === 0 && (
