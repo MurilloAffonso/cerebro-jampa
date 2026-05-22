@@ -8,6 +8,12 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'vempassearjampa.com' }],
+        destination: 'https://www.vempassearjampa.com/:path*',
+        permanent: true,
+      },
+      {
         source: '/passeios/pacotes/3-dias-completo',
         destination: '/passeios/pacotes/roteiro-do-murillo-3-dias',
         permanent: true,

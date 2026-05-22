@@ -57,7 +57,7 @@ export const empresa = {
   // Avaliação (extraído do Google Maps em 2026-05-18)
   rating: {
     valor: 4.9,
-    totalAvaliacoes: 66,
+    totalAvaliacoes: 68,
     plataforma: 'Google',
   },
 
