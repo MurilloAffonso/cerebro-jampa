@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { empresa } from "@/data/empresa";
-import { generateMetadata as generateSeoMetadata, generateFAQSchema, generateBreadcrumbSchema, buildLocaleAlternates, SITE_URL } from "@/lib/seo";
+import { generateMetadata as generateSeoMetadata, generateFAQSchema, generateBreadcrumbSchema, buildLocaleAlternates, buildLocalizedUrl, SITE_URL } from "@/lib/seo";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { CTAFinal } from "@/components/CTAFinal";
 import { CTASticky } from "@/components/CTASticky";
@@ -46,6 +46,7 @@ export default async function ExcursoesGruposPage({ params }: { params: { locale
   setRequestLocale(params.locale);
   const t    = await getTranslations("ExcursoesPage");
   const tNav = await getTranslations("Nav");
+  const pageUrl = buildLocalizedUrl(params.locale, "/servicos/excursoes-e-grupos");
 
   const WA_URL = buildWhatsAppUrl("grupo");
 
@@ -110,7 +111,7 @@ export default async function ExcursoesGruposPage({ params }: { params: { locale
       telephone: "+55 83 9908-7830",
       url: SITE_URL,
     },
-    url: `${SITE_URL}/servicos/excursoes-e-grupos`,
+    url: pageUrl,
   };
 
   return (
@@ -126,9 +127,9 @@ export default async function ExcursoesGruposPage({ params }: { params: { locale
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(generateBreadcrumbSchema([
-          { name: tNav("inicio"), item: SITE_URL },
-          { name: t("crumbServicos"), item: `${SITE_URL}/servicos` },
-          { name: t("crumbExcursoes"), item: `${SITE_URL}/servicos/excursoes-e-grupos` },
+          { name: tNav("inicio"), item: buildLocalizedUrl(params.locale, "/") },
+          { name: t("crumbServicos"), item: buildLocalizedUrl(params.locale, "/servicos") },
+          { name: t("crumbExcursoes"), item: pageUrl },
         ])) }}
       />
 
@@ -140,7 +141,8 @@ export default async function ExcursoesGruposPage({ params }: { params: { locale
           { label: t("crumbServicos") },
           { label: t("crumbExcursoes") },
         ]}
-        currentUrl={`https://${empresa.dominio}/servicos/excursoes-e-grupos/`}
+        currentUrl={pageUrl}
+        locale={params.locale}
       />
 
       {/* Hero */}

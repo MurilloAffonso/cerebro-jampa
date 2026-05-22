@@ -10,7 +10,6 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/lib/navigation";
 import { passeios, getPasseioBySlug, getPasseiosByCategoria } from "@/data/passeios";
 import { localizarPasseio, localizarPasseios } from "@/lib/passeios-i18n";
-import { empresa } from "@/data/empresa";
 import { TABUA_MARES_2026 } from "@/data/tabua-mares";
 import { buildProximaSaidaCard } from "@/lib/tabua-mares";
 import type { PasseioMareSlug } from "@/types/tabua-mares";
@@ -19,6 +18,7 @@ import {
   generateTouristAttractionSchema,
   generateBreadcrumbSchema,
   buildLocaleAlternates,
+  buildLocalizedUrl,
 } from "@/lib/seo";
 import { isCampoIndisponivel } from "@/lib/consultar";
 import { getPasseioBadges } from "@/lib/badges";
@@ -44,8 +44,6 @@ import { getPasseioGalleryImages } from "@/lib/gallery";
 import { getCronograma } from "@/data/cronogramas";
 import { PasseioCronograma } from "@/components/PasseioCronograma";
 import { buildWhatsAppUrl, resolvePasseioWhatsAppIntent } from "@/lib/whatsapp";
-
-const SITE_URL = `https://${empresa.dominio}`;
 
 interface PasseioPageProps {
   params: {
@@ -120,7 +118,7 @@ export default async function PasseioPage({ params }: PasseioPageProps) {
   if (!passeioRaw) notFound();
   const passeio = localizarPasseio(passeioRaw, locale);
 
-  const pageUrl = `${SITE_URL}/passeios/${categoria}/${slug}`;
+  const pageUrl = buildLocalizedUrl(locale, `/passeios/${categoria}/${slug}`);
   const whatsappIntent = resolvePasseioWhatsAppIntent(passeio);
   const whatsappUrl = buildWhatsAppUrl(whatsappIntent, { passeioNome: passeio.nome });
 
@@ -164,8 +162,8 @@ export default async function PasseioPage({ params }: PasseioPageProps) {
   const faqSchema = faqItems.length > 0 ? generateFAQSchema(faqItems) : null;
 
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: tNav("inicio"), item: SITE_URL },
-    { name: categoriaLabel, item: `${SITE_URL}/passeios/${categoria}` },
+    { name: tNav("inicio"), item: buildLocalizedUrl(locale, "/") },
+    { name: categoriaLabel, item: buildLocalizedUrl(locale, `/passeios/${categoria}`) },
     { name: passeio.nomeCurto || passeio.nome, item: pageUrl },
   ]);
 
@@ -222,6 +220,7 @@ export default async function PasseioPage({ params }: PasseioPageProps) {
           { label: passeio.nome },
         ]}
         currentUrl={pageUrl}
+        locale={locale}
       />
 
       <PasseioGallery

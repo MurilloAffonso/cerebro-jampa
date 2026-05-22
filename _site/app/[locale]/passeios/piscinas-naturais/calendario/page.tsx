@@ -10,7 +10,7 @@ import {
   formatarDataCurta,
   formatarHorario,
 } from "@/lib/tabua-mares";
-import { generateFAQSchema, generateBreadcrumbSchema, buildLocaleAlternates, SITE_URL } from "@/lib/seo";
+import { generateFAQSchema, generateBreadcrumbSchema, buildLocaleAlternates, buildLocalizedUrl } from "@/lib/seo";
 import { ProximaSaidaCard } from "@/components/ProximaSaidaCard";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTAFinal } from "@/components/CTAFinal";
@@ -18,8 +18,6 @@ import { CTASticky } from "@/components/CTASticky";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { PoliticaCancelamento } from "@/components/PoliticaCancelamento";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
-
-const TABUA_URL = `${SITE_URL}/tabua-de-mares-joao-pessoa`;
 
 const WA_URL = buildWhatsAppUrl("piscinas");
 
@@ -54,6 +52,9 @@ const STATUS_STYLE = {
 export default async function CalendarioPage({ params }: { params: { locale: string } }) {
   setRequestLocale(params.locale);
   const t = await getTranslations("CalendarioPage");
+  const tabuaUrl = buildLocalizedUrl(params.locale, "/tabua-de-mares-joao-pessoa");
+  const localizedPath = (path: string) =>
+    params.locale === "en" || params.locale === "es" ? `/${params.locale}${path}` : path;
 
   const saidas = getSaidasDoMes("seixas", 5, 2026, TABUA_MARES_2026);
   const janelas = agruparJanelasDeSaida(saidas);
@@ -62,9 +63,9 @@ export default async function CalendarioPage({ params }: { params: { locale: str
   const faqItems = t.raw("faq") as Array<{ pergunta: string; resposta: string }>;
   const faqSchema = generateFAQSchema(faqItems);
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: t("crumbHome"), item: SITE_URL },
-    { name: t("crumbPiscinas"), item: `${SITE_URL}/passeios/piscinas-naturais` },
-    { name: t("crumbCalendario"), item: TABUA_URL },
+    { name: t("crumbHome"), item: buildLocalizedUrl(params.locale, "/") },
+    { name: t("crumbPiscinas"), item: buildLocalizedUrl(params.locale, "/passeios/piscinas-naturais") },
+    { name: t("crumbCalendario"), item: tabuaUrl },
   ]);
 
   const comPasseio = saidas.filter((s) => s.temPasseio).length;
@@ -81,6 +82,8 @@ export default async function CalendarioPage({ params }: { params: { locale: str
           { label: t("crumbPiscinas"), href: "/passeios/piscinas-naturais" },
           { label: t("crumbCalendario") },
         ]}
+        currentUrl={tabuaUrl}
+        locale={params.locale}
       />
 
       {/* Banner */}
@@ -248,13 +251,13 @@ export default async function CalendarioPage({ params }: { params: { locale: str
           <h2>{t("passeiosCalendarioTitulo")}</h2>
           <div className="mt-4 space-y-3">
             {[
-              { slug: "seixas", nome: t("passeio1Nome"), desc: t("passeio1Desc") },
-              { slug: "picaozinho", nome: t("passeio2Nome"), desc: t("passeio2Desc") },
-              { slug: "areia-vermelha", nome: t("passeio3Nome"), desc: t("passeio3Desc") },
+              { href: "/passeios/piscinas-naturais/seixas", nome: t("passeio1Nome"), desc: t("passeio1Desc") },
+              { href: "/passeios/piscinas-naturais/picaozinho", nome: t("passeio2Nome"), desc: t("passeio2Desc") },
+              { href: "/passeios/litoral-norte/areia-vermelha-catamara", nome: t("passeio3Nome"), desc: t("passeio3Desc") },
             ].map((p) => (
               <Link
-                key={p.slug}
-                href={`/passeios/piscinas-naturais/${p.slug}`}
+                key={p.href}
+                href={localizedPath(p.href)}
                 className="flex items-start gap-3 p-4 bg-white rounded-lg border border-gray-200 hover:border-primary hover:shadow-sm transition-all group"
               >
                 <span className="text-primary font-bold text-lg group-hover:scale-110 transition-transform">🌊</span>

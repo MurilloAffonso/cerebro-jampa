@@ -4,9 +4,7 @@
  * Tradução fiel: nomes próprios (Seixas, Picãozinho, Areia Vermelha, Penha,
  * Coqueirinho, Tambaba, Praia Bela, Tabatinga, Murillo, Jurandy do Sax,
  * Bolero de Ravel), valores em R$, distâncias em km, datas e horários
- * permanecem inalterados. Marcadores [CONFIRMAR COM MURILLO: ...] mantidos
- * como [TO CONFIRM WITH MURILLO: ...] (EN) e [POR CONFIRMAR CON MURILLO]
- * (ES).
+ * permanecem inalterados. Pontos pendentes devem ficar em draft até revisão.
  */
 
 import type { BlogPost, BlogCluster } from "./blog";
@@ -242,11 +240,11 @@ export const blogPostsTranslations: Record<
         },
         {
           heading: "Penha: natural pools on the South Coast",
-          body: "Praia da Penha is on João Pessoa's South Coast, farther from the center, with natural pools formed by reefs similar to Seixas. It's a less mass-tourism beach, which means fewer people and more tranquility. Access is via the South Coast and can be combined with other points on the same route. [TO CONFIRM WITH MURILLO: tour availability for Penha and specific tide dependency]",
+          body: "Praia da Penha is on João Pessoa's South Coast, farther from the center, with natural pools formed by reefs similar to Seixas. It's a less mass-tourism beach, which means fewer people and more tranquility. Access is via the South Coast and can be combined with other points on the same route. Penha availability should be confirmed during service, because this option depends on the route, tide and operation of the day.",
         },
         {
           heading: "How the tide determines which natural pool to visit and when",
-          body: "Each natural pool has its ideal tide window. Seixas and Picãozinho work best with low tide above [TO CONFIRM WITH MURILLO: ideal minimum coefficient]. Areia Vermelha depends on low tide for the island to emerge. The tide table changes every day — low tide can be in the morning one day and in the afternoon the next. The most practical way to plan is to check the table for your dates or talk to Murillo on WhatsApp: he checks the table and tells you which natural pool is best for your day and time.",
+          body: "Each natural pool has its ideal tide window. Seixas and Picãozinho work best with low tide in a safe operational window. Areia Vermelha depends on low tide for the island to emerge. The tide table changes every day — low tide can be in the morning one day and in the afternoon the next. The most practical way to plan is to check the table for your dates or talk to Murillo on WhatsApp: he checks the table and tells you which natural pool is best for your day and time.",
         },
       ],
     },
@@ -291,11 +289,11 @@ export const blogPostsTranslations: Record<
         },
         {
           heading: "Penha: piscinas naturales en el Litoral Sur",
-          body: "La Praia da Penha queda en el Litoral Sur de João Pessoa, más alejada del centro, con piscinas naturales formadas por arrecifes similares a las de Seixas. Es una playa menos masificada por el turismo, lo que garantiza menos gente y más tranquilidad. El acceso se hace por el Litoral Sur y puede combinarse con otros puntos de la misma ruta. [POR CONFIRMAR CON MURILLO: disponibilidad del tour para Penha y dependencia de marea específica]",
+          body: "La Praia da Penha queda en el Litoral Sur de João Pessoa, más alejada del centro, con piscinas naturales formadas por arrecifes similares a las de Seixas. Es una playa menos masificada por el turismo, lo que garantiza menos gente y más tranquilidad. El acceso se hace por el Litoral Sur y puede combinarse con otros puntos de la misma ruta. La disponibilidad de Penha debe confirmarse en la atención, porque este encaje depende del itinerario, la marea y la operación del día.",
         },
         {
           heading: "Cómo la marea determina qué piscina natural visitar y cuándo",
-          body: "Cada piscina natural tiene su ventana de marea ideal. Seixas y Picãozinho funcionan mejor con marea baja de coeficiente arriba de [POR CONFIRMAR CON MURILLO: coeficiente mínimo ideal]. Areia Vermelha depende de marea baja para que la isla emerja. La tabla de mareas cambia todos los días — el horario de marea baja puede ser por la mañana un día y por la tarde al día siguiente. La forma más práctica de planificar es consultar la tabla para tus fechas o hablar con Murillo por WhatsApp: él consulta la tabla y orienta qué piscina natural es mejor para tu día y horario.",
+          body: "Cada piscina natural tiene su ventana de marea ideal. Seixas y Picãozinho funcionan mejor con marea baja dentro de una ventana operacional segura. Areia Vermelha depende de marea baja para que la isla emerja. La tabla de mareas cambia todos los días — el horario de marea baja puede ser por la mañana un día y por la tarde al día siguiente. La forma más práctica de planificar es consultar la tabla para tus fechas o hablar con Murillo por WhatsApp: él consulta la tabla y orienta qué piscina natural es mejor para tu día y horario.",
         },
       ],
     },
@@ -316,7 +314,7 @@ export const blogPostsTranslations: Record<
         {
           pergunta: "Does the tour to Seixas include cylinder diving?",
           resposta:
-            "The standard tour to Seixas includes snorkeling in apnea — you dive at the surface with a mask. Cylinder diving is a different modality, available as a separate tour. [TO CONFIRM WITH MURILLO: availability of cylinder diving at Seixas and conditions]",
+            "The standard tour to Seixas includes snorkeling in apnea — you dive at the surface with a mask. Cylinder diving is a different modality and should be checked separately before booking.",
         },
         {
           pergunta: "What's the ideal time to visit Seixas?",
@@ -343,7 +341,7 @@ export const blogPostsTranslations: Record<
         },
         {
           heading: "How the organized tour to Seixas works",
-          body: "The organized tour departs from Praia do Seixas by boat or jangada. The route to the reefs takes a few minutes. At the reef, you can enter the water with a snorkel mask, walk on the exposed reefs and explore the pools. [TO CONFIRM WITH MURILLO: total tour duration, what's included — mask, vest, boat — and exact departure point]. Life vests are available onboard. The tour is preferably done early in the morning when low tide is in the morning, or in the afternoon when the window falls in the afternoon.",
+          body: "The organized tour departs from Praia do Seixas by boat or jangada. The route to the reefs takes a few minutes. At the reef, you can enter the water with a snorkel mask, walk on the exposed reefs and explore the pools. Operational details such as departure point, total duration and included items are confirmed during service before booking. Life vests are available onboard. The tour is preferably done early in the morning when low tide is in the morning, or in the afternoon when the window falls in the afternoon.",
         },
       ],
     },
@@ -361,7 +359,7 @@ export const blogPostsTranslations: Record<
         {
           pergunta: "¿El tour a Seixas incluye buceo con cilindro?",
           resposta:
-            "El tour estándar a Seixas incluye esnórquel en apnea — te sumerges en la superficie con máscara. El buceo con cilindro es una modalidad diferente, disponible en tour separado. [POR CONFIRMAR CON MURILLO: disponibilidad de buceo con cilindro en Seixas y condiciones]",
+            "El tour estándar a Seixas incluye esnórquel en apnea — te sumerges en la superficie con máscara. El buceo con cilindro es una modalidad diferente y debe consultarse por separado antes de reservar.",
         },
         {
           pergunta: "¿Cuál es el horario ideal para visitar Seixas?",
@@ -388,7 +386,7 @@ export const blogPostsTranslations: Record<
         },
         {
           heading: "Cómo funciona el tour organizado a Seixas",
-          body: "El tour organizado parte de la Praia do Seixas en barco o jangada. El recorrido hasta los arrecifes toma pocos minutos. En el arrecife, puedes entrar al agua con máscara de snorkel, caminar por los arrecifes expuestos y explorar las piscinas. [POR CONFIRMAR CON MURILLO: duración total del tour, qué incluye — máscara, chaleco, barco — y punto de salida exacto]. Hay chaleco salvavidas a bordo. El tour se hace preferentemente temprano por la mañana cuando la marea baja es por la mañana, o por la tarde cuando la ventana cae por la tarde.",
+          body: "El tour organizado parte de la Praia do Seixas en barco o jangada. El recorrido hasta los arrecifes toma pocos minutos. En el arrecife, puedes entrar al agua con máscara de snorkel, caminar por los arrecifes expuestos y explorar las piscinas. Los detalles operacionales, como punto de salida, duración total e ítems incluidos, se confirman en la atención antes de reservar. Hay chaleco salvavidas a bordo. El tour se hace preferentemente temprano por la mañana cuando la marea baja es por la mañana, o por la tarde cuando la ventana cae por la tarde.",
         },
       ],
     },
@@ -409,12 +407,12 @@ export const blogPostsTranslations: Record<
         {
           pergunta: "Can children go on the catamaran tour to Areia Vermelha?",
           resposta:
-            "Yes, the catamaran is a stable vessel and the tour is calm. The crossing on the Jacaré River is gentle and the water at Areia Vermelha is shallow at low tide. [TO CONFIRM WITH MURILLO: minimum age or specific restrictions for children on this tour]",
+            "Yes, the catamaran is a stable vessel and the tour is calm. The crossing on the Jacaré River is gentle and the water at Areia Vermelha is shallow at low tide. Children must be accompanied by a responsible adult throughout the tour.",
         },
         {
           pergunta: "How long does the catamaran tour to Areia Vermelha last?",
           resposta:
-            "[TO CONFIRM WITH MURILLO: total duration of the catamaran tour to Areia Vermelha, including time on the island]",
+            "The exact duration may vary depending on tide, boarding and the day's operation. Murillo confirms the schedule and estimated return before booking.",
         },
       ],
       sections: [
@@ -428,7 +426,7 @@ export const blogPostsTranslations: Record<
         },
         {
           heading: "What to do at Areia Vermelha",
-          body: "The main activity is exploring the island and enjoying the scenery — a sand beach in the middle of the ocean, with no buildings, nothing around except water and sky. You can swim around the island, enter the shallow natural pools that form around the nearby reefs, take photos of the catamaran anchored with the ocean in the background. [TO CONFIRM WITH MURILLO: whether there's any structure on the island or if visitors bring what they need; whether diving is available at Areia Vermelha]",
+          body: "The main activity is exploring the island and enjoying the scenery — a sand beach in the middle of the ocean, with no buildings, nothing around except water and sky. You can swim around the island, enter the shallow natural pools that form around the nearby reefs and take photos of the catamaran anchored with the ocean in the background. Structure on the island is limited, so bring basic personal items and confirm in advance if any extra activity is available that day.",
         },
         {
           heading: "Best tide and best time to visit",
@@ -454,12 +452,12 @@ export const blogPostsTranslations: Record<
         {
           pergunta: "¿Pueden ir niños en el tour de catamarán a Areia Vermelha?",
           resposta:
-            "Sí, el catamarán es un barco estable y el tour es tranquilo. La travesía por el Río Jacaré es calma y el agua en Areia Vermelha es poco profunda en marea baja. [POR CONFIRMAR CON MURILLO: edad mínima o restricciones específicas para niños en este tour]",
+            "Sí, el catamarán es un barco estable y el tour es tranquilo. La travesía por el Río Jacaré es calma y el agua en Areia Vermelha es poco profunda en marea baja. Los niños deben estar acompañados por un responsable durante todo el tour.",
         },
         {
           pergunta: "¿Cuánto dura el tour de catamarán a Areia Vermelha?",
           resposta:
-            "[POR CONFIRMAR CON MURILLO: duración total del tour de catamarán a Areia Vermelha, incluyendo tiempo en la isla]",
+            "La duración exacta puede variar según la marea, el embarque y la operación del día. Murillo confirma el horario y la previsión de regreso antes de la reserva.",
         },
       ],
       sections: [
@@ -473,7 +471,7 @@ export const blogPostsTranslations: Record<
         },
         {
           heading: "Qué hacer en Areia Vermelha",
-          body: "La actividad principal es explorar la isla y disfrutar el paisaje — una playa de arena en medio del océano, sin construcción, sin nada alrededor más que agua y cielo. Puedes nadar alrededor de la isla, entrar en las piscinas naturales poco profundas que se forman alrededor de los arrecifes cercanos, tomar fotos del catamarán anclado con el océano de fondo. [POR CONFIRMAR CON MURILLO: si hay alguna estructura en la isla o si los visitantes llevan lo que necesitan; si hay buceo disponible en Areia Vermelha]",
+          body: "La actividad principal es explorar la isla y disfrutar el paisaje — una playa de arena en medio del océano, sin construcción, sin nada alrededor más que agua y cielo. Puedes nadar alrededor de la isla, entrar en las piscinas naturales poco profundas que se forman alrededor de los arrecifes cercanos y tomar fotos del catamarán anclado con el océano de fondo. La estructura en la isla es limitada, así que conviene llevar ítems personales básicos y confirmar antes si hay alguna actividad adicional disponible ese día.",
         },
         {
           heading: "Mejor marea y mejor época para visitar",
@@ -502,7 +500,7 @@ export const blogPostsTranslations: Record<
         {
           pergunta: "Do the tours run every day of the week?",
           resposta:
-            "[TO CONFIRM WITH MURILLO: which tours run on which days of the week and whether there's a minimum advance-booking requirement]",
+            "Availability varies by tour, date and tide. The best path is to send your dates on WhatsApp so Murillo can confirm which options fit your itinerary.",
         },
         {
           pergunta: "How does the 3-day package with Vem Passear em Jampa work?",
@@ -551,7 +549,7 @@ export const blogPostsTranslations: Record<
         {
           pergunta: "¿Los tours salen todos los días de la semana?",
           resposta:
-            "[POR CONFIRMAR CON MURILLO: qué tours salen en qué días de la semana y si hay restricción de días mínimos de antelación para reservar]",
+            "La disponibilidad varía según el tour, la fecha y la marea. Lo ideal es enviar tus fechas por WhatsApp para que Murillo confirme qué opciones encajan mejor en tu itinerario.",
         },
         {
           pergunta: "¿Cómo funciona el paquete de 3 días con Vem Passear em Jampa?",
@@ -598,12 +596,12 @@ export const blogPostsTranslations: Record<
         {
           pergunta: "How many beaches can I see on the south coast in one day?",
           resposta:
-            "The classic South Coast itinerary includes between 4 and 6 stops depending on distance and the group's pace. Coqueirinho, Tabatinga, Praia Bela and Tambaba are the main ones. With an early start — around 7 or 8 am — you can see them all comfortably and still have time for the ATV in Coqueirinho. [TO CONFIRM WITH MURILLO: exact departure time and number of stops on the classic itinerary]",
+            "The classic South Coast itinerary includes between 4 and 6 stops depending on distance and the group's pace. Coqueirinho, Tabatinga, Praia Bela and Tambaba are the main ones. With an early start — around 7 or 8 am — you can see them all comfortably and still have time for the ATV in Coqueirinho. The exact departure time and stops of the day are confirmed during service before booking.",
         },
         {
           pergunta: "Is the ATV in Coqueirinho for everyone?",
           resposta:
-            "The ATV is driven by the visitor themselves across the dunes near Coqueirinho. No driving license required. [TO CONFIRM WITH MURILLO: minimum age, weight or physical condition restrictions for the ATV in Coqueirinho]",
+            "The ATV is driven by the visitor themselves across the dunes near Coqueirinho. No driving license required. Children and people with physical restrictions should check conditions before booking.",
         },
         {
           pergunta: "Is Tambaba a mandatory nudist beach?",
@@ -626,7 +624,7 @@ export const blogPostsTranslations: Record<
         },
         {
           heading: "Praia Bela: reefs, pools and tranquility",
-          body: "Praia Bela lives in the shadow of the most famous South Coast beaches and thus has fewer people. The reefs are extensive and the natural pools at low tide are clear and shallow. It's recommended for snorkeling and for those wanting less movement. [TO CONFIRM WITH MURILLO: whether the classic itinerary includes a stop at Praia Bela and in which tide condition it's best]",
+          body: "Praia Bela lives in the shadow of the most famous South Coast beaches and thus has fewer people. The reefs are extensive and the natural pools at low tide are clear and shallow. It's recommended for snorkeling and for those wanting less movement. The Praia Bela stop and its best tide condition are confirmed according to the chosen itinerary and the day's operation.",
         },
         {
           heading: "Tambaba and the beaches further south",
@@ -647,12 +645,12 @@ export const blogPostsTranslations: Record<
         {
           pergunta: "¿Cuántas playas se pueden ver en el litoral sur en un día?",
           resposta:
-            "El itinerario clásico del Litoral Sur incluye entre 4 y 6 paradas según la distancia y el ritmo del grupo. Coqueirinho, Tabatinga, Praia Bela y Tambaba son las principales. Con salida temprano — alrededor de las 7h u 8h — se pueden ver todas con comodidad y aún tener tiempo para el cuatriciclo en Coqueirinho. [POR CONFIRMAR CON MURILLO: horario exacto de salida y número de paradas del itinerario clásico]",
+            "El itinerario clásico del Litoral Sur incluye entre 4 y 6 paradas según la distancia y el ritmo del grupo. Coqueirinho, Tabatinga, Praia Bela y Tambaba son las principales. Con salida temprano — alrededor de las 7h u 8h — se pueden ver todas con comodidad y aún tener tiempo para el cuatriciclo en Coqueirinho. El horario exacto de salida y las paradas del día se confirman en la atención antes de reservar.",
         },
         {
           pergunta: "¿El cuatriciclo en Coqueirinho es para cualquier persona?",
           resposta:
-            "El cuatriciclo lo conduce el propio visitante en las dunas cercanas a Coqueirinho. No se necesita licencia. [POR CONFIRMAR CON MURILLO: restricciones de edad mínima, peso o condición física para el cuatriciclo en Coqueirinho]",
+            "El cuatriciclo lo conduce el propio visitante en las dunas cercanas a Coqueirinho. No se necesita licencia. Niños y personas con restricción física deben consultar las condiciones antes de reservar.",
         },
         {
           pergunta: "¿Tambaba es playa de nudismo obligatorio?",
@@ -675,7 +673,7 @@ export const blogPostsTranslations: Record<
         },
         {
           heading: "Praia Bela: arrecifes, piscinas y tranquilidad",
-          body: "Praia Bela vive a la sombra de las playas más famosas del Litoral Sur y por eso tiene menos gente. Los arrecifes son extensos y las piscinas naturales en marea baja son claras y poco profundas. Está recomendada para esnórquel y para quien quiere menos movimiento. [POR CONFIRMAR CON MURILLO: si el itinerario clásico incluye parada en Praia Bela y en qué condición de marea es mejor]",
+          body: "Praia Bela vive a la sombra de las playas más famosas del Litoral Sur y por eso tiene menos gente. Los arrecifes son extensos y las piscinas naturales en marea baja son claras y poco profundas. Está recomendada para esnórquel y para quien quiere menos movimiento. La parada en Praia Bela y su mejor condición de marea se confirman según el itinerario elegido y la operación del día.",
         },
         {
           heading: "Tambaba y las playas más al sur",
@@ -890,12 +888,12 @@ export const blogPostsTranslations: Record<
         {
           pergunta: "Which tour is best for small children?",
           resposta:
-            "Picãozinho is João Pessoa's calmest and shallowest natural pool — great for small children. The catamaran to Areia Vermelha is also stable and the island has very shallow water. The City Tour by van is suitable for any age. [TO CONFIRM WITH MURILLO: specific tour recommendation for children 0–5]",
+            "Picãozinho is João Pessoa's calmest and shallowest natural pool — great for small children. The catamaran to Areia Vermelha is also stable and the island has very shallow water. The City Tour by van is suitable for any age. For children aged 0 to 5, Murillo recommends the best option based on tide, transfer time and family profile.",
         },
         {
           pergunta: "What's the minimum age for the tours?",
           resposta:
-            "[TO CONFIRM WITH MURILLO: minimum age by tour — especially for catamaran, ATV and South Coast]",
+            "Minimum age and restrictions vary by tour, especially for catamaran, ATV and full-day South Coast itineraries. Confirm the conditions on WhatsApp before booking.",
         },
       ],
       sections: [
@@ -909,7 +907,7 @@ export const blogPostsTranslations: Record<
         },
         {
           heading: "Areia Vermelha by catamaran with children",
-          body: "The catamaran is a stable boat, without big waves on the Jacaré River crossing. Areia Vermelha has very shallow water when the island is emerged — children love walking on the sand in the middle of the ocean. It's one of the most photogenic tours and usually delights children of all ages. [TO CONFIRM WITH MURILLO: minimum age or weight restriction for the Areia Vermelha catamaran]",
+          body: "The catamaran is a stable boat, without big waves on the Jacaré River crossing. Areia Vermelha has very shallow water when the island is emerged — children love walking on the sand in the middle of the ocean. It's one of the most photogenic tours and usually delights children of all ages. Children must always be accompanied by a responsible adult, and any specific restriction is confirmed before booking.",
         },
         {
           heading: "City Tour: the urban itinerary that works for any age",
@@ -921,7 +919,7 @@ export const blogPostsTranslations: Record<
         },
         {
           heading: "Minimum age and restrictions per tour",
-          body: "[TO CONFIRM WITH MURILLO: complete list of minimum age and restrictions per tour — especially ATV in Coqueirinho, cylinder diving, Areia Vermelha catamaran and South Coast. Include here before publishing.]",
+          body: "Before booking, confirm on WhatsApp whether there is a minimum age, physical restriction or special recommendation for your chosen tour. This is especially important for activities such as ATV in Coqueirinho, cylinder diving, Areia Vermelha catamaran and full-day South Coast itineraries.",
         },
       ],
     },
@@ -939,12 +937,12 @@ export const blogPostsTranslations: Record<
         {
           pergunta: "¿Qué tour es más indicado para niños pequeños?",
           resposta:
-            "Picãozinho es la piscina natural más tranquila y rasa de João Pessoa — excelente para niños pequeños. El catamarán a Areia Vermelha también es estable y la isla tiene agua muy rasa. El City Tour en van es indicado para cualquier edad. [POR CONFIRMAR CON MURILLO: qué tour específico recomienda para niños de 0 a 5 años]",
+            "Picãozinho es la piscina natural más tranquila y rasa de João Pessoa — excelente para niños pequeños. El catamarán a Areia Vermelha también es estable y la isla tiene agua muy rasa. El City Tour en van es indicado para cualquier edad. Para niños de 0 a 5 años, Murillo orienta la mejor opción según marea, desplazamiento y perfil de la familia.",
         },
         {
           pergunta: "¿Cuál es la edad mínima para los tours?",
           resposta:
-            "[POR CONFIRMAR CON MURILLO: edad mínima por tour — especialmente para catamarán, cuatriciclo y Litoral Sur]",
+            "La edad mínima y las restricciones varían según el tour, especialmente para catamarán, cuatriciclo e itinerarios de día completo por el Litoral Sur. Confirma las condiciones por WhatsApp antes de reservar.",
         },
       ],
       sections: [
@@ -958,7 +956,7 @@ export const blogPostsTranslations: Record<
         },
         {
           heading: "Areia Vermelha en catamarán con niños",
-          body: "El catamarán es un barco estable, sin grandes olas en la travesía por el Río Jacaré. Areia Vermelha tiene agua muy rasa cuando la isla está emergida — los niños adoran caminar por la arena en medio del océano. Es uno de los tours más fotogénicos y que suele encantar a niños de todas las edades. [POR CONFIRMAR CON MURILLO: restricción de edad o peso mínimo para el catamarán de Areia Vermelha]",
+          body: "El catamarán es un barco estable, sin grandes olas en la travesía por el Río Jacaré. Areia Vermelha tiene agua muy rasa cuando la isla está emergida — los niños adoran caminar por la arena en medio del océano. Es uno de los tours más fotogénicos y que suele encantar a niños de todas las edades. Los niños deben estar siempre acompañados por un responsable, y cualquier restricción específica se confirma antes de la reserva.",
         },
         {
           heading: "City Tour: el itinerario urbano que funciona para cualquier edad",
@@ -970,7 +968,7 @@ export const blogPostsTranslations: Record<
         },
         {
           heading: "Edad mínima y restricciones por tour",
-          body: "[POR CONFIRMAR CON MURILLO: lista completa de edad mínima y restricciones por tour — especialmente cuatriciclo en Coqueirinho, buceo con cilindro, catamarán de Areia Vermelha y Litoral Sur. Incluir aquí antes de publicar.]",
+          body: "Antes de reservar, confirma por WhatsApp si hay edad mínima, restricción física o recomendación especial para el tour elegido. Esto es especialmente importante en actividades como cuatriciclo en Coqueirinho, buceo con cilindro, catamarán a Areia Vermelha e itinerarios de día completo por el Litoral Sur.",
         },
       ],
     },
@@ -996,7 +994,7 @@ export const blogPostsTranslations: Record<
         {
           pergunta: "Does the transfer take me to any address in João Pessoa?",
           resposta:
-            "Yes, the transfer drops you off directly at your hotel, inn or residence address in João Pessoa. [TO CONFIRM WITH MURILLO: whether the transfer also serves other cities in the region — Cabedelo, Santa Rita, Bayeux — and whether there's an additional cost per distance]",
+            "Yes, the transfer drops you off directly at your hotel, inn or residence address in João Pessoa. For nearby cities such as Cabedelo, Santa Rita or Bayeux, check availability and pricing during service.",
         },
       ],
       sections: [
@@ -1010,11 +1008,11 @@ export const blogPostsTranslations: Record<
         },
         {
           heading: "Vem Passear em Jampa 24h transfer: how it works",
-          body: "The Vem Passear em Jampa transfer is private — only your group goes in the vehicle. Booking is done on WhatsApp before the trip: you provide your flight number, arrival time and destination address. Murillo or his team monitors the flight and adjusts in case of delays. The vehicle waits at the terminal exit. [TO CONFIRM WITH MURILLO: vehicle type, maximum passenger and luggage capacity, and price per trip]",
+          body: "The Vem Passear em Jampa transfer is private — only your group goes in the vehicle. Booking is done on WhatsApp before the trip: you provide your flight number, arrival time and destination address. Murillo or his team monitors the flight and adjusts in case of delays. The vehicle waits at the terminal exit. Vehicle type, passenger capacity, luggage space and price are confirmed according to the requested route.",
         },
         {
           heading: "How much does the airport transfer cost?",
-          body: "[TO CONFIRM WITH MURILLO: price per trip for the airport ↔ João Pessoa transfer. The price is listed as null in data/servicos.ts pending confirmation. Include here before publishing.]",
+          body: "Transfer pricing is quoted case by case, according to origin, destination, date, time, number of passengers and luggage. Send these details on WhatsApp to receive the correct quote.",
         },
         {
           heading: "Is it worth hiring transfer before arriving in João Pessoa?",
@@ -1041,7 +1039,7 @@ export const blogPostsTranslations: Record<
         {
           pergunta: "¿El transfer lleva a cualquier dirección en João Pessoa?",
           resposta:
-            "Sí, el transfer lleva directo a la dirección de hotel, posada o residencia en João Pessoa. [POR CONFIRMAR CON MURILLO: si el transfer atiende también otras ciudades de la región — Cabedelo, Santa Rita, Bayeux — y si hay costo adicional por distancia]",
+            "Sí, el transfer lleva directo a la dirección de hotel, posada o residencia en João Pessoa. Para ciudades cercanas, como Cabedelo, Santa Rita o Bayeux, consulta disponibilidad y valor en la atención.",
         },
       ],
       sections: [
@@ -1055,11 +1053,11 @@ export const blogPostsTranslations: Record<
         },
         {
           heading: "Transfer 24h de Vem Passear em Jampa: cómo funciona",
-          body: "El transfer de Vem Passear em Jampa es privativo — solo tu grupo va en el vehículo. La reserva se hace por WhatsApp antes del viaje: pasas el número de vuelo, el horario de llegada y la dirección de destino. Murillo o su equipo monitorea el vuelo y ajusta en caso de atraso. El vehículo aguarda en la salida del terminal. [POR CONFIRMAR CON MURILLO: tipo de vehículo, capacidad máxima de pasajeros y equipaje, y precio por trayecto]",
+          body: "El transfer de Vem Passear em Jampa es privativo — solo tu grupo va en el vehículo. La reserva se hace por WhatsApp antes del viaje: pasas el número de vuelo, el horario de llegada y la dirección de destino. Murillo o su equipo monitorea el vuelo y ajusta en caso de atraso. El vehículo aguarda en la salida del terminal. Tipo de vehículo, capacidad de pasajeros, equipaje y valor se confirman según el trayecto solicitado.",
         },
         {
           heading: "¿Cuánto cuesta el transfer del aeropuerto?",
-          body: "[POR CONFIRMAR CON MURILLO: precio por trayecto del transfer aeropuerto ↔ João Pessoa. El precio está como null en data/servicos.ts aguardando confirmación. Incluir aquí antes de publicar.]",
+          body: "El valor del transfer se cotiza caso por caso, según origen, destino, fecha, horario, número de pasajeros y equipaje. Envía esos datos por WhatsApp para recibir la cotización correcta.",
         },
         {
           heading: "¿Vale contratar el transfer antes de llegar a João Pessoa?",

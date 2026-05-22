@@ -5,8 +5,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { empresa } from "@/data/empresa";
-import { buildLocaleAlternates, SITE_URL } from "@/lib/seo";
+import { buildLocaleAlternates, buildLocalizedUrl, SITE_URL } from "@/lib/seo";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTASticky } from "@/components/CTASticky";
 import { FAQAccordion } from "@/components/FAQAccordion";
@@ -41,6 +40,7 @@ export default async function TransferPage({ params }: { params: { locale: strin
   setRequestLocale(params.locale);
   const t    = await getTranslations("TransferPage");
   const tNav = await getTranslations("Nav");
+  const pageUrl = buildLocalizedUrl(params.locale, "/servicos/transfer-24h");
 
   const SERVICE_SCHEMA = {
     "@context": "https://schema.org",
@@ -60,7 +60,7 @@ export default async function TransferPage({ params }: { params: { locale: strin
       telephone: "+55 83 9908-7830",
       url: SITE_URL,
     },
-    url: `${SITE_URL}/servicos/transfer-24h`,
+    url: pageUrl,
     hoursAvailable: {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
@@ -72,9 +72,9 @@ export default async function TransferPage({ params }: { params: { locale: strin
   const faqItems = t.raw("faq") as Array<{ pergunta: string; resposta: string }>;
   const faqSchema = generateFAQSchema(faqItems);
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: tNav("inicio"), item: SITE_URL },
-    { name: t("crumbServicos"), item: `${SITE_URL}/servicos` },
-    { name: t("crumbTransfer"), item: `${SITE_URL}/servicos/transfer-24h` },
+    { name: tNav("inicio"), item: buildLocalizedUrl(params.locale, "/") },
+    { name: t("crumbServicos"), item: buildLocalizedUrl(params.locale, "/servicos") },
+    { name: t("crumbTransfer"), item: pageUrl },
   ]);
 
   return (
@@ -100,7 +100,8 @@ export default async function TransferPage({ params }: { params: { locale: strin
           { label: t("crumbServicos") },
           { label: t("crumbTransfer") },
         ]}
-        currentUrl={`https://${empresa.dominio}/servicos/transfer-24h/`}
+        currentUrl={pageUrl}
+        locale={params.locale}
       />
 
       {/* Hero */}

@@ -1,6 +1,6 @@
 # Imagens — Areia Vermelha (Catamarã)
 
-**Status:** [CONFIRMAR COM MURILLO] — assets ainda não enviados.
+**Status:** assets ainda não enviados.
 
 ## Necessário
 

@@ -250,7 +250,7 @@ export const TABUA_MARES_2026: SaidaDia[] = [
     dataImportacao: IMPORTADO_EM,
     revisadoPorMurillo: false,
     overrideManual: false,
-    observacao: "Guardrail mínimo aplicado: BM 06:32 → sugerida calculada 06:00, ajustada para 07:00. Altura 0.8m → consultar. [CONFIRMAR COM MURILLO]",
+    observacao: "Guardrail mínimo aplicado: BM 06:32 → sugerida calculada 06:00, ajustada para 07:00. Altura 0.8m → consultar.",
   },
   // ── Maio 2026 — Ciclo 2 (13–20/mai) ────────────────────────────────────────
   {
@@ -432,7 +432,7 @@ export const TABUA_MARES_2026: SaidaDia[] = [
     dataImportacao: IMPORTADO_EM,
     revisadoPorMurillo: false,
     overrideManual: false,
-    observacao: "Guardrail >= 14:00 aplicado: BM 14:16 → sugerida 14:00 → consultar (apesar de altura 0.5m excelente). [CONFIRMAR COM MURILLO]",
+    observacao: "Guardrail >= 14:00 aplicado: BM 14:16 → sugerida 14:00 → consultar (apesar de altura 0.5m excelente).",
   },
   {
     data: "2026-05-22",

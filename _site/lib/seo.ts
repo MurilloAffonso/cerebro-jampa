@@ -228,10 +228,9 @@ export function buildLocaleAlternates(
   locale: string,
   path: string
 ): { canonical: string; languages: Record<string, string> } {
-  const clean = path === "" || path === "/" ? "" : path.startsWith("/") ? path : `/${path}`;
-  const ptUrl = `${SITE_URL}${clean || "/"}`;
-  const enUrl = `${SITE_URL}/en${clean}`;
-  const esUrl = `${SITE_URL}/es${clean}`;
+  const ptUrl = buildLocalizedUrl("pt", path);
+  const enUrl = buildLocalizedUrl("en", path);
+  const esUrl = buildLocalizedUrl("es", path);
 
   const canonical =
     locale === "en" ? enUrl : locale === "es" ? esUrl : ptUrl;
@@ -245,6 +244,14 @@ export function buildLocaleAlternates(
       "x-default": ptUrl,
     },
   };
+}
+
+export function buildLocalizedUrl(locale: string, path: string): string {
+  const clean = path === "" || path === "/" ? "" : path.startsWith("/") ? path : `/${path}`;
+  if (locale === "en" || locale === "es") {
+    return `${SITE_URL}/${locale}${clean}`;
+  }
+  return `${SITE_URL}${clean || "/"}`;
 }
 
 export function slugify(texto: string): string {

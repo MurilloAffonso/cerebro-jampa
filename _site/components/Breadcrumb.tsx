@@ -7,7 +7,7 @@
  */
 
 import Link from "next/link";
-import { empresa } from "@/data/empresa";
+import { buildLocalizedUrl } from "@/lib/seo";
 
 interface BreadcrumbItem {
   label: string;
@@ -18,24 +18,23 @@ interface BreadcrumbProps {
   items: BreadcrumbItem[];
   /** URL canônica da página atual; opcional. Se omitido, schema usa `href` se houver. */
   currentUrl?: string;
+  locale?: string;
 }
 
-const SITE_URL = `https://${empresa.dominio}`;
-
-function toAbsolute(path?: string): string | undefined {
+function toAbsolute(path?: string, locale = "pt"): string | undefined {
   if (!path) return undefined;
   if (path.startsWith("http://") || path.startsWith("https://")) return path;
-  return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
+  return buildLocalizedUrl(locale, path);
 }
 
-export function Breadcrumb({ items, currentUrl }: BreadcrumbProps) {
+export function Breadcrumb({ items, currentUrl, locale = "pt" }: BreadcrumbProps) {
   // Schema BreadcrumbList — só emite se houver pelo menos 2 itens
   const schemaItems = items
     .map((item, index) => {
       const isLast = index === items.length - 1;
       const url = isLast
-        ? toAbsolute(currentUrl) || toAbsolute(item.href)
-        : toAbsolute(item.href);
+        ? toAbsolute(currentUrl, locale) || toAbsolute(item.href, locale)
+        : toAbsolute(item.href, locale);
       if (!url) return null;
       return {
         "@type": "ListItem",

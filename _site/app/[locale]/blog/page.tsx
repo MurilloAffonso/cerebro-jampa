@@ -11,15 +11,41 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { empresa } from "@/data/empresa";
 import { getPublishedPosts, listClusters } from "@/lib/blog";
 import { localizarPosts, getClusterMetaLocalized } from "@/lib/blog-i18n";
-import { buildLocaleAlternates } from "@/lib/seo";
+import { buildLocaleAlternates, buildLocalizedUrl } from "@/lib/seo";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTASticky } from "@/components/CTASticky";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 const WA_URL = buildWhatsAppUrl("blog");
+
+const BLOG_META: Record<string, { title: string; description: string; ogTitle: string; ogDescription: string }> = {
+  pt: {
+    title: "Blog — Guias de João Pessoa | Vem Passear em Jampa",
+    description:
+      "Guias práticos sobre João Pessoa: piscinas naturais, roteiros, marés e dicas locais com orientação direta de Murillo.",
+    ogTitle: "Blog — Guias de João Pessoa",
+    ogDescription:
+      "Guias práticos sobre João Pessoa escritos por quem vive aqui. Piscinas naturais, roteiros, marés e dicas locais.",
+  },
+  en: {
+    title: "Blog — João Pessoa Guides | Vem Passear em Jampa",
+    description:
+      "Practical guides to João Pessoa: natural pools, itineraries, tides and local tips with direct guidance from Murillo.",
+    ogTitle: "Blog — João Pessoa Guides",
+    ogDescription:
+      "Practical João Pessoa guides written by someone who lives here. Natural pools, itineraries, tides and local tips.",
+  },
+  es: {
+    title: "Blog — Guías de João Pessoa | Vem Passear em Jampa",
+    description:
+      "Guías prácticas sobre João Pessoa: piscinas naturales, itinerarios, mareas y consejos locales con orientación directa de Murillo.",
+    ogTitle: "Blog — Guías de João Pessoa",
+    ogDescription:
+      "Guías prácticas sobre João Pessoa escritas por quien vive aquí. Piscinas naturales, itinerarios, mareas y consejos locales.",
+  },
+};
 
 export async function generateMetadata({
   params,
@@ -27,15 +53,14 @@ export async function generateMetadata({
   params: { locale: string };
 }): Promise<Metadata> {
   const alternates = buildLocaleAlternates(params.locale, "/blog");
+  const copy = BLOG_META[params.locale] ?? BLOG_META.pt;
   return {
-    title: { absolute: "Blog — Guias de João Pessoa | Vem Passear em Jampa" },
-    description:
-      "Guias práticos sobre João Pessoa: piscinas naturais, roteiros, marés e dicas locais com orientação direta de Murillo.",
+    title: { absolute: copy.title },
+    description: copy.description,
     alternates,
     openGraph: {
-      title: "Blog — Guias de João Pessoa",
-      description:
-        "Guias práticos sobre João Pessoa escritos por quem vive aqui. Piscinas naturais, roteiros, marés e dicas locais.",
+      title: copy.ogTitle,
+      description: copy.ogDescription,
       url: alternates.canonical,
       type: "website",
     },
@@ -69,7 +94,8 @@ export default async function BlogIndexPage({
           { label: tNav("inicio"), href: "/" },
           { label: "Blog" },
         ]}
-        currentUrl={`https://${empresa.dominio}/blog/`}
+        currentUrl={buildLocalizedUrl(params.locale, "/blog")}
+        locale={params.locale}
       />
 
       {/* Header */}

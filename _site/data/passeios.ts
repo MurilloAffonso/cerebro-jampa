@@ -418,11 +418,6 @@ export const passeios: Passeio[] = [
           "Sim — é exatamente isso que oferecemos no Combo Jampa. Mesmo roteiro de praias + trilha de quadriciclo à tarde, num único dia. Veja a página do Combo ou pergunte pelo WhatsApp.",
       },
     ],
-    depoimento: {
-      texto:
-        "[CONFIRMAR COM MURILLO: depoimento real de cliente sobre o Roteiro Clássico do Litoral Sul]",
-      autor: "[CONFIRMAR: nome e cidade do cliente]",
-    },
     temAvaliacoes: false,
     avaliacoes: [],
     tem360: false,
@@ -598,11 +593,6 @@ export const passeios: Passeio[] = [
           "Sim. A visita a Tambaba é opcional — quem prefere segue direto para Coqueirinho. Avisamos antes.",
       },
     ],
-    depoimento: {
-      texto:
-        "[CONFIRMAR COM MURILLO: depoimento real de cliente sobre o Combo Jampa]",
-      autor: "[CONFIRMAR: nome e cidade do cliente]",
-    },
     temAvaliacoes: false,
     avaliacoes: [],
     informacoesPraticas: {
@@ -835,11 +825,6 @@ export const passeios: Passeio[] = [
           "Com aviso de 2h de antecedência, remarcamos sem custo. Se for impossível remarcar, 100% de reembolso.",
       },
     ],
-    depoimento: {
-      texto:
-        "[CONFIRMAR COM MURILLO: depoimento real de cliente sobre o Litoral Norte Clássico]",
-      autor: "[CONFIRMAR: nome e cidade do cliente]",
-    },
     temAvaliacoes: false,
     avaliacoes: [],
     informacoesPraticas: {
@@ -994,11 +979,6 @@ export const passeios: Passeio[] = [
           "Em caso de maré desfavorável ou condições climáticas que impeçam a saída, remarcamos sem custo. Cancelamentos pelo cliente: consultar política completa no WhatsApp.",
       },
     ],
-    depoimento: {
-      texto:
-        "[CONFIRMAR COM MURILLO: depoimento real de cliente sobre o Combo Litoral Norte com Areia Vermelha]",
-      autor: "[CONFIRMAR: nome e cidade do cliente]",
-    },
     temAvaliacoes: false,
     avaliacoes: [],
     informacoesPraticas: {
@@ -1139,11 +1119,6 @@ export const passeios: Passeio[] = [
           "Em caso de condições climáticas ou maré desfavorável, remarcamos sem custo. Para cancelamentos pelo cliente, consulte nossa política completa no WhatsApp.",
       },
     ],
-    depoimento: {
-      texto:
-        "[CONFIRMAR COM MURILLO: depoimento real de cliente sobre o passeio de Areia Vermelha]",
-      autor: "[CONFIRMAR: nome e cidade do cliente]",
-    },
     temAvaliacoes: false,
     avaliacoes: [],
     tem360: false,
@@ -1285,11 +1260,6 @@ export const passeios: Passeio[] = [
           "Em caso de chuva intensa ou condições climáticas que impeçam a saída, remarcamos sem custo. Para cancelamentos pelo cliente, consulte a política completa no WhatsApp.",
       },
     ],
-    depoimento: {
-      texto:
-        "[CONFIRMAR COM MURILLO: depoimento real de cliente sobre o Pôr do Sol do Jacaré]",
-      autor: "[CONFIRMAR: nome e cidade do cliente]",
-    },
     temAvaliacoes: false,
     avaliacoes: [],
     informacoesPraticas: {
@@ -1494,11 +1464,6 @@ export const passeios: Passeio[] = [
           "Sim, se você nunca fez. O fundo de coral em Seixas é rico em vida marinha e fica mais bonito com a máscara. Disponibilizamos a bordo por valor à parte — consulte no WhatsApp.",
       },
     ],
-    depoimento: {
-      texto:
-        "[CONFIRMAR COM MURILLO: depoimento real de cliente sobre o passeio de Seixas]",
-      autor: "[CONFIRMAR: nome e cidade do cliente]",
-    },
     temAvaliacoes: false,
     avaliacoes: [],
     googleMapsUrl: "https://maps.app.goo.gl/Q1Q8BNC5K1k9tiyX7",
@@ -1641,11 +1606,6 @@ export const passeios: Passeio[] = [
           "Em caso de tempo ou maré desfavorável, remarcamos sem custo. Para cancelamentos pelo cliente, consulte a política completa no WhatsApp.",
       },
     ],
-    depoimento: {
-      texto:
-        "[CONFIRMAR COM MURILLO: depoimento real de cliente sobre Penha]",
-      autor: "[CONFIRMAR: nome e cidade do cliente]",
-    },
     temAvaliacoes: false,
     avaliacoes: [],
     informacoesPraticas: {
@@ -1804,11 +1764,6 @@ export const passeios: Passeio[] = [
           "Em caso de tempo ou maré desfavorável, remarcamos sem custo. Para cancelamentos pelo cliente, consulte a política completa no WhatsApp.",
       },
     ],
-    depoimento: {
-      texto:
-        "[CONFIRMAR COM MURILLO: depoimento real de cliente sobre Picãozinho]",
-      autor: "[CONFIRMAR: nome e cidade do cliente]",
-    },
     temAvaliacoes: false,
     avaliacoes: [],
     informacoesPraticas: {
@@ -1992,11 +1947,6 @@ export const passeios: Passeio[] = [
           "Com aviso de 2h de antecedência, remarcamos sem custo. O City Tour é uma das melhores opções para dias de tempo instável, já que a maioria dos pontos é coberta ou tem opção interna.",
       },
     ],
-    depoimento: {
-      texto:
-        "[CONFIRMAR COM MURILLO: depoimento real de cliente sobre o City Tour Jampa]",
-      autor: "[CONFIRMAR: nome e cidade do cliente]",
-    },
     temAvaliacoes: false,
     avaliacoes: [],
     informacoesPraticas: {
@@ -2143,11 +2093,6 @@ export const passeios: Passeio[] = [
           "Em caso de imprevistos com aviso de 24h, remarcamos sem custo. Cancelamentos pelo cliente: consulte a política completa no WhatsApp.",
       },
     ],
-    depoimento: {
-      texto:
-        "[CONFIRMAR COM MURILLO: depoimento real de cliente sobre Porto de Galinhas]",
-      autor: "[CONFIRMAR: nome e cidade do cliente]",
-    },
     temAvaliacoes: false,
     avaliacoes: [],
     informacoesPraticas: {
@@ -2292,11 +2237,6 @@ export const passeios: Passeio[] = [
           "Em caso de imprevistos com aviso de 24h, remarcamos sem custo. Cancelamentos pelo cliente: consulte a política completa no WhatsApp.",
       },
     ],
-    depoimento: {
-      texto:
-        "[CONFIRMAR COM MURILLO: depoimento real de cliente sobre Pipa]",
-      autor: "[CONFIRMAR: nome e cidade do cliente]",
-    },
     temAvaliacoes: false,
     avaliacoes: [],
     informacoesPraticas: {
@@ -2448,11 +2388,6 @@ export const passeios: Passeio[] = [
           "Em caso de imprevistos com aviso de 24h, remarcamos sem custo. Cancelamentos pelo cliente: consulte a política completa no WhatsApp.",
       },
     ],
-    depoimento: {
-      texto:
-        "[CONFIRMAR COM MURILLO: depoimento real de cliente sobre Natal]",
-      autor: "[CONFIRMAR: nome e cidade do cliente]",
-    },
     temAvaliacoes: false,
     avaliacoes: [],
     informacoesPraticas: {

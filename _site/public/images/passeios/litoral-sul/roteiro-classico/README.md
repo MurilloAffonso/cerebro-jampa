@@ -1,6 +1,6 @@
 # Imagens — Litoral Sul (Roteiro Clássico)
 
-**Status:** [CONFIRMAR COM MURILLO] — assets ainda não enviados.
+**Status:** assets ainda não enviados.
 
 ## Necessário
 

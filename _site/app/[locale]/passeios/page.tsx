@@ -7,24 +7,44 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { passeios } from "@/data/passeios";
 import { localizarPasseios } from "@/lib/passeios-i18n";
-import { empresa } from "@/data/empresa";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTASticky } from "@/components/CTASticky";
 import { CTAFinal } from "@/components/CTAFinal";
 import { HomePasseiosSection } from "@/components/HomePasseiosSection";
-import { generateMetadata as generateSeoMetadata, buildLocaleAlternates } from "@/lib/seo";
+import { generateMetadata as generateSeoMetadata, buildLocaleAlternates, buildLocalizedUrl } from "@/lib/seo";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
+
+const PASSEIOS_META: Record<string, { title: string; description: string; keywords: string[] }> = {
+  pt: {
+    title: "Passeios em João Pessoa",
+    description:
+      `${passeios.length} passeios em João Pessoa com guia local: piscinas naturais, litoral sul e norte, city tour e pacotes. Cadastur ativo, 4,9★. Agende pelo WhatsApp.`,
+    keywords: ["passeios João Pessoa", "piscinas naturais", "litoral sul", "litoral norte", "city tour", "Paraíba", "Cadastur"],
+  },
+  en: {
+    title: "Tours in João Pessoa",
+    description:
+      `${passeios.length} tours in João Pessoa with local guidance: natural pools, south and north coast, city tour and packages. Active Cadastur, 4.9★. Book on WhatsApp.`,
+    keywords: ["João Pessoa tours", "natural pools", "south coast", "north coast", "city tour", "Paraíba", "Cadastur"],
+  },
+  es: {
+    title: "Tours en João Pessoa",
+    description:
+      `${passeios.length} tours en João Pessoa con orientación local: piscinas naturales, litoral sur y norte, city tour y paquetes. Cadastur activo, 4,9★. Reserva por WhatsApp.`,
+    keywords: ["tours João Pessoa", "piscinas naturales", "litoral sur", "litoral norte", "city tour", "Paraíba", "Cadastur"],
+  },
+};
 
 export async function generateMetadata({
   params,
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
+  const copy = PASSEIOS_META[params.locale] ?? PASSEIOS_META.pt;
   const base = generateSeoMetadata({
-    title: "Passeios em João Pessoa",
-    description:
-      `${passeios.length} passeios em João Pessoa com guia local: piscinas naturais, litoral sul e norte, city tour e pacotes. Cadastur ativo, 4,9★. Agende pelo WhatsApp.`,
-    keywords: ["passeios João Pessoa", "piscinas naturais", "litoral sul", "litoral norte", "city tour", "Paraíba", "Cadastur"],
+    title: copy.title,
+    description: copy.description,
+    keywords: copy.keywords,
     ogImage: "/og-image.svg",
   });
   const alternates = buildLocaleAlternates(params.locale, "/passeios");
@@ -91,7 +111,8 @@ export default async function PasseiosPage({ params }: PasseiosPageProps) {
       {/* ── Breadcrumb ── */}
       <Breadcrumb
         items={[{ label: tNav("inicio"), href: "/" }, { label: tNav("passeios") }]}
-        currentUrl={`https://${empresa.dominio}/passeios/`}
+        currentUrl={buildLocalizedUrl(locale, "/passeios")}
+        locale={locale}
       />
 
       {/* ── Chips + Grid Cloud Design ── */}

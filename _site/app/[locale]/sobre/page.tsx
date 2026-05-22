@@ -10,10 +10,9 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTASticky } from "@/components/CTASticky";
 import { CTAFinal } from "@/components/CTAFinal";
 import { FAQAccordion } from "@/components/FAQAccordion";
-import { buildLocaleAlternates, generateBreadcrumbSchema, generateFAQSchema, SITE_URL } from "@/lib/seo";
+import { buildLocaleAlternates, buildLocalizedUrl, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/seo";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
-const PAGE_URL = `${SITE_URL}/sobre/`;
 const CADASTUR_URL = "https://cadastur.turismo.gov.br/cadastur/#!/public/qrcode/52077577000103";
 
 const WA_URL = buildWhatsAppUrl("sobre");
@@ -46,9 +45,10 @@ export default async function SobrePage({ params }: { params: { locale: string }
   const diferenciais = empresa.diferencial.split(" + ");
   const faqItems = t.raw("faq") as Array<{ pergunta: string; resposta: string }>;
   const faqSchema = generateFAQSchema(faqItems);
+  const pageUrl = buildLocalizedUrl(params.locale, "/sobre");
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: t("crumbHome"), item: SITE_URL },
-    { name: t("crumbSobre"), item: PAGE_URL },
+    { name: t("crumbHome"), item: buildLocalizedUrl(params.locale, "/") },
+    { name: t("crumbSobre"), item: pageUrl },
   ]);
 
   return (
@@ -68,7 +68,8 @@ export default async function SobrePage({ params }: { params: { locale: string }
           { label: t("crumbHome"), href: "/" },
           { label: t("crumbSobre") },
         ]}
-        currentUrl={PAGE_URL}
+        currentUrl={pageUrl}
+        locale={params.locale}
       />
 
       {/* HERO */}

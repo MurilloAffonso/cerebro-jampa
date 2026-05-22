@@ -7,8 +7,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/lib/navigation";
 import { passeios, getPasseiosByCategoria } from "@/data/passeios";
 import { localizarPasseios } from "@/lib/passeios-i18n";
-import { generateMetadata as generateSeoMetadata, buildLocaleAlternates } from "@/lib/seo";
-import { empresa } from "@/data/empresa";
+import { generateMetadata as generateSeoMetadata, buildLocaleAlternates, buildLocalizedUrl } from "@/lib/seo";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTASticky } from "@/components/CTASticky";
 import { CTAFinal } from "@/components/CTAFinal";
@@ -87,7 +86,8 @@ export default async function CategoriaPage({ params }: CategoriaPageProps) {
           { label: tNav("passeios"), href: "/passeios" },
           { label: nome },
         ]}
-        currentUrl={`https://${empresa.dominio}/passeios/${categoria}/`}
+        currentUrl={buildLocalizedUrl(locale, `/passeios/${categoria}`)}
+        locale={locale}
       />
 
       {/* ── Hero ── */}

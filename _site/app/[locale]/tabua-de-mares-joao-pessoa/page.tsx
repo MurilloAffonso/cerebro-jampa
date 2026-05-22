@@ -4,12 +4,11 @@
 
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { empresa } from "@/data/empresa";
 import {
   TABUA_MARES_MANUAL_2026,
   getMesAtual,
 } from "@/data/tabua-mares-manual";
-import { generateFAQSchema, generateBreadcrumbSchema, buildLocaleAlternates } from "@/lib/seo";
+import { generateFAQSchema, generateBreadcrumbSchema, buildLocaleAlternates, buildLocalizedUrl } from "@/lib/seo";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTAFinal } from "@/components/CTAFinal";
 import { FAQAccordion } from "@/components/FAQAccordion";
@@ -17,9 +16,6 @@ import { TabuaMareMesTabs } from "@/components/TabuaMareMesTabs";
 import { TabuaMareMensal } from "@/components/TabuaMareMensal";
 import { TabuaMarePasseiosRelacionados } from "@/components/TabuaMarePasseiosRelacionados";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
-
-const SITE_URL = `https://${empresa.dominio}`;
-const PAGE_URL = `${SITE_URL}/tabua-de-mares-joao-pessoa`;
 
 const KEYWORDS = [
   "tábua de maré João Pessoa",
@@ -61,9 +57,10 @@ export default async function TabuaMaresJoaoPessoaPage({ params }: { params: { l
   const mesAtual = getMesAtual();
   const faqItems = t.raw("faq") as Array<{ pergunta: string; resposta: string }>;
   const faqSchema = generateFAQSchema(faqItems);
+  const pageUrl = buildLocalizedUrl(params.locale, "/tabua-de-mares-joao-pessoa");
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: t("crumbHome"), item: SITE_URL },
-    { name: t("crumbTabua"), item: PAGE_URL },
+    { name: t("crumbHome"), item: buildLocalizedUrl(params.locale, "/") },
+    { name: t("crumbTabua"), item: pageUrl },
   ]);
 
   return (
@@ -76,7 +73,8 @@ export default async function TabuaMaresJoaoPessoaPage({ params }: { params: { l
           { label: t("crumbHome"), href: "/" },
           { label: t("crumbTabua") },
         ]}
-        currentUrl={PAGE_URL}
+        currentUrl={pageUrl}
+        locale={params.locale}
       />
 
       {/* HERO */}

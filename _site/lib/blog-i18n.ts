@@ -1,9 +1,8 @@
 /**
  * Localização de BlogPost + clusters.
  *
- * Tradução fiel: nomes próprios, datas, valores, citações preservados.
- * Marcadores [CONFIRMAR COM MURILLO: ...] mantidos como [TO CONFIRM WITH MURILLO]
- * em EN e [POR CONFIRMAR CON MURILLO] em ES.
+ * Tradução fiel: nomes próprios, datas, valores e citações preservados.
+ * Pontos pendentes devem permanecer fora dos posts publicados.
  */
 
 import type { BlogPost, BlogCluster } from "@/data/blog";

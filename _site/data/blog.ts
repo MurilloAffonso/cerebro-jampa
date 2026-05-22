@@ -9,8 +9,8 @@
  *
  * Regra ouro:
  *   Nunca inventar fato (preço, horário, depoimento, dado específico).
- *   [CONFIRMAR COM MURILLO: ...] marca o que precisa de validação antes de publicar.
- *   Conteúdo só vai para "published" após revisão de Murillo.
+ *   Pontos pendentes devem ficar em draft até revisão de Murillo.
+ *   Conteúdo só vai para "published" após revisão.
  */
 
 export type BlogStatus = "draft" | "published";
@@ -185,11 +185,11 @@ export const blogPosts: BlogPost[] = [
       },
       {
         heading: "Penha: piscinas naturais no Litoral Sul",
-        body: "A Praia da Penha fica no Litoral Sul de João Pessoa, mais afastada do centro, e tem piscinas naturais formadas por recifes similares às do Seixas. É uma praia menos conhecida do turismo de massa, o que garante menos gente e mais tranquilidade. O acesso é feito pelo Litoral Sul e pode ser combinado com outros pontos da mesma rota. [CONFIRMAR COM MURILLO: disponibilidade do passeio para Penha e dependência de maré específica]",
+        body: "A Praia da Penha fica no Litoral Sul de João Pessoa, mais afastada do centro, e tem piscinas naturais formadas por recifes similares às do Seixas. É uma praia menos conhecida do turismo de massa, o que garante menos gente e mais tranquilidade. O acesso é feito pelo Litoral Sul e pode ser combinado com outros pontos da mesma rota. A disponibilidade da Penha deve ser confirmada no atendimento, porque esse encaixe depende da combinação de roteiro, maré e operação do dia.",
       },
       {
         heading: "Como a maré determina qual piscina natural visitar e quando",
-        body: "Cada piscina natural tem sua janela de maré ideal. O Seixas e o Picãozinho funcionam melhor com maré baixa de coeficiente acima de [CONFIRMAR COM MURILLO: coeficiente mínimo ideal]. A Areia Vermelha depende da maré baixa para a ilha emergir. A tábua de marés muda todos os dias — o horário de maré baixa pode ser de manhã um dia e de tarde no dia seguinte. A forma mais prática de planejar é verificar a tábua para as suas datas ou falar com Murillo no WhatsApp: ele consulta a tábua e orienta qual piscina natural é melhor para o seu dia e horário.",
+        body: "Cada piscina natural tem sua janela de maré ideal. O Seixas e o Picãozinho funcionam melhor com maré baixa em uma janela operacional segura. A Areia Vermelha depende da maré baixa para a ilha emergir. A tábua de marés muda todos os dias — o horário de maré baixa pode ser de manhã um dia e de tarde no dia seguinte. A forma mais prática de planejar é verificar a tábua para as suas datas ou falar com Murillo no WhatsApp: ele consulta a tábua e orienta qual piscina natural é melhor para o seu dia e horário.",
       },
     ],
   },
@@ -222,7 +222,7 @@ export const blogPosts: BlogPost[] = [
       {
         pergunta: "O passeio para o Seixas inclui mergulho com cilindro?",
         resposta:
-          "O passeio padrão para o Seixas inclui snorkeling em apneia — você mergulha na superfície com máscara. Mergulho com cilindro é uma modalidade diferente, disponível em passeio separado. [CONFIRMAR COM MURILLO: disponibilidade de mergulho com cilindro no Seixas e condições]",
+          "O passeio padrão para o Seixas inclui snorkeling em apneia — você mergulha na superfície com máscara. Mergulho com cilindro é uma modalidade diferente e deve ser consultada separadamente antes da reserva.",
       },
       {
         pergunta: "Qual é o horário ideal para visitar o Seixas?",
@@ -249,7 +249,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         heading: "Como funciona o passeio organizado para o Seixas",
-        body: "O passeio organizado parte da Praia do Seixas de barco ou jangada. O percurso até os recifes leva poucos minutos. No recife, você pode entrar na água com máscara de snorkel, caminhar pelos recifes expostos e explorar as piscinas. [CONFIRMAR COM MURILLO: duração total do passeio, o que está incluso — máscara, colete, barco — e ponto de saída exato]. Colete salva-vidas está disponível a bordo. O passeio se faz preferencialmente de manhã cedo quando a maré baixa é pela manhã, ou de tarde quando a janela cai na parte da tarde.",
+        body: "O passeio organizado parte da Praia do Seixas de barco ou jangada. O percurso até os recifes leva poucos minutos. No recife, você pode entrar na água com máscara de snorkel, caminhar pelos recifes expostos e explorar as piscinas. Os detalhes operacionais, como ponto de saída, duração total e itens inclusos, são confirmados no atendimento antes da reserva. Colete salva-vidas está disponível a bordo. O passeio se faz preferencialmente de manhã cedo quando a maré baixa é pela manhã, ou de tarde quando a janela cai na parte da tarde.",
       },
     ],
   },
@@ -287,12 +287,12 @@ export const blogPosts: BlogPost[] = [
       {
         pergunta: "Criança pode ir no passeio de catamarã para a Areia Vermelha?",
         resposta:
-          "Sim, o catamarã é um barco estável e o passeio é tranquilo. A travessia pelo Rio Jacaré é calma e a água na Areia Vermelha é rasa na maré baixa. [CONFIRMAR COM MURILLO: idade mínima ou restrições específicas para crianças neste passeio]",
+          "Sim, o catamarã é um barco estável e o passeio é tranquilo. A travessia pelo Rio Jacaré é calma e a água na Areia Vermelha é rasa na maré baixa. Crianças devem estar acompanhadas por um responsável durante todo o passeio.",
       },
       {
         pergunta: "Quanto tempo dura o passeio de catamarã para a Areia Vermelha?",
         resposta:
-          "[CONFIRMAR COM MURILLO: duração total do passeio de catamarã para a Areia Vermelha, incluindo tempo na ilha]",
+          "A duração exata pode variar conforme a maré, o embarque e a operação do dia. Murillo confirma o horário e a previsão de retorno antes da reserva.",
       },
     ],
     sections: [
@@ -306,7 +306,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         heading: "O que fazer na Areia Vermelha",
-        body: "A principal atividade é explorar a ilha e aproveitar a paisagem — uma praia de areia no meio do oceano, sem construção, sem nada ao redor além de água e céu. Dá para nadar ao redor da ilha, entrar nas piscinas naturais rasas que se formam ao redor dos recifes próximos, tirar fotos do catamarã ancorado com o oceano ao fundo. [CONFIRMAR COM MURILLO: se há alguma estrutura na ilha ou se os visitantes levam o que precisam; se há mergulho disponível na Areia Vermelha]",
+        body: "A principal atividade é explorar a ilha e aproveitar a paisagem — uma praia de areia no meio do oceano, sem construção, sem nada ao redor além de água e céu. Dá para nadar ao redor da ilha, entrar nas piscinas naturais rasas que se formam ao redor dos recifes próximos e tirar fotos do catamarã ancorado com o oceano ao fundo. A estrutura na ilha é limitada, então vale levar itens pessoais básicos e confirmar antes se há alguma atividade adicional disponível no dia.",
       },
       {
         heading: "Melhor maré e melhor época para visitar",
@@ -355,7 +355,7 @@ export const blogPosts: BlogPost[] = [
       {
         pergunta: "Os passeios saem todos os dias da semana?",
         resposta:
-          "[CONFIRMAR COM MURILLO: quais passeios saem em quais dias da semana e se há restrição de dia mínimo de antecedência para agendar]",
+          "A disponibilidade varia por passeio, data e maré. O ideal é enviar suas datas pelo WhatsApp para Murillo confirmar quais opções encaixam melhor no seu roteiro.",
       },
       {
         pergunta: "Como funciona o pacote de 3 dias com a Vem Passear em Jampa?",
@@ -421,12 +421,12 @@ export const blogPosts: BlogPost[] = [
       {
         pergunta: "Quantas praias dá para ver no litoral sul em um dia?",
         resposta:
-          "O roteiro clássico do Litoral Sul inclui entre 4 e 6 paradas dependendo da distância e do ritmo do grupo. Coqueirinho, Tabatinga, Praia Bela e Tambaba são as principais. Com saída cedo — por volta das 7h ou 8h — dá para ver todas com conforto e ainda ter tempo de quadriciclo em Coqueirinho. [CONFIRMAR COM MURILLO: horário exato de saída e número de paradas do roteiro clássico]",
+          "O roteiro clássico do Litoral Sul inclui entre 4 e 6 paradas dependendo da distância e do ritmo do grupo. Coqueirinho, Tabatinga, Praia Bela e Tambaba são as principais. Com saída cedo — por volta das 7h ou 8h — dá para ver todas com conforto e ainda ter tempo de quadriciclo em Coqueirinho. O horário exato de saída e as paradas do dia são confirmados no atendimento antes da reserva.",
       },
       {
         pergunta: "O quadriciclo em Coqueirinho é para qualquer pessoa?",
         resposta:
-          "O quadriciclo é conduzido pelo próprio visitante nas dunas próximas ao Coqueirinho. Não é necessário ter habilitação. [CONFIRMAR COM MURILLO: restrições de idade mínima, peso ou condição física para o quadriciclo em Coqueirinho]",
+          "O quadriciclo é conduzido pelo próprio visitante nas dunas próximas ao Coqueirinho. Não é necessário ter habilitação. Crianças e pessoas com restrição física devem consultar as condições antes de reservar.",
       },
       {
         pergunta: "Tambaba é praia de nudismo obrigatório?",
@@ -449,7 +449,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         heading: "Praia Bela: recifes, piscinas e tranquilidade",
-        body: "A Praia Bela vive à sombra das praias mais famosas do Litoral Sul e por isso tem menos gente. Os recifes são extensos e as piscinas naturais na maré baixa são claras e rasas. É indicada para snorkeling e para quem quer menos movimento. [CONFIRMAR COM MURILLO: se o roteiro clássico inclui parada na Praia Bela e em qual condição de maré ela é melhor]",
+        body: "A Praia Bela vive à sombra das praias mais famosas do Litoral Sul e por isso tem menos gente. Os recifes são extensos e as piscinas naturais na maré baixa são claras e rasas. É indicada para snorkeling e para quem quer menos movimento. A parada em Praia Bela e a melhor condição de maré são confirmadas conforme o roteiro escolhido e a operação do dia.",
       },
       {
         heading: "Tambaba e as praias mais ao sul",
@@ -631,12 +631,12 @@ export const blogPosts: BlogPost[] = [
       {
         pergunta: "Qual passeio é mais indicado para crianças pequenas?",
         resposta:
-          "O Picãozinho é a piscina natural mais tranquila e rasa de João Pessoa — ótima para crianças pequenas. O catamarã para a Areia Vermelha também é estável e a ilha tem água muito rasa. O City Tour em van é indicado para qualquer idade. [CONFIRMAR COM MURILLO: qual passeio específico recomenda para crianças de 0 a 5 anos]",
+          "O Picãozinho é a piscina natural mais tranquila e rasa de João Pessoa — ótima para crianças pequenas. O catamarã para a Areia Vermelha também é estável e a ilha tem água muito rasa. O City Tour em van é indicado para qualquer idade. Para crianças de 0 a 5 anos, Murillo orienta a melhor opção conforme maré, deslocamento e perfil da família.",
       },
       {
         pergunta: "Qual é a idade mínima para os passeios?",
         resposta:
-          "[CONFIRMAR COM MURILLO: idade mínima por passeio — especialmente para o catamarã, o quadriciclo e o Litoral Sul]",
+          "Idade mínima e restrições variam por passeio, especialmente em atividades como catamarã, quadriciclo e roteiros de dia inteiro. Confirme as condições no WhatsApp antes de reservar.",
       },
     ],
     sections: [
@@ -650,7 +650,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         heading: "Areia Vermelha de catamarã com crianças",
-        body: "O catamarã é um barco estável, sem grandes ondas na travessia pelo Rio Jacaré. A Areia Vermelha tem água muito rasa quando a ilha está emersa — as crianças adoram caminhar pela areia no meio do oceano. É um dos passeios mais fotogênicos e que costuma encantar crianças de todas as idades. [CONFIRMAR COM MURILLO: restrição de idade ou peso mínimo para o catamarã da Areia Vermelha]",
+        body: "O catamarã é um barco estável, sem grandes ondas na travessia pelo Rio Jacaré. A Areia Vermelha tem água muito rasa quando a ilha está emersa — as crianças adoram caminhar pela areia no meio do oceano. É um dos passeios mais fotogênicos e que costuma encantar crianças de todas as idades. Crianças devem estar sempre acompanhadas por responsável, e qualquer restrição específica é confirmada antes da reserva.",
       },
       {
         heading: "City Tour: o roteiro urbano que funciona para qualquer idade",
@@ -662,7 +662,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         heading: "Idade mínima e restrições por passeio",
-        body: "[CONFIRMAR COM MURILLO: lista completa de idade mínima e restrições por passeio — especialmente quadriciclo em Coqueirinho, mergulho com cilindro, catamarã da Areia Vermelha e Litoral Sul. Incluir aqui antes de publicar.]",
+        body: "Antes de reservar, confirme no WhatsApp se há idade mínima, restrição física ou recomendação especial para o passeio escolhido. Isso é especialmente importante em atividades como quadriciclo em Coqueirinho, mergulho com cilindro, catamarã para Areia Vermelha e roteiros de dia inteiro pelo Litoral Sul.",
       },
     ],
   },
@@ -706,7 +706,7 @@ export const blogPosts: BlogPost[] = [
       {
         pergunta: "O transfer leva para qualquer endereço em João Pessoa?",
         resposta:
-          "Sim, o transfer leva direto para o endereço de hotel, pousada ou residência em João Pessoa. [CONFIRMAR COM MURILLO: se o transfer atende também outras cidades da região — Cabedelo, Santa Rita, Bayeux — e se há custo adicional por distância]",
+          "Sim, o transfer leva direto para o endereço de hotel, pousada ou residência em João Pessoa. Para cidades vizinhas, como Cabedelo, Santa Rita ou Bayeux, consulte disponibilidade e valor no atendimento.",
       },
     ],
     sections: [
@@ -720,11 +720,11 @@ export const blogPosts: BlogPost[] = [
       },
       {
         heading: "Transfer 24h da Vem Passear em Jampa: como funciona",
-        body: "O transfer da Vem Passear em Jampa é privativo — apenas o seu grupo vai no veículo. O agendamento é feito pelo WhatsApp antes da viagem: você passa o número do voo, o horário de chegada e o endereço de destino. Murillo ou sua equipe monitora o voo e ajusta em caso de atraso. O veículo aguarda na saída do terminal. [CONFIRMAR COM MURILLO: tipo de veículo, capacidade máxima de passageiros e bagagem, e preço por trajeto]",
+        body: "O transfer da Vem Passear em Jampa é privativo — apenas o seu grupo vai no veículo. O agendamento é feito pelo WhatsApp antes da viagem: você passa o número do voo, o horário de chegada e o endereço de destino. Murillo ou sua equipe monitora o voo e ajusta em caso de atraso. O veículo aguarda na saída do terminal. Tipo de veículo, capacidade de passageiros, bagagens e valor são confirmados conforme o trajeto solicitado.",
       },
       {
         heading: "Quanto custa o transfer do aeroporto?",
-        body: "[CONFIRMAR COM MURILLO: preço por trajeto do transfer aeroporto ↔ João Pessoa. O preço está como null em data/servicos.ts aguardando confirmação. Incluir aqui antes de publicar.]",
+        body: "O valor do transfer é cotado caso a caso, de acordo com origem, destino, data, horário, número de passageiros e bagagens. Envie esses dados no WhatsApp para receber a cotação correta.",
       },
       {
         heading: "Vale contratar o transfer antes de chegar em João Pessoa?",

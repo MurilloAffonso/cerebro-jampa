@@ -24,6 +24,7 @@ import {
   generateFAQSchema,
   generateBreadcrumbSchema,
   buildLocaleAlternates,
+  buildLocalizedUrl,
 } from "@/lib/seo";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
@@ -74,7 +75,7 @@ export default async function BlogArticlePage({ params }: BlogArticleProps) {
 
   const cluster = getClusterMetaLocalized(post.cluster, locale);
   const relatedPasseios = localizarPasseios(getRelatedPasseios(post), locale);
-  const url = `${SITE_URL}/blog/${post.slug}`;
+  const url = buildLocalizedUrl(locale, `/blog/${post.slug}`);
   const inLanguage = HTML_LANG[locale] ?? "pt-BR";
 
   const homeLabel = locale === "en" ? "Home" : locale === "es" ? "Inicio" : "Início";
@@ -98,8 +99,8 @@ export default async function BlogArticlePage({ params }: BlogArticleProps) {
   };
 
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: homeLabel, item: SITE_URL },
-    { name: "Blog", item: `${SITE_URL}/blog` },
+    { name: homeLabel, item: buildLocalizedUrl(locale, "/") },
+    { name: "Blog", item: buildLocalizedUrl(locale, "/blog") },
     { name: post.title, item: url },
   ]);
 
