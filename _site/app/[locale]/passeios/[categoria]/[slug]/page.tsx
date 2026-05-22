@@ -43,9 +43,9 @@ import { ClientesReviewsBlock } from "@/components/ClientesReviewsBlock";
 import { getPasseioGalleryImages } from "@/lib/gallery";
 import { getCronograma } from "@/data/cronogramas";
 import { PasseioCronograma } from "@/components/PasseioCronograma";
+import { buildWhatsAppUrl, resolvePasseioWhatsAppIntent } from "@/lib/whatsapp";
 
 const SITE_URL = `https://${empresa.dominio}`;
-const WA_BASE = empresa.contato.whatsappLink;
 
 interface PasseioPageProps {
   params: {
@@ -115,14 +115,14 @@ export default async function PasseioPage({ params }: PasseioPageProps) {
 
   const t    = await getTranslations('Passeio');
   const tNav = await getTranslations('Nav');
-  const tWa  = await getTranslations('Whatsapp');
 
   const passeioRaw = getPasseioBySlug(slug, categoria);
   if (!passeioRaw) notFound();
   const passeio = localizarPasseio(passeioRaw, locale);
 
   const pageUrl = `${SITE_URL}/passeios/${categoria}/${slug}`;
-  const whatsappUrl = `${WA_BASE}?text=${encodeURIComponent(`${tWa('mensagemPasseio')} ${passeio.nome}`)}`;
+  const whatsappIntent = resolvePasseioWhatsAppIntent(passeio);
+  const whatsappUrl = buildWhatsAppUrl(whatsappIntent, { passeioNome: passeio.nome });
 
   const MARE_SLUGS: PasseioMareSlug[] = ["seixas", "picaozinho", "areia-vermelha-catamara"];
   const mareSlug = MARE_SLUGS.find((s) => s === passeio.slug) ?? null;
@@ -433,7 +433,7 @@ export default async function PasseioPage({ params }: PasseioPageProps) {
                 <p className="text-gray-700 text-sm">
                   Fala com Murillo pelo WhatsApp —{" "}
                   <a
-                    href={WA_BASE}
+                    href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-semibold"

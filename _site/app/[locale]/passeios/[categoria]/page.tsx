@@ -14,6 +14,7 @@ import { CTASticky } from "@/components/CTASticky";
 import { CTAFinal } from "@/components/CTAFinal";
 import { CategoryIcon } from "@/components/CategoryIcon";
 import { PasseioCard } from "@/components/PasseioCard";
+import { buildWhatsAppUrl, resolveCategoriaWhatsAppIntent } from "@/lib/whatsapp";
 
 interface CategoriaPageProps {
   params: { locale: string; categoria: string };
@@ -64,7 +65,6 @@ export default async function CategoriaPage({ params }: CategoriaPageProps) {
 
   const t    = await getTranslations('Categoria');
   const tSt  = await getTranslations('CTASticky');
-  const tWa  = await getTranslations('Whatsapp');
   const tNav = await getTranslations('Nav');
 
   const itens = localizarPasseios(getPasseiosByCategoria(categoria), locale);
@@ -75,7 +75,7 @@ export default async function CategoriaPage({ params }: CategoriaPageProps) {
   const descricao = tkey ? tCatDesc(tkey) : null;
   const mostraExcursoesCallout = categoria === "pacotes" || categoria === "interestaduais";
 
-  const waUrl = `${empresa.contato.whatsappLink}?text=${tWa('mensagemGeral')}`;
+  const waUrl = buildWhatsAppUrl(resolveCategoriaWhatsAppIntent(categoria));
 
   return (
     <div style={{ background: 'var(--cor-fundo)' }}>

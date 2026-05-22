@@ -4,9 +4,9 @@
  */
 
 import Link from "next/link";
-import { empresa } from "@/data/empresa";
+import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
-const WA_URL = `${empresa.contato.whatsappLink}?text=Oi%2C+preciso+de+ajuda+para+encontrar+um+passeio`;
+const WA_URL = buildWhatsAppUrl("faq");
 
 export default function NotFound() {
   return (

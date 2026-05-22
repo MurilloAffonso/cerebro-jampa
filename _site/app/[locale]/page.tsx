@@ -26,6 +26,7 @@ import { HomePasseiosSection } from "@/components/HomePasseiosSection";
 import { PartnersMarquee } from "@/components/PartnersMarquee";
 import { GoogleReviewsBlock } from "@/components/GoogleReviewsBlock";
 import { CadasturCertificate } from "@/components/CadasturCertificate";
+import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 const HOME_COPY: Record<string, { title: string; description: string; ogTitle: string; ogDescription: string }> = {
   pt: {
@@ -84,9 +85,8 @@ export default async function Home({ params }: { params: { locale: string } }) {
 
   const tCTA    = await getTranslations('CTAHome');
   const tSticky = await getTranslations('CTASticky');
-  const tWa     = await getTranslations('Whatsapp');
 
-  const WA_URL = `${empresa.contato.whatsappLink}?text=${tWa('mensagemGeral')}`;
+  const WA_URL = buildWhatsAppUrl("geral");
 
   return (
     <div style={{ background: 'var(--cor-fundo)' }}>

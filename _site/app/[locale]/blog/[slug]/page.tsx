@@ -25,9 +25,10 @@ import {
   generateBreadcrumbSchema,
   buildLocaleAlternates,
 } from "@/lib/seo";
+import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 const SITE_URL = `https://${empresa.dominio}`;
-const WA_URL = `${empresa.contato.whatsappLink}?text=Oi%2C+vi+o+blog+da+Vem+Passear+e+quero+informações+sobre+passeios`;
+const WA_URL = buildWhatsAppUrl("blog");
 
 const HTML_LANG: Record<string, string> = { pt: "pt-BR", en: "en", es: "es" };
 

@@ -16,12 +16,13 @@ import { useTranslations } from "next-intl";
 import { googleReviews } from "@/data/google-reviews";
 import { empresa } from "@/data/empresa";
 import { ReviewSlider } from "@/components/ReviewSlider";
+import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 export function ClientesReviewsBlock() {
   const t = useTranslations("Reviews");
   if (googleReviews.length === 0) return null;
 
-  const waUrl = `${empresa.contato.whatsappLink}?text=${encodeURIComponent(t("mensagemWa"))}`;
+  const waUrl = buildWhatsAppUrl("geral");
 
   return (
     <section

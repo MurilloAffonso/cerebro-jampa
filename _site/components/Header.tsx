@@ -4,9 +4,9 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Link } from "@/lib/navigation";
 import { useTranslations } from "next-intl";
-import { empresa } from "@/data/empresa";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { trackWhatsAppClick } from "@/lib/tracking";
+import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 const CATEGORIA_SLUGS = [
   { key: "pacotes",           slug: "pacotes" },
@@ -26,9 +26,8 @@ export function Header() {
   const t  = useTranslations("Nav");
   const tC = useTranslations("Categorias");
   const tS = useTranslations("Servicos");
-  const tWa = useTranslations("Whatsapp");
 
-  const WA_URL = `${empresa.contato.whatsappLink}?text=${tWa("mensagemGeral")}`;
+  const WA_URL = buildWhatsAppUrl("geral");
 
   const [mobileOpen, setMobileOpen]     = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);

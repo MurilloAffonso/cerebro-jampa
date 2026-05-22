@@ -11,6 +11,7 @@ import { FAQAccordion } from "@/components/FAQAccordion";
 import { CTAFinal } from "@/components/CTAFinal";
 import { CTASticky } from "@/components/CTASticky";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 export async function generateMetadata({
   params,
@@ -46,7 +47,7 @@ export default async function ExcursoesGruposPage({ params }: { params: { locale
   const t    = await getTranslations("ExcursoesPage");
   const tNav = await getTranslations("Nav");
 
-  const WA_URL = `${empresa.contato.whatsappLink}?text=${encodeURIComponent(t("briefingTemplate"))}`;
+  const WA_URL = buildWhatsAppUrl("grupo");
 
   const PERFIS = [t("perfil1"), t("perfil2"), t("perfil3"), t("perfil4"), t("perfil5"), t("perfil6")];
 

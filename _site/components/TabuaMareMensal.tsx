@@ -20,11 +20,10 @@
 import Image from "next/image";
 import {
   STATUS_LABEL,
-  buildMensagemWhatsApp,
   type MesMareManual,
   type StatusMareManual,
 } from "@/data/tabua-mares-manual";
-import { empresa } from "@/data/empresa";
+import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 interface Props {
   mes: MesMareManual;
@@ -51,10 +50,7 @@ function formatarHorario(h: string): string {
 }
 
 export function TabuaMareMensal({ mes, visivel }: Props) {
-  const waMensagem = buildMensagemWhatsApp({
-    mesNome: `${mes.mesNome}/${mes.ano}`,
-  });
-  const waUrl = `${empresa.contato.whatsappLink}?text=${encodeURIComponent(waMensagem)}`;
+  const waUrl = buildWhatsAppUrl("mare");
   const preenchido = mes.status === "preenchido" && (mes.dias?.length ?? 0) > 0;
 
   return (

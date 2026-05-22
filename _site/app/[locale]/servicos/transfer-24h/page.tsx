@@ -11,6 +11,7 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTASticky } from "@/components/CTASticky";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { generateFAQSchema, generateBreadcrumbSchema } from "@/lib/seo";
+import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 export async function generateMetadata({
   params,
@@ -34,7 +35,7 @@ export async function generateMetadata({
   };
 }
 
-const WA_URL = `${empresa.contato.whatsappLink}?text=Oi%2C+quero+solicitar+cota%C3%A7%C3%A3o+de+transfer`;
+const WA_URL = buildWhatsAppUrl("transfer");
 
 export default async function TransferPage({ params }: { params: { locale: string } }) {
   setRequestLocale(params.locale);

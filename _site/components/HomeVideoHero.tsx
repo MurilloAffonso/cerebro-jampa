@@ -4,8 +4,7 @@ import { useEffect, useRef } from 'react'
 import { useTranslations } from 'next-intl'
 import { empresa } from '@/data/empresa'
 import { trackWhatsAppClick } from '@/lib/tracking'
-
-const WA_BASE = empresa.contato.whatsappLink
+import { buildWhatsAppUrl } from '@/lib/whatsapp'
 
 interface HomeVideoHeroProps {
   whatsappUrl: string
@@ -13,15 +12,14 @@ interface HomeVideoHeroProps {
 
 export function HomeVideoHero({ whatsappUrl }: HomeVideoHeroProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
-  const t   = useTranslations('Hero')
-  const tWa = useTranslations('Whatsapp')
+  const t = useTranslations('Hero')
 
   // Workaround React 18 hydration: garante muted via DOM.
   useEffect(() => {
     if (videoRef.current) videoRef.current.muted = true
   }, [])
 
-  const secondaryHref = `${WA_BASE}?text=${tWa('mensagemRoteiro')}`
+  const secondaryHref = buildWhatsAppUrl('roteiro')
   const localizacao = t('localizacao')
 
   return (

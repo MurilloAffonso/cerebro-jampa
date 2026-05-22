@@ -8,7 +8,6 @@ import { empresa } from "@/data/empresa";
 import {
   TABUA_MARES_MANUAL_2026,
   getMesAtual,
-  buildMensagemWhatsApp,
 } from "@/data/tabua-mares-manual";
 import { generateFAQSchema, generateBreadcrumbSchema, buildLocaleAlternates } from "@/lib/seo";
 import { Breadcrumb } from "@/components/Breadcrumb";
@@ -17,6 +16,7 @@ import { FAQAccordion } from "@/components/FAQAccordion";
 import { TabuaMareMesTabs } from "@/components/TabuaMareMesTabs";
 import { TabuaMareMensal } from "@/components/TabuaMareMensal";
 import { TabuaMarePasseiosRelacionados } from "@/components/TabuaMarePasseiosRelacionados";
+import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 const SITE_URL = `https://${empresa.dominio}`;
 const PAGE_URL = `${SITE_URL}/tabua-de-mares-joao-pessoa`;
@@ -53,7 +53,7 @@ export async function generateMetadata({
   };
 }
 
-const WA_URL = `${empresa.contato.whatsappLink}?text=${encodeURIComponent(buildMensagemWhatsApp())}`;
+const WA_URL = buildWhatsAppUrl("mare");
 
 export default async function TabuaMaresJoaoPessoaPage({ params }: { params: { locale: string } }) {
   setRequestLocale(params.locale);

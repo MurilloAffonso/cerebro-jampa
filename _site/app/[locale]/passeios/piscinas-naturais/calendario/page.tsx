@@ -17,11 +17,11 @@ import { CTAFinal } from "@/components/CTAFinal";
 import { CTASticky } from "@/components/CTASticky";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { PoliticaCancelamento } from "@/components/PoliticaCancelamento";
+import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
-const WA_BASE = "https://wa.me/558399087830";
 const TABUA_URL = `${SITE_URL}/tabua-de-mares-joao-pessoa`;
 
-const WA_URL = `${WA_BASE}?text=Oi%2C+quero+saber+sobre+as+datas+dispon%C3%ADveis+para+as+piscinas+naturais`;
+const WA_URL = buildWhatsAppUrl("piscinas");
 
 export async function generateMetadata({
   params,
@@ -224,7 +224,7 @@ export default async function CalendarioPage({ params }: { params: { locale: str
                           {getStatusLabel(saida.statusOperacional)}
                         </span>
                         <Link
-                          href={`${WA_URL}+para+${encodeURIComponent(saida.data)}`}
+                          href={WA_URL}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-xs font-semibold text-[#25D366] hover:text-[#1ea355] transition-colors whitespace-nowrap"

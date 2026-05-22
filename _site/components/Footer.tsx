@@ -6,15 +6,15 @@ import { Link } from "@/lib/navigation";
 import { empresa, paginasInfo } from "@/data/empresa";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { trackWhatsAppClick } from "@/lib/tracking";
+import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 const CADASTUR_URL = "https://cadastur.turismo.gov.br/cadastur/#!/public/qrcode/52077577000103";
 
 export function Footer() {
   const t    = useTranslations('Footer');
   const tCat = useTranslations('Categorias');
-  const tWa  = useTranslations('Whatsapp');
 
-  const waUrl = `${empresa.contato.whatsappLink}?text=${tWa('mensagemGeral')}`;
+  const waUrl = buildWhatsAppUrl("geral");
 
   return (
     <footer style={{ background: 'var(--cor-navy)', color: '#fff' }}>

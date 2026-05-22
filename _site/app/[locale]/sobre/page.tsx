@@ -11,11 +11,12 @@ import { CTASticky } from "@/components/CTASticky";
 import { CTAFinal } from "@/components/CTAFinal";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { buildLocaleAlternates, generateBreadcrumbSchema, generateFAQSchema, SITE_URL } from "@/lib/seo";
+import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 const PAGE_URL = `${SITE_URL}/sobre/`;
 const CADASTUR_URL = "https://cadastur.turismo.gov.br/cadastur/#!/public/qrcode/52077577000103";
 
-const WA_URL = `${empresa.contato.whatsappLink}?text=Oi+Murillo%2C+quero+saber+mais+sobre+a+Vem+Passear+em+Jampa`;
+const WA_URL = buildWhatsAppUrl("sobre");
 
 export async function generateMetadata({
   params,

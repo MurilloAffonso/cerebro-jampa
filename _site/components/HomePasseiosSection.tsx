@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/lib/navigation";
 import type { Passeio } from "@/data/passeios";
 import { PasseioCard } from "@/components/PasseioCard";
-import { empresa } from "@/data/empresa";
+import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 interface HomePasseiosSectionProps {
   passeios: Passeio[];
@@ -18,7 +18,6 @@ export function HomePasseiosSection({ passeios, showViewAll = true }: HomePassei
   const [active, setActive] = useState<CatSlug>("todos");
   const tFil = useTranslations('Filtros');
   const tCat = useTranslations('Categorias');
-  const tWa  = useTranslations('Whatsapp');
 
   const CATEGORIAS: { slug: CatSlug; label: string }[] = [
     { slug: "todos",             label: tFil('todos') },
@@ -38,7 +37,7 @@ export function HomePasseiosSection({ passeios, showViewAll = true }: HomePassei
     ? [...filtered].sort((a, b) => (b.prioritario ? 1 : 0) - (a.prioritario ? 1 : 0))
     : filtered;
 
-  const waUrl = `${empresa.contato.whatsappLink}?text=${tWa('mensagemRoteiro')}`;
+  const waUrl = buildWhatsAppUrl("roteiro");
 
   return (
     <section style={{ background: '#fff', paddingBottom: 48 }}>

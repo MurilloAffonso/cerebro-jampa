@@ -3,13 +3,11 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/lib/navigation";
-import { empresa } from "@/data/empresa";
 import type { Passeio } from "@/data/passeios";
 import { getPasseioBadges, parsePrecoChip, DESIGN_BADGE, type DesignBadgeKind } from "@/lib/badges";
 import { DESCONTOS } from "@/data/descontos";
 import { trackWhatsAppClick } from "@/lib/tracking";
-
-const WA_BASE = empresa.contato.whatsappLink;
+import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 const BADGE_T_KEY: Record<DesignBadgeKind, string> = {
   "mais-vendido":     "maisVendido",
@@ -32,11 +30,10 @@ interface PasseioCardProps {
 }
 
 export function PasseioCard({ passeio, loading = "lazy" }: PasseioCardProps) {
-  const t   = useTranslations('Tags');
-  const tWa = useTranslations('Whatsapp');
+  const t = useTranslations('Tags');
 
   const href     = `/passeios/${passeio.categoria}/${passeio.slug}`;
-  const waUrl    = `${WA_BASE}?text=${encodeURIComponent(`${tWa('mensagemPasseio')} ${passeio.nome}`)}`;
+  const waUrl    = buildWhatsAppUrl("passeioCard", { passeioNome: passeio.nome });
   const badges   = getPasseioBadges(passeio);
   const preco    = parsePrecoChip(passeio.preco);
   const desconto = DESCONTOS[passeio.slug];

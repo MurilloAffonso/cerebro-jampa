@@ -11,8 +11,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { empresa } from "@/data/empresa";
 import { passeios, type Passeio } from "@/data/passeios";
+import { buildWhatsAppUrl, resolvePasseioWhatsAppIntent } from "@/lib/whatsapp";
 
 const SLUGS_MARE = ["seixas", "picaozinho", "areia-vermelha-catamara"] as const;
 
@@ -21,8 +21,9 @@ function urlPasseio(p: Passeio): string {
 }
 
 function buildWaUrl(nome: string): string {
-  const texto = `Oi, Murillo! Quero consultar a melhor data para o passeio ${nome}.`;
-  return `${empresa.contato.whatsappLink}?text=${encodeURIComponent(texto)}`;
+  const passeio = passeios.find((p) => p.nome === nome);
+  const intent = passeio ? resolvePasseioWhatsAppIntent(passeio) : "piscinas";
+  return buildWhatsAppUrl(intent, { passeioNome: nome });
 }
 
 export function TabuaMarePasseiosRelacionados() {

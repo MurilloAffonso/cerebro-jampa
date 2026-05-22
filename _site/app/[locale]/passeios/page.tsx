@@ -13,6 +13,7 @@ import { CTASticky } from "@/components/CTASticky";
 import { CTAFinal } from "@/components/CTAFinal";
 import { HomePasseiosSection } from "@/components/HomePasseiosSection";
 import { generateMetadata as generateSeoMetadata, buildLocaleAlternates } from "@/lib/seo";
+import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 export async function generateMetadata({
   params,
@@ -47,10 +48,9 @@ export default async function PasseiosPage({ params }: PasseiosPageProps) {
 
   const t    = await getTranslations('ListaPasseios');
   const tSt  = await getTranslations('CTASticky');
-  const tWa  = await getTranslations('Whatsapp');
   const tNav = await getTranslations('Nav');
 
-  const WA_URL = `${empresa.contato.whatsappLink}?text=${tWa('mensagemGeral')}`;
+  const WA_URL = buildWhatsAppUrl("geral");
 
   return (
     <div style={{ background: '#fff' }}>

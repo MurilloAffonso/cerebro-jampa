@@ -17,8 +17,9 @@ import { localizarPosts, getClusterMetaLocalized } from "@/lib/blog-i18n";
 import { buildLocaleAlternates } from "@/lib/seo";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTASticky } from "@/components/CTASticky";
+import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
-const WA_URL = `${empresa.contato.whatsappLink}?text=Oi%2C+quero+informações+sobre+os+passeios+em+João+Pessoa`;
+const WA_URL = buildWhatsAppUrl("blog");
 
 export async function generateMetadata({
   params,

@@ -11,6 +11,7 @@ import { CTASticky } from "@/components/CTASticky";
 import { CTAFinal } from "@/components/CTAFinal";
 import { generateFAQSchema, generateBreadcrumbSchema, buildLocaleAlternates, SITE_URL } from "@/lib/seo";
 import { empresa } from "@/data/empresa";
+import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 export async function generateMetadata({
   params,
@@ -34,7 +35,7 @@ export async function generateMetadata({
   };
 }
 
-const WA_URL = `${empresa.contato.whatsappLink}?text=Oi%2C+tenho+uma+d%C3%BAvida+sobre+os+passeios`;
+const WA_URL = buildWhatsAppUrl("faq");
 
 export default async function FaqPage({ params }: { params: { locale: string } }) {
   setRequestLocale(params.locale);
