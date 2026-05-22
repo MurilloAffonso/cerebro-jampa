@@ -5,13 +5,26 @@ const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  async headers() {
+    return [
+      {
+        source: '/',
+        headers: [
+          {
+            key: 'Link',
+            value: '<https://www.vempassearjampa.com/>; rel="canonical"',
+          },
+        ],
+      },
+    ];
+  },
   async redirects() {
     return [
       {
         source: '/:path*',
         has: [{ type: 'host', value: 'vempassearjampa.com' }],
         destination: 'https://www.vempassearjampa.com/:path*',
-        permanent: true,
+        statusCode: 308,
       },
       {
         source: '/passeios/pacotes/3-dias-completo',

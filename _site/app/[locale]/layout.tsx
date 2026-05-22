@@ -7,7 +7,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Analytics } from "@/components/Analytics";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
-import { generateLocalBusinessSchema, SITE_URL } from "@/lib/seo";
+import { buildLocaleAlternates, generateLocalBusinessSchema, SITE_URL } from "@/lib/seo";
 import { routing, type Locale } from "@/i18n/routing";
 import "@/styles/globals.css";
 
@@ -62,7 +62,8 @@ export async function generateMetadata({
 
   const t = await getTranslations({ locale, namespace: "Seo" });
   const typedLocale = locale as Locale;
-  const canonical = locale === routing.defaultLocale ? "/" : `/${locale}`;
+  const rootAlternates = buildLocaleAlternates(locale, "/");
+  const canonical = rootAlternates.canonical;
   const ogAlternates: Locale[] = routing.locales.filter((l) => l !== typedLocale);
 
   return {
@@ -74,16 +75,11 @@ export async function generateMetadata({
     description: t("description"),
     alternates: {
       canonical,
-      languages: {
-        "pt-BR": "/",
-        en: "/en",
-        es: "/es",
-        "x-default": "/",
-      },
+      languages: rootAlternates.languages,
     },
     openGraph: {
       type: "website",
-      url: `${SITE_URL}${canonical === "/" ? "" : canonical}`,
+      url: canonical,
       siteName: "Vem Passear em Jampa",
       title: t("titleDefault"),
       description: t("description"),
