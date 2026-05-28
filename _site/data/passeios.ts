@@ -445,6 +445,13 @@ export const passeios: Passeio[] = [
     preco: "R$ 80",
     duracao: "~8h",
     saida: "8h–9h",
+    h1: "Litoral Sul 2 — Praia Bela e Rio Mucatu em João Pessoa",
+    metaDescription:
+      "Rota alternativa do litoral sul: Praia Bela e o encontro do Rio Mucatu com o mar — piscina natural de água doce e morna. R$ 80. Transfer incluso. Reserve no WhatsApp!",
+    subtituloHero:
+      "A rota para quem já conhece o Clássico. Praia Bela e o encontro morno do Rio Mucatu com o mar — 8 horas com transfer saindo de Tambaú.",
+    descricaoLonga:
+      "Praia Bela é a rota ideal para quem já fez o Litoral Sul Clássico e quer ver o que ficou para trás na primeira visita.\n\nA principal diferença é o encontro do Rio Mucatu com o mar: uma piscina natural de água morna e doce — rio de um lado, oceano do outro, temperatura de banheira. Famílias com crianças pequenas e casais curtem muito esse ponto.\n\nO transfer sai entre 8h e 9h de Tambaú, Cabo Branco, Manaíra ou Bessa. Guia acompanha o dia todo. Duração: ~8h. R$ 80 por adulto.",
     descricao:
       "Rota alternativa com Praia Bela e o encontro do mar com o Rio Mucatu — piscina natural de água doce e morna.",
     incluso: [
@@ -467,6 +474,16 @@ export const passeios: Passeio[] = [
         pergunta: "Criança pode ir?",
         resposta:
           "Sim. Abaixo de 5 anos não paga. De 5 a 11 anos: R$ 64. A partir de 12 anos: valor adulto.",
+      },
+      {
+        pergunta: "O que levar?",
+        resposta:
+          "Protetor solar, roupa de banho, toalha e dinheiro para alimentação (não inclusa). Sandália de borracha ajuda nas pedras.",
+      },
+      {
+        pergunta: "O passeio sai todos os dias?",
+        resposta:
+          "Sujeito a demanda — consulte disponibilidade pelo WhatsApp. Confirmamos horário exato na véspera.",
       },
     ],
   },
@@ -619,6 +636,13 @@ export const passeios: Passeio[] = [
     preco: "Sem quad: R$ 159 / Quad individual: R$ 250 / Quad dupla: R$ 330",
     duracao: "~8h (trilha 1h30–2h)",
     saida: "8h–9h",
+    h1: "Combo Praia Bela — Litoral Sul com Quadriciclo em João Pessoa",
+    metaDescription:
+      "Praias da rota Praia Bela + trilha de quadriciclo pelas falésias coloridas e o encontro do Rio Abiaí com o mar. A partir de R$ 159. Transfer incluso. Reserve no WhatsApp!",
+    subtituloHero:
+      "Praia Bela pela manhã, quadriciclo nas falésias à tarde. Transfer do hotel, guia, e o quad incluso quando você contratar.",
+    descricaoLonga:
+      "O Combo Praia Bela combina a rota alternativa do litoral sul — falésias coloridas de Praia Bela e o encontro do Rio Abiaí com o mar — com uma trilha de quadriciclo guiada de 1h30 a 2h.\n\nA diferença para o Combo Jampa é a rota: aqui o passeio de manhã vai por Praia Bela, com paisagens e paradas diferentes de Coqueirinho. O quad é guiado, mínimo de 7 anos, e o valor varia entre individual e dupla.\n\nTransfer de Tambaú, Cabo Branco, Manaíra ou Bessa. Saída entre 8h e 9h. Alimentação não inclusa.",
     descricao:
       "Praias da rota Praia Bela + trilha de quad pelas falésias coloridas e o encontro do mar com o Rio Abiaí.",
     incluso: [
@@ -636,7 +660,22 @@ export const passeios: Passeio[] = [
       {
         pergunta: "Qual a diferença entre Combo Jampa e Combo Praia Bela?",
         resposta:
-          "Rotas diferentes. Combo Praia Bela inclui falésias coloridas e o encontro do mar com o Rio Abiaí.",
+          "Rotas diferentes. Combo Praia Bela inclui falésias coloridas e o encontro do mar com o Rio Abiaí. Combo Jampa passa por Coqueirinho com mirantes históricos. O formato do dia é parecido — o que muda é o trecho de manhã.",
+      },
+      {
+        pergunta: "Criança pode fazer a trilha de quadriciclo?",
+        resposta:
+          "Sim, a partir de 7 anos. Abaixo disso o quad não está liberado.",
+      },
+      {
+        pergunta: "O que está incluso no preço?",
+        resposta:
+          "Transfer (Tambaú, Cabo Branco, Manaíra, Bessa), guia e quadriciclo quando contratado. Alimentação não inclusa.",
+      },
+      {
+        pergunta: "Como reservar?",
+        resposta:
+          "Pelo WhatsApp. Informe a data, número de adultos e crianças, e se quer a versão com ou sem quad. Confirmamos disponibilidade e passamos as instruções.",
       },
     ],
   },
@@ -649,6 +688,13 @@ export const passeios: Passeio[] = [
     preco: "Sob consulta · Resposta em 5 min",
     duracao: "1h30–2h",
     saida: "A combinar · Manhã ou tarde",
+    h1: "Trilha de Quadriciclo em Coqueirinho — Mirantes Históricos na Paraíba",
+    metaDescription:
+      "Trilha privativa de quadriciclo pelos mirantes de Coqueirinho: Dedo de Deus, Castelinho da Princesa e Shopping Rural. 1h30–2h. Valor sob consulta. Reserve no WhatsApp!",
+    subtituloHero:
+      "Só a trilha, sem as praias. 1h30–2h pelos mirantes históricos de Coqueirinho — Dedo de Deus, Castelinho, Shopping Rural. Formato privativo, a combinar.",
+    descricaoLonga:
+      "Para quem já conhece as praias do litoral sul e quer só a experiência do quadriciclo, este é o formato certo: trilha privativa sem o passeio de praias.\n\nO percurso passa pelos mirantes mais bonitos de Coqueirinho: Mirante Dedo de Deus, Mirante das Tartarugas, Castelinho da Princesa (com lojinhas de cachaça artesanal) e Shopping Rural (artesanato e doces locais). Duração: 1h30 a 2h, guiada por profissional.\n\nFormato 100% privativo. Mínimo 7 anos. Transporte e horário a combinar via WhatsApp.",
     descricao:
       "Trilha de quadriciclo pelos mirantes e falésias históricas de Coqueirinho — sem o passeio de praias.",
     observacoes:
@@ -662,6 +708,21 @@ export const passeios: Passeio[] = [
         resposta:
           "Sim. Este é o passeio de trilha somente. Consulte disponibilidade e valor pelo WhatsApp.",
       },
+      {
+        pergunta: "Qual a idade mínima?",
+        resposta:
+          "7 anos. Abaixo disso a trilha não está liberada.",
+      },
+      {
+        pergunta: "Preciso ter experiência com quadriciclo?",
+        resposta:
+          "Não. A trilha é guiada — o profissional vai à frente e orienta você nas curvas e paradas. A maioria dos clientes faz pela primeira vez.",
+      },
+      {
+        pergunta: "Como reservar e qual o valor?",
+        resposta:
+          "Pelo WhatsApp. O valor é sob consulta porque depende do tamanho do grupo. A gente responde em até 5 minutos.",
+      },
     ],
   },
 
@@ -673,6 +734,13 @@ export const passeios: Passeio[] = [
     preco: "Sob consulta · Resposta em 5 min",
     duracao: "1h30–2h",
     saida: "A combinar · Manhã ou tarde",
+    h1: "Trilha de Quadriciclo em Praia Bela — Falésias Coloridas e Rio Abiaí na Paraíba",
+    metaDescription:
+      "Trilha privativa de quadriciclo pelas falésias coloridas de Praia Bela e o encontro do Rio Abiaí com o mar. 1h30–2h. Formato exclusivo. Valor sob consulta. Reserve no WhatsApp!",
+    subtituloHero:
+      "Só a trilha, sem as praias. Falésias coloridas de Praia Bela e o encontro do Rio Abiaí com o mar — 1h30–2h de quad guiado, privativo.",
+    descricaoLonga:
+      "Praia Bela tem um trecho de falésia colorida diferente de Coqueirinho — mais perto do encontro do Rio Abiaí com o mar, que forma uma faixa de água morna entre a rocha e o oceano.\n\nEste passeio é só a trilha de quad por essa paisagem. Formato 100% privativo, duração de 1h30 a 2h, guiado por profissional. Ideal para quem já conhece as praias e quer só a aventura, ou para grupos que preferem uma atividade rápida e exclusiva.\n\nHorário e transporte a combinar via WhatsApp. Mínimo 7 anos.",
     descricao:
       "Trilha de quadriciclo pelas falésias coloridas de Praia Bela e o encontro do Rio Abiaí com o mar.",
     observacoes:
@@ -684,7 +752,22 @@ export const passeios: Passeio[] = [
       {
         pergunta: "Posso fazer só a trilha de quad em Praia Bela?",
         resposta:
-          "Sim. Consulte disponibilidade e valor pelo WhatsApp.",
+          "Sim. Este é o passeio de trilha somente, sem o roteiro de praias. Consulte disponibilidade e valor pelo WhatsApp.",
+      },
+      {
+        pergunta: "Qual a diferença entre a trilha de Praia Bela e a de Coqueirinho?",
+        resposta:
+          "Rota diferente. Praia Bela passa pelas falésias coloridas e o encontro do Rio Abiaí com o mar. Coqueirinho passa pelos mirantes Dedo de Deus e Castelinho da Princesa. O formato e a duração são parecidos — o que muda é a paisagem.",
+      },
+      {
+        pergunta: "Qual a idade mínima e preciso ter experiência?",
+        resposta:
+          "Mínimo 7 anos. Não precisa de experiência — a trilha é guiada e o profissional orienta você durante todo o percurso.",
+      },
+      {
+        pergunta: "Como reservar?",
+        resposta:
+          "Pelo WhatsApp. Informe a data e o número de pessoas. O valor é sob consulta e respondemos em até 5 minutos.",
       },
     ],
   },
@@ -1285,6 +1368,13 @@ export const passeios: Passeio[] = [
     preco: "A partir de R$ 1.590 (valor varia por modelo de lancha — [CONSULTAR])",
     duracao: "~10h (8h30–18h)",
     saida: "A partir das 8h30 — Marina da Praia Fluvial do Jacaré",
+    h1: "Passeio de Lancha Privativa em João Pessoa — Dia Completo com Churrasco a Bordo",
+    metaDescription:
+      "Lancha exclusiva no litoral de João Pessoa: paradas privativas, churrasco preparado pelo marinheiro e retorno ao pôr do sol. A partir de R$ 1.590. Reserve no WhatsApp!",
+    subtituloHero:
+      "O dia inteiro em lancha só para o seu grupo — paradas onde quiser, churrasco no barco e o pôr do sol no retorno. Sai às 8h30 da Marina do Jacaré.",
+    descricaoLonga:
+      "Para quem quer um dia sem cronograma de grupo, sem estranho do lado e com liberdade total de parada, este é o passeio.\n\nA lancha sai às 8h30 da Marina da Praia Fluvial do Jacaré, em Cabedelo, e fica disponível para o seu grupo até por volta das 18h. O marinheiro habilitado conduz e prepara o churrasco a bordo — você traz as carnes e bebidas da sua preferência.\n\nAs paradas são definidas com a equipe antes de sair: piscinas naturais, bancos de areia, pontos de snorkel, ou navegar sem destino fixo. 100% privativo — sem montagem de grupo com desconhecidos.\n\nValor a partir de R$ 1.590, variando conforme o modelo da lancha. Consulte disponibilidade e valor exato pelo WhatsApp.",
     descricao:
       "Dia completo em lancha privativa com paradas exclusivas, churrasco preparado pelo marinheiro e retorno ao pôr do sol.",
     incluso: [
@@ -1788,6 +1878,13 @@ export const passeios: Passeio[] = [
     preco: "Sob consulta · Resposta em 5 min",
     duracao: "Sob consulta",
     saida: "Conforme maré e visibilidade",
+    h1: "Mergulho com Cilindro em João Pessoa — Piscinas Naturais com Profissional Certificado",
+    metaDescription:
+      "Mergulho com equipamento completo nas piscinas naturais de João Pessoa, com profissional certificado. Sujeito à maré e visibilidade. Valor sob consulta. Reserve no WhatsApp!",
+    subtituloHero:
+      "Equipamento completo e profissional certificado. Mergulho real nas piscinas naturais de João Pessoa — para iniciantes e para quem já mergulha.",
+    descricaoLonga:
+      "Para quem quer ir além do snorkel de superfície, o mergulho com cilindro é a experiência mais próxima da vida marinha nas piscinas naturais de João Pessoa.\n\nO equipamento completo está incluso: máscara, cilindro, regulador e colete. Um profissional certificado acompanha você na água do início ao fim, orienta a respiração e os movimentos, e define as paradas conforme a condição de visibilidade do dia.\n\nHá opções para quem nunca mergulhou e para quem já tem experiência. A saída é sujeita à condição de maré e visibilidade — confirmamos no próprio dia. Valor sob consulta via WhatsApp.",
     descricao:
       "Mergulho com equipamento completo nas piscinas naturais de João Pessoa, com profissional certificado.",
     incluso: [
@@ -1803,12 +1900,22 @@ export const passeios: Passeio[] = [
       {
         pergunta: "Preciso de experiência para fazer o mergulho?",
         resposta:
-          "Consulte Murillo. Há opções para iniciantes e para quem já mergulha.",
+          "Não é obrigatório. Há modalidades para iniciantes (batismo) e para quem já tem certificação. Consulte Murillo para entender qual é a certa para você.",
       },
       {
         pergunta: "Qual o valor?",
         resposta:
-          "Valor sob consulta — depende da modalidade e disponibilidade. Envie mensagem no WhatsApp.",
+          "Valor sob consulta — depende da modalidade e disponibilidade. Envie mensagem no WhatsApp para cotação.",
+      },
+      {
+        pergunta: "O que está incluso no equipamento?",
+        resposta:
+          "Máscara, cilindro, regulador, colete e orientação de profissional certificado durante toda a atividade.",
+      },
+      {
+        pergunta: "O passeio sai em qualquer dia?",
+        resposta:
+          "Não — depende da condição de maré e visibilidade. Confirmamos a saída com antecedência. É importante ter alguma flexibilidade de data.",
       },
     ],
   },

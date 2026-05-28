@@ -7,7 +7,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/lib/navigation";
 import { passeios, getPasseiosByCategoria } from "@/data/passeios";
 import { localizarPasseios } from "@/lib/passeios-i18n";
-import { generateMetadata as generateSeoMetadata, buildLocaleAlternates, buildLocalizedUrl } from "@/lib/seo";
+import { generateMetadata as generateSeoMetadata, buildLocaleAlternates, buildLocalizedUrl, generateBreadcrumbSchema } from "@/lib/seo";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTASticky } from "@/components/CTASticky";
 import { CTAFinal } from "@/components/CTAFinal";
@@ -41,8 +41,9 @@ export async function generateMetadata({ params }: CategoriaPageProps): Promise<
   const descricao = tkey ? tCatDesc(tkey) : `${nome} — João Pessoa`;
   const titleSuffix =
     params.locale === "en" ? "in João Pessoa" : params.locale === "es" ? "en João Pessoa" : "em João Pessoa";
+  const titleStr = `${params.locale === "en" ? "Tours" : params.locale === "es" ? "Tours" : "Passeios"} ${nome} ${titleSuffix}`;
   const base = generateSeoMetadata({
-    title: `${params.locale === "en" ? "Tours" : params.locale === "es" ? "Tours" : "Passeios"} ${nome} ${titleSuffix}`,
+    title: titleStr,
     description: descricao,
     keywords: [nome, "João Pessoa", "Paraíba"],
     ogImage: "/og-image.svg",
@@ -54,6 +55,11 @@ export async function generateMetadata({ params }: CategoriaPageProps): Promise<
     openGraph: {
       ...(base.openGraph ?? {}),
       url: alternates.canonical,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: titleStr,
+      description: descricao,
     },
   };
 }
@@ -76,8 +82,18 @@ export default async function CategoriaPage({ params }: CategoriaPageProps) {
 
   const waUrl = buildWhatsAppUrl(resolveCategoriaWhatsAppIntent(categoria));
 
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: tNav("inicio"),   item: buildLocalizedUrl(locale, "/") },
+    { name: tNav("passeios"), item: buildLocalizedUrl(locale, "/passeios") },
+    { name: nome,             item: buildLocalizedUrl(locale, `/passeios/${categoria}`) },
+  ]);
+
   return (
     <div style={{ background: 'var(--cor-fundo)' }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <CTASticky whatsappUrl={waUrl} label={tSt('label')} />
 
       <Breadcrumb
