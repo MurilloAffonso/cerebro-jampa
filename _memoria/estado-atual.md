@@ -1,6 +1,6 @@
 # Memória: Estado Atual
 
-**Data Última Atualização:** 2026-05-28 (sessão de SEO + responsividade + conversão da tábua de marés)
+**Data Última Atualização:** 2026-05-28 (sessão 2 — categorias com schema + 6 passeios melhorados)
 
 ---
 

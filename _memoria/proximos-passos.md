@@ -73,12 +73,18 @@
 - ✅ Tabela de marés responsiva (CSS card layout mobile)
 - ✅ CTA humanizado, 2 FAQs novas, links de alternativa sem maré
 
-## Próximo Passo Imediato (pós 2026-05-28)
+## Próximo Passo Imediato (pós 2026-05-28, sessão 2)
 
-1. **Validar GSC em 7–14 dias** — observar CTR, indexação, novas keywords
-2. **Fotos reais** — Murillo envia JPGs → popular `galleryImages` (Seixas, Areia Vermelha, Picãozinho)
-3. **GMB** — executar checklist em `_memoria/gmb-otimizacao-2026-05.md`
-4. **Leads CSV** — registrar primeiros leads com skill `qualificacao-lead`
-5. **Próxima frente técnica** — definir após validação Vercel/GSC
+1. **Validar Vercel** — confirmar deploy e testar no celular:
+   - `/tabua-de-mares-joao-pessoa`
+   - `/passeios/litoral-sul`
+   - `/passeios/litoral-sul/praia-bela`
+   - `/passeios/piscinas-naturais/mergulho`
+2. **Solicitar indexação no GSC** das páginas alteradas
+3. **Fotos reais** — Murillo envia JPGs → `galleryImages` (Seixas, Areia Vermelha, Picãozinho)
+4. **og:image Areia Vermelha** — corrigir após foto disponível
+5. **GMB** — executar checklist em `_memoria/gmb-otimizacao-2026-05.md`
+6. **Leads CSV** — registrar primeiros leads com skill `qualificacao-lead`
+7. **Próxima frente técnica** — blog com maior potencial de tráfego OU pacotes sem `descricaoLonga` (`roteiro-do-murillo-3-dias`, `combo-sol-nascente-3-dias`, `combo-mare-boa-2-dias`)
 
-*Atualizado: 2026-05-28*
+*Atualizado: 2026-05-28 (sessão 2)*
