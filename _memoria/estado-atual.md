@@ -1,6 +1,6 @@
 # Memória: Estado Atual
 
-**Data Última Atualização:** 2026-04-30 (FASE 2 concluída — Squad Comercial instalado)
+**Data Última Atualização:** 2026-05-28 (sessão de SEO + responsividade + conversão da tábua de marés)
 
 ---
 
@@ -12,7 +12,7 @@ Vault em expansão comercial:
 - ✅ 13 arquivos de memória + decisões (`_memoria/`)
 - ✅ 29 passeios catalogados + indexados
 - ✅ 20 skills/agentes ativos + 1 orquestrador
-- ✅ Tábua de marés v1.3 implementada (calendário live em produção)
+- ✅ Tábua de marés v1.4 implementada (mobile responsivo + FAQ ampliada + links de alternativa)
 - ✅ Squad Comercial instalado (FASE 2 concluída 2026-04-30 — 14 etapas)
 
 **Fase Atual:** **ARQUITETURA 2.0 — SQUAD COMERCIAL ATIVO**

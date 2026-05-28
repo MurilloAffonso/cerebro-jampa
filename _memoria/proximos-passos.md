@@ -62,4 +62,23 @@
 
 ---
 
-*Atualizado: 2026-05-12 | Sprint única até 2026-05-20 | Decisão 44 em `origin/main` (`77603b9`)*
+---
+
+## Sessão 2026-05-28 — Concluído (6 commits)
+
+- ✅ robots.txt duplicado removido
+- ✅ Snippets e FAQ de posts estratégicos melhorados
+- ✅ Twitter cards + H2 SEO na home
+- ✅ Altura da maré visível no mobile
+- ✅ Tabela de marés responsiva (CSS card layout mobile)
+- ✅ CTA humanizado, 2 FAQs novas, links de alternativa sem maré
+
+## Próximo Passo Imediato (pós 2026-05-28)
+
+1. **Validar GSC em 7–14 dias** — observar CTR, indexação, novas keywords
+2. **Fotos reais** — Murillo envia JPGs → popular `galleryImages` (Seixas, Areia Vermelha, Picãozinho)
+3. **GMB** — executar checklist em `_memoria/gmb-otimizacao-2026-05.md`
+4. **Leads CSV** — registrar primeiros leads com skill `qualificacao-lead`
+5. **Próxima frente técnica** — definir após validação Vercel/GSC
+
+*Atualizado: 2026-05-28*
