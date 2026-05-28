@@ -28,7 +28,7 @@ import { GoogleReviewsBlock } from "@/components/GoogleReviewsBlock";
 import { CadasturCertificate } from "@/components/CadasturCertificate";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
-const HOME_COPY: Record<string, { title: string; description: string; ogTitle: string; ogDescription: string }> = {
+const HOME_COPY: Record<string, { title: string; description: string; ogTitle: string; ogDescription: string; h2Passeios: string }> = {
   pt: {
     title: "Passeios em João Pessoa | Vem Passear em Jampa",
     description:
@@ -36,6 +36,7 @@ const HOME_COPY: Record<string, { title: string; description: string; ogTitle: s
     ogTitle: "Passeios em João Pessoa — Vem Passear em Jampa",
     ogDescription:
       "Piscinas naturais, litoral sul e norte, catamarã e city tour com orientação local. Atendimento direto pelo WhatsApp.",
+    h2Passeios: "Passeios em João Pessoa com guia local e atendimento pelo WhatsApp",
   },
   en: {
     title: "Tours in João Pessoa | Vem Passear em Jampa",
@@ -44,6 +45,7 @@ const HOME_COPY: Record<string, { title: string; description: string; ogTitle: s
     ogTitle: "Tours in João Pessoa — Vem Passear em Jampa",
     ogDescription:
       "Natural pools, south and north coast, catamaran and city tour with local guidance. Direct WhatsApp service.",
+    h2Passeios: "Tours in João Pessoa with a local guide and WhatsApp support",
   },
   es: {
     title: "Tours en João Pessoa | Vem Passear em Jampa",
@@ -52,6 +54,7 @@ const HOME_COPY: Record<string, { title: string; description: string; ogTitle: s
     ogTitle: "Tours en João Pessoa — Vem Passear em Jampa",
     ogDescription:
       "Piscinas naturales, litoral sur y norte, catamarán y city tour con orientación local. Atención directa por WhatsApp.",
+    h2Passeios: "Paseos en João Pessoa con guía local y atención por WhatsApp",
   },
 };
 
@@ -97,7 +100,10 @@ export default async function Home({ params }: { params: { locale: string } }) {
       <HomeVideoHero whatsappUrl={WA_URL} />
 
       {/* ── 2. PASSEIOS COM FILTRO POR CATEGORIA ── */}
-      <HomePasseiosSection passeios={localizarPasseios(passeios, locale)} />
+      <HomePasseiosSection
+        passeios={localizarPasseios(passeios, locale)}
+        heading={(HOME_COPY[locale] ?? HOME_COPY.pt).h2Passeios}
+      />
 
       {/* Wave passeios → prova social */}
       <WaveDivider fill="var(--cor-fundo-puro)" />

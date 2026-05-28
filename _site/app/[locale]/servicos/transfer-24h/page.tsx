@@ -31,6 +31,11 @@ export async function generateMetadata({
         { url: "/og-image.svg", width: 1200, height: 630, alt: t("h1") },
       ],
     },
+    twitter: {
+      card: "summary_large_image",
+      title: t("h1"),
+      description: t("metaDescription"),
+    },
   };
 }
 

@@ -46,6 +46,11 @@ export async function generateMetadata({
       type: "website",
       siteName: "Vem Passear em Jampa",
     },
+    twitter: {
+      card: "summary_large_image",
+      title: t("ogTitle"),
+      description: t("ogDescription"),
+    },
   };
 }
 

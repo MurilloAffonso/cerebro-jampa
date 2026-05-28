@@ -10,11 +10,12 @@ import { buildWhatsAppUrl } from "@/lib/whatsapp";
 interface HomePasseiosSectionProps {
   passeios: Passeio[];
   showViewAll?: boolean;
+  heading?: string;
 }
 
 type CatSlug = "todos" | "piscinas-naturais" | "litoral-sul" | "litoral-norte" | "pacotes" | "city-tour" | "interestaduais";
 
-export function HomePasseiosSection({ passeios, showViewAll = true }: HomePasseiosSectionProps) {
+export function HomePasseiosSection({ passeios, showViewAll = true, heading }: HomePasseiosSectionProps) {
   const [active, setActive] = useState<CatSlug>("todos");
   const tFil = useTranslations('Filtros');
   const tCat = useTranslations('Categorias');
@@ -41,6 +42,20 @@ export function HomePasseiosSection({ passeios, showViewAll = true }: HomePassei
 
   return (
     <section style={{ background: '#fff', paddingBottom: 48 }}>
+
+      {heading && (
+        <h2 style={{
+          fontFamily: 'var(--font-body)',
+          fontSize: 'clamp(15px, 1.5vw, 18px)',
+          fontWeight: 600,
+          color: 'var(--cor-texto-escuro)',
+          padding: '20px 16px 0',
+          margin: 0,
+          letterSpacing: '-0.01em',
+        }}>
+          {heading}
+        </h2>
+      )}
 
       {/* ── Chips de categoria ── */}
       <div style={{
