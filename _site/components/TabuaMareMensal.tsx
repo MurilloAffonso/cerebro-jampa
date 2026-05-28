@@ -60,7 +60,6 @@ export function TabuaMareMensal({ mes, visivel }: Props) {
       aria-label={`Tábua de maré — ${mes.mesNome} de ${mes.ano}`}
       hidden={!visivel}
     >
-      <style>{TABUA_CSS}</style>
       <div className="container-safe py-6">
         {/* Card "oficial Vem Passear" */}
         <article
@@ -169,7 +168,7 @@ export function TabuaMareMensal({ mes, visivel }: Props) {
                       <th scope="col" style={thStyle}>Data</th>
                       <th scope="col" style={thStyle}>Dia</th>
                       <th scope="col" style={thStyle}>Saída</th>
-                      <th scope="col" style={{ ...thStyle, display: 'none' }} className="md-show">Maré</th>
+                      <th scope="col" style={thStyle}>Altura (m)</th>
                       <th scope="col" style={thStyle}>Status</th>
                     </tr>
                   </thead>
@@ -205,7 +204,7 @@ export function TabuaMareMensal({ mes, visivel }: Props) {
                           >
                             {d.horarioSaida ? formatarHorario(d.horarioSaida) : "—"}
                           </td>
-                          <td style={{ ...tdStyle, display: 'none' }} className="md-show">
+                          <td style={tdStyle}>
                             {d.alturaMare !== null
                               ? `${d.alturaMare.toFixed(1)}m`
                               : "—"}
@@ -330,13 +329,6 @@ export function TabuaMareMensal({ mes, visivel }: Props) {
     </section>
   );
 }
-
-// injeta CSS para mostrar coluna Maré em telas ≥ 640px
-const TABUA_CSS = `
-  @media (min-width: 640px) {
-    .md-show { display: table-cell !important; }
-  }
-`;
 
 const thStyle: React.CSSProperties = {
   padding: "10px 12px",
