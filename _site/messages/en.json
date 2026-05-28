@@ -672,7 +672,7 @@
     "heroKicker": "João Pessoa · Paraíba · 2026",
     "heroTitulo": "João Pessoa Tide Table",
     "heroSubtitulo": "Check the best dates for tours that depend on low tide — Seixas, Picãozinho and Areia Vermelha Natural Pools. Confirm the ideal date directly with Murillo on WhatsApp.",
-    "heroCta": "Check best day on WhatsApp",
+    "heroCta": "Message me — I'll find the best date for you",
     "explicacaoTitulo": "Why the tide matters",
     "explicacaoP1": "Some tours in João Pessoa depend on <strong>low tide</strong> to happen at the best moment. That's the case for the <strong>Seixas Natural Pools</strong>, <strong>Picãozinho</strong> and <strong>Areia Vermelha</strong>.",
     "explicacaoP2": "When the tide drops, the corals, sandbars and natural pools with shallow, crystal-clear water appear. So before booking, check the month of your trip and confirm the best date on WhatsApp.",
@@ -711,6 +711,14 @@
       {
         "pergunta": "Can I book a natural-pool tour without checking the tide table?",
         "resposta": "You can message even without checking — I'll cross-reference your date with the tide and guide you. But if you've already checked and have date flexibility, it's easier to pick a window with good tide."
+      },
+      {
+        "pergunta": "What to do in João Pessoa when the tide is high?",
+        "resposta": "Plenty. The South Coast (Coqueirinho, Tambaba, Praia Bela) doesn't depend on the tide — you can go any day. The Sunset at Jacaré, in Cabedelo, happens every evening regardless of the tide. The City Tour of João Pessoa's historic centre is also available every day. Message me on WhatsApp and I'll put together the right itinerary for your day."
+      },
+      {
+        "pergunta": "What is the best month for natural pools in João Pessoa?",
+        "resposta": "The months with the most trips are between March and September, a period of stronger spring tides and less rain. In 2026, May and June have the longest windows of low tide — especially on spring tide days (full and new moon), when the tide reaches 0.2–0.3m. But every month has good days; what changes is the frequency. Check the table on this page or send me your travel date on WhatsApp and I'll advise."
       }
     ]
   },

@@ -672,7 +672,7 @@
     "heroKicker": "João Pessoa · Paraíba · 2026",
     "heroTitulo": "Tábua de Maré em João Pessoa",
     "heroSubtitulo": "Consulte as melhores datas para passeios que dependem da maré baixa — Piscinas Naturais do Seixas, Picãozinho e Areia Vermelha. Confirme a data ideal direto com Murillo no WhatsApp.",
-    "heroCta": "Consultar melhor dia no WhatsApp",
+    "heroCta": "Me chama — eu vejo a melhor data para você",
     "explicacaoTitulo": "Por que a maré importa",
     "explicacaoP1": "Alguns passeios em João Pessoa dependem da <strong>maré baixa</strong> para acontecer no melhor momento. É o caso das <strong>Piscinas Naturais do Seixas</strong>, <strong>Picãozinho</strong> e <strong>Areia Vermelha</strong>.",
     "explicacaoP2": "Quando a maré baixa, aparecem os corais, bancos de areia e piscinas naturais com água rasa e cristalina. Por isso, antes de reservar, confira o mês da sua viagem e confirme a melhor data pelo WhatsApp.",
@@ -711,6 +711,14 @@
       {
         "pergunta": "Posso reservar um passeio de piscinas naturais sem olhar a tábua de marés?",
         "resposta": "Pode mandar mensagem mesmo sem consultar — eu cruzo a sua data com a maré e te oriento. Mas se você já consultou e tem flexibilidade de data, fica mais fácil escolher uma janela com a maré boa."
+      },
+      {
+        "pergunta": "O que fazer em João Pessoa quando a maré está alta?",
+        "resposta": "Bastante coisa. O Litoral Sul (Coqueirinho, Tambaba, Praia Bela) não depende da maré — você pode ir qualquer dia. O Pôr do Sol do Jacaré, em Cabedelo, acontece todo fim de tarde independente da maré. O City Tour pelo centro histórico de João Pessoa também está disponível sempre. Me chama no WhatsApp que eu monto o roteiro certo para o seu dia."
+      },
+      {
+        "pergunta": "Qual o melhor mês para piscinas naturais em João Pessoa?",
+        "resposta": "Os meses com mais saídas são entre março e setembro, período de sizígias mais intensas e menor chuva. Em 2026, maio e junho têm as janelas mais longas de maré baixa — com destaque para os dias de sizígia (lua cheia e lua nova), quando a maré chega a 0,2–0,3m. Mas qualquer mês tem bons dias; o que muda é a frequência. Consulte a tábua nesta página ou me manda a data da viagem pelo WhatsApp que eu indico."
       }
     ]
   },

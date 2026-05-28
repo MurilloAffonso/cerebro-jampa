@@ -326,7 +326,7 @@ export function TabuaMareMensal({ mes, visivel }: Props) {
                   boxShadow: "0 4px 14px rgba(37,211,102,0.25)",
                 }}
               >
-                Confirmar disponibilidade no WhatsApp
+                Me chama — eu vejo a melhor data para você
               </a>
             </div>
           </div>

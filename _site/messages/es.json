@@ -672,7 +672,7 @@
     "heroKicker": "João Pessoa · Paraíba · 2026",
     "heroTitulo": "Tabla de Mareas en João Pessoa",
     "heroSubtitulo": "Consulta las mejores fechas para tours que dependen de la marea baja — Piscinas Naturales de Seixas, Picãozinho y Areia Vermelha. Confirma la fecha ideal directo con Murillo por WhatsApp.",
-    "heroCta": "Consultar mejor día por WhatsApp",
+    "heroCta": "Escríbeme — encuentro la mejor fecha para ti",
     "explicacaoTitulo": "Por qué importa la marea",
     "explicacaoP1": "Algunos tours en João Pessoa dependen de la <strong>marea baja</strong> para suceder en el mejor momento. Es el caso de las <strong>Piscinas Naturales de Seixas</strong>, <strong>Picãozinho</strong> y <strong>Areia Vermelha</strong>.",
     "explicacaoP2": "Cuando la marea baja, aparecen los corales, bancos de arena y piscinas naturales con agua poco profunda y cristalina. Por eso, antes de reservar, revisa el mes de tu viaje y confirma la mejor fecha por WhatsApp.",
@@ -711,6 +711,14 @@
       {
         "pergunta": "¿Puedo reservar un tour de piscinas naturales sin mirar la tabla de mareas?",
         "resposta": "Puedes mandar mensaje incluso sin consultar — cruzo tu fecha con la marea y te oriento. Pero si ya consultaste y tienes flexibilidad de fecha, queda más fácil elegir una ventana con buena marea."
+      },
+      {
+        "pergunta": "¿Qué hacer en João Pessoa cuando la marea está alta?",
+        "resposta": "Mucho. El Litoral Sur (Coqueirinho, Tambaba, Praia Bela) no depende de la marea — puedes ir cualquier día. El Atardecer en Jacaré, en Cabedelo, ocurre todas las tardes sin importar la marea. El City Tour por el centro histórico de João Pessoa también está disponible siempre. Escríbeme por WhatsApp y armo el itinerario correcto para tu día."
+      },
+      {
+        "pergunta": "¿Cuál es el mejor mes para piscinas naturales en João Pessoa?",
+        "resposta": "Los meses con más salidas son entre marzo y septiembre, período de mareas vivas más intensas y menor lluvia. En 2026, mayo y junio tienen las ventanas más largas de marea baja — especialmente en días de mareas vivas (luna llena y luna nueva), cuando la marea llega a 0,2–0,3m. Pero todos los meses tienen buenos días; lo que cambia es la frecuencia. Consulta la tabla en esta página o envíame tu fecha de viaje por WhatsApp y te asesoro."
       }
     ]
   },
