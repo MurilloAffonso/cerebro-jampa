@@ -145,8 +145,11 @@ export function TabuaMareMensal({ mes, visivel }: Props) {
 
             {/* Tabela de dias */}
             {preenchido && (
+              <>
+              <style>{TABUA_MOBILE_CSS}</style>
               <div className="overflow-x-auto">
                 <table
+                  className="tabua-table"
                   style={{
                     width: "100%",
                     borderCollapse: "separate",
@@ -184,6 +187,7 @@ export function TabuaMareMensal({ mes, visivel }: Props) {
                           }}
                         >
                           <td
+                            data-label="Data"
                             style={{
                               ...tdStyle,
                               fontWeight: 700,
@@ -193,8 +197,9 @@ export function TabuaMareMensal({ mes, visivel }: Props) {
                           >
                             {formatarData(d.data)}
                           </td>
-                          <td style={{ ...tdStyle, fontSize: "15px" }}>{d.diaSemana}</td>
+                          <td data-label="Dia" style={{ ...tdStyle, fontSize: "15px" }}>{d.diaSemana}</td>
                           <td
+                            data-label="Saída"
                             style={{
                               ...tdStyle,
                               fontSize: "15px",
@@ -204,12 +209,12 @@ export function TabuaMareMensal({ mes, visivel }: Props) {
                           >
                             {d.horarioSaida ? formatarHorario(d.horarioSaida) : "—"}
                           </td>
-                          <td style={tdStyle}>
+                          <td data-label="Altura (m)" style={tdStyle}>
                             {d.alturaMare !== null
                               ? `${d.alturaMare.toFixed(1)}m`
                               : "—"}
                           </td>
-                          <td style={tdStyle}>
+                          <td data-label="Status" style={tdStyle}>
                             <span
                               style={{
                                 display: "inline-block",
@@ -262,6 +267,7 @@ export function TabuaMareMensal({ mes, visivel }: Props) {
                   ))}
                 </div>
               </div>
+            </>
             )}
 
             {/* Fallback quando o mês ainda não foi preenchido */}
@@ -345,3 +351,16 @@ const tdStyle: React.CSSProperties = {
   color: "var(--cor-texto-medio)",
   verticalAlign: "middle",
 };
+
+const TABUA_MOBILE_CSS = `
+@media (max-width: 639px) {
+  .tabua-table { border: none !important; border-radius: 0 !important; background: transparent !important; }
+  .tabua-table thead { display: none; }
+  .tabua-table, .tabua-table tbody { display: block; width: 100%; }
+  .tabua-table tbody tr { display: block; border: 1px solid var(--cor-borda) !important; border-radius: 10px; margin-bottom: 8px; padding: 8px 12px; background: inherit; }
+  .tabua-table tbody tr:last-child { margin-bottom: 0; }
+  .tabua-table td { display: flex; justify-content: space-between; align-items: center; padding: 7px 0 !important; border: none !important; border-bottom: 1px solid rgba(9,34,56,0.07) !important; font-size: 14px !important; }
+  .tabua-table td:last-child { border-bottom: none !important; }
+  .tabua-table td::before { content: attr(data-label); font-weight: 600; color: var(--cor-texto-medio); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; flex-shrink: 0; min-width: 70px; }
+}
+`;
