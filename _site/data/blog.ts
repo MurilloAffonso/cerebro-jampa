@@ -257,7 +257,7 @@ export const blogPosts: BlogPost[] = [
     slug: "areia-vermelha-vale-a-pena",
     title: "Areia Vermelha vale a pena? O que esperar do passeio de catamarã",
     description:
-      "A ilha paraibana que aparece e desaparece com a maré: como é o passeio de catamarã para a Areia Vermelha, melhor época e o que levar.",
+      "Areia Vermelha vale a pena — R$ 70, ~3h, catamarã até o banco de areia que some com a maré. O que esperar, quando ir e o que levar.",
     category: "Litoral Norte",
     cluster: "litoral-norte",
     status: "published",
@@ -290,9 +290,19 @@ export const blogPosts: BlogPost[] = [
           "Sim, o catamarã é um barco estável e o passeio é tranquilo. A travessia pelo Rio Jacaré é calma e a água na Areia Vermelha é rasa na maré baixa. Crianças devem estar acompanhadas por um responsável durante todo o passeio.",
       },
       {
+        pergunta: "Quanto custa o passeio de catamarã para Areia Vermelha?",
+        resposta:
+          "O passeio compartilhado custa a partir de R$ 70 por pessoa, conforme disponibilidade e condição da maré.",
+      },
+      {
+        pergunta: "De onde sai o catamarã para Areia Vermelha?",
+        resposta:
+          "A saída normalmente acontece pela região de Cabedelo, com embarque organizado conforme a operação do dia. A equipe confirma o ponto exato no atendimento pelo WhatsApp.",
+      },
+      {
         pergunta: "Quanto tempo dura o passeio de catamarã para a Areia Vermelha?",
         resposta:
-          "A duração exata pode variar conforme a maré, o embarque e a operação do dia. Murillo confirma o horário e a previsão de retorno antes da reserva.",
+          "O passeio de catamarã para Areia Vermelha dura em média cerca de 3 horas, podendo variar conforme maré, operação e condições do dia.",
       },
     ],
     sections: [
@@ -1044,7 +1054,7 @@ export const blogPosts: BlogPost[] = [
     slug: "porto-de-galinhas-de-joao-pessoa-vale-a-pena",
     title: "Porto de Galinhas saindo de João Pessoa vale a pena? Guia honesto",
     description:
-      "Avaliação honesta do bate-volta a Porto de Galinhas saindo de João Pessoa: quando vale, como é o transporte, jangadas e o que esperar do dia.",
+      "Vale a pena — se você tem 5+ dias em João Pessoa. Guia honesto: tempo de viagem, custo real, jangada inclusa e quando NÃO ir.",
     category: "Logística",
     cluster: "logistica",
     status: "published",
