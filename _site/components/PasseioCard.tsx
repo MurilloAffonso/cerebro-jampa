@@ -40,6 +40,13 @@ export function PasseioCard({ passeio, loading = "lazy" }: PasseioCardProps) {
   const local    = passeio.localizacao || passeio.saida;
 
   return (
+    <>
+    <style>{`
+      @media (min-width: 1024px) {
+        .passeio-card-img { height: 220px !important; }
+        .passeio-card-body { padding: 18px 20px 20px !important; }
+      }
+    `}</style>
     <article style={{
       width: '100%',
       background: '#fff',
@@ -65,8 +72,8 @@ export function PasseioCard({ passeio, loading = "lazy" }: PasseioCardProps) {
         el.style.borderColor = '#E6E9EB';
       }}
     >
-      {/* ── Área de imagem (200px) ── */}
-      <div style={{ position: 'relative', height: 200, flexShrink: 0 }}>
+      {/* ── Área de imagem (200px mobile / 220px desktop) ── */}
+      <div className="passeio-card-img" style={{ position: 'relative', height: 200, flexShrink: 0 }}>
 
         {/* Foto */}
         {passeio.coverImage ? (
@@ -158,7 +165,7 @@ export function PasseioCard({ passeio, loading = "lazy" }: PasseioCardProps) {
       </div>
 
       {/* ── Conteúdo ── */}
-      <div style={{ padding: '14px 16px 16px', display: 'flex', flexDirection: 'column', flex: '1 1 auto' }}>
+      <div className="passeio-card-body" style={{ padding: '14px 16px 16px', display: 'flex', flexDirection: 'column', flex: '1 1 auto' }}>
 
         {/* Título */}
         <Link href={href} style={{ textDecoration: 'none' }}>
@@ -242,6 +249,7 @@ export function PasseioCard({ passeio, loading = "lazy" }: PasseioCardProps) {
         </div>
       </div>
     </article>
+    </>
   );
 }
 

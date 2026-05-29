@@ -111,7 +111,7 @@ export function HomePasseiosSection({ passeios, showViewAll = true, heading }: H
       <div style={{
         padding: '16px 16px 0',
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 320px), 1fr))',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 300px), 1fr))',
         gap: 16,
       }}>
         {sorted.map((p, i) => (

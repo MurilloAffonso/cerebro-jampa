@@ -20,12 +20,12 @@ export function TrustBlock() {
 
   return (
     <section className="bg-dark text-white" aria-label={t("aria")}>
-      <div className="container-safe py-10 md:py-14">
-        <h2 className="text-white text-2xl md:text-3xl font-bold mb-6 md:mb-8">
+      <div className="container-safe py-10 md:py-14 lg:py-16">
+        <h2 className="text-white text-2xl md:text-3xl lg:text-4xl font-bold mb-6 md:mb-8 lg:mb-10">
           {t("titulo")}
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 lg:gap-6">
           <a
             href={empresa.rede.googleMaps}
             target="_blank"

@@ -207,9 +207,18 @@ export default async function PasseioPage({ params }: PasseioPageProps) {
         />
       </div>
 
+      {/* ── layout desktop: conteúdo principal + sidebar reserva ── */}
+      <div className="lg:grid lg:grid-cols-[1fr_380px] lg:items-start">
+
+        {/* coluna principal */}
+        <div className="min-w-0">
+
       <FichaTecnica passeio={passeio} />
 
-      <ReservationIntentForm passeioNome={passeio.nome} />
+      {/* mobile: formulário no fluxo principal */}
+      <div className="lg:hidden">
+        <ReservationIntentForm passeioNome={passeio.nome} />
+      </div>
 
       {cronograma && <PasseioCronograma cronograma={cronograma} />}
 
@@ -449,6 +458,17 @@ export default async function PasseioPage({ params }: PasseioPageProps) {
       <PoliticaCancelamento whatsappUrl={whatsappUrl} />
 
       <CTAFinal whatsappUrl={whatsappUrl} />
+
+        </div>{/* end coluna principal */}
+
+        {/* sidebar — apenas desktop */}
+        <aside className="hidden lg:block" aria-label="Reservar passeio">
+          <div style={{ position: 'sticky', top: '88px', padding: '0 0 0 24px' }}>
+            <ReservationIntentForm passeioNome={passeio.nome} />
+          </div>
+        </aside>
+
+      </div>{/* end grid 2-col */}
 
       {similares.length > 0 && (
         <section className="section-padding bg-light">

@@ -72,7 +72,7 @@ export function Footer() {
           </ul>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-10 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 lg:gap-16 mb-12">
 
           {/* ── Col 1: Institucional ── */}
           <div>

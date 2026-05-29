@@ -84,7 +84,7 @@ export function Header() {
               width={500}
               height={167}
               sizes="(max-width: 767px) 240px, 500px"
-              className="h-[160px] md:h-[180px] w-auto object-contain transition-opacity duration-200"
+              className="h-[160px] md:h-[52px] w-auto object-contain transition-opacity duration-200"
               priority
             />
           </Link>

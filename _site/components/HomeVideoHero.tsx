@@ -201,6 +201,15 @@ export function HomeVideoHero({ whatsappUrl }: HomeVideoHeroProps) {
             justify-content: center;
             padding-top: var(--header-h);
           }
+        }
+
+        @media (min-width: 1280px) {
+          .home-hero-copy {
+            left: max(56px, calc((100vw - 1280px) / 2 + 56px));
+          }
+        }
+
+        @media (min-width: 768px) {
 
           .home-hero-title {
             font-size: clamp(48px, 5.8vw, 76px);
