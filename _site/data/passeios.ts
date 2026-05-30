@@ -156,7 +156,7 @@ export const passeios: Passeio[] = [
       "Quem quer o máximo da experiência",
       "Famílias e casais",
     ],
-    coverImage: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
+    coverImage: "/images/placeholders/placeholder-passeio.svg",
     imagemAlt: "Roteiro completo de 3 dias em João Pessoa com Murillo",
     faq: [
       {
@@ -202,7 +202,7 @@ export const passeios: Passeio[] = [
       "Grupos",
       "Primeiro contato com João Pessoa",
     ],
-    coverImage: "/images/passeios/litoral-sul/roteiro-classico/hero-01.jpg",
+    coverImage: "/images/placeholders/placeholder-passeio.svg",
     imagemAlt: "Combo Sol Nascente — 3 dias de passeios em João Pessoa",
     faq: [
       {
@@ -239,7 +239,7 @@ export const passeios: Passeio[] = [
       "Grupos econômicos",
       "Primeiro contato com João Pessoa",
     ],
-    coverImage: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
+    coverImage: "/images/placeholders/placeholder-passeio.svg",
     imagemAlt: "Combo Maré Boa — 2 dias de passeios em João Pessoa",
     faq: [
       {
@@ -320,31 +320,27 @@ export const passeios: Passeio[] = [
           "Deixamos você de volta no hotel. Total: ~8h desde a saída.",
       },
     ],
-    coverImage: "/images/passeios/litoral-sul/roteiro-classico/hero-01.jpg",
+    coverImage: "/images/passeios/litoral-sul/roteiro-classico/litoral-sul-roteiro-classico-joao-pessoa-01.jpg",
     galleryImages: [
       {
-        src: "/images/passeios/litoral-sul/roteiro-classico/hero-01.jpg",
+        src: "/images/passeios/litoral-sul/roteiro-classico/litoral-sul-roteiro-classico-joao-pessoa-01.jpg",
         alt: "Vista aérea do litoral sul da Paraíba com praias e recifes",
       },
       {
-        src: "/images/passeios/litoral-sul/roteiro-classico/galeria-01.jpg",
+        src: "/images/passeios/litoral-sul/roteiro-classico/litoral-sul-roteiro-classico-joao-pessoa-02.jpg",
         alt: "Vista drone da Praia de Coqueirinho, litoral sul da Paraíba",
       },
       {
-        src: "/images/passeios/litoral-sul/roteiro-classico/galeria-02.jpg",
+        src: "/images/passeios/litoral-sul/roteiro-classico/litoral-sul-roteiro-classico-joao-pessoa-03.jpg",
         alt: "Praia do litoral sul de João Pessoa",
       },
       {
-        src: "/images/passeios/litoral-sul/roteiro-classico/galeria-03.jpg",
+        src: "/images/passeios/litoral-sul/roteiro-classico/litoral-sul-roteiro-classico-joao-pessoa-04.jpg",
         alt: "Paisagem do litoral sul paraibano",
       },
       {
-        src: "/images/passeios/litoral-sul/roteiro-classico/galeria-04.jpg",
+        src: "/images/passeios/litoral-sul/roteiro-classico/litoral-sul-roteiro-classico-joao-pessoa-05.jpg",
         alt: "Praias e falésias do litoral sul da Paraíba",
-      },
-      {
-        src: "/images/passeios/litoral-sul/roteiro-classico/galeria-05.jpg",
-        alt: "Litoral sul de João Pessoa — passeio de um dia",
       },
     ],
     imagemAlt:
@@ -462,19 +458,19 @@ export const passeios: Passeio[] = [
     observacoes:
       "Ideal para quem já conhece o Roteiro Clássico. Valor privativo: [CONSULTAR].",
     idealPara: ["Famílias", "Casais", "Segunda visita ao litoral sul"],
-    coverImage: "/images/passeios/litoral-sul/praia-bela/hero-01.jpg",
+    coverImage: "/images/passeios/litoral-sul/praia-bela/litoral-sul-praia-bela-01.jpg",
     imagemAlt: "Praia Bela no litoral sul da Paraíba com encontro do Rio Mucatu",
     galleryImages: [
       {
-        src: "/images/passeios/litoral-sul/praia-bela/hero-01.jpg",
+        src: "/images/passeios/litoral-sul/praia-bela/litoral-sul-praia-bela-01.jpg",
         alt: "Praia Bela no litoral sul da Paraíba — encontro do mar com o Rio Mucatu",
       },
       {
-        src: "/images/passeios/litoral-sul/praia-bela/galeria-01.jpg",
+        src: "/images/passeios/litoral-sul/praia-bela/litoral-sul-praia-bela-02.jpg",
         alt: "Praia de Tabatinga no litoral sul da Paraíba",
       },
       {
-        src: "/images/passeios/litoral-sul/praia-bela/galeria-02.jpg",
+        src: "/images/passeios/litoral-sul/praia-bela/litoral-sul-praia-bela-03.jpg",
         alt: "Litoral sul de João Pessoa — falésias e mar de Praia Bela",
       },
     ],
@@ -640,19 +636,19 @@ export const passeios: Passeio[] = [
       horario:
         "Saída entre 8h e 9h. Retorno por volta das 16h30. Trilha de quadriciclo no período da tarde, 1h30 a 2h.",
     },
-    coverImage: "/images/passeios/litoral-sul/combo-jampa-quadriciclo/hero-01.jpg",
+    coverImage: "/images/passeios/litoral-sul/combo-jampa-quadriciclo/litoral-sul-combo-jampa-quadriciclo-01.jpg",
     imagemAlt: "Vista drone de Coqueirinho — Combo Jampa com praias e quadriciclo, João Pessoa",
     galleryImages: [
       {
-        src: "/images/passeios/litoral-sul/combo-jampa-quadriciclo/hero-01.jpg",
+        src: "/images/passeios/litoral-sul/combo-jampa-quadriciclo/litoral-sul-combo-jampa-quadriciclo-01.jpg",
         alt: "Vista drone da Praia de Coqueirinho — litoral sul de João Pessoa",
       },
       {
-        src: "/images/passeios/litoral-sul/combo-jampa-quadriciclo/galeria-01.jpg",
+        src: "/images/passeios/litoral-sul/combo-jampa-quadriciclo/litoral-sul-combo-jampa-quadriciclo-02.jpg",
         alt: "Praia do litoral sul de João Pessoa — Combo Jampa",
       },
       {
-        src: "/images/passeios/litoral-sul/combo-jampa-quadriciclo/galeria-02.jpg",
+        src: "/images/passeios/litoral-sul/combo-jampa-quadriciclo/litoral-sul-combo-jampa-quadriciclo-03.jpg",
         alt: "Passeio de um dia com praias e quadriciclo no litoral sul de João Pessoa",
       },
     ],
@@ -684,7 +680,7 @@ export const passeios: Passeio[] = [
     observacoes:
       "Quadriciclo: mínimo 7 anos. Valor privativo: [CONSULTAR].",
     idealPara: ["Aventureiros", "Casais", "Famílias com crianças ≥ 7 anos"],
-    coverImage: "/images/passeios/litoral-sul/praia-bela/hero-01.jpg",
+    coverImage: "/images/placeholders/placeholder-passeio.svg",
     imagemAlt: "Quadriciclo nas falésias da Praia Bela, litoral sul da Paraíba",
     faq: [
       {
@@ -730,11 +726,11 @@ export const passeios: Passeio[] = [
     observacoes:
       "Mínimo 7 anos. Transporte e disponibilidade: [CONSULTAR]. Formato: privativo.",
     idealPara: ["Aventureiros", "Grupos", "Quem já conhece as praias"],
-    coverImage: "/images/passeios/litoral-sul/quadriciclo-coqueirinho/hero-01.jpg",
+    coverImage: "/images/passeios/litoral-sul/quadriciclo-coqueirinho/litoral-sul-quadriciclo-coqueirinho-01.jpg",
     imagemAlt: "Quadriciclo nos mirantes de Coqueirinho, Paraíba",
     galleryImages: [
       {
-        src: "/images/passeios/litoral-sul/quadriciclo-coqueirinho/hero-01.jpg",
+        src: "/images/passeios/litoral-sul/quadriciclo-coqueirinho/litoral-sul-quadriciclo-coqueirinho-01.jpg",
         alt: "Trilha de quadriciclo nos mirantes de Coqueirinho, litoral sul da Paraíba",
       },
     ],
@@ -782,7 +778,7 @@ export const passeios: Passeio[] = [
     observacoes:
       "Mínimo 7 anos. Transporte e disponibilidade: [CONSULTAR]. Formato: privativo.",
     idealPara: ["Aventureiros", "Grupos"],
-    coverImage: "/images/passeios/litoral-sul/praia-bela/hero-01.jpg",
+    coverImage: "/images/placeholders/placeholder-passeio.svg",
     imagemAlt: "Quadriciclo nas falésias de Praia Bela, Paraíba",
     faq: [
       {
@@ -905,7 +901,7 @@ export const passeios: Passeio[] = [
       "Casais",
       "Quem quer um pôr do sol marcante",
     ],
-    coverImage: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
+    coverImage: "/images/placeholders/placeholder-passeio.svg",
     imagemAlt: "Litoral norte de João Pessoa com história colonial e natureza",
     faq: [
       {
@@ -1059,7 +1055,7 @@ export const passeios: Passeio[] = [
       "Famílias",
       "Quem busca um dia completo com história, mar e pôr do sol",
     ],
-    coverImage: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
+    coverImage: "/images/passeios/litoral-norte/combo-areia-vermelha/litoral-norte-combo-areia-vermelha-01.jpg",
     imagemAlt: "Combo Litoral Norte com Areia Vermelha — João Pessoa",
     faq: [
       {
@@ -1174,7 +1170,7 @@ export const passeios: Passeio[] = [
           "Quando a maré começa a encher, o banco de areia some de volta para o mar — sinal de que é hora de voltar. Total: ~3h desde o embarque.",
       },
     ],
-    coverImage: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
+    coverImage: "/images/placeholders/placeholder-passeio.svg",
     imagemAlt:
       "Banco de areia de Areia Vermelha com piscinas naturais verde-esmeralda durante maré baixa em Cabedelo, João Pessoa",
     rotario: [
@@ -1277,7 +1273,7 @@ export const passeios: Passeio[] = [
       "Quer viver uma das experiências mais marcantes do nordeste brasileiro?\n\nO Pôr do Sol do Jacaré não é um passeio comum de catamarã. É um ritual que acontece há mais de 20 anos: a cada entardecer, um catamarã navega pelo Rio Paraíba enquanto Jurandy do Sax toca o Bolero de Ravel ao vivo, a bordo da sua canoa. Quando o sol toca o horizonte, ele eleva o solo — e ninguém esquece o momento.\n\nO embarque é na Praia do Jacaré, em Cabedelo. 1h30 de navegação com música, dança de forró e história. Não importa quantas vezes você veja, é sempre cinematográfico.",
     descricaoSensorial:
       "Você chega à Praia do Jacaré um pouco antes do horário e já vê o catamarã ancorado à beira do rio. O movimento é grande, mas o clima é leve. Ao embarcar, escolhe lugar — o melhor é virado para o oeste, lado do pôr do sol.\n\nA navegação começa tranquila. O guia conta a história do Rio Paraíba, dos manguezais e da relação da cidade com o rio. Belle Soares aparece com violino, depois um casal de cangaceiros leva a galera para uma dança de forró pé de serra. O catamarã ri com a gente.\n\nO sol vai descendo. Quando começa a se aproximar do horizonte, todo mundo silencia. O Jurandy aparece numa canoa pequena, ao lado do catamarã. O saxofone começa o Bolero de Ravel. A música cresce junto com a luz alaranjada. Quando o sol toca a linha do horizonte, ele eleva o solo até o limite. É o momento que ficou famoso — e que repete, lindo, todos os dias.",
-    coverImage: "/images/passeios/piscinas-naturais/penha/hero-01.jpg",
+    coverImage: "/images/placeholders/placeholder-passeio.svg",
     roteiroNarrativo: [
       {
         emoji: "🚢",
@@ -1422,7 +1418,7 @@ export const passeios: Passeio[] = [
     observacoes:
       "100% privativo — não monta grupos com desconhecidos. Capacidade: [CONSULTAR]. Crianças acima de 5 anos entram na composição do grupo.",
     idealPara: ["Grupos", "Casais", "Famílias que querem experiência premium"],
-    coverImage: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
+    coverImage: "/images/placeholders/placeholder-passeio.svg",
     imagemAlt: "Lancha privativa no litoral norte de João Pessoa ao pôr do sol",
     faq: [
       {
@@ -1518,30 +1514,30 @@ export const passeios: Passeio[] = [
       "As piscinas naturais só aparecem quando a maré está baixa. Antes de confirmar sua data, a gente consulta a tábua de marés e te avisa o melhor horário. Você não precisa se preocupar com isso. Esse é o nosso trabalho.",
     nomeCurto: "Seixas",
     idealPara: ["Mergulho", "Snorkel", "Fotos", "Aventura marinha"],
-    coverImage: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
+    coverImage: "/images/passeios/piscinas-naturais/seixas/piscinas-naturais-seixas-joao-pessoa-01.jpg",
     galleryImages: [
       {
-        src: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
+        src: "/images/passeios/piscinas-naturais/seixas/piscinas-naturais-seixas-joao-pessoa-01.jpg",
         alt: "Vista aérea das piscinas naturais do Seixas, João Pessoa",
       },
       {
-        src: "/images/passeios/piscinas-naturais/seixas/galeria-01.jpg",
+        src: "/images/passeios/piscinas-naturais/seixas/piscinas-naturais-seixas-joao-pessoa-02.jpg",
         alt: "Turistas nas piscinas naturais do Seixas vistas do drone, João Pessoa",
       },
       {
-        src: "/images/passeios/piscinas-naturais/seixas/galeria-02.jpg",
+        src: "/images/passeios/piscinas-naturais/seixas/piscinas-naturais-seixas-joao-pessoa-03.jpg",
         alt: "Piscinas naturais do Seixas com água cristalina, João Pessoa",
       },
       {
-        src: "/images/passeios/piscinas-naturais/seixas/galeria-03.jpg",
+        src: "/images/passeios/piscinas-naturais/seixas/piscinas-naturais-seixas-joao-pessoa-04.jpg",
         alt: "Recifes e piscinas naturais da Praia do Seixas, João Pessoa",
       },
       {
-        src: "/images/passeios/piscinas-naturais/seixas/galeria-04.jpg",
+        src: "/images/passeios/piscinas-naturais/seixas/piscinas-naturais-seixas-joao-pessoa-05.jpg",
         alt: "Vista aérea da praia do Seixas com recifes, João Pessoa",
       },
       {
-        src: "/images/passeios/piscinas-naturais/seixas/galeria-05.jpg",
+        src: "/images/passeios/piscinas-naturais/seixas/piscinas-naturais-seixas-joao-pessoa-06.jpg",
         alt: "Piscinas naturais do Seixas durante maré baixa, João Pessoa",
       },
     ],
@@ -1630,7 +1626,7 @@ export const passeios: Passeio[] = [
       "Quer mergulhar nas piscinas naturais de João Pessoa sem dividir o recife com dezenas de barcos?\n\nA Penha funciona diferente. Apenas 2 embarcações por vez são liberadas para chegar até as piscinas, o que mantém o ambiente preservado e a experiência muito mais íntima. As águas são as mesmas — mornas, cristalinas, com peixes ao redor — mas o ritmo é outro.\n\nA gente parte da Praia da Penha (sul de João Pessoa) e em 10–15 minutos já está nas piscinas. Saída ajustada à maré baixa. Você só aproveita.",
     descricaoSensorial:
       "O embarque é na Praia da Penha, no extremo sul da orla de João Pessoa, longe do movimento de Tambaú e Cabo Branco. Já o ponto de saída tem uma vibe diferente: praia tranquila, ritmo de vila, mar aberto.\n\nA travessia até as piscinas é curta — 10 a 15 minutos. Quando o catamarã ancora, o recife já está exposto. Águas mornas, fundo claro, peixes circulando perto. Por ter um número limitado de embarcações no local, o silêncio é maior, a água fica mais limpa e dá pra ouvir as ondas e o vento.\n\nNo catamarã tem bar a bordo, banheiros, som e equipamento de salvatagem. Snorkel e máscara opcionais. Você fica nas piscinas até a maré começar a encher — em média 3h de experiência total.",
-    coverImage: "/images/passeios/piscinas-naturais/penha/hero-01.jpg",
+    coverImage: "/images/placeholders/placeholder-passeio.svg",
     imagemAlt: "Piscinas naturais da Penha em João Pessoa — ambiente exclusivo e tranquilo",
     roteiroNarrativo: [
       {
@@ -1979,7 +1975,7 @@ export const passeios: Passeio[] = [
       "Quer entender João Pessoa de verdade, não só as praias?\n\nO City Tour Jampa leva você pelos pontos que contam a história da cidade — a 3ª mais antiga do Brasil, a segunda capital mais verde do mundo e o lugar onde o sol nasce primeiro nas Américas.\n\nA gente passa pelo Letreiro 'João Pessoa', pelo Farol do Cabo Branco na Ponta do Seixas, pela Estação Cabo Branco (obra de Oscar Niemeyer), pelo Bosque dos Sonhos, pela Praça da Independência, pelo Centro Cultural São Francisco, pelo Hotel Globo (patrimônio histórico) e pelo Parque Sólon de Lucena. Transfer ida e volta incluso. Guia credenciado que conta a história enquanto você anda.",
     descricaoSensorial:
       "A manhã começa cedo. A van busca você no hotel ou airbnb em Tambaú, Cabo Branco, Manaíra ou Bessa. A primeira parada costuma ser o Letreiro 'João Pessoa' — clássico para foto. Dali, o Farol do Cabo Branco, na Ponta do Seixas: o ponto mais oriental das Américas. O sol que nasce no Brasil nasce ali.\n\nSegue para a Estação Cabo Branco — espaço de arte e ciência projetado por Oscar Niemeyer. Arquitetura curvilínea, branca, com vista para o mar. Bosque dos Sonhos na sequência: jardim com vista panorâmica.\n\nA parte mais histórica vem agora. Praça da Independência, Centro Cultural São Francisco (entrada não inclusa, mas vale pagar — uma das igrejas barrocas mais importantes do Brasil), Hotel Globo (patrimônio, vista do rio Sanhauá), Praça dos Três Poderes e Parque Sólon de Lucena — a lagoa cercada de palmeiras imperiais no coração da cidade.\n\nO guia conta a história sem pressa. Você fotografa, faz pergunta, entende a cidade. Volta pro hotel por volta do meio-dia.",
-    coverImage: "/images/passeios/litoral-sul/roteiro-classico/hero-01.jpg",
+    coverImage: "/images/passeios/city-tour/jampa-historica/city-tour-jampa-historica-joao-pessoa-01.jpg",
     imagemAlt: "Centro histórico de João Pessoa — 3ª cidade mais antiga do Brasil",
     roteiroNarrativo: [
       {
@@ -2131,7 +2127,7 @@ export const passeios: Passeio[] = [
       "Quer conhecer Porto de Galinhas sem precisar mudar de hospedagem?\n\nA gente faz o bate-volta saindo de João Pessoa pela manhã e voltando à noite. O percurso é cerca de 2h30 de ida em veículo confortável, com saída direto do seu hotel. Você ganha um dia inteiro em uma das praias mais famosas do Brasil — piscinas naturais únicas, vila charmosa e águas esverdeadas — sem perder a logística da sua viagem.\n\nDocumento com foto é obrigatório (viagem interestadual PB → PE). Alimentação e passeio de jangada nas piscinas são por conta do visitante.",
     descricaoSensorial:
       "A van busca você no hotel pela manhã (horário confirmado no WhatsApp). A viagem é tranquila, com paradas para banheiro e lanche no caminho. Em pouco tempo você está em Porto de Galinhas.\n\nA vila é charmosa: lojas, restaurantes, ambiente turístico organizado. Da praia central, você vê as jangadas levando turistas para as piscinas naturais — formações de coral a poucos metros da areia que criam aquários a céu aberto com água verde-cristalina e peixes coloridos.\n\nTempo livre para você curtir do seu jeito: piscinas naturais (jangada paga no local), praia, vila, almoço. A gente combina o ponto e horário de retorno antes da chegada. À noite, transporte de volta para João Pessoa.",
-    coverImage: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
+    coverImage: "/images/placeholders/placeholder-passeio.svg",
     imagemAlt: "Piscinas naturais de Porto de Galinhas em Pernambuco",
     roteiroNarrativo: [
       {
@@ -2274,7 +2270,7 @@ export const passeios: Passeio[] = [
       "Quer conhecer Pipa em um dia, sem precisar trocar de hotel?\n\nA gente faz o bate-volta a Praia de Pipa (Tibau do Sul, RN) saindo de João Pessoa pela manhã. São aproximadamente 2h de viagem em veículo confortável. Você ganha um dia inteiro para curtir a Praia do Amor, a Praia do Moleque, mirantes com vista do Atlântico e a vila com restaurantes, lojinhas e vida noturna.\n\nDocumento com foto é obrigatório (viagem interestadual PB → RN). Alimentação não está inclusa.",
     descricaoSensorial:
       "A van busca você no hotel pela manhã (horário confirmado no WhatsApp). O trajeto até Pipa passa por estradas costeiras com paisagens bonitas. Em pouco tempo você chega à vila.\n\nPipa é uma vila charmosa, com ruas de pedra, fachadas coloridas e gente do mundo todo. A praia central é movimentada, mas as vizinhas — Amor, Moleque, Madeiro — são paraíso. Falésias coloridas caindo no mar, ondas para surf, golfinhos que às vezes aparecem perto da costa, mirantes com vista do Atlântico.\n\nTempo livre para você curtir do seu jeito: caminhar pela vila, almoçar com vista, banho de mar nas praias paradisíacas, esquecer do mundo. Antes do retorno, a gente combina o ponto e horário. À noite, transporte de volta para João Pessoa.",
-    coverImage: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
+    coverImage: "/images/placeholders/placeholder-passeio.svg",
     imagemAlt: "Praia de Pipa no Rio Grande do Norte — falésias e águas cristalinas",
     roteiroNarrativo: [
       {
@@ -2419,7 +2415,7 @@ export const passeios: Passeio[] = [
       "Quer conhecer a capital potiguar em um dia, sem mudar de hotel?\n\nA gente faz o bate-volta a Natal saindo de João Pessoa pela manhã. São cerca de 3h de viagem em veículo confortável. Você ganha um dia inteiro para conhecer o Maior Cajueiro do Mundo (em Pirangi), o Centro de Lançamento da Barreira do Inferno e as praias mornas de Pirangi e Ponta Negra — incluindo o Morro do Careca, cartão postal da cidade.\n\nDocumento com foto é obrigatório (viagem interestadual PB → RN). Alimentação não está inclusa.",
     descricaoSensorial:
       "A van busca você no hotel pela manhã (horário confirmado no WhatsApp). O trajeto até Natal passa por estradas tranquilas, com paisagem nordestina.\n\nEm Pirangi do Norte você visita o Maior Cajueiro do Mundo — uma árvore tão grande que cobre quase 9.000 m². Caminhar por baixo dela é uma experiência diferente. Depois, a Barreira do Inferno: Centro de Lançamento de Foguetes da Força Aérea Brasileira (visita externa).\n\nA tarde é nas praias. Pirangi tem água morna e areia clara. Ponta Negra é o cartão postal — o Morro do Careca é aquela duna gigante que aparece em toda foto. Tempo livre para banho, almoço (não incluso) e descanso. Antes do retorno, combinamos o ponto e horário. À noite, transporte de volta para João Pessoa.",
-    coverImage: "/images/passeios/piscinas-naturais/seixas/hero-01.jpg",
+    coverImage: "/images/placeholders/placeholder-passeio.svg",
     imagemAlt: "Ponta Negra em Natal, Rio Grande do Norte",
     roteiroNarrativo: [
       {
