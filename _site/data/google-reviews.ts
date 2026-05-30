@@ -2,7 +2,7 @@
  * Reviews reais do Google Maps — VempassearJampa
  *
  * FONTE: Google Maps oficial (extraído em 2026-05-18 via Playwright autorizado).
- * Total na plataforma: 68 avaliações.
+ * Total na plataforma: 71 avaliações.
  * Vitrine: 60 reviews reais com texto (5★ e 4★). Excluídas 5 sem texto e 1 com 1★.
  *
  * Regra: NUNCA editar texto, nome ou imagens. Para atualizar a lista,

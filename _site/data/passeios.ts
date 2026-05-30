@@ -464,6 +464,20 @@ export const passeios: Passeio[] = [
     idealPara: ["Famílias", "Casais", "Segunda visita ao litoral sul"],
     coverImage: "/images/passeios/litoral-sul/praia-bela/hero-01.jpg",
     imagemAlt: "Praia Bela no litoral sul da Paraíba com encontro do Rio Mucatu",
+    galleryImages: [
+      {
+        src: "/images/passeios/litoral-sul/praia-bela/hero-01.jpg",
+        alt: "Praia Bela no litoral sul da Paraíba — encontro do mar com o Rio Mucatu",
+      },
+      {
+        src: "/images/passeios/litoral-sul/praia-bela/galeria-01.jpg",
+        alt: "Praia de Tabatinga no litoral sul da Paraíba",
+      },
+      {
+        src: "/images/passeios/litoral-sul/praia-bela/galeria-02.jpg",
+        alt: "Litoral sul de João Pessoa — falésias e mar de Praia Bela",
+      },
+    ],
     faq: [
       {
         pergunta: "Qual a diferença entre Praia Bela e o Roteiro Clássico?",
@@ -626,6 +640,22 @@ export const passeios: Passeio[] = [
       horario:
         "Saída entre 8h e 9h. Retorno por volta das 16h30. Trilha de quadriciclo no período da tarde, 1h30 a 2h.",
     },
+    coverImage: "/images/passeios/litoral-sul/combo-jampa-quadriciclo/hero-01.jpg",
+    imagemAlt: "Vista drone de Coqueirinho — Combo Jampa com praias e quadriciclo, João Pessoa",
+    galleryImages: [
+      {
+        src: "/images/passeios/litoral-sul/combo-jampa-quadriciclo/hero-01.jpg",
+        alt: "Vista drone da Praia de Coqueirinho — litoral sul de João Pessoa",
+      },
+      {
+        src: "/images/passeios/litoral-sul/combo-jampa-quadriciclo/galeria-01.jpg",
+        alt: "Praia do litoral sul de João Pessoa — Combo Jampa",
+      },
+      {
+        src: "/images/passeios/litoral-sul/combo-jampa-quadriciclo/galeria-02.jpg",
+        alt: "Passeio de um dia com praias e quadriciclo no litoral sul de João Pessoa",
+      },
+    ],
   },
 
   {
@@ -702,6 +732,12 @@ export const passeios: Passeio[] = [
     idealPara: ["Aventureiros", "Grupos", "Quem já conhece as praias"],
     coverImage: "/images/passeios/litoral-sul/quadriciclo-coqueirinho/hero-01.jpg",
     imagemAlt: "Quadriciclo nos mirantes de Coqueirinho, Paraíba",
+    galleryImages: [
+      {
+        src: "/images/passeios/litoral-sul/quadriciclo-coqueirinho/hero-01.jpg",
+        alt: "Trilha de quadriciclo nos mirantes de Coqueirinho, litoral sul da Paraíba",
+      },
+    ],
     faq: [
       {
         pergunta: "Posso fazer só a trilha de quad sem o passeio de praias?",
