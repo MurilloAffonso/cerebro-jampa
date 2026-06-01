@@ -206,7 +206,7 @@ Não pedir explicitamente — apenas lembrar da experiência. Mas idealmente os 
 
 **Diagnóstico estimado:** Perfis com 68 reviews e sem time de marketing raramente têm posts ativos. O Google Posts aumenta CTR e sinaliza atividade para o algoritmo — mas a maioria das agências pequenas não usa.
 
-**Cadência recomendada:** 1 post por semana. Sempre com foto + texto + botão "Reservar" → `https://wa.me/558399087830`.
+**Cadência recomendada:** 1 post por semana. Sempre com foto + texto + botão "Reservar" → `https://wa.me/5583999087830`.
 
 ### 10 Posts prontos para publicar
 
@@ -324,7 +324,7 @@ Não pedir explicitamente — apenas lembrar da experiência. Mas idealmente os 
 - [ ] Site cadastrado: `https://www.vempassearjampa.com` *(não .com.br — domínio ativo é .com)*
 - [ ] Número de telefone: `+55 83 9908-7830` (formato internacional, com código do país)
 - [ ] Botão de mensagem (WhatsApp) ativado nas opções de perfil
-- [ ] URL de reserva (se disponível): `https://wa.me/558399087830`
+- [ ] URL de reserva (se disponível): `https://wa.me/5583999087830`
 
 **CTA recomendado na descrição:** "Atendimento direto pelo WhatsApp com orientação prática" — já embutido na descrição otimizada.
 

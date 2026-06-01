@@ -31,8 +31,8 @@ export const empresa = {
 
   // Contato Oficial (CONFIRMADO)
   contato: {
-    whatsappNumero: '83 99087-830', // Formato visual
-    whatsappLink: 'https://wa.me/558399087830', // Link clicável
+    whatsappNumero: '83 99908-7830', // Formato visual
+    whatsappLink: 'https://wa.me/5583999087830', // Link clicável
     email: 'vempassearjampa@gmail.com',
   },
 

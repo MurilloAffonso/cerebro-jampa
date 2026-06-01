@@ -8,7 +8,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **O que é este repositório:** Vault de IA da Vem Passear em Jampa — base de conhecimento estruturada para produzir conteúdo de site, copy de venda, SEO local e briefings para designer. Todo conteúdo passa pela revisão de Murillo (fundador) antes de publicar.
 
-**O que NÃO é:** sistema autônomo de reservas ou envio direto de mensagens sem aprovação humana. **O que É TAMBÉM:** camada comercial assistida — IA rascunha qualificação, proposta, follow-up e objeção; Murillo aprova e envia. WhatsApp +55 83 9908-7830 é o canal central de conversão.
+**O que NÃO é:** sistema autônomo de reservas ou envio direto de mensagens sem aprovação humana. **O que É TAMBÉM:** camada comercial assistida — IA rascunha qualificação, proposta, follow-up e objeção; Murillo aprova e envia. WhatsApp +55 83 99908-7830 é o canal central de conversão.
 
 **Modelo central:** `Objetivo → Orquestrador → Pipeline → Skills → Resultado`
 

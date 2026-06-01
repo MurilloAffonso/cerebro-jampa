@@ -78,7 +78,7 @@ Subir no máximo 2 fotos por dia para o algoritmo não ignorar.
 ## 5. 10 Ideias de Postagens (Google Posts)
 
 Cadastrar em: GMB → "Adicionar atualização". Usar imagem + texto + botão.
-Botão padrão: "Reservar" → `https://wa.me/558399087830`
+Botão padrão: "Reservar" → `https://wa.me/5583999087830`
 
 ### Post 1 — Informativo / Maré
 **Tipo:** Atualização  

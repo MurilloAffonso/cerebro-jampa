@@ -19,7 +19,7 @@
 | Paleta oficial | v2 — `#107997` ocean / `#092238` navy / `#D97706` acento | `_site/tailwind.config.ts` |
 | Fontes | DM Sans (body) + Lora (headings) | mesma |
 | Stack | Next.js 14 + React 18 + TS 5 (strict) + Tailwind 3 + next-intl 4.12 | `_site/package.json` |
-| WhatsApp | `+55 83 9908-7830` → `https://wa.me/558399087830` | Decisão 22 |
+| WhatsApp | `+55 83 99908-7830` → `https://wa.me/5583999087830` | Decisão 22 |
 | Cadastur | `52.077.577` (válido até 16/12/2026) | `_conhecimento/empresa.md` |
 | CNPJ | `52.077.577/0001-03` | mesma |
 | Google | 4,9★ com 61 avaliações | `_conhecimento/provas-de-confianca.md` |

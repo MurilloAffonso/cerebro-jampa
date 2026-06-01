@@ -37,10 +37,10 @@
 
 | Campo | Valor |
 |-------|-------|
-| **Número** | 83 99087-830 |
-| **Número Formatado (BR)** | (83) 99087-830 |
-| **Número Formatado (International)** | +55 83 99087-830 |
-| **Link wa.me** | https://wa.me/558399087830 |
+| **Número** | 83 99908-7830 |
+| **Número Formatado (BR)** | (83) 99908-7830 |
+| **Número Formatado (International)** | +55 83 99908-7830 |
+| **Link wa.me** | https://wa.me/5583999087830 |
 | **Propósito** | Atendimento, reservas, dúvidas |
 | **Responsável** | Murillo (responde direto) |
 | **SLA Esperado** | Resposta rápida (diferencial) |
@@ -71,7 +71,7 @@
 | **Site (vempassearjampa.com.br)** | ✅ Ativo | Claude Code | Contínuo (Phase 1-3) |
 | **Instagram (@vempassearjampa)** | ✅ Ativo | Murillo | 3-5x/semana |
 | **Google Meu Negócio** | ✅ Ativo | Murillo | Semanal (verificar) |
-| **WhatsApp (83 99087-830)** | ✅ Ativo | Murillo | Contínuo (24h) |
+| **WhatsApp (83 99908-7830)** | ✅ Ativo | Murillo | Contínuo (24h) |
 | **Google Maps** | ✅ Ativo | Google (auto) | Auto-sincroniza com GMB |
 | **TripAdvisor** | 📋 Planejado | Murillo | Phase 3 |
 | **Viator** | 📋 Planejado | Murillo | Phase 3 |
@@ -90,7 +90,7 @@ Esses dados devem estar **IDÊNTICOS** em:
 - ✅ WhatsApp (número no link)
 
 **Nome:** Vem Passear em Jampa  
-**Telefone:** 83 99087-830  
+**Telefone:** 83 99908-7830  
 **Endereço:** João Pessoa, Paraíba, Brasil  
 **Domínio:** vempassearjampa.com.br  
 
@@ -99,7 +99,7 @@ Esses dados devem estar **IDÊNTICOS** em:
 Todos os CTAs de conversão canalizam para **WhatsApp ÚNICO:**
 - ❌ NÃO: Email
 - ❌ NÃO: Formulário
-- ✅ SIM: WhatsApp (https://wa.me/558399087830)
+- ✅ SIM: WhatsApp (https://wa.me/5583999087830)
 
 ### CTA Visual Padrão
 
@@ -111,7 +111,7 @@ ou
 💬 Vamos Montar Seu Passeio
 ```
 
-Todos apontam para: `https://wa.me/558399087830`
+Todos apontam para: `https://wa.me/5583999087830`
 
 ---
 
@@ -125,7 +125,7 @@ Todos apontam para: `https://wa.me/558399087830`
 href={empresa.contato.whatsapp} // Isso é número, não URL
 
 // ✅ FAÇA
-href="https://wa.me/558399087830"
+href="https://wa.me/5583999087830"
 // ou use helper:
 href={paginasInfo.whatsappHref}
 ```

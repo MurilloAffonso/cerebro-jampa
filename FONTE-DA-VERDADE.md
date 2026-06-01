@@ -15,7 +15,7 @@ Sistema híbrido em duas camadas para a agência **Vem Passear em Jampa**, em Jo
 1. **Vault de IA estruturado** (`_conhecimento/`, `_memoria/`, `skills/`, `_automacao/`) — fonte de verdade de empresa, passeios, tom, SEO, decisões. 21 skills especializadas orquestradas por `orquestrador-projeto-turismo`. Modelo: `Objetivo → Orquestrador → Pipeline → Skills → Resultado`. IA rascunha; Murillo aprova e envia.
 2. **Site Next.js 14 multilíngue** (`_site/`) — produto digital principal, publicado em produção. Catálogo de passeios, blog, tábua de marés, captação por WhatsApp.
 
-**O que NÃO é:** sistema autônomo de reservas; sistema que envia mensagens a clientes sem aprovação humana; CRM completo (usa um CSV mínimo). O canal central de conversão é o **WhatsApp +55 83 9908-7830**.
+**O que NÃO é:** sistema autônomo de reservas; sistema que envia mensagens a clientes sem aprovação humana; CRM completo (usa um CSV mínimo). O canal central de conversão é o **WhatsApp +55 83 99908-7830**.
 
 ---
 
@@ -28,7 +28,7 @@ Sistema híbrido em duas camadas para a agência **Vem Passear em Jampa**, em Jo
 | CNPJ | 52.077.577/0001-03 | idem |
 | Cadastur | 52.077.577 (válido até 16/12/2026) | idem |
 | Localização | João Pessoa, Paraíba, Brasil | idem |
-| WhatsApp oficial | `+55 83 9908-7830` → `https://wa.me/558399087830` | `CLAUDE.md` + Decisão 22 |
+| WhatsApp oficial | `+55 83 99908-7830` → `https://wa.me/5583999087830` | `CLAUDE.md` + Decisão 22 |
 | Email | vempassearjampa@gmail.com | auto-memory |
 | Google rating | 4,9★ com 61 avaliações | `_conhecimento/provas-de-confianca.md` |
 

@@ -156,7 +156,7 @@
 **Arquivos afetados:** `02a-copywriter-vendas.md`, `02b-ux-ui-mobile-first.md`
 
 ### 22. WhatsApp Oficial — Confirmado (Murillo)
-**Decisão:** Número oficial: +55 83 9908-7830 | Link: `https://wa.me/558399087830`
+**Decisão:** Número oficial: +55 83 99908-7830 | Link: `https://wa.me/5583999087830`
 **Por quê:** Número real confirmado pelo operador. Substitui todos os `[CONFIRMAR: número]`.
 **Implementação:** Aplicado em todos os CTAs de 02a e 02b. Usar este número em todos os arquivos do projeto daqui para frente.
 **Texto de pré-preenchimento padrão:** `?text=Oi, quero saber sobre o passeio de Seixas`

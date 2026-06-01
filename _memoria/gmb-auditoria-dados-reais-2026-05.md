@@ -420,10 +420,10 @@ Publicar 1 por dia nos próximos 7 dias. Sempre com botão "Reservar" → WhatsA
 ## OBSERVAÇÃO TÉCNICA — URL do WhatsApp
 
 O CSV exportado mostra `wa.me/5583999087830` (número com 9 dígitos após o código de área).
-O vault CEREBRO.JAMPA registra em alguns arquivos `wa.me/558399087830` (8 dígitos).
+O vault CEREBRO.JAMPA registrava em alguns arquivos `wa.me/558399087830` (8 dígitos) — **corrigido em 2026-06-01**.
 O número correto confirmado nas imagens do perfil: **(83) 99908-7830** = 9 dígitos.
 
-**Verificar:** qual URL está cadastrada no site e nos CTAs. Se for a versão com 8 dígitos (`558399087830`), o botão de WhatsApp pode estar quebrando para alguns usuários.
+**Resolvido:** URL corrigida para `wa.me/5583999087830` em empresa.ts e todos os arquivos do vault.
 
 ---
 
