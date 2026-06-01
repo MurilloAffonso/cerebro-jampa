@@ -226,31 +226,6 @@ function checkClaudeMdContagem(manifest) {
   }
 }
 
-// Parser CSV mínimo compatível com RFC 4180 — respeita aspas duplas com vírgulas internas
-// e aspas escapadas como "" dentro de campos. Sem dependência externa.
-// Atualizado na Fase 3 (2026-05-29) para corrigir falso positivo recorrente em leads.csv.
-function parseCsvLineRfc4180(line, sep) {
-  const out = [];
-  let cur = "";
-  let i = 0;
-  let inQuotes = false;
-  while (i < line.length) {
-    const c = line[i];
-    if (inQuotes) {
-      if (c === '"') {
-        if (line[i + 1] === '"') { cur += '"'; i += 2; continue; }
-        inQuotes = false; i++; continue;
-      }
-      cur += c; i++; continue;
-    }
-    if (c === '"') { inQuotes = true; i++; continue; }
-    if (c === sep) { out.push(cur); cur = ""; i++; continue; }
-    cur += c; i++;
-  }
-  out.push(cur);
-  return out;
-}
-
 function checkLeadsCsv() {
   section("5. CRM: leads.csv parseável");
 
@@ -267,21 +242,18 @@ function checkLeadsCsv() {
   }
   const header = lines[0];
   const sep = header.includes(";") && !header.includes(",") ? ";" : ",";
-  const headerCols = parseCsvLineRfc4180(header, sep).length;
+  const headerCols = header.split(sep).length;
   let ragged = 0;
-  const raggedSamples = [];
   for (let i = 1; i < lines.length; i++) {
-    const cols = parseCsvLineRfc4180(lines[i], sep).length;
-    if (cols !== headerCols) {
-      ragged++;
-      if (raggedSamples.length < 3) raggedSamples.push(`linha ${i + 1}: ${cols} colunas`);
-    }
+    // contagem ingênua — não respeita aspas com vírgulas internas; suficiente para sanity check
+    const cols = lines[i].split(sep).length;
+    if (cols !== headerCols) ragged++;
   }
   if (ragged > 0) {
     rec("warn", "crm", `${ragged} linha(s) com nº de colunas diferente do header (sep="${sep}", header=${headerCols})`,
-      `parser RFC 4180; amostra: ${raggedSamples.join(" | ")}`);
+      "verificar se contém vírgulas dentro de campos sem aspas");
   } else {
-    ok("crm", `${lines.length - 1} leads, ${headerCols} colunas, sep="${sep}" (parser RFC 4180)`);
+    ok("crm", `${lines.length - 1} leads, ${headerCols} colunas, sep="${sep}"`);
   }
 }
 
@@ -334,42 +306,21 @@ function checkPlaceholdersSite() {
   }
 }
 
-function checkSkillsForaDoPadrao(manifest) {
+function checkSkillsForaDoPadrao() {
   section("7. Skills fora do diretório padrão");
 
-  // Atualizado na Fase 3 (2026-05-29): verifica todas as localizações comuns e cruza
-  // com manifest.skills_externas[] — só avisa de skills NÃO registradas.
-
-  const externalDirs = [
-    { path: join(ROOT, ".claude", "skills"), label: ".claude/skills/" },
-    { path: join(ROOT, ".agents", "skills"), label: ".agents/skills/" },
-    { path: join(ROOT, "_site", ".claude", "skills"), label: "_site/.claude/skills/" },
-  ];
-
-  const registered = new Set((manifest?.skills_externas || []).map((s) => s.id));
-  const found = [];
-  for (const d of externalDirs) {
-    if (!existsSync(d.path)) continue;
-    const items = safeListDir(d.path).filter((n) => isDir(join(d.path, n)));
-    for (const id of items) found.push({ id, location: d.label });
-  }
-
-  if (!found.length) {
-    ok("skills-externas", "nenhuma skill em diretórios externos");
+  const claudeSkillsDir = join(ROOT, ".claude", "skills");
+  if (!existsSync(claudeSkillsDir)) {
+    ok("skills-externas", "nada em .claude/skills/");
     return;
   }
-
-  const unregistered = found.filter((f) => !registered.has(f.id));
-  const registeredCount = found.length - unregistered.length;
-
-  if (registeredCount > 0) {
-    ok("skills-externas", `${registeredCount} skill(s) externa(s) registrada(s) no manifest: ${found.filter((f) => registered.has(f.id)).map((f) => `${f.id} (${f.location})`).join(", ")}`);
+  const items = safeListDir(claudeSkillsDir).filter((n) => isDir(join(claudeSkillsDir, n)));
+  if (!items.length) {
+    ok("skills-externas", "nada em .claude/skills/");
+    return;
   }
-
-  if (unregistered.length) {
-    rec("warn", "skills-externas", `${unregistered.length} skill(s) externa(s) NÃO registrada(s) no manifest: ${unregistered.map((f) => `${f.id} (${f.location})`).join(", ")}`,
-      "registrar em skills_externas[] no manifest ou mover para skills/");
-  }
+  rec("warn", "skills-externas", `${items.length} skill(s) em .claude/skills/: ${items.join(", ")}`,
+    "decidir: mover para skills/ (padrão) ou registrar em skills_externas[] no manifest");
 }
 
 function checkLogsDir() {
@@ -450,7 +401,7 @@ checkSchemaEnum(manifest);
 checkClaudeMdContagem(manifest);
 checkLeadsCsv();
 checkPlaceholdersSite();
-checkSkillsForaDoPadrao(manifest);
+checkSkillsForaDoPadrao();
 checkLogsDir();
 checkConhecimentoCritico();
 summary();

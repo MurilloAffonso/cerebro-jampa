@@ -4,14 +4,18 @@ Site oficial da agência de turismo receptivo **Vem Passear em Jampa** em João 
 
 **Missão:** Ajudar turistas a descobrir João Pessoa com atendimento rápido, confiança e orientação prática.
 
+> ⚓ **Fonte canônica deste projeto:** `../FONTE-DA-VERDADE.md` (raiz do CEREBRO.JAMPA). Quando este README divergir, o `FONTE-DA-VERDADE.md` vence.
+
 ---
 
 ## Stack
 
-- **Framework:** Next.js 14+
-- **Linguagem:** TypeScript
-- **Styling:** Tailwind CSS
-- **Deployment:** Vercel (recomendado)
+- **Framework:** Next.js 14 (App Router)
+- **Linguagem:** TypeScript 5.x (strict)
+- **Styling:** Tailwind CSS 3.x
+- **i18n:** next-intl 4.12 — locales: `pt`, `en`, `es`
+- **Analytics:** @vercel/analytics
+- **Deployment:** **Vercel** (oficial)
 - **Package Manager:** npm
 
 ---
@@ -20,52 +24,96 @@ Site oficial da agência de turismo receptivo **Vem Passear em Jampa** em João 
 
 ```
 _site/
-├── app/                    # Páginas e layouts (Next.js App Router)
-│   ├── layout.tsx         # Root layout (Header, Footer)
-│   ├── page.tsx           # Home
-│   ├── passeios/          # Passeios (dinâmico)
-│   │   ├── [categoria]/
-│   │   │   ├── page.tsx   # Página da categoria
-│   │   │   └── [slug]/
-│   │   │       └── page.tsx # Página do passeio
-│   ├── sobre/
-│   │   └── page.tsx       # Sobre Murillo e empresa
-│   └── blog/              # Blog (Phase 2)
+├── app/                              # Next.js App Router
+│   ├── layout.tsx                    # Root layout pass-through
+│   ├── sitemap.ts
+│   ├── robots.ts
+│   ├── icon.svg
+│   └── [locale]/                     # Locale dinâmico (pt | en | es)
+│       ├── layout.tsx                # html lang + fonts + metadataBase
+│       ├── page.tsx                  # Home
+│       ├── not-found.tsx
+│       ├── faq/page.tsx
+│       ├── sobre/page.tsx            # retorna notFound() — ISSUE-22
+│       ├── tabua-de-mares-joao-pessoa/page.tsx
+│       ├── blog/
+│       │   ├── page.tsx              # Hub
+│       │   └── [slug]/page.tsx       # Posts (10 em draft)
+│       ├── servicos/
+│       │   ├── transfer-24h/page.tsx
+│       │   └── excursoes-e-grupos/page.tsx
+│       └── passeios/
+│           ├── page.tsx              # Hub
+│           └── [categoria]/
+│               ├── page.tsx          # 6 hubs de categoria
+│               └── [slug]/page.tsx   # 22 passeios — template único
 │
-├── components/            # Componentes reutilizáveis
-│   ├── Header.tsx
-│   ├── Footer.tsx
-│   ├── HeroBlock.tsx
-│   ├── InfoCard.tsx
-│   ├── ButtonPrimary.tsx
-│   └── FAQAccordion.tsx
+├── components/                       # 39 componentes (Header, Footer, HomeVideoHero,
+│                                     #  PasseioCard, PasseioGallery, FAQAccordion,
+│                                     #  TabuaMareMensal, GoogleReviewsBlock,
+│                                     #  CadasturCertificate, TrustBlock,
+│                                     #  ReservationIntentForm, MurilloBlock,
+│                                     #  CTAFinal, CTASticky, Breadcrumb, etc.)
 │
-├── data/                  # Dados estruturados locais
-│   ├── passeios.ts       # Array de 29 passeios (do vault)
-│   └── empresa.ts        # CNPJ, Cadastur, contatos
+├── data/                             # Dados estruturados (fonte: _conhecimento/)
+│   ├── passeios.ts                   # 22 passeios — template canônico
+│   ├── passeios.i18n.ts              # Traduções EN/ES
+│   ├── empresa.ts                    # CNPJ, Cadastur, contatos
+│   ├── servicos.ts                   # Transfer 24h (preco: null pendente)
+│   ├── blog.ts / blog.i18n.ts        # 10 posts em draft
+│   ├── cronogramas.ts
+│   ├── descontos.ts
+│   ├── google-reviews.ts
+│   ├── tabua-mares.ts                # Maio/2026 (revisadoPorMurillo: false)
+│   └── tabua-mares-manual.ts
 │
-├── lib/                   # Funções utilitárias
-│   ├── seo.ts            # Helpers para metadata, schema JSON-LD
-│   └── utils.ts          # Funções genéricas
+├── lib/                              # Utilitários
+│   ├── seo.ts                        # generateMetadata, schemas JSON-LD,
+│   │                                 #  slugify, buildLocaleAlternates
+│   ├── whatsapp.ts                   # buildWhatsAppUrl, intents por passeio
+│   ├── gallery.ts                    # getPasseioGalleryImages + fallback
+│   ├── tabua-mares.ts                # buildProximaSaidaCard, janelas
+│   ├── badges.ts
+│   ├── consultar.ts                  # isCampoIndisponivel
+│   ├── navigation.ts                 # next-intl Link/redirect wrapper
+│   ├── tracking.ts
+│   ├── utils.ts                      # cn, formatPreco, getInitials
+│   ├── passeios-i18n.ts
+│   ├── blog.ts / blog-i18n.ts
 │
-├── types/                 # Tipos TypeScript
-│   └── index.ts
+├── i18n/                             # next-intl config
+│   ├── request.ts
+│   └── routing.ts
+├── messages/                         # pt.json, en.json, es.json (~50 KB cada)
+├── middleware.ts                     # next-intl middleware (locale routing)
 │
-├── styles/
-│   └── globals.css       # Estilos globais (Tailwind)
+├── types/                            # SeoMeta, Categoria, Passeio, etc.
+│   ├── index.ts
+│   └── tabua-mares.ts
 │
-├── public/               # Assets estáticos
-│   ├── images/
-│   ├── icons/
-│   └── fonts/
+├── styles/globals.css                # Tailwind base + camadas customizadas
+├── public/                           # images/, videos/, parceiros/, credenciais/,
+│                                     #  og-image.svg
 │
+├── docs/                             # PRD, ADRs (0001-3), issues, plano de assets,
+│                                     #  fontes de imagens, dossiê SEO/concorrência
+├── briefings-designer/               # Briefings do designer (entregas anteriores)
+├── planejamento/                     # Pipelines de seixas, areia-vermelha,
+│                                     #  litoral-sul-classico, tabua-mares
+│
+├── CONTEXT.md                        # Glossário canônico e decisões de domínio
+├── ESTRUTURA.md                      # Mapa rápido de onde está o quê
+├── I18N-ARCHITECTURE.md              # Decisão de arquitetura multilíngue
 ├── package.json
 ├── tsconfig.json
-├── next.config.ts
-├── tailwind.config.ts
+├── next.config.js                    # Redirects + headers + i18n plugin
+├── tailwind.config.ts                # Paleta v2 oficial
 ├── postcss.config.js
-└── README.md             # Este arquivo
+├── vercel.json                       # Config de deploy
+└── README.md                         # este arquivo
 ```
+
+> Pastas vazias remanescentes: `paginas/`, `seo/`. Pendentes de remoção em fase de limpeza técnica.
 
 ---
 
@@ -103,21 +151,42 @@ npm run type-check
 
 ## Dados e Conteúdo
 
+### Catálogo Oficial (ADR 0001)
+
+**23 itens comerciais = 22 passeios + 1 serviço**
+
+| Categoria | URL slug | Qtd |
+|---|---|---|
+| Pacotes | `pacotes` | 3 |
+| Litoral Sul | `litoral-sul` | 6 |
+| Litoral Norte | `litoral-norte` | 5 |
+| Piscinas Naturais | `piscinas-naturais` | 4 |
+| City Tour | `city-tour` | 1 |
+| Interestaduais | `interestaduais` | 3 |
+| **Total passeios** | | **22** |
+| Serviço (Transfer 24h) | `transfer-24h` | 1 |
+
+> Documentos que ainda citam "29 passeios" (ex.: `_conhecimento/clusters-seo.md`, `_conhecimento/estrutura-site-recomendada.md`) são legado pré-consolidação de 2026-04-30 — considerar `_conhecimento/base-operacional-comercial.md` como verdade.
+
 ### Fonte de Verdade
 
-**Todos os dados são puxados do vault:**
-- Passeios → `_conhecimento/catalogo_vempassear_estruturado.md`
-- Empresa → `_conhecimento/empresa.md`
-- Tom de voz → `_conhecimento/tom-de-voz.md`
-- SEO → `_conhecimento/seo-local-joao-pessoa.md`
+**Todos os dados são puxados do vault, na ordem:**
+
+1. `_conhecimento/passeios.md` (índice)
+2. `_conhecimento/catalogo_vempassear_estruturado.md` (preço, roteiro, duração, saída)
+3. `_conhecimento/base-operacional-comercial.md`
+4. `_conhecimento/empresa.md`
+5. `_conhecimento/tom-de-voz.md`
+6. `_conhecimento/seo-local-joao-pessoa.md`
+7. `_memoria/decisoes-estrategicas.md`
 
 ### Como Atualizar Dados
 
-1. **Passeios:** Edite `data/passeios.ts` (em sync com vault)
+1. **Passeios:** Edite `data/passeios.ts` (em sync com vault) — manter `passeios.i18n.ts` alinhado
 2. **Empresa:** Edite `data/empresa.ts` (em sync com vault)
-3. **Conteúdo textual:** Altere a página correspondente em `app/`
+3. **Conteúdo textual:** Altere a página em `app/[locale]/...` e o respectivo `messages/{locale}.json`
 
-**Regra:** NUNCA inventar dados. Sempre validar com `_conhecimento/`.
+**Regra:** NUNCA inventar preço, roteiro, duração, ponto de embarque, depoimento ou parceria. Sempre validar com `_conhecimento/`. Se faltar dado, marcar `[CONFIRMAR COM MURILLO: ...]`.
 
 ---
 
@@ -155,22 +224,35 @@ npm run type-check
 
 ## Variáveis de Ambiente
 
-Crie `.env.local` na raiz do projeto:
+Crie `.env.local` na raiz do `_site/` (não commitar — está no `.gitignore`):
 
 ```env
-NEXT_PUBLIC_WHATSAPP_NUMBER=+5583988888888
-NEXT_PUBLIC_DOMAIN=https://vempassearjampa.com.br
+NEXT_PUBLIC_WHATSAPP_NUMBER=+5583990878300
+NEXT_PUBLIC_DOMAIN=https://www.vempassearjampa.com
 ```
+
+> WhatsApp oficial é **+55 83 9908-7830** (`https://wa.me/558399087830`) — Decisão 22.
 
 ---
 
 ## Deploy (Vercel)
 
-1. Push para repositório Git
-2. Conecte a Vercel ao repositório
-3. Vercel detecta Next.js automaticamente
-4. Deploy com 0 configuração
-5. Customize domínio (vempassearjampa.com.br)
+Confirmado oficial em 2026-05-29 (headers HTTP retornam `server: Vercel`, `x-vercel-id: gru1`).
+
+1. Push para `main` no repositório Git
+2. Vercel já está conectado ao repositório, com `_site/` como root
+3. Build automático: `npm run build` (Next.js detectado)
+4. Deploy direto em `https://www.vempassearjampa.com`
+5. Plugin `@vercel/analytics` ativo (`_site/components/Analytics.tsx`)
+
+> `netlify.toml` na raiz é legado da fase Netlify — **não usar**.
+
+### Domínio
+
+- **Oficial:** `https://www.vempassearjampa.com` (canonical)
+- `https://vempassearjampa.com` (sem www) → redirect 308 para www (`next.config.js:22-28`)
+- `vempassearjampa.com.br` reservado, **não configurado** — não usar até DNS pronto
+- `vempassearjampa.netlify.app` — **aposentado**
 
 ---
 
@@ -184,34 +266,44 @@ Veja:
 
 ---
 
-## Próximos Passos
+## Status (snapshot 2026-05-29)
 
-### Fase 2 (Próxima)
+Fase 1 (Site e SEO Local) — em consolidação. Site em produção em `www.vempassearjampa.com`.
 
-1. Implementar Home completamente
-2. Criar 3 páginas de passeio (Seixas, Litoral Sul, etc)
-3. Implementar página de categoria
-4. Conectar dados reais do vault
-5. Testar responsividade e SEO
+### Vivo em produção
 
-### Fase 3
+- 22 passeios + 1 serviço renderizados via template único, com i18n PT/EN/ES
+- 6 hubs de categoria, hub geral `/passeios/`, `/faq/`, `/tabua-de-mares-joao-pessoa/`
+- Schemas JSON-LD (LocalBusiness, TouristAttraction, FAQPage, BreadcrumbList, Article)
+- CTA WhatsApp em todas as páginas
+- Squad Comercial (Pipelines I–M) operando manualmente via `_crm/leads.csv`
 
-1. Implementar 20+ passeios
-2. Blog com 3-5 artigos iniciais
-3. GMB integrado
-4. TripAdvisor / Viator
+### Bloqueios HITL (pendem de Murillo)
+
+| Item | Local |
+|---|---|
+| Vídeo hero + poster | `public/videos/home/` (vazia) |
+| Fotos reais Seixas / Areia Vermelha / Picãozinho | `public/images/passeios/{slug}/` |
+| Foto profissional de Murillo | `MurilloBlock` |
+| Depoimentos reais (mínimo 2) | `ReviewsBlock` |
+| `preco: null` em Transfer 24h | `data/servicos.ts` |
+| 10 posts de blog em `draft` | `data/blog.ts` |
+| Tábua maio/2026 `revisadoPorMurillo: false` | `data/tabua-mares.ts` |
+
+Próxima frente técnica documentada em `../_memoria/proximos-passos.md`.
 
 ---
 
 ## Contato e Dúvidas
 
-**Proprietário:** Murillo  
-**Email:** vempassearjampa@gmail.com  
-**WhatsApp:** [Link](https://wa.me/5583988888888)  
-**Cadastur:** 52.077.577
+**Proprietário:** Murillo Affonso Soledade de Oliveira
+**Email:** vempassearjampa@gmail.com
+**WhatsApp oficial:** [+55 83 9908-7830](https://wa.me/558399087830)
+**Cadastur:** 52.077.577 (válido até 16/12/2026)
+**CNPJ:** 52.077.577/0001-03
 
 ---
 
-**Versão:** 0.1.0  
-**Criado:** 2026-04-25  
-**Status:** Base técnica pronta para Fase 2
+**Versão:** 0.2.0
+**Última revisão:** 2026-05-29 (Fase 1 — limpeza e verdade única)
+**Status:** Produção viva — Fase 1 em consolidação

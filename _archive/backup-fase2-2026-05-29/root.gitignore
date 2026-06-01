@@ -1,0 +1,46 @@
+# Node / Next.js (coberto também em _site/.gitignore)
+node_modules/
+.next/
+
+# Env
+.env
+.env.local
+
+# Playwright MCP
+.playwright-mcp/
+
+# Python
+__pycache__/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Obsidian (cache e workspace — mudam a cada abertura)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/graph.json
+
+# Claude Code (configurações locais)
+.claude/settings.local.json
+*.canvas
+
+# Dados sensíveis — nunca commitar
+_seguro/
+
+# Artefatos de build e testes
+_site/tsconfig.tsbuildinfo
+seixas-full.png
+.vscode/
+
+# Google Business Profile local
+google-business-profile/credentials.json
+google-business-profile/token.json
+google-business-profile/.env
+
+# Arquivos locais do executor e dumps brutos
+iniciar-cerebro-jampa.bat
+reviews-raw.json

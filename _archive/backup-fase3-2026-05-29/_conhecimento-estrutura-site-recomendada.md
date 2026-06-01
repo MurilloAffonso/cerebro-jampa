@@ -1,20 +1,7 @@
 # Conhecimento: Estrutura de Site Recomendada
 
-> ⚠️ **DOCUMENTO HISTÓRICO — DEPRECATED em conteúdo de catálogo (2026-05-29, Fase 3)**
->
-> Este arquivo cita **29 passeios** e propõe URLs `/cluster/` / `/passeio/`, formato anterior à consolidação de 2026-04-30 (ADR 0001).
->
-> **Verdade canônica atual** (ver [`../FONTE-DA-VERDADE.md`](../FONTE-DA-VERDADE.md) e `_site/docs/adr/0001-estrutura-de-urls.md`):
-> - **22 passeios + 1 serviço** (não 29)
-> - URLs no formato `/passeios/[categoria]/[slug]/`
-> - Estrutura real implementada em `_site/app/[locale]/...`
->
-> Os **princípios de hierarquia, jornadas de turista e arquitetura de informação** abaixo continuam válidos como referência estratégica. Apenas a contagem e os formatos de URL ficaram obsoletos.
-
----
-
-**Status:** ✅ Consolidado (2026-04-25) — princípios válidos; catálogo desatualizado
-**Fonte:** Consolidação de clusters-seo + seo-local + benchmark
+**Status:** ✅ Consolidado (2026-04-25)  
+**Fonte:** Consolidação de clusters-seo + seo-local + benchmark  
 **Escopo:** Arquitetura de informação + hierarquia de páginas
 
 ---

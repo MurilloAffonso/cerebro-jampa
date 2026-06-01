@@ -1,11 +1,8 @@
 # Handoff Técnico — Vem Passear em Jampa
 
 **Gerado em:** 2026-05-05
-**Última revisão:** 2026-05-29 (Fase 1 — limpeza e verdade única)
-**Estado de referência:** branch `main` — HEAD `9bd97e4 fix(media): corrige isolamento e nomenclatura SEO das fotos por passeio`
+**Estado de referência:** branch `main` — pós-commit BLOCO B, pré-commit HomeVideoHero.
 **Finalidade:** visão consolidada do estado técnico do projeto para qualquer colaborador (IA ou humano) que retome o trabalho.
-
-> ⚓ **Fonte canônica do projeto:** `../FONTE-DA-VERDADE.md`. Em caso de divergência, ele vence.
 
 ---
 
@@ -15,14 +12,11 @@
 |--------|-----------|--------|
 | Framework | Next.js (App Router) | 14.x |
 | UI | React | 18.x |
-| Linguagem | TypeScript (`strict: true`) | 5.x |
+| Linguagem | TypeScript | 5.x |
 | Estilo | Tailwind CSS | 3.x |
-| i18n | next-intl (pt, en, es) | 4.12.x |
-| Fontes | **DM Sans** (body), **Lora** (headings), `ui-monospace` | via `next/font/google` |
-| Analytics | @vercel/analytics | 2.x |
-| Deploy | **Vercel** (confirmado 2026-05-29 — `server: Vercel`) | — |
-| Domínio | **`https://www.vempassearjampa.com`** | canonical |
-| Domínios reservados/aposentados | `.com.br` (não configurado), `.netlify.app` (aposentado) | — |
+| Fontes | Inter (body), Lora (headings), DM Sans, DM Mono | via `next/font/google` |
+| Deploy | — | [CONFIRMAR COM MURILLO] |
+| Domínio | — | [CONFIRMAR COM MURILLO] |
 
 **Comandos (rodar dentro de `_site/`):**
 
@@ -112,25 +106,18 @@ _conhecimento/ (vault) → _site/data/ → componentes → páginas
 
 ## Design Tokens (Tailwind)
 
-Definidos em `_site/tailwind.config.ts:11-44` — **paleta v2 aprovada 2026-05-09** (Decisão 41 em `_memoria/decisoes-estrategicas.md`).
+Definidos em `_site/tailwind.config.ts` — DS v1.2 (commitado no BLOCO B).
 
-| Token | Valor | Uso |
-|-------|-------|-----|
-| `primary` | `#107997` (ocean) | Links, CTAs, headings principais |
-| `primary-light` / `accent` | `#128AAD` | Hover do primary, gradientes |
-| `secondary` | `#092238` (navy profundo) | Header/footer fundo, texto escuro |
-| `deep` / `dark` | `#163149` | Títulos em fundo claro |
-| `areia` | `#C5B7A3` | Bordas, separadores |
-| `acento` | `#D97706` (laranja-falésia) | CTAs de conversão, badges |
-| `acento-suave` | `#FBBF24` | Estrelas, ícones |
-| `whatsapp` | `#25D366` | CTA WhatsApp |
-| `fundo` / `bg-soft` / `bg-warm` | `#F7F8F7` | Fundo de página |
-| `fundo-puro` / `surface` | `#FFFFFF` | Cards, modais |
-| `texto-escuro` / `text` / `body` | `#0D1F2D` | Body |
-| `texto-medio` | `#374151` | Texto secundário |
-| `texto-claro` / `muted` | `#6B7280` | Meta, legendas |
-
-> ❌ Paleta antiga (#FF6B35 laranja / #004E89 azul / #F77F00 accent / #1A1A2E dark) era v1, **fora de uso** desde 2026-05-09.
+| Token | Valor |
+|-------|-------|
+| `primary` | `#FF6B35` (laranja) |
+| `secondary` | `#004E89` (azul) |
+| `accent` | `#F77F00` |
+| `dark` | `#1A1A2E` |
+| `whatsapp` | `#25D366` |
+| `bg-soft` | `#FAFAF8` |
+| `container-safe` | max-w-7xl, padding horizontal responsivo |
+| `section-padding` | py-14 md:py-20 |
 
 Mobile-first obrigatório: base (320px) → `sm:` → `md:` (768px) → `lg:` (1024px).
 
@@ -138,41 +125,39 @@ Mobile-first obrigatório: base (320px) → `sm:` → `md:` (768px) → `lg:` (1
 
 ## Estado Atual da Home
 
-A home (`_site/app/[locale]/page.tsx`) já está em produção. Estrutura atual (v4, refinamento emocional 2026-05-10):
+A home (`_site/app/page.tsx`) foi redesenhada nesta sprint. Estrutura atual:
 
-1. **HomeVideoHero** — vídeo em loop com overlay, H1, subtítulo, 2 CTAs, prova social (commitado)
-2. **Categorias** — 6 CategoryCards coloridos
-3. **Prova social Google** — GoogleReviewsBlock + CadasturCertificate
-4. **HomePasseiosSection** — passeios prioritários
-5. **MurilloBlock** — identidade do Murillo + quote
-6. **PartnersMarquee** — selos
-7. **CTAFinal** — fechamento
-8. **CTASticky** — mobile fixed
+1. **HomeVideoHero** — vídeo em loop com overlay, H1, subtítulo, 2 CTAs, prova social
+2. **WaveDivider** — transição hero → categorias
+3. **Categorias** — 6 CategoryCards coloridos
+4. **WaveDivider** — transição categorias → prioritários
+5. **Passeios Prioritários** — grid de PasseioCards (`getPasseiosPrioritarios()`)
+6. **MurilloBlock** — identidade do Murillo + CTA WhatsApp
+7. **CTAFinal** — variante laranja, texto de fechamento
 
-**Obs.:** `HomeVideoHero` referencia `/videos/home/hero-poster.jpg` e `/videos/home/hero-jampa.{webm,mp4}` — arquivos ainda não existem (P6). Fallback atual: fundo escuro com prova social visível.
+**Obs.:** `HomeVideoHero` referencia `/videos/home/hero-poster.jpg` e `/videos/home/hero-jampa.{webm,mp4}` — arquivos ainda não existem (S7).
 
 ---
 
 ## Estado Atual das Páginas de Passeio
 
-Template único: `_site/app/[locale]/passeios/[categoria]/[slug]/page.tsx`
+Template único: `_site/app/passeios/[categoria]/[slug]/page.tsx`
 
-Blocos implementados (todos vivos em 2026-05-29):
+Blocos implementados:
 - HeroBlock (título, rating, badge de categoria)
-- FichaTecnica + InfoCard (duração, preço, saída, pessoas)
+- InfoCard (duração, preço, saída, pessoas)
 - MareAlert (quando `dependeDeMare: true`)
 - ProximaSaidaCard (quando `dependeDeMare: true`)
-- PasseioCronograma + Roteiro
+- Roteiro (lista de paradas)
 - IncluidoBlock
-- PasseioGallery (com fallback automático via `lib/gallery.ts`)
-- TrustBlock ✅ (integrado — S4 concluído)
-- ReviewsBlock + ClientesReviewsBlock + DepoimentoBlock
+- DepoimentoBlock
+- ReviewsBlock
 - FAQAccordion
-- PoliticaCancelamento
 - Experience360Block
-- ReservationIntentForm
-- CTASticky + CTAFinal
-- Breadcrumb + schemas SEO (TouristAttraction, FAQ, BreadcrumbList)
+- CTAFinal
+- Breadcrumb + schemas SEO
+
+**Faltando:** `TrustBlock` ainda não integrado (S4).
 
 ---
 
@@ -218,16 +203,20 @@ Blocos implementados (todos vivos em 2026-05-29):
 
 ---
 
-## Arquivos Modificados Não Commitados (snapshot 2026-05-29)
+## Arquivos Modificados Não Commitados
 
 | Arquivo | Tipo | Mudança |
 |---------|------|---------|
-| `_memoria/gmb-otimizacao-2026-05.md` | M (modificado) | Avanços de checklist GMB |
-| `_memoria/gmb-auditoria-2026-05.md` | ?? (novo) | Auditoria GMB |
-| `_memoria/gmb-auditoria-dados-reais-2026-05.md` | ?? (novo) | Auditoria com dados reais GMB |
-| `home-1440.png` `val-home-1440.png` `val-mobile-375.png` `val-passeios-1440.png` `val-seixas-1440.png` | ?? (novo) | Capturas de validação na raiz — entulho, ver fase 2 |
+| `_site/app/page.tsx` | M (modificado) | Hero substituído por `<HomeVideoHero>` |
+| `_site/public/images/README.md` | M (modificado) | Não identificado (pré-existente) |
+| `_site/components/HomeVideoHero.tsx` | ?? (novo, não rastreado) | Componente de hero em vídeo |
+| `_site/public/videos/` | ?? (novo, não rastreado) | Pasta de assets de vídeo |
+| `planejamento/sprint-atual.md` | ?? (novo, não rastreado) | Este sprint |
+| `planejamento/backlog-principal.md` | ?? (novo, não rastreado) | Backlog principal |
+| `docs/handoff-tecnico.md` | ?? (novo, não rastreado) | Este arquivo |
+| `_conhecimento/retrospectiva.md` | ?? (novo, não rastreado) | Registro de aprendizados |
 
-**Não commitados** — aguardam aprovação de Murillo. Capturas devem ir para `_design/refs/` ou serem descartadas.
+**Não commitados (aguardam aprovação de Murillo).**
 
 ---
 

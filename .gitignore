@@ -1,46 +1,64 @@
-# Node / Next.js (coberto também em _site/.gitignore)
+# =====================================================================
+# .gitignore — CEREBRO.JAMPA (raiz)
+# Última revisão: 2026-05-29 (Fase 2 — limpeza técnica)
+# Fonte canônica: ../FONTE-DA-VERDADE.md
+# =====================================================================
+
+# ── Node / Next.js (coberto também em _site/.gitignore) ──────────────
 node_modules/
 .next/
 
-# Env
+# ── Build artifacts do Next.js (gerados, nunca versionar) ────────────
+_site/.next/
+_site/out/
+_site/out.zip
+_site/tsconfig.tsbuildinfo
+
+# ── Env ──────────────────────────────────────────────────────────────
 .env
 .env.local
 
-# Playwright MCP
+# ── Playwright MCP ───────────────────────────────────────────────────
 .playwright-mcp/
 
-# Python
+# ── Python ───────────────────────────────────────────────────────────
 __pycache__/
 
-# Logs
+# ── Logs ─────────────────────────────────────────────────────────────
 *.log
 
-# OS
+# ── OS ───────────────────────────────────────────────────────────────
 .DS_Store
 Thumbs.db
 
-# Obsidian (cache e workspace — mudam a cada abertura)
+# ── Obsidian (cache e workspace — mudam a cada abertura) ─────────────
 .obsidian/workspace.json
 .obsidian/workspace-mobile.json
 .obsidian/graph.json
 
-# Claude Code (configurações locais)
+# ── Claude Code (configurações locais) ───────────────────────────────
 .claude/settings.local.json
 *.canvas
 
-# Dados sensíveis — nunca commitar
-_seguro/
-
-# Artefatos de build e testes
-_site/tsconfig.tsbuildinfo
-seixas-full.png
+# ── Editor ───────────────────────────────────────────────────────────
 .vscode/
 
-# Google Business Profile local
+# ── Dados sensíveis — nunca commitar ─────────────────────────────────
+_seguro/
+
+# ── Imagens soltas na raiz (Fase 2 reorganizou para _design/refs/) ──
+# Evitar reintrodução acidental de prints/capturas na raiz.
+/*.png
+/*.jpg
+/*.jpeg
+/*.gif
+/*.webp
+
+# ── Google Business Profile local ────────────────────────────────────
 google-business-profile/credentials.json
 google-business-profile/token.json
 google-business-profile/.env
 
-# Arquivos locais do executor e dumps brutos
+# ── Arquivos locais do executor e dumps brutos ───────────────────────
 iniciar-cerebro-jampa.bat
 reviews-raw.json

@@ -3,8 +3,6 @@
 Vocabulário canônico e decisões de domínio do site Next.js.
 Atualizado inline durante sessões de grill-with-docs.
 
-> ⚓ **Fonte canônica do projeto:** `../FONTE-DA-VERDADE.md` (raiz). Quando este arquivo divergir, o FONTE-DA-VERDADE vence.
-
 ---
 
 ## Glossário de Domínio
@@ -138,17 +136,11 @@ Início | Passeios ▾ | Serviços | [Reservar no WhatsApp]
 
 | Constante | Valor | Fonte |
 |-----------|-------|-------|
-| `SITE_URL` | `https://www.vempassearjampa.com` | Decisão 2026-05-29 (Fase 1) — confirmado deploy Vercel |
-| Deploy | Vercel (`server: Vercel`, `x-vercel-id: gru1`) | confirmação HTTP 2026-05-29 |
-| WhatsApp | `+55 83 9908-7830` | `CLAUDE.md` + Decisão 22 |
-| Cadastur | `52.077.577` (válido até 16/12/2026) | `provas-de-confianca.md` |
-| CNPJ | `52.077.577/0001-03` | `empresa.md` |
-| Google nota | `4,9/5` | `provas-de-confianca.md` |
+| `SITE_URL` | `https://vempassearjampa.com.br` | `empresa.md` |
+| WhatsApp | `+55 83 9908-7830` | `CLAUDE.md` |
+| Cadastur | `52.077.577` | `provas-de-confianca.md` |
+| Google nota | `4.9/5` | `provas-de-confianca.md` |
 | Google reviews | `61 avaliações` | confirmado por Murillo |
-
-**Domínios fora de uso:**
-- `vempassearjampa.com.br` → reservado, **não configurado** (não usar)
-- `vempassearjampa.netlify.app` → **aposentado** (era fase Netlify)
 
 ---
 
@@ -158,4 +150,4 @@ Início | Passeios ▾ | Serviços | [Reservar no WhatsApp]
 
 ---
 
-*Última atualização: 2026-05-29 (Fase 1 — limpeza e verdade única, alinhado ao FONTE-DA-VERDADE.md)*
+*Última atualização: 2026-04-30 | Grill concluído — próximo passo: to-prd*

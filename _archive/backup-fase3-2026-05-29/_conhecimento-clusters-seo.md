@@ -1,20 +1,7 @@
 # Conhecimento: Clusters de SEO — João Pessoa
 
-> ⚠️ **DOCUMENTO HISTÓRICO — DEPRECATED em conteúdo de catálogo (2026-05-29, Fase 3)**
->
-> Este arquivo cita **29 passeios** e usa URLs `/cluster/` / `/passeio/`, formato anterior à consolidação de 2026-04-30 (ADR 0001).
->
-> **Verdade canônica atual** (ver [`../FONTE-DA-VERDADE.md`](../FONTE-DA-VERDADE.md)):
-> - **22 passeios + 1 serviço** (não 29)
-> - URLs no formato `/passeios/[categoria]/[slug]/` (não `/cluster/` nem `/passeio/`)
-> - Catálogo detalhado em [`base-operacional-comercial.md`](base-operacional-comercial.md)
->
-> Insights de **keywords, clusters temáticos e arquitetura de intenção** abaixo continuam válidos como referência estratégica. Apenas a contagem e os formatos de URL ficaram obsoletos.
-
----
-
-**Status:** ✅ Consolidado (2026-04-25) — conteúdo de SEO ainda útil; catálogo desatualizado
-**Fonte:** Análise de inteligência de busca turismo + padrões de intenção
+**Status:** ✅ Consolidado (2026-04-25)  
+**Fonte:** Análise de inteligência de busca turismo + padrões de intenção  
 **Escopo:** Mapa de keywords e arquitetura temática para site
 
 ---

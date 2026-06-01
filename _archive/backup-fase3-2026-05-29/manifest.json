@@ -296,44 +296,8 @@
     {
       "id": "executar-issue",
       "local": ".claude/skills/executar-issue/",
-      "status": "registrada-fase3",
-      "categoria": "engenharia",
-      "escopo": "vault-completo",
-      "nota": "Executor de issues do backlog do site. Localização canônica é .claude/skills/. Duplicata em .agents/skills/ arquivada em 2026-05-29 (_archive/skills-duplicadas/.agents/skills/executar-issue/). Doctor reconhece como externa registrada (não emite warning)."
-    },
-    {
-      "id": "grill-with-docs",
-      "local": "_site/.claude/skills/grill-with-docs/",
-      "status": "registrada-fase3",
-      "categoria": "engenharia",
-      "escopo": "_site",
-      "nota": "Skill de engenharia: sessão de grilling que stress-testa um plano contra o domínio documentado, atualizando CONTEXT.md e ADRs inline. Pertence ao escopo do _site, não ao vault de turismo. Inclui ADR-FORMAT.md e CONTEXT-FORMAT.md como bundled resources."
-    },
-    {
-      "id": "to-issues",
-      "local": "_site/.claude/skills/to-issues/",
-      "status": "registrada-fase3",
-      "categoria": "engenharia",
-      "escopo": "_site",
-      "nota": "Skill de engenharia: quebra plano/PRD em issues independentes via tracer-bullet vertical slices. Não é skill de turismo."
-    },
-    {
-      "id": "to-prd",
-      "local": "_site/.claude/skills/to-prd/",
-      "status": "registrada-fase3",
-      "categoria": "engenharia",
-      "escopo": "_site",
-      "nota": "Skill de engenharia: converte contexto de conversa em PRD publicado no issue tracker. Não é skill de turismo."
+      "status": "fora-do-padrao",
+      "nota": "Skill solta no diretório .claude/skills/. Decisão pendente: mover para skills/ ou remover. Doctor avisa enquanto não decidir."
     }
-  ],
-  "consolidacao_fase3_2026_05_29": {
-    "data": "2026-05-29",
-    "decisao": "Skills externas (executar-issue, grill-with-docs, to-issues, to-prd) ficam registradas no manifest com status 'registrada-fase3' e mantidas em suas localizações de escopo. Não migram para skills/ (que é reservada para skills de turismo orquestradas pelo orquestrador-projeto-turismo).",
-    "padrao_oficial": {
-      "skills_internas_turismo": "skills/<id>/SKILL.md + entrada em manifest.skills[]",
-      "skills_externas_engenharia": ".claude/skills/ (vault) ou _site/.claude/skills/ (_site) + entrada em manifest.skills_externas[]",
-      "slash_commands": ".claude/commands/<comando>.md"
-    },
-    "ver": "_memoria/relatorio-fase3-consolidacao-2026-05-29.md"
-  }
+  ]
 }
