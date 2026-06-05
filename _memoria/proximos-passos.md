@@ -73,18 +73,25 @@
 - ✅ Tabela de marés responsiva (CSS card layout mobile)
 - ✅ CTA humanizado, 2 FAQs novas, links de alternativa sem maré
 
-## Próximo Passo Imediato (pós 2026-05-28, sessão 2)
+## Sessão 2026-06-01 — Concluído (1 commit `b3f6ddd`)
 
-1. **Validar Vercel** — confirmar deploy e testar no celular:
-   - `/tabua-de-mares-joao-pessoa`
-   - `/passeios/litoral-sul`
-   - `/passeios/litoral-sul/praia-bela`
-   - `/passeios/piscinas-naturais/mergulho`
-2. **Solicitar indexação no GSC** das páginas alteradas
+- ✅ WhatsApp corrigido: `99087-830` → `99908-7830` / link `558399087830` → `5583999087830`
+- ✅ Propagado em: `empresa.ts`, `CLAUDE.md`, `FONTE-DA-VERDADE.md`, `estado-atual.md`, `canais-oficiais.md`, `decisoes-estrategicas.md`, docs GMB
+- ✅ Breadcrumb schema duplicado removido (`Breadcrumb.tsx`)
+- ✅ Validado em produção: 29 CTAs corretos, 0 erros console, 1 BreadcrumbList por página
+
+## Sessão 2026-06-04 — Em execução
+
+- ✅ `descricaoLonga` adicionada: `roteiro-do-murillo-3-dias`, `combo-sol-nascente-3-dias`, `combo-mare-boa-2-dias`, `combo-jampa-quadriciclo`
+- ✅ Doctor: 0 erros, 1 aviso (fotos Murillo/parceiros — aguarda Murillo)
+- ⏳ Commit `passeios.ts` pendente (aguarda git add/commit manual)
+
+## Próximo Passo Imediato (pós 2026-06-04)
+
+1. **Commit `passeios.ts`** — `content(passeios): adiciona descricaoLonga nos 4 pacotes e combos rasos`
+2. **Solicitar indexação no GSC** das páginas do commit `b3f6ddd`
 3. **Fotos reais** — Murillo envia JPGs → `galleryImages` (Seixas, Areia Vermelha, Picãozinho)
-4. **og:image Areia Vermelha** — corrigir após foto disponível
-5. **GMB** — executar checklist em `_memoria/gmb-otimizacao-2026-05.md`
-6. **Leads CSV** — registrar primeiros leads com skill `qualificacao-lead`
-7. **Próxima frente técnica** — blog com maior potencial de tráfego OU pacotes sem `descricaoLonga` (`roteiro-do-murillo-3-dias`, `combo-sol-nascente-3-dias`, `combo-mare-boa-2-dias`)
+4. **GMB** — executar checklist em `_memoria/gmb-otimizacao-2026-05.md`
+5. **Leads CSV** — registrar primeiros leads com skill `qualificacao-lead`
 
-*Atualizado: 2026-05-28 (sessão 2)*
+*Atualizado: 2026-06-04*
