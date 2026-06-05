@@ -142,6 +142,8 @@ export const passeios: Passeio[] = [
     saida: "8h–9h",
     descricao:
       "3 dias completos: praias do sul com quadriciclo, história e pôr do sol no norte, mergulho nas piscinas do Seixas.",
+    descricaoLonga:
+      "O pacote que reúne os 3 melhores dias de João Pessoa num único roteiro. Dia 1 no litoral sul com trilha de quadriciclo em Coqueirinho. Dia 2 pelo centro histórico e pôr do sol no Jacaré a bordo do catamarã. Dia 3 nas piscinas naturais do Seixas — na maré baixa, dentro d'água com peixinhos coloridos ao redor. Transfer, guia credenciado, quadriciclo e catamarã já inclusos.",
     incluso: [
       "Transfer (Tambaú, Cabo Branco, Manaíra, Bessa)",
       "Condutores credenciados em todos os dias",
@@ -187,6 +189,8 @@ export const passeios: Passeio[] = [
     saida: "8h–9h",
     descricao:
       "O melhor de João Pessoa em 3 dias com o melhor custo-benefício da cidade.",
+    descricaoLonga:
+      "Três dias rodando o melhor de João Pessoa com transfer e guia por R$ 280 por pessoa. Você vê o litoral sul com 4 praias, as piscinas naturais do Seixas e o roteiro norte com o centro histórico. Sem quadriciclo e sem catamarã no valor base, mas os dois podem ser adicionados separadamente se quiser aproveitar ao máximo.",
     incluso: [
       "Transfer (Tambaú, Cabo Branco, Manaíra, Bessa)",
       "Condutores credenciados nos 3 dias",
@@ -228,6 +232,8 @@ export const passeios: Passeio[] = [
     saida: "8h–9h",
     descricao:
       "Duas experiências essenciais em 2 dias — Litoral Sul e Piscinas Naturais — no melhor custo-benefício.",
+    descricaoLonga:
+      "O combo certo pra quem tem só 2 dias e quer ver o essencial de João Pessoa. Dia 1 no litoral sul: 4 praias com transfer saindo cedo do hotel. Dia 2 nas piscinas naturais do Seixas, sujeito à maré baixa — a experiência de nadar numa piscina de pedra no meio do Atlântico. Transfer e guia inclusos nos dois dias.",
     incluso: [
       "Transfer (Tambaú, Cabo Branco, Manaíra, Bessa)",
       "Guia nos 2 dias",
@@ -513,6 +519,8 @@ export const passeios: Passeio[] = [
       "4 praias de manhã e adrenalina em quadriciclo à tarde, no mesmo dia. A gente busca no hotel, leva, e devolve no fim do dia.",
     descricao:
       "Praias paradisíacas de manhã + trilha de quadriciclo pelos mirantes históricos de Coqueirinho.",
+    descricaoLonga:
+      "Um dia que começa no mar e termina na trilha. De manhã, você percorre as 4 praias do litoral sul — Gramame, Amor, Tambaba e Coqueirinho — com transfer saindo do hotel. Depois do almoço em Coqueirinho, você pega o quadriciclo e segue pelos mirantes: Dedo de Deus, Tartarugas e Castelinho da Princesa, com vista para a falésia laranja. Guia à frente em todo o percurso. Retorno ao hotel por volta das 16h30.",
     lead:
       "Quer praia e aventura no mesmo dia, sem ter que dirigir nem perder tempo procurando estacionamento?\n\nO Combo Jampa junta o Roteiro Clássico do litoral sul (Gramame, Amor, Tambaba e Coqueirinho) com uma trilha de quadriciclo de 1h30 a 2h pelos mirantes mais bonitos de Coqueirinho.\n\nA gente busca você entre 8h e 9h em Tambaú, Cabo Branco, Manaíra ou Bessa. Faz as 4 praias pela manhã, almoço em Coqueirinho, e à tarde você pilota o quadriciclo guiado pela equipe. Retorno por volta das 16h30.",
     descricaoSensorial:
