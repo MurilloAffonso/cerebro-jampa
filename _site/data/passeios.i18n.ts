@@ -311,15 +311,13 @@ export const passeiosTranslations: Record<
         },
       ],
       galleryImages: [
-        { src: "/images/passeios/litoral-sul/roteiro-classico/hero-01.jpg", alt: "Aerial view of Paraíba's south coast with beaches and reefs" },
-        { src: "/images/passeios/litoral-sul/roteiro-classico/galeria-01.jpg", alt: "Drone view of Coqueirinho Beach, Paraíba south coast" },
-        { src: "/images/passeios/litoral-sul/roteiro-classico/galeria-02.jpg", alt: "Beach on João Pessoa's south coast" },
-        { src: "/images/passeios/litoral-sul/roteiro-classico/galeria-03.jpg", alt: "Paraíba's south coast landscape" },
-        { src: "/images/passeios/litoral-sul/roteiro-classico/galeria-04.jpg", alt: "Beaches and cliffs of Paraíba's south coast" },
-        { src: "/images/passeios/litoral-sul/roteiro-classico/galeria-05.jpg", alt: "João Pessoa's south coast — one-day tour" },
+        { src: "/images/passeios/litoral-sul/roteiro-classico/litoral-sul-gallery-08-tambaba-praia-vista-aerea.webp", alt: "Aerial view of Tambaba Beach with sea, reefs and sand" },
+        { src: "/images/passeios/litoral-sul/roteiro-classico/litoral-sul-gallery-04-barra-gramame-rio-mar.webp", alt: "Aerial view of Barra de Gramame where the river meets the sea" },
+        { src: "/images/passeios/litoral-sul/roteiro-classico/litoral-sul-gallery-09-praia-do-amor-costao.webp", alt: "Rocky shore at Praia do Amor on Paraíba's south coast" },
+        { src: "/images/passeios/litoral-sul/roteiro-classico/litoral-sul-gallery-10-coqueirinho-enseada.webp", alt: "Coqueirinho Beach cove with sea, sand and vegetation" },
       ],
       imagemAlt:
-        "Colorful cliffs and coconut trees on Coqueirinho Beach, João Pessoa's south coast",
+        "Tambaba Beach on the classic south coast tour from João Pessoa",
       rotario: [
         "Departure 8am–9am (Tambaú, Cabo Branco, Manaíra, Bessa)",
         "Gramame Beach (white sand, calm waters)",
@@ -460,15 +458,13 @@ export const passeiosTranslations: Record<
         },
       ],
       galleryImages: [
-        { src: "/images/passeios/litoral-sul/roteiro-classico/hero-01.jpg", alt: "Vista aérea del litoral sur de Paraíba con playas y arrecifes" },
-        { src: "/images/passeios/litoral-sul/roteiro-classico/galeria-01.jpg", alt: "Vista drone de la Playa de Coqueirinho, litoral sur de Paraíba" },
-        { src: "/images/passeios/litoral-sul/roteiro-classico/galeria-02.jpg", alt: "Playa del litoral sur de João Pessoa" },
-        { src: "/images/passeios/litoral-sul/roteiro-classico/galeria-03.jpg", alt: "Paisaje del litoral sur de Paraíba" },
-        { src: "/images/passeios/litoral-sul/roteiro-classico/galeria-04.jpg", alt: "Playas y acantilados del litoral sur de Paraíba" },
-        { src: "/images/passeios/litoral-sul/roteiro-classico/galeria-05.jpg", alt: "Litoral sur de João Pessoa — tour de un día" },
+        { src: "/images/passeios/litoral-sul/roteiro-classico/litoral-sul-gallery-08-tambaba-praia-vista-aerea.webp", alt: "Vista aérea de la Playa de Tambaba con mar, arrecifes y arena" },
+        { src: "/images/passeios/litoral-sul/roteiro-classico/litoral-sul-gallery-04-barra-gramame-rio-mar.webp", alt: "Vista aérea de Barra de Gramame donde el río se encuentra con el mar" },
+        { src: "/images/passeios/litoral-sul/roteiro-classico/litoral-sul-gallery-09-praia-do-amor-costao.webp", alt: "Costa rocosa de Praia do Amor en el litoral sur de Paraíba" },
+        { src: "/images/passeios/litoral-sul/roteiro-classico/litoral-sul-gallery-10-coqueirinho-enseada.webp", alt: "Ensenada de la Playa de Coqueirinho con mar, arena y vegetación" },
       ],
       imagemAlt:
-        "Acantilados de colores y cocoteros en la Playa de Coqueirinho, litoral sur de João Pessoa",
+        "Playa de Tambaba en el paseo clásico por el litoral sur de João Pessoa",
       rotario: [
         "Salida 8h–9h (Tambaú, Cabo Branco, Manaíra, Bessa)",
         "Playa de Gramame (arena blanca, aguas calmas)",

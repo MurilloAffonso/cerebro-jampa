@@ -38,6 +38,8 @@ export function PasseioCard({ passeio, loading = "lazy" }: PasseioCardProps) {
   const preco    = parsePrecoChip(passeio.preco);
   const desconto = DESCONTOS[passeio.slug];
   const local    = passeio.localizacao || passeio.saida;
+  const imageSrc = passeio.cardImage || passeio.coverImage;
+  const imageAlt = passeio.cardImageAlt || passeio.imagemAlt || `${passeio.nome} em João Pessoa`;
 
   return (
     <>
@@ -76,10 +78,10 @@ export function PasseioCard({ passeio, loading = "lazy" }: PasseioCardProps) {
       <div className="passeio-card-img" style={{ position: 'relative', height: 200, flexShrink: 0 }}>
 
         {/* Foto */}
-        {passeio.coverImage ? (
+        {imageSrc ? (
           <Image
-            src={passeio.coverImage}
-            alt={passeio.imagemAlt || `${passeio.nome} em João Pessoa`}
+            src={imageSrc}
+            alt={imageAlt}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
             loading={loading}

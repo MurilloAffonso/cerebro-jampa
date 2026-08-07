@@ -89,6 +89,8 @@ export interface Passeio {
   idealPara?: string[];
   // Imagens
   coverImage?: string;
+  cardImage?: string;
+  cardImageAlt?: string;
   gallery?: string[];                    // legado — mantido por compat; pode apontar para placeholder
   galleryImages?: GalleryImage[];        // novo — só popular com fotos REAIS (PasseioGallery)
   imagemAlt?: string;
@@ -326,31 +328,30 @@ export const passeios: Passeio[] = [
           "Deixamos você de volta no hotel. Total: ~8h desde a saída.",
       },
     ],
-    coverImage: "/images/passeios/litoral-sul/roteiro-classico/litoral-sul-roteiro-classico-joao-pessoa-01.jpg",
+    coverImage: "/images/passeios/litoral-sul/roteiro-classico/litoral-sul-hero-01-tambaba-praia-vista-aerea.webp",
+    cardImage: "/images/passeios/litoral-sul/roteiro-classico/litoral-sul-card-01-tambaba-praia.webp",
+    cardImageAlt:
+      "Vista aérea da Praia de Tambaba no Litoral Sul da Paraíba",
     galleryImages: [
       {
-        src: "/images/passeios/litoral-sul/roteiro-classico/litoral-sul-roteiro-classico-joao-pessoa-01.jpg",
-        alt: "Vista aérea do litoral sul da Paraíba com praias e recifes",
+        src: "/images/passeios/litoral-sul/roteiro-classico/litoral-sul-gallery-08-tambaba-praia-vista-aerea.webp",
+        alt: "Vista aérea da Praia de Tambaba com mar, recifes e faixa de areia",
       },
       {
-        src: "/images/passeios/litoral-sul/roteiro-classico/litoral-sul-roteiro-classico-joao-pessoa-02.jpg",
-        alt: "Vista drone da Praia de Coqueirinho, litoral sul da Paraíba",
+        src: "/images/passeios/litoral-sul/roteiro-classico/litoral-sul-gallery-04-barra-gramame-rio-mar.webp",
+        alt: "Vista aérea da Barra de Gramame com o encontro do rio e do mar",
       },
       {
-        src: "/images/passeios/litoral-sul/roteiro-classico/litoral-sul-roteiro-classico-joao-pessoa-03.jpg",
-        alt: "Praia do litoral sul de João Pessoa",
+        src: "/images/passeios/litoral-sul/roteiro-classico/litoral-sul-gallery-09-praia-do-amor-costao.webp",
+        alt: "Costão rochoso da Praia do Amor no Litoral Sul da Paraíba",
       },
       {
-        src: "/images/passeios/litoral-sul/roteiro-classico/litoral-sul-roteiro-classico-joao-pessoa-04.jpg",
-        alt: "Paisagem do litoral sul paraibano",
-      },
-      {
-        src: "/images/passeios/litoral-sul/roteiro-classico/litoral-sul-roteiro-classico-joao-pessoa-05.jpg",
-        alt: "Praias e falésias do litoral sul da Paraíba",
+        src: "/images/passeios/litoral-sul/roteiro-classico/litoral-sul-gallery-10-coqueirinho-enseada.webp",
+        alt: "Enseada da Praia de Coqueirinho com mar, faixa de areia e vegetação",
       },
     ],
     imagemAlt:
-      "Falésias coloridas e coqueiros na Praia de Coqueirinho, litoral sul de João Pessoa",
+      "Praia de Tambaba no roteiro clássico do litoral sul de João Pessoa",
     rotario: [
       "Saída 8h–9h (Tambaú, Cabo Branco, Manaíra, Bessa)",
       "Praia de Gramame (areia branca, águas calmas)",
@@ -740,6 +741,10 @@ export const passeios: Passeio[] = [
       {
         src: "/images/passeios/litoral-sul/quadriciclo-coqueirinho/litoral-sul-quadriciclo-coqueirinho-01.jpg",
         alt: "Trilha de quadriciclo nos mirantes de Coqueirinho, litoral sul da Paraíba",
+      },
+      {
+        src: "/images/passeios/litoral-sul/quadriciclo-coqueirinho/litoral-sul-quadriciclo-coqueirinho-02.webp",
+        alt: "Quadriciclo em trilha de areia no litoral sul da Paraíba",
       },
     ],
     faq: [
@@ -1178,7 +1183,62 @@ export const passeios: Passeio[] = [
           "Quando a maré começa a encher, o banco de areia some de volta para o mar — sinal de que é hora de voltar. Total: ~3h desde o embarque.",
       },
     ],
-    coverImage: "/images/placeholders/placeholder-passeio.svg",
+    coverImage: "/images/passeios/litoral-norte/areia-vermelha-catamara/areia-vermelha-hero-01-banco-de-areia-vista-aerea.webp",
+    cardImage: "/images/passeios/litoral-norte/areia-vermelha-catamara/areia-vermelha-card-01-catamara-banco-de-areia.webp",
+    cardImageAlt:
+      "Catamarã ancorado em Areia Vermelha com banco de areia e João Pessoa ao fundo",
+    galleryImages: [
+      {
+        src: "/images/passeios/litoral-norte/areia-vermelha-catamara/areia-vermelha-gallery-01-catamara-barba-negra.webp",
+        alt: "Catamarã Barba Negra ancorado nas águas rasas de Areia Vermelha em Cabedelo",
+        caption: "Catamarã com estrutura de apoio",
+      },
+      {
+        src: "/images/passeios/litoral-norte/areia-vermelha-catamara/areia-vermelha-gallery-02-agua-rasa-banco-de-areia.webp",
+        alt: "Água rasa e banco de areia durante maré baixa em Areia Vermelha",
+        caption: "Água rasa na maré baixa",
+      },
+      {
+        src: "/images/passeios/litoral-norte/areia-vermelha-catamara/areia-vermelha-gallery-03-piscinas-naturais-e-barcos.webp",
+        alt: "Piscinas naturais de Areia Vermelha com barcos ancorados ao redor",
+        caption: "Piscinas naturais e embarcações",
+      },
+      {
+        src: "/images/passeios/litoral-norte/areia-vermelha-catamara/areia-vermelha-gallery-04-pessoas-nas-piscinas-naturais.webp",
+        alt: "Pessoas caminhando e tomando banho nas piscinas naturais de Areia Vermelha",
+        caption: "Banho nas piscinas naturais",
+      },
+      {
+        src: "/images/passeios/litoral-norte/areia-vermelha-catamara/areia-vermelha-gallery-05-banco-de-areia-com-barcos.webp",
+        alt: "Banco de areia de Areia Vermelha com barcos e visitantes na maré baixa",
+        caption: "Banco de areia exposto",
+      },
+      {
+        src: "/images/passeios/litoral-norte/areia-vermelha-catamara/areia-vermelha-gallery-06-vista-aerea-do-banco-de-areia.webp",
+        alt: "Vista aérea de Areia Vermelha com banco de areia, piscinas naturais, barcos e João Pessoa ao fundo",
+        caption: "Vista aérea de Areia Vermelha",
+      },
+      {
+        src: "/images/passeios/litoral-norte/areia-vermelha-catamara/areia-vermelha-gallery-07-vista-aerea-formacao-banco-de-areia.webp",
+        alt: "Vista aérea aproximada da formação do banco de areia de Areia Vermelha durante a maré baixa",
+        caption: "Formação do banco de areia",
+      },
+      {
+        src: "/images/passeios/litoral-norte/areia-vermelha-catamara/areia-vermelha-gallery-08-catamara-barba-negra-vista-aerea.webp",
+        alt: "Catamarã Barba Negra visto de cima nas águas rasas de Areia Vermelha",
+        caption: "Catamarã visto de cima",
+      },
+      {
+        src: "/images/passeios/litoral-norte/areia-vermelha-catamara/areia-vermelha-gallery-09-catamara-com-visitantes.webp",
+        alt: "Catamarã ancorado em Areia Vermelha com visitantes caminhando no banco de areia",
+        caption: "Estrutura com visitantes",
+      },
+      {
+        src: "/images/passeios/litoral-norte/areia-vermelha-catamara/areia-vermelha-gallery-10-catamara-banco-de-areia-vertical.webp",
+        alt: "Catamarã em Areia Vermelha com banco de areia, água rasa e céu azul",
+        caption: "Catamarã e banco de areia",
+      },
+    ],
     imagemAlt:
       "Banco de areia de Areia Vermelha com piscinas naturais verde-esmeralda durante maré baixa em Cabedelo, João Pessoa",
     rotario: [
